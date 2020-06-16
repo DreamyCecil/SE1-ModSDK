@@ -18,7 +18,7 @@ To compile the source code, you'll need to use a compiler from Microsoft Visual 
 4. Now you need to download and install `Daffodil`. It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
 As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visual Studios as long as Visual Studio 2010 is also installed, otherwise the tools won't show up in the toolset list.
 
-Now you are able to build the entire solution (`Sources/SDK.sln`) but make sure that all of the projects have `v60` set as their platform toolset (Project properties -> Configuration Properties -> General -> Platform Toolset).
+Now you are able to build the entire solution (`Sources/SDK107.sln`) but make sure that all of the projects have `v60` set as their platform toolset (Project properties -> Configuration Properties -> General -> Platform Toolset).
 
 Running
 -------
