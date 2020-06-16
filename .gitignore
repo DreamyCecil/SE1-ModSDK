@@ -22,7 +22,9 @@
 *.a
 *.lib
 !Sources/Extras/Engine.lib
+!Sources/Extras/EngineD.lib
 !Sources/Extras/EngineGUI.lib
+!Sources/Extras/EngineGUID.lib
 
 # Executables
 *.exe
@@ -48,6 +50,7 @@ Debug/
 *.hm
 *.exp
 *.res
+*.lastbuildstate
 
 # Generated configuration files
 *.plr
