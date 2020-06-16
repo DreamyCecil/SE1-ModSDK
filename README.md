@@ -18,7 +18,9 @@ To compile the source code, you'll need to use a compiler from Microsoft Visual 
 4. Now you need to download and install `Daffodil`. It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
 As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visual Studios as long as Visual Studio 2010 is also installed, otherwise the tools won't show up in the toolset list.
 
-Now you are able to build the entire solution (`Sources/SDK.sln`) but make sure that all of the projects have `v60` set as their platform toolset (Project properties -> Configuration Properties -> General -> Platform Toolset).
+Now you are able to build the entire solution (`Sources/SDK107.sln`) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
+
+Remember to **not** use spaces in the path to the solution.
 
 Running
 -------
@@ -29,12 +31,13 @@ There are two ways to start the mod:
 1. Create a `.des` file in your Mods directory under the same name as this repository, open it in any text editor and type your mod name in it. Then you'll be able to launch your mod from the game's `Mods` list.
 2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MODNAME` with the name of this repository. After that just run the any of the `.bat` files to open the editor or the mod.
 
-When running a selected project, make sure the mod in project properties Debugging -> Command Arguments is set to your repository name instead of MODNAME (example: `+game MyMod`).
+When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your repository name instead of MODNAME (example: `+game MyMod`).
 
 License
 -------
 
 Just like Croteam's Serious Engine 1.10 source code ( https://github.com/Croteam-official/Serious-Engine ), Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
+
 This SDK includes Croteam's Entity Class Compiler (`Sources/Extras/Ecc.exe`) that is used to compile `.es` files and officially distributed with classic Serious Sam games. Its source code is included in Serious Engine 1.10.
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
