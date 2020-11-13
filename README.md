@@ -16,9 +16,11 @@ To compile the source code, you'll need to use a compiler from Microsoft Visual 
 2. Second, you need to download and install `Visual Studio 2010` (only C++ tools are enough).
 3. Then you need to install `Visual Studio 2013` (or even newer, although it wasn't tested). After this you'll be able to open the project files, but you can't compile them using the `v60` toolset yet.
 4. Now you need to download and install `Daffodil`. It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
-As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visual Studios as long as Visual Studio 2010 is also installed, otherwise the tools won't show up in the toolset list.
+As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visual Studios as long as Visual Studio 2010 is also installed, otherwise it won't work.
 
 Now you are able to build the entire solution (`Sources/SDK107.sln`) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
+
+**NOTE:** Debugging tools from newer studios are unable to use program database files (.PDB) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using Microsoft Visual C++ 6.0 or if you can't use it, base it on Serious Engine v1.10 source code and then port `EntitiesMP`, `GameGUIMP` and `GameMP` code it back to this project.
 
 Remember to **not** use spaces in the path to the solution.
 
@@ -29,9 +31,9 @@ Once the project is compiled, there should be three libraries in the Bin folder:
 
 There are two ways to start the mod:
 1. Create a `.des` file in your Mods directory under the same name as this repository, open it in any text editor and type your mod name in it. Then you'll be able to launch your mod from the game's `Mods` list.
-2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MODNAME` with the name of this repository. After that just run the any of the `.bat` files to open the editor or the mod.
+2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `SeriousSam_SDK107` with the name of your mod. After that just run any of the `.bat` files to open the editor or the mod.
 
-When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your repository name instead of MODNAME (example: `+game MyMod`).
+When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your mod name instead of `SeriousSam_SDK107` (example: `+game MyMod`).
 
 License
 -------

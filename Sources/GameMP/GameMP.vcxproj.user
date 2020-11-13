@@ -3,11 +3,11 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LocalDebuggerCommand>$(SolutionDir)../../../Bin/SeriousSam.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>+game MODNAME</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LocalDebuggerCommand>$(SolutionDir)../../../Bin/SeriousSam.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
-    <LocalDebuggerCommandArguments>+game MODNAME</LocalDebuggerCommandArguments>
+    <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
   </PropertyGroup>
 </Project>

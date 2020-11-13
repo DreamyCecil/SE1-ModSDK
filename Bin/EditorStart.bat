@@ -1,2 +1,2 @@
 @echo off
-..\..\..\bin\SeriousSam.exe +game MODNAME
+..\..\..\Bin\SeriousSam.exe +game SeriousSam_SDK107
