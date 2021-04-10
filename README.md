@@ -20,7 +20,7 @@ As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visua
 
 Now you are able to build the entire solution (`Sources/SDK107.sln`) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
 
-**NOTE:** Debugging tools from newer studios are unable to use program database files (.PDB) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using Microsoft Visual C++ 6.0 or if you can't use it, base it on Serious Engine v1.10 source code and then port `EntitiesMP`, `GameGUIMP` and `GameMP` code it back to this project.
+**NOTE:** Debugging tools from newer studios are unable to use program database files (.PDB) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using Microsoft Visual C++ 6.0 or Visual Studio 2010 (select its debugger after the crash or attach it to the process). If you can't use either for some reason, base your project on Serious Engine v1.10 and then port `EntitiesMP`, `GameGUIMP` and `GameMP` code back to this project.
 
 Remember to **not** use spaces in the path to the solution.
 
