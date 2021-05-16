@@ -2415,7 +2415,8 @@ void CGame::RecordHighScore(void)
   INDEX ctScore = penpl->m_psGameStats.ps_iScore;
 
   // find entry with lower score
-  for(INDEX iLess=0; iLess<HIGHSCORE_COUNT; iLess++) {
+  INDEX iLess;
+  for(iLess=0; iLess<HIGHSCORE_COUNT; iLess++) {
     if (gm_ahseHighScores[iLess].hse_ctScore<ctScore) {
       break;
     }

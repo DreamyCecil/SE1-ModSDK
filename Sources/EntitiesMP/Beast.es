@@ -17,7 +17,7 @@ enum BeastType {
 };
 
 %{
-static _tmLastStandingAnim =0.0f;  
+static TIME _tmLastStandingAnim =0.0f;  
 #define BEAST_STRETCH 2.0f
 #define BIG_BEAST_STRETCH 12.0f
 #define HUGE_BEAST_STRETCH 30.0f

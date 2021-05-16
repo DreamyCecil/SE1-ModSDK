@@ -61,7 +61,7 @@ void UpdatePauseState(void)
 void CGame::QuickTest(const CTFileName &fnMapName, 
   CDrawPort *pdp, CViewPort *pvp)
 {
-  UINT uiMessengerMsg = RegisterWindowMessage("Croteam Messenger: Incoming Message");
+  UINT uiMessengerMsg = RegisterWindowMessageA("Croteam Messenger: Incoming Message");
   EnableLoadingHook(pdp);
 
   // quick start game with the world

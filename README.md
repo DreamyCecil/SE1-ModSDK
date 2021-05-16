@@ -10,7 +10,9 @@ The original source code of these projects remains untouched, however the projec
 Building
 --------
 
-To compile the source code, you'll need to use a compiler from Microsoft Visual C++ 6.0.
+To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`, no additional steps are required).
+
+To compile the source code under 1.07 engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
 
 1. First, you need to download and install `Microsoft Visual C++ 6.0` with Service Pack 6. Keep in mind that it may not run on your OS correctly or finish the installation at all, you'll have to go to the installation place (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\VC98`) and see if there is anything (should run correctly on Windows 7 x64 and lower).
 2. Second, you need to download and install `Visual Studio 2010` (only C++ tools are enough).

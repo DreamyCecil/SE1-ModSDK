@@ -1127,7 +1127,9 @@ void Particles_RocketTrail(CEntity *pen, FLOAT fStretch)
   const FLOAT3D *pvPos2 = &plp->GetPosition(1);
   INDEX iParticle = 0;
   INDEX iParticlesLiving = plp->lp_ctUsed*ROCKET_TRAIL_INTERPOSITIONS;
-  for( INDEX iPos=2; iPos<plp->lp_ctUsed; iPos++)
+
+  INDEX iPos;
+  for( iPos=2; iPos<plp->lp_ctUsed; iPos++)
   {
     pvPos1 = pvPos2;
     pvPos2 = &plp->GetPosition(iPos);

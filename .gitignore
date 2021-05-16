@@ -21,10 +21,14 @@
 *.la
 *.a
 *.lib
-!Sources/Extras/Engine.lib
-!Sources/Extras/EngineD.lib
-!Sources/Extras/EngineGUI.lib
-!Sources/Extras/EngineGUID.lib
+!Sources/Engine107/Engine.lib
+!Sources/Engine107/EngineD.lib
+!Sources/Engine107/EngineGUI.lib
+!Sources/Engine107/EngineGUID.lib
+!Sources/Engine110/Engine.lib
+!Sources/Engine110/EngineD.lib
+!Sources/Engine110/EngineGUI.lib
+!Sources/Engine110/EngineGUID.lib
 
 # Executables
 *.exe

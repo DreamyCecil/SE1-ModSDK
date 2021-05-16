@@ -57,9 +57,9 @@ static BOOL _bHasFloor = FALSE;
 static FLOAT _fFloorY = 0.0f;
 static FLOAT _fFOV = 90.0f;
 static FLOAT3D _vLightDir = FLOAT3D( -0.2f, -0.2f, -0.2f);
-static _colLight = C_GRAY;
-static _colAmbient = C_vdGRAY;
-static _iParticleType = PARTICLES_NONE;
+static COLOR _colLight = C_GRAY;
+static COLOR _colAmbient = C_vdGRAY;
+static INDEX _iParticleType = PARTICLES_NONE;
 
 
 // model setting values

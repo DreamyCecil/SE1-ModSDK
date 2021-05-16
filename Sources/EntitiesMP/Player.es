@@ -154,7 +154,7 @@ static CTString MakeEmptyString(INDEX ctLen, char ch=' ')
 }
 
 // take a two line string and align into one line of minimum given length
-static _ctAlignWidth = 20;
+static INDEX _ctAlignWidth = 20;
 static CTString AlignString(const CTString &strOrg)
 {
   // split into two lines
@@ -5326,7 +5326,7 @@ functions:
     TIME tmLevelTime = _pTimer->CurrentTick()-m_tmLevelStarted;
     m_psLevelStats.ps_tmTime = tmLevelTime;
     m_psGameStats.ps_tmTime += tmLevelTime;
-    FLOAT fTimeDelta = ClampDn(floor(m_tmEstTime)-floor(tmLevelTime), 0.0);
+    FLOAT fTimeDelta = ClampDn(FLOAT(floor(m_tmEstTime)-floor(tmLevelTime)), 0.0f);
     m_iTimeScore = floor(fTimeDelta*100.0f);
     m_psLevelStats.ps_iScore+=m_iTimeScore;
     m_psGameStats.ps_iScore+=m_iTimeScore;

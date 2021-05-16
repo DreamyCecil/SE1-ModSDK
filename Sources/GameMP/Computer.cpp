@@ -219,7 +219,7 @@ void LastUnreadMessage(void)
     }
   }
   if (!bFound) {
-    _iActiveMessage = ClampDn(_acmMessages.Count()-1, 0);
+    _iActiveMessage = ClampDn(INDEX(_acmMessages.Count()-1), (INDEX)0);
   }
   SyncScrollWithActive();
 }

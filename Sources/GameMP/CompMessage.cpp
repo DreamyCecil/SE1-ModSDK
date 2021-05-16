@@ -206,7 +206,7 @@ CTString CCompMessage::GetLine(INDEX iLine)
   }
   // find end of line
   CTString strLine = strText;
-  char *pchEndOfLine = strchr(strLine, '\n');
+  char *pchEndOfLine = (char *)strchr(strLine, '\n');
   // if found
   if (pchEndOfLine!=NULL) {
     // cut there

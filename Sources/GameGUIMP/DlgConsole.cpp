@@ -56,7 +56,12 @@ BOOL CDlgConsole::OnInitDialog()
 
   // set default console text
   //m_ctrlEditConsole.SetWindowText( "Default input string");
-  m_ctrlEditConsole.SetWindowText( (const char*)_pGame->gam_strConsoleInputBuffer);
+
+  #ifdef _SE1_10
+    m_ctrlEditConsole.SetWindowText( CString(_pGame->gam_strConsoleInputBuffer));
+  #else
+    m_ctrlEditConsole.SetWindowText( (const char*)_pGame->gam_strConsoleInputBuffer);
+  #endif
 
   /*
   //  create application windows font for console
@@ -99,7 +104,11 @@ BOOL CDlgConsole::OnInitDialog()
     // get completion name for that symbol
     CTString strSymbol = itss->GetCompletionString();
     // add string to console
-    m_ctrConsoleSymbolsCombo.AddString( strSymbol);
+    #ifdef _SE1_10
+      m_ctrConsoleSymbolsCombo.AddString( CString(strSymbol));
+    #else
+      m_ctrConsoleSymbolsCombo.AddString( strSymbol);
+    #endif
   }
   // select first combo member
   m_ctrConsoleSymbolsCombo.SetCurSel( 0);

@@ -252,7 +252,8 @@ functions:
         
     CEntityPointer *penTrigger = &m_penTrigger01;
     // see if any triggers have to be set
-    for (INDEX i=0; i<AIRBOSS_MAX_TA; i++) {
+    INDEX i;
+    for (i=0; i<AIRBOSS_MAX_TA; i++) {
       FLOAT fHealth = afTriggerArray[i]*m_fMaxHealth;
       // triggers
       if (fHealth<=fOldHealth && fHealth>fNewHealth)
