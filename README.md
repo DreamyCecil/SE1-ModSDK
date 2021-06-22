@@ -22,7 +22,7 @@ As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visua
 
 Now you are able to build the entire solution (`.sln` file) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
 
-**NOTE:** Debugging tools from newer studios are unable to use program database files (`.pdb`) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using `Microsoft Visual C++ 6.0` or `Visual Studio 2010` (select its debugger after the crash or attach it to the process). If you can't use either for some reason, base your project on Serious Engine v1.10 and then port the code back to this project.
+**NOTE:** Debugging tools from newer studios are unable to use program database files (`.pdb`) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using `Microsoft Visual C++ 6.0` or `Visual Studio 2010` (select its debugger after the crash or attach it to the process) and enable `Program Database` as debug information format (**Project properties** -> **Configuration Properties** -> **C/C++** -> **General**), which rebuilds the entire project every time. If you can't use either for some reason, base your project on Serious Engine v1.10 and then port the code back to this project.
 
 Remember to **not** use spaces in the path to the solution.
 
