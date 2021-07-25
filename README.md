@@ -5,7 +5,7 @@ This is the original Serious Sam SDK v1.07 by Croteam released in 2002 that incl
 * `GameGUIMP` Common GUI things for game tools
 * `GameMP` All the game logic
 
-The original source code of these projects remains untouched, however the project files were created for Visual Studio 2013 Professional edition.
+The original source code of these projects remains untouched, however the project files were created for Visual Studio 2013 and 2019.
 
 Building
 --------
@@ -14,11 +14,11 @@ To compile the source code under 1.10 engine configurations (`Debug_110` or `Rel
 
 To compile the source code under 1.07 engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
 
-1. First, you need to download and install `Microsoft Visual C++ 6.0` with Service Pack 6. Keep in mind that it may not run on your OS correctly or finish the installation at all, you'll have to go to the installation place (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\VC98`) and see if there is anything (should run correctly on Windows 7 x64 and lower).
-2. Second, you need to download and install `Visual Studio 2010` (only C++ tools are enough).
-3. Then you need to install `Visual Studio 2013` (or even newer, although it wasn't tested). After this you'll be able to open the project files, but you can't compile them using the `v60` toolset yet.
+1. Download and install `Microsoft Visual C++ 6.0` with Service Pack 6. It may not run on your OS or finish the installation at all, you'll have to go to the installation place (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\VC98`) and see if there is anything.
+2. Download and install `Visual Studio 2010` (only C++ tools are enough).
+3. Then install a Visual Studio of your choice (2013 or newer).
 4. Now you need to download and install [Daffodil](https://github.com/DreamyCecil/SeriousSam_SDK107/releases/download/daffodil/daffodil.zip). It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
-As said on the http://daffodil.codeplex.com/ , it is possible to use newer Visual Studios as long as Visual Studio 2010 is also installed, otherwise it won't work.
+You may only use newer Visual Studios as long as the 2010 one is also installed, otherwise it won't work.
 
 Now you are able to build the entire solution (`.sln` file) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
 
