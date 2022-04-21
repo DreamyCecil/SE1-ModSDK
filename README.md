@@ -10,7 +10,7 @@ The original source code of these projects remains untouched, however the projec
 Building
 --------
 
-To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`, no additional steps are required).
+To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`), no additional steps are required.
 
 To compile the source code under 1.07 engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
 
