@@ -56,7 +56,6 @@ Debug/
 *.res
 *.lastbuildstate
 *.idb
-*.user
 
 # Generated configuration files
 *.plr
