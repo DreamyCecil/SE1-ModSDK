@@ -12,4 +12,4 @@ This SDK includes Croteam's Entity Class Compiler (`Extras/Ecc.exe`) that is use
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
 
-* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Extras`) by Microsoft
+* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`) by Microsoft
