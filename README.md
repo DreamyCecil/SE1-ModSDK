@@ -10,6 +10,8 @@ The original source code of these projects remains untouched, however the projec
 Building
 --------
 
+Before building the code, make sure to load in the submodules. Use `git submodule update --init --recursive` command to load files for all submodules.
+
 To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`), no additional steps are required.
 
 To compile the source code under 1.07 engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
