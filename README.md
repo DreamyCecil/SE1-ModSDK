@@ -8,7 +8,7 @@ License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
 
-This SDK includes Croteam's Entity Class Compiler (`Extras/Ecc.exe`) that is used to compile `.es` files and officially distributed with classic Serious Sam games. Its source code is included in Serious Engine 1.10.
+This SDK includes Croteam's Entity Class Compiler (`Ecc.exe`) that is used to compile entity source files (`*.es`) and is officially distributed with classic Serious Sam games. Its source code is included in Serious Engine 1.10.
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
 
