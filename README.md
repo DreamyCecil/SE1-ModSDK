@@ -14,7 +14,7 @@ Before building the code, make sure to load in the submodules. Use `git submodul
 
 To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`), no additional steps are required.
 
-To compile the source code under 1.07 engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
+To compile the source code under 1.07 (`Debug` or `Release`) or 1.05 (`Debug_105` or `Release_105`) engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
 
 1. Download and install `Microsoft Visual C++ 6.0` with Service Pack 6. It may not run on your OS or finish the installation at all, you'll have to go to the installation place (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\VC98`) and see if there is anything.
 2. Download and install `Visual Studio 2010` (only C++ tools are enough).
