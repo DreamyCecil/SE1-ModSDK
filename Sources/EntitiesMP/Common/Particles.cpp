@@ -3869,7 +3869,7 @@ void Particles_Death(CEntity *pen, TIME tmStart)
     // fill array with absolute vertices of entity's model and its attached models
     pen->GetModelVerticesAbsolute(avVertices, 0.05f, fMipFactor); 
     // get corp size
-    pen->GetModelInstance()->GetCurrentColisionBox(box);
+    SKA_GetCurrentCollisionBox(pen, box);
   } else {
     // fill array with absolute vertices of entity's model and its attached models
     pen->GetModelVerticesAbsolute(avVertices, 0.05f, fMipFactor); 
@@ -3970,7 +3970,7 @@ void Particles_Burning(CEntity *pen, FLOAT fPower, FLOAT fTimeRatio)
   FLOATaabbox3D box;
 
   if(pen->en_RenderType == CEntity::RT_SKAMODEL || pen->en_RenderType == CEntity::RT_SKAEDITORMODEL) {
-    pen->GetModelInstance()->GetCurrentColisionBox(box);
+    SKA_GetCurrentCollisionBox(pen, box);
   } else {
     pen->GetBoundingBox(box);
   }

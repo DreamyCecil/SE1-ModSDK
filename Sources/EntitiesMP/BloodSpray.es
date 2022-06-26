@@ -135,9 +135,7 @@ procedures:
       return;
     }
 
-    if(eSpawn.penOwner->en_RenderType == RT_SKAMODEL) {
-      eSpawn.penOwner->GetModelInstance()->GetCurrentColisionBox( m_boxSizedOwner);
-    } else {
+    if (!SKA_GetCurrentCollisionBox(eSpawn.penOwner, m_boxSizedOwner)) {
       eSpawn.penOwner->en_pmoModelObject->GetCurrentFrameBBox( m_boxSizedOwner);
       m_boxOriginalOwner=m_boxSizedOwner;
       m_boxSizedOwner.StretchByVector(eSpawn.penOwner->en_pmoModelObject->mo_Stretch*eSpawn.fSizeMultiplier);

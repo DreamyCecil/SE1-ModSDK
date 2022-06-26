@@ -785,9 +785,9 @@ functions:
       if( fTimeRemain < 0.0f) { fTimeRemain = 0.0f; }
       COLOR colAlpha;
       if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-        colAlpha = GetModelInstance()->GetModelColor();
+        colAlpha = SKA_GetModelColor(this);
         colAlpha = (colAlpha&0xFFFFFF00) + (COLOR(fTimeRemain/m_fFadeTime*0xFF)&0xFF);
-        GetModelInstance()->SetModelColor(colAlpha);
+        SKA_SetModelColor(this, colAlpha);
       }
       else {
         colAlpha = GetModelObject()->mo_colBlendColor;
@@ -799,7 +799,7 @@ functions:
       if (GetSP()->sp_bMental) {
         if (GetHealth()<=0) {
           if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-            GetModelInstance()->SetModelColor(C_WHITE&0xFF);
+            SKA_SetModelColor(this, C_WHITE&0xFF);
           } else {
             GetModelObject()->mo_colBlendColor = C_WHITE&0xFF;
           }
@@ -822,7 +822,7 @@ functions:
           }
           
           if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-            GetModelInstance()->SetModelColor(C_WHITE|INDEX(0xFF*fFactor)); 
+            SKA_SetModelColor(this, C_WHITE|INDEX(0xFF*fFactor)); 
           } else {
             GetModelObject()->mo_colBlendColor = C_WHITE|INDEX(0xFF*fFactor);
           }
@@ -2048,7 +2048,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CEnemyBase) - sizeof(CMovableModelEntity) + CMovableModelEntity::GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CEnemyBase) - sizeof(CMovableModelEntity) + CMovableModelEntity_GetUsedMemory();
     // add some more
     slUsedMemory += m_strDescription.Length();
     slUsedMemory += m_strName.Length();

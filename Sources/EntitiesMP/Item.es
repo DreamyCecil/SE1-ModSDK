@@ -225,7 +225,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CItem) - sizeof(CMovableModelEntity) + CMovableModelEntity::GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CItem) - sizeof(CMovableModelEntity) + CMovableModelEntity_GetUsedMemory();
     // add some more
     slUsedMemory += m_strDescription.Length();
     slUsedMemory += m_strName.Length();

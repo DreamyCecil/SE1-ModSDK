@@ -304,7 +304,7 @@ functions:
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
-    return( sizeof(CWatcher) - sizeof(CRationalEntity) + CRationalEntity::GetUsedMemory());
+    return( sizeof(CWatcher) - sizeof(CRationalEntity) + CRationalEntity_GetUsedMemory());
   }
 
 
