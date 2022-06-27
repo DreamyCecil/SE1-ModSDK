@@ -1,5 +1,14 @@
-# Serious Sam SDK v1.07 - Includes
-This is the original Serious Sam SDK v1.07 by Croteam released in 2002. This branch only includes headers needed by the SDK, more specifically headers for Serious Engine 1.07 and Serious Engine 1.10, as well as some of the model headers used by `EntitiesMP` and `GameMP` and an Entity Class Compiler.
+# Serious Sam SDK - Includes
+This is the original Serious Sam SDK by Croteam released in 2001-2002. This branch only includes headers and libraries needed by the SDK.
+
+- Headers and libraries of different versions of Serious Engine
+  - 1.05 for The First Encounter (`Engine105FE`)
+  - 1.05 for The Second Encounter (`Engine105`)
+  - 1.07 for The Second Encounter (`Engine107`)
+  - 1.10 for The Second Encounter (`Engine110`)
+- Some of the model headers used by `EntitiesMP` and `GameMP` (`Models` and `ModelsMP`)
+- Entity Class Compiler (`Ecc.exe`)
+- Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
 
 This branch is useless by itself, so consider cloning the [`master`](https://github.com/DreamyCecil/SeriousSam_SDK107/tree/master) branch.
 
