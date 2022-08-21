@@ -10,6 +10,11 @@
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
   </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">
+    <LocalDebuggerCommand>$(SolutionDir)../../../Bin/Debug/SeriousEditor.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
+  </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">
     <LocalDebuggerCommand>$(SolutionDir)../../../Bin/Debug/SeriousEditor.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
@@ -21,6 +26,11 @@
     <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">
+    <LocalDebuggerCommand>$(SolutionDir)../../../Bin/SeriousEditor.exe</LocalDebuggerCommand>
+    <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
+    <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">
     <LocalDebuggerCommand>$(SolutionDir)../../../Bin/SeriousEditor.exe</LocalDebuggerCommand>
     <DebuggerFlavor>WindowsLocalDebugger</DebuggerFlavor>
     <LocalDebuggerCommandArguments>+game SeriousSam_SDK107</LocalDebuggerCommandArguments>
