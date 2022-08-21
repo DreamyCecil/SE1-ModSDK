@@ -145,6 +145,14 @@
 #include <Engine/Templates/Selection.h>
 #include <Engine/Templates/Selection.cpp>
 
+// [Cecil] For compatibility with SE1.07 and higher
+#define STEREO_LEFT  0
+#define STEREO_RIGHT 1
+#define STEREO_BOTH  2
+__forceinline BOOL Stereo_IsEnabled(void) { return FALSE; };
+#define Stereo_SetBuffer(iEye)
+#define Stereo_AdjustProjection(pr, iEye, fFactor)
+
 
 // some global stuff
 ENGINE_API void SE_InitEngine( CTString strGameID);

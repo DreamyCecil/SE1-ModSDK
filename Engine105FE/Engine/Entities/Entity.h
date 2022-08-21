@@ -107,6 +107,11 @@ public:
     RT_EDITORMODEL = 5, // rendered as model, but only in editor
     RT_VOID        = 7, // not rendered ever
     RT_FIELDBRUSH  = 8, // brush used for field effects (like triggers, force fields etc.)
+    
+    // [Cecil] Unused in SE1.05
+    RT_SKAMODEL = 9,
+    RT_SKAEDITORMODEL = 10,
+    RT_TERRAIN = 11,
   };
 /* Entity physics flags. */
 #define EPF_ORIENTEDBYGRAVITY     (1UL<<0) // set if gravity influences its orientation
