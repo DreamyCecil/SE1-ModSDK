@@ -19,7 +19,7 @@
 #include "..\Common\GameInterface.h"
 
 // [Cecil] Compatibility
-#ifdef _SE1_05
+#if SE1_VER < 107
   // Entities before SE1.07 don't have GetUsedMemory() method
   #define CEntity_GetUsedMemory()             sizeof(CEntity)
   #define CLiveEntity_GetUsedMemory()         sizeof(CLiveEntity)
@@ -57,7 +57,7 @@
   
   // Get collision box of a SKA model, if possible
   __forceinline BOOL SKA_GetCurrentCollisionBox(CEntity *pen, FLOATaabbox3D &box) {
-    if (pen->en_RenderType == RT_SKAMODEL) {
+    if (pen->en_RenderType == CEntity::RT_SKAMODEL) {
       pen->GetModelInstance()->GetCurrentColisionBox(box);
       return TRUE;
     }
