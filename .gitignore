@@ -21,20 +21,11 @@
 *.la
 *.a
 *.lib
-!Sources/Engine107/Engine.lib
-!Sources/Engine107/EngineD.lib
-!Sources/Engine107/EngineGUI.lib
-!Sources/Engine107/EngineGUID.lib
-!Sources/Engine110/Engine.lib
-!Sources/Engine110/EngineD.lib
-!Sources/Engine110/EngineGUI.lib
-!Sources/Engine110/EngineGUID.lib
 
 # Executables
 *.exe
 *.out
 *.app
-!Sources/Extras/Ecc.exe
 
 # CMake Build dirs (temp)
 Build/
@@ -77,3 +68,9 @@ Sources/EntitiesMP/*.h
 Sources/EntitiesMP/*.cpp
 !Sources/EntitiesMP/Common/*
 !Sources/EntitiesMP/StdH/*
+
+# Build directories
+Sources/Bin.vs2013/*
+Sources/Obj.vs2013/*
+Sources/Bin.vs2019/*
+Sources/Obj.vs2019/*
