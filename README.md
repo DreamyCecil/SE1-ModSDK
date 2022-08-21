@@ -1,5 +1,5 @@
-# Serious Sam SDK v1.07
-This is the original Serious Sam SDK v1.07 by Croteam released in 2002 that includes the following projects:
+# Serious Sam SDK
+This repository contains original Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
 
 * `EntitiesMP` All the entity logic
 * `GameGUIMP` Common GUI things for game tools
@@ -7,29 +7,37 @@ This is the original Serious Sam SDK v1.07 by Croteam released in 2002 that incl
 
 The original source code of these projects remains untouched, however the project files were created for Visual Studio 2013 and 2019.
 
-Building
---------
+You can use it to build mods for all kinds of Serious Sam games on Serious Engine 1.
+
+### That includes:
+- The First Encounter 1.05.
+- The Second Encounter 1.05.
+- The Second Encounter 1.07.
+- The Second Encounter 1.10.
+
+## Building
 
 Before building the code, make sure to load in the submodules. Use `git submodule update --init --recursive` command to load files for all submodules.
 
-To compile the source code under 1.10 engine configurations (`Debug_110` or `Release_110`), no additional steps are required.
+To compile the source code under 1.10 engine configurations (`Debug_TSE110` or `Release_TSE110`), no additional steps are required.
 
-To compile the source code under 1.07 (`Debug` or `Release`) or 1.05 (`Debug_105` or `Release_105`) engine configurations, you'll need to use a compiler from Microsoft Visual C++ 6.0.
+To compile the source code under TSE 1.07, TSE 1.05 or TFE 1.05 engines (any other `Debug_*` & `Release_*` configurations), you'll need to use a compiler from Microsoft Visual C++ 6.0.
 
-1. Download and install `Microsoft Visual C++ 6.0` with Service Pack 6. It may not run on your OS or finish the installation at all, you'll have to go to the installation place (e.g. `C:\Program Files (x86)\Microsoft Visual Studio\VC98`) and see if there is anything.
+1. Download and install `Microsoft Visual C++ 6.0` with Service Pack 6. If you're installing in on Windows 8 or newer, **make sure to untick "Data Environment" despite the warning during installation for it to finish installing properly!**
 2. Download and install `Visual Studio 2010` (only C++ tools are enough).
 3. Then install a Visual Studio of your choice (2013 or newer).
 4. Now you need to download and install [Daffodil](https://github.com/DreamyCecil/SeriousSam_SDK107/releases/download/daffodil/daffodil.zip). It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
-You may only use newer Visual Studios as long as the 2010 one is also installed, otherwise it won't work.
+
+### You may only use newer Visual Studios as long as the 2010 one is also installed, otherwise it won't work.
 
 Now you are able to build the entire solution (`.sln` file) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
 
-**NOTE:** Debugging tools from newer studios are unable to use program database files (`.pdb`) that are generated with `v60`, making traditional debugging impossible. If you wish to debug your code normally, consider using `Microsoft Visual C++ 6.0` or `Visual Studio 2010` (select its debugger after the crash or attach it to the process) and enable `Program Database` as debug information format (**Project properties** -> **Configuration Properties** -> **C/C++** -> **General**), which rebuilds the entire project every time. If you can't use either for some reason, base your project on Serious Engine v1.10 and then port the code back to this project.
+## Notes
+- Debugging tools from newer studios are unable to use program database files (`.pdb`) that are generated with `v60`, making traditional debugging impossible. Consider debugging using `Microsoft Visual C++ 6.0` or `Visual Studio 2010` and enable `Program Database` as debug information format (**Project properties** -> **Configuration Properties** -> **C/C++** -> **General**).
+  - If you can't use either for some reason, base your project on Serious Engine v1.10 and then port the code back to this project.
+- Do not use spaces in the path to the solution.
 
-Remember to **not** use spaces in the path to the solution.
-
-Running
--------
+## Running
 
 Once the project is compiled, there should be three libraries in the Bin folder: `EntitiesMP.dll`, `GameGUIMP.dll` and `GameMP.dll`.
 
@@ -39,8 +47,7 @@ There are two ways to start the mod:
 
 When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your mod name instead of `SeriousSam_SDK107` (example: `+game MyMod`).
 
-License
--------
+## License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
 
