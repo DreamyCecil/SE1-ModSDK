@@ -1,9 +1,9 @@
 # Serious Sam SDK
 This repository contains original Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
 
-* `EntitiesMP` All the entity logic
-* `GameGUIMP` Common GUI things for game tools
-* `GameMP` All the game logic
+* `Entities` - all the entity logic.
+* `GameGUI` - common GUI things for game tools.
+* `Game` - all the game logic.
 
 The original source code of these projects remains untouched, however the project files were created for Visual Studio 2013 and 2019.
 
@@ -39,7 +39,7 @@ Now you are able to build the entire solution (`.sln` file) but make sure that a
 
 ## Running
 
-Once the project is compiled, there should be three libraries in the Bin folder: `EntitiesMP.dll`, `GameGUIMP.dll` and `GameMP.dll`.
+Once the project is compiled, there should be three libraries in the Bin folder (usually `EntitiesMP.dll`, `GameGUIMP.dll` and `GameMP.dll`).
 
 There are two ways to start the mod:
 1. Create a `.des` file in your Mods directory under the same name as this repository, open it in any text editor and type your mod name in it. Then you'll be able to launch your mod from the game's `Mods` list.
