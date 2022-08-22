@@ -1,3 +1,18 @@
+/* Copyright (c) 2002-2012 Croteam Ltd. 
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+
 101
 %{
 #include "StdH.h"
@@ -5,7 +20,7 @@
 
 uses "Entities/MovingBrushMarker";
 uses "Entities/SoundHolder";
-uses "Entities\MirrorMarker";
+uses "Entities/MirrorMarker";
 uses "Entities/Debris";
 
 event EHit {
@@ -186,7 +201,7 @@ functions:
       // if impact by bull
       if( dmtType == DMT_IMPACT && IsOfClass(penInflictor, "Werebull"))
       {
-        // recieve the damage so large to blowup
+        // receive the damage so large to blowup
         CMovableBrushEntity::ReceiveDamage(penInflictor, dmtType, m_fHealth*2, vHitPoint, vDirection);
         // kill the bull in place, but make sure it doesn't blow up
         ((CLiveEntity*)penInflictor)->SetHealth(0.0f);

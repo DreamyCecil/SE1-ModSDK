@@ -1,3 +1,18 @@
+/* Copyright (c) 2002-2012 Croteam Ltd. 
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+
 107
 %{
 #include "StdH.h"
@@ -6,7 +21,7 @@
 %}
 uses "Entities/Devil";
 uses "Entities/Debris";
-uses "Entities\GradientMarker";
+uses "Entities/GradientMarker";
 
 %{
 struct DebrisInfo {
@@ -102,10 +117,10 @@ functions:
 
   void Precache(void)
   {
-    PrecacheClass     (CLASS_DEBRIS           );
-    PrecacheClass     (CLASS_EFFECTOR         );
-    PrecacheModel     (MODEL_STONE            );
-    PrecacheTexture   (TEXTURE_STONE          );
+    PrecacheClass     (CLASS_DEBRIS, ET_DISAPPEAR_MODEL);
+    PrecacheClass     (CLASS_EFFECTOR, ET_DISAPPEAR_MODEL);
+    PrecacheModel     (MODEL_STONE);
+    PrecacheTexture   (TEXTURE_STONE);
     // precache acording to destroying architecture
     switch( m_etType)
     {
