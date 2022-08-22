@@ -1,3 +1,18 @@
+/* Copyright (c) 2002-2012 Croteam Ltd. 
+This program is free software; you can redistribute it and/or modify
+it under the terms of version 2 of the GNU General Public License as published by
+the Free Software Foundation
+
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
+
 #include "StdH.h"
 #include "Entities/Reminder.h"
 #include "Entities/Flame.h"
@@ -370,7 +385,7 @@ void SpawnHitTypeEffect(CEntity *pen, enum BulletHitType bhtType, BOOL bSound, F
         {
           GetNormalComponent( vDistance/fDistance, vHitNormal, ese.vDirection);
           FLOAT fLength = ese.vDirection.Length();
-          fLength   = Clamp( fLength*3, 1.0f, 3.0f);
+          fLength   = Clamp( fLength*3.0f, 1.0f, 3.0f);
           fDistance = Clamp( (FLOAT)log10(fDistance), 0.5f, 2.0f);
           ese.vStretch = FLOAT3D( fDistance, fLength*fDistance, 1.0f);
           try
@@ -512,6 +527,7 @@ CLensFlareType _lftProjectileYellowBubbleGlow;
 CLensFlareType _lftPVSpaceShipWindowFlare;
 CLensFlareType _lftCatmanFireGlow;
 CLensFlareType _lftWhiteGlowFar;
+static BOOL _bLensFlaresLoaded = FALSE;
 
 #define FLARE_CREATE(type,noof,tex,pos,rot,i,j,flags,amp,des,falloff)\
   type.lft_aolfFlares.New(noof);\
@@ -542,6 +558,10 @@ CLensFlareType _lftWhiteGlowFar;
 
 // init lens flare effects
 void InitLensFlares(void) {
+  if (_bLensFlaresLoaded) {
+    return; // Player class is not auto-freed, so the engine may attempt to access this function several times
+  }
+
   // standard flare
   FLARE_CREATE(_lftStandard, 1, "01\\WhiteRedRing2.tex", 0.0f, 180.0f, 1/5.0f, 1/5.0f, OLF_FADESIZE, 7.0f, 0.5f, 5.0f);
   FLARE_GLARE(_lftStandard, 20.0f, 0.3f, 0.8f, 1.0f);
@@ -637,6 +657,8 @@ void InitLensFlares(void) {
   FLARE_CREATE(_lftCatmanFireGlow, 1, "12\\Flare12.tex", 0.0f, 180.0f, 1/12.0f, 1/12.0f, OLF_FADESIZE, 7.0f, 0.5f, 128.0f);
   
   FLARE_CREATE(_lftWhiteGlowFar, 1, "13\\Flare13.tex", 0.0f, 180.0f, 1/16.0f, 1/16.0f, OLF_FADESIZE, 7.0f, 0.5f, 128.0f);
+
+  _bLensFlaresLoaded = TRUE;
 };
 
 // close lens flares effects
@@ -657,6 +679,7 @@ void CloseLensFlares(void) {
   _lftPVSpaceShipWindowFlare.lft_aolfFlares.Clear();
   _lftCatmanFireGlow.lft_aolfFlares.Clear();
   _lftWhiteGlowFar.lft_aolfFlares.Clear();
+  _bLensFlaresLoaded = FALSE;
 };
 
 static BOOL _bFatalChecks = FALSE;
