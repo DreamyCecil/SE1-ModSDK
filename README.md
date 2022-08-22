@@ -43,7 +43,8 @@ Once the project is compiled, there should be three libraries in the Bin folder:
 
 There are two ways to start the mod:
 1. Create a `.des` file in your Mods directory under the same name as this repository, open it in any text editor and type your mod name in it. Then you'll be able to launch your mod from the game's `Mods` list.
-2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `SeriousSam_SDK107` with the name of your mod. After that just run any of the `.bat` files to open the editor or the mod.
+2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MyMod` with the name of your mod (the name of this repository in the `Mods` folder). After that just run any of the `.bat` files to open the editor or the mod.
+  - Keep in mind that mod folder names do not support spaces or dashes (`-`)!
 
 When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your mod name instead of `SeriousSam_SDK107` (example: `+game MyMod`).
 
