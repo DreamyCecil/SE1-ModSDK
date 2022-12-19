@@ -159,6 +159,11 @@ BOOL TryToMove(CMovableEntity * penPusher,BOOL bTranslate,BOOL bRotate);
    void DoMoving(void);
    void PostMoving(void);
    void CacheNearPolygons(void);
+
+  // [Cecil] NOTE: Unused
+  inline SLONG GetUsedMemory(void) {
+    return sizeof(CMovableEntity);
+  };
 #define  STATE_CMovableEntity_Dummy 0x00010000
   BOOL 
 #line 2643 "D:/work/sources/Engine/Classes/MovableEntity.es"

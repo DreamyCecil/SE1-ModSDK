@@ -22,6 +22,11 @@ public:
    void ChangeCollisionBoxIndexWhenPossible(INDEX iNewCollisionBox);
    void Read_t(CTStream * istr);
    void Write_t(CTStream * ostr);
+
+  // [Cecil] NOTE: Unused
+  inline SLONG GetUsedMemory(void) {
+    return sizeof(CMovableModelEntity);
+  };
 #define  STATE_CMovableModelEntity_Dummy 0x00020000
   BOOL 
 #line 141 "C:/WORK/Sources/Engine/Classes/MovableModelEntity.es"

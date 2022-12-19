@@ -21,7 +21,7 @@
 #define TEX_EQUALIZED    (1UL<<8)   // texture has 128-gray last mipmap (i.e. can be discarded in shade mode)
 #define TEX_GRAY         (1UL<<9)   // grayscale texture
 #define TEX_WHITE        (1UL<<10)  // completely white texture (believe me, there are some cases)
-#define TEX_KEEPCOLOR    (1UL<<11)  // [Cecil] Dummy; didn't exist before SE1.07
+#define TEX_KEEPCOLOR    (1UL<<11)  // [Cecil] NOTE: Unused
 #define TEX_SINGLEMIPMAP (1UL<<18)  // set if last uploading was in single-mipmap
 #define TEX_PROBED       (1UL<<19)  // set if last binding was as probe-texture
 // (flags that shows if texture mipmaps has been changed)

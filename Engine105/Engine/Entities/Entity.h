@@ -107,11 +107,9 @@ public:
     RT_EDITORMODEL = 5, // rendered as model, but only in editor
     RT_VOID        = 7, // not rendered ever
     RT_FIELDBRUSH  = 8, // brush used for field effects (like triggers, force fields etc.)
-    
-    // [Cecil] Unused in SE1.05
-    RT_SKAMODEL = 9,
-    RT_SKAEDITORMODEL = 10,
-    RT_TERRAIN = 11,
+    RT_SKAMODEL       = 9,  // [Cecil] NOTE: Unused
+    RT_SKAEDITORMODEL = 10, // [Cecil] NOTE: Unused
+    RT_TERRAIN        = 11, // [Cecil] NOTE: Unused
   };
 /* Entity physics flags. */
 #define EPF_ORIENTEDBYGRAVITY     (1UL<<0) // set if gravity influences its orientation
@@ -617,6 +615,17 @@ public:
 
   /* Model change notify */
   void ModelChangeNotify(void);
+
+  // [Cecil] NOTE: Unused
+  inline CModelObject *GetModelInstance(void) {
+    ASSERTALWAYS("Do not utilize CEntity::GetModelInstance() before 1.07 version of the engine!");
+    return GetModelObject();
+  };
+
+  // [Cecil] NOTE: Unused
+  inline SLONG GetUsedMemory(void) {
+    return sizeof(CEntity);
+  };
 };
 
 // check if entity is of given class
@@ -692,6 +701,11 @@ public:
   // apply some damage to the entity (see event EDamage for more info)
   virtual void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
+
+  // [Cecil] NOTE: Unused
+  inline SLONG GetUsedMemory(void) {
+    return sizeof(CLiveEntity);
+  };
 };
 
 // flag for entities that are not waiting for thinking
@@ -756,6 +770,11 @@ public:
 
   /* Handle an event - return false if event was not handled. */
   virtual BOOL HandleEvent(const CEntityEvent &ee);
+
+  // [Cecil] NOTE: Unused
+  inline SLONG GetUsedMemory(void) {
+    return sizeof(CRationalEntity);
+  };
 };
 
 extern "C" ENGINE_API class CDLLEntityClass CEntity_DLLClass;
