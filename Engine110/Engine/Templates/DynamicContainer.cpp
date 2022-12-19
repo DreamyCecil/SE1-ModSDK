@@ -106,8 +106,17 @@ void CDynamicContainer<Type>::Remove(Type *ptOldObject)
 
   // find its index
   INDEX iMember=GetIndex(ptOldObject);
+
+  // [Cecil] Not found
+  if (iMember == -1) {
+    ASSERT(FALSE);
+    return;
+  }
+
   // move last pointer here
-  sa_Array[iMember]=sa_Array[Count()-1];
+  INDEX iLast = Count() - 1;
+  sa_Array[iMember]=sa_Array[iLast];
+  sa_Array[iLast] = NULL;
   Pop();
 }
 
@@ -204,7 +213,7 @@ INDEX CDynamicContainer<Type>::GetIndex(Type *ptMember) {
     }
   }
   ASSERTALWAYS("CDynamicContainer<Type><>::Index(): Not a member of this container!");
-  return 0;
+  return -1; // [Cecil] Invalid index
 }
 
 /* Get first object in container (there must be at least one when calling this). */
