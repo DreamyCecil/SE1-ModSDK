@@ -143,24 +143,6 @@ void CHashTable_TYPE::SetCallbacks(ULONG (*GetItemKey)(VALUE_TYPE &Item), ULONG 
   ht_GetItemKey = GetItemKey;
   ht_GetItemValue = GetItemValue;
 }
-// find an object by name
-TYPE *CHashTable_TYPE::Find(VALUE_TYPE &Value)
-{
-  ASSERT(ht_ctCompartments>0 && ht_ctSlotsPerComp>0);
-
-  CHashTableSlot_TYPE *phts = FindSlot(ht_GetItemKey(Value), Value);
-  if (phts==NULL) return NULL;
-  return phts->hts_ptElement;
-}
-
-
-// find an object by name, return it's index
-INDEX CHashTable_TYPE::FindIndex(VALUE_TYPE &Value)
-{
-  ASSERT(ht_ctCompartments>0 && ht_ctSlotsPerComp>0);
-
-  return FindSlotIndex(ht_GetItemKey(Value), Value);
-}
 
 
 // expand the name table to next step
