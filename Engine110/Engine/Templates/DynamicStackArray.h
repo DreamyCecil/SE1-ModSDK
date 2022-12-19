@@ -45,6 +45,10 @@ public:
   inline Type *Push(INDEX ct);
   /* Remove all objects from stack, but keep stack space. */
   inline void PopAll(void);
+  /* Remove last object from stack. */
+  inline void Pop(void);
+  /* Destroy a given member. */
+  void Delete(Type *ptObject);
 
   /* Random access operator. */
   inline Type &operator[](INDEX iObject);
