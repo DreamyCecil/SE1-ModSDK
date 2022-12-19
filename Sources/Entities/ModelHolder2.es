@@ -637,7 +637,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CLight) - sizeof(CRationalEntity) + CRationalEntity_GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CLight) - sizeof(CRationalEntity) + CRationalEntity::GetUsedMemory();
     // add some more
     slUsedMemory += m_fnModel.Length();
     slUsedMemory += m_fnTexture.Length();

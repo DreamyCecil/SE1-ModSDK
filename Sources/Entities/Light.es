@@ -322,7 +322,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CLight) - sizeof(CEntity) + CEntity_GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CLight) - sizeof(CEntity) + CEntity::GetUsedMemory();
     // add some more
     slUsedMemory += m_strDescription.Length();
     slUsedMemory += m_strName.Length();

@@ -87,7 +87,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CTrigger) - sizeof(CRationalEntity) + CRationalEntity_GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CTrigger) - sizeof(CRationalEntity) + CRationalEntity::GetUsedMemory();
     // add some more
     slUsedMemory += m_strMessage.Length();
     slUsedMemory += m_strName.Length();

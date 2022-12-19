@@ -35,48 +35,30 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 // [Cecil] Compatibility
 #if SE1_VER < 107
-  // Entities before SE1.07 don't have GetUsedMemory() method
-  #define CEntity_GetUsedMemory()             sizeof(CEntity)
-  #define CLiveEntity_GetUsedMemory()         sizeof(CLiveEntity)
-  #define CRationalEntity_GetUsedMemory()     sizeof(CRationalEntity)
-  #define CMovableEntity_GetUsedMemory()      sizeof(CMovableEntity)
-  #define CMovableModelEntity_GetUsedMemory() sizeof(CMovableModelEntity)
-  #define CMovableBrushEntity_GetUsedMemory() sizeof(CMovableBrushEntity)
-  #define CPlayerEntity_GetUsedMemory()       sizeof(CPlayerEntity)
-
-  // No SKA models
-  __forceinline BOOL SKA_GetCurrentCollisionBox(CEntity *pen, FLOATaabbox3D &box) {  return FALSE; };
-
-  // Substitute with MDL
-  #define GetModelInstance GetModelObject
+  // Substitute with MDL stretch
   #define mi_vStretch mo_Stretch
 
-  // Set MDL model blending
+  // Discourage from using SKA methods
+  __forceinline void SKA_GetCurrentCollisionBox(CEntity *pen, FLOATaabbox3D &box) {
+    ASSERTALWAYS("Do not utilize SKA_GetCurrentCollisionBox() before 1.07 version of the engine!");
+  };
+
+  // Discourage from using SKA methods
   __forceinline void SKA_SetModelColor(CEntity *pen, COLOR col) {
+    ASSERTALWAYS("Do not utilize SKA_SetModelColor() before 1.07 version of the engine!");
     pen->GetModelObject()->mo_colBlendColor = col;
   };
 
-  // Get MDL model blending
+  // Discourage from using SKA methods
   __forceinline COLOR SKA_GetModelColor(CEntity *pen) {
+    ASSERTALWAYS("Do not utilize SKA_GetModelColor() before 1.07 version of the engine!");
     return pen->GetModelObject()->mo_colBlendColor;
   };
 
 #else
-  #define CEntity_GetUsedMemory             CEntity::GetUsedMemory
-  #define CLiveEntity_GetUsedMemory         CLiveEntity::GetUsedMemory
-  #define CRationalEntity_GetUsedMemory     CRationalEntity::GetUsedMemory
-  #define CMovableEntity_GetUsedMemory      CMovableEntity::GetUsedMemory
-  #define CMovableModelEntity_GetUsedMemory CMovableModelEntity::GetUsedMemory
-  #define CMovableBrushEntity_GetUsedMemory CMovableBrushEntity::GetUsedMemory
-  #define CPlayerEntity_GetUsedMemory       CPlayerEntity::GetUsedMemory
-  
   // Get collision box of a SKA model, if possible
-  __forceinline BOOL SKA_GetCurrentCollisionBox(CEntity *pen, FLOATaabbox3D &box) {
-    if (pen->en_RenderType == CEntity::RT_SKAMODEL) {
-      pen->GetModelInstance()->GetCurrentColisionBox(box);
-      return TRUE;
-    }
-    return FALSE;
+  __forceinline void SKA_GetCurrentCollisionBox(CEntity *pen, FLOATaabbox3D &box) {
+    pen->GetModelInstance()->GetCurrentColisionBox(box);
   };
 
   // Set MDL model blending

@@ -370,7 +370,7 @@ functions:
   SLONG GetUsedMemory(void)
   {
     // initial
-    SLONG slUsedMemory = sizeof(CDestroyableArchitecture) - sizeof(CMovableBrushEntity) + CMovableBrushEntity_GetUsedMemory();
+    SLONG slUsedMemory = sizeof(CDestroyableArchitecture) - sizeof(CMovableBrushEntity) + CMovableBrushEntity::GetUsedMemory();
     // add some more
     slUsedMemory += m_strName.Length();
     return slUsedMemory;
