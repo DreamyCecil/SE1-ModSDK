@@ -266,6 +266,8 @@ public:
   Type &operator*(void) { return *dci_Array.Pointer(dci_Index); }
   operator Type *(void) { return dci_Array.Pointer(dci_Index); }
   Type *operator->(void) { return dci_Array.Pointer(dci_Index); }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return dci_Index; };
 };
 
 

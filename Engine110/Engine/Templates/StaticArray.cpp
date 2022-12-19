@@ -232,6 +232,8 @@ public:
   Type &operator*(void) { return sai_Array[sai_Index]; }
   operator Type *(void) { return &sai_Array[sai_Index]; }
   Type *operator->(void) { return &sai_Array[sai_Index]; }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return sai_Index; };
 };
 
 /*

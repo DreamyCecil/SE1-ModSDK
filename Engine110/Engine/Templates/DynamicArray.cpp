@@ -417,6 +417,8 @@ public:
   Type &operator*(void) { return *dai_Array.Pointer(dai_Index); }
   operator Type *(void) { return dai_Array.Pointer(dai_Index); }
   Type *operator->(void) { return dai_Array.Pointer(dai_Index); }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return dai_Index; };
 };
 
 
