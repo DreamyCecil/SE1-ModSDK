@@ -20,11 +20,11 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
 
 ## Project settings
 
-- When specifying paths to includes, specify the root directory of this branch (usually `Includes`) and a desired engine version (e.g. `Includes/Engine107`).
+- When specifying paths to includes, specify the root directory of this branch (usually `Includes`), headers for all engine versions (e.g. `Includes/Common`) and a desired engine version (e.g. `Includes/Engine107`).
 
 - To include static libraries of a specific engine version, specify the same path as for the engine headers (e.g. `Includes/Engine107`).
 
-- And finally, specify the root directory of this branch (usually `Includes`) as a path to executable files (for running Entity Class Compiler as a simple `ecc` command).
+- And finally, specify the root directory of this branch (usually `Includes`) as a path to executable files (for running Entity Class Compiler as a simple `ecc` command). This is only required for projects that contain and compile entity source (`.es`) files.
 
 ## License
 
