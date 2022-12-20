@@ -2,6 +2,8 @@
 
 This branch contains headers and libraries from different versions of Serious Engine 1 from the Serious Sam SDK. Original files have been released by Croteam during 2001-2002 period. [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) headers have been released in 2016.
 
+This SDK also includes a custom Entity Class Compiler (`Ecc.exe`) that is used to compile entity source files (`*.es`). Its source code is available separately here: https://github.com/DreamyCecil/SE1-ECC
+
 If you wish to develop mods for classic Serious Sam games, consider cloning the [`master`](https://github.com/DreamyCecil/SeriousSam_SDK107/tree/master) branch of this repository.
 
 If you wish to develop any other kind of project for classic Serious Sam games, you can include this branch into your repository as a submodule and build your projects for any Serious Sam game on Serious Engine 1.
@@ -27,8 +29,6 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
 ## License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
-
-This SDK includes Croteam's Entity Class Compiler (`Ecc.exe`) that is used to compile entity source files (`*.es`) and is officially distributed with classic Serious Sam games. Its source code is included in [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine).
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
 
