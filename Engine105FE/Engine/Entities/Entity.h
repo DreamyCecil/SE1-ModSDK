@@ -615,17 +615,6 @@ public:
 
   /* Model change notify */
   void ModelChangeNotify(void);
-
-  // [Cecil] NOTE: Unused
-  inline CModelObject *GetModelInstance(void) {
-    ASSERTALWAYS("Do not utilize CEntity::GetModelInstance() before 1.07 version of the engine!");
-    return GetModelObject();
-  };
-
-  // [Cecil] NOTE: Unused
-  inline SLONG GetUsedMemory(void) {
-    return sizeof(CEntity);
-  };
 };
 
 // check if entity is of given class
@@ -701,11 +690,6 @@ public:
   // apply some damage to the entity (see event EDamage for more info)
   virtual void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
-
-  // [Cecil] NOTE: Unused
-  inline SLONG GetUsedMemory(void) {
-    return sizeof(CLiveEntity);
-  };
 };
 
 // flag for entities that are not waiting for thinking
@@ -770,11 +754,6 @@ public:
 
   /* Handle an event - return false if event was not handled. */
   virtual BOOL HandleEvent(const CEntityEvent &ee);
-
-  // [Cecil] NOTE: Unused
-  inline SLONG GetUsedMemory(void) {
-    return sizeof(CRationalEntity);
-  };
 };
 
 extern "C" ENGINE_API class CDLLEntityClass CEntity_DLLClass;

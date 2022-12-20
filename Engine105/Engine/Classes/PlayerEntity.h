@@ -25,11 +25,6 @@ CPlacement3D en_plLastViewpoint;
   virtual void GetGameSpyPlayerInfo(INDEX iPlayer,CTString & strKeys);
    void ChecksumForSync(ULONG & ulCRC,INDEX iExtensiveSyncCheck);
    void DumpSync_t(CTStream & strm,INDEX iExtensiveSyncCheck);
-
-  // [Cecil] NOTE: Unused
-  inline SLONG GetUsedMemory(void) {
-    return sizeof(CPlayerEntity);
-  };
 #define  STATE_CPlayerEntity_Dummy 0x00040000
   BOOL 
 #line 127 "D:/work/sources/Engine/Classes/PlayerEntity.es"

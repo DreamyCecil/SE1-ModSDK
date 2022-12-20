@@ -11,11 +11,6 @@ public:
    void DoMoving(void);
    void Read_t(CTStream * istr);
    void Write_t(CTStream * ostr);
-
-  // [Cecil] NOTE: Unused
-  inline SLONG GetUsedMemory(void) {
-    return sizeof(CMovableBrushEntity);
-  };
 #define  STATE_CMovableBrushEntity_Dummy 0x00030000
   BOOL 
 #line 46 "C:/WORK/Sources/Engine/Classes/MovableBrushEntity.es"
