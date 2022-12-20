@@ -190,7 +190,7 @@ functions:
     return CEntity::GetLerpedPlacement(); // we never move anyway, so let's be able to be parented
   }
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
@@ -201,7 +201,7 @@ functions:
     slUsedMemory += m_strDescription.Length();
     return slUsedMemory;
   }
-
+#endif
 
 procedures:
 

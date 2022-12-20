@@ -1308,7 +1308,7 @@ functions:
     return FALSE;
   }
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
@@ -1319,7 +1319,7 @@ functions:
     slUsedMemory += m_strDescription.Length();
     return slUsedMemory;
   }
-
+#endif
 
   // return opacity of the brush
   FLOAT GetOpacity(void)

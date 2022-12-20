@@ -74,7 +74,7 @@ functions:
     return &m_fsField;
   };
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
@@ -84,7 +84,7 @@ functions:
     slUsedMemory += m_strName.Length();
     return slUsedMemory;
   }
-
+#endif
 
 procedures:
 

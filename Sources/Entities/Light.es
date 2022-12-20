@@ -317,7 +317,7 @@ functions:
     }
   }
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
@@ -331,7 +331,7 @@ functions:
     slUsedMemory += 2* sizeof(CAnimObject); // 2 of them
     return slUsedMemory;
   }
-
+#endif
 
 procedures:
   Main()

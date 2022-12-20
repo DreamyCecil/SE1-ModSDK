@@ -150,9 +150,12 @@ procedures:
       return;
     }
 
-    if (en_RenderType == CEntity::RT_SKAMODEL) {
-      SKA_GetCurrentCollisionBox(eSpawn.penOwner, m_boxSizedOwner);
-    } else {
+  #if SE1_VER >= 107
+    if(eSpawn.penOwner->en_RenderType == RT_SKAMODEL) {
+      eSpawn.penOwner->GetModelInstance()->GetCurrentColisionBox( m_boxSizedOwner);
+    } else
+  #endif
+    {
       eSpawn.penOwner->en_pmoModelObject->GetCurrentFrameBBox( m_boxSizedOwner);
       m_boxOriginalOwner=m_boxSizedOwner;
       m_boxSizedOwner.StretchByVector(eSpawn.penOwner->en_pmoModelObject->mo_Stretch*eSpawn.fSizeMultiplier);

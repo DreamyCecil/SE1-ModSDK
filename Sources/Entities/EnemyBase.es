@@ -799,12 +799,14 @@ functions:
       FLOAT fTimeRemain = m_fFadeStartTime + m_fFadeTime - _pTimer->CurrentTick();
       if( fTimeRemain < 0.0f) { fTimeRemain = 0.0f; }
       COLOR colAlpha;
+    #if SE1_VER >= 107
       if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-        colAlpha = SKA_GetModelColor(this);
+        colAlpha = GetModelInstance()->GetModelColor();
         colAlpha = (colAlpha&0xFFFFFF00) + (COLOR(fTimeRemain/m_fFadeTime*0xFF)&0xFF);
-        SKA_SetModelColor(this, colAlpha);
-      }
-      else {
+        GetModelInstance()->SetModelColor(colAlpha);
+      } else
+    #endif
+      {
         colAlpha = GetModelObject()->mo_colBlendColor;
         colAlpha = (colAlpha&0xFFFFFF00) + (COLOR(fTimeRemain/m_fFadeTime*0xFF)&0xFF);
         GetModelObject()->mo_colBlendColor = colAlpha;
@@ -813,9 +815,12 @@ functions:
     } else {
       if (GetSP()->sp_bMental) {
         if (GetHealth()<=0) {
+        #if SE1_VER >= 107
           if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-            SKA_SetModelColor(this, C_WHITE&0xFF);
-          } else {
+            GetModelInstance()->SetModelColor(C_WHITE&0xFF);
+          } else
+        #endif
+          {
             GetModelObject()->mo_colBlendColor = C_WHITE&0xFF;
           }
         } else {
@@ -835,10 +840,12 @@ functions:
             tmTime = fmod(tmTime, tmTotal);
             fFactor = CalculateRatio(tmTime, 0, tmExist, tmFade/tmExist, tmFade/tmExist);
           }
-          
+        #if SE1_VER >= 107
           if(en_RenderType == RT_SKAMODEL || en_RenderType == RT_SKAEDITORMODEL) {
-            SKA_SetModelColor(this, C_WHITE|INDEX(0xFF*fFactor)); 
-          } else {
+            GetModelInstance()->SetModelColor(C_WHITE|INDEX(0xFF*fFactor)); 
+          } else
+        #endif
+          {
             GetModelObject()->mo_colBlendColor = C_WHITE|INDEX(0xFF*fFactor);
           }
         }
@@ -1992,11 +1999,12 @@ functions:
   // returns length of animation
   FLOAT GetAnimLength(int iAnim)
   {
+  #if SE1_VER >= 107
     if(en_RenderType==RT_SKAMODEL) {
       return GetModelInstance()->GetAnimLength(iAnim);
-    } else {
-      return GetModelObject()->GetAnimLength(iAnim);
     }
+  #endif
+    return GetModelObject()->GetAnimLength(iAnim);
   }
 
   // returns lenght of current anim length
@@ -2031,34 +2039,39 @@ functions:
 
   FLOAT3D &GetModelStretch()
   {
+  #if SE1_VER >= 107
     if(en_RenderType==RT_SKAMODEL) {
       return GetModelInstance()->mi_vStretch;
-    } else {
-      return GetModelObject()->mo_Stretch;
     }
+  #endif
+    return GetModelObject()->mo_Stretch;
   }
 
   // Stretch model
   void StretchModel(FLOAT3D vStretch)
   {
+  #if SE1_VER >= 107
     if(en_RenderType==RT_SKAMODEL) {
       GetModelInstance()->StretchModel( vStretch);
-    } else {
-      GetModelObject()->StretchModel( vStretch);
+      return;
     }
+  #endif
+    GetModelObject()->StretchModel( vStretch);
   }
 
   // Stretch single model
   void StretchSingleModel( FLOAT3D vStretch)
   {
+  #if SE1_VER >= 107
     if(en_RenderType==RT_SKAMODEL) {
       GetModelInstance()->StretchSingleModel( vStretch);
-    } else {
-      GetModelObject()->StretchSingleModel( vStretch);
+      return;
     }
+  #endif
+    GetModelObject()->StretchSingleModel( vStretch);
   }
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
@@ -2070,8 +2083,7 @@ functions:
     slUsedMemory += 1* sizeof(CSoundObject);
     return slUsedMemory;
   }
-
-
+#endif
 
 procedures:
 

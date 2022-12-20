@@ -65,13 +65,13 @@ functions:
     return TRUE;
   }
 
-
+#if SE1_VER >= 107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {
     return( sizeof(CMovingBrushMarker) - sizeof(CMarker) + CMarker::GetUsedMemory());
   }
-
+#endif
 
 procedures:
 
