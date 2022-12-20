@@ -214,6 +214,13 @@ void CDynamicArray<Type>::Delete(Type *ptMember) {
   ::Clear(*ptMember);
 
   INDEX iMember=GetIndex(ptMember);
+
+  // [Cecil] Not found
+  if (iMember == -1) {
+    ASSERT(FALSE);
+    return;
+  }
+
   // move last pointer here
   da_Pointers[iMember]=da_Pointers[da_Count-1];
   // shrink pointers by one
@@ -300,7 +307,7 @@ INDEX CDynamicArray<Type>::GetIndex(Type *ptMember) {
     }
   }
   ASSERTALWAYS("CDynamicArray<>::Index(): Not a member of this array!");
-  return 0;
+  return -1; // [Cecil] Invalid index
 }
 
 /*
@@ -402,6 +409,8 @@ public:
   Type &operator*(void) { return *dai_Array.Pointer(dai_Index); }
   operator Type *(void) { return dai_Array.Pointer(dai_Index); }
   Type *operator->(void) { return dai_Array.Pointer(dai_Index); }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return dai_Index; };
 };
 
 

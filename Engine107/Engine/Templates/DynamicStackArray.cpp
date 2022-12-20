@@ -95,6 +95,48 @@ inline void CDynamicStackArray<Type>::PopAll(void) {
 }
 
 /*
+ * Remove last object from stack.
+ */
+template<class Type>
+void CDynamicStackArray<Type>::Pop(void) {
+  // [Cecil] Decrease used amount and clear the last object
+  da_ctUsed--;
+
+  Type *ptLast = &CDynamicArray<Type>::operator[](da_ctUsed);
+  ::Clear(ptLast);
+}
+
+/*
+ * Delete a given member.
+ */
+template<class Type>
+void CDynamicStackArray<Type>::Delete(Type *ptMember) {
+  // [Cecil] Inline code of CDynamicArray::Delete()
+  ASSERT(this!=NULL);
+#if CHECKARRAYLOCKING
+  // check that not locked for indices
+  ASSERT(da_LockCt == 0);
+#endif
+
+  // clear the object
+  ::Clear(*ptMember);
+
+  INDEX iMember=GetIndex(ptMember);
+
+  // [Cecil] Not found
+  if (iMember == -1) {
+    ASSERT(FALSE);
+    return;
+  }
+
+  // [Cecil] Decrease used amount instead of shrinking pointers
+  da_ctUsed--;
+
+  // [Cecil] Move last used pointer here
+  da_Pointers[iMember] = da_Pointers[da_ctUsed];
+}
+
+/*
  * Random access operator.
  */
 template<class Type>

@@ -73,11 +73,22 @@ inline Type &CStaticStackArray<Type>::Push(void) {
 template<class Type>
 inline Type *CStaticStackArray<Type>::Push(INDEX ct) {
   sa_UsedCount+=ct;
-  while(sa_UsedCount>CStaticArray<Type>::Count()) {
-    Expand(CStaticArray<Type>::Count()+sa_ctAllocationStep);
+  if(sa_UsedCount>CStaticArray<Type>::Count()) {
+    ASSERT(ct>0);
+    const INDEX ctAllocSteps = (ct-1)/sa_ctAllocationStep +1;
+    Expand( CStaticArray<Type>::Count() + sa_ctAllocationStep*ctAllocSteps);
   }
   ASSERT(sa_UsedCount <= CStaticArray<Type>::Count());
   return &CStaticArray<Type>::operator[](sa_UsedCount-ct);
+}
+template<class Type>
+inline void CStaticStackArray<Type>::Add(const Type &tObject) {
+  sa_UsedCount++;
+  if (sa_UsedCount > CStaticArray<Type>::Count()) {
+    Expand(CStaticArray<Type>::Count() + sa_ctAllocationStep+1);
+  }
+  ASSERT(sa_UsedCount <= CStaticArray<Type>::Count());
+  CStaticArray<Type>::operator[](sa_UsedCount-1) = tObject;
 }
 
 /* Remove one object from top of stack and return it. */
@@ -159,6 +170,28 @@ CStaticStackArray<Type> &CStaticStackArray<Type>::operator=(const CStaticStackAr
   return *this;
 }
 
+
+/* Move all elements of another array into this one. */
+template<class Type>
+void CStaticStackArray<Type>::MoveArray(CStaticStackArray<Type> &arOther)
+{
+  ASSERT(this!=NULL);
+  ASSERT(&arOther!=NULL);
+  ASSERT(this!=&arOther);
+
+  // clear previous contents
+  Clear();
+  // if the other array has no elements
+  if (arOther.Count()==0) {
+    // no assignment
+    return;
+  }
+  // move data from the other array into this one and clear the other one
+  CStaticArray<Type>::MoveArray(arOther);
+  sa_UsedCount        = arOther.sa_UsedCount        ;
+  sa_ctAllocationStep = arOther.sa_ctAllocationStep ;
+  arOther.sa_UsedCount        = 0;
+}
 
 #endif  /* include-once check. */
 

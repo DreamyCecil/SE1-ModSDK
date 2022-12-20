@@ -73,11 +73,22 @@ inline Type &CStaticStackArray<Type>::Push(void) {
 template<class Type>
 inline Type *CStaticStackArray<Type>::Push(INDEX ct) {
   sa_UsedCount+=ct;
-  while(sa_UsedCount>CStaticArray<Type>::Count()) {
-    Expand(CStaticArray<Type>::Count()+sa_ctAllocationStep);
+  if(sa_UsedCount>CStaticArray<Type>::Count()) {
+    ASSERT(ct>0);
+    const INDEX ctAllocSteps = (ct-1)/sa_ctAllocationStep +1;
+    Expand( CStaticArray<Type>::Count() + sa_ctAllocationStep*ctAllocSteps);
   }
   ASSERT(sa_UsedCount <= CStaticArray<Type>::Count());
   return &CStaticArray<Type>::operator[](sa_UsedCount-ct);
+}
+template<class Type>
+inline void CStaticStackArray<Type>::Add(const Type &tObject) {
+  sa_UsedCount++;
+  if (sa_UsedCount > CStaticArray<Type>::Count()) {
+    Expand(CStaticArray<Type>::Count() + sa_ctAllocationStep+1);
+  }
+  ASSERT(sa_UsedCount <= CStaticArray<Type>::Count());
+  CStaticArray<Type>::operator[](sa_UsedCount-1) = tObject;
 }
 
 /* Remove one object from top of stack and return it. */

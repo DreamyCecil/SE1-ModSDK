@@ -61,6 +61,23 @@ void CDynamicContainer<Type>::Add(Type *ptNewObject)
 }
 
 /*
+ * Insert a given object to container at specified index.
+ */
+template<class Type>
+void CDynamicContainer<Type>::Insert(Type *ptNewObject, const INDEX iPos/*=0*/)
+{
+  // get number of member that need moving and add new one
+  const INDEX ctMovees = CStaticStackArray<Type*>::Count() - iPos;
+  CStaticStackArray<Type*>::Push();
+  // move all members after insert position one place up
+  Type **pptInsertAt = this->sa_Array+iPos;
+  Type **pptMoveTo   = pptInsertAt +1;
+  memmove( pptMoveTo, pptInsertAt, sizeof(Type*)*ctMovees);
+  // store pointer to newly inserted member at specified position
+  *pptInsertAt = ptNewObject;
+}
+
+/*
  * Remove a given object from container.
  */
 template<class Type>
@@ -74,8 +91,17 @@ void CDynamicContainer<Type>::Remove(Type *ptOldObject)
 
   // find its index
   INDEX iMember=GetIndex(ptOldObject);
+
+  // [Cecil] Not found
+  if (iMember == -1) {
+    ASSERT(FALSE);
+    return;
+  }
+
   // move last pointer here
-  sa_Array[iMember]=sa_Array[Count()-1];
+  INDEX iLast = Count() - 1;
+  sa_Array[iMember]=sa_Array[iLast];
+  sa_Array[iLast] = NULL;
   Pop();
 }
 
@@ -172,7 +198,7 @@ INDEX CDynamicContainer<Type>::GetIndex(Type *ptMember) {
     }
   }
   ASSERTALWAYS("CDynamicContainer<Type><>::Index(): Not a member of this container!");
-  return 0;
+  return -1; // [Cecil] Invalid index
 }
 
 /* Get first object in container (there must be at least one when calling this). */
@@ -234,6 +260,8 @@ public:
   Type &operator*(void) { return *dci_Array.Pointer(dci_Index); }
   operator Type *(void) { return dci_Array.Pointer(dci_Index); }
   Type *operator->(void) { return dci_Array.Pointer(dci_Index); }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return dci_Index; };
 };
 
 

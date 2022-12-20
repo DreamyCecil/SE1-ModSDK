@@ -7,6 +7,7 @@
 #define FOREACHINSTATICARRAY(array, type, iter) \
   for(CStaticArrayIterator<type> iter(array); !iter.IsPastEnd(); iter.MoveToNext() )
 
+#include <Engine/Base/Console.h>
 #include <Engine/Templates/StaticArray.h>
 
 /*
@@ -53,7 +54,16 @@ inline void CStaticArray<Type>::New(INDEX iCount) {
     // do nothing
     return;
   }
-  ASSERT(sa_Count==0 && sa_Array==NULL);
+  //ASSERT(sa_Count==0 && sa_Array==NULL);
+#ifndef NDEBUG
+  if(!(sa_Count==0 && sa_Array==NULL)) {
+    if(sa_Array == NULL) {
+      CPrintF("CStaticArray array not set!\n");
+    } else {
+      CPrintF("CStaticArray new(%d) called while already holding %d elements!\n", iCount, sa_Count);
+    }
+  }
+#endif
   sa_Count = iCount;
   sa_Array = new Type[iCount+1]; //(+1 for cache-prefetch opt)
 };
@@ -207,6 +217,8 @@ public:
   Type &operator*(void) { return sai_Array[sai_Index]; }
   operator Type *(void) { return &sai_Array[sai_Index]; }
   Type *operator->(void) { return &sai_Array[sai_Index]; }
+  // [Cecil] Get current index
+  inline INDEX GetIndex(void) { return sai_Index; };
 };
 
 /*

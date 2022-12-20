@@ -32,6 +32,7 @@ public:
   /* Add new object(s) on top of stack. */
   inline Type &Push(void);
   inline Type *Push(INDEX ct);
+  inline void Add(const Type &tObject);
   /* Remove one object from top of stack and return it. */
   inline Type &Pop(void);
   /* Remove objects with higher than the given index from stack, but keep stack space. */
@@ -46,6 +47,8 @@ public:
   INDEX Count(void) const;
   /* Get index of a object from it's pointer. */
   INDEX Index(Type *ptObject);
+  /* Move all elements of another array into this one. */
+  void MoveArray(CStaticStackArray<Type> &arOther);
 
   /* Assignment operator. */
   CStaticStackArray<Type> &operator=(const CStaticStackArray<Type> &arOriginal);
