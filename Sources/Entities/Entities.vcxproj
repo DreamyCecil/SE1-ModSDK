@@ -835,12 +835,13 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.h" />
+    <ClInclude Include="Common\EmanatingParticles.h" />
     <ClInclude Include="Common\Flags.h" />
     <ClInclude Include="Common\GameInterface.h" />
     <ClInclude Include="Common\Particles.h" />
     <ClInclude Include="Common\PathFinding.h" />
-    <ClInclude Include="StdH\StdH.h" />
     <ClInclude Include="Common\WeaponPositions.h" />
+    <ClInclude Include="StdH\StdH.h" />
     <ClInclude Include="AirElemental.h" />
     <ClInclude Include="AirElemental_tables.h" />
     <ClInclude Include="AirShockwave.h" />
@@ -864,11 +865,13 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     <ClInclude Include="BasicEffects.h" />
     <ClInclude Include="BasicEffects_tables.h" />
     <ClInclude Include="Beast.h" />
+    <ClInclude Include="Beast_tables.h" />
     <ClInclude Include="BigHead.h" />
     <ClInclude Include="BigHead_tables.h" />
     <ClInclude Include="BlendController.h" />
     <ClInclude Include="BlendController_tables.h" />
     <ClInclude Include="BloodSpray.h" />
+    <ClInclude Include="BloodSpray_tables.h" />
     <ClInclude Include="Boneman.h" />
     <ClInclude Include="Boneman_tables.h" />
     <ClInclude Include="Bouncer.h" />
@@ -929,7 +932,6 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     <ClInclude Include="Effector_tables.h" />
     <ClInclude Include="Elemental.h" />
     <ClInclude Include="Elemental_tables.h" />
-    <ClInclude Include="Common\EmanatingParticles.h" />
     <ClInclude Include="EnemyBase.h" />
     <ClInclude Include="EnemyBase_tables.h" />
     <ClInclude Include="EnemyCounter.h" />
@@ -963,8 +965,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     <ClInclude Include="Fireworks.h" />
     <ClInclude Include="Fireworks_tables.h" />
     <ClInclude Include="Fish.h" />
-    <ClInclude Include="Fisherman.h" />
-    <ClInclude Include="Fisherman_tables.h" />
+    <ClInclude Include="Fish_tables.h" />
     <ClInclude Include="Fishman.h" />
     <ClInclude Include="Fishman_tables.h" />
     <ClInclude Include="Flame.h" />
@@ -974,6 +975,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     <ClInclude Include="GhostBusterRay.h" />
     <ClInclude Include="GhostBusterRay_tables.h" />
     <ClInclude Include="Gizmo.h" />
+    <ClInclude Include="Gizmo_tables.h" />
     <ClInclude Include="Global.h" />
     <ClInclude Include="Global_tables.h" />
     <ClInclude Include="GradientMarker.h" />
