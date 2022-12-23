@@ -1,57 +1,68 @@
 # Serious Sam SDK
-This repository contains original Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
 
-* `Entities` - all the entity logic.
-* `GameGUI` - common GUI things for game tools.
-* `Game` - all the game logic.
+This repository contains code from Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
+- `Entities` - all the entity logic.
+- `Game` - all the game logic.
+- `GameGUI` - additional GUI elements for Serious Editor.
 
-The original source code of these projects remains untouched, however the project files were created for Visual Studio 2013 and 2019.
+The original source code have been adjusted to work well with any engine version but the logic should remain unchanged.
 
-You can use it to build mods for all kinds of Serious Sam games on Serious Engine 1.
+You can use it to build mods for all Serious Sam games on Serious Engine 1, including:
+- The First Encounter 1.05
+- The Second Encounter 1.05
+- The Second Encounter 1.07
+- The Second Encounter 1.10
 
-### That includes:
-- The First Encounter 1.05.
-- The Second Encounter 1.05.
-- The Second Encounter 1.07.
-- The Second Encounter 1.10.
+# Building
 
-## Building
+## Before building
+1. Run `git submodule update --init --recursive` to load files for all submodules in the repository.
+2. Select `Debug_TSE110` or `Release_TSE110` configuration to compile source code for Serious Engine 1.10.
+3. Otherwise follow the steps below before compiling the source code for any older Serious Engine version (e.g. 1.05 or 1.07).
 
-Before building the code, make sure to load in the submodules. Use `git submodule update --init --recursive` command to load files for all submodules.
+**Important!** If you reorder files in the `Entities` project tree, make sure that `LibMain.cpp` file is included **at the very beginning** before any other source file!
+It defines specific structures that need to be initialized before initializing any other code upon starting the module.
 
-To compile the source code under 1.10 engine configurations (`Debug_TSE110` or `Release_TSE110`), no additional steps are required.
+You can verify this by opening `Entities.vcxproj` in any text editor (it's an XML config) and searching for `LibMain.cpp` string. It should be under its own `ItemGroup` block before every other block with source files.
+If it's not, move it at the beginning before any block with source files.
 
-To compile the source code under TSE 1.07, TSE 1.05 or TFE 1.05 engines (any other `Debug_*` & `Release_*` configurations), you'll need to use a compiler from Microsoft Visual C++ 6.0.
+## Using MSVC 6.0
+You have to use an old compiler in order to make your code compatible with engine versions from 1.00 to 1.07 and 1.50.
+Since this SDK is designed for modern IDEs, you cannot use an old compiler out of the box.
 
-1. Download and install `Microsoft Visual C++ 6.0` with Service Pack 6. If you're installing in on Windows 8 or newer, **make sure to untick "Data Environment" despite the warning during installation for it to finish installing properly!**
-2. Download and install `Visual Studio 2010` (only C++ tools are enough).
+1. Install **Microsoft Visual C++ 6.0** with Service Pack 6. [See guide with details](https://github.com/DreamyCecil/SE1-ModSDK/wiki#microsoft-visual-c-60).
+2. Install **Visual Studio 2010**. [See guide with details](https://github.com/DreamyCecil/SE1-ModSDK/wiki#visual-studio-2010).
 3. Then install a Visual Studio of your choice (2013 or newer).
-4. Now you need to download and install [Daffodil](https://github.com/DreamyCecil/SeriousSam_SDK107/releases/download/daffodil/daffodil.zip). It's a set of configuration files that allows newer Visual Studios to target older VC compilers.
+4. And finally, download and install [Daffodil](https://github.com/DreamyCecil/SE1-ModSDK/releases/download/daffodil/daffodil.zip). It's a set of configuration files that allows modern Visual Studios to target older compilers.
 
-### You may only use newer Visual Studios as long as the 2010 one is also installed, otherwise it won't work.
+Before building projects for old engine versions, make sure that their platform toolset is set to `v60` (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
 
-Now you are able to build the entire solution (`.sln` file) but make sure that all of the projects have `v60` set as their platform toolset (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
+# Running
 
-## Notes
-- Debugging tools from newer studios are unable to use program database files (`.pdb`) that are generated with `v60`, making traditional debugging impossible. Consider debugging using `Microsoft Visual C++ 6.0` or `Visual Studio 2010` and enable `Program Database` as debug information format (**Project properties** -> **Configuration Properties** -> **C/C++** -> **General**).
-  - If you can't use either for some reason, base your project on Serious Engine v1.10 and then port the code back to this project.
-- Do not use spaces in the path to the solution.
-
-## Running
-
-Once the project is compiled, there should be three libraries in the Bin folder (usually `EntitiesMP.dll`, `GameGUIMP.dll` and `GameMP.dll`).
+Once the project is compiled, there should be three libraries in the Bin folder (e.g. `Entities.dll`, `GameGUI.dll` and `Game.dll`).
 
 There are two ways to start the mod:
-1. Create a `.des` file in your Mods directory under the same name as this repository, open it in any text editor and type your mod name in it. Then you'll be able to launch your mod from the game's `Mods` list.
-2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MyMod` with the name of your mod (the name of this repository in the `Mods` folder). After that just run any of the `.bat` files to open the editor or the mod.
-  - Keep in mind that mod folder names do not support spaces or dashes (`-`)!
+1. Create a `.des` file in your game's "Mods" directory under the same name as this repository folder; open it in any text editor and type the mod display name in it. Then start the game and launch your mod from the **MODS** menu.
+2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MyMod` with the name of your mod (the name of this repository folder). After that just run any of the `.bat` files to launch the game or the editor.
 
-When running a selected project, make sure the mod in project properties **Debugging** -> **Command Arguments** is set to your mod name instead of `SeriousSam_SDK107` (example: `+game MyMod`).
+When running a selected project, make sure the mod in project properties (**Debugging** -> **Command Arguments**) is set to your mod name instead of `MyMod` (example: `+game VeryCoolMod`).
+- Running an `Entities` project runs the game (`SeriousSam.exe`) with the mod.
+- Running a `GameGUI` project runs the editor (`SeriousEditor.exe`) with the mod.
 
-## License
+**Keep in mind that mod folder names do not support spaces or dashes (`-`)!**
+
+# Debugging
+
+Newer Visual Studio IDEs are unable to use program database files (`.pdb`) that are generated with MSVC 6.0, making traditional debugging impossible.
+
+There are two ways around this:
+1. Attach to the running process using `Microsoft Visual C++ 6.0` or `Visual Studio 2010`.
+2. Build for Serious Engine 1.10 and debug under the new engine (assuming your game's Bin folder contains binaries from 1.10 that have been built using the same compiler).
+
+# License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
 
-* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Sources/Includes`) by Microsoft
+* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Sources/Includes/Common`) by Microsoft
