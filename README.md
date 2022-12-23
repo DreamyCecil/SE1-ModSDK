@@ -4,7 +4,7 @@ This branch contains headers and libraries from different versions of Serious En
 
 This SDK also includes a custom Entity Class Compiler (`Ecc.exe`) that is used to compile entity source files (`*.es`). Its source code is available separately here: https://github.com/DreamyCecil/SE1-ECC
 
-If you wish to develop mods for classic Serious Sam games, consider cloning the [`master`](https://github.com/DreamyCecil/SeriousSam_SDK107/tree/master) branch of this repository.
+If you wish to develop mods for classic Serious Sam games, consider cloning the [`master`](https://github.com/DreamyCecil/SE1-ModSDK/tree/master) branch of this repository.
 
 If you wish to develop any other kind of project for classic Serious Sam games, you can include this branch into your repository as a submodule and build your projects for any Serious Sam game on Serious Engine 1.
 
@@ -13,7 +13,7 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - 1.05 for The First Encounter (`Engine105FE`)
   - 1.05 for The Second Encounter (`Engine105`)
   - 1.07 for The Second Encounter (`Engine107`)
-  - 1.10 for The Second Encounter (`Engine110`)
+  - 1.10 for The Second Encounter (`Engine110`) *- clean build using Visual Studio 2013*
 - Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
 - Entity Class Compiler (`Ecc.exe`)
 - Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
@@ -32,4 +32,4 @@ Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Se
 
 Some of the code included with the SDK may not be licensed under the GNU GPL v2:
 
-* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`) by Microsoft
+* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Common`) by Microsoft
