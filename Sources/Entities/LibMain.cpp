@@ -14,3 +14,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
 #include "StdH.h"
+
+// Library entry point
+BOOL APIENTRY DllMain(HANDLE hModule, DWORD ulReason, LPVOID lpReserved) {
+  // Reason for calling the module
+  switch (ulReason)
+  {
+    // Library initialization
+    case DLL_PROCESS_ATTACH:
+      break;
+
+    // Library cleanup
+    case DLL_PROCESS_DETACH:
+      break;
+  }
+
+  return TRUE;
+};
