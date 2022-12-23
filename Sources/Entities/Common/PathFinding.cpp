@@ -15,7 +15,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include "StdH.h"
 #include "Entities/Common/PathFinding.h"
-#include "Entities/NavigationMarker.h"
+#include "Entities/AI/NavigationMarker.h"
 
 #define PRINTOUT(_dummy)
 //#define PRINTOUT(something) something

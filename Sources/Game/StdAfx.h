@@ -29,5 +29,5 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Entities/Global.h>
 #include <Entities/Common/Common.h>
 #include <Entities/Common/GameInterface.h>
-#include <Entities/Player.h>
+#include <Entities/Players/Player.h>
 #undef DECL_DLL

@@ -14,11 +14,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
 #include "StdH.h"
-#include "Entities/BloodSpray.h"
-#include "Entities/PlayerWeapons.h"
-#include "Entities/WorldSettingsController.h"
-#include "Entities/BackgroundViewer.h"
-#include "Entities/EnvironmentParticlesHolder.h"
+#include "Entities/Effects/BloodSpray.h"
+#include "Entities/Players/PlayerWeapons.h"
+#include "Entities/Effects/WorldSettingsController.h"
+#include "Entities/Tools/BackgroundViewer.h"
+#include "Entities/Environment/EnvironmentParticlesHolder.h"
 
 static CTextureObject _toRomboidTrail;
 static CTextureObject _toBombTrail;
