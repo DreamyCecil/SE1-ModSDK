@@ -67,7 +67,5 @@ Sources/Entities/*
 !Sources/Entities/StdH.h
 
 # Build directories
-Sources/Bin.vs2013/*
-Sources/Obj.vs2013/*
-Sources/Bin.vs2019/*
-Sources/Obj.vs2019/*
+Sources/Bin/*
+Sources/Obj/*

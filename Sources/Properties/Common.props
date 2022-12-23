@@ -16,9 +16,9 @@
     <SamSdkVS Condition="'$(VisualStudioVersion)'=='17.0'">vs2022</SamSdkVS>
     <SamSdkVS Condition="'$(SamSdkVS)'==''">vs20XX</SamSdkVS>
 
-    <BinDir>$(SolutionDir)Bin.$(SamSdkVS)\$(Configuration)\</BinDir>
-    <ObjDir>$(SolutionDir)Obj.$(SamSdkVS)\$(Configuration)\$(ProjectName)\</ObjDir>
-    <CommonIncludes>$(ProjectDir);$(SolutionDir);$(SolutionDir)Includes\</CommonIncludes>
-    <OtherLibraries>$(SolutionDir)Bin.$(SamSdkVS)\$(Configuration);$(LibraryPath)</OtherLibraries>
+    <BinDir>$(SolutionDir)Bin\$(SamSdkVS).$(Configuration)\</BinDir>
+    <ObjDir>$(SolutionDir)Obj\$(SamSdkVS).$(Configuration)\$(ProjectName)\</ObjDir>
+    <CommonIncludes>$(ProjectDir);$(SolutionDir);$(SolutionDir)Includes\;$(SolutionDir)Includes\Common\</CommonIncludes>
+    <OtherLibraries>$(SolutionDir)Bin\$(SamSdkVS).$(Configuration);$(LibraryPath)</OtherLibraries>
   </PropertyGroup>
 </Project>
