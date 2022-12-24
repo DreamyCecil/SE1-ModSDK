@@ -540,7 +540,7 @@
     <ClCompile Include="Weapons\Projectile.cpp">
       <Filter>Source Files\Entity sources</Filter>
     </ClCompile>
-    <ClCompile Include="LibMain.cpp">
+    <ClCompile Include="(LibMain).cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Global.cpp">

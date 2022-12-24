@@ -498,7 +498,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="LibMain.cpp">
+    <ClCompile Include="(LibMain).cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">Create</PrecompiledHeader>
@@ -508,9 +508,6 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClInclude Include="StdH.h" />
-  </ItemGroup>
-  <ItemGroup>
     <ClCompile Include="AI\NavigationMarker.cpp" />
     <ClCompile Include="AI\Reminder.cpp" />
     <ClCompile Include="AI\Spinner.cpp" />
@@ -1035,6 +1032,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
     <ClInclude Include="Players\PlayerWeaponsEffects_tables.h" />
     <ClInclude Include="Players\PlayerWeapons_tables.h" />
     <ClInclude Include="Players\Player_tables.h" />
+    <ClInclude Include="StdH.h" />
     <ClInclude Include="Tools\AnimationChanger.h" />
     <ClInclude Include="Tools\AnimationChanger_tables.h" />
     <ClInclude Include="Tools\AnimationHub.h" />
