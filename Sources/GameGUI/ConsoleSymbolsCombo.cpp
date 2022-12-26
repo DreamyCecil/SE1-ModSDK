@@ -54,7 +54,7 @@ BOOL CConsoleSymbolsCombo::PreTranslateMessage(MSG* pMsg)
     // if there is a valid player selected
     if( iSelectedSymbol != LB_ERR)
     {
-      #if SE1_VER == 110
+      #if SE1_VER == SE1_110
         CString strSelectedSymbolW;
         GetLBText( iSelectedSymbol, strSelectedSymbolW);
         CTString strSelectedSymbol = CStringA(strSelectedSymbolW);

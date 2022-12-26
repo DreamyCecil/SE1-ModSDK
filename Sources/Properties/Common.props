@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="SeriousEngine.props" />
+  </ImportGroup>
   <PropertyGroup Label="UserMacros">
     <SamSdkVS Condition="'$(VisualStudioVersion)'== '5.0'">vs97</SamSdkVS>
     <SamSdkVS Condition="'$(VisualStudioVersion)'== '6.0'">vs60</SamSdkVS>
@@ -20,5 +23,7 @@
     <ObjDir>$(SolutionDir)Obj\$(SamSdkVS).$(Configuration)\$(ProjectName)\</ObjDir>
     <CommonIncludes>$(ProjectDir);$(SolutionDir);$(SolutionDir)Includes\;$(SolutionDir)Includes\Common\</CommonIncludes>
     <OtherLibraries>$(SolutionDir)Bin\$(SamSdkVS).$(Configuration);$(LibraryPath)</OtherLibraries>
+
+    <CommonPreproc>$(SamGamesDefinitions);$(EngineVerDefinitions);SE1_D3D;DIRECT3D_VERSION=0x0800;WIN32;_WINDOWS;_WINDLL;_USRDLL;_USE_32BIT_TIME_T</CommonPreproc>
   </PropertyGroup>
 </Project>

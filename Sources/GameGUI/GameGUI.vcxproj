@@ -206,7 +206,7 @@
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=107;WIN32;_DEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -243,7 +243,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=105;WIN32;_DEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -280,7 +280,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TFE";SE1_VER=105;WIN32;_DEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -317,7 +317,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=110;WIN32;_DEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -357,7 +357,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=107;WIN32;NDEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -395,7 +395,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=105;WIN32;NDEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -433,7 +433,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TFE";SE1_VER=105;WIN32;NDEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -471,7 +471,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>SE1_D3D;SE1_GAME="TSE";SE1_VER=110;WIN32;NDEBUG;_WINDOWS;_USRDLL;GAMEGUI_EXPORTS;_WINDLL;DIRECT3D_VERSION=0x0800;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>

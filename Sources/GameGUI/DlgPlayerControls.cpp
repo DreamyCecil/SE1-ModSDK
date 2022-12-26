@@ -184,7 +184,7 @@ void CDlgPlayerControls::FillActionsList(void)
   // now add all button actions
   FOREACHINLIST( CButtonAction, ba_lnNode, m_ctrlControls.ctrl_lhButtonActions, itButtonAction)
   {
-    #if SE1_VER == 110
+    #if SE1_VER == SE1_110
       // macro for adding single button action into list control
       itItem.iItem = ctItemsAdded;
       itItem.iSubItem = 0;
@@ -241,7 +241,7 @@ void CDlgPlayerControls::FillAxisList(void)
     itItem.iItem = iAxis;
     itItem.iSubItem = 0;
 
-    #if SE1_VER == 110
+    #if SE1_VER == SE1_110
       itItem.pszText = (wchar_t*)(const char*)_pGame->gm_astrAxisNames[iAxis];
     #else
       itItem.pszText = (char*)(const char*)_pGame->gm_astrAxisNames[iAxis];
@@ -250,7 +250,7 @@ void CDlgPlayerControls::FillAxisList(void)
     m_listAxisActions.InsertItem( &itItem);
     itItem.iSubItem = 1;
 
-    #if SE1_VER == 110
+    #if SE1_VER == SE1_110
       itItem.pszText = (wchar_t *)(const char *)_pInput->GetAxisName(
         m_ctrlControls.ctrl_aaAxisActions[iAxis].aa_iAxisAction);
     #else
@@ -326,7 +326,7 @@ void CDlgPlayerControls::SetFirstAndSecondButtonNames(void)
   CButtonAction *pbaCurrent = GetSelectedButtonAction();
   if( pbaCurrent != NULL)
   {
-    #if SE1_VER == 110
+    #if SE1_VER == SE1_110
       // type first currently mounted button's name
       m_editFirstControl.SetWindowText( CString(
         _pInput->GetButtonName( pbaCurrent->ba_iFirstKey) ));

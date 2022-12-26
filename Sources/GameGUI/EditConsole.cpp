@@ -85,7 +85,7 @@ BOOL CEditConsole::PreTranslateMessage(MSG* pMsg)
     if( !bCtrl && (iCharOffset != -1) )
     {
       // extract string to execute
-      #if SE1_VER == 110
+      #if SE1_VER == SE1_110
         wchar_t achrToExecute[ 1024];
       #else
         char achrToExecute[ 1024];
@@ -95,7 +95,7 @@ BOOL CEditConsole::PreTranslateMessage(MSG* pMsg)
       // set EOF delimiter
       achrToExecute[ ctLetters] = 0;
 
-      #if SE1_VER == 110
+      #if SE1_VER == SE1_110
         CTString strToExecute = CStringA(achrToExecute);
       #else
         CTString strToExecute = achrToExecute;
@@ -113,7 +113,7 @@ BOOL CEditConsole::PreTranslateMessage(MSG* pMsg)
       CString sHistory;
       GetWindowText(sHistory);
 
-      #if SE1_VER == 110
+      #if SE1_VER == SE1_110
         _pGame->gam_strConsoleInputBuffer = CStringA(sHistory);
       #else
         _pGame->gam_strConsoleInputBuffer = (const char *)sHistory;

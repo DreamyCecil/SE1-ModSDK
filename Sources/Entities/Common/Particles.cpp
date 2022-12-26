@@ -3865,7 +3865,7 @@ void Particles_Death(CEntity *pen, TIME tmStart)
   FLOAT fMipFactor = Particle_GetMipFactor();
 
   BOOL bVisible;
-#if SE1_VER >= 107
+#if SE1_VER >= SE1_107
   if(pen->en_RenderType == CEntity::RT_SKAMODEL) {
     bVisible = pen->GetModelInstance()->IsModelVisible( fMipFactor);
   } else
@@ -3883,7 +3883,7 @@ void Particles_Death(CEntity *pen, TIME tmStart)
   FLOAT fPowerTime = pow(fTime-SPIRIT_SPIRAL_START, 2.5f);
 
   FLOATaabbox3D box;
-#if SE1_VER >= 107
+#if SE1_VER >= SE1_107
   if(pen->en_RenderType == CEntity::RT_SKAMODEL) {
     // fill array with absolute vertices of entity's model and its attached models
     pen->GetModelVerticesAbsolute(avVertices, 0.05f, fMipFactor); 
@@ -3990,7 +3990,7 @@ void Particles_Burning(CEntity *pen, FLOAT fPower, FLOAT fTimeRatio)
   // get corp size
   FLOATaabbox3D box;
 
-#if SE1_VER >= 107
+#if SE1_VER >= SE1_107
   if(pen->en_RenderType == CEntity::RT_SKAMODEL || pen->en_RenderType == CEntity::RT_SKAEDITORMODEL) {
     pen->GetModelInstance()->GetCurrentColisionBox(box);
   } else

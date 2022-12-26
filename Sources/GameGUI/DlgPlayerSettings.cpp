@@ -206,7 +206,7 @@ void CDlgPlayerSettings::OnRenamePlayer()
   if( (dlgRename.DoModal() == IDOK) &&
       (dlgRename.m_strName.GetLength() != 0) )
   {
-    #if SE1_VER == 110
+    #if SE1_VER == SE1_110
       _pGame->gm_apcPlayers[ iSelectedPlayer].pc_strName = CStringA(dlgRename.m_strName);
     #else
       _pGame->gm_apcPlayers[ iSelectedPlayer].pc_strName = dlgRename.m_strName;

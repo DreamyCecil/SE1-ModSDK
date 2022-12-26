@@ -569,7 +569,7 @@ functions:
     aRotAngle(3) += aAddAngle(3);
   }
 
-#if SE1_VER >= 107
+#if SE1_VER >= SE1_107
   // returns bytes of memory used by this object
   SLONG GetUsedMemory(void)
   {

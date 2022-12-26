@@ -150,7 +150,7 @@ procedures:
       return;
     }
 
-  #if SE1_VER >= 107
+  #if SE1_VER >= SE1_107
     if(eSpawn.penOwner->en_RenderType == RT_SKAMODEL) {
       eSpawn.penOwner->GetModelInstance()->GetCurrentColisionBox( m_boxSizedOwner);
     } else

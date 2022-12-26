@@ -977,7 +977,7 @@ void CGame::InitInternal( void)
   extern BOOL IsMenuEnabled(const CTString &strMenuName);
   _pShell->DeclareSymbol("user CTString GetGameSpyRulesInfo(void);",    &GetGameSpyRulesInfo);
 
-  #if SE1_VER == 110
+  #if SE1_VER == SE1_110
     _pShell->DeclareSymbol("user CTString GetGameTypeNameSS(INDEX);", &GetGameTypeName);
     _pShell->DeclareSymbol("user CTString GetCurrentGameTypeNameSS(void);", &GetCurrentGameTypeName);
     _pShell->DeclareSymbol("user INDEX GetSpawnFlagsForGameTypeSS(INDEX);", &GetSpawnFlagsForGameType);
