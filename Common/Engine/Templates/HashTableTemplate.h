@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -14,91 +14,111 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
 #if !defined(TYPE) || !defined(VALUE_TYPE) || !defined(CHashTableSlot_TYPE) || !defined(CHashTable_TYPE)
-#error
+  #error Please define all macros: TYPE, VALUE_TYPE, CHashTableSlot_TYPE and CHashTable_TYPE
 #endif
 
 #include <Engine/Templates/StaticArray.h>
 
+// Template class of one object slot in the hash table
 class CHashTableSlot_TYPE {
-public:
-  ULONG hts_ulKey;      // hashing key
-  TYPE *hts_ptElement;  // the element inhere
-  CHashTableSlot_TYPE(void)  { hts_ptElement = NULL; };
-  void Clear(void) { hts_ptElement = NULL; };
+  public:
+    ULONG hts_ulKey; // Hashing key
+    TYPE *hts_ptElement; // The element inside
+
+    // Constructor
+    CHashTableSlot_TYPE(void) {
+      hts_ptElement = NULL;
+    };
+
+    // Clear the slot
+    void Clear(void) {
+      hts_ptElement = NULL;
+    };
 };
 
-/*
- * Template class for storing pointers to objects for fast access by name.
- */
+// Template class for storing pointers to objects for fast access by name
 class CHashTable_TYPE {
-// implementation:
-public:
-  INDEX ht_ctCompartments;    // number of compartments in table
-  INDEX ht_ctSlotsPerComp;    // number of slots in one compartment
-  INDEX ht_ctSlotsPerCompStep;    // allocation step for number of slots in one compartment
-  CStaticArray<CHashTableSlot_TYPE> ht_ahtsSlots;  // all slots are here
+  public:
+    // [Cecil] Callback function types
+    typedef ULONG (*CGetKeyFunc)(VALUE_TYPE &value);
+    typedef ULONG (*CGetValueFunc)(TYPE *pItem);
 
-  ULONG (*ht_GetItemKey)(VALUE_TYPE &Value);
-  VALUE_TYPE (*ht_GetItemValue)(TYPE* Item);
+  public:
+    INDEX ht_ctCompartments; // Number of compartments in the table
+    INDEX ht_ctSlotsPerComp; // Number of slots in one compartment
+    INDEX ht_ctSlotsPerCompStep; // Allocation step for number of slots in one compartment
+    CStaticArray<CHashTableSlot_TYPE > ht_ahtsSlots; // All slots are here
 
-  // internal finding, returns pointer to the the slot 
-  CHashTableSlot_TYPE *FindSlot(ULONG ulKey, VALUE_TYPE &Value);
-  // internal finding, returns the index of the item in the nametable
-  INDEX FindSlotIndex(ULONG ulKey, VALUE_TYPE &Value);
-  // get the item stored in the hashtable by it's index
-  TYPE* GetItemFromIndex(INDEX iIndex);
-  // get the value of the item stored in the hashtable by it's index
-  VALUE_TYPE GetValueFromIndex(INDEX iIndex);
-  // expand the hash table to next step
-  void Expand(void);
+    CGetKeyFunc ht_GetItemKey;
+    CGetValueFunc ht_GetItemValue;
 
-// interface:
-public:
-  // default constructor
-  CHashTable_TYPE(void);
-  // destructor -- frees all memory
-  ~CHashTable_TYPE(void);
-  // remove all slots, and reset the nametable to initial (empty) state
-  void Clear(void);
+  public:
+    // Default constructor
+    CHashTable_TYPE(void);
 
-  /* Set allocation parameters. */
-  void SetAllocationParameters(INDEX ctCompartments, INDEX ctSlotsPerComp, INDEX ctSlotsPerCompStep);
-  // set callbacks
-  void SetCallbacks(ULONG (*GetItemKey)(VALUE_TYPE &Item), VALUE_TYPE (*GetItemValue)(TYPE* Item));
+    // Destructor
+    ~CHashTable_TYPE(void);
 
-  // find an object by value, return a pointer to it
-  __forceinline TYPE* Find(VALUE_TYPE &Value);
-  // find an object by value, return it's index
-  __forceinline INDEX FindIndex(VALUE_TYPE &Value);
-  // add a new object
-  void Add(TYPE *ptNew);
-  // remove an object
-  void Remove(TYPE *ptOld);
-  // remove an object
-  void RemoveAll();
+    // Remove all slots and reset the hash table to the initial (empty) state, but keep callback functions
+    void Clear(void);
 
-  // remove all objects but keep slots
-  void Reset(void);
+    // Set allocation parameters
+    void SetAllocationParameters(INDEX ctCompartments, INDEX ctSlotsPerComp, INDEX ctSlotsPerCompStep);
 
-  // get estimated efficiency of the hashtable
-  void ReportEfficiency(void);
+    // Set callback functions
+    void SetCallbacks(CGetKeyFunc pGetKeyFunc, CGetValueFunc pGetValueFunc);
+
+  public:
+    // Get pointer to the slot from its key and value
+    CHashTableSlot_TYPE *FindSlot(ULONG ulKey, VALUE_TYPE &value);
+
+    // Get index of an object in the hash table
+    INDEX FindSlotIndex(ULONG ulKey, VALUE_TYPE &value);
+
+    // Get object from the hash table by its index
+    TYPE *GetItemFromIndex(INDEX iIndex);
+
+    // Get value of an object from the hash table by its index
+    VALUE_TYPE GetValueFromIndex(INDEX iIndex);
+
+    // Find object by its value
+    __forceinline TYPE* Find(VALUE_TYPE &value);
+
+    // Return index of an object by its value
+    __forceinline INDEX FindIndex(VALUE_TYPE &value);
+
+  public:
+    // Expand the hash table to the next step
+    void Expand(void);
+
+    // Add a new object
+    void Add(TYPE *ptNew);
+
+    // Remove an object
+    void Remove(TYPE *ptOld);
+
+    // Remove all objects
+    void RemoveAll(void);
+
+    // Remove all objects but keep slots
+    void Reset(void);
+
+    // Get estimated efficiency of the hash table
+    void ReportEfficiency(void);
 };
 
-// find an object by name
-__forceinline TYPE *CHashTable_TYPE::Find(VALUE_TYPE &Value)
+// Find object by its value
+TYPE *CHashTable_TYPE::Find(VALUE_TYPE &Value)
 {
-  ASSERT(ht_ctCompartments>0 && ht_ctSlotsPerComp>0);
+  ASSERT(ht_ctCompartments > 0 && ht_ctSlotsPerComp > 0);
 
   CHashTableSlot_TYPE *phts = FindSlot(ht_GetItemKey(Value), Value);
-  if (phts==NULL) return NULL;
-  return phts->hts_ptElement;
-}
+  return (phts == NULL) ? NULL : phts->hts_ptElement;
+};
 
-
-// find an object by name, return it's index
-__forceinline INDEX CHashTable_TYPE::FindIndex(VALUE_TYPE &Value)
+// Return index of an object by its value
+INDEX CHashTable_TYPE::FindIndex(VALUE_TYPE &Value)
 {
-  ASSERT(ht_ctCompartments>0 && ht_ctSlotsPerComp>0);
-
+  ASSERT(ht_ctCompartments > 0 && ht_ctSlotsPerComp > 0);
   return FindSlotIndex(ht_GetItemKey(Value), Value);
-}
+};
