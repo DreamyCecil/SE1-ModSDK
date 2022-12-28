@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?> 
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets">
+    <Import Project="SeriousEngine.props" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros">
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '5.0'">vs97</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '6.0'">vs60</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '7.0'">vs2002</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '7.1'">vs2003</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '8.0'">vs2005</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'== '9.0'">vs2008</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='10.0'">vs2010</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='11.0'">vs2012</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='12.0'">vs2013</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='14.0'">vs2015</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='15.0'">vs2017</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='16.0'">vs2019</SE1SdkVS>
+    <SE1SdkVS Condition="'$(VisualStudioVersion)'=='17.0'">vs2022</SE1SdkVS>
+    <SE1SdkVS Condition="'$(SE1SdkVS)'==''">vs20XX</SE1SdkVS>
+
+    <SamSdkPreproc>SE1_D3D;DIRECT3D_VERSION=0x0800;WIN32;_WINDOWS;_WINDLL;_USRDLL;_USE_32BIT_TIME_T;</SamSdkPreproc>
+    <SE1SdkPreproc>$(SE1AllGames);$(SE1Versions);$(SamSdkPreproc);</SE1SdkPreproc>
+  </PropertyGroup>
+</Project>
