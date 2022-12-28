@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -15,6 +15,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #ifndef SE_INCL_DYNAMICSTACKARRAY_CPP
 #define SE_INCL_DYNAMICSTACKARRAY_CPP
+
 #ifdef PRAGMA_ONCE
   #pragma once
 #endif
@@ -22,96 +23,94 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Templates/DynamicStackArray.h>
 #include <Engine/Templates/DynamicArray.cpp>
 
-/*
- * Default constructor.
- */
+// Default constructor
 template<class Type>
 inline CDynamicStackArray<Type>::CDynamicStackArray(void) : CDynamicArray<Type>() {
-  da_ctUsed=0;
+  da_ctUsed = 0;
   da_ctAllocationStep = 256;
-  // lock the array on construction
+
+  // Lock the array upon construction
   CDynamicArray<Type>::Lock();
 }
 
-/*
- * Destructor.
- */
+// Destructor
 template<class Type>
 inline CDynamicStackArray<Type>::~CDynamicStackArray(void) {
-  // lock the array on destruction
+  // Unlock the array upon destruction
   CDynamicArray<Type>::Unlock();
 };
 
-/* Destroy all objects, and reset the array to initial (empty) state. */
-template<class Type>
-inline void CDynamicStackArray<Type>::Clear(void) {
-  CDynamicArray<Type>::Clear(); da_ctUsed = 0; 
-}
-
-/*
- * Set how many elements to allocate when stack overflows.
- */
+// Set how many elements to allocate when stack overflows
 template<class Type>
 inline void CDynamicStackArray<Type>::SetAllocationStep(INDEX ctStep) 
 {
-  ASSERT(ctStep>0);
+  ASSERT(ctStep > 0);
   da_ctAllocationStep = ctStep;
 };
 
-/*
- * Add new object(s) on top of stack.
- */
+// Destroy all objects and reset the stack to the initial (empty) state
+template<class Type>
+inline void CDynamicStackArray<Type>::Clear(void) {
+  CDynamicArray<Type>::Clear();
+  da_ctUsed = 0; 
+};
+
+// Add new object on top of the stack
 template<class Type>
 inline Type &CDynamicStackArray<Type>::Push(void) {
-  // if there are no free elements in the array
-  if (CDynamicArray<Type>::Count()-da_ctUsed<1) {
-    // alocate a new block
+  // If there's no space for the new element
+  if (CDynamicArray<Type>::Count() - da_ctUsed < 1) {
+    // Allocate a new block
     CDynamicArray<Type>::New(da_ctAllocationStep);
   }
-  // get the new element
+
+  // Increase used amount
   da_ctUsed++;
   ASSERT(da_ctUsed <= CDynamicArray<Type>::Count());
-  return CDynamicArray<Type>::operator[](da_ctUsed-1);
-}
+
+  // Get new element
+  return CDynamicArray<Type>::operator[](da_ctUsed - 1);
+};
+
+// Add a number of new objects on top of the stack
 template<class Type>
 inline Type *CDynamicStackArray<Type>::Push(INDEX ct) {
-  // if there are no free elements in the array
-  while(CDynamicArray<Type>::Count()-da_ctUsed<ct) {
-    // alocate a new block
+  // If there's no space for new elements
+  while (CDynamicArray<Type>::Count() - da_ctUsed < ct) {
+    // Allocate new blocks
     CDynamicArray<Type>::New(da_ctAllocationStep);
   }
-  // get new elements
-  da_ctUsed+=ct;
-  ASSERT(da_ctUsed <= CDynamicArray<Type>::Count());
-  return &CDynamicArray<Type>::operator[](da_ctUsed-ct);
-}
 
-/*
- * Remove all objects from stack, but keep stack space.
- */
+  // Increase used amount
+  da_ctUsed += ct;
+  ASSERT(da_ctUsed <= CDynamicArray<Type>::Count());
+
+  // Get new elements
+  return &CDynamicArray<Type>::operator[](da_ctUsed - ct);
+};
+
+// Remove all objects from stack, but keep stack space
 template<class Type>
 inline void CDynamicStackArray<Type>::PopAll(void) {
-  // if there is only one block allocated
-  if ( da_BlocksList.IsEmpty() 
-    || &da_BlocksList.Head()==&da_BlocksList.Tail()) {
-    // just clear the counter
+  // If there is only one block allocated
+  if (da_BlocksList.IsEmpty() || &da_BlocksList.Head() == &da_BlocksList.Tail()) {
+    // Just clear the counter
     da_ctUsed = 0;
-
-  // if there is more than one block allocated
-  } else {
-    // remember how much was allocated, rounded up to allocation step
-    INDEX ctUsedBefore = CDynamicArray<Type>::Count();
-    // free all memory
-    CDynamicArray<Type>::Clear();
-    // allocate one big block
-    CDynamicArray<Type>::New(ctUsedBefore);
-    da_ctUsed = 0;
+    return;
   }
-}
 
-/*
- * Remove last object from stack.
- */
+  // Remember how much was allocated
+  INDEX ctUsedBefore = CDynamicArray<Type>::Count();
+
+  // Free all memory
+  CDynamicArray<Type>::Clear();
+
+  // Allocate one big block
+  CDynamicArray<Type>::New(ctUsedBefore);
+  da_ctUsed = 0;
+};
+
+// Remove last object from the stack
 template<class Type>
 void CDynamicStackArray<Type>::Pop(void) {
   // [Cecil] Decrease used amount and clear the last object
@@ -119,24 +118,23 @@ void CDynamicStackArray<Type>::Pop(void) {
 
   Type *ptLast = &CDynamicArray<Type>::operator[](da_ctUsed);
   ::Clear(ptLast);
-}
+};
 
-/*
- * Delete a given member.
- */
+// Delete a given object
 template<class Type>
-void CDynamicStackArray<Type>::Delete(Type *ptMember) {
+void CDynamicStackArray<Type>::Delete(Type *ptObject) {
   // [Cecil] Inline code of CDynamicArray::Delete()
-  ASSERT(this!=NULL);
+  ASSERT(this != NULL);
+
 #if CHECKARRAYLOCKING
-  // check that not locked for indices
+  // Check if unlocked
   ASSERT(da_LockCt == 0);
 #endif
 
-  // clear the object
-  ::Clear(*ptMember);
+  // Clear the object
+  ::Clear(*ptObject);
 
-  INDEX iMember=GetIndex(ptMember);
+  INDEX iMember = GetIndex(ptObject);
 
   // [Cecil] Not found
   if (iMember == -1) {
@@ -149,71 +147,66 @@ void CDynamicStackArray<Type>::Delete(Type *ptMember) {
 
   // [Cecil] Move last used pointer here
   da_Pointers[iMember] = da_Pointers[da_ctUsed];
-}
+};
 
-/*
- * Random access operator.
- */
+// Random access operator
 template<class Type>
 inline Type &CDynamicStackArray<Type>::operator[](INDEX i) {
-  ASSERT(this!=NULL);
-  ASSERT(i<da_ctUsed);     // check bounds
+  ASSERT(this != NULL);
+  ASSERT(i < da_ctUsed); // Check bounds
+
   return CDynamicArray<Type>::operator[](i);
-}
+};
+
+// Constant random access operator
 template<class Type>
 inline const Type &CDynamicStackArray<Type>::operator[](INDEX i) const {
-  ASSERT(this!=NULL);
-  ASSERT(i<da_ctUsed);     // check bounds
-  return CDynamicArray<Type>::operator[](i);
-}
+  ASSERT(this != NULL);
+  ASSERT(i < da_ctUsed); // Check bounds
 
-/*
- * Get number of elements in array.
- */
+  return CDynamicArray<Type>::operator[](i);
+};
+
+// Get number of used elements in the stack
 template<class Type>
 INDEX CDynamicStackArray<Type>::Count(void) const {
-  ASSERT(this!=NULL);
+  ASSERT(this != NULL);
   return da_ctUsed;
-}
+};
 
-/*
- * Get index of a member from it's pointer
- */
+// Get index of a member from its pointer
 template<class Type>
 INDEX CDynamicStackArray<Type>::Index(Type *ptMember) {
-  ASSERT(this!=NULL);
-  INDEX i = CDynamicArray<Type>::Index(ptMember);
-  ASSERTMSG(i<da_ctUsed, "CDynamicStackArray<>::Index(): Not a member of this array!");
-  return i;
-}
+  ASSERT(this != NULL);
 
-/*
- * Get array of pointers to elements (used for sorting elements by sorting pointers).
- */
+  INDEX i = CDynamicArray<Type>::Index(ptMember);
+  ASSERTMSG(i < da_ctUsed, "CDynamicStackArray<>::Index(): Not a member of this array!");
+
+  return i;
+};
+
+// Get array of pointers to elements (used for sorting elements by sorting pointers)
 template<class Type>
 Type **CDynamicStackArray<Type>::GetArrayOfPointers(void)
 {
   return da_Pointers;
-}
+};
 
-/*
- * Assignment operator.
- */
+// Assignment operator
 template<class Type>
 CDynamicStackArray<Type> &CDynamicStackArray<Type>::operator=(CDynamicStackArray<Type> &arOriginal)
 {
-  ASSERT(this!=NULL);
-  ASSERT(&arOriginal!=NULL);
-  ASSERT(this!=&arOriginal);
+  ASSERT(this != NULL);
+  ASSERT(&arOriginal != NULL);
+  ASSERT(this != &arOriginal);
 
-  // copy stack arrays
+  // Copy stack arrays
   CDynamicArray<Type>::operator=(arOriginal);
-  // copy used count
+
+  // Copy used count
   da_ctUsed = arOriginal.da_ctUsed;
 
   return *this;
-}
+};
 
-
-#endif  /* include-once check. */
-
+#endif // include-once check
