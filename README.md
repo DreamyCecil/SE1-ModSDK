@@ -14,13 +14,14 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - 1.05 for The Second Encounter (`Engine105`)
   - 1.07 for The Second Encounter (`Engine107`)
   - 1.10 for The Second Encounter (`Engine110`) *- clean build using Visual Studio 2013*
-- Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
+- Sources for all Serious Engine versions (`Common`)
+  - Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
+  - Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
 - Entity Class Compiler (`Ecc.exe`)
-- Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
 
 ## Project settings
 
-- When specifying paths to includes, specify the root directory of this branch (usually `Includes`), headers for all engine versions (e.g. `Includes/Common`) and a desired engine version (e.g. `Includes/Engine107`).
+- When specifying paths to includes, specify a path to headers for all engine versions (e.g. `Includes/Common`) and a desired engine version (e.g. `Includes/Engine107`).
 
 - To include static libraries of a specific engine version, specify the same path as for the engine headers (e.g. `Includes/Engine107`).
 
