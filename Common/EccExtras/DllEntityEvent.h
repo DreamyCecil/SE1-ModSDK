@@ -20,7 +20,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #pragma once
 #endif
 
-#if SE1_VER < 150
+#if SE1_VER < SE1_150
 
 #include <Engine/Entities/EntityEvent.h>
 

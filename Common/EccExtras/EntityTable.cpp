@@ -21,7 +21,7 @@ CLibEntityTable DLL_EntityTable;
 // Fill a dynamic container with entity events
 void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) const {
   // Get array of events and their amount
-#if SE1_VER < 150
+#if SE1_VER < SE1_150
   CDLLEntityEvent **aEvents = ete_adeeEvents;
   const INDEX ct = *ete_piEventsCt;
 
