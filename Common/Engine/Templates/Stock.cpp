@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -17,159 +17,169 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include <Engine/Templates/DynamicContainer.cpp>
 
-/*
- * Default constructor.
- */
-
-CStock_TYPE::CStock_TYPE(void)
+// Default constructor
+CStock_TYPE::CStock_TYPE()
 {
   st_ntObjects.SetAllocationParameters(50, 2, 2);
-}
+};
 
-/*
- * Destructor.
- */
-
-CStock_TYPE::~CStock_TYPE(void)
+// Destructor
+CStock_TYPE::~CStock_TYPE()
 {
-  // free all unused elements of the stock
+  // Free all unused elements of the stock
   FreeUnused();
-}
+};
 
-/*
- * Obtain an object from stock - loads if not loaded.
- */
-
+// Obtain an object from stock - loads if not loaded
 TYPE *CStock_TYPE::Obtain_t(const CTFileName &fnmFileName)
 {
-  // find stocked object with same name
+  // Find stocked object with same name
   TYPE *pExisting = st_ntObjects.Find(fnmFileName);
-  
-  // if found
-  if (pExisting!=NULL) {
-    // mark that it is used once again
+
+  // If found
+  if (pExisting != NULL) {
+    // Mark that it is used once again
     pExisting->MarkUsed();
-    // return its pointer
+
+    // Return its pointer
     return pExisting;
   }
 
-  /* if not found, */
-
-  // create new stock object
+  // Create a new stock object, if not found
   TYPE *ptNew = new TYPE;
   ptNew->ser_FileName = fnmFileName;
+
   st_ctObjects.Add(ptNew);
   st_ntObjects.Add(ptNew);
 
-  // load it
+  // Try to load it
   try {
     ptNew->Load_t(fnmFileName);
-  } catch(char *) {
+
+  // Failed to load
+  } catch (char *) {
     st_ctObjects.Remove(ptNew);
     st_ntObjects.Remove(ptNew);
+
     delete ptNew;
     throw;
   }
 
-  // mark that it is used for the first time
+  // Mark that it is used for the first time
   //ASSERT(!ptNew->IsUsed());
   ptNew->MarkUsed();
 
-  // return the pointer to the new one
+  // Return the new object
   return ptNew;
-}
+};
 
-/*
- * Release an object when not needed any more.
- */
-
-void CStock_TYPE::Release(TYPE *ptObject)
-{
-  // mark that it is used one less time
+// Release an object when it's not needed any more
+void CStock_TYPE::Release(TYPE *ptObject) {
+  // Mark that it is used once less
   ptObject->MarkUnused();
-  // if it is not used at all any more and should be freed automatically
+
+  // If it is not used at all anymore and should be freed automatically
   if (!ptObject->IsUsed() && ptObject->IsAutoFreed()) {
-    // remove it from stock
+    // Remove and delete it
     st_ctObjects.Remove(ptObject);
     st_ntObjects.Remove(ptObject);
+
     delete ptObject;
   }
-}
+};
 
-// free all unused elements of the stock
-
+// Free all unused elements from the stock
 void CStock_TYPE::FreeUnused(void)
 {
   BOOL bAnyRemoved;
-  // repeat
+
   do {
-    // create container of objects that should be freed
+    // Fill a container with objects that should be freed
     CDynamicContainer<TYPE> ctToFree;
+
     {FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
       if (!itt->IsUsed()) {
         ctToFree.Add(itt);
       }
     }}
-    bAnyRemoved = ctToFree.Count()>0;
-    // for each object that should be freed
+
+    bAnyRemoved = ctToFree.Count() > 0;
+
+    // Go through objects that should be freed
     {FOREACHINDYNAMICCONTAINER(ctToFree, TYPE, itt) {
+      // Remove and delete it
       st_ctObjects.Remove(itt);
       st_ntObjects.Remove(itt);
+
       delete (&*itt);
     }}
 
-  // as long as there is something to remove
+  // Go for as long as there is something to remove
   } while (bAnyRemoved);
+};
 
-}
-// calculate amount of memory used by all objects in the stock
-
+// Calculate amount of memory used by all objects in the stock
 SLONG CStock_TYPE::CalculateUsedMemory(void)
 {
   SLONG slUsedTotal = 0;
-  {FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
+
+  // Go through all stock objects
+  FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
     SLONG slUsedByObject = itt->GetUsedMemory();
-    if (slUsedByObject<0) {
+
+    // Invalid memory
+    if (slUsedByObject < 0) {
       return -1;
     }
-    slUsedTotal+=slUsedByObject;
-  }}
+
+    // Add used memory to the total amount of memory
+    slUsedTotal += slUsedByObject;
+  }
 
   return slUsedTotal;
-}
+};
 
-// dump memory usage report to a file
-void CStock_TYPE::DumpMemoryUsage_t(CTStream &strm) // throw char *
+// Dump memory usage report into a file
+void CStock_TYPE::DumpMemoryUsage_t(CTStream &strm)
 {
   CTString strLine;
   SLONG slUsedTotal = 0;
-  {FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
+
+  // Go through all stock objects
+  FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
     SLONG slUsedByObject = itt->GetUsedMemory();
-    if (slUsedByObject<0) {
+
+    // Invalid memory
+    if (slUsedByObject < 0) {
       strm.PutLine_t("Error!");
       return;
     }
-    strLine.PrintF("%7.1fk %s(%d) %s", 
-      slUsedByObject/1024.0f, (const char*)(itt->GetName()), itt->GetUsedCount(), itt->GetDescription());
+
+    // Print out memory usage of this object
+    strLine.PrintF("%7.1fk %s(%d) %s", slUsedByObject / 1024.0f,
+      itt->GetName().str_String, itt->GetUsedCount(), itt->GetDescription().str_String);
+
     strm.PutLine_t(strLine);
-  }}
-}
+  }
+};
 
-// get number of total elements in stock
-INDEX CStock_TYPE::GetTotalCount(void)
-{
+// Get number of total elements in stock
+INDEX CStock_TYPE::GetTotalCount(void) {
   return st_ctObjects.Count();
-}
+};
 
-// get number of used elements in stock
-
+// Get number of used elements in stock
 INDEX CStock_TYPE::GetUsedCount(void)
 {
   INDEX ctUsed = 0;
-  {FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
+
+  // Go through all stock objects
+  FOREACHINDYNAMICCONTAINER(st_ctObjects, TYPE, itt) {
+    // Count used ones
     if (itt->IsUsed()) {
       ctUsed++;
     }
-  }}
+  }
+
   return ctUsed;
-}
+};

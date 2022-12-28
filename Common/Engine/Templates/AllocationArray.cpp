@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -13,220 +13,236 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
-
 #ifndef SE_INCL_ALLOCATIONARRAY_CPP
 #define SE_INCL_ALLOCATIONARRAY_CPP
+
 #ifdef PRAGMA_ONCE
   #pragma once
 #endif
 
-#include <Engine/Templates/StaticStackArray.h>
+#include <Engine/Templates/AllocationArray.h>
 #include <Engine/Templates/StaticStackArray.cpp>
 #include <Engine/Templates/StaticArray.cpp>
 
 extern BOOL _bAllocationArrayParanoiaCheck;
 
-/*
- * Default constructor.
- */
+// Default constructor
 template<class Type>
-inline CAllocationArray<Type>::CAllocationArray(void) : 
-  CStaticArray<Type>(),
-  aa_aiFreeElements()
+inline CAllocationArray<Type>::CAllocationArray(void) :
+  CStaticArray<Type>(), aa_aiFreeElements()
 {
   aa_ctAllocationStep = 256;
-}
-
-/*
- * Destructor.
- */
-template<class Type>
-inline CAllocationArray<Type>::~CAllocationArray(void) {
 };
 
-/* Destroy all objects, and reset the array to initial (empty) state. */
+// Destructor
+template<class Type>
+inline CAllocationArray<Type>::~CAllocationArray(void)
+{
+};
+
+// Destroy all objects and reset the array to the initial (empty) state
 template<class Type>
 inline void CAllocationArray<Type>::Clear(void) {
-  // delete the objects themselves
+  // Delete objects themselves
   CStaticArray<Type>::Clear();
-  // clear array of free indices
-  aa_aiFreeElements.Clear();
-}
 
-  /*
- * Set how many elements to allocate when stack overflows.
- */
+  // Clear the array of free indices
+  aa_aiFreeElements.Clear();
+};
+
+// Set how many elements to allocate when pool overflows
 template<class Type>
 inline void CAllocationArray<Type>::SetAllocationStep(INDEX ctStep) 
 {
-  ASSERT(ctStep>0);
+  ASSERT(ctStep > 0);
   aa_ctAllocationStep = ctStep;
 };
 
-/*
- * Create a given number of objects.
- */
+// Create a given number of objects - do not use
 template<class Type>
 inline void CAllocationArray<Type>::New(INDEX iCount) {
-  // never call this!
+  // Never call this!
   ASSERT(FALSE);
 };
 
-/*
- * Destroy all objects.
- */
+// Destroy all objects - do not use
 template<class Type>
 inline void CAllocationArray<Type>::Delete(void) {
-  // never call this!
+  // Never call this!
   ASSERT(FALSE);
-}
+};
 
-/* Preallocate to fixate memory usage. */
+// Preallocate to fixate memory usage
 template<class Type>
 void CAllocationArray<Type>::PreAllocate(INDEX ctCount)
 {
-  // must be empty when calling this
-  ASSERT(aa_aiFreeElements.Count()==0 && CStaticArray<Type>::Count()==0);
-  // expand the array to that size
+  // Must be empty when calling this
+  ASSERT(aa_aiFreeElements.Count() == 0 && CStaticArray<Type>::Count() == 0);
+
+  // Expand the array to that size
   Expand(ctCount);
 
-  // fill all elements as free
+  // Fill all elements as free
   INDEX *piNewFree = aa_aiFreeElements.Push(ctCount);
-  // fill them up
-  for(INDEX iNew=0; iNew<ctCount; iNew++) {
+
+  // Fill them up
+  for (INDEX iNew = 0; iNew < ctCount; iNew++) {
     piNewFree[iNew] = iNew;
   }
-}
+};
 
-/* Alocate a new object. */
+// Allocate a new object
 template<class Type>
 inline INDEX CAllocationArray<Type>::Allocate(void)
 {
-  // if there are no more free indices
-  if (aa_aiFreeElements.Count()==0) {
-    // remember old size
+  // If there are no more free indices
+  if (aa_aiFreeElements.Count() == 0) {
+    // Remember old size
     INDEX ctOldSize = CStaticArray<Type>::Count();
-    // expand the array by the allocation step
-    Expand(ctOldSize+aa_ctAllocationStep);
-    // create new free indices
+
+    // Expand the array by the allocation step
+    Expand(ctOldSize + aa_ctAllocationStep);
+
+    // Create new free indices
     INDEX *piNewFree = aa_aiFreeElements.Push(aa_ctAllocationStep);
-    // fill them up
-    for(INDEX iNew=0; iNew<aa_ctAllocationStep; iNew++) {
-      piNewFree[iNew] = ctOldSize+iNew;
+
+    // Fill them up
+    for (INDEX iNew = 0; iNew < aa_ctAllocationStep; iNew++) {
+      piNewFree[iNew] = ctOldSize + iNew;
     }
   }
-  // pop one free index from the top of stack, and use that one
+
+  // Pop one free index from the top of stack, and use that one
   return aa_aiFreeElements.Pop();
-}
-/* Free object with given index. */
+};
+
+// Free object with given index
 template<class Type>
 inline void CAllocationArray<Type>::Free(INDEX iToFree)
 {
 #ifndef NDEBUG
-  // must be within pool limits
-  ASSERT(iToFree>=0 && iToFree<CStaticArray<Type>::Count());
-  // must not be free
+  // Must be within pool limits
+  ASSERT(iToFree >= 0 && iToFree < CStaticArray<Type>::Count());
+
+  // Must not be free
   if (_bAllocationArrayParanoiaCheck) {
     ASSERT(IsAllocated(iToFree));
   }
 #endif
-  // push its index on top of the free stack
-  aa_aiFreeElements.Push() = iToFree;
-}
 
-/* Free all objects, but keep pool space. */
+  // Push its index on top of the free stack
+  aa_aiFreeElements.Push() = iToFree;
+};
+
+// Free all objects but keep pool space
 template<class Type>
 inline void CAllocationArray<Type>::FreeAll(void)
 {
-  // clear the free array
+  // Clear the free array
   aa_aiFreeElements.PopAll();
-  // push as much free elements as there is pool space
+
+  // Push as many free elements as there is pool space
   INDEX ctSize = CStaticArray<Type>::Count();
   INDEX *piNewFree = aa_aiFreeElements.Push(ctSize);
-  // fill them up
-  for(INDEX iNew=0; iNew<ctSize; iNew++) {
+
+  // Fill them up
+  for (INDEX iNew = 0; iNew < ctSize; iNew++) {
     piNewFree[iNew] = iNew;
   }
-}
+};
 
-// check if an index is allocated (slow!)
+// Check if an index is allocated (slow!)
 template<class Type>
 inline BOOL CAllocationArray<Type>::IsAllocated(INDEX i)
 {
-  // must be within pool limits
-  ASSERT(i>=0 && i<CStaticArray<Type>::Count());
-  // for each free index
+  // Must be within pool limits
+  ASSERT(i >= 0 && i < CStaticArray<Type>::Count());
+
+  // For each free index
   INDEX ctFree = aa_aiFreeElements.Count();
-  for(INDEX iFree=0; iFree<ctFree; iFree++) {
-    // if it is that one
-    if (aa_aiFreeElements[iFree]==i) {
-      // it is not allocated
+
+  for (INDEX iFree = 0; iFree < ctFree; iFree++) {
+    // If it is that one
+    if (aa_aiFreeElements[iFree] == i) {
+      // It is not allocated
       return FALSE;
     }
   }
-  // if not found as free, it is allocated
-  return TRUE;
-}
 
-/* Random access operator. */
+  // If not found as free, it is allocated
+  return TRUE;
+};
+
+// Random access operator
 template<class Type>
 inline Type &CAllocationArray<Type>::operator[](INDEX iObject)
 {
 #ifndef NDEBUG
-  ASSERT(this!=NULL);
-  // must be within pool limits
-  ASSERT(iObject>=0 && iObject<CStaticArray<Type>::Count());
-  // must not be free
+  ASSERT(this != NULL);
+
+  // Must be within pool limits
+  ASSERT(iObject >= 0 && iObject < CStaticArray<Type>::Count());
+
+  // Must not be free
   if (_bAllocationArrayParanoiaCheck) {
     ASSERT(IsAllocated(iObject));
   }
 #endif
+
   return CStaticArray<Type>::operator[](iObject);
-}
+};
+
+// Constant random access operator
 template<class Type>
 inline const Type &CAllocationArray<Type>::operator[](INDEX iObject) const
 {
 #ifndef NDEBUG
-  ASSERT(this!=NULL);
-  // must be within pool limits
-  ASSERT(iObject>=0 && iObject<CStaticArray<Type>::Count());
-  // must not be free
+  ASSERT(this != NULL);
+
+  // Must be within pool limits
+  ASSERT(iObject >= 0 && iObject < CStaticArray<Type>::Count());
+
+  // Must not be free
   if (_bAllocationArrayParanoiaCheck) {
     ASSERT(IsAllocated(iObject));
   }
 #endif
+
   return CStaticArray<Type>::operator[](iObject);
-}
-/* Get number of allocated objects in array. */
+};
+
+// Get number of allocated objects in array
 template<class Type>
 INDEX CAllocationArray<Type>::Count(void) const
 {
-  ASSERT(this!=NULL);
-  // it is pool size without the count of free elements
-  return CStaticArray<Type>::Count()-aa_aiFreeElements.Count();
-}
+  ASSERT(this != NULL);
 
-/* Get index of a object from it's pointer. */
+  // It is pool size without the count of free elements
+  return CStaticArray<Type>::Count() - aa_aiFreeElements.Count();
+};
+
+// Get index of an object from its pointer
 template<class Type>
 INDEX CAllocationArray<Type>::Index(Type *ptObject)
 {
-  ASSERT(this!=NULL);
+  ASSERT(this != NULL);
+
   INDEX i = CStaticArray<Type>::Index(ptObject);
   ASSERT(IsAllocated(i));
-  return i;
-}
 
-/* Assignment operator. */
+  return i;
+};
+
+// Assignment operator
 template<class Type>
-CAllocationArray<Type> &CAllocationArray<Type>::operator=(
-  const CAllocationArray<Type> &aaOriginal)
+CAllocationArray<Type> &CAllocationArray<Type>::operator=(const CAllocationArray<Type> &aaOriginal)
 {
-  ASSERT(this!=NULL);
-  (CStaticArray<Type>&)(*this) = (CStaticArray<Type>&)aaOriginal;
+  ASSERT(this != NULL);
+
+  CStaticArray<Type>::operator=(aaOriginal);
+
   aa_aiFreeElements = aaOriginal.aa_aiFreeElements;
   aa_ctAllocationStep = aaOriginal.aa_ctAllocationStep;
-}
+};
 
-
-#endif  /* include-once check. */
-
+#endif // include-once check

@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -15,6 +15,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #ifndef SE_INCL_SELECTION_CPP
 #define SE_INCL_SELECTION_CPP
+
 #ifdef PRAGMA_ONCE
   #pragma once
 #endif
@@ -22,85 +23,73 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Templates/Selection.h>
 #include <Engine/Templates/DynamicContainer.cpp>
 
-/*
- * Select one object.
- */
+// Select one object
 template<class cType, unsigned long ulFlag>
 void CSelection<cType, ulFlag>::Select(cType &tToSelect)
 {
-  // if the object is not yet selected
+  // If the object is not selected
   if (!tToSelect.IsSelected(ulFlag)) {
-    // select it
+    // Select add it to the container
     tToSelect.Select(ulFlag);
-    // add it to this container
     Add(&tToSelect);
-
-  // if the object is already selected
-  } else {
-    ASSERTALWAYS("Object already selected!");
+    return;
   }
-}
 
-/*
- * Deselect one object.
- */
+  // The object should not be selected
+  ASSERTALWAYS("Object already selected!");
+};
+
+// Deselect one object
 template<class cType, unsigned long ulFlag>
 void CSelection<cType, ulFlag>::Deselect(cType &tToSelect)
 {
-  // if the object is selected
+  // If the object is selected
   if (tToSelect.IsSelected(ulFlag)) {
-    // deselect it
+    // Deselect and remove it from the container
     tToSelect.Deselect(ulFlag);
-    // remove it from this container
     Remove(&tToSelect);
-
-  // if the object is not selected
-  } else {
-    ASSERTALWAYS("Object is not selected!");
+    return;
   }
-}
 
-/*
- * Test if one object is selected.
- */
+  // The object should be selected
+  ASSERTALWAYS("Object is not selected!");
+};
+
+// Check if an object is selected
 template<class cType, unsigned long ulFlag>
 BOOL CSelection<cType, ulFlag>::IsSelected(cType &tToSelect)
 {
-  // test if the object is selected
   return tToSelect.IsSelected(ulFlag);
-}
+};
 
-/*
- * Deselect all objects.
- */
+// Deselect all objects
 template<class cType, unsigned long ulFlag>
 void CSelection<cType, ulFlag>::Clear(void)
 {
-  // for all objects in the container
+  // Go through all objects
   FOREACHINDYNAMICCONTAINER(*this, cType, itObject) {
-    // object must be allocated and valid
+    // The object must be allocated and valid
     ASSERT(_CrtIsValidPointer(&*itObject, sizeof(cType), TRUE));
-/*    ASSERT(_CrtIsValidHeapPointer(&*itObject));
-    ASSERT(_CrtIsMemoryBlock(&*itObject, sizeof(cType), NULL, NULL, NULL ));
-    */
+    //ASSERT(_CrtIsValidHeapPointer(&*itObject));
+    //ASSERT(_CrtIsMemoryBlock(&*itObject, sizeof(cType), NULL, NULL, NULL ));
 
-    // deselect it
+    // Deselect it
     itObject->Deselect(ulFlag);
   }
-  // clear the entire container at once
-  CDynamicContainer<cType>::Clear();
-}
 
+  // Clear the entire container at once
+  CDynamicContainer<cType>::Clear();
+};
+
+// Get first in selection (NULL if empty selection)
 template<class cType, unsigned long ulFlag>
 cType *CSelection<cType, ulFlag>::GetFirstInSelection(void)
 {
-  if( Count() == 0)
-  {
+  // Empty selection
+  if (Count() == 0) {
     return NULL;
   }
-  return (cType *) &CDynamicContainer<cType>::GetFirst();
-}
+  return (cType *)&CDynamicContainer<cType>::GetFirst();
+};
 
-
-#endif  /* include-once check. */
-
+#endif // include-once check

@@ -1,4 +1,4 @@
-/* Copyright (c) 2002-2012 Croteam Ltd. 
+/* Copyright (c) 2002-2012 Croteam Ltd.
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -15,46 +15,51 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #ifndef SE_INCL_SELECTION_H
 #define SE_INCL_SELECTION_H
+
 #ifdef PRAGMA_ONCE
   #pragma once
 #endif
 
 #include <Engine/Templates/DynamicContainer.h>
 
-/*
- * A selection of some objects that support selecting.
- */
+// A selection of some objects that support selecting
 template <class cType, unsigned long ulFlag>
 class CSelection : public CDynamicContainer<cType> {
-public:
-  /* Deselect all objects. */
-  void Clear(void);
-  /* Destructor. */
-  ~CSelection(void) { Clear(); }
+  public:
+    // Destructor
+    ~CSelection(void) {
+      Clear();
+    };
 
-  /* Select one object. */
-  void Select(cType &tToSelect);
-  /* Deselect one object. */
-  void Deselect(cType &tToDeselect);
-  /* Test if one object is selected. */
-  BOOL IsSelected(cType &tToSelect);
-  /* Get first in selection. NULL if empty selection */
-  cType *GetFirstInSelection(void);
+    // Select one object
+    void Select(cType &tToSelect);
+
+    // Deselect one object
+    void Deselect(cType &tToDeselect);
+
+    // Check if an object is selected
+    BOOL IsSelected(cType &tToSelect);
+
+    // Deselect all objects
+    void Clear(void);
+
+    // Get first in selection (NULL if empty selection)
+    cType *GetFirstInSelection(void);
 };
 
-// macro for implementing selecting features in a class
-#define IMPLEMENT_SELECTING(m_ulFlags)                  \
-  inline void Select(unsigned long ulFlag) {            \
-    m_ulFlags |= ulFlag;                                \
-  }                                                     \
-  inline void Deselect(unsigned long ulFlag) {          \
-    m_ulFlags &= ~ulFlag;                               \
-  }                                                     \
-  inline BOOL IsSelected(unsigned long ulFlag) const {  \
-    return m_ulFlags & ulFlag;                          \
+// Macro for implementing selecting features in a class
+#define IMPLEMENT_SELECTING(m_ulFlags)                 \
+  inline void Select(unsigned long ulFlag) {           \
+    m_ulFlags |= ulFlag;                               \
+  }                                                    \
+  inline void Deselect(unsigned long ulFlag) {         \
+    m_ulFlags &= ~ulFlag;                              \
+  }                                                    \
+  inline BOOL IsSelected(unsigned long ulFlag) const { \
+    return m_ulFlags & ulFlag;                         \
   }
 
+// [Cecil] Inline definition
+#include <Engine/Templates/Selection.cpp>
 
-
-#endif  /* include-once check. */
-
+#endif // include-once check
