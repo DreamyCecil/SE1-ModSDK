@@ -20,6 +20,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #pragma once
 #endif
 
+// Disable warnings about identifier truncation in Debug
+#pragma warning(disable: 4786)
+
 #include <Engine/Entities/EntityProperties.h>
 #include "DllEntityEvent.h"
 
