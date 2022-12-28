@@ -1,29 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?> 
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <ImportGroup Label="PropertySheets">
-    <Import Project="SeriousEngine.props" />
-  </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '5.0'">vs97</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '6.0'">vs60</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '7.0'">vs2002</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '7.1'">vs2003</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '8.0'">vs2005</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'== '9.0'">vs2008</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='10.0'">vs2010</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='11.0'">vs2012</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='12.0'">vs2013</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='14.0'">vs2015</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='15.0'">vs2017</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='16.0'">vs2019</SamSdkVS>
-    <SamSdkVS Condition="'$(VisualStudioVersion)'=='17.0'">vs2022</SamSdkVS>
-    <SamSdkVS Condition="'$(SamSdkVS)'==''">vs20XX</SamSdkVS>
-
-    <BinDir>$(SolutionDir)Bin\$(SamSdkVS).$(Configuration)\</BinDir>
-    <ObjDir>$(SolutionDir)Obj\$(SamSdkVS).$(Configuration)\$(ProjectName)\</ObjDir>
-    <CommonIncludes>$(ProjectDir);$(SolutionDir);$(SolutionDir)Includes\;$(SolutionDir)Includes\Common\</CommonIncludes>
-    <OtherLibraries>$(SolutionDir)Bin\$(SamSdkVS).$(Configuration);$(LibraryPath)</OtherLibraries>
-
-    <CommonPreproc>$(SamGamesDefinitions);$(EngineVerDefinitions);SE1_D3D;DIRECT3D_VERSION=0x0800;WIN32;_WINDOWS;_WINDLL;_USRDLL;_USE_32BIT_TIME_T</CommonPreproc>
+    <BinDir>$(SolutionDir)Bin\$(SE1SdkVS).$(Configuration)\</BinDir>
+    <ObjDir>$(SolutionDir)Obj\$(SE1SdkVS).$(Configuration)\$(ProjectName)\</ObjDir>
+    <CommonIncludes>$(SolutionDir);$(ProjectDir)</CommonIncludes>
+    <OtherLibraries>$(SolutionDir)Bin\$(SE1SdkVS).$(Configuration);$(LibraryPath)</OtherLibraries>
   </PropertyGroup>
 </Project>

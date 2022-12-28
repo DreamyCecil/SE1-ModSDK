@@ -98,42 +98,50 @@
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE107.props" />
+    <Import Project="..\Includes\Properties\TSE107.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE105.props" />
+    <Import Project="..\Includes\Properties\TSE105.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TFE105.props" />
+    <Import Project="..\Includes\Properties\TFE105.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE110.props" />
+    <Import Project="..\Includes\Properties\TSE110.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE107.props" />
+    <Import Project="..\Includes\Properties\TSE107.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE105.props" />
+    <Import Project="..\Includes\Properties\TSE105.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TFE105.props" />
+    <Import Project="..\Includes\Properties\TFE105.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'" Label="PropertySheets">
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
     <Import Project="$(VCTargetsPath)Microsoft.Cpp.UpgradeFromVC60.props" />
-    <Import Project="..\Properties\TSE110.props" />
+    <Import Project="..\Includes\Properties\TSE110.props" />
+    <Import Project="..\Properties\Common.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">
@@ -141,62 +149,62 @@
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)D</TargetName>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(EngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(EngineLibraries);$(OtherLibraries)</LibraryPath>
+    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">
@@ -206,7 +214,7 @@
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -243,7 +251,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -280,7 +288,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -317,7 +325,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -357,7 +365,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\Debug\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -395,7 +403,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -433,7 +441,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -471,7 +479,7 @@ copy $(OutDir)$(TargetName).lib $(SolutionDir)..\Bin\ &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(EnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
