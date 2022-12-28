@@ -20,11 +20,10 @@ You can use it to build mods for all Serious Sam games on Serious Engine 1, incl
 2. Select `Debug_TSE110` or `Release_TSE110` configuration to compile source code for Serious Engine 1.10.
 3. Otherwise follow the steps below before compiling the source code for any older Serious Engine version (e.g. 1.05 or 1.07).
 
-**Important!** If you reorder files in the `Entities` project tree, make sure that `LibMain.cpp` file is included **at the very beginning** before any other source file!
+**Important!** If you reorder files in the `Entities` project tree, make sure that `(LibMain).cpp` file always stays at the very beginning before any other source file!
 It defines specific structures that need to be initialized before initializing any other code upon starting the module.
 
-You can verify this by opening `Entities.vcxproj` in any text editor (it's an XML config) and searching for `LibMain.cpp` string. It should be under its own `ItemGroup` block before every other block with source files.
-If it's not, move it at the beginning before any block with source files.
+Do not rename it and do not use any symbols in the beginning of your own filenames because it's generally a bad practice!
 
 ## Using MSVC 6.0
 You have to use an old compiler in order to make your code compatible with engine versions from 1.00 to 1.07 and 1.50.
