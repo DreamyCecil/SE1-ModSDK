@@ -55,7 +55,7 @@ When running a selected project, make sure the mod in project properties (**Debu
 Newer Visual Studio IDEs are unable to use program database files (`.pdb`) that are generated with MSVC 6.0, making traditional debugging impossible.
 
 There are two ways around this:
-1. Attach to the running process using `Microsoft Visual C++ 6.0` or `Visual Studio 2010`.
+1. Attach to the running process using **Microsoft Visual C++ 6.0** or **Visual Studio 2010**.
 2. Build for Serious Engine 1.10 and debug under the new engine (assuming your game's Bin folder contains binaries from 1.10 that have been built using the same compiler).
 
 # License
