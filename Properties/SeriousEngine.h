@@ -38,8 +38,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #define SE_CCS 'c' /* Carnivores: Cityscape */
   #define SE_DH3 'd' /* Deer Hunter 2003      */
   #define SE_EC  'e' /* EuroCops              */
-  #define SE_NF  'n' /* Nitro Family          */
   #define SE_LC  'l' /* Last Chaos            */
+  #define SE_NF  'n' /* Nitro Family          */
+  #define SE_RK  'r' /* Rakion                */
 
 /* Serious Engine versions for SE1_VER macro */
 

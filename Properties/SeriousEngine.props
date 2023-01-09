@@ -2,8 +2,8 @@
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup Label="UserMacros">
     <SE1SamGames>SS_TFE='F';SS_TSE='S';SS_XBX='X';SS_150='B';SS_REV='R';SS_EVA='A';</SE1SamGames>
-    <SE150Games>SE_ABZ='a';SE_BH3='b';SE_CCS='c';SE_DH3='d';SE_EC='e';SE_NF='n';SE_LC='l';</SE150Games>
-    <SE1AllGames>$(SE1SamGames);$(SE150Games);</SE1AllGames>
+    <SE1OtherGames>SE_ABZ='a';SE_BH3='b';SE_CCS='c';SE_DH3='d';SE_EC='e';SE_LC='l';SE_NF='n';SE_RK='r';</SE1OtherGames>
+    <SE1AllGames>$(SE1SamGames);$(SE1OtherGames);</SE1AllGames>
 
     <SE1Versions>SE1_EVA=1;SE1_PB1=10;SE1_PB2=20;SE1_PB21=21;SE1_100=100;SE1_101=101;SE1_102=102;SE1_104=104;SE1_105=105;SE1_107=107;SE1_110=110;SE1_150=150;</SE1Versions>
   </PropertyGroup>
