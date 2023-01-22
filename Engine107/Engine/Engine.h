@@ -1,3 +1,7 @@
+// [Cecil] Include guard to allow multiple inclusions
+#ifndef SE1_107_INCL_ENGINE_H
+#define SE1_107_INCL_ENGINE_H
+
 // set this to 1 to enable checks whether somethig is deleted while iterating some array/container
 #define CHECKARRAYLOCKING 0
 
@@ -168,3 +172,5 @@ ENGINE_API extern FLOAT tmp_af[10];
 ENGINE_API extern INDEX tmp_ai[10];
 ENGINE_API extern INDEX tmp_i;
 ENGINE_API extern INDEX tmp_fAdd;
+
+#endif // [Cecil] Include guard

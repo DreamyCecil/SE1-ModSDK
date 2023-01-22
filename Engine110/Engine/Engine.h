@@ -13,6 +13,10 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
+// [Cecil] Include guard to allow multiple inclusions
+#ifndef SE1_110_INCL_ENGINE_H
+#define SE1_110_INCL_ENGINE_H
+
 // set this to 1 to enable checks whether somethig is deleted while iterating some array/container
 #define CHECKARRAYLOCKING 0
 
@@ -186,3 +190,5 @@ ENGINE_API extern FLOAT tmp_af[10];
 ENGINE_API extern INDEX tmp_ai[10];
 ENGINE_API extern INDEX tmp_i;
 ENGINE_API extern INDEX tmp_fAdd;
+
+#endif // [Cecil] Include guard
