@@ -1,4 +1,3 @@
-#include <Engine/Engine.h>
 #include <GameV/Game.h>
 #include <GameV/SEColors.h>
 
@@ -11,8 +10,8 @@
 #define DECL_DLL 
 #endif
 
-#include <EntitiesMP/Global.h>
-#include <EntitiesMP/Common/Common.h>
-#include <EntitiesMP/Common/GameInterface.h>
-#include <EntitiesMP/Player.h>
+#include <EntitiesV/Global.h>
+#include <EntitiesV/Common/Common.h>
+#include <EntitiesV/Common/GameInterface.h>
+#include <EntitiesV/Player.h>
 #undef DECL_DLL

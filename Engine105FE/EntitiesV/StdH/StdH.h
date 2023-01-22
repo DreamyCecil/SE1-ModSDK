@@ -1,10 +1,9 @@
-#include <Engine/Engine.h>
 #include <GameV/SessionProperties.h>
 #include <GameV/PlayerSettings.h>
 
 /* rcg10042001 protect against Visual C-isms. */
 #ifdef _MSC_VER
-#define DECL_DLL _declspec(dllexport)
+#define DECL_DLL _declspec(dllimport)
 #endif
 
 #ifdef PLATFORM_UNIX

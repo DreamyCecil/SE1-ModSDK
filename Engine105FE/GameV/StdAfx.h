@@ -1,4 +1,3 @@
-#include <Engine/Engine.h>
 #include <GameV/Game.h>
 
 /* rcg10042001 protect against Visual C-isms. */
@@ -10,8 +9,8 @@
 #define DECL_DLL 
 #endif
 
-#include <Entities/Global.h>
-#include <Entities/Common/Common.h>
-#include <Entities/Common/GameInterface.h>
-#include <Entities/Player.h>
+#include <EntitiesV/Global.h>
+#include <EntitiesV/Common/Common.h>
+#include <EntitiesV/Common/GameInterface.h>
+#include <EntitiesV/Player.h>
 #undef DECL_DLL
