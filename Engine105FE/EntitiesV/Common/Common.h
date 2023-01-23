@@ -1,7 +1,7 @@
 // common headers for flesh entity classes
 
-#include <Entities/Debris.h>   /* rcg10062001 need enum definition... */
-#include <Entities/KeyItem.h>  /* rcg10062001 need enum definition... */
+#include <EntitiesV/Debris.h>   /* rcg10062001 need enum definition... */
+#include <EntitiesV/KeyItem.h>  /* rcg10062001 need enum definition... */
 
 #define SURFACE_SAND 9
 #define SURFACE_WATER 12
