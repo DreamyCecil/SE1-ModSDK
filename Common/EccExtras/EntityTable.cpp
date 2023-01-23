@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 Dreamy Cecil
+/* Copyright (c) 2022-2023 Dreamy Cecil
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -38,6 +38,7 @@ void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) c
 
 // Constructor with immediate table insertion
 CEntityTableEntry *CEntityTableEntry::CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
+  const char **astrProps, const char *strProps, INDEX *piPropsCt, const char *strPropsCt,
   CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX *piEventsCt, const char *strEventsCt)
 {
   // Create an entry under a class name
@@ -46,8 +47,16 @@ CEntityTableEntry *CEntityTableEntry::CreateEntry(const char *strClassName, CDLL
   // Set entry fields
   ete.ete_pdecClass = pdecClass;
   ete.ete_strClass = strClass;
+
+  ete.ete_astrProps = astrProps;
+  ete.ete_strProps = strProps;
+
+  ete.ete_piPropsCt = piPropsCt;
+  ete.ete_strPropsCt = strPropsCt;
+
   ete.ete_adeeEvents = adeeEvents;
   ete.ete_strEvents = strEvents;
+
   ete.ete_piEventsCt = piEventsCt;
   ete.ete_strEventsCt = strEventsCt;
 

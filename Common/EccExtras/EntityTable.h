@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 Dreamy Cecil
+/* Copyright (c) 2022-2023 Dreamy Cecil
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -44,6 +44,13 @@ class CEntityTableEntry {
     CDLLEntityClass *ete_pdecClass; // Pointer to the library entity class
     const char *ete_strClass; // Symbol name of the library entity class
 
+    // [Cecil] NOTE: In SSR these may be null and symbol names may be empty strings
+    const char **ete_astrProps; // Array of entity property identifiers
+    const char *ete_strProps; // Symbol name of the array of entity property identifiers
+
+    INDEX *ete_piPropsCt; // Pointer to the entity property counter
+    const char *ete_strPropsCt; // Symbol name of the entity property counter
+
     // [Cecil] NOTE: In 1.50 these may be null and symbol names may be empty strings
     CDLLEntityEvent **ete_adeeEvents; // Pointer to the array of entity events
     const char *ete_strEvents; // Symbol name of the array of entity events
@@ -57,6 +64,7 @@ class CEntityTableEntry {
 
     // Constructor with immediate table insertion
     static CEntityTableEntry *CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
+      const char **astrProps, const char *strProps, INDEX *piPropsCt, const char *strPropsCt,
       CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX *piEventsCt, const char *strEventsCt);
 };
 
@@ -73,6 +81,8 @@ extern "C" __declspec(dllexport) CLibEntityTable DLL_EntityTable;
 #define ENTITYTABLEENTRY(ClassName) CEntityTableEntry *ClassName##_tableentry = \
   CEntityTableEntry::CreateEntry(ENTITYTABLESTRING(ClassName), \
     &ClassName##_DLLClass, ENTITYTABLESTRING(ClassName##_DLLClass), \
+    (const char **) ClassName##_propnames, ENTITYTABLESTRING(ClassName##_propnames), \
+    &ClassName##_propnamesct, ENTITYTABLESTRING(ClassName##_propnamesct), \
     (CDLLEntityEvent **)&ClassName##_events, ENTITYTABLESTRING(ClassName##_events), \
     &ClassName##_eventsct, ENTITYTABLESTRING(ClassName##_eventsct) \
   )
