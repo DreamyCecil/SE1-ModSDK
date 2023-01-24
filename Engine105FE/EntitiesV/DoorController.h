@@ -90,4 +90,24 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00dd0027_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00dd0028_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CDoorController_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_penTarget1",
+  "m_penTarget2",
+  "m_fWidth",
+  "m_fHeight",
+  "m_bPlayersOnly",
+  "m_dtType",
+  "m_strLockedMessage",
+  "m_penLockedTarget",
+  "m_kitKey",
+  "m_bTriggerOnAnything",
+  "m_bActive",
+  "m_bLocked",
+  "m_penCaused",
+};
+#define CDoorController_propnamesct ARRAYCOUNT(CDoorController_propnames)
+
 #endif // _EntitiesV_DoorController_INCLUDED

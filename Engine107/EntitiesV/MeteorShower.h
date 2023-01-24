@@ -36,4 +36,18 @@ virtual const CTString &GetName(void) const { return m_strName; };
   BOOL H0x02670008_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x02670009_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CMeteorShower_propnames[] = {
+  "m_strName",
+  "m_aAngle",
+  "m_iPerTickLaunchChance",
+  "m_fMinStretch",
+  "m_fMaxStretch",
+  "m_rSafeArea",
+  "m_rArea",
+  "m_fSpeed",
+  "m_fLaunchDistance",
+};
+#define CMeteorShower_propnamesct ARRAYCOUNT(CMeteorShower_propnames)
+
 #endif // _EntitiesV_MeteorShower_INCLUDED

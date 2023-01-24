@@ -57,4 +57,14 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x02bc000d_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x02bc000e_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CWatcher_propnames[] = {
+  "m_penOwner",
+  "m_tmDelay",
+  "m_fClosestPlayer",
+  "m_iPlayerToCheck",
+  "m_penPrediction",
+};
+#define CWatcher_propnamesct ARRAYCOUNT(CWatcher_propnames)
+
 #endif // _EntitiesV_Watcher_INCLUDED

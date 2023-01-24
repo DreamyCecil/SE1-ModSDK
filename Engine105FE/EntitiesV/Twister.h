@@ -60,4 +60,22 @@ public:
   BOOL H0x01fb0007_Main_07(const CEntityEvent &__eeInput);
   BOOL H0x01fb0008_Main_08(const CEntityEvent &__eeInput);
 };
+
+static const char *CTwister_propnames[] = {
+  "m_penOwner",
+  "m_EtsSize",
+  "m_vStartPosition",
+  "m_vDesiredPosition",
+  "m_vDesiredAngle",
+  "m_fStopTime",
+  "m_fActionRadius",
+  "m_fActionTime",
+  "m_fDiffMultiply",
+  "m_fUpMultiply",
+  "m_bFadeOut",
+  "m_fFadeStartTime",
+  "m_fFadeTime",
+};
+#define CTwister_propnamesct ARRAYCOUNT(CTwister_propnames)
+
 #endif // _EntitiesV_Twister_INCLUDED

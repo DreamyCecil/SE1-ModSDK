@@ -129,4 +129,50 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x0261001f_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x02610020_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CPyramidSpaceShip_propnames[] = {
+  "m_strName",
+  "m_fMovingSpeed",
+  "m_penBeamHit",
+  "m_penLightBeam",
+  "m_tmBeamTime",
+  "m_penHitPlaceFlare",
+  "m_tmHitFlareTime",
+  "m_iRingCounter",
+  "m_fRatio",
+  "m_strDescription",
+  "m_epssState",
+  "m_fStretch",
+  "m_bStopMoving",
+  "m_penTarget",
+  "m_penFlyAwayTarget",
+  "m_penLast",
+  "m_bMoving",
+  "m_fRot",
+  "m_fLastRotSpeed",
+  "m_fRotSpeed",
+  "m_bApplyDamageToHitted",
+  "m_tmTemp",
+  "m_tmAtMarker",
+  "m_tmDelta",
+  "m_vPNp0",
+  "m_vPNp1",
+  "m_vTNp0",
+  "m_vTNp1",
+  "m_qPNp0",
+  "m_qPNp1",
+  "m_qANp0",
+  "m_qANp1",
+  "m_fRotSpeedp0",
+  "m_fRotSpeedp1",
+  "m_fTRotSpeedp0",
+  "m_fTRotSpeedp1",
+  "m_soPlates",
+  "m_soBeamMachine",
+  "m_soBeam",
+  "m_soFlaresFX",
+  "m_bFireingDeactivatedBeam",
+};
+#define CPyramidSpaceShip_propnamesct ARRAYCOUNT(CPyramidSpaceShip_propnames)
+
 #endif // _EntitiesV_PyramidSpaceShip_INCLUDED

@@ -59,4 +59,40 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x01600005_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01600006_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CCrateBus_propnames[] = {
+  "m_bActive",
+  "m_fExplosionStretch",
+  "m_tmDeath",
+  "m_strName",
+  "m_ctMentals",
+  "m_bShowTrail",
+  "m_fStretch",
+  "m_fnmHeadTex01",
+  "m_fnmHeadTex02",
+  "m_fnmHeadTex03",
+  "m_fnmHeadTex04",
+  "m_fnmHeadTex05",
+  "m_fnmHeadTex06",
+  "m_fnmHeadTex07",
+  "m_fnmHeadTex08",
+  "m_fnmHeadTex09",
+  "m_fnmHeadTex10",
+  "m_fnmHeadTex11",
+  "m_fnmHeadTex12",
+  "m_fnmHeadTex13",
+  "m_fnmHeadTex14",
+  "m_fnmHeadTex15",
+  "m_fnmHeadTex16",
+  "m_fnmHeadTex17",
+  "m_fnmHeadTex18",
+  "m_fnmHeadTex19",
+  "m_fnmHeadTex20",
+  "m_fnmHeadTex21",
+  "m_fnmHeadTex22",
+  "m_fnmHeadTex23",
+  "m_fnmHeadTex24",
+};
+#define CCrateBus_propnamesct ARRAYCOUNT(CCrateBus_propnames)
+
 #endif // _EntitiesV_CrateBus_INCLUDED

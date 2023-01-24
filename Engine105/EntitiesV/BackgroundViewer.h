@@ -15,4 +15,11 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CBackgroundViewer_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CBackgroundViewer_propnames[] = {
+  "m_bActive",
+  "m_penWorldSettingsController",
+};
+#define CBackgroundViewer_propnamesct ARRAYCOUNT(CBackgroundViewer_propnames)
+
 #endif // _EntitiesV_BackgroundViewer_INCLUDED

@@ -35,4 +35,29 @@ CTFileName m_fnOldModel;
 #define  STATE_CModelHolder_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CModelHolder_propnames[] = {
+  "m_fnModel",
+  "m_fnTexture",
+  "m_fStretchAll",
+  "m_fStretchX",
+  "m_fStretchY",
+  "m_fStretchZ",
+  "m_strName",
+  "m_strDescription",
+  "m_bColliding",
+  "m_iModelAnimation",
+  "m_iTextureAnimation",
+  "m_bClusterShadows",
+  "m_bBackground",
+  "m_bCustomShading",
+  "m_aShadingDirection",
+  "m_colLight",
+  "m_colAmbient",
+  "m_fnmLightAnimation",
+  "m_iLightAnimation",
+  "m_aoLightAnimation",
+};
+#define CModelHolder_propnamesct ARRAYCOUNT(CModelHolder_propnames)
+
 #endif // _EntitiesV_ModelHolder_INCLUDED

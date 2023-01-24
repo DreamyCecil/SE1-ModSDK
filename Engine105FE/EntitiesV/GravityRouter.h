@@ -23,4 +23,8 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CGravityRouter_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGravityRouter_propnames[] = {""};
+#define CGravityRouter_propnamesct 0
+
 #endif // _EntitiesV_GravityRouter_INCLUDED

@@ -61,4 +61,13 @@ public:
 #define  STATE_CBoneman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CBoneman_propnames[] = {
+  "m_bFistHit",
+  "m_bTouchAnother",
+  "m_soFeet",
+  "m_bRunSoundPlaying",
+};
+#define CBoneman_propnamesct ARRAYCOUNT(CBoneman_propnames)
+
 #endif // _EntitiesV_Boneman_INCLUDED

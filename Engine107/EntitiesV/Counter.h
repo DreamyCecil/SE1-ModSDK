@@ -42,4 +42,26 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x00e80007_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00e80008_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CCounter_propnames[] = {
+  "m_fCountdownSpeed",
+  "m_penTarget",
+  "m_fNumber",
+  "m_tmStart",
+  "m_strName",
+  "m_soSound",
+  "m_iCountFrom",
+  "m_pen0",
+  "m_pen1",
+  "m_pen2",
+  "m_pen3",
+  "m_pen4",
+  "m_pen5",
+  "m_pen6",
+  "m_pen7",
+  "m_pen8",
+  "m_pen9",
+};
+#define CCounter_propnamesct ARRAYCOUNT(CCounter_propnames)
+
 #endif // _EntitiesV_Counter_INCLUDED

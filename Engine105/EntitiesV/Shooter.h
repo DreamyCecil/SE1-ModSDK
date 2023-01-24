@@ -81,4 +81,26 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x01590017_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01590018_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CShooter_propnames[] = {
+  "m_fShootingPeriod",
+  "m_sftType",
+  "m_fHealth",
+  "m_fCannonBallSize",
+  "m_fCannonBallPower",
+  "m_iModelPreFireAnimation",
+  "m_iTexturePreFireAnimation",
+  "m_iModelPostFireAnimation",
+  "m_iTexturePostFireAnimation",
+  "m_fFlameBurstDuration",
+  "m_fRndBeginWait",
+  "m_penSoundLaunch",
+  "m_soLaunch",
+  "m_penFlame",
+  "m_bFiring",
+  "m_bIndestructable",
+  "m_tmFlameStart",
+};
+#define CShooter_propnamesct ARRAYCOUNT(CShooter_propnames)
+
 #endif // _EntitiesV_Shooter_INCLUDED

@@ -24,4 +24,10 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CBlendController_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CBlendController_propnames[] = {
+  "m_bctType",
+};
+#define CBlendController_propnamesct ARRAYCOUNT(CBlendController_propnames)
+
 #endif // _EntitiesV_BlendController_INCLUDED

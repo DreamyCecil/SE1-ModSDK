@@ -53,4 +53,11 @@ public:
 #define  STATE_CDemon_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CDemon_propnames[] = {
+  "m_iCounter",
+  "m_penFireFX",
+};
+#define CDemon_propnamesct ARRAYCOUNT(CDemon_propnames)
+
 #endif // _EntitiesV_Demon_INCLUDED

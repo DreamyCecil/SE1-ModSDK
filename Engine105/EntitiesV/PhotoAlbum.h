@@ -34,4 +34,14 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x0266000d_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x0266000e_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CPhotoAlbum_propnames[] = {
+  "m_fStretch",
+  "m_strName",
+  "m_iCurrentPage",
+  "m_tmPageWait",
+  "m_soPage",
+};
+#define CPhotoAlbum_propnamesct ARRAYCOUNT(CPhotoAlbum_propnames)
+
 #endif // _EntitiesV_PhotoAlbum_INCLUDED

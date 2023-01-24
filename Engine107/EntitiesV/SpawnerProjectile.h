@@ -35,4 +35,17 @@ public:
   BOOL H0x01fb0003_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01fb0004_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CSpawnerProjectile_propnames[] = {
+  "m_penOwner",
+  "m_penTemplate",
+  "m_fSize",
+  "m_fTimeAdjust",
+  "m_bExploding",
+  "m_fExplosionDuration",
+  "m_tmExplosionBegin",
+  "m_tmSpawn",
+};
+#define CSpawnerProjectile_propnamesct ARRAYCOUNT(CSpawnerProjectile_propnames)
+
 #endif // _EntitiesV_SpawnerProjectile_INCLUDED

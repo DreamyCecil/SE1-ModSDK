@@ -48,4 +48,16 @@ public:
 #define  STATE_CDevilMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CDevilMarker_propnames[] = {
+  "m_datType",
+  "m_iWaitIdles",
+  "m_penDevil",
+  "m_penTrigger",
+  "m_penToDestroy1",
+  "m_penToDestroy2",
+  "m_fAttackRadius",
+};
+#define CDevilMarker_propnamesct ARRAYCOUNT(CDevilMarker_propnames)
+
 #endif // _EntitiesV_DevilMarker_INCLUDED

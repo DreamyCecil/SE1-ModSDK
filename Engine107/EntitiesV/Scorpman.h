@@ -85,4 +85,15 @@ CLightSource m_lsLightSource;
 #define  STATE_CScorpman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CScorpman_propnames[] = {
+  "m_smtType",
+  "m_bFireBulletCount",
+  "m_iSpawnEffect",
+  "m_fFireTime",
+  "m_aoLightAnimation",
+  "m_bSleeping",
+};
+#define CScorpman_propnamesct ARRAYCOUNT(CScorpman_propnames)
+
 #endif // _EntitiesV_Scorpman_INCLUDED

@@ -25,4 +25,11 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x01960001_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01960002_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CExotechLarvaAnimator_propnames[] = {
+  "m_penLarva",
+  "m_penPrediction",
+};
+#define CExotechLarvaAnimator_propnamesct ARRAYCOUNT(CExotechLarvaAnimator_propnames)
+
 #endif // _EntitiesV_ExotechLarvaAnimator_INCLUDED

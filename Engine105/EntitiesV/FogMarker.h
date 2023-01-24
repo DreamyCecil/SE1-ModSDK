@@ -44,4 +44,26 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CFogMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CFogMarker_propnames[] = {
+  "m_fDepth",
+  "m_fAbove",
+  "m_fBelow",
+  "m_fFar",
+  "m_faType",
+  "m_fDensity",
+  "m_fgType",
+  "m_fGraduation",
+  "m_bDensityDirect",
+  "m_fDensityPercentage",
+  "m_fDensityDistance",
+  "m_bGraduationDirect",
+  "m_fGraduationPercentage",
+  "m_fGraduationDistance",
+  "m_iSizeL",
+  "m_iSizeH",
+  "m_colColor",
+};
+#define CFogMarker_propnamesct ARRAYCOUNT(CFogMarker_propnames)
+
 #endif // _EntitiesV_FogMarker_INCLUDED

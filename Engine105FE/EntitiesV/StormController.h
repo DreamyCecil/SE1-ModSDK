@@ -57,4 +57,34 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x025e000e_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x025e000f_Main_06(const CEntityEvent &__eeInput);
 };
+
+static const char *CStormController_propnames[] = {
+  "m_penwsc",
+  "m_strName",
+  "m_fNextLightningDelay",
+  "m_bStormOn",
+  "m_fNextLightningStrike",
+  "m_penLightning00",
+  "m_penLightning01",
+  "m_penLightning02",
+  "m_penLightning03",
+  "m_penLightning04",
+  "m_penLightning05",
+  "m_penLightning06",
+  "m_penLightning07",
+  "m_penLightning08",
+  "m_penLightning09",
+  "m_penLightning10",
+  "m_penLightning11",
+  "m_penLightning12",
+  "m_penLightning13",
+  "m_penLightning14",
+  "m_penLightning15",
+  "m_penLightning16",
+  "m_penLightning17",
+  "m_penLightning18",
+  "m_penLightning19",
+};
+#define CStormController_propnamesct ARRAYCOUNT(CStormController_propnames)
+
 #endif // _EntitiesV_StormController_INCLUDED

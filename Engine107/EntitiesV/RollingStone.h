@@ -43,4 +43,30 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x025c0002_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x025c0003_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CRollingStone_propnames[] = {
+  "m_fBounce",
+  "m_fHealth",
+  "m_fDamage",
+  "m_bFixedDamage",
+  "m_fStretch",
+  "m_fDeceleration",
+  "m_fStartSpeed",
+  "m_vStartDir",
+  "m_penDeathTarget",
+  "m_soBounce0",
+  "m_soBounce1",
+  "m_soBounce2",
+  "m_soBounce3",
+  "m_soBounce4",
+  "m_iNextChannel",
+  "m_soRoll",
+  "m_bRollPlaying",
+  "m_qA",
+  "m_qALast",
+  "m_fASpeed",
+  "m_vR",
+};
+#define CRollingStone_propnamesct ARRAYCOUNT(CRollingStone_propnames)
+
 #endif // _EntitiesV_RollingStone_INCLUDED

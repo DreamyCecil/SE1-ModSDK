@@ -24,4 +24,19 @@ public:
 #define  STATE_CEnvironmentMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CEnvironmentMarker_propnames[] = {
+  "m_fWaitTime",
+  "m_fRandomTime",
+  "m_fMarkerRange",
+  "m_bFixedAnimLength",
+  "m_bChangeDefaultAnim",
+  "m_fMoveSpeed",
+  "m_fRotateSpeed",
+  "m_fnMdl",
+  "m_iAnim",
+  "m_moAnimData",
+};
+#define CEnvironmentMarker_propnamesct ARRAYCOUNT(CEnvironmentMarker_propnames)
+
 #endif // _EntitiesV_EnvironmentMarker_INCLUDED

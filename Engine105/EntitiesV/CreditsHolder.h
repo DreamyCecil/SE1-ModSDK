@@ -41,4 +41,18 @@ CFontData _fdMedium;
   BOOL H0x00f00007_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00f00008_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CCreditsHolder_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_fnmMessage",
+  "m_fMyTimer",
+  "m_fMyTimerLast",
+  "m_iTotalEntries",
+  "m_bEnd",
+  "m_penEndCreditsTrigger",
+  "m_bDataError",
+};
+#define CCreditsHolder_propnamesct ARRAYCOUNT(CCreditsHolder_propnames)
+
 #endif // _EntitiesV_CreditsHolder_INCLUDED

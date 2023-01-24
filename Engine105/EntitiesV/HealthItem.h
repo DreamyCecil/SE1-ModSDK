@@ -38,4 +38,12 @@ public:
 #define  STATE_CHealthItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CHealthItem_propnames[] = {
+  "m_EhitType",
+  "m_bOverTopHealth",
+  "m_iSoundComponent",
+};
+#define CHealthItem_propnamesct ARRAYCOUNT(CHealthItem_propnames)
+
 #endif // _EntitiesV_HealthItem_INCLUDED

@@ -29,4 +29,11 @@ public:
   BOOL H0x01620006_Main_06(const CEntityEvent &__eeInput);
   BOOL H0x01620007_Main_07(const CEntityEvent &__eeInput);
 };
+
+static const char *CSeriousBomb_propnames[] = {
+  "m_penOwner",
+  "m_soBlow",
+};
+#define CSeriousBomb_propnamesct ARRAYCOUNT(CSeriousBomb_propnames)
+
 #endif // _EntitiesV_SeriousBomb_INCLUDED

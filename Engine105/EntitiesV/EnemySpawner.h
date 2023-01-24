@@ -134,4 +134,31 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x01300045_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01300046_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CEnemySpawner_propnames[] = {
+  "m_penTarget",
+  "m_strDescription",
+  "m_strName",
+  "m_fInnerCircle",
+  "m_fOuterCircle",
+  "m_tmDelay",
+  "m_tmSingleWait",
+  "m_tmGroupWait",
+  "m_ctGroupSize",
+  "m_ctTotal",
+  "m_penPatrol",
+  "m_estType",
+  "m_bTelefrag",
+  "m_bSpawnEffect",
+  "m_bDoubleInSerious",
+  "m_penSeriousTarget",
+  "m_bFirstPass",
+  "m_soSpawn",
+  "m_iInGroup",
+  "m_iEnemiesTriggered",
+  "m_penTacticsHolder",
+  "m_bTacticsAutostart",
+};
+#define CEnemySpawner_propnamesct ARRAYCOUNT(CEnemySpawner_propnames)
+
 #endif // _EntitiesV_EnemySpawner_INCLUDED

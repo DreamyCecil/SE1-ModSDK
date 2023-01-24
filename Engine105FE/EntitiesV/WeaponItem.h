@@ -48,4 +48,10 @@ public:
   BOOL H0x03220005_Main_04(const CEntityEvent &__eeInput);
   BOOL H0x03220006_Main_05(const CEntityEvent &__eeInput);
 };
+
+static const char *CWeaponItem_propnames[] = {
+  "m_EwitType",
+};
+#define CWeaponItem_propnamesct ARRAYCOUNT(CWeaponItem_propnames)
+
 #endif // _EntitiesV_WeaponItem_INCLUDED

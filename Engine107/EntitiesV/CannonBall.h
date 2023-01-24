@@ -100,4 +100,25 @@ public:
   BOOL H0x01fa0022_Main_30(const CEntityEvent &__eeInput);
   BOOL H0x01fa0023_Main_31(const CEntityEvent &__eeInput);
 };
+
+static const char *CCannonBall_propnames[] = {
+  "m_penLauncher",
+  "m_fLaunchPower",
+  "m_fCannonBallSize",
+  "m_fIgnoreTime",
+  "m_fStartTime",
+  "m_iNextChannel",
+  "m_bSelfExploded",
+  "m_soBounce0",
+  "m_soBounce1",
+  "m_soBounce2",
+  "m_soBounce3",
+  "m_soBounce4",
+  "m_cbtType",
+  "m_tmInvisibility",
+  "m_tmExpandBox",
+  "m_tmForceExplode",
+};
+#define CCannonBall_propnamesct ARRAYCOUNT(CCannonBall_propnames)
+
 #endif // _EntitiesV_CannonBall_INCLUDED

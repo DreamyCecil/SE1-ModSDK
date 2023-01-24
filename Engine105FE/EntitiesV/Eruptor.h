@@ -53,4 +53,24 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CEruptor_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CEruptor_propnames[] = {
+  "m_fStretchAll",
+  "m_fStretchX",
+  "m_fStretchY",
+  "m_fStretchZ",
+  "m_bRandomStretch",
+  "m_fStretchHeight",
+  "m_fStretchWidth",
+  "m_fStretchDepth",
+  "m_fAngle",
+  "m_fMaxSpeed",
+  "m_fMinSpeed",
+  "m_fTime",
+  "m_fRandomWait",
+  "m_ptType",
+  "m_bShootInArc",
+};
+#define CEruptor_propnamesct ARRAYCOUNT(CEruptor_propnames)
+
 #endif // _EntitiesV_Eruptor_INCLUDED

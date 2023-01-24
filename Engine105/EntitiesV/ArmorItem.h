@@ -39,4 +39,12 @@ public:
 #define  STATE_CArmorItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CArmorItem_propnames[] = {
+  "m_EaitType",
+  "m_bOverTopArmor",
+  "m_iSoundComponent",
+};
+#define CArmorItem_propnamesct ARRAYCOUNT(CArmorItem_propnames)
+
 #endif // _EntitiesV_ArmorItem_INCLUDED

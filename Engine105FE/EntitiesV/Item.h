@@ -53,4 +53,21 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x0320000b_ItemReceived_03(const CEntityEvent &__eeInput);
   BOOL H0x0320000c_ItemReceived_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CItem_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_fValue",
+  "m_fRespawnTime",
+  "m_bRespawn",
+  "m_penTarget",
+  "m_bPickupOnce",
+  "m_soPick",
+  "m_fPickSoundLen",
+  "m_bDropped",
+  "m_ulPickedMask",
+  "m_penPrediction",
+};
+#define CItem_propnamesct ARRAYCOUNT(CItem_propnames)
+
 #endif // _EntitiesV_Item_INCLUDED

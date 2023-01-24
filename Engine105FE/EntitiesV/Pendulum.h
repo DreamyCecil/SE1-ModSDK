@@ -24,4 +24,18 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x006a0000_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x006a0001_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CPendulum_propnames[] = {
+  "m_strName",
+  "m_bDynamicShadows",
+  "m_fMaxAngle",
+  "m_fSpeed",
+  "m_fDampFactor",
+  "m_fPendulumFactor",
+  "m_fImpulseFactor",
+  "m_fTriggerImpulse",
+  "m_bActive",
+};
+#define CPendulum_propnamesct ARRAYCOUNT(CPendulum_propnames)
+
 #endif // _EntitiesV_Pendulum_INCLUDED

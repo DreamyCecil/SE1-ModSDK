@@ -58,4 +58,25 @@ virtual const CTString &GetDescription(void) const { return m_strDescription; };
   BOOL H0x00f20001_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00f20002_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CModelHolder3_propnames[] = {
+  "m_fnModel",
+  "m_fStretchAll",
+  "m_vStretchXYZ",
+  "m_strName",
+  "m_strDescription",
+  "m_bColliding",
+  "m_stClusterShadows",
+  "m_bBackground",
+  "m_bTargetable",
+  "m_cstCustomShading",
+  "m_aShadingDirection",
+  "m_colLight",
+  "m_colAmbient",
+  "m_bActive",
+  "m_fClassificationStretch",
+  "m_fMaxTessellationLevel",
+};
+#define CModelHolder3_propnamesct ARRAYCOUNT(CModelHolder3_propnames)
+
 #endif // _EntitiesV_ModelHolder3_INCLUDED

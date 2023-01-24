@@ -48,4 +48,13 @@ public:
 #define  STATE_CRobotDriving_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CRobotDriving_propnames[] = {
+  "m_rdcChar",
+  "m_fSize",
+  "m_soFire0",
+  "m_soFire1",
+};
+#define CRobotDriving_propnamesct ARRAYCOUNT(CRobotDriving_propnames)
+
 #endif // _EntitiesV_RobotDriving_INCLUDED

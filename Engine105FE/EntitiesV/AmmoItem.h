@@ -41,4 +41,10 @@ public:
 #define  STATE_CAmmoItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CAmmoItem_propnames[] = {
+  "m_EaitType",
+};
+#define CAmmoItem_propnamesct ARRAYCOUNT(CAmmoItem_propnames)
+
 #endif // _EntitiesV_AmmoItem_INCLUDED

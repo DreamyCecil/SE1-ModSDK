@@ -47,4 +47,18 @@ public:
 #define  STATE_CAmmoPack_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CAmmoPack_propnames[] = {
+  "m_aptPackType",
+  "m_iShells",
+  "m_iBullets",
+  "m_iRockets",
+  "m_iGrenades",
+  "m_iNapalm",
+  "m_iElectricity",
+  "m_iIronBalls",
+  "m_iSniperBullets",
+};
+#define CAmmoPack_propnamesct ARRAYCOUNT(CAmmoPack_propnames)
+
 #endif // _EntitiesV_AmmoPack_INCLUDED

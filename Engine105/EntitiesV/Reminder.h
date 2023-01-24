@@ -25,4 +25,12 @@ public:
   BOOL H0x02bf0002_Main_02(const CEntityEvent &__eeInput);
   BOOL H0x02bf0003_Main_03(const CEntityEvent &__eeInput);
 };
+
+static const char *CReminder_propnames[] = {
+  "m_penOwner",
+  "m_fWaitTime",
+  "m_iValue",
+};
+#define CReminder_propnamesct ARRAYCOUNT(CReminder_propnames)
+
 #endif // _EntitiesV_Reminder_INCLUDED

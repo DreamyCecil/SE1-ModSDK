@@ -40,4 +40,11 @@ public:
 #define  STATE_CFish_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CFish_propnames[] = {
+  "m_bAttackingByElectricity",
+  "m_tmElectricityTimeStart",
+};
+#define CFish_propnamesct ARRAYCOUNT(CFish_propnames)
+
 #endif // _EntitiesV_Fish_INCLUDED

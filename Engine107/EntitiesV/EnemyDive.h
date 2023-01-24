@@ -58,4 +58,24 @@ public:
 #define  STATE_CEnemyDive_DiveFire 0x01390006
   BOOL DiveFire(const CEntityEvent &__eeInput);
 };
+
+static const char *CEnemyDive_propnames[] = {
+  "m_EedtType",
+  "m_bInLiquid",
+  "m_fDiveWalkSpeed",
+  "m_aDiveWalkRotateSpeed",
+  "m_fDiveAttackRunSpeed",
+  "m_aDiveAttackRotateSpeed",
+  "m_fDiveCloseRunSpeed",
+  "m_aDiveCloseRotateSpeed",
+  "m_fDiveAttackDistance",
+  "m_fDiveCloseDistance",
+  "m_fDiveAttackFireTime",
+  "m_fDiveCloseFireTime",
+  "m_fDiveStopDistance",
+  "m_fDiveIgnoreRange",
+  "m_fDiveLockOnEnemyTime",
+};
+#define CEnemyDive_propnamesct ARRAYCOUNT(CEnemyDive_propnames)
+
 #endif // _EntitiesV_EnemyDive_INCLUDED

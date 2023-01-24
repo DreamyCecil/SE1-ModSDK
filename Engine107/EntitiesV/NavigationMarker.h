@@ -34,4 +34,17 @@ CPathNode * m_ppnNode;
 #define  STATE_CNavigationMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CNavigationMarker_propnames[] = {
+  "m_strName",
+  "m_fMarkerRange",
+  "m_penTarget0",
+  "m_penTarget1",
+  "m_penTarget2",
+  "m_penTarget3",
+  "m_penTarget4",
+  "m_penTarget5",
+};
+#define CNavigationMarker_propnamesct ARRAYCOUNT(CNavigationMarker_propnames)
+
 #endif // _EntitiesV_NavigationMarker_INCLUDED

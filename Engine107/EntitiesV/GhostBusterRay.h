@@ -46,4 +46,19 @@ const CPlacement3D * pplSource;
 #define  STATE_CGhostBusterRay_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGhostBusterRay_propnames[] = {
+  "m_penOwner",
+  "m_bRender",
+  "m_vSrcOld",
+  "m_vDstOld",
+  "m_vSrc",
+  "m_vDst",
+  "m_iLastBulletPosition",
+  "m_aoLightAnim",
+  "m_ctPasses",
+  "m_penPrediction",
+};
+#define CGhostBusterRay_propnamesct ARRAYCOUNT(CGhostBusterRay_propnames)
+
 #endif // _EntitiesV_GhostBusterRay_INCLUDED

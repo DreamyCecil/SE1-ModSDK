@@ -67,4 +67,14 @@ public:
 #define  STATE_CEyeman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CEyeman_propnames[] = {
+  "m_EecChar",
+  "m_bInvisible",
+  "m_eeEnv",
+  "m_bMumbleSoundPlaying",
+  "m_soMumble",
+};
+#define CEyeman_propnamesct ARRAYCOUNT(CEyeman_propnames)
+
 #endif // _EntitiesV_Eyeman_INCLUDED

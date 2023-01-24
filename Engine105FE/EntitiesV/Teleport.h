@@ -28,4 +28,15 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x00db0004_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x00db0005_Main_06(const CEntityEvent &__eeInput);
 };
+
+static const char *CTeleport_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_penTarget",
+  "m_fWidth",
+  "m_fHeight",
+  "m_bActive",
+};
+#define CTeleport_propnamesct ARRAYCOUNT(CTeleport_propnames)
+
 #endif // _EntitiesV_Teleport_INCLUDED

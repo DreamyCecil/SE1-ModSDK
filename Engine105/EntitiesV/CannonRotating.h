@@ -86,4 +86,31 @@ public:
   BOOL H0x0159001a_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x0159001b_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CCannonRotating_propnames[] = {
+  "m_fHealth",
+  "m_fFiringRangeClose",
+  "m_fFiringRangeFar",
+  "m_fWaitAfterFire",
+  "m_fSize",
+  "m_fMaxPitch",
+  "m_fViewAngle",
+  "m_fScanAngle",
+  "m_fRotationSpeed",
+  "m_bActive",
+  "m_fRotSpeedMuzzle",
+  "m_fRotSpeedRotator",
+  "m_fDistanceToPlayer",
+  "m_fDesiredMuzzlePitch",
+  "m_iMuzzleDir",
+  "m_vFiringPos",
+  "m_vTarget",
+  "m_tmLastFireTime",
+  "m_aBeginMuzzleRotation",
+  "m_aEndMuzzleRotation",
+  "m_aBeginRotatorRotation",
+  "m_aEndRotatorRotation",
+};
+#define CCannonRotating_propnamesct ARRAYCOUNT(CCannonRotating_propnames)
+
 #endif // _EntitiesV_CannonRotating_INCLUDED

@@ -131,4 +131,46 @@ CEmiter m_emEmiter;
   BOOL H0x015b002a_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x015b002b_Main_06(const CEntityEvent &__eeInput);
 };
+
+static const char *CAirElemental_propnames[] = {
+  "m_bFloat",
+  "m_fAttPosY",
+  "m_bInitialAnim",
+  "m_penTrigger01",
+  "m_penTrigger02",
+  "m_penTrigger03",
+  "m_penTrigger04",
+  "m_penTrigger05",
+  "m_penTrigger06",
+  "m_penTrigger07",
+  "m_penTrigger08",
+  "m_penTrigger09",
+  "m_penTrigger10",
+  "m_fAttSizeCurrent",
+  "m_fAttSizeBegin",
+  "m_fAttSizeEnd",
+  "m_fAttSizeRequested",
+  "m_bAttGrow",
+  "m_iSize",
+  "m_fLastSize",
+  "m_fTargetSize",
+  "m_fGrowSpeed",
+  "m_tmWindNextFire",
+  "m_fWindFireTimeMin",
+  "m_fWindFireTimeMax",
+  "m_iWind",
+  "m_bDying",
+  "m_tmDeath",
+  "m_fDeathDuration",
+  "m_fWindBlastFirePosBegin",
+  "m_fWindBlastFirePosEnd",
+  "m_tmLastAnimation",
+  "m_penDeathInflictor",
+  "m_bRenderParticles",
+  "m_soFire",
+  "m_soVoice",
+  "m_colParticles",
+};
+#define CAirElemental_propnamesct ARRAYCOUNT(CAirElemental_propnames)
+
 #endif // _EntitiesV_AirElemental_INCLUDED

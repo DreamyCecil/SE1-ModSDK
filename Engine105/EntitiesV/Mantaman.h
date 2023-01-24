@@ -39,4 +39,10 @@ public:
 #define  STATE_CMantaman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CMantaman_propnames[] = {
+  "m_FixedState",
+};
+#define CMantaman_propnamesct ARRAYCOUNT(CMantaman_propnames)
+
 #endif // _EntitiesV_Mantaman_INCLUDED

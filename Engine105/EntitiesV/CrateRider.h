@@ -31,4 +31,12 @@ CAutoPrecacheTexture m_apt2;
 #define  STATE_CCrateRider_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CCrateRider_propnames[] = {
+  "m_fnmHeadTex1",
+  "m_fnmHeadTex2",
+  "m_fnmDriveSnd",
+};
+#define CCrateRider_propnamesct ARRAYCOUNT(CCrateRider_propnames)
+
 #endif // _EntitiesV_CrateRider_INCLUDED

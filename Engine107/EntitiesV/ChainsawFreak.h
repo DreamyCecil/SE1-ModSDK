@@ -64,4 +64,17 @@ public:
 #define  STATE_CChainsawFreak_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CChainsawFreak_propnames[] = {
+  "m_bRunAttack",
+  "m_bSawHit",
+  "m_penLastTouched",
+  "m_soFeet",
+  "m_bRunSoundPlaying",
+  "m_iRunType",
+  "m_bAttacking",
+  "m_fSightSoundBegin",
+};
+#define CChainsawFreak_propnamesct ARRAYCOUNT(CChainsawFreak_propnames)
+
 #endif // _EntitiesV_ChainsawFreak_INCLUDED

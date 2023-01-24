@@ -27,4 +27,25 @@ public:
 #define  STATE_CMovingBrushMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CMovingBrushMarker_propnames[] = {
+  "m_bInverseRotate",
+  "m_fSpeed",
+  "m_fWaitTime",
+  "m_bStopMoving",
+  "m_betMoveOnTouch",
+  "m_fBlockDamage",
+  "m_tmBankingRotation",
+  "m_bBankingClockwise",
+  "m_bNoRotation",
+  "m_eetMarkerEvent",
+  "m_penMarkerEvent",
+  "m_eetTouchEvent",
+  "m_penTouchEvent",
+  "m_penSoundStart",
+  "m_penSoundStop",
+  "m_penSoundFollow",
+};
+#define CMovingBrushMarker_propnamesct ARRAYCOUNT(CMovingBrushMarker_propnames)
+
 #endif // _EntitiesV_MovingBrushMarker_INCLUDED

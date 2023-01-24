@@ -39,4 +39,19 @@ CFieldSettings m_fsField;
 #define  STATE_CTouchField_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CTouchField_propnames[] = {
+  "m_strName",
+  "m_penEnter",
+  "m_eetEnter",
+  "m_penExit",
+  "m_eetExit",
+  "m_bActive",
+  "m_bPlayersOnly",
+  "m_tmExitCheck",
+  "m_bBlockNonPlayers",
+  "m_penLastIn",
+};
+#define CTouchField_propnamesct ARRAYCOUNT(CTouchField_propnames)
+
 #endif // _EntitiesV_TouchField_INCLUDED

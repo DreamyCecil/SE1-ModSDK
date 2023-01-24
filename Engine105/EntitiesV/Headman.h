@@ -104,4 +104,12 @@ public:
 #define  STATE_CHeadman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CHeadman_propnames[] = {
+  "m_hdtType",
+  "m_bExploded",
+  "m_bAttackSound",
+};
+#define CHeadman_propnamesct ARRAYCOUNT(CHeadman_propnames)
+
 #endif // _EntitiesV_Headman_INCLUDED

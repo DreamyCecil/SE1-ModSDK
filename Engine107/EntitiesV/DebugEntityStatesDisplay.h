@@ -18,4 +18,11 @@ virtual const CTString &GetName(void) const { return m_strName; };
   BOOL H0x00e90002_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00e90003_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CEntityStateDisplay_propnames[] = {
+  "m_strName",
+  "m_penTarget",
+};
+#define CEntityStateDisplay_propnamesct ARRAYCOUNT(CEntityStateDisplay_propnames)
+
 #endif // _EntitiesV_DebugEntityStatesDisplay_INCLUDED

@@ -19,4 +19,12 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CMarker_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_penTarget",
+};
+#define CMarker_propnamesct ARRAYCOUNT(CMarker_propnames)
+
 #endif // _EntitiesV_Marker_INCLUDED

@@ -75,4 +75,27 @@ public:
   BOOL H0x025a0003_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x025a0004_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CDebris_propnames[] = {
+  "m_dptParticles",
+  "m_iBodyType",
+  "m_bFade",
+  "m_fFadeStartTime",
+  "m_fFadeTime",
+  "m_fLastStainHitPoint",
+  "m_betStain",
+  "m_ctLeftStains",
+  "m_tmStarted",
+  "m_fStretch",
+  "m_aShadingDirection",
+  "m_bCustomShading",
+  "m_colCustomAmbient",
+  "m_colCustomDiffuse",
+  "m_bImmaterialASAP",
+  "m_fDustStretch",
+  "m_bTouchedGround",
+  "m_penFallFXPapa",
+};
+#define CDebris_propnamesct ARRAYCOUNT(CDebris_propnames)
+
 #endif // _EntitiesV_Debris_INCLUDED

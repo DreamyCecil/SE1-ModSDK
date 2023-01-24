@@ -44,4 +44,16 @@ public:
 #define  STATE_CGuffy_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGuffy_propnames[] = {
+  "m_iLoopCounter",
+  "m_fSize",
+  "m_bWalkSoundPlaying",
+  "m_fThreatDistance",
+  "m_bEnemyToTheLeft",
+  "m_soFire1",
+  "m_soFire2",
+};
+#define CGuffy_propnamesct ARRAYCOUNT(CGuffy_propnames)
+
 #endif // _EntitiesV_Guffy_INCLUDED

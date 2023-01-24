@@ -29,11 +29,28 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   FLOAT m_fForceA;
   FLOAT m_fForceV;
   FLOAT3D m_vForceDir;
-   inline FLOAT StrengthAtDistance(FLOAT fDistance);
+  inline FLOAT StrengthAtDistance(FLOAT fDistance) {FLOAT fStrength  = (m_rFallOff  - fDistance ) * m_fStep ;return Clamp  (fStrength  , 0.0f , m_fAcc );};
    const CTString & GetForceName(INDEX i);
    void GetForce(INDEX i,const FLOAT3D & vPoint,CForceStrength & fsGravity,CForceStrength & fsField);
    BOOL HandleEvent(const CEntityEvent & ee);
 #define  STATE_CGravityMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGravityMarker_propnames[] = {
+  "m_gtType",
+  "m_fStrength",
+  "m_rFallOff",
+  "m_rHotSpot",
+  "m_rTorusR",
+  "m_fAcc",
+  "m_fSign",
+  "m_fStep",
+  "m_aForceDir",
+  "m_fForceA",
+  "m_fForceV",
+  "m_vForceDir",
+};
+#define CGravityMarker_propnamesct ARRAYCOUNT(CGravityMarker_propnames)
+
 #endif // _EntitiesV_GravityMarker_INCLUDED

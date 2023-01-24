@@ -54,4 +54,33 @@ CListHead lhCache;
   BOOL H0x00ed0000_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00ed0001_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CEnvironmentParticlesHolder_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_fnHeightMap",
+  "m_boxHeightMap",
+  "m_eptType",
+  "m_penNextHolder",
+  "m_tmRainStart",
+  "m_tmRainEnd",
+  "m_tmSnowStart",
+  "m_tmSnowEnd",
+  "m_moHeightMapHolder",
+  "m_moParticleTextureHolder",
+  "m_fnTexture",
+  "m_fGrowthRenderingStep",
+  "m_fGrowthRenderingRadius",
+  "m_fGrowthRenderingRadiusFade",
+  "m_bGrowthHighresMap",
+  "m_iGrowthMapX",
+  "m_iGrowthMapY",
+  "m_fGrowthMinSize",
+  "m_fGrowthMaxSize",
+  "m_fParticlesSinkFactor",
+  "m_fRainAppearLen",
+  "m_fSnowAppearLen",
+};
+#define CEnvironmentParticlesHolder_propnamesct ARRAYCOUNT(CEnvironmentParticlesHolder_propnames)
+
 #endif // _EntitiesV_EnvironmentParticlesHolder_INCLUDED

@@ -90,4 +90,14 @@ public:
 #define  STATE_CDragonman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CDragonman_propnames[] = {
+  "m_EdtType",
+  "m_vFlameSource",
+  "m_penFlame",
+  "m_bBurnEnemy",
+  "m_fFireTime",
+};
+#define CDragonman_propnamesct ARRAYCOUNT(CDragonman_propnames)
+
 #endif // _EntitiesV_Dragonman_INCLUDED

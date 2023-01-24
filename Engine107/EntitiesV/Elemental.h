@@ -180,4 +180,35 @@ public:
 #define  STATE_CElemental_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CElemental_propnames[] = {
+  "m_EetType",
+  "m_EecChar",
+  "m_EesStartState",
+  "m_bSpawnWhenHarmed",
+  "m_bSpawnOnBlowUp",
+  "m_EesCurrentState",
+  "m_bSpawned",
+  "m_bMovable",
+  "m_fLookRange",
+  "m_iFireCount",
+  "m_fWaitTime",
+  "m_iCounter",
+  "m_fDensity",
+  "m_penPosition1",
+  "m_penPosition2",
+  "m_penPosition3",
+  "m_penPosition4",
+  "m_penPosition5",
+  "m_penPosition6",
+  "m_soBackground",
+  "m_ctSpawned",
+  "m_fSpawnDamage",
+  "m_bSpawnEnabled",
+  "m_soFireL",
+  "m_soFireR",
+  "m_bCountAsKill",
+};
+#define CElemental_propnamesct ARRAYCOUNT(CElemental_propnames)
+
 #endif // _EntitiesV_Elemental_INCLUDED

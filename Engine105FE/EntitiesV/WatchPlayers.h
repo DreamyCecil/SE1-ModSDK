@@ -43,4 +43,18 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x02be000e_FarWatch_03(const CEntityEvent &__eeInput);
   BOOL H0x02be000f_FarWatch_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CWatchPlayers_propnames[] = {
+  "m_penOwner",
+  "m_fWaitTime",
+  "m_fDistance",
+  "m_bRangeWatcher",
+  "m_eetEventClose",
+  "m_eetEventFar",
+  "m_penCurrentWatch",
+  "m_bActive",
+  "m_strName",
+};
+#define CWatchPlayers_propnamesct ARRAYCOUNT(CWatchPlayers_propnames)
+
 #endif // _EntitiesV_WatchPlayers_INCLUDED

@@ -27,4 +27,22 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CHazeMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CHazeMarker_propnames[] = {
+  "m_faType",
+  "m_fDensity",
+  "m_fNear",
+  "m_fFar",
+  "m_bVisibleFromOutside",
+  "m_iSize",
+  "m_colBase",
+  "m_colUp",
+  "m_colDown",
+  "m_colNorth",
+  "m_colSouth",
+  "m_colEast",
+  "m_colWest",
+};
+#define CHazeMarker_propnamesct ARRAYCOUNT(CHazeMarker_propnames)
+
 #endif // _EntitiesV_HazeMarker_INCLUDED

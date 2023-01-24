@@ -246,4 +246,8 @@ public:
 #define  STATE_CGlobal_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGlobal_propnames[] = {""};
+#define CGlobal_propnamesct 0
+
 #endif // _EntitiesV_Global_INCLUDED

@@ -178,4 +178,33 @@ CLightSource m_lsLightSource;
   BOOL H0x01f50018_Main_13(const CEntityEvent &__eeInput);
   BOOL H0x01f50019_Main_14(const CEntityEvent &__eeInput);
 };
+
+static const char *CProjectile_propnames[] = {
+  "m_penLauncher",
+  "m_prtType",
+  "m_pmtMove",
+  "m_penParticles",
+  "m_penTarget",
+  "m_fSpeed",
+  "m_fIgnoreTime",
+  "m_fFlyTime",
+  "m_fStartTime",
+  "m_fDamageAmount",
+  "m_fRangeDamageAmount",
+  "m_fDamageHotSpotRange",
+  "m_fDamageFallOffRange",
+  "m_fSoundRange",
+  "m_bExplode",
+  "m_bLightSource",
+  "m_bCanHitHimself",
+  "m_bCanBeDestroyed",
+  "m_fWaitAfterDeath",
+  "m_aRotateSpeed",
+  "m_tmExpandBox",
+  "m_tmInvisibility",
+  "m_soEffect",
+  "m_penPrediction",
+};
+#define CProjectile_propnamesct ARRAYCOUNT(CProjectile_propnames)
+
 #endif // _EntitiesV_Projectile_INCLUDED

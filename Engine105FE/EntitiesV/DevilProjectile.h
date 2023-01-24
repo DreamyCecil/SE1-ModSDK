@@ -49,4 +49,16 @@ CLightSource m_lsLightSource;
   BOOL H0x01ff0006_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01ff0007_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CDevilProjectile_propnames[] = {
+  "m_penLauncher",
+  "m_penTarget",
+  "m_fIgnoreTime",
+  "m_fStartTime",
+  "m_vDesiredAngle",
+  "m_bFly",
+  "m_soEffect",
+};
+#define CDevilProjectile_propnamesct ARRAYCOUNT(CDevilProjectile_propnames)
+
 #endif // _EntitiesV_DevilProjectile_INCLUDED

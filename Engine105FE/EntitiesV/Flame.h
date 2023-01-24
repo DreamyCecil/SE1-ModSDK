@@ -36,4 +36,14 @@ CLightSource m_lsLightSource;
   BOOL H0x01f80003_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01f80004_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CFlame_propnames[] = {
+  "m_penOwner",
+  "m_penAttach",
+  "m_bLoop",
+  "m_soEffect",
+  "m_penPrediction",
+};
+#define CFlame_propnamesct ARRAYCOUNT(CFlame_propnames)
+
 #endif // _EntitiesV_Flame_INCLUDED

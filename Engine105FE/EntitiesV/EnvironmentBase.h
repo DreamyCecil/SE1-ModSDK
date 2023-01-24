@@ -91,4 +91,38 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x0384001a_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x0384001b_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CEnvironmentBase_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_fDistance",
+  "m_fStretch",
+  "m_penTarget",
+  "m_penWatcher",
+  "m_fWatcherFrequency",
+  "m_vDesiredPosition",
+  "m_fMoveSpeed",
+  "m_fRotateSpeed",
+  "m_fMoveFrequency",
+  "m_bUseWatcher",
+  "m_bFlying",
+  "m_fWaitTime",
+  "m_fnMdl",
+  "m_fnTex",
+  "m_iAnim",
+  "m_fnAtt1Mdl",
+  "m_fnAtt1Tex",
+  "m_iAtt1Position",
+  "m_iAtt1Anim",
+  "m_fnAtt2Mdl",
+  "m_fnAtt2Tex",
+  "m_iAtt2Position",
+  "m_iAtt2Anim",
+  "m_fnAtt3Mdl",
+  "m_fnAtt3Tex",
+  "m_iAtt3Position",
+  "m_iAtt3Anim",
+};
+#define CEnvironmentBase_propnamesct ARRAYCOUNT(CEnvironmentBase_propnames)
+
 #endif // _EntitiesV_EnvironmentBase_INCLUDED

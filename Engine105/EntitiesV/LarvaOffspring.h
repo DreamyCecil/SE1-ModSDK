@@ -54,4 +54,25 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x01610006_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01610007_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CLarvaOffspring_propnames[] = {
+  "m_penLauncher",
+  "m_penTarget",
+  "m_fIgnoreTime",
+  "m_fFlyTime",
+  "m_fStartTime",
+  "m_fDamageAmount",
+  "m_fRangeDamageAmount",
+  "m_fDamageHotSpotRange",
+  "m_fDamageFallOffRange",
+  "m_fSoundRange",
+  "m_bExplode",
+  "m_aRotateSpeed",
+  "m_tmExpandBox",
+  "m_soEffect",
+  "bLockedOn",
+  "m_penPrediction",
+};
+#define CLarvaOffspring_propnamesct ARRAYCOUNT(CLarvaOffspring_propnames)
+
 #endif // _EntitiesV_LarvaOffspring_INCLUDED

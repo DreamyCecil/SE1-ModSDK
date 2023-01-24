@@ -18,4 +18,12 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CSummonerMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CSummonerMarker_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_fMarkerRange",
+};
+#define CSummonerMarker_propnamesct ARRAYCOUNT(CSummonerMarker_propnames)
+
 #endif // _EntitiesV_SummonerMarker_INCLUDED

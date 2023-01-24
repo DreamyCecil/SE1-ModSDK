@@ -46,4 +46,12 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x0195000d_Main_07(const CEntityEvent &__eeInput);
   BOOL H0x0195000e_Main_08(const CEntityEvent &__eeInput);
 };
+
+static const char *CPlayerWeaponsEffects_propnames[] = {
+  "m_penOwner",
+  "m_EwetEffect",
+  "m_penPrediction",
+};
+#define CPlayerWeaponsEffects_propnamesct ARRAYCOUNT(CPlayerWeaponsEffects_propnames)
+
 #endif // _EntitiesV_PlayerWeaponsEffects_INCLUDED

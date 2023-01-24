@@ -68,4 +68,15 @@ public:
 #define  STATE_CMamut_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CMamut_propnames[] = {
+  "m_EmcChar",
+  "m_bFrontRider",
+  "m_bMiddleRider",
+  "m_bRearRider",
+  "m_penBullet",
+  "m_fLastShootTime",
+};
+#define CMamut_propnamesct ARRAYCOUNT(CMamut_propnames)
+
 #endif // _EntitiesV_Mamut_INCLUDED

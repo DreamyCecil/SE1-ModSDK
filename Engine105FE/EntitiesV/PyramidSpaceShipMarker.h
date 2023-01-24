@@ -21,4 +21,17 @@ public:
 #define  STATE_CPyramidSpaceShipMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CPyramidSpaceShipMarker_propnames[] = {
+  "m_fDeltaTime",
+  "m_fBias",
+  "m_fTension",
+  "m_fContinuity",
+  "m_bStopMoving",
+  "m_penTrigger",
+  "m_fRotSpeed",
+  "m_penSpaceShip",
+};
+#define CPyramidSpaceShipMarker_propnamesct ARRAYCOUNT(CPyramidSpaceShipMarker_propnames)
+
 #endif // _EntitiesV_PyramidSpaceShipMarker_INCLUDED

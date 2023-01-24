@@ -50,4 +50,17 @@ public:
 #define  STATE_CBullet_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CBullet_propnames[] = {
+  "m_penOwner",
+  "m_fDamage",
+  "m_vTarget",
+  "m_vTargetCopy",
+  "m_vHitPoint",
+  "m_iBullet",
+  "m_EdtDamage",
+  "m_fBulletSize",
+};
+#define CBullet_propnamesct ARRAYCOUNT(CBullet_propnames)
+
 #endif // _EntitiesV_Bullet_INCLUDED

@@ -37,4 +37,10 @@ public:
 #define  STATE_CCatman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CCatman_propnames[] = {
+  "m_cmtType",
+};
+#define CCatman_propnamesct ARRAYCOUNT(CCatman_propnames)
+
 #endif // _EntitiesV_Catman_INCLUDED

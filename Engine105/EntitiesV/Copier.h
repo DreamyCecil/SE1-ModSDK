@@ -26,4 +26,14 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00e10004_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x00e10005_Main_06(const CEntityEvent &__eeInput);
 };
+
+static const char *CCopier_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_penTarget",
+  "m_bSpawnEffect",
+  "m_bTelefrag",
+};
+#define CCopier_propnamesct ARRAYCOUNT(CCopier_propnames)
+
 #endif // _EntitiesV_Copier_INCLUDED

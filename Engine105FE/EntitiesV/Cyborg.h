@@ -127,4 +127,19 @@ CEntity * penBullet;
 #define  STATE_CCyborg_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CCyborg_propnames[] = {
+  "m_EctType",
+  "m_iCloseHit",
+  "m_iFireLaserCount",
+  "m_ctBombsToDrop",
+  "m_tmLastBombDropped",
+  "m_fFlyAboveEnemy",
+  "m_fFlySpeed",
+  "m_aFlyRotateSpeed",
+  "m_fFallStartTime",
+  "m_bBombing",
+};
+#define CCyborg_propnamesct ARRAYCOUNT(CCyborg_propnames)
+
 #endif // _EntitiesV_Cyborg_INCLUDED

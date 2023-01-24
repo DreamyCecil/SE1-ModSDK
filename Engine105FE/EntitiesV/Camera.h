@@ -64,4 +64,37 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x00dc0009_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00dc000a_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CCamera_propnames[] = {
+  "m_tmTime",
+  "m_fFOV",
+  "m_fLastFOV",
+  "m_penTarget",
+  "m_strName",
+  "m_penOnBreak",
+  "m_bWideScreen",
+  "m_tmAtMarker",
+  "m_tmDelta",
+  "m_vPNp0",
+  "m_vPNp1",
+  "m_vTNp0",
+  "m_vTNp1",
+  "m_fFOVp0",
+  "m_fFOVp1",
+  "m_fTFOVp0",
+  "m_fTFOVp1",
+  "m_qPNp0",
+  "m_qPNp1",
+  "m_qANp0",
+  "m_qANp1",
+  "m_penLast",
+  "m_penPlayer",
+  "m_strDescription",
+  "m_bStopMoving",
+  "m_colFade0",
+  "m_colFade1",
+  "m_bMoving",
+};
+#define CCamera_propnamesct ARRAYCOUNT(CCamera_propnames)
+
 #endif // _EntitiesV_Camera_INCLUDED

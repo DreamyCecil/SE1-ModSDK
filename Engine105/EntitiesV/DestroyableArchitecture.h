@@ -36,4 +36,21 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x006b0000_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x006b0001_Main_02(const CEntityEvent &__eeInput);
 };
+
+static const char *CDestroyableArchitecture_propnames[] = {
+  "m_strName",
+  "m_fHealth",
+  "m_etType",
+  "m_vDamageDir",
+  "m_fStretch",
+  "m_penGradient",
+  "m_colDebrises",
+  "m_ctDebrises",
+  "m_fCandyEffect",
+  "m_fCubeFactor",
+  "m_bBlowupByDamager",
+  "m_fDustStretch",
+};
+#define CDestroyableArchitecture_propnamesct ARRAYCOUNT(CDestroyableArchitecture_propnames)
+
 #endif // _EntitiesV_DestroyableArchitecture_INCLUDED

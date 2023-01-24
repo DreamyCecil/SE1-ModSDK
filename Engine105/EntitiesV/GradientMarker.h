@@ -21,4 +21,13 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CGradientMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
+
+static const char *CGradientMarker_propnames[] = {
+  "m_fHeight",
+  "m_bDarkLight",
+  "m_colColor0",
+  "m_colColor1",
+};
+#define CGradientMarker_propnamesct ARRAYCOUNT(CGradientMarker_propnames)
+
 #endif // _EntitiesV_GradientMarker_INCLUDED

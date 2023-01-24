@@ -24,4 +24,17 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00e50002_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00e50003_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CDamager_propnames[] = {
+  "m_strName",
+  "m_strDescription",
+  "m_dmtType",
+  "m_fAmmount",
+  "m_penToDamage",
+  "m_bDamageFromTriggerer",
+  "m_penLastDamaged",
+  "m_tmLastDamage",
+};
+#define CDamager_propnamesct ARRAYCOUNT(CDamager_propnames)
+
 #endif // _EntitiesV_Damager_INCLUDED

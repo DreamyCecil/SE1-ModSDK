@@ -25,4 +25,12 @@ public:
   BOOL H0x01fd0003_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01fd0004_Main_04(const CEntityEvent &__eeInput);
 };
+
+static const char *CAcid_propnames[] = {
+  "m_penOwner",
+  "m_penTarget",
+  "m_bLoop",
+};
+#define CAcid_propnamesct ARRAYCOUNT(CAcid_propnames)
+
 #endif // _EntitiesV_Acid_INCLUDED
