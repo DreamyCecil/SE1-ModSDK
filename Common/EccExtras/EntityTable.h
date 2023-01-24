@@ -48,14 +48,14 @@ class CEntityTableEntry {
     const char **ete_astrProps; // Array of entity property identifiers
     const char *ete_strProps; // Symbol name of the array of entity property identifiers
 
-    INDEX *ete_piPropsCt; // Pointer to the entity property counter
+    INDEX ete_iPropsCt; // Entity property counter
     const char *ete_strPropsCt; // Symbol name of the entity property counter
 
     // [Cecil] NOTE: In 1.50 these may be null and symbol names may be empty strings
     CDLLEntityEvent **ete_adeeEvents; // Pointer to the array of entity events
     const char *ete_strEvents; // Symbol name of the array of entity events
 
-    INDEX *ete_piEventsCt; // Pointer to the entity event counter
+    INDEX ete_iEventsCt; // Entity event counter
     const char *ete_strEventsCt; // Symbol name of the entity event counter
 
   public:
@@ -64,8 +64,8 @@ class CEntityTableEntry {
 
     // Constructor with immediate table insertion
     static CEntityTableEntry *CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
-      const char **astrProps, const char *strProps, INDEX *piPropsCt, const char *strPropsCt,
-      CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX *piEventsCt, const char *strEventsCt);
+      const char **astrProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
+      CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt);
 };
 
 // Container type for storing entity entries under their respective class name
@@ -82,9 +82,9 @@ extern "C" __declspec(dllexport) CLibEntityTable DLL_EntityTable;
   CEntityTableEntry::CreateEntry(ENTITYTABLESTRING(ClassName), \
     &ClassName##_DLLClass, ENTITYTABLESTRING(ClassName##_DLLClass), \
     (const char **) ClassName##_propnames, ENTITYTABLESTRING(ClassName##_propnames), \
-    &ClassName##_propnamesct, ENTITYTABLESTRING(ClassName##_propnamesct), \
+    ClassName##_propnamesct, ENTITYTABLESTRING(ClassName##_propnamesct), \
     (CDLLEntityEvent **)&ClassName##_events, ENTITYTABLESTRING(ClassName##_events), \
-    &ClassName##_eventsct, ENTITYTABLESTRING(ClassName##_eventsct) \
+    ClassName##_eventsct, ENTITYTABLESTRING(ClassName##_eventsct) \
   )
 
 #endif

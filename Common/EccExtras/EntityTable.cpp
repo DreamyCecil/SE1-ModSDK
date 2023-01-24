@@ -23,7 +23,7 @@ void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) c
   // Get array of events and their amount
 #if SE1_VER < SE1_150
   CDLLEntityEvent **aEvents = ete_adeeEvents;
-  const INDEX ct = *ete_piEventsCt;
+  const INDEX ct = ete_iEventsCt;
 
 #else
   CDLLEntityEvent **aEvents = pClass->dec_adeeEvents;
@@ -38,8 +38,8 @@ void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) c
 
 // Constructor with immediate table insertion
 CEntityTableEntry *CEntityTableEntry::CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
-  const char **astrProps, const char *strProps, INDEX *piPropsCt, const char *strPropsCt,
-  CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX *piEventsCt, const char *strEventsCt)
+  const char **astrProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
+  CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt)
 {
   // Create an entry under a class name
   CEntityTableEntry &ete = DLL_EntityTable[strClassName];
@@ -51,13 +51,13 @@ CEntityTableEntry *CEntityTableEntry::CreateEntry(const char *strClassName, CDLL
   ete.ete_astrProps = astrProps;
   ete.ete_strProps = strProps;
 
-  ete.ete_piPropsCt = piPropsCt;
+  ete.ete_iPropsCt = iPropsCt;
   ete.ete_strPropsCt = strPropsCt;
 
   ete.ete_adeeEvents = adeeEvents;
   ete.ete_strEvents = strEvents;
 
-  ete.ete_piEventsCt = piEventsCt;
+  ete.ete_iEventsCt = iEventsCt;
   ete.ete_strEventsCt = strEventsCt;
 
   return &ete;
