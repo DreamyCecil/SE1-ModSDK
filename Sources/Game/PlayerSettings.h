@@ -62,7 +62,7 @@ class CUniversalPlayerSettings {
 public:
   union {
     CPlayerSettings ups_ps;
-    UBYTE ups_aubDummy[NET_MAXSESSIONPROPERTIES];
+    UBYTE ups_aubDummy[MAX_PLAYERAPPEARANCE];
   };
 
   // must have exact the size as allocated block in engine

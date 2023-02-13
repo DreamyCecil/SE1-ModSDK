@@ -31,6 +31,8 @@ extern BOOL _bUserBreakEnabled;
 
 #define REFRESHTIME (0.2f)
 
+#if SE1_GAME == SS_TSE
+
 void RemapLevelNames(INDEX &iLevel)
 {
   switch( iLevel) {
@@ -47,10 +49,11 @@ void RemapLevelNames(INDEX &iLevel)
   case 31:  iLevel = 11;  break;
   case 32:  iLevel = 12;  break;
   case 33:  iLevel = 13;  break;
-  default:  iLevel = -1;	break;
+  default:  iLevel = -1;  break;
   }
 }
 
+#endif
 
 static void LoadingHook_t(CProgressHookInfo *pphi)
 {
@@ -106,7 +109,8 @@ static void LoadingHook_t(CProgressHookInfo *pphi)
     INDEX iLevelNext = -1;
     CTString strLevelName = _pNetwork->ga_fnmWorld.FileName();
     CTString strNextLevelName = _pNetwork->ga_fnmNextLevel.FileName();
-    
+
+  #if SE1_GAME == SS_TSE
     INDEX u, v;
     u = v = -1;
     strLevelName.ScanF("%01d_%01d_", &u, &v);
@@ -116,10 +120,11 @@ static void LoadingHook_t(CProgressHookInfo *pphi)
     strNextLevelName.ScanF("%01d_%01d_", &u, &v);
     iLevelNext = u*10+v;
     RemapLevelNames(iLevelNext);
-    
-    //strLevelName.ScanF("%02d_", &iLevel);
-    //strNextLevelName.ScanF("%02d_", &iLevelNext);
-   
+  #else
+    strLevelName.ScanF("%02d_", &iLevel);
+    strNextLevelName.ScanF("%02d_", &iLevelNext);
+  #endif
+
     if (iLevel>0) {
       ulLevelMask|=1<<(iLevel-1);
     }

@@ -120,7 +120,9 @@ extern CTString gam_strGameSpyExtras = "";
 extern INDEX gam_iBlood = 2;     // 0=none, 1=green, 2=red, 3=hippie
 extern INDEX gam_bGibs  = TRUE;   
 
+#if SE1_GAME == SS_TSE
 extern INDEX gam_bUseExtraEnemies = TRUE;
+#endif
 
 static INDEX hud_iEnableStats = 1;
 static FLOAT hud_fEnableFPS   = 1;
@@ -945,7 +947,9 @@ void CGame::InitInternal( void)
   _pShell->DeclareSymbol("persistent user INDEX gam_iBlood;", &gam_iBlood);
   _pShell->DeclareSymbol("persistent user INDEX gam_bGibs;",  &gam_bGibs);
 
+#if SE1_GAME == SS_TSE
   _pShell->DeclareSymbol("persistent user INDEX gam_bUseExtraEnemies;",  &gam_bUseExtraEnemies);
+#endif
 
   _pShell->DeclareSymbol("user INDEX gam_bQuickLoad;", &gam_bQuickLoad);
   _pShell->DeclareSymbol("user INDEX gam_bQuickSave;", &gam_bQuickSave);
@@ -1046,7 +1050,7 @@ void CGame::InitInternal( void)
   CON_DiscardLastLineTimes();
 
   // provide URL to the engine
-  _strModURL = "http://www.croteam.com/mods/TheSecondEncounter";
+  _strModURL = "http://www.croteam.com/mods/SeriousSam";
 }
 
 // internal cleanup
@@ -1092,19 +1096,6 @@ void CGame::EndInternal(void)
 BOOL CGame::NewGame(const CTString &strSessionName, const CTFileName &fnWorld,
    CSessionProperties &sp)
 {
-#if _SE_DEMO
-  try {
-    ULONG ulCRC = GetFileCRC32_t(fnWorld);
-    if (ulCRC!=0x5cf3f219/*intro*/ && ulCRC!=0x9f2ae3f6/*splevel*/ && ulCRC!=0x61586e9d/*techtest*/ && ulCRC!=0x4060d0dd/*dmlevel*/) {
-      ThrowF_t(TRANS("Wrong CRC check."));
-      //ThrowF_t("Wrong CRC check (%x).", ulCRC); 
-    }
-  } catch (char *strError) {
-    CPrintF("%s\n", strError);
-    return FALSE;              
-  }
-#endif
-
   gam_iObserverConfig = 0;
   gam_iObserverOffset = 0;
   // stop eventually running game
@@ -2739,6 +2730,8 @@ void CGame::GameMainLoop(void)
  *         S E C O N D   E N C O U N T E R   M E N U         *
  *************************************************************/
 
+#if SE1_GAME == SS_TSE
+
 static CTextureObject _toPointer;
 static CTextureObject _toBcgClouds;
 static CTextureObject _toBcgGrid;
@@ -2764,10 +2757,11 @@ void TiledTextureSE( PIXaabbox2D &_boxScreen, FLOAT fStretch, MEX2D &vScreen, ME
   boxTexture+=vScreen;
 }
 
-////
+#endif
 
 void CGame::LCDInit(void)
 {
+#if SE1_GAME == SS_TSE
   try {
     _toBcgClouds.SetData_t(CTFILENAME("Textures\\General\\Background6.tex"));
     _toPointer.SetData_t(CTFILENAME("TexturesMP\\General\\Pointer.tex"));
@@ -2790,6 +2784,7 @@ void CGame::LCDInit(void)
   } catch (char *strError) {
     FatalError("%s\n", strError);
   }
+#endif
   ::LCDInit();
 }
 void CGame::LCDEnd(void)
@@ -2798,14 +2793,16 @@ void CGame::LCDEnd(void)
 }
 void CGame::LCDPrepare(FLOAT fFade)
 {
+#if SE1_GAME == SS_TSE
   // get current time and alpha value
   _tmNow_SE = (FLOAT)_pTimer->GetHighPrecisionTimer().GetSeconds();
   _ulA_SE   = NormFloatToByte(fFade);
-
+#endif
   ::LCDPrepare(fFade);
 }
 void CGame::LCDSetDrawport(CDrawPort *pdp)
 {
+#if SE1_GAME == SS_TSE
   _pdp_SE = pdp;
   _pixSizeI_SE = _pdp_SE->GetWidth();
   _pixSizeJ_SE = _pdp_SE->GetHeight();
@@ -2816,35 +2813,40 @@ void CGame::LCDSetDrawport(CDrawPort *pdp)
   } else {
     _bPopup = TRUE;
   }
-  
+#endif
   ::LCDSetDrawport(pdp);
 }
 void CGame::LCDDrawBox(PIX pixUL, PIX pixDR, PIXaabbox2D &box, COLOR col)
 {
+#if SE1_GAME == SS_TSE
   col = SE_COL_BLUE_NEUTRAL|255;
-
+#endif
   ::LCDDrawBox(pixUL, pixDR, box, col);
 }
 void CGame::LCDScreenBox(COLOR col)
 {
+#if SE1_GAME == SS_TSE
   col = SE_COL_BLUE_NEUTRAL|255;
-
+#endif
   ::LCDScreenBox(col);
 }
 void CGame::LCDScreenBoxOpenLeft(COLOR col)
 {
+#if SE1_GAME == SS_TSE
   col = SE_COL_BLUE_NEUTRAL|255;
-
+#endif
   ::LCDScreenBoxOpenLeft(col);
 }
 void CGame::LCDScreenBoxOpenRight(COLOR col)
 {
+#if SE1_GAME == SS_TSE
   col = SE_COL_BLUE_NEUTRAL|255;
-
+#endif
   ::LCDScreenBoxOpenRight(col);
 }
 void CGame::LCDRenderClouds1(void)
 {
+#if SE1_GAME == SS_TSE
   _pdp_SE->PutTexture(&_toBackdrop, _boxScreen_SE, C_WHITE|255);
 
   if (!_bPopup) {
@@ -2899,9 +2901,13 @@ void CGame::LCDRenderClouds1(void)
   TiledTextureSE(_boxScreen_SE, 0.7f*_pdp_SE->GetWidth()/640.0f, 
     MEX2D(sin(_tmNow_SE*0.6f+1)*32,sin(_tmNow_SE*0.8f)*25),   boxBcgClouds1);
   _pdp_SE->PutTexture(&_toBcgClouds, _boxScreen_SE, boxBcgClouds1, C_BLACK|_ulA_SE>>2);
+#else
+  ::LCDRenderClouds1();
+#endif
 }
 void CGame::LCDRenderCloudsForComp(void)
 {
+#if SE1_GAME == SS_TSE
   MEXaabbox2D boxBcgClouds1;
   TiledTextureSE(_boxScreen_SE, 1.856f*_pdp_SE->GetWidth()/640.0f, 
     MEX2D(sin(_tmNow_SE*0.5f)*35,sin(_tmNow_SE*0.7f)*21),   boxBcgClouds1);
@@ -2909,23 +2915,35 @@ void CGame::LCDRenderCloudsForComp(void)
   TiledTextureSE(_boxScreen_SE, 1.323f*_pdp_SE->GetWidth()/640.0f, 
     MEX2D(sin(_tmNow_SE*0.6f)*31,sin(_tmNow_SE*0.8f)*25),   boxBcgClouds1);
   _pdp_SE->PutTexture(&_toBcgClouds, _boxScreen_SE, boxBcgClouds1, SE_COL_BLUE_NEUTRAL|_ulA_SE>>2);
+#else
+  ::LCDRenderClouds1();
+#endif
 }
 void CGame::LCDRenderClouds2(void)
 {
-  NOTHING;
+#if SE1_GAME == SS_TFE
+  ::LCDRenderClouds2();
+#endif
 }
 void CGame::LCDRenderGrid(void)
 {
-  NOTHING;
+#if SE1_GAME == SS_TFE
+  ::LCDRenderGrid();
+#endif
 }
 void CGame::LCDRenderCompGrid(void)
 {
-   MEXaabbox2D boxBcgGrid;
-   TiledTextureSE(_boxScreen_SE, 0.5f*_pdp_SE->GetWidth()/(_pdp_SE->dp_SizeIOverRasterSizeI*640.0f), MEX2D(0,0), boxBcgGrid);
-   _pdp_SE->PutTexture(&_toBcgGrid, _boxScreen_SE, boxBcgGrid, SE_COL_BLUE_NEUTRAL|_ulA_SE>>1); 
+#if SE1_GAME == SS_TSE
+  MEXaabbox2D boxBcgGrid;
+  TiledTextureSE(_boxScreen_SE, 0.5f*_pdp_SE->GetWidth()/(_pdp_SE->dp_SizeIOverRasterSizeI*640.0f), MEX2D(0,0), boxBcgGrid);
+  _pdp_SE->PutTexture(&_toBcgGrid, _boxScreen_SE, boxBcgGrid, SE_COL_BLUE_NEUTRAL|_ulA_SE>>1);
+#else
+  ::LCDRenderGrid();
+#endif
 }
 void CGame::LCDDrawPointer(PIX pixI, PIX pixJ)
 {
+#if SE1_GAME == SS_TSE
   CDisplayMode dmCurrent;
   _pGfx->GetCurrentDisplayMode(dmCurrent);
   if (dmCurrent.IsFullScreen()) {
@@ -2942,11 +2960,13 @@ void CGame::LCDDrawPointer(PIX pixI, PIX pixJ)
   pixJ-=1;
   _pdp_SE->PutTexture( &_toPointer, PIXaabbox2D( PIX2D(pixI, pixJ), PIX2D(pixI+pixSizeI, pixJ+pixSizeJ)),
                     LCDFadedColor(C_WHITE|255));
-
-  //::LCDDrawPointer(pixI, pixJ);
+#else
+  ::LCDDrawPointer(pixI, pixJ);
+#endif
 }
 COLOR CGame::LCDGetColor(COLOR colDefault, const char *strName)
 {
+#if SE1_GAME == SS_TSE
   if (!strcmp(strName, "thumbnail border")) {
     colDefault = SE_COL_BLUE_NEUTRAL|255;
   } else if (!strcmp(strName, "no thumbnail")) {
@@ -2974,7 +2994,7 @@ COLOR CGame::LCDGetColor(COLOR colDefault, const char *strName)
   } else if (!strcmp(strName, "hilited rectangle")) {
     colDefault = SE_COL_ORANGE_NEUTRAL|255;
   } else if (!strcmp(strName, "edit fill")) {
-    colDefault = SE_COL_BLUE_DARK_LT|75;
+    colDefault = SE_COL_BLUE_DARK_LT;
   } else if (!strcmp(strName, "editing cursor")) {
     colDefault = SE_COL_ORANGE_NEUTRAL|255;
   } else if (!strcmp(strName, "model box")) {
@@ -2994,6 +3014,7 @@ COLOR CGame::LCDGetColor(COLOR colDefault, const char *strName)
   } else if (!strcmp(strName, "bcg fill")) {
     colDefault = SE_COL_BLUE_DARK|255;
   }
+#endif
   return ::LCDGetColor(colDefault, strName);
 }
 COLOR CGame::LCDFadedColor(COLOR col)

@@ -15,8 +15,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include "StdAfx.h"
 #include "LCDDrawing.h"
+
+#if SE1_GAME == SS_TSE
 #define DECL_DLL
 #include "Entities/Common/Particles.h"
+#endif
 
 #include "Models/Enemies/Headman/Headman.h"
 #include "Models/Enemies/Eyeman/Eyeman.h"
@@ -30,6 +33,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Enemies/Beast/Beast.h"
 #include "Models/Enemies/Devil/Devil.h"
 #include "Models/Enemies/ElementalLava/ElementalLava.h"
+
+#include "Models/Weapons/Knife/KnifeItem.h"
+#include "Models/Weapons/Colt/ColtItem.h"
+#include "Models/Weapons/SingleShotgun/SingleShotgunItem.h"
+#include "Models/Weapons/DoubleShotgun/DoubleShotgunItem.h"
+#include "Models/Weapons/Minigun/MinigunItem.h"
+#include "Models/Weapons/Tommygun/TommygunItem.h"
+#include "Models/Weapons/RocketLauncher/RocketLauncherItem.h"
+#include "Models/Weapons/GrenadeLauncher/GrenadeLauncherItem.h"
+#include "Models/Weapons/Laser/LaserItem.h"
+#include "Models/Weapons/Cannon/Cannon.h"
+
+#if SE1_GAME == SS_TSE
+
 #include "ModelsMP/Enemies/Guffy/Guffy.h" 
 #include "ModelsMP/Enemies/Grunt/Grunt.h"
 #include "ModelsMP/Enemies/Demon/Demon.h"
@@ -44,20 +61,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Enemies/ExotechLarva/BackArms.h"
 #include "ModelsMP/Enemies/AirElemental/Elemental.h"
 
-#include "Models/Weapons/Knife/KnifeItem.h"
-#include "Models/Weapons/Colt/ColtItem.h"
-#include "Models/Weapons/SingleShotgun/SingleShotgunItem.h"
-#include "Models/Weapons/DoubleShotgun/DoubleShotgunItem.h"
-#include "Models/Weapons/Minigun/MinigunItem.h"
-#include "Models/Weapons/Tommygun/TommygunItem.h"
-#include "Models/Weapons/RocketLauncher/RocketLauncherItem.h"
-#include "Models/Weapons/GrenadeLauncher/GrenadeLauncherItem.h"
-#include "Models/Weapons/Laser/LaserItem.h"
-#include "Models/Weapons/Cannon/Cannon.h"
 #include "ModelsMP/Weapons/Sniper/SniperItem.h"
 #include "ModelsMP/Weapons/ChainSaw/ChainSawItem.h"
 #include "ModelsMP/Weapons/ChainSaw/BladeForPlayer.h"
 #include "ModelsMP/Weapons/Flamer/FlamerItem.h"
+
+#endif
 
 #define PARTICLES_NONE            (0L)
 #define PARTICLES_AIR_ELEMENTAL   (1L<<1)
@@ -109,10 +118,14 @@ extern void SetupCompModel_t(const CTString &strName)
   _vLightDir = FLOAT3D( -0.2f, -0.2f, -0.2f);
   _colLight = C_GRAY;
   _colAmbient = C_vdGRAY;
+#if SE1_GAME == SS_TSE
   _iParticleType = PARTICLES_NONE;
   _moFloor.SetData_t(CTFILENAME("ModelsMP\\Computer\\Floor.mdl"));
-  _moFloor.mo_toTexture.SetData_t(CTFILENAME("Models\\Computer\\Floor.tex"));
   pmo->mo_colBlendColor = 0xFFFFFFFF;
+#else
+  _moFloor.SetData_t(CTFILENAME("Models\\Computer\\Floor.mdl"));
+#endif
+  _moFloor.mo_toTexture.SetData_t(CTFILENAME("Models\\Computer\\Floor.tex"));
   if (strName=="Rocketman") {
     pmo->SetData_t(CTFILENAME("Models\\Enemies\\Headman\\Headman.mdl"));
     pmo->PlayAnim(HEADMAN_ANIM_COMPUTERKAMIKAZE, AOF_LOOPING);
@@ -355,6 +368,7 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->StretchModel(FLOAT3D(12,12,12));
     _bHasFloor = TRUE;
 
+#if SE1_GAME == SS_TSE
   } else if (strName=="Guffy") {
     pmo->SetData_t(CTFILENAME("ModelsMP\\Enemies\\Guffy\\Guffy.mdl"));
     pmo->PlayAnim(GUFFY_ANIM_IDLE, AOF_LOOPING);
@@ -579,6 +593,7 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->StretchModel(FLOAT3D(11.0f, 11.0f, 11.0f));
     _fFloorY = 0.0f;
     _bHasFloor = TRUE;
+#endif
 
   } else if (strName=="Knife") {
     pmo->SetData_t(CTFILENAME("Models\\Weapons\\Knife\\KnifeItem.mdl"));
@@ -686,6 +701,7 @@ extern void SetupCompModel_t(const CTString &strName)
     _bHasFloor = TRUE;
     _fFloorY = -0.5f;
 
+#if SE1_GAME == SS_TSE
   } else if (strName=="Sniper") {
     pmo->SetData_t(CTFILENAME("ModelsMP\\Weapons\\Sniper\\Sniper.mdl"));
     pmo->mo_toTexture.SetData_t(CTFILENAME("ModelsMP\\Weapons\\Sniper\\Body.tex"));
@@ -768,6 +784,7 @@ extern void SetupCompModel_t(const CTString &strName)
     pmo->StretchModel(FLOAT3D(3.0f, 3.0f, 3.0f));
     _bHasFloor = TRUE;
     _fFloorY = 0.0f;
+#endif
 
   } else if (strName=="Minigun") {
     pmo->SetData_t(CTFILENAME("Models\\Weapons\\Minigun\\MinigunItem.mdl"));
@@ -940,8 +957,11 @@ void RenderMessageModel(CDrawPort *pdp, const CTString &strModel)
     return;
   }
 
+#if SE1_VER >= SE1_107
   // for each eye
-  for (INDEX iEye=STEREO_LEFT; iEye<=(Stereo_IsEnabled()?STEREO_RIGHT:STEREO_LEFT); iEye++) {
+  for (INDEX iEye = STEREO_LEFT; iEye <= (Stereo_IsEnabled() ? STEREO_RIGHT : STEREO_LEFT); iEye++)
+#endif
+  {
     // prepare projection
     CRenderModel rm;
     CPerspectiveProjection3D pr;
@@ -953,12 +973,14 @@ void RenderMessageModel(CDrawPort *pdp, const CTString &strModel)
     pr.AspectRatioL() = 1.0f;
     pr.FrontClipDistanceL() = 0.3f;
     pr.ViewerPlacementL() = CPlacement3D(FLOAT3D(0,0,0), ANGLE3D(0,0,0));
-  
+
+  #if SE1_VER >= SE1_107
     // setup stereo rendering
     Stereo_SetBuffer(iEye);
     Stereo_AdjustProjection(pr, iEye, 0.16f);
 
     pdp->FillZBuffer(1.0f);
+  #endif
 
     // initialize rendering
     CAnyProjection3D apr;
@@ -1002,6 +1024,7 @@ void RenderMessageModel(CDrawPort *pdp, const CTString &strModel)
     _moModel.RenderShadow( rm, plLightPlacement, 200.0f, 200.0f, 1.0f, plFloorPlane);
     _moModel.RenderModel(rm);
 
+  #if SE1_GAME == SS_TSE
     // render particles
     if (_iParticleType!=PARTICLES_NONE) {
       Particle_PrepareSystem(pdp, apr);
@@ -1016,8 +1039,12 @@ void RenderMessageModel(CDrawPort *pdp, const CTString &strModel)
       }
       Particle_EndSystem();
     }
+  #endif
 
     EndModelRenderingView();
   }
+
+#if SE1_VER >= SE1_107
   Stereo_SetBuffer(STEREO_BOTH);
+#endif
 }

@@ -222,7 +222,9 @@ void CGame::SetMultiPlayerSession(CSessionProperties &sp)
   sp.sp_bGibs  = gam_bGibs;
   sp.sp_tmSpawnInvulnerability = gam_tmSpawnInvulnerability;
 
+#if SE1_GAME == SS_TSE
   sp.sp_bUseExtraEnemies = gam_bUseExtraEnemies;
+#endif
 
   // set credits and limits
   if (sp.sp_bCooperative) {
@@ -261,8 +263,10 @@ BOOL IsMenuEnabled(const CTString &strMenuName)
     return TRUE;
   } else if (strMenuName=="High Score"   ) {
     return TRUE;
+#if SE1_GAME == SS_TSE
   } else if (strMenuName=="Training"   ) {
     return FALSE;
+#endif
   } else if (strMenuName=="Technology Test") {
     return TRUE;
   } else {
