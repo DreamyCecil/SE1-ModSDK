@@ -18,8 +18,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/Marker";
-uses "Entities/Players/Player";
+uses "Tools/Marker";
+uses "Players/Player";
 
 enum PlayerAutoAction {
   1 PAA_RUN               "Run",              // run to this marker

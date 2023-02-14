@@ -19,8 +19,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Items/ItemHolder/ItemHolder.h"
 %}
 
-uses "Entities/Items/Item";
-uses "Entities/Players/Player";
+uses "Items/Item";
+uses "Players/Player";
 
 // health type 
 enum PowerUpItemType {

@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
+uses "Enemies/EnemyBase";
 
 
 class export CEnemyRunInto : CEnemyBase {

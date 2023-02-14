@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/Marker";
+uses "Tools/Marker";
 
 enum WarpRotation {
   0 WR_NONE       "none",

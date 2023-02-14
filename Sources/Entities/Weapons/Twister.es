@@ -28,9 +28,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %}
 
 
-uses "Entities/Enemies/AirElemental";
-uses "Entities/Enemies/Elemental";
-uses "Entities/AI/Spinner";
+uses "Enemies/AirElemental";
+uses "Enemies/Elemental";
+uses "AI/Spinner";
 
 
 // input parameter for twister

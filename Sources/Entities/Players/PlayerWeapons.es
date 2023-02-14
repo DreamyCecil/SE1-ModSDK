@@ -20,8 +20,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   
 #include <Engine/Build.h>
 
-#include "Entities/Players/Player.h"
-#include "Entities/Weapons/Bullet.h"
+#include "Players/Player.h"
+#include "Weapons/Bullet.h"
 #include "Models/Weapons/Knife/Knife.h"
 #include "Models/Weapons/Knife/KnifeItem.h"
 #include "Models/Weapons/Colt/Colt.h"
@@ -58,12 +58,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Player/SeriousSam/Body.h"
 #include "ModelsMP/Player/SeriousSam/Player.h"
 
-#include "Entities/Tools/Switch.h"
-#include "Entities/Players/PlayerView.h"
-#include "Entities/Players/PlayerAnimator.h"
-#include "Entities/Brushes/MovingBrush.h"
-#include "Entities/Tools/MessageHolder.h"
-#include "Entities/Enemies/EnemyBase.h"
+#include "Tools/Switch.h"
+#include "Players/PlayerView.h"
+#include "Players/PlayerAnimator.h"
+#include "Brushes/MovingBrush.h"
+#include "Tools/MessageHolder.h"
+#include "Enemies/EnemyBase.h"
 extern INDEX hud_bShowWeapon;
 
 extern const INDEX aiWeaponsRemap[19] = { 0,  1,  10,  2,  3,  4,  5,  6,  7,
@@ -71,18 +71,18 @@ extern const INDEX aiWeaponsRemap[19] = { 0,  1,  10,  2,  3,  4,  5,  6,  7,
 
 %}
 
-uses "Entities/Players/Player";
-uses "Entities/Players/PlayerWeaponsEffects";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Weapons/Bullet";
-uses "Entities/Effects/BasicEffects";
-uses "Entities/Items/WeaponItem";
-uses "Entities/Items/AmmoItem";
-uses "Entities/Items/AmmoPack";
-uses "Entities/Tools/ModelHolder2";
-//uses "Entities/Weapons/Pipebomb";
-//uses "Entities/Weapons/GhostBusterRay";
-uses "Entities/Weapons/CannonBall";
+uses "Players/Player";
+uses "Players/PlayerWeaponsEffects";
+uses "Weapons/Projectile";
+uses "Weapons/Bullet";
+uses "Effects/BasicEffects";
+uses "Items/WeaponItem";
+uses "Items/AmmoItem";
+uses "Items/AmmoPack";
+uses "Tools/ModelHolder2";
+//uses "Weapons/Pipebomb";
+//uses "Weapons/GhostBusterRay";
+uses "Weapons/CannonBall";
 
 
 // input parameter for weapons

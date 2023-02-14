@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/Light";
+uses "Tools/Light";
 
 enum WaterSize {
   0 WTS_SMALL     "",     // small water

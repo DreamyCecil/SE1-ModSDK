@@ -19,11 +19,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include <Engine/Graphics/DrawPort.h>
 
-#include <Entities/Players/Player.h>
-#include <Entities/Players/PlayerWeapons.h>
-#include <Entities/Tools/MusicHolder.h>
-#include <Entities/Enemies/EnemyBase.h>
-#include <Entities/Enemies/EnemyCounter.h>
+#include "Players/Player.h"
+#include "Players/PlayerWeapons.h"
+#include "Tools/MusicHolder.h"
+#include "Enemies/EnemyBase.h"
+#include "Enemies/EnemyCounter.h"
 
 #define ENTITY_DEBUG
 

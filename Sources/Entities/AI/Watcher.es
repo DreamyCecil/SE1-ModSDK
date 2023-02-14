@@ -17,7 +17,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %{
 #include "StdH.h"
 
-#include "Entities/Enemies/EnemyBase.h"
+#include "Enemies/EnemyBase.h"
 %}
 
 // input parameter for watcher

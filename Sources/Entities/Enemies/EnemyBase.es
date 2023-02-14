@@ -16,20 +16,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 310
 %{
 #include "StdH.h"
-#include "Entities/Common/PathFinding.h"
-#include "Entities/AI/NavigationMarker.h"
-#include "Entities/AI/TacticsHolder.h"
+#include "Common/PathFinding.h"
+#include "AI/NavigationMarker.h"
+#include "AI/TacticsHolder.h"
 extern void JumpFromBouncer(CEntity *penToBounce, CEntity *penBouncer);
 extern INDEX ent_bReportBrokenChains;
 %}
 
-uses "Entities/AI/Watcher";
-uses "Entities/Effects/BasicEffects";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Effects/Debris";
-uses "Entities/Enemies/EnemyMarker";
-uses "Entities/Tools/MusicHolder";
-uses "Entities/Effects/BloodSpray";
+uses "AI/Watcher";
+uses "Effects/BasicEffects";
+uses "Weapons/Projectile";
+uses "Effects/Debris";
+uses "Enemies/EnemyMarker";
+uses "Tools/MusicHolder";
+uses "Effects/BloodSpray";
 
 event ERestartAttack {
 };

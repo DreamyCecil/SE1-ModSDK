@@ -3,7 +3,7 @@
 #include "StdH.h"
 %}
 
-uses "Entities/Enemies/EnemyFly";
+uses "Enemies/EnemyFly";
 
 enum RobotFlyingChar {
   0 RFC_KAMIKAZE   "Kamikaze",

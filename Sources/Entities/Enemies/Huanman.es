@@ -4,7 +4,7 @@
 #include "Models/Enemies/Huanman/Huanman.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
+uses "Enemies/EnemyBase";
 
 %{
 // info structure

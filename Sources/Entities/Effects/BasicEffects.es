@@ -20,7 +20,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Effects/ExplosionGrenade/ExplosionGrenade.h"
 #include "Models/Effects/ShockWave01/ShockWave.h"
 #include "Models/Effects/BloodOnTheWall01/Blood.h"
-#include "Entities/Brushes/MovingBrush.h"
+#include "Brushes/MovingBrush.h"
 
 #define EXPLOSION_GRENADE_TEXTURE_ANIM_FAST 0
 #define EXPLOSION_GRENADE_TEXTURE_ANIM_MEDIUM 1
@@ -31,7 +31,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define SHOCKWAVE_TEXTURE_ANIM_SLOW 2
 %}
 
-uses "Entities/Tools/Light";
+uses "Tools/Light";
 
 enum BasicEffectType {
   0 BET_NONE                 "None",     // no effect (never spawned)

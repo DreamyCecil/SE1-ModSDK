@@ -4,7 +4,7 @@
 #include "Models/Enemies/Mantaman/Mantaman.h"
 %}
 
-uses "Entities/Enemies/EnemyDive";
+uses "Enemies/EnemyDive";
 
 %{
 static EntityInfo eiMantamanLiquid = {

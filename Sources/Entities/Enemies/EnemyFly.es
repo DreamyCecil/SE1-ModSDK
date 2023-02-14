@@ -18,9 +18,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Effects/Debris";
-uses "Entities/Enemies/EnemyMarker";
+uses "Enemies/EnemyBase";
+uses "Effects/Debris";
+uses "Enemies/EnemyMarker";
 
 
 enum EnemyFlyType {

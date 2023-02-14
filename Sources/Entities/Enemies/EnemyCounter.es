@@ -16,7 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 339
 %{
 #include "StdH.h"
-#include "Entities/Tools/MusicHolder.h"
+#include "Tools/MusicHolder.h"
 %}
 
 class CEnemyCounter : CRationalEntity {

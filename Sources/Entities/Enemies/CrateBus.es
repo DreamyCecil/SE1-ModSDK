@@ -20,9 +20,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Enemies/Mental/Mental.h"
 %}
 
-uses "Entities/Weapons/SpawnerProjectile";
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Effects/BasicEffects";
+uses "Weapons/SpawnerProjectile";
+uses "Enemies/EnemyBase";
+uses "Effects/BasicEffects";
 
 %{
 INDEX _aiLeftAnimations[] = {

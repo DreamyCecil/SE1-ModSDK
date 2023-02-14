@@ -18,10 +18,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Brushes/MovingBrushMarker";
-uses "Entities/Tools/SoundHolder";
-uses "Entities/Tools/MirrorMarker";
-uses "Entities/Effects/Debris";
+uses "Brushes/MovingBrushMarker";
+uses "Tools/SoundHolder";
+uses "Tools/MirrorMarker";
+uses "Effects/Debris";
 
 event EHit {
 };

@@ -19,8 +19,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Enemies/Mental/Mental.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Effects/BasicEffects";
+uses "Enemies/EnemyBase";
+uses "Effects/BasicEffects";
 
 enum BigHeadType {
   0 BHT_NORMAL  "Normal",

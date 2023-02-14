@@ -16,11 +16,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 218
 %{
 #include "StdH.h"
-#include "Entities/Tools/AnimationHub.h"
+#include "Tools/AnimationHub.h"
 %}
 
-uses "Entities/Tools/ModelHolder2";
-uses "Entities/Tools/Light";
+uses "Tools/ModelHolder2";
+uses "Tools/Light";
 
 // event sent to the entity that should change animation
 event EChangeAnim {

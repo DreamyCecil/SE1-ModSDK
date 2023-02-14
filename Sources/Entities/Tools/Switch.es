@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/ModelHolder2";
+uses "Tools/ModelHolder2";
 
 enum SwitchType {
   0 SWT_ONCE    "Once",

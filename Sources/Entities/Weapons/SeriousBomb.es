@@ -16,9 +16,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 354
 %{
 #include "StdH.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
-#include "Entities/Enemies/EnemyBase.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
+#include "Enemies/EnemyBase.h"
 %}
 
 // event for initialisation

@@ -4,7 +4,7 @@
 #include "Models/Enemies/Catman/Catman.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
+uses "Enemies/EnemyBase";
 
 enum CatmanType {
   0 CMT_SOLDIER    "Soldier",

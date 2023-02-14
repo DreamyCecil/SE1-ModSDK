@@ -21,7 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Player/SeriousSam/Head.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
+uses "Enemies/EnemyBase";
 
 %{
 // info structure

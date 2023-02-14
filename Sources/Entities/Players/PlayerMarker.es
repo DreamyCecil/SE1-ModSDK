@@ -16,10 +16,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 404
 %{
 #include "StdH.h"
-#include "Entities/Tools/MusicHolder.h"
+#include "Tools/MusicHolder.h"
 %}
 
-uses "Entities/Tools/Marker";
+uses "Tools/Marker";
 
 %{
   extern void CPlayerWeapons_Precache(ULONG ulAvailable);

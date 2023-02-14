@@ -3,8 +3,8 @@
 #include "StdH.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Weapons/Projectile";
+uses "Enemies/EnemyBase";
+uses "Weapons/Projectile";
 
 enum RobotDrivingChar {
   0 RDC_R2D2      "R2D2",

@@ -22,7 +22,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Enemies/AirElemental/Shockwave.h"
 %}
 
-uses "Entities/Effects/BasicEffects";
+uses "Effects/BasicEffects";
 
 // input parameter for launching the projectile
 event EAirShockwave {

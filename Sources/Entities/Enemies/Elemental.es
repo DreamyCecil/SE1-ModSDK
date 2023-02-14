@@ -25,8 +25,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Enemies/Elementals/Projectile/LavaStone.h"
 
 #include "Models/Enemies/ElementalLava/ElementalLava.h"
-#include "Entities/Effects/WorldSettingsController.h"
-#include "Entities/Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
+#include "Tools/BackgroundViewer.h"
 
 // lava elemental definitions
 #define LAVAMAN_SMALL_STRETCH (2.0f*0.75f)
@@ -48,9 +48,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 %}
 
-uses "Entities/Enemies/EnemyBase";
-//uses "Entities/Weapons/Twister";
-//uses "Entities/Weapons/Water";
+uses "Enemies/EnemyBase";
+//uses "Weapons/Twister";
+//uses "Weapons/Water";
 
 enum ElementalType {
   0 ELT_AIR           "obsolete",        // air elemental

@@ -18,8 +18,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Weapons/Projectile";
-//uses "Entities/Enemies/EnemyMarker";
+uses "Weapons/Projectile";
+//uses "Enemies/EnemyMarker";
 
 class CMeteorShower : CRationalEntity {
 name      "MeteorShower";

@@ -19,8 +19,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %}
 
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Effects/BasicEffects";
+uses "Enemies/EnemyBase";
+uses "Effects/BasicEffects";
 
 enum EnemySpawnerType {
   0 EST_SIMPLE          "Simple",           // spawns on trigger

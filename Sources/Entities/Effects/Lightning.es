@@ -16,9 +16,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 607
 %{
 #include "StdH.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
-#include "Entities/Tools/Light.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
+#include "Tools/Light.h"
 %}
 
 %{

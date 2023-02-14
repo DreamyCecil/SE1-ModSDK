@@ -19,8 +19,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Enemies/Gizmo/Gizmo.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Effects/BasicEffects";
+uses "Enemies/EnemyBase";
+uses "Effects/BasicEffects";
 
 %{
 // info structure

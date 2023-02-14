@@ -16,13 +16,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 611
 %{
 #include "StdH.h"
-#include "Entities/Effects/Effector.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
+#include "Effects/Effector.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
 %}
 
-uses "Entities/Tools/Marker";
-uses "Entities/Effects/BasicEffects";
+uses "Tools/Marker";
+uses "Effects/BasicEffects";
 enum EffectMarkerType {
   0 EMT_NONE                      "None",                      // no FX
   1 EMT_PLAYER_APPEAR             "Player appear",             // effect of player appearing

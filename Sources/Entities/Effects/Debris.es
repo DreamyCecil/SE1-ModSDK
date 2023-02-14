@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Effects/BasicEffects";
+uses "Effects/BasicEffects";
 
 enum DebrisParticlesType {
   0 DPT_NONE        "",   // no particles

@@ -32,11 +32,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Weapons/Laser/LaserItem.h"
 #include "Models/Weapons/Cannon/Cannon.h"
 
-#include "Entities/Players/PlayerWeapons.h"
+#include "Players/PlayerWeapons.h"
 
 %}
 
-uses "Entities/Items/Item";
+uses "Items/Item";
 
 // weapon type 
 enum WeaponItemType {

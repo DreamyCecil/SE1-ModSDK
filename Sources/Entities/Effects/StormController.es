@@ -16,9 +16,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 606
 %{
 #include "StdH.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
-#include "Entities/Effects/Lightning.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
+#include "Effects/Lightning.h"
 %}
 
 class CStormController: CRationalEntity {

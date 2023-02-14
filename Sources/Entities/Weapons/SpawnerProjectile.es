@@ -28,8 +28,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %}
 
 
-uses "Entities/Effects/BasicEffects";
-uses "Entities/Enemies/Summoner";
+uses "Effects/BasicEffects";
+uses "Enemies/Summoner";
 
 
 // input parameter for twister

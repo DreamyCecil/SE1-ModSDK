@@ -18,8 +18,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Players/Player";
-uses "Entities/Tools/CameraMarker";
+uses "Players/Player";
+uses "Tools/CameraMarker";
 
 class CCamera : CMovableModelEntity
 {

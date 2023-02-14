@@ -16,18 +16,18 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 347
 %{
 #include "StdH.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
 #include "ModelsMP/Enemies/Summoner/Summoner.h"
 #include "ModelsMP/Enemies/Summoner/Staff.h"
-#include "Entities/Effects/Effector.h"
+#include "Effects/Effector.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Weapons/SpawnerProjectile";
-uses "Entities/Tools/AreaMarker";
-uses "Entities/Enemies/SummonerMarker";
-uses "Entities/Players/Player";
+uses "Enemies/EnemyBase";
+uses "Weapons/SpawnerProjectile";
+uses "Tools/AreaMarker";
+uses "Enemies/SummonerMarker";
+uses "Players/Player";
 
 event ESummonerTeleport {
   FLOAT fWait,

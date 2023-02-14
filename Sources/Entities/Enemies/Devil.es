@@ -19,19 +19,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Enemies/Devil/Devil.h"
 #include "Models/Enemies/Devil/Weapons/Laser.h"
 #include "Models/Weapons/RocketLauncher/RocketLauncherItem.h"
-#include "Entities/Effects/Effector.h"
-#include "Entities/Effects/WorldSettingsController.h"
-#include "Entities/Effects/PyramidSpaceShip.h"
-#include "Entities/Tools/BackgroundViewer.h"
+#include "Effects/Effector.h"
+#include "Effects/WorldSettingsController.h"
+#include "Effects/PyramidSpaceShip.h"
+#include "Tools/BackgroundViewer.h"
 
 #define DEVIL_LASER_SPEED 100.0f
 #define DEVIL_ROCKET_SPEED 60.0f
 %}
 
-uses "Entities/Enemies/DevilMarker";
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Weapons/Bullet";
+uses "Enemies/DevilMarker";
+uses "Enemies/EnemyBase";
+uses "Weapons/Projectile";
+uses "Weapons/Bullet";
 
 event EBrushDestroyedByDevil {
   FLOAT3D vDamageDir,

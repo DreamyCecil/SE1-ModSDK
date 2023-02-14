@@ -21,9 +21,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Enemies/Elementals/Twister.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Weapons/Twister";
-//uses "Entities/Weapons/AirShockwave";
+uses "Enemies/EnemyBase";
+uses "Weapons/Twister";
+//uses "Weapons/AirShockwave";
 
 event EElementalGrow {
 };

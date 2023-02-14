@@ -5,10 +5,10 @@
 #include "Models/Enemies/Mamutman/Mamutman.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Enemies/Mamutman";
-uses "Entities/Weapons/AirWave";
-uses "Entities/Weapons/Bullet";
+uses "Enemies/EnemyBase";
+uses "Enemies/Mamutman";
+uses "Weapons/AirWave";
+uses "Weapons/Bullet";
 
 
 enum MamutChar {

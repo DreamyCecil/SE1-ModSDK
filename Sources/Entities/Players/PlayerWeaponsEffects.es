@@ -22,7 +22,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   ((ECBI_CORPSE)<<ECB_IS))
 %}
 
-uses "Entities/Players/Player";
+uses "Players/Player";
 
 enum WeaponEffectType {
   0 WET_SHOTGUNSHELL          "",   // shotgun shell

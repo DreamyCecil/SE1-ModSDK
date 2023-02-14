@@ -4,8 +4,8 @@
 #include "Models/Enemies/Mamutman/Mamutman.h"
 %}
 
-uses "Entities/Enemies/EnemyBase";
-uses "Entities/Weapons/Bullet";
+uses "Enemies/EnemyBase";
+uses "Weapons/Bullet";
 
 %{
 // info structure

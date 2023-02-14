@@ -16,12 +16,12 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 242
 %{
 #include "StdH.h"
-#include "Entities/Effects/WorldSettingsController.h"
+#include "Effects/WorldSettingsController.h"
 %}
 
-uses "Entities/Tools/ModelDestruction";
-uses "Entities/Tools/AnimationChanger";
-uses "Entities/Effects/BloodSpray";
+uses "Tools/ModelDestruction";
+uses "Tools/AnimationChanger";
+uses "Effects/BloodSpray";
 
 enum SkaCustomShadingType {
   0 SCST_NONE             "Automatic shading",

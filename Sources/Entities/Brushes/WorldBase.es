@@ -16,16 +16,16 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 100
 %{
 #include "StdH.h"
-#include "Entities/Tools/BackgroundViewer.h"
-#include "Entities/Effects/WorldSettingsController.h"
+#include "Tools/BackgroundViewer.h"
+#include "Effects/WorldSettingsController.h"
 // for error checking:
-#include "Entities/Tools/SoundHolder.h"
+#include "Tools/SoundHolder.h"
 %}
 
-uses "Entities/Tools/FogMarker";
-uses "Entities/Tools/HazeMarker";
-uses "Entities/Tools/MirrorMarker";
-uses "Entities/Tools/GradientMarker";
+uses "Tools/FogMarker";
+uses "Tools/HazeMarker";
+uses "Tools/MirrorMarker";
+uses "Tools/GradientMarker";
 
 %{
 

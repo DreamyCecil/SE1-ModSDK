@@ -19,7 +19,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Models/Items/ItemHolder/ItemHolder.h"
 %}
 
-uses "Entities/Items/Item";
+uses "Items/Item";
 
 // health type 
 enum ArmorItemType {

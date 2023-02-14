@@ -20,11 +20,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 %}
 
-uses "Entities/Tools/ModelHolder2";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Tools/SoundHolder";
-uses "Entities/Effects/BloodSpray";
-uses "Entities/Weapons/CannonBall";
+uses "Tools/ModelHolder2";
+uses "Weapons/Projectile";
+uses "Tools/SoundHolder";
+uses "Effects/BloodSpray";
+uses "Weapons/CannonBall";
 
 %{
 #define CANNONS_SIZE 2.0f

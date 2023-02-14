@@ -3,9 +3,9 @@
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/Light";
-uses "Entities/Weapons/Bullet";
-uses "Entities/Players/PlayerWeapons";
+uses "Tools/Light";
+uses "Weapons/Bullet";
+uses "Players/PlayerWeapons";
 uses "Engine/Classes/MovableEntity";
 
 // input parameter for ghost buster ray

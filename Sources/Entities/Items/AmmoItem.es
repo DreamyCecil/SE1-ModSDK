@@ -28,7 +28,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "ModelsMP/Items/Ammo/SniperBullets/SniperBullets.h"
 %}
 
-uses "Entities/Items/Item";
+uses "Items/Item";
 
 // ammo type 
 enum AmmoItemType {

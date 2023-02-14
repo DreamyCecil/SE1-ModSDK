@@ -18,8 +18,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/Marker";
-uses "Entities/Tools/FogMarker";
+uses "Tools/Marker";
+uses "Tools/FogMarker";
 
 
 class CHazeMarker: CMarker {

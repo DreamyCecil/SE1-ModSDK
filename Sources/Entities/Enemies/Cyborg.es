@@ -5,9 +5,9 @@
 %}
 
 
-uses "Entities/Enemies/EnemyFly";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Enemies/CyborgBike";
+uses "Enemies/EnemyFly";
+uses "Weapons/Projectile";
+uses "Enemies/CyborgBike";
 
 
 enum CyborgType {

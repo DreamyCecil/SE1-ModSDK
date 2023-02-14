@@ -16,7 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 206
 %{
 #include "StdH.h"
-#include "Entities/Weapons/Projectile.h"
+#include "Weapons/Projectile.h"
 %}
 
 %{

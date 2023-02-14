@@ -18,11 +18,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdH.h"
 %}
 
-uses "Entities/Tools/ModelHolder2";
-uses "Entities/Weapons/Projectile";
-uses "Entities/Tools/SoundHolder";
-uses "Entities/Effects/BloodSpray";
-uses "Entities/Weapons/CannonBall";
+uses "Tools/ModelHolder2";
+uses "Weapons/Projectile";
+uses "Tools/SoundHolder";
+uses "Effects/BloodSpray";
+uses "Weapons/CannonBall";
 
 enum FireType {
   0 SFT_WOODEN_DART "Wooden dart",
