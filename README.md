@@ -1,7 +1,8 @@
 # Serious Sam SDK
 
 This repository contains code from Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
-- `Entities` - all the entity logic.
+- `EntitiesTFE` - all the entity logic for The First Encounter game.
+- `EntitiesTSE` - all the entity logic for The Second Encounter game.
 - `Game` - all the game logic.
 - `GameGUI` - additional GUI elements for Serious Editor.
 
@@ -45,7 +46,7 @@ There are two ways to start the mod:
 2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MyMod` with the name of your mod (the name of this repository folder). After that just run any of the `.bat` files to launch the game or the editor.
 
 When running a selected project, make sure the mod in project properties (**Debugging** -> **Command Arguments**) is set to your mod name instead of `MyMod` (example: `+game VeryCoolMod`).
-- Running an `Entities` project runs the game (`SeriousSam.exe`) with the mod.
+- Running an `Game` project runs the game (`SeriousSam.exe`) with the mod.
 - Running a `GameGUI` project runs the editor (`SeriousEditor.exe`) with the mod.
 
 **Keep in mind that mod folder names do not support spaces or dashes (`-`)!**
