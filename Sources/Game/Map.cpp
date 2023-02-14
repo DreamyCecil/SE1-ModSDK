@@ -16,7 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // [Cecil] NOTE: This file combines code from both TFE 1.05 and TSE 1.07 to enable support for both games at once!
 // If you intend on porting some mod to make it compatible with both games, make sure to account for the changes here!
 
-#include "stdafx.h"
+#include "StdAfx.h"
 #include "LCDDrawing.h"
 
 // [Cecil] Amount of worlds on the map

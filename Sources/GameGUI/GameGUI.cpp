@@ -16,7 +16,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // GameGUI.cpp : Defines the entry point for the DLL application.
 //
 
-#include "stdafx.h"
+#include "StdAfx.h"
 
 #ifdef _DEBUG
   #define GAMEGUI_DLL_NAME "GameGUIMPD.dll"
