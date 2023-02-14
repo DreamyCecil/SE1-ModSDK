@@ -18,7 +18,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #if SE1_GAME == SS_TSE
 #define DECL_DLL
-#include "Entities/Common/Particles.h"
+#include "EntitiesTSE/Common/Particles.h"
 #endif
 
 #include "Models/Enemies/Headman/Headman.h"

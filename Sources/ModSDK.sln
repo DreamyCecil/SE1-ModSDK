@@ -2,7 +2,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Entities", "Entities\Entities.vcxproj", "{D9F67AA1-970A-BFDD-6BE9-BD0CDCE98A10}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "EntitiesMP", "EntitiesTSE\EntitiesTSE.vcxproj", "{D9F67AA1-970A-BFDD-6BE9-BD0CDCE98A10}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "GameGUI", "GameGUI\GameGUI.vcxproj", "{3EC2357F-FA36-9DF7-FFC4-AF9C03777DBE}"
 	ProjectSection(ProjectDependencies) = postProject

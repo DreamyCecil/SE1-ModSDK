@@ -26,8 +26,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define DECL_DLL 
 #endif
 
-#include <Entities/Global.h>
-#include <Entities/Common/Common.h>
-#include <Entities/Common/GameInterface.h>
-#include <Entities/Players/Player.h>
+#include <EntitiesTSE/Global.h>
+#include <EntitiesTSE/Common/Common.h>
+#include <EntitiesTSE/Common/GameInterface.h>
+#include <EntitiesTSE/Players/Player.h>
 #undef DECL_DLL
