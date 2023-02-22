@@ -1,6 +1,6 @@
-:: This script will sort all vanilla entity source files under proper directories
+:: This script will sort all vanilla TSE entity source files under proper directories
 :: Useful for migrating mods
-cd Entities
+cd EntitiesTSE
 
 mkdir AI
 
