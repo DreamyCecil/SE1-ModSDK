@@ -62,7 +62,3 @@ There are two ways around this:
 # License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
-
-Some of the code included with the SDK may not be licensed under the GNU GPL v2:
-
-* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Sources/Includes/Common`) by Microsoft
