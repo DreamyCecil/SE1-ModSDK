@@ -16,7 +16,6 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - 1.10 for The Second Encounter (`Engine110`) *- clean build using Visual Studio 2013*
 - Sources for all Serious Engine versions (`Common`)
   - Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
-  - Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
 - Entity Class Compiler (`Ecc.exe`)
 
 Games on 1.05 and 1.07 engine versions also include headers of vanilla modules under extra `EntitiesV`, `GameGUIV` and `GameV` directories and static libraries for all three projects: `EntitiesV.lib`, `GameGUIV.lib` and `GameV.lib`.
@@ -35,7 +34,3 @@ These libraries are useful for when you need to link your logic with standard en
 ## License
 
 Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
-
-Some of the code included with the SDK may not be licensed under the GNU GPL v2:
-
-* DirectX8 SDK (Headers & Libraries) (`d3d8.h`, `d3d8caps.h` and `d3d8types.h` located in `Common`) by Microsoft
