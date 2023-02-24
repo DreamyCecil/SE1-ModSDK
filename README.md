@@ -19,8 +19,8 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - Some of the headers from DirectX8 SDK (`d3d8.h`, `d3d8caps.h` and `d3d8types.h`)
 - Entity Class Compiler (`Ecc.exe`)
 
-Games on 1.05 and 1.07 engine versions (TFE & TSE) also include headers of vanilla modules under extra `EntitiesV`, `GameV` and `GameGUIV` directories and static libraries for all three projects: `EntitiesV.lib`, `GameGUIV.lib` and `GameV.lib`.
-They are prefixed with `V` (for "Vanilla") to avoid confusion with libraries from the SDK itself. But they still refer to the original dynamic link libraries (e.g. `Entities.dll` in TFE and `EntitiesMP.dll` in TSE).
+Games on 1.05 and 1.07 engine versions also include headers of vanilla modules under extra `EntitiesV`, `GameGUIV` and `GameV` directories and static libraries for all three projects: `EntitiesV.lib`, `GameGUIV.lib` and `GameV.lib`.
+They are suffixed with `V` (for "Vanilla") to avoid confusion with libraries from the SDK itself. But they still refer to the original dynamic link libraries (e.g. `Entities.dll` in TFE and `EntitiesMP.dll` in TSE).
 
 These libraries are useful for when you need to link your logic with standard entities. For example, in entity packs that implement new enemy types, which are derived from the standard `CEnemyBase`.
 
