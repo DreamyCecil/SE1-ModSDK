@@ -66,7 +66,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'" Label="Configuration">
     <ConfigurationType>DynamicLibrary</ConfigurationType>
@@ -90,7 +90,7 @@
     <ConfigurationType>DynamicLibrary</ConfigurationType>
     <UseOfMfc>Dynamic</UseOfMfc>
     <CharacterSet>Unicode</CharacterSet>
-    <PlatformToolset>v120</PlatformToolset>
+    <PlatformToolset>v100</PlatformToolset>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -149,62 +149,70 @@
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)D</TargetName>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
     <TargetName>$(ProjectName)MPD</TargetName>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">
     <OutDir>$(BinDir)</OutDir>
     <IntDir>$(ObjDir)</IntDir>
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>$(CommonIncludes);$(SamEngineIncludes);$(IncludePath)</IncludePath>
-    <LibraryPath>$(SamEngineLibraries);$(OtherLibraries)</LibraryPath>
+    <ExecutablePath>$(SdkExe)</ExecutablePath>
+    <IncludePath>$(SamEngineIncludes);$(SdkIncl)</IncludePath>
+    <LibraryPath>$(SamEngineLibraries);$(SdkLibs)</LibraryPath>
     <TargetName>$(ProjectName)MP</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">
