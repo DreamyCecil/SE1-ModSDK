@@ -41,11 +41,11 @@ Before building projects for old engine versions, make sure that their platform 
 Once the project is compiled, there should be three libraries in the Bin folder (e.g. `Entities.dll`, `GameGUI.dll` and `Game.dll`).
 
 There are two ways to start the mod:
-1. Create a `.des` file in your game's "Mods" directory under the same name as this repository folder; open it in any text editor and type the mod display name in it. Then start the game and launch your mod from the **MODS** menu.
-2. Open `ModStart.bat` and `EditorStart.bat` from the Bin folder in any text editor and replace `MyMod` with the name of your mod (the name of this repository folder). After that just run any of the `.bat` files to launch the game or the editor.
+1. Create a `.des` file in your game's "Mods" directory under the same name as this repository folder. Open it in a text editor and type mod's display name in it. Then start the game and launch your mod from the **MODS** menu.
+2. Open `ModStart.bat` and `EditorStart.bat` from `Bin` in a text editor and replace `MyMod` with the name of this repository folder. After that just run any of the `.bat` files to launch the game or the editor.
 
-When running a selected project, make sure the mod in project properties (**Debugging** -> **Command Arguments**) is set to your mod name instead of `MyMod` (example: `+game VeryCoolMod`).
-- Running an `Game` project runs the game (`SeriousSam.exe`) with the mod.
+When running a selected project, make sure the mod in project properties (**Debugging** -> **Command Arguments**) is set to this repository folder name instead of `MyMod` (example: `+game VeryCoolMod`).
+- Running a `Game` project runs the game (`SeriousSam.exe`) with the mod.
 - Running a `GameGUI` project runs the editor (`SeriousEditor.exe`) with the mod.
 
 **Keep in mind that mod folder names do not support spaces or dashes (`-`)!**
@@ -60,4 +60,4 @@ There are two ways around this:
 
 # License
 
-Just like Croteam's [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) source code, Serious Sam SDK is licensed under the GNU GPL v2 (see LICENSE file).
+**Serious Sam SDK** is licensed under GNU GPL v2 because it uses code from [Serious Engine 1.10](https://github.com/Croteam-official/Serious-Engine) (see LICENSE file).
