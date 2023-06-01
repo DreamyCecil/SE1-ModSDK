@@ -14,6 +14,7 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - 1.05 for The Second Encounter (`Engine105`)
   - 1.07 for The Second Encounter (`Engine107`)
   - 1.10 for The Second Encounter (`Engine110`) *- clean build using Visual Studio 2013*
+  - 1.10 for Serious Sam Revolution (`EngineRev`) *- work-in-progress, use at your own risk*
 - Sources for all Serious Engine versions (`Common`)
   - Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
 - Entity Class Compiler (`Ecc.exe`)
