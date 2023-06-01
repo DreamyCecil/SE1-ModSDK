@@ -24,6 +24,9 @@ ENGINE_API extern void CPrintF(const char *strFormat, ...);
 // Add a string of text to console
 ENGINE_API void CPutString(const char *strString);
 
+// [Cecil] Rev: Print formatted text into console
+ENGINE_API void ConPrintF(const char *strFormat, ...);
+
 // Get number of lines newer than given time
 ENGINE_API INDEX CON_NumberOfLinesAfter(TIME tmLast);
 // Get one of last lines
@@ -34,6 +37,8 @@ ENGINE_API void CON_DiscardLastLineTimes(void);
 ENGINE_API const char *CON_GetBuffer(void);
 ENGINE_API INDEX CON_GetBufferSize(void);
 
+// [Cecil] Rev: Use console for chatting
+ENGINE_API extern INDEX con_bTalk;
 
 #endif  /* include-once check. */
 

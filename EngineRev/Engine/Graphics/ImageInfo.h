@@ -57,10 +57,14 @@ public:
   // sets image info structure members with info form file of any supported graphic format,
   //  but does not load picture content nor palette; returns format type (see #defines)
   //  (supported formats: CroTeam's RAW, PCX24, TGA32 uncompressed)
-  INDEX GetGfxFileInfo_t( const CTFileName &strFileName); // throw char *
+  bool GetGfxFileInfo_t(CTFileName strFileName); // [Cecil] Rev: Different return type, field copy instead of a constant reference
+
+  // [Cecil] Rev: New method, called from GetGfxFileInfo_t() and Load_t()
+  UBYTE *LoadBuffer(CTFileName strFileName, int *pixW, int *pixH, int *ctBytes);
+
   // sets image info structure members with info form file of any supported graphic format
   //  and loads picture content and, eventually, palette
-  void LoadAnyGfxFormat_t( const CTFileName &strFileName); // throw char *
+  void Load_t(CTFileName strFileName); // [Cecil] Rev: Field copy instead of a constant reference
 
   // converts image info structure and content to PCX or TGA format and saves it to file
   void SaveTGA_t( const CTFileName &strFileName) const; // throw char *

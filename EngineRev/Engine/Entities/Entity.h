@@ -30,6 +30,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Entities/EntityPointer.h>
 #include <Engine/Ska/ModelInstance.h>
 
+// [Cecil] Rev: Dependencies
+#include <Engine/Network/EntityCorrection.h>
+#include <Engine/Graphics/GLShader.h>
 
 #define DUMPVECTOR(v) \
   strm.FPrintF_t(#v ":  %g,%g,%g %08x,%08x,%08x\n", \
@@ -182,6 +185,9 @@ public:
   INDEX en_ctReferences;          // reference counter for delayed destruction
   ULONG en_ulID;                  // unique entity identifier
 
+  // [Cecil] Rev: Extra field (could be entity creation place / origin)
+  CPlacement3D en_plExtra;
+
   CPlacement3D en_plPlacement;      // placement in world space
   FLOATmatrix3D en_mRotation;       // precalc. matrix for object rotation
   CEntityClass *en_pecClass;         // class used to construct this entity
@@ -210,6 +216,8 @@ public:
   public:
   CPlacement3D en_plRelativeToParent;   // placement relative to parent placement
 
+  INDEX en_iExtra; // [Cecil] Rev: Extra field
+
 public:
   // reference counting functions
   inline void AddReference(void);
@@ -224,6 +232,8 @@ public:
   class CEntityComponent *ComponentForTypeAndID(ULONG ulType, ULONG ulID);
   /* Get pointer to entity property from its name. */
   class CEntityProperty *PropertyForName(const CTString &strPropertyName);
+  // [Cecil] Rev: Get entity property by its variable name
+  class CEntityProperty *PropertyForVariable(const CTString &strVariable);
   /* Copy one entity property from property of another entity. */
   void CopyOneProperty( CEntityProperty &epPropertySrc, CEntityProperty &epPropertyDest,
                         CEntity &enOther, ULONG ulFlags);
@@ -282,6 +292,10 @@ public:
   virtual void Precache(void);
   // create a checksum value for sync-check
   virtual void ChecksumForSync(ULONG &ulCRC, INDEX iExtensiveSyncCheck);
+
+  // [Cecil] Rev: Fill correction info with entity properties
+  virtual void CorrectionProperties(CEntityCorrectionInfo &eci, INDEX iExtra);
+
   // dump sync data to text file
   virtual void DumpSync_t(CTStream &strm, INDEX iExtensiveSyncCheck);  // throw char *
 
@@ -315,6 +329,9 @@ public:
   void SwitchToModel(void);
   void SwitchToEditorModel(void);
 
+  // [Cecil] Rev: Initialize as game info entity
+  void InitAsGameInfo(void);
+
   /* Set all properties to default values. - overridden by ecc */
   virtual void SetDefaultProperties(void);
 
@@ -336,6 +353,9 @@ public:
   const CTFileName &GetModel(void);
   /* Start new animation for model entity. */
   void StartModelAnim(INDEX iNewModelAnim, ULONG ulFlags);
+
+  // [Cecil] Rev: Set some model shader
+  void SetModelShader(const CTFileName &fnm1, const CTFileName &fnm2);
 
   /* Play a given sound object. */
   void PlaySound(CSoundObject &so, SLONG idSoundComponent, SLONG slPlayType);
@@ -392,12 +412,22 @@ public:
   /* Apply some damage directly to one entity. */
   void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
+
+  // [Cecil] Rev: Same method as above but with extra index
+  void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iExtra);
+
   /* Apply some damage to all entities in some range (this tests for obstacles). */
   void InflictRangeDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vCenter, FLOAT fHotSpotRange, FLOAT fFallOffRange);
   /* Apply some damage to all entities in a box (this doesn't test for obstacles). */
   void InflictBoxDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOATaabbox3D &box);
+
+  // [Cecil] Rev: Check damage types
+  BOOL IsBulletType(enum DamageType dmtType);
+  BOOL IsBurningType(enum DamageType dmtType);
+  BOOL IsExplosionType(enum DamageType dmtType);
 
   // notify engine that gravity defined by this entity has changed
   void NotifyGravityChanged(void);
@@ -489,12 +519,14 @@ public:
   inline BOOL IsPredictable(void) const { return en_ulFlags&ENF_PREDICTABLE; };
   CEntity *GetPredictor(void);
   CEntity *GetPredicted(void);
+  const CEntity *GetPredicted(void) const; // [Cecil] Rev: Constant copy of the method above
   // become predictable/unpredictable
   void SetPredictable(BOOL bON);
   // check if this instance is head of prediction chain
   BOOL IsPredictionHead(void);
   // get the prediction original (predicted), or self if not predicting
   CEntity *GetPredictionTail(void);
+  const CEntity *GetPredictionTail(void) const; // [Cecil] Rev: Constant copy of the method above
   // check if active for prediction now
   BOOL IsAllowedForPrediction(void) const;
   // check an event for prediction, returns true if already predicted
@@ -536,6 +568,9 @@ public:
   /* Get sector that given point is in - point must be inside this entity. */
   CBrushSector *GetSectorFromPoint(const FLOAT3D &vPointAbs);
 
+  // [Cecil] Rev: Check if this entity is inside of another one
+  BOOL IsEntityInside(CEntity *penOther);
+
   // map world polygon to/from indices
   CBrushPolygon *GetWorldPolygonPointer(INDEX ibpo);
   INDEX GetWorldPolygonIndex(CBrushPolygon *pbpo);
@@ -546,6 +581,10 @@ public:
   virtual const CTString &GetDescription(void) const; // name + some more verbose data
   /* Get first target of this entity. */
   virtual CEntity *GetTarget(void) const;
+
+  // [Cecil] Rev: Get all entity targets
+  virtual BOOL GetTargets(CEntityPointer *apenTargets, int ctTargets) const;
+
   /* Check if entity can be used as a target. */
   virtual BOOL IsTargetable(void) const;
   /* Check if entity is marker */
@@ -612,7 +651,7 @@ public:
   /* Get current collision box - override for custom collision boxes. */
   virtual void GetCollisionBoxParameters(INDEX iBox, FLOATaabbox3D &box, INDEX &iEquality);
   /* Render game view */
-  virtual void RenderGameView(CDrawPort *pdp, void *pvUserData);
+  virtual void RenderGameView(CDrawPort *pdp, void *pvUserData, BOOL bExtra); // [Cecil] Rev: Extra argument
   // apply mirror and stretch to the entity if supported
   virtual void MirrorAndStretch(FLOAT fStretch, BOOL bMirrorX);
   // get offset for depth-sorting of alpha models (in meters, positive is nearer)
@@ -620,10 +659,14 @@ public:
   // get visibility tweaking bits
   virtual ULONG GetVisTweaks(void);
 
+  // [Cecil] Rev: Check if certain content hurts
+  virtual BOOL DoesContentTypeHurt(CContentType &ct);
+
   /* Get max tessellation level. */
   virtual FLOAT GetMaxTessellationLevel(void);
 
   // get/set pointer to your predictor/predicted (autogenerated by ECC feature)
+  virtual const CEntity *GetPredictionPair(void) const; // [Cecil] Rev: 'const' equivalent of the function below
   virtual CEntity *GetPredictionPair(void);
   virtual void SetPredictionPair(CEntity *penPair);
 
@@ -645,9 +688,12 @@ public:
   /* Send an event to all entities in a box (box must be around this entity). */
   void SendEventInRange(const CEntityEvent &ee, const FLOATaabbox3D &boxRange);
 
+  // [Cecil] Rev: Send event to all entities of a specific class type
+  void SendEventToType(const CEntityEvent &ee, const char *strClassName);
+
   /* apply some damage to the entity (see event EDamage for more info) */
   virtual void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
-    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iExtra); // [Cecil] Rev: Extra argument and return type
 
   /* Receive item through event - for AI purposes only */
   virtual BOOL ReceiveItem(const CEntityEvent &ee);
@@ -660,6 +706,12 @@ public:
   void ModelChangeNotify(void);
   /* Terrain change notify */ 
   void TerrainChangeNotify(void);
+
+  // [Cecil] Rev: Process one game tick
+  virtual void OnStep(void);
+
+  // [Cecil] Rev: Set some shader
+  virtual void SetUniforms(CGLShader &glShader);
 };
 
 // check if entity is of given class
@@ -667,6 +719,12 @@ BOOL ENGINE_API IsOfClass(CEntity *pen, const char *pstrClassName);
 BOOL ENGINE_API IsOfSameClass(CEntity *pen1, CEntity *pen2);
 // check if entity is of given class or derived from
 BOOL ENGINE_API IsDerivedFromClass(CEntity *pen, const char *pstrClassName);
+
+// [Cecil] Rev: Get class name of an entity
+ENGINE_API CTString GetClassName(CEntity *pen); // Exported as non-Unicode 'GetClassNameA()'
+
+// [Cecil] Rev: Get predicted entity safely
+ENGINE_API CEntity *GetPredictedSafe(CEntity *pen);
 
 // all standard smart pointer functions are here as inlines
 inline CEntityPointer::CEntityPointer(void) : ep_pen(NULL) {};
@@ -722,6 +780,10 @@ public:
   virtual void Read_t( CTStream *istr);  // throw char *
   /* Write to stream. */
   virtual void Write_t( CTStream *ostr); // throw char *
+
+  // [Cecil] Rev: Fill correction info with entity properties
+  virtual void CorrectionProperties(CEntityCorrectionInfo &eci, INDEX iExtra);
+
 public:
   /* Set health of the entity. (Use only for initialization!) */
   void SetHealth(FLOAT fHealth) { en_fHealth = fHealth; };
@@ -737,7 +799,7 @@ public:
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
 
   // returns bytes of memory used by this object
-  inline SLONG GetUsedMemory(void) {
+  virtual SLONG GetUsedMemory(void) { // [Cecil] Rev: Marked as 'virtual'
     return( sizeof(CLiveEntity) - sizeof(CEntity) + CEntity::GetUsedMemory());
   };
 };
@@ -785,7 +847,7 @@ public:
   /* Return from a subautomaton. */
   void Return(SLONG slThisState, const CEntityEvent &eeReturn);
   // print stack to debug output
-  const char *PrintStackDebug(void);
+  virtual const char *PrintStackDebug(void); // [Cecil] Rev: Marked as 'virtual'
 
   /* Set next timer event to occur at given moment time. */
   void SetTimerAt(TIME timeAbsolute);
@@ -806,7 +868,7 @@ public:
   virtual BOOL HandleEvent(const CEntityEvent &ee);
 
   // returns bytes of memory used by this object
-  inline SLONG GetUsedMemory(void) {
+  virtual SLONG GetUsedMemory(void) { // [Cecil] Rev: Marked as 'virtual'
     SLONG slUsedMemory = sizeof(CRationalEntity) - sizeof(CLiveEntity) + CLiveEntity::GetUsedMemory();
     slUsedMemory += en_stslStateStack.sa_Count * sizeof(SLONG);
     return slUsedMemory;

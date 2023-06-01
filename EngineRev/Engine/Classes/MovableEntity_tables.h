@@ -53,7 +53,7 @@ CEntityComponent CMovableEntity_components[] = {
 
 CEventHandlerEntry CMovableEntity_handlers[] = {
  {0x00010000, -1, CEntity::pEventHandler(&CMovableEntity::
-#line 3118 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 3105 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 Dummy),DEBUGSTRING("CMovableEntity::Dummy")},
 };
 #define CMovableEntity_handlersct ARRAYCOUNT(CMovableEntity_handlers)

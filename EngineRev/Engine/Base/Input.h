@@ -130,11 +130,58 @@ public:
   // Get given button's current state
   inline BOOL GetButtonState( INDEX iButtonNo) const {
     return (inp_ubButtonsBuffer[ iButtonNo] & 128) != 0;};
+
+  // [Cecil] Rev: Handle raw input
+  void HandleRawInput(tagMSG *);
+
+  // [Cecil] Rev: Register raw mouse input
+  void RegisterRawMouse(void);
+};
+
+// [Cecil] Rev: Controller for XInput
+class ENGINE_API CInputXController {
+  public:
+    CInputXController(void);
+    ~CInputXController(void);
+
+    CInputXController &operator=(const CInputXController &);
+
+    BOOL AnyButton(void);
+    void Clear(INDEX);
+    void HandleState(void *);
+    void SetVibration(BOOL);
+};
+
+// [Cecil] Rev: XInput
+class ENGINE_API CInputX {
+  public:
+    CInputX(void);
+    ~CInputX(void);
+
+    CInputX &operator=(const CInputX &);
+
+    void CheckPresence(void);
+    void Clear(void);
+    CInputXController &GetController(INDEX);
+    void OnStep(void);
+    void Setup(void);
+    BOOL UsingXinput(INDEX);
 };
 
 // pointer to global input object
 ENGINE_API extern CInput *_pInput;
 
+// [Cecil] Rev: XInput
+ENGINE_API extern CInputX *_pInputX;
+
+// [Cecil] Rev: Exported variables
+ENGINE_API extern INDEX inp_bAllowPrescan;
+ENGINE_API extern INDEX inp_bInvertHorizontal;
+ENGINE_API extern INDEX inp_bInvertVertical;
+ENGINE_API extern INDEX inp_bLeftHandedControls;
+ENGINE_API extern BOOL inp_bMenuXinput;
+ENGINE_API extern FLOAT inp_fSensitivityHorizontal;
+ENGINE_API extern FLOAT inp_fSensitivityVertical;
 
 #endif  /* include-once check. */
 

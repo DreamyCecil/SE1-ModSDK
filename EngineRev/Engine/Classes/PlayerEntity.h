@@ -9,9 +9,17 @@ class DECL_DLL  CPlayerEntity : public CMovableModelEntity {
 public:
    virtual void SetDefaultProperties(void);
   FLOAT en_tmPing;
+  ULONG en_ulSteamID;
+  CTString en_strSteamName;
+  FLOAT en_fDamageDealt;
 CPlayerCharacter en_pcCharacter;
 CPlacement3D en_plViewpoint;
 CPlacement3D en_plLastViewpoint;
+
+// [Cecil] Rev: Unknown fields
+ULONG en_ulPlayerEntityField1;
+ULONG en_ulPlayerEntityField2;
+
    CTString GetPlayerName(void);
    const CTString & GetName(void)const;
    INDEX GetMyPlayerIndex(void);
@@ -22,13 +30,16 @@ CPlacement3D en_plLastViewpoint;
   virtual void ApplyAction(const CPlayerAction & pa,FLOAT tmLatency);
   virtual void Disconnect(void);
   virtual void CharacterChanged(const CPlayerCharacter & pcNew);
+
+  // [Cecil] Rev: Gather stats
+  virtual void GatherStats(void *pData);
+
   virtual void GetGameAgentPlayerInfo(INDEX iPlayer,CTString & strOut);
-  virtual void GetMSLegacyPlayerInf(INDEX iPlayer,CTString & strOut);
    void ChecksumForSync(ULONG & ulCRC,INDEX iExtensiveSyncCheck);
    void DumpSync_t(CTStream & strm,INDEX iExtensiveSyncCheck);
 #define  STATE_CPlayerEntity_Dummy 0x00040000
   BOOL 
-#line 143 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/PlayerEntity.es"
+#line 128 "D:/work/dev_SamClassic/Sources/Engine/Classes/PlayerEntity.es"
 Dummy(const CEntityEvent &__eeInput);
 };
 #endif // _Engine_Classes_PlayerEntity_INCLUDED

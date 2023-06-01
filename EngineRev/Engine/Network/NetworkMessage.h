@@ -85,22 +85,57 @@ typedef enum NetworkMessageType {
   MSG_REQUESTGAMESTREAMRESEND,  // request for resend of a game stream message
 
   // chat messages
-  MSG_CHAT_IN,    // chat request from client to server
-  MSG_CHAT_OUT,   // chat message routed to certain clients
+  MSG_CHAT_OUT = 29,   // chat message routed to certain clients
+
+  // [Cecil] Rev: Chat action packet
+  // 8 bytes - From ID
+  // 8 bytes - To ID
+  // String - Chat action
+  MSG_CHAT_ACTION = 30,
+
+  MSG_CHAT_IN = 31,    // chat request from client to server
 
   // parameter setting messages
-  MSG_SET_CLIENTSETTINGS,     // adjust server side settings of a client
+  MSG_SET_CLIENTSETTINGS = 32,     // adjust server side settings of a client
 
+  // [Cecil] Rev: These enums have been moved forward by 2
   // remote administration 
-  MSG_ADMIN_COMMAND,     // c2s incoming console command request
-  MSG_ADMIN_RESPONSE,    // s2c results of the console command
+  MSG_ADMIN_COMMAND = 33,     // c2s incoming console command request
+  MSG_ADMIN_RESPONSE = 34,    // s2c results of the console command
+
+  // [Cecil] Rev: Entity correction packet
+  // 4 bytes - Entity ID (ulEntityID)
+  // 4 bytes - Amount of properties written (ctProperties)
+  // 1 byte - Mark current session as having modified entities (bMarkAsModified)
+  // Array - Entity correction properties
+  MSG_ENTITY_CORRECTION = 35,
+
+  // [Cecil] Rev: Download request packet
+  // String - File to download
+  MSG_REQ_DOWNLOAD = 37,
+
+  // [Cecil] Rev: File chunk packet
+  // 4 bytes - File number (-1 if only one)
+  // 4 bytes - Chunk number
+  MSG_FILE_CHUNK = 38,
+
+  // [Cecil] Rev: Server notice packet
+  // 4 bytes - Time to display the message as INDEX from 1 to 10
+  // String - Notice to display
+  MSG_SERVER_NOTICE = 41,
+
+  // [Cecil] Rev: Authentication packet
+  // 4 bytes - Authentication length
+  // Array - Authentication data
+  MSG_AUTHENTICATION = 42,
+
 
   MSG_EXTRA = '/',      // used for special communications like rcon and similar
 
 
-  // added to the end so that it would not mess up old numbering - that would corrupt demo playing
+  // [Cecil] Rev: This enum has been moved to position 36
   // disconnection confirmation from the client
-	MSG_REP_DISCONNECTED,
+	MSG_REP_DISCONNECTED = 36,
 
 
 } MESSAGETYPE;
@@ -161,6 +196,8 @@ public:
 
   /* Read an object from message. */
   inline CNetworkMessage &operator>>(float  &f) { Read( &f, sizeof( f)); return *this; }
+  inline CNetworkMessage &operator>>(double &d) { Read( &d, sizeof( d)); return *this; } // [Cecil] Rev: Read double
+  inline CNetworkMessage &operator>>(U64   &ul) { Read(&ul, sizeof(ul)); return *this; } // [Cecil] Rev: Read 64-bit integer
   inline CNetworkMessage &operator>>(ULONG &ul) { Read(&ul, sizeof(ul)); return *this; }
   inline CNetworkMessage &operator>>(UWORD &uw) { Read(&uw, sizeof(uw)); return *this; }
   inline CNetworkMessage &operator>>(UBYTE &ub) { Read(&ub, sizeof(ub)); return *this; }
@@ -172,6 +209,7 @@ public:
   /* Write an object into message. */
   inline CNetworkMessage &operator<<(const float  &f) { Write( &f, sizeof( f)); return *this; }
   inline CNetworkMessage &operator<<(const double &d) { Write( &d, sizeof( d)); return *this; }
+  inline CNetworkMessage &operator<<(const U64   &ul) { Write(&ul, sizeof(ul)); return *this; } // [Cecil] Rev: Write 64-bit integer
   inline CNetworkMessage &operator<<(const ULONG &ul) { Write(&ul, sizeof(ul)); return *this; }
   inline CNetworkMessage &operator<<(const UWORD &uw) { Write(&uw, sizeof(uw)); return *this; }
   inline CNetworkMessage &operator<<(const UBYTE &ub) { Write(&ub, sizeof(ub)); return *this; }

@@ -94,8 +94,11 @@ public:
     EPT_FLOATQUAT3D = 23,       // FLOATquat3D
     EPT_FLOATMATRIX3D = 24,     // FLOATmatrix3D
     EPT_FLAGS = 25,             // flags - ULONG bitfield with names for each field
-    EPT_MODELINSTANCE = 26,
-    // next free number: 27
+    EPT_MODELINSTANCE = 26,     // SKA model
+    EPT_REVSTRING = 27,         // [Cecil] Rev: Another string type
+    EPT_U64 = 28,               // [Cecil] Rev: 64-bit integer
+    EPT_DOUBLE = 29,            // [Cecil] Rev: 64-bit float value
+    // next free number: 30
   } ep_eptType;               // type of property
   CEntityPropertyEnumType *ep_pepetEnumType;   // if the type is EPT_ENUM or EPT_FLAGS
 
@@ -104,15 +107,17 @@ public:
   char *ep_strName;      // descriptive name of the property (for editor)
   ULONG ep_ulFlags;      // additional flags for the property
   char  ep_chShortcut;   // shortcut key for selecting the property in editor (0 for none)
+  char *ep_strVariable;  // [Cecil] Rev: Variable name in code
   COLOR ep_colColor;     // property color, for various wed purposes (like target arrows)
 
   CEntityProperty(PropertyType eptType, CEntityPropertyEnumType *pepetEnumType,
-    ULONG ulID, SLONG slOffset, char *strName, char chShortcut, COLOR colColor, ULONG ulFlags)
+    ULONG ulID, SLONG slOffset, char *strName, char chShortcut, char *strVariable, COLOR colColor, ULONG ulFlags)
     : ep_eptType         (eptType      )
     , ep_pepetEnumType   (pepetEnumType)
     , ep_ulID            (ulID         )
     , ep_slOffset        (slOffset     )
     , ep_strName         (strName      )
+    , ep_strVariable     (strVariable  ) // [Cecil] Rev: Variable name in code
     , ep_chShortcut      (chShortcut   )
     , ep_colColor        (colColor     )
     , ep_ulFlags         (ulFlags      )
@@ -192,9 +197,11 @@ public:
   CEntityComponent *dec_aecComponents;// array of components
   INDEX dec_ctComponents;             // number of components
 
+  char *dec_strClassName; // [Cecil] Rev: Class name
   char *dec_strName;                  // descriptive name of the class
   char *dec_strIconFileName;          // filename of texture or thumbnail
   INDEX dec_iID;                      // class ID
+  ULONG dec_ulSize; // [Cecil] Rev: Total class size (sizeof)
 
   CDLLEntityClass *dec_pdecBase;      // pointer to the base class
 
@@ -211,6 +218,8 @@ public:
   class CEntityProperty *PropertyForName(const CTString &strPropertyName);
   /* Get pointer to entity property from its packed identifier. */
   class CEntityProperty *PropertyForTypeAndID(CEntityProperty::PropertyType eptType, ULONG ulID);
+  // [Cecil] Rev: Get entity property by its variable name
+  class CEntityProperty *PropertyForVariable(const CTString &strVariable);
   /* Get event handler given state and event code. */
   CEntity::pEventHandler HandlerForStateAndEvent(SLONG slState, SLONG slEvent);
   /* Get event handler name for given state. */
@@ -246,9 +255,11 @@ public:
     classname##_handlersct,                                           \
     classname##_components,                                           \
     classname##_componentsct,                                         \
+    #classname,                                                       \
     descriptivename,                                                  \
     iconfilename,                                                     \
     id,                                                               \
+    sizeof(classname),                                                \
     &basename##_DLLClass,                                             \
     &classname##_New,                                                 \
     &classname##_OnInitClass,                                         \
@@ -264,12 +275,14 @@ public:
 #define ENTITY_CLASSDEFINITION_BASE(classname, id)                    \
   extern "C" DECLSPEC_DLLEXPORT CDLLEntityClass classname##_DLLClass; \
   CDLLEntityClass classname##_DLLClass = {                            \
-    NULL,0, NULL,0, NULL,0, "", "", id,                               \
-    NULL, NULL,NULL,NULL,NULL, NULL,NULL,NULL,NULL                    \
+    NULL, 0, NULL, 0, NULL, 0, #classname, "", "", id, sizeof(classname), \
+    NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL                  \
   }
 
 inline ENGINE_API void ClearToDefault(FLOAT &f) { f = 0.0f; };
+inline ENGINE_API void ClearToDefault(DOUBLE &d) { d = 0.0; }; // [Cecil] Rev: Clear double
 inline ENGINE_API void ClearToDefault(INDEX &i) { i = 0; };
+inline ENGINE_API void ClearToDefault(U64 &ul) { ul = 0; }; // [Cecil] Rev: Clear 64-bit integer
 inline ENGINE_API void ClearToDefault(BOOL &b) { b = FALSE; };
 inline ENGINE_API void ClearToDefault(CEntityPointer &pen) { pen = NULL; };
 inline ENGINE_API void ClearToDefault(CTString &str) { str = ""; };

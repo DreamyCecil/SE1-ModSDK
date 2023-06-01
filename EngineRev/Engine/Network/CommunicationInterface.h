@@ -43,7 +43,7 @@ public:
 public:
   // client
   void Client_OpenLocal(void);
-  void Client_OpenNet_t(ULONG ulServerAddress);
+  void Client_OpenNet_t(const CSteamID &ulServerAddress); // [Cecil] Rev: From Steam user ID
   // update master UDP socket and route its messages
   void UpdateMasterBuffers(void);
 
@@ -55,13 +55,9 @@ public:
   void Init(void);
   void Close(void);
 
-  void InitWinsock(void);
-  void EndWinsock(void);
   void PrepareForUse(BOOL bUseNetwork, BOOL bClient);
   void Unprepare(void);
   BOOL IsNetworkEnabled(void);
-  // get address of local machine
-  void GetHostName(CTString &strName, CTString &strAddress);
 
   // create an inet-family socket
   void CreateSocket_t();
@@ -69,19 +65,12 @@ public:
   void Bind_t(ULONG ulLocalHost, ULONG ulLocalPort);
   // set socket to non-blocking mode
   void SetNonBlocking_t(void);
-  // get generic socket error info string and last error
-  CTString GetSocketError(INDEX iError);
 	// open an UDP socket at given port 
-  void OpenSocket_t(ULONG ulLocalHost, ULONG ulLocalPort);
-
-	// get address of this host
-  void GetLocalAddress_t(ULONG &ulHost, ULONG &ulPort);
-  // get address of the peer host connected to this socket
-  void GetRemoteAddress_t(ULONG &ulHost, ULONG &ulPort);
+  void OpenSocket_t(void); // [Cecil] Rev: No arguments
 
   // broadcast communication
-  void Broadcast_Send(const void *pvSend, SLONG slSendSize,CAddress &adrDestination);
-  BOOL Broadcast_Receive(void *pvReceive, SLONG &slReceiveSize,CAddress &adrAddress);
+  void Broadcast_Send(const void *pvSend, SLONG slSendSize, CSteamID &adrDestination); // [Cecil] Rev: To Steam user
+  BOOL Broadcast_Receive(void *pvReceive, SLONG &slReceiveSize, CSteamID &adrAddress); // [Cecil] Rev: From Steam user
 	// here we receive connect requests
 	void Broadcast_Update_t(void);
 
@@ -94,6 +83,9 @@ public:
   BOOL Server_IsClientUsed(INDEX iClient);
   CTString Server_GetClientName(INDEX iClient);
 
+  // [Cecil] Rev: Get client's Steam ID
+  CSteamID Server_GetClientID(INDEX iClient);
+
   void Server_Send_Reliable(INDEX iClient, const void *pvSend, SLONG slSendSize);
   BOOL Server_Receive_Reliable(INDEX iClient, void *pvReceive, SLONG &slReceiveSize);
   void Server_Send_Unreliable(INDEX iClient, const void *pvSend, SLONG slSendSize);
@@ -103,7 +95,7 @@ public:
 
   // Client
   void Client_Init_t(char* strServerName);
-  void Client_Init_t(ULONG ulServerAddress);
+  void Client_Init_t(const CSteamID &ulServerAddress); // [Cecil] Rev: From Steam user ID
   void Client_Close(void);
 
   void Client_Clear(void);

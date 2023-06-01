@@ -29,8 +29,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define STEREO_RIGHT   1
 #define STEREO_BOTH    2
 
+// [Cecil] Rev: Enable stereo rendering
+ENGINE_API void Stereo_Enable(INDEX iEye);
 // query whether user has turned stereo rendering on
-ENGINE_API BOOL Stereo_IsEnabled(void);
+ENGINE_API INDEX Stereo_IsEnabled(void); // [Cecil] Rev: INDEX on return
 // set buffer for stereo rendering left/right/both
 ENGINE_API void Stereo_SetBuffer(INDEX iEye);
 // adjust perspective projection for stereo rendering left/right/both

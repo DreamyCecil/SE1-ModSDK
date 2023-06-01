@@ -32,8 +32,8 @@ public:
   UBYTE pc_aubGUID[PLAYERGUIDSIZE];
 
 public:
+  // [Cecil] Rev: No team field
   CTString pc_strName;      // name of the character
-  CTString pc_strTeam;      // team of the character
   // buffer for custom use by CPlayerEntity derived class to describe player
   #define MAX_PLAYERAPPEARANCE 32
   UBYTE pc_aubAppearance[MAX_PLAYERAPPEARANCE];
@@ -47,11 +47,6 @@ public:
   const CTString GetNameForPrinting(void) const;
   /* Set character name. */
   void SetName(CTString strName);
-  /* Get character team. */
-  const CTString &GetTeam(void) const;
-  const CTString GetTeamForPrinting(void) const;
-  /* Set character team. */
-  void SetTeam(CTString strTeam);
 
   void Load_t( const CTFileName &fnFile); // throw char *
   void Save_t( const CTFileName &fnFile); // throw char *

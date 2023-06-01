@@ -130,7 +130,11 @@ public:
   BOOL IsDisconnected(void);
 
   // print an incoming chat message to console
-  void PrintChatMessage(ULONG ulFrom, const CTString &strFrom, const CTString &strMessage);
+  void PrintChatMessage(U64 ulFrom, const CTString &strFrom, const CTString &strMessage, BOOL bExtra); // [Cecil] Rev: 64-bit ID and unknown BOOL
+
+  // [Cecil] Rev: Download specific file from the server
+  void DownloadFile_t(CTFileName fnmFile, INDEX iExtra, INDEX iExtra2);
+
 public:
   /* Constructor. */
   CSessionState(void);
@@ -180,7 +184,7 @@ public:
   // make synchronization test message and send it to server (if client), or add to buffer (if server)
   void MakeSynchronisationCheck(void);
   // create a checksum value for sync-check
-  void ChecksumForSync(ULONG &ulCRC, INDEX iExtensiveSyncCheck);
+  void ChecksumForSync(ULONG &ulCRC, class CMultipleCrc &mulcrc, INDEX iExtensiveSyncCheck); // [Cecil] Rev: Multiple CRCs?
   // dump sync data to text file
   void DumpSync_t(CTStream &strm, INDEX iExtensiveSyncCheck);  // throw char *
 

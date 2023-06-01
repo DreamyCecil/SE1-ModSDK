@@ -28,6 +28,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 class ENGINE_API CSerial : public CChangeable {
 public:
   INDEX ser_ctUsed;         // use count
+  CTFileName ser_fnmCompare; // [Cecil] Rev: Special filename for comparing
   CTFileName ser_FileName;  // last file name loaded
 
 public:
@@ -38,6 +39,12 @@ public:
 
   /* Get the file name of this object. */
   inline const CTFileName &GetName(void) { return ser_FileName; };
+
+  // [Cecil] Rev: Get name for comparing
+  inline const CTFileName &GetCompareName(void) const {
+    return ser_fnmCompare;
+  };
+
   /* Get the description of this object. */
   virtual CTString GetDescription(void);
   /* Load from file. */

@@ -147,7 +147,19 @@ CEntityEvent *MakeCopy(void);
 EDamage eLastDamage;
 };
 DECL_DLL inline void ClearToDefault(EDeath &e) { e = EDeath(); } ;
-#define EVENTCODE_ETakingBreath 0x0005000f
+
+// [Cecil] Rev: New event
+#define EVENTCODE_ESelectTeam 0x0005000f
+class DECL_DLL ESelectTeam : public CEntityEvent {
+public:
+ESelectTeam();
+CEntityEvent *MakeCopy(void);
+INDEX iTeam;
+};
+DECL_DLL inline void ClearToDefault(ESelectTeam &e) { e = ESelectTeam(); } ;
+
+// [Cecil] Rev: Added 1 to the index number
+#define EVENTCODE_ETakingBreath 0x00050010
 class DECL_DLL ETakingBreath : public CEntityEvent {
 public:
 ETakingBreath();
@@ -155,4 +167,15 @@ CEntityEvent *MakeCopy(void);
 FLOAT fBreathDelay;
 };
 DECL_DLL inline void ClearToDefault(ETakingBreath &e) { e = ETakingBreath(); } ;
+
+// [Cecil] Rev: New event
+#define EVENTCODE_EForceChanged 0x00050011
+class DECL_DLL EForceChanged : public CEntityEvent {
+public:
+EForceChanged();
+CEntityEvent *MakeCopy(void);
+INDEX iExtra; // [Cecil] Rev: Force power?
+};
+DECL_DLL inline void ClearToDefault(EForceChanged &e) { e = EForceChanged(); } ;
+
 #endif // _Engine_Classes_BaseEvents_INCLUDED

@@ -26,6 +26,10 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Network/MessageDispatcher.h>
 #include <Engine/Templates/StaticArray.h>
 
+// [Cecil] Rev: Dependencies
+#include <Engine/Network/EntityCorrection.h>
+#include <Engine/Steam/Steam.h>
+
 #define NET_MAXGAMECOMPUTERS SERVER_CLIENTS    // max overall computers in game
 #define NET_MAXGAMEPLAYERS   16                // max overall players in game
 #define NET_MAXLOCALPLAYERS   4                // max players on a single machine
@@ -68,16 +72,25 @@ class ENGINE_API CNetworkSession {
 public:
   CListNode ns_lnNode;    // for linking in list of available sessions
   CTString ns_strAddress; // session address
+  UWORD ns_uwPort; // [Cecil] Rev: Server port
+  UWORD ns_AddressPadding; // To align IP and port into 8 bytes (don't use!)
+  ULONG ns_ulIP; // [Cecil] Rev: Server IP
+  CSteamID ns_SteamID; // [Cecil] Rev: Server's Steam ID
+  BOOL ns_bFromAddress; // [Cecil] Rev: Session created from an address string
 
-  CTString ns_strSession;   // session name
-  CTString ns_strWorld;     // world name
-  TIME     ns_tmPing;       // current players
-  INDEX    ns_ctPlayers;    // current players
-  INDEX    ns_ctMaxPlayers; // max number of players
-  CTString ns_strGameType;  // game type
-  CTString ns_strMod;       // active mod
-  CTString ns_strVer;       // version 
-  
+  CTString ns_strSession; // session name
+  CTString ns_strWorld; // world name
+  ULONG ns_ulField1; // [Cecil] Rev: Unknown field
+
+  TIME  ns_tmPing;       // current players
+  INDEX ns_ctPlayers;    // current players
+  INDEX ns_ctMaxPlayers; // max number of players
+
+  CTString ns_strGameType; // game type
+  CTString ns_strTags;     // [Cecil] Rev: 'ns_strMod' -> 'ns_strTags'
+  CTString ns_strField2;   // [Cecil] Rev: Unknown field
+  CTString ns_strVer;      // version
+
 public:
   void Copy(const CNetworkSession &nsOriginal);
 
@@ -85,6 +98,9 @@ public:
   CNetworkSession(void);
   /* Construct a session for connecting to certain server. */
   CNetworkSession(const CTString &strAddress);
+
+  // [Cecil] Rev: Construct a session for connecting to a certain Steam server
+  CNetworkSession(const CSteamID &id);
 };
 
 /*
@@ -102,15 +118,34 @@ public:
   CSessionState &ga_sesSessionState;  // local session state
   CStaticArray<CPlayerSource> ga_aplsPlayers;  // local players
   CTString ga_strSessionName;   // name of current session
+  CTString ga_strGamemode; // [Cecil] Rev: Gamemode name
+  CTString ga_strTags; // [Cecil] Rev: Game tags
+
+  // [Cecil] Rev: These are set by JoinSession_t()
   CTString ga_strServerAddress; // address of game server (if joined)
+  BOOL ga_bSteamServer; // Connecting to a Steam server
+  CSteamID ga_SteamID; // Steam ID of the server
+  ULONG ga_ulField1; // Unknown field
+  UWORD ga_uwPort; // Connecting to this port of the IP
+  UWORD ns_AddressPadding; // To align IP and port into 8 bytes (don't use!)
+  ULONG ga_ulIP; // Connecting to this IP address
+
   INDEX ga_ulDemoMinorVersion;  // minor version of build that created this demo
   CTFileName ga_fnmWorld;       // filename of current world
+
+  // [Cecil] Rev: Unknown fields
+  ULONG ga_ulField2;
+  ULONG ga_ulField3;
+
   UBYTE *ga_pubDefaultState;    // default state for connecting (server only)
   SLONG ga_slDefaultStateSize;
   UBYTE ga_aubDefaultProperties[NET_MAXSESSIONPROPERTIES];
   UBYTE *ga_pubCRCList;         // list of files for CRC checking (server only)
   SLONG ga_slCRCList;
   ULONG ga_ulCRC; // CRC of CRCs of all files in the list
+
+  // [Cecil] Rev: Unknown fields
+  ULONG ga_ulFields[7];
 
   BOOL ga_bLocalPause;            // local pause for single player/demo
   BOOL ga_bDemoRec;               // set if currently recording a demo
@@ -121,6 +156,10 @@ public:
   CTimerValue ga_tvDemoTimerLastTime;   // real time timer for demo synchronization
   CNetworkTimerHandler ga_thTimerHandler; // handler for driving the timer loop
   INDEX ga_ctTimersPending;       // number of timer loops pending
+
+  // [Cecil] Rev: Unknown fields
+  ULONG ga_ulField4;
+  ULONG ga_ulField5;
 
   CTFileName ga_fnmNextLevel;     // world for next level
   BOOL  ga_bNextRemember;         // remember old levels when changing to new one
@@ -135,6 +174,9 @@ public:
 
   // buffer for custom use by CGame and entities
   UBYTE ga_aubProperties[NET_MAXSESSIONPROPERTIES];
+
+  // [Cecil] Rev: Unknown field
+  ULONG ga_ulField6;
 
   BOOL IsServer(void) { return ga_IsServer; };
 
@@ -177,6 +219,7 @@ public:
 public:
   CWorld ga_World;                // local copy of world
   FLOAT ga_fDemoTimer;            // timer for demo playback (in seconds)
+  FLOAT ga_fExtraFactor; // [Cecil] Rev: Some kind of factor (set to 1.0f in constructor)
   FLOAT ga_fDemoRealTimeFactor;   // slow/fast playback factor (for DEMOSYNC_REALTIME only)
   FLOAT ga_fGameRealTimeFactor;   // game time accelerator
   FLOAT ga_fDemoSyncRate;         // demo sync speed in FPS (or realtime/stop)
@@ -194,7 +237,7 @@ public:
   void StartPeerToPeer_t(const CTString &strSessionName,
     const CTFileName &fnmWorld, ULONG ulSpawnFlags, 
     INDEX ctMaxPlayers, BOOL bWaitAllPlayers,
-    void *pvSessionProperties); // throw char *
+    void *pvSessionProperties, const CTString &strGamemode, const CTString &strTags); // [Cecil] Rev: Extra arguments
   /* Trigger sessions enumeration over LAN and iNet. */
   void EnumSessions(BOOL bInternet);
   /* Join a running multi-player game. */
@@ -223,7 +266,13 @@ public:
   BOOL IsGameFinished(void);
   // manipulation with realtime factor for slower/faster time -- called from AI
   void SetRealTimeFactor(FLOAT fSpeed);
-  FLOAT GetRealTimeFactor(void);   
+  FLOAT GetRealTimeFactor(void);
+
+  // [Cecil] Rev: Get time factor of the network
+  inline FLOAT GetNetworkTimeFactor(void) {
+    return ga_fGameRealTimeFactor;
+  };
+
   // test if having connnection problems (not getting messages from server regulary)
   BOOL IsConnectionStable(void);
   // test if completely disconnected and why
@@ -233,9 +282,6 @@ public:
   // set/get server side pause (for single player or demo only)
   void SetLocalPause(BOOL bPause);
   BOOL GetLocalPause(void);
-
-  // get server/client name and address
-  void GetHostName(CTString &strName, CTString &strAddress);
 
   // test if playing in network or locally
   BOOL IsNetworkEnabled(void);
@@ -248,6 +294,9 @@ public:
 
   /* Obtain file name of world that is currently loaded. */
   CTFileName &GetCurrentWorld(void) { return ga_fnmWorld;};
+
+  // [Cecil] Rev: Check if a world is whitelisted
+  BOOL IsWorldWhitelisted(const CTFileName &fnmWorld);
 
   /* Start recording a demo. */
   void StartDemoRec_t(const CTFileName &fnDemo); // throw char *
@@ -286,14 +335,33 @@ public:
   // get player source for a given player if it is local to this computer
   CPlayerSource *GetPlayerSource(CEntity *pen);
 
+  // [Cecil] Rev: Get index of player entity
+  INDEX GetPlayerIndex(CEntity *pen);
+
+  // [Cecil] Rev: Get index of player source
+  INDEX GetPlayerSourceIndex(CEntity *pen);
+
   // get game time in currently running game
   TIME GetGameTime(void);
+
+  // [Cecil] Rev: Check when the game was finished
+  TIME WhenWasGameFinished(void);
 
   /* Get session properties for current game. */
   void *GetSessionProperties(void);
 
+  // [Cecil] Rev: Send server notice to all clients
+  void SendServerNotice(U64, INDEX, const CTString &strNotice);
+
   /* Send chat message from some players to some other players. */
-  void SendChat(ULONG ulFrom, ULONG ulTo, const CTString &strMessage);
+  void SendChat(U64 ulFrom, U64 ulTo, const CTString &strMessage); // [Cecil] Rev: Longer integers
+
+  // [Cecil] Rev: Print some action in chat
+  void SendChatAction(U64 ulFrom, U64 ulTo, const CTString &strAction);
+
+  // [Cecil] Rev: Send entity correction packets
+  void SendEntityCorrection(CEntityCorrectionInfo &eci);
+  void SendEntityCorrectionTo(INDEX iClient, CEntityCorrectionInfo &eci);
 };
 
 // make default state for a network game
@@ -309,6 +377,33 @@ ENGINE_API extern ULONG StringToAddress(const CTString &strAddress);
 // convert address to a printable string
 ENGINE_API extern CTString AddressToString(ULONG ulHost);
 
+// [Cecil] Rev: Global variables from Revolution from here
+
+// Some memory has been tampered with, which disables specific features
+ENGINE_API extern BOOL _lbTampered;
+
+// Gather stats from the game
+ENGINE_API extern INDEX net_bGatherStats;
+
+// Send chat message from a specific player
+ENGINE_API extern void (*net_pChatMessage)(CPlayerEntity *pen, const CTString &, const CTString &);
+
+// Cheats state
+ENGINE_API extern INDEX cht_bEnable;
+
+// Enable entity mutations upon changing levels
+ENGINE_API extern BOOL gam_bMutateRequired;
+
+// Some entities have been modified
+ENGINE_API extern INDEX scr_bEntitiesModified;
+
+// Check if a world is whitelisted
+ENGINE_API BOOL serIsWorldWhitelisted(const CTFileName &fnmWorld);
+
+// Exported variables
+ENGINE_API extern INDEX net_ctChatMessages;
+ENGINE_API extern BOOL _bPredictionActive;
+ENGINE_API extern FLOAT cli_fPredictionFilter;
 
 #endif  /* include-once check. */
 

@@ -572,6 +572,8 @@ extern ULONG RenderShadows(CWorld &woWorld, CEntity &enViewer,
   UBYTE *pubShadowMask, SLONG slShadowWidth, SLONG slShadowHeight,
   UBYTE ubIllumination);
 
+// [Cecil] Rev: Get specific renderer from the array
+ENGINE_API CRenderer *GetRenderer(INDEX iRenderer);
 
 #endif  /* include-once check. */
 

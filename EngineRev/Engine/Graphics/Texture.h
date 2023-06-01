@@ -139,6 +139,9 @@ public:
   // force texture to be re-loaded (if needed) in corresponding manner
   void Force( ULONG ulTexFlags);
 
+  // [Cecil] Rev: Upload compressed texture
+  BOOL UploadCompressed(void);
+
   // get texel from texture's largest mip-map
   COLOR GetTexel( MEX mexU, MEX mexV);
   // copy (and eventually convert to floats) one row from texture to an array (iChannel is 1=R,2=G,3=B,4=A)

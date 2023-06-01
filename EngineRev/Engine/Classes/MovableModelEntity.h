@@ -23,15 +23,15 @@ public:
    void Read_t(CTStream * istr);
    void Write_t(CTStream * ostr);
    
-#line 179 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableModelEntity.es"
+#line 166 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableModelEntity.es"
 SLONG GetUsedMemory(void);
 #define  STATE_CMovableModelEntity_Dummy 0x00020000
   BOOL 
-#line 189 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableModelEntity.es"
+#line 176 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableModelEntity.es"
 Dummy(const CEntityEvent &__eeInput);
 #define  STATE_CMovableModelEntity_WaitUntilScheduledAnimStarts 0x00020001
   BOOL 
-#line 192 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableModelEntity.es"
+#line 179 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableModelEntity.es"
 WaitUntilScheduledAnimStarts(const CEntityEvent &__eeInput);
   BOOL H0x00020002_WaitUntilScheduledAnimStarts_01(const CEntityEvent &__eeInput);
   BOOL H0x00020003_WaitUntilScheduledAnimStarts_02(const CEntityEvent &__eeInput);

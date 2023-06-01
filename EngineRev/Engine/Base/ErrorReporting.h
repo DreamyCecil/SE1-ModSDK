@@ -32,6 +32,27 @@ ENGINE_API extern BOOL YesNoMessage(const char *strFormat, ...);
 /* Get the description string for windows error code. */
 ENGINE_API extern const CTString GetWindowsError(DWORD dwWindowsErrorCode);
 
+// [Cecil] Rev: Message display upon crash
+ENGINE_API extern void CrashError(const char *strFormat, ...);
+
+// [Cecil] Rev: Exported class from StackDump.cpp
+class ENGINE_API MSJExceptionHandler {
+  public:
+    MSJExceptionHandler(void);
+    ~MSJExceptionHandler(void);
+    MSJExceptionHandler &operator=(const MSJExceptionHandler &);
+
+    static void GenerateExceptionReport(struct _EXCEPTION_POINTERS *);
+    static char *GetExceptionString(ULONG);
+    static BOOL GetLogicalAddress(void *, char *, ULONG, ULONG &, ULONG &);
+    static void IntelStackWalk(struct _CONTEXT *);
+    void SetLogFileName(char *);
+    static BOOL _tprintf(const char *, ...);
+
+    static void *m_hReportFile;
+    static INDEX (*m_previousFilter)(struct _EXCEPTION_POINTERS *);
+    static char *m_szLogFileName;
+};
 
 #endif  /* include-once check. */
 

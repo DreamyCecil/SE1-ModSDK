@@ -32,6 +32,26 @@ extern ENGINE_API void SetProgressHook(void (*pHook_t)(CProgressHookInfo *pgli))
 extern ENGINE_API void SetProgressDescription(const CTString &strDescription);
 extern ENGINE_API void CallProgressHook_t(FLOAT fCompleted);
 
+// [Cecil] Rev: Set backdrop texture
+ENGINE_API void SetLoadingBackdrop(CTFileName fnmTexture);
+
+// [Cecil] Rev: Set map name
+ENGINE_API void SetLoadingName(CTString strName);
+
+// [Cecil] Rev: Clear backdrop
+ENGINE_API void ClearLoadingBackdrop(void);
+
+// [Cecil] Rev: Backdrop texture
+ENGINE_API extern CTextureObject *men_toLoadingBackdrop;
+
+// [Cecil] Rev: Game mode to display upon loading
+ENGINE_API extern CTString men_strGameModeName;
+
+// [Cecil] Rev: Game menu is active
+ENGINE_API extern BOOL men_bActive;
+
+// [Cecil] Rev: Render menu
+ENGINE_API extern BOOL men_bMenuRendering;
 
 #endif  /* include-once check. */
 

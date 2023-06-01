@@ -30,12 +30,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // maximum length of file that can be saved (default: 8Mb)
 ENGINE_API extern ULONG _ulMaxLengthOfSavingFile;
 
-#define CTSTREAM_BEGIN CTStream::EnableStreamHandling(); __try
-#define CTSTREAM_END __except( CTStream::ExceptionFilter( GetExceptionCode(),\
-                                                          GetExceptionInformation()) )\
-  {\
-     CTStream::ExceptionFatalError();\
-  }; CTStream::DisableStreamHandling();
+// [Cecil] Rev: Removed stream handling
+#define CTSTREAM_BEGIN
+#define CTSTREAM_END ;
 
 /*
  * Chunk ID class
@@ -73,8 +70,7 @@ inline int CChunkID::operator!=(const CChunkID &cidOther) const {
  */
 class ENGINE_API CTStream {
 public:
-  CListNode strm_lnListNode;  // for linking into main library's list of opened streams
-public:
+  // [Cecil] Rev: 'strm_lnListNode' is removed
   CTString strm_strStreamDescription; // descriptive string
 
   enum DictionaryMode {
@@ -114,19 +110,6 @@ public:
     SD_CUR = SEEK_CUR,
   };
 
-  /* Static function enable stream handling. */
-  static void EnableStreamHandling(void);
-  /* Static function disable stream handling. */
-  static void DisableStreamHandling(void);
-
-#ifdef PLATFORM_WIN32 /* rcg10042001 !!! FIXME */
-  /* Static function to filter exceptions and intercept access violation */
-  static int ExceptionFilter(DWORD dwCode, _EXCEPTION_POINTERS *pExceptionInfoPtrs);
-#endif
-
-  /* Static function to report fatal exception error. */
-  static void ExceptionFatalError(void);
-
   /* Default constructor. */
   CTStream(void);
   /* Destruction. */
@@ -140,7 +123,7 @@ public:
   virtual BOOL IsSeekable(void) = 0;
 
   /* Read a block of data from stream. */
-  virtual void Read_t(void *pvBuffer, SLONG slSize) = 0; // throw char *
+  virtual BOOL Read_t(void *pvBuffer, SLONG slSize) = 0; // [Cecil] Rev: Return BOOL
   /* Write a block of data to stream. */
   virtual void Write_t(const void *pvBuffer, SLONG slSize) = 0; // throw char *
 
@@ -170,6 +153,7 @@ public:
   inline CTStream &operator>>(SWORD &sw) { Read_t(&sw, sizeof(sw)); return *this; } // throw char *
   inline CTStream &operator>>(SBYTE &sb) { Read_t(&sb, sizeof(sb)); return *this; } // throw char *
   inline CTStream &operator>>(BOOL   &b) { Read_t( &b, sizeof( b)); return *this; } // throw char *
+  inline CTStream &operator>>(U64   &ul) { Read_t(&ul, sizeof(ul)); return *this; } // [Cecil] Rev: Read 64-bit integer
   /* Write an object into stream. */
   inline CTStream &operator<<(const float  &f) { Write_t( &f, sizeof( f)); return *this; } // throw char *
   inline CTStream &operator<<(const double &d) { Write_t( &d, sizeof( d)); return *this; } // throw char *
@@ -180,6 +164,7 @@ public:
   inline CTStream &operator<<(const SWORD &sw) { Write_t(&sw, sizeof(sw)); return *this; } // throw char *
   inline CTStream &operator<<(const SBYTE &sb) { Write_t(&sb, sizeof(sb)); return *this; } // throw char *
   inline CTStream &operator<<(const BOOL   &b) { Write_t( &b, sizeof( b)); return *this; } // throw char *
+  inline CTStream &operator<<(const U64   &ul) { Write_t(&ul, sizeof(ul)); return *this; } // [Cecil] Rev: Write 64-bit integer
 
   // CTFileName reading/writing
   ENGINE_API friend CTStream &operator>>(CTStream &strmStream, CTFileName &fnmFileName);
@@ -232,7 +217,7 @@ public:
  * CroTeam file stream class
  */
 class ENGINE_API CTFileStream : public CTStream {
-private:
+public: // [Cecil] Rev: Public for field setup
   FILE *fstrm_pFile;    // ptr to opened file
 
   INDEX fstrm_iZipHandle; // handle of zip-file entry
@@ -241,6 +226,18 @@ private:
   SLONG fstrm_slZipSize; // size of the zip-file entry
 
   BOOL fstrm_bReadOnly;  // set if file is opened in read-only mode
+
+  // [Cecil] Rev: New fields
+  BOOL fstrm_bIgnoreArchives; // Supposedly a flag that terminates file opening if it was found in an archive
+  BOOL fstrm_bInArchive; // Supposedly a flag that's set when opening a file from an archive
+  CTString fstrm_strArchiveFile; // Path to the archive file, if opening a file from it
+  BOOL fstrm_bWorkshop; // Path leads to workshop directory
+
+  // [Cecil] Rev: Unknown fields
+  ULONG fstrm_ulField1;
+  ULONG fstrm_ulField2;
+  ULONG fstrm_ulField3;
+
 public:
   /* Default constructor. */
   CTFileStream(void);
@@ -248,7 +245,7 @@ public:
   virtual ~CTFileStream(void);
 
   /* Open an existing file. */
-  void Open_t(const CTFileName &fnFileName, enum CTStream::OpenMode om=CTStream::OM_READ); // throw char *
+  void Open_t(CTFileName fnFileName, enum CTStream::OpenMode om=CTStream::OM_READ, BOOL bUseRPH = FALSE); // [Cecil] Rev: Extra argument
   /* Create a new file or overwrite existing. */
   void Create_t(const CTFileName &fnFileName, enum CTStream::CreateMode cm=CTStream::CM_BINARY); // throw char *
   /* Close an open file. */
@@ -257,7 +254,7 @@ public:
   ULONG GetStreamCRC32_t(void);
 
   /* Read a block of data from stream. */
-  void Read_t(void *pvBuffer, SLONG slSize); // throw char *
+  BOOL Read_t(void *pvBuffer, SLONG slSize); // [Cecil] Rev: Return BOOL
   /* Write a block of data to stream. */
   void Write_t(const void *pvBuffer, SLONG slSize); // throw char *
 
@@ -308,7 +305,7 @@ public:
   void UnlockBuffer(void);
 
   /* Read a block of data from stream. */
-  void Read_t(void *pvBuffer, SLONG slSize); // throw char *
+  BOOL Read_t(void *pvBuffer, SLONG slSize); // [Cecil] Rev: Return BOOL
   /* Write a block of data to stream. */
   void Write_t(const void *pvBuffer, SLONG slSize); // throw char *
 
@@ -341,6 +338,10 @@ ENGINE_API BOOL FileExists(const CTFileName &fnmFile);
 // Test if a file exists for writing. 
 // (this is can be diferent than normal FileExists() if a mod uses basewriteexclude.lst
 ENGINE_API BOOL FileExistsForWriting(const CTFileName &fnmFile);
+// [Cecil] Rev: Check if file exists ignoring replace history (RPH)
+ENGINE_API BOOL FileExistsWithoutRph(const CTFileName &fnmFile);
+// [Cecil] Rev: Replace path to the file using replace history (RPH)
+ENGINE_API void rphPassReplace(CTFileName &fnmFile);
 // Get file timestamp
 ENGINE_API SLONG GetFileTimeStamp_t(const CTFileName &fnmFile); // throw char *
 // Get CRC32 of a file
@@ -361,7 +362,12 @@ ENGINE_API BOOL RemoveFile(const CTFileName &fnmFile);
 #define EFP_FILE       1  // generic file on disk
 #define EFP_BASEZIP    2  // file in one of base zips
 #define EFP_MODZIP     3  // file in one of mod zips
-ENGINE_API INDEX ExpandFilePath(ULONG ulType, const CTFileName &fnmFile, CTFileName &fnmExpanded);
+
+// [Cecil] Rev: Extra argument
+ENGINE_API INDEX ExpandFilePath(ULONG ulType, const CTFileName &fnmFile, CTFileName &fnmExpanded, BOOL bUseRPH = FALSE);
+
+// [Cecil] Rev: New method
+ENGINE_API INDEX ExpandFilePath(ULONG ulType, CTFileName fnmFile, CTFileName &fnmExpanded, CTFileName **pfnmArchiveFile, BOOL bUseRPH = FALSE);
 
 // these are input flags for directory reading
 #define DLI_RECURSIVE  (1UL<<0)  // recurse into subdirs
@@ -374,21 +380,16 @@ ENGINE_API void MakeDirList(
   ULONG ulFlags                 // additional flags
 );
 
+// [Cecil] Rev: Removed '_fnmMod', '_strModName', '_strModURL', '_strModExt' and '_fnmCDPath'
+
 // global string with application path
 ENGINE_API extern CTFileName _fnmApplicationPath;
-// global string with current MOD path
-ENGINE_API extern CTFileName _fnmMod;
-// global string with current name (the parameter that is passed on cmdline)
-ENGINE_API extern CTString _strModName;
-// global string with url to be shown to users that don't have the mod installed
-// (should be set by game.dll)
-ENGINE_API extern CTString _strModURL;
-// global string with current MOD extension (for adding to dlls)
-ENGINE_API extern CTString _strModExt;
-// global string with CD path (for minimal installations)
-ENGINE_API extern CTFileName _fnmCDPath;
 // global string with filename of the started application
 ENGINE_API extern CTFileName _fnmApplicationExe;
+
+// [Cecil] Rev: New variables
+ENGINE_API extern CTString _strLocaleDir;
+ENGINE_API extern CTString _strLogFile;
 
 // application path usage funtions
 ENGINE_API void UseApplicationPath(void);

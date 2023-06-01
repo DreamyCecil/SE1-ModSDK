@@ -18,7 +18,7 @@ CEntityComponent CMovableBrushEntity_components[] = {
 
 CEventHandlerEntry CMovableBrushEntity_handlers[] = {
  {0x00030000, -1, CEntity::pEventHandler(&CMovableBrushEntity::
-#line 61 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableBrushEntity.es"
+#line 48 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableBrushEntity.es"
 Dummy),DEBUGSTRING("CMovableBrushEntity::Dummy")},
 };
 #define CMovableBrushEntity_handlersct ARRAYCOUNT(CMovableBrushEntity_handlers)

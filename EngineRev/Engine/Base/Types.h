@@ -22,11 +22,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Base/Base.h>
 #include <Engine/Graphics/gl_types.h>
 
+typedef signed long long    S64; // [Cecil] Rev: 64-bit integer
 typedef signed long  int    SLONG;
 typedef signed short int    SWORD;
 typedef signed char	        SBYTE;
 typedef signed int          SINT;
 
+typedef unsigned long long  U64; // [Cecil] Rev: 64-bit integer
 typedef unsigned long  int  ULONG;
 typedef unsigned short int  UWORD;
 typedef unsigned char       UBYTE;
@@ -120,7 +122,7 @@ typedef SLONG   MEX;    // texels in mip-level 0
 typedef float   FLOAT;
 typedef double  DOUBLE;
 typedef float   ANGLE;
-typedef float   TIME;
+typedef double  TIME; // [Cecil] Rev: More precise timer ('float' -> 'double')
 typedef FLOAT   RANGE;
 typedef ULONG   COLOR;  // color is always in 32 bit true-color format
 

@@ -14,8 +14,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
 // [Cecil] Include guard to allow multiple inclusions
-#ifndef SE1_110_INCL_ENGINE_H
-#define SE1_110_INCL_ENGINE_H
+#ifndef SE1_REV_INCL_ENGINE_H
+#define SE1_REV_INCL_ENGINE_H
 
 // set this to 1 to enable checks whether somethig is deleted while iterating some array/container
 #define CHECKARRAYLOCKING 0
@@ -169,13 +169,22 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Templates/Selection.h>
 #include <Engine/Templates/Selection.cpp>
 
+// [Cecil] Rev: New headers
+#include <Engine/Base/Misc.h>
+#include <Engine/Graphics/GLShader.h>
+#include <Engine/Graphics/PostProcessing.h>
+#include <Engine/Network/EntityCorrection.h>
+#include <Engine/Network/PlayerPaths.h>
+#include <Engine/Network/Stats.h>
+#include <Engine/Steam/Achievement.h>
+#include <Engine/Steam/Steam.h>
 
 // some global stuff
 ENGINE_API void SE_InitEngine( CTString strGameID);
 ENGINE_API void SE_EndEngine(void);
 ENGINE_API void SE_LoadDefaultFonts(void);
 ENGINE_API void SE_UpdateWindowHandle( HWND hwndWindowed);
-ENGINE_API void SE_PretouchIfNeeded(void);
+ENGINE_API void SE_InitPaths(void); // [Cecil] Rev: SE_PretouchIfNeeded() removed, SE_InitPaths() added
 
 extern ENGINE_API CTString _strEngineBuild;  // not valid before InitEngine()!
 extern ENGINE_API ULONG _ulEngineBuildMajor;

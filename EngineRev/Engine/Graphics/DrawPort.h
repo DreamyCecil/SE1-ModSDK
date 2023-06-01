@@ -59,7 +59,7 @@ public:
   // set orthogonal projection
   void SetOrtho(void) const;
   // set given projection
-  void SetProjection(CAnyProjection3D &apr) const;
+  void SetProjection(CAnyProjection3D &apr); // [Cecil] Rev: Removed 'const'
 
 //interface:
   // Create a drawport for full raster
@@ -94,6 +94,7 @@ public:
   inline void SetTextCharSpacing( PIX pixSpacing) { dp_pixTextCharSpacing = pixSpacing; };
   inline void SetTextLineSpacing( PIX pixSpacing) { dp_pixTextLineSpacing = pixSpacing; };
   inline void SetTextScaling( FLOAT fScalingFactor) { dp_fTextScaling = fScalingFactor; };
+  void SetTextScalingForced(FLOAT fScalingFactor); // [Cecil] Rev: Set forced scaling
   inline void SetTextAspect(  FLOAT fAspectRatio)   { dp_fTextAspect  = fAspectRatio; };
   inline void SetTextMode(    INDEX iMode)          { dp_iTextMode    = iMode; };
   // returns width of entire text string (with scale included)
@@ -108,6 +109,9 @@ public:
   // writes text string on drawport (right-aligned)
   void PutTextR(   const CTString &strText, PIX pixX0, PIX pixY0, const COLOR colBlend=0xFFFFFFFF) const;
 
+  // [Cecil] Rev: Write centered text that fits within specific width
+  void PutTextCW(const CTString &strText, PIX pixX0, PIX pixY0, PIX pixWidth, const COLOR colBlend=0xFFFFFFFF) const;
+
   // plain texture display
   void PutTexture( class CTextureObject *pTO, const PIXaabbox2D &boxScreen,
                    const COLOR colBlend=0xFFFFFFFF) const;
@@ -117,6 +121,9 @@ public:
                    const MEXaabbox2D &boxTexture, const COLOR colBlend=0xFFFFFFFF) const;
   void PutTexture( class CTextureObject *pTO, const PIXaabbox2D &boxScreen, const MEXaabbox2D &boxTexture,
                    const COLOR colUL, const COLOR colUR, const COLOR colDL, const COLOR colDR) const;
+
+  // [Cecil] Rev: Draw texture at an angle (copy of DrawRotatedQuad() from Entities/Common/HUD.cpp)
+  void PutTextureRotated(class CTextureObject *pTO, FLOAT fX, FLOAT fY, FLOAT fSize, ANGLE aAngle, COLOR col);
 
   // advanced texture display
   void InitTexture( class CTextureObject *pTO, const BOOL bClamp=FALSE) const; // prepares texture and rendering arrays

@@ -44,11 +44,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #else
     #define ENGINE_API __declspec(dllimport)
 
-    #ifdef NDEBUG
-      #pragma comment(lib, "Engine.lib")
-    #else
-      #pragma comment(lib, "EngineD.lib")
-    #endif
+    // [Cecil] Rev: There are no debug libraries, so always link Engine.lib
+    #pragma comment(lib, "Engine.lib")
   #endif
 
 #endif  // defined _MSC_VER

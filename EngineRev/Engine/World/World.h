@@ -69,6 +69,10 @@ public:
   CDynamicContainer<CEntity> wo_cenPredicted;  // predicted entities
   CDynamicContainer<CEntity> wo_cenPredictor;  // predictor entities
 
+  // [Cecil] Rev: Extra fields
+  ULONG wo_ulExtra1;
+  ULONG wo_ulExtra2;
+
   class CCollisionGrid *wo_pcgCollisionGrid;
 
   COLOR wo_colBackground;                 // background color of this world
@@ -93,10 +97,17 @@ public:
   ULONG wo_ulSpawnFlags;  // spawn flags telling in which game modes can the level be played
   CTString wo_strDescription; // description of the level (intro, mission, etc.)
 
+  CTString wo_strLeaderboard; // [Cecil] Rev: Extra field
+
   ULONG wo_ulNextEntityID;    // next free ID for entities
   CListHead wo_lhTimers;      // timer scheduled entities
   CListHead wo_lhMovers;        // entities that want to/have to move
   BOOL wo_bPortalLinksUpToDate; // set if portal-sector links are up to date
+
+  // [Cecil] Rev: Extra fields
+  ULONG wo_ulExtra3;
+  ULONG wo_ulExtra4;
+  ULONG wo_ulExtra5;
 
   /* Initialize collision grid. */
   void InitCollisionGrid(void);
@@ -217,6 +228,8 @@ public:
   void DestroyOneEntity( CEntity *penToDestroy);  
   /* Find an entity with given character. */
   CPlayerEntity *FindEntityWithCharacter(CPlayerCharacter &pcCharacter);
+  // [Cecil] Rev: Find first player entity in the world
+  CPlayerEntity *FindFirstPlayerEntity(void);
 
   /* Copy entities for prediction. */
   void CopyEntitiesToPredictors(CDynamicContainer<CEntity> &cenToCopy);
@@ -241,6 +254,12 @@ public:
   void SetDescription(const CTString &strDescription);
   /* Get description for this world. */
   const CTString &GetDescription(void);
+
+  // [Cecil] Rev: Set description for this world
+  void SetLeaderboard(const CTString &strLeaderboard);
+
+  // [Cecil] Rev: Get description for this world
+  const CTString &GetLeaderboard(void);
 
   // get/set name of the world
   void SetName(const CTString &strName);

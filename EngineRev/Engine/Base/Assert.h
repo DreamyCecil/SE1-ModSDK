@@ -41,6 +41,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define _assert(x, y, z) assert(0)
 #endif
 
+// [Cecil] Rev: Custom assertion method
+ENGINE_API BOOL _custom_assert(const char *strMessage, const char *strFile, UINT iLine);
 
 #ifdef NDEBUG
   #ifndef ASSERT

@@ -28,11 +28,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define DAF_USEGDIFUNCTIONS (1L<<2)   // don't use wgl functions instead gdi functions
 #define DAF_16BITONLY       (1L<<3)   // supports only 16-bit color depth
 
-
-class CDisplayAdapter
+// [Cecil] Rev: Exported
+class ENGINE_API CDisplayAdapter
 {
 public:
-  CDisplayMode da_admDisplayModes[25]; // 25 should be just enough
+  CDisplayMode da_admDisplayModes[43]; // [Cecil] Rev: 25 was not just enough
   INDEX da_ctDisplayModes;       // number of display modes with hardware acceleration (>=1)
   INDEX da_iCurrentDisplayMode;  // currently active display mode (-1 if none)
   ULONG da_ulFlags;              // various flags (DAF_ ...) 

@@ -60,6 +60,8 @@ public:
   class CEntityProperty *PropertyForName(const CTString &strPropertyName);
   /* Get pointer to entity property from its packed identifier. */
   class CEntityProperty *PropertyForTypeAndID(ULONG ulType, ULONG ulID);
+  // [Cecil] Rev: Get entity property by its variable name
+  class CEntityProperty *PropertyForVariable(const CTString &strVariable);
   /* Get event handler for given state and event code. */
   CEntity::pEventHandler HandlerForStateAndEvent(SLONG slState, SLONG slEvent);
   /* Get pointer to component from its type and identifier. */

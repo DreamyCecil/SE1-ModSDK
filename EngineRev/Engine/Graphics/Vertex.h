@@ -105,9 +105,6 @@ struct GFXColor
 #define GFXVertex GFXVertex4
 struct GFXVertex4
 {
-  GFXVertex4()
-  {
-  }
   FLOAT x,y,z;
   union {
     struct { struct GFXColor col; };

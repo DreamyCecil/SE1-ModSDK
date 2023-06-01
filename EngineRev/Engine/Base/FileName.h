@@ -58,8 +58,14 @@ public:
   /* Remove application path from a file name. */
   BOOL RemoveApplicationPath_t(void); // throw char *
 
+  // [Cecil] Rev: Fix formatting
+  void FixFormatting(void);
+
   // filename is its own name (used for storing in nametable)
   inline const CTFileName &GetName(void) { return *this; };
+
+  // [Cecil] Rev: Get name for comparing
+  inline const CTFileName &GetCompareName(void) { return *this; };
 
   void ReadFromText_t(CTStream &strmStream, const CTString &strKeyword=""); // throw char *
 

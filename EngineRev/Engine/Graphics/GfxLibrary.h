@@ -190,7 +190,7 @@ private:
   void StopDisplayMode(void);
 
   // OpenGL specific
-  BOOL InitDriver_OGL( BOOL b3Dfx=FALSE);  // DLL init and function call adjustments
+  BOOL InitDriver_OGL(void);  // DLL init and function call adjustments
   void EndDriver_OGL(void);
   void TestExtension_OGL( ULONG ulFlag, const char *strName); // if exist, add OpenGL extension to flag and list
   void AddExtension_OGL(  ULONG ulFlag, const char *strName); // unconditionally add OpenGL extension to flag and list
@@ -270,6 +270,9 @@ public:
     return FALSE;
   };
 
+  // [Cecil] Rev: Check if has compression
+  BOOL HasCompression(void);
+
   // canvas functions
   void CreateWindowCanvas( void *hWnd, CViewPort **ppvpNew, CDrawPort **ppdpNew);   // Create a new window canvas
   void DestroyWindowCanvas( CViewPort *pvpOld);                                     // Destroy a window canvas
@@ -311,6 +314,9 @@ extern void FlipBitmap( UBYTE *pubSrc, UBYTE *pubDst, PIX pixWidth, PIX pixHeigh
 // (only first ctFineMips number of mip-maps will be filtered with bilinear subsampling, while
 //  all others will be downsampled with nearest-neighbour method with border preservance)
 extern void MakeMipmaps( INDEX ctFineMips, ULONG *pulMipmaps, PIX pixWidth, PIX pixHeight, INDEX iFilter=NONE);
+
+// [Cecil] Rev: Exported alternative
+ENGINE_API extern void MakeMipmaps(ULONG *pulMipmaps, PIX pixWidth, PIX pixHeight, INDEX iFilter = NONE);
 
 // colorize mipmaps
 extern void ColorizeMipmaps( INDEX i1stMipmapToColorize, ULONG *pulMipmaps, PIX pixWidth, PIX pixHeight);
@@ -354,6 +360,8 @@ ENGINE_API extern CGfxLibrary *_pGfx;
 // forced texture upload quality (0 = default, 16 = force 16-bit, 32 = force 32-bit)
 ENGINE_API extern INDEX _iTexForcedQuality;
 
+// [Cecil] Rev: Exported variable
+ENGINE_API extern INDEX gfx_bRenderModels;
 
 #endif  /* include-once check. */
 

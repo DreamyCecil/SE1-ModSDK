@@ -16,11 +16,14 @@ public:
   FLOAT3D en_vReferencePlane;
   INDEX en_iReferenceSurface;
   CEntityPointer en_penLastValidReference;
-  FLOAT en_tmLastSignificantVerticalMovement;
+  TIME en_tmLastSignificantVerticalMovement;
   FLOAT en_tmLastBreathed;
   FLOAT en_tmMaxHoldBreath;
   FLOAT en_fDensity;
   FLOAT en_tmLastSwimDamage;
+  FLOAT en_tmMaxColdness;
+  FLOAT en_tmLastWarmth;
+  BOOL en_bImmuneToCold;
   INDEX en_iUpContent;
   INDEX en_iDnContent;
   FLOAT en_fImmersionFactor;
@@ -45,6 +48,10 @@ public:
   FLOATaabbox3D en_boxNearCached;
   FLOAT3D en_vIntendedTranslation;
   FLOATmatrix3D en_mIntendedRotation;
+  INDEX en_iLastForceType;
+  FLOAT en_tmLastFrozen;
+  FLOAT en_tmFrozenSeconds;
+  FLOAT en_tmFrozenMinimum;
 CPlacement3D en_plLastPlacement;
 CListNode en_lnInMovers;
 CBrushPolygon * en_pbpoStandOn;
@@ -60,7 +67,7 @@ FLOATmatrix3D en_mMoveRotation;
 FLOAT3D en_vAppliedTranslation;
 FLOATmatrix3D en_mAppliedRotation;
    
-#line 332 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 319 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void ResetPredictionFilter(void);
     CMovableEntity(void);
      ~ CMovableEntity(void);
@@ -68,7 +75,10 @@ void ResetPredictionFilter(void);
    void OnEnd(void);
    void Copy(CEntity & enOther,ULONG ulFlags);
    
-#line 404 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+// [Cecil] Rev: Fill correction info with entity properties
+void CorrectionProperties(CEntityCorrectionInfo &eci, INDEX iExtra);
+
+#line 391 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void ClearTemporaryData(void);
    void ChecksumForSync(ULONG & ulCRC,INDEX iExtensiveSyncCheck);
    void DumpSync_t(CTStream & strm,INDEX iExtensiveSyncCheck);
@@ -84,16 +94,16 @@ void ClearTemporaryData(void);
    void GiveImpulseTranslationRelative(const FLOAT3D & vImpulseSpeedRelative);
    void GiveImpulseTranslationAbsolute(const FLOAT3D & vImpulseSpeed);
    void LaunchAsPropelledProjectile(const FLOAT3D & vImpulseSpeedRelative,
-#line 655 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 642 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 CMovableEntity * penLauncher);
    void LaunchAsFreeProjectile(const FLOAT3D & vImpulseSpeedRelative,
-#line 663 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 650 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 CMovableEntity * penLauncher);
    void ForceStopTranslation(void);
    void ForceStopRotation(void);
    void ForceFullStop(void);
    void FakeJump(const FLOAT3D & vOrgSpeed,const FLOAT3D & vDirection,FLOAT fStrength,
-#line 693 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 680 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 FLOAT fParallelMultiplier,FLOAT fNormalMultiplier,FLOAT fMaxExitSpeed,TIME tmControl);
    ANGLE GetRelativeHeading(const FLOAT3D & vDirection);
    ANGLE GetRelativePitch(const FLOAT3D & vDirection);
@@ -101,76 +111,79 @@ FLOAT fParallelMultiplier,FLOAT fNormalMultiplier,FLOAT fMaxExitSpeed,TIME tmCon
    void GetHeadingDirection(ANGLE aH,FLOAT3D & vDirection);
    void GetPitchDirection(ANGLE aH,FLOAT3D & vDirection);
    
-#line 794 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 781 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 CEntity * MiscDamageInflictor(void);
    
-#line 811 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 798 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void UpdateOneSectorForce(CBrushSector & bsc,FLOAT fRatio);
    
-#line 860 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 847 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void TestFields(INDEX & iUpContent,INDEX & iDnContent,FLOAT & fImmersionFactor);
    
-#line 1003 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 990 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void TestBreathing(CContentType & ctUp);
+
+// [Cecil] Rev: Test for cold environment
+void TestColdness(CContentType &ctUp);
    
-#line 1039 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1026 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void TestContentDamage(CContentType & ctDn,FLOAT fImmersion);
    
-#line 1072 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1059 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void TestSurfaceDamage(CSurfaceType & stDn);
    
-#line 1098 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1085 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void SendTouchEvent(const CClipMove & cmMove);
    
-#line 1113 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1100 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void SendBlockEvent(CClipMove & cmMove);
    
-#line 1121 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1108 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL IsStandingOnPolygon(CBrushPolygon * pbpo);
+
+// [Cecil] Rev: Suppress fall damage
+virtual BOOL SuppressFallDamage(void);
    
-#line 1184 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1171 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL IsPolygonBelowPoint(CBrushPolygon * pbpo,const FLOAT3D & vPoint,FLOAT fMaxDist);
   virtual BOOL AllowForGroundPolygon(CBrushPolygon * pbpo);
    
-#line 1274 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1261 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL IsSomeNearPolygonBelowPoint(const FLOAT3D & vPoint,FLOAT fMaxDist);
    
-#line 1281 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1268 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL IsSomeSectorPolygonBelowPoint(CBrushSector * pbsc,const FLOAT3D & vPoint,FLOAT fMaxDist);
    
-#line 1297 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1284 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL WouldFallInNextPosition(void);
    
-#line 1407 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1394 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void ClearNextPosition(void);
    
-#line 1413 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1400 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void SetPlacementFromNextPosition(void);
    
-#line 1440 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1427 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL TryToGoUpstairs(const FLOAT3D & vTranslationAbsolute,const CSurfaceType & stHit,
-#line 1441 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1428 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL bHitStairsOrg);
    
-#line 1594 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 1581 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 BOOL TryToMove(CMovableEntity * penPusher,BOOL bTranslate,BOOL bRotate);
    void ClearMovingTemp(void);
    void PreMoving(void);
    
-#line 2025 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
-void PreMovingNew(void);
-   
-#line 2441 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 2428 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 void PreMovingOld(void);
    void DoMoving(void);
    void PostMoving(void);
    void CacheNearPolygons(void);
    
-#line 3104 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 3091 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 SLONG GetUsedMemory(void);
 #define  STATE_CMovableEntity_Dummy 0x00010000
   BOOL 
-#line 3118 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableEntity.es"
+#line 3105 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableEntity.es"
 Dummy(const CEntityEvent &__eeInput);
 };
 #endif // _Engine_Classes_MovableEntity_INCLUDED

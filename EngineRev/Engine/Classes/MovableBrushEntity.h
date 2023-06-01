@@ -13,7 +13,7 @@ public:
    void Write_t(CTStream * ostr);
 #define  STATE_CMovableBrushEntity_Dummy 0x00030000
   BOOL 
-#line 61 "F:/SeriousSam/SE1Projects/_SE1_Repository/Sources/Engine/Classes/MovableBrushEntity.es"
+#line 48 "D:/work/dev_SamClassic/Sources/Engine/Classes/MovableBrushEntity.es"
 Dummy(const CEntityEvent &__eeInput);
 };
 #endif // _Engine_Classes_MovableBrushEntity_INCLUDED

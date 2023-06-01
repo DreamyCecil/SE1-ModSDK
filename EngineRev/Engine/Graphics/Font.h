@@ -26,7 +26,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // some default fonts
 ENGINE_API extern CFontData *_pfdDisplayFont;
 ENGINE_API extern CFontData *_pfdConsoleFont;
-
+ENGINE_API extern CFontData *_pfdBoinkFont; // [Cecil] Rev: New font
 
 /*
  * font letter description
