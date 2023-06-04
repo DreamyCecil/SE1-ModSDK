@@ -17,25 +17,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Game.h"
 #include "SEColors.h"
 
-/* rcg10042001 protect against Visual C-isms. */
-#ifdef _MSC_VER
-#define DECL_DLL _declspec(dllimport)
-#endif
-
-#ifdef PLATFORM_UNIX
-#define DECL_DLL 
-#endif
-
+// [Cecil] Include common header for Entities
 #if SE1_GAME == SS_TSE
-  #include <EntitiesTSE/Global.h>
-  #include <EntitiesTSE/Common/Common.h>
-  #include <EntitiesTSE/Common/GameInterface.h>
+  #include <EntitiesTSE/EntitiesAPI.h>
   #include <EntitiesTSE/Players/Player.h>
 #else
-  #include <EntitiesTFE/Global.h>
-  #include <EntitiesTFE/Common/Common.h>
-  #include <EntitiesTFE/Common/GameInterface.h>
+  #include <EntitiesTFE/EntitiesAPI.h>
   #include <EntitiesTFE/Players/Player.h>
 #endif
-
-#undef DECL_DLL

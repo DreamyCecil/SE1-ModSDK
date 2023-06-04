@@ -838,6 +838,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <ClInclude Include="Common\Particles.h" />
     <ClInclude Include="Common\PathFinding.h" />
     <ClInclude Include="Common\WeaponPositions.h" />
+    <ClInclude Include="EntitiesAPI.h" />
     <ClInclude Include="StdH.h" />
   </ItemGroup>
   <ItemGroup>

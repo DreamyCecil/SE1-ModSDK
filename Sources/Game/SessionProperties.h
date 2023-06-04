@@ -13,6 +13,12 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
+#ifndef SE_INCL_SESSIONPROPERTIES_H
+#define SE_INCL_SESSIONPROPERTIES_H
+#ifdef PRAGMA_ONCE
+  #pragma once
+#endif
+
 /*
  * Class responsible for describing game session
  */
@@ -107,3 +113,4 @@ public:
   operator CSessionProperties&(void) { return usp_sp; }
 };
 
+#endif  /* include-once check. */

@@ -65,6 +65,7 @@ Sources/EntitiesTSE/**/*.cpp
 Sources/EntitiesTSE/**/*.h
 !Sources/EntitiesTSE/Common/*
 !Sources/EntitiesTSE/(LibMain).cpp
+!Sources/EntitiesTSE/EntitiesAPI.h
 !Sources/EntitiesTSE/StdH.h
 !Sources/EntitiesTSE/*.txt
 
@@ -72,6 +73,7 @@ Sources/EntitiesTFE/**/*.cpp
 Sources/EntitiesTFE/**/*.h
 !Sources/EntitiesTFE/Common/*
 !Sources/EntitiesTFE/(LibMain).cpp
+!Sources/EntitiesTFE/EntitiesAPI.h
 !Sources/EntitiesTFE/StdH.h
 !Sources/EntitiesTFE/*.txt
 

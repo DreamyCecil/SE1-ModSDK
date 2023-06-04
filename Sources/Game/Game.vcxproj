@@ -226,7 +226,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -244,7 +244,7 @@
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;Engine.lib;EntitiesMP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copying %(TargetName) binaries to Bin</Message>
@@ -264,7 +264,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -282,7 +282,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;Engine.lib;EntitiesMP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copying %(TargetName) binaries to Bin</Message>
@@ -302,7 +302,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -320,7 +320,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;Engine.lib;Entities.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copying %(TargetName) binaries to Bin</Message>
@@ -340,7 +340,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
       <StringPooling>true</StringPooling>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -359,7 +359,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;Engine.lib;EntitiesMP.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <PostBuildEvent>
       <Message>Copying %(TargetName) binaries to Bin</Message>
@@ -375,7 +375,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -394,7 +394,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;EngineD.lib;EntitiesMPD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -411,7 +411,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -430,7 +430,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;EngineD.lib;EntitiesMPD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -447,7 +447,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -466,7 +466,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;EngineD.lib;EntitiesD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>
@@ -483,7 +483,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAME_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -502,7 +502,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <Link>
       <LinkDLL>true</LinkDLL>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>user32.lib;EngineD.lib;EntitiesMPD.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>user32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <GenerateMapFile>true</GenerateMapFile>
     </Link>
     <PostBuildEvent>

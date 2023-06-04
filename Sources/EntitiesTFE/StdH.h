@@ -14,20 +14,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
 #include <Engine/Engine.h>
-#include <Game/SessionProperties.h>
-#include <Game/PlayerSettings.h>
 
-/* rcg10042001 protect against Visual C-isms. */
-#ifdef _MSC_VER
-#define DECL_DLL _declspec(dllexport)
-#endif
-
-#ifdef PLATFORM_UNIX
-#define DECL_DLL 
-#endif
-
-#include "Global.h"
-#include "Common/Flags.h"
-#include "Common/Common.h"
-#include "Common/Particles.h"
-#include "Common/GameInterface.h"
+// [Cecil] Include common header for the library itself
+#define ENTITIES_EXPORTS
+#include "EntitiesAPI.h"

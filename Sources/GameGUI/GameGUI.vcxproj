@@ -222,7 +222,7 @@
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -259,7 +259,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -296,7 +296,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -333,7 +333,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Optimization>Disabled</Optimization>
       <WarningLevel>Level3</WarningLevel>
       <MinimalRebuild>true</MinimalRebuild>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);_DEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
@@ -373,7 +373,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -411,7 +411,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -449,7 +449,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>
@@ -487,7 +487,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\" &gt;nul</Command>
       <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <OmitFramePointers>false</OmitFramePointers>
-      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG;GAMEGUI_EXPORTS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>$(SamEnginePreproc);%(PreprocessorDefinitions);NDEBUG</PreprocessorDefinitions>
       <PrecompiledHeader>Use</PrecompiledHeader>
       <PrecompiledHeaderFile>StdAfx.h</PrecompiledHeaderFile>
       <DisableSpecificWarnings>4996;4333</DisableSpecificWarnings>

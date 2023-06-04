@@ -16,11 +16,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdAfx.h"
 #include "LCDDrawing.h"
 
-#if SE1_GAME == SS_TSE
-#define DECL_DLL
-#include "EntitiesTSE/Common/Particles.h"
-#endif
-
 #include "Models/Enemies/Headman/Headman.h"
 #include "Models/Enemies/Eyeman/Eyeman.h"
 #include "Models/Enemies/Boneman/Boneman.h"
