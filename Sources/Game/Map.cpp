@@ -19,11 +19,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "StdAfx.h"
 #include "LCDDrawing.h"
 
-// [Cecil] Amount of worlds on the map
+// [Cecil] Amount of worlds on the map and map texture index
 #if SE1_GAME == SS_TSE
   #define CT_MAP_WORLDS 13
+  #define MAP_ICON_INDEX 1 // 0 is the book texture
 #else
   #define CT_MAP_WORLDS 15
+  #define MAP_ICON_INDEX 0
 #endif
 
 static CTextureObject atoIcons[CT_MAP_WORLDS];
@@ -553,7 +555,7 @@ void RenderMap( CDrawPort *pdp, ULONG ulLevelMask, CProgressHookInfo *pphi)
     pdp->PutTexture( &_toMapBcgRD, PIXaabbox2D( PIX2D(pixC2S,pixR2S), PIX2D(pixC2E,pixR2E)), C_WHITE|255);
 
     // render icons
-    for (INDEX iIcon = 0; iIcon < CT_MAP_WORLDS; iIcon++)
+    for (INDEX iIcon = MAP_ICON_INDEX; iIcon < CT_MAP_WORLDS; iIcon++)
     {
       // if level's icon should be rendered
       if( ulLevelMask & (1UL<<iIcon))
