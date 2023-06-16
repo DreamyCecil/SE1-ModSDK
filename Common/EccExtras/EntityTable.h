@@ -26,17 +26,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Entities/EntityProperties.h>
 #include "DllEntityEvent.h"
 
-// Undefine 'new' operator in debug
-#ifndef NDEBUG
-  #undef new
-#endif
-
+#include <STLIncludesBegin.h>
 #include <map>
-
-// Redefine 'new' operator in debug
-#ifndef NDEBUG
-  #define new DEBUG_NEW_CT
-#endif
+#include <STLIncludesEnd.h>
 
 // Entry describing one entity class in the library's entity table
 class CEntityTableEntry {
