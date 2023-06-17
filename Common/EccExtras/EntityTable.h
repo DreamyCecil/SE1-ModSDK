@@ -51,6 +51,9 @@ class CEntityTableEntry {
     const char *ete_strEventsCt; // Symbol name of the entity event counter
 
   public:
+    // Fill a dynamic container with entity property identifiers
+    void GetProperties(CDynamicContainer<const char *> &cProps) const;
+
     // Fill a dynamic container with entity events
     void GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) const;
 

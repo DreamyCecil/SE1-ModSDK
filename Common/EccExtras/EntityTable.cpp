@@ -18,6 +18,29 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // Exported table of entity entries under their respective names
 CLibEntityTable DLL_EntityTable;
 
+// Fill a dynamic container with entity property identifiers
+void CEntityTableEntry::GetProperties(CDynamicContainer<const char *> &cProps) const {
+  // Get array of properties and their amount
+#if SE1_GAME == SS_REV
+  CEntityProperty *aProps = ete_pdecClass->dec_aepProperties;
+  const INDEX ct = ete_pdecClass->dec_ctProperties;
+
+  // Go through the array and add each property name to the container
+  for (INDEX i = 0; i < ct; i++) {
+    cProps.Add((const char **)&aProps[i].ep_strVariable);
+  }
+
+#else
+  const char **aProps = ete_astrProps;
+  const INDEX ct = ete_iPropsCt;
+
+  // Go through the array and add each property name to the container
+  for (INDEX i = 0; i < ct; i++) {
+    cProps.Add(&aProps[i]);
+  }
+#endif
+};
+
 // Fill a dynamic container with entity events
 void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) const {
   // Get array of events and their amount
@@ -26,8 +49,8 @@ void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) c
   const INDEX ct = ete_iEventsCt;
 
 #else
-  CDLLEntityEvent **aEvents = pClass->dec_adeeEvents;
-  const INDEX ct = pClass->dec_ctEvents;
+  CDLLEntityEvent **aEvents = ete_pdecClass->dec_adeeEvents;
+  const INDEX ct = ete_pdecClass->dec_ctEvents;
 #endif
 
   // Go through the array and add each event to the container
