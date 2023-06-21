@@ -31,7 +31,7 @@ inline CDynamicStackArray<Type>::CDynamicStackArray(void) : CDynamicArray<Type>(
 
   // Lock the array upon construction
   CDynamicArray<Type>::Lock();
-}
+};
 
 // Destructor
 template<class Type>

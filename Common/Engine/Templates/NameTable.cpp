@@ -156,7 +156,7 @@ void CNameTable_TYPE::Expand(void)
   ASSERT(nt_ctCompartments > 0 && nt_ctSlotsPerComp > 0);
 
   // The compartment has overflown
-  ASSERT(nt_ctSlotsPerCompStep>0);
+  ASSERT(nt_ctSlotsPerCompStep > 0);
 
   // Move the array of slots
   CStaticArray<CNameTableSlot_TYPE > antsSlotsOld;
@@ -183,7 +183,7 @@ void CNameTable_TYPE::Expand(void)
       }
     }
   }
-}
+};
 
 // Flag to check for recursive expanding
 static BOOL _bExpanding = FALSE;
@@ -243,7 +243,7 @@ void CNameTable_TYPE::Remove(TYPE *ptOld)
     ASSERT(pnts->nts_ptElement == ptOld);
     pnts->nts_ptElement = NULL;
   }
-}
+};
 
 // Remove all objects but keep slots
 void CNameTable_TYPE::Reset(void)

@@ -93,7 +93,7 @@ void CDynamicContainer<Type>::Remove(Type *ptOldObject)
 #endif
 
   // Find its index
-  INDEX iMember=GetIndex(ptOldObject);
+  INDEX iMember = GetIndex(ptOldObject);
 
   // [Cecil] Not found
   if (iMember == -1) {
@@ -103,7 +103,7 @@ void CDynamicContainer<Type>::Remove(Type *ptOldObject)
 
   // Move last pointer here
   INDEX iLast = Count() - 1;
-  sa_Array[iMember]=sa_Array[iLast];
+  sa_Array[iMember] = sa_Array[iLast];
   sa_Array[iLast] = NULL;
   Pop();
 };
@@ -205,8 +205,8 @@ INDEX CDynamicContainer<Type>::GetIndex(Type *ptMember) {
   ASSERT(this != NULL);
 
   // Check all members (slow!)
-  for (INDEX iMember=0; iMember<Count(); iMember++) {
-    if(sa_Array[iMember]==ptMember) {
+  for (INDEX iMember = 0; iMember < Count(); iMember++) {
+    if (sa_Array[iMember] == ptMember) {
       return iMember;
     }
   }

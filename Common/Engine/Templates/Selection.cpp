@@ -71,7 +71,7 @@ void CSelection<cType, ulFlag>::Clear(void)
     // The object must be allocated and valid
     ASSERT(_CrtIsValidPointer(&*itObject, sizeof(cType), TRUE));
     //ASSERT(_CrtIsValidHeapPointer(&*itObject));
-    //ASSERT(_CrtIsMemoryBlock(&*itObject, sizeof(cType), NULL, NULL, NULL ));
+    //ASSERT(_CrtIsMemoryBlock(&*itObject, sizeof(cType), NULL, NULL, NULL));
 
     // Deselect it
     itObject->Deselect(ulFlag);

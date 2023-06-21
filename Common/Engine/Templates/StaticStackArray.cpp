@@ -84,7 +84,7 @@ template<class Type>
 inline Type *CStaticStackArray<Type>::Push(INDEX ct) {
   sa_UsedCount += ct;
 
-  if(sa_UsedCount>CStaticArray<Type>::Count()) {
+  if (sa_UsedCount > CStaticArray<Type>::Count()) {
     ASSERT(ct > 0);
 
     const INDEX ctAllocSteps = (ct - 1) / sa_ctAllocationStep + 1;
@@ -135,8 +135,8 @@ inline void CStaticStackArray<Type>::PopAll(void) {
 // Random access operator
 template<class Type>
 inline Type &CStaticStackArray<Type>::operator[](INDEX i) {
-  ASSERT(this!=NULL);
-  ASSERT(i<sa_UsedCount); // Check bounds
+  ASSERT(this != NULL);
+  ASSERT(i < sa_UsedCount); // Check bounds
 
   return CStaticArray<Type>::operator[](i);
 };
@@ -144,8 +144,8 @@ inline Type &CStaticStackArray<Type>::operator[](INDEX i) {
 // Constant random access operator
 template<class Type>
 inline const Type &CStaticStackArray<Type>::operator[](INDEX i) const {
-  ASSERT(this!=NULL);
-  ASSERT(i<sa_UsedCount); // Check bounds
+  ASSERT(this != NULL);
+  ASSERT(i < sa_UsedCount); // Check bounds
 
   return CStaticArray<Type>::operator[](i);
 };
