@@ -15,8 +15,28 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include "EntityTable.h"
 
-// Exported table of entity entries under their respective names
-CLibEntityTable DLL_EntityTable;
+#include <EngineEx/ModuleSymbols.h>
+
+// Constructor
+CEntityTableEntry::CEntityTableEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
+  EntityPropertyRef *aProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
+  CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt)
+{
+  ete_pdecClass = pdecClass;
+  ete_strClass = strClass;
+
+  ete_aProps = aProps;
+  ete_strProps = strProps;
+
+  ete_iPropsCt = iPropsCt;
+  ete_strPropsCt = strPropsCt;
+
+  ete_adeeEvents = adeeEvents;
+  ete_strEvents = strEvents;
+
+  ete_iEventsCt = iEventsCt;
+  ete_strEventsCt = strEventsCt;
+};
 
 // Fill a dynamic container with entity property identifiers
 void CEntityTableEntry::GetProperties(CDynamicContainer<const char *> &cProps) const {
@@ -31,12 +51,12 @@ void CEntityTableEntry::GetProperties(CDynamicContainer<const char *> &cProps) c
   }
 
 #else
-  const char **aProps = ete_astrProps;
+  EntityPropertyRef *aProps = ete_aProps;
   const INDEX ct = ete_iPropsCt;
 
   // Go through the array and add each property name to the container
   for (INDEX i = 0; i < ct; i++) {
-    cProps.Add(&aProps[i]);
+    cProps.Add((const char **)&aProps[i].strVariable);
   }
 #endif
 };
@@ -57,31 +77,4 @@ void CEntityTableEntry::GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) c
   for (INDEX i = 0; i < ct; i++) {
     cEvents.Add(aEvents[i]);
   }
-};
-
-// Constructor with immediate table insertion
-CEntityTableEntry *CEntityTableEntry::CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
-  const char **astrProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
-  CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt)
-{
-  // Create an entry under a class name
-  CEntityTableEntry &ete = DLL_EntityTable[strClassName];
-
-  // Set entry fields
-  ete.ete_pdecClass = pdecClass;
-  ete.ete_strClass = strClass;
-
-  ete.ete_astrProps = astrProps;
-  ete.ete_strProps = strProps;
-
-  ete.ete_iPropsCt = iPropsCt;
-  ete.ete_strPropsCt = strPropsCt;
-
-  ete.ete_adeeEvents = adeeEvents;
-  ete.ete_strEvents = strEvents;
-
-  ete.ete_iEventsCt = iEventsCt;
-  ete.ete_strEventsCt = strEventsCt;
-
-  return &ete;
 };

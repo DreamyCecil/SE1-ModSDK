@@ -1,4 +1,4 @@
-/* Copyright (c) 2022 Dreamy Cecil
+/* Copyright (c) 2023 Dreamy Cecil
 This program is free software; you can redistribute it and/or modify
 it under the terms of version 2 of the GNU General Public License as published by
 the Free Software Foundation
@@ -13,27 +13,31 @@ You should have received a copy of the GNU General Public License along
 with this program; if not, write to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA. */
 
-#ifndef CECIL_INCL_DLLENTITYEVENT_H
-#define CECIL_INCL_DLLENTITYEVENT_H
+#ifndef CECIL_INCL_ENGINEEX_BASE_H
+#define CECIL_INCL_ENGINEEX_BASE_H
 
 #ifdef PRAGMA_ONCE
   #pragma once
 #endif
 
-#if SE1_VER < SE1_150
+// Disable warnings about identifier truncation in Debug
+#pragma warning(disable: 4786)
 
-#include <Engine/Entities/EntityEvent.h>
+#include <Engine/Base/CTString.h>
 
-// Reimplementation of DLL entity event class from 1.50
-class CDLLEntityEvent {
-  public:
-    SLONG dee_slEvent; // Event code
-    CEntityEvent *(*dee_New)(void); // Pointer to the event class constructor
+#include <STLIncludesBegin.h>
+#include <map>
+#include <STLIncludesEnd.h>
 
-    // [Cecil] NOTE: Event class size to compensate for the lack of CEntityEvent::GetSizeOf virtual method
-    SLONG dee_slSizeOf;
+// STL-styled comparator of CTString classes for sorting within std::map
+struct CompareCTString
+{
+  inline bool operator()(const CTString &lhs, const CTString &rhs) const {
+    return strcmp(lhs, rhs) < 0;
+  };
 };
 
-#endif
+// Stringify an identifier
+#define ENTITYTABLESTRING(x) #x
 
 #endif

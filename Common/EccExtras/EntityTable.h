@@ -23,12 +23,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // Disable warnings about identifier truncation in Debug
 #pragma warning(disable: 4786)
 
-#include <Engine/Entities/EntityProperties.h>
-#include "DllEntityEvent.h"
-
-#include <STLIncludesBegin.h>
-#include <map>
-#include <STLIncludesEnd.h>
+#include <EngineEx/Base.h>
+#include <EngineEx/DllEntityEvent.h>
+#include <EngineEx/PropertyReference.h>
 
 // Entry describing one entity class in the library's entity table
 class CEntityTableEntry {
@@ -37,8 +34,8 @@ class CEntityTableEntry {
     const char *ete_strClass; // Symbol name of the library entity class
 
     // [Cecil] NOTE: In SSR these may be null and symbol names may be empty strings
-    const char **ete_astrProps; // Array of entity property identifiers
-    const char *ete_strProps; // Symbol name of the array of entity property identifiers
+    EntityPropertyRef *ete_aProps; // Array of entity property references
+    const char *ete_strProps; // Symbol name of the array of entity property references
 
     INDEX ete_iPropsCt; // Entity property counter
     const char *ete_strPropsCt; // Symbol name of the entity property counter
@@ -51,35 +48,36 @@ class CEntityTableEntry {
     const char *ete_strEventsCt; // Symbol name of the entity event counter
 
   public:
+    // Default constructor
+    CEntityTableEntry()
+    {
+    };
+
+    // Constructor with data
+    CEntityTableEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
+      EntityPropertyRef *aProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
+      CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt);
+
+  public:
     // Fill a dynamic container with entity property identifiers
     void GetProperties(CDynamicContainer<const char *> &cProps) const;
 
     // Fill a dynamic container with entity events
     void GetEvents(CDynamicContainer<CDLLEntityEvent> &cEvents) const;
-
-    // Constructor with immediate table insertion
-    static CEntityTableEntry *CreateEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
-      const char **astrProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
-      CDLLEntityEvent **adeeEvents, const char *strEvents, INDEX iEventsCt, const char *strEventsCt);
 };
 
 // Container type for storing entity entries under their respective class name
 typedef std::map<CTString, CEntityTableEntry, CompareCTString> CLibEntityTable;
 
-// Exported table of entity entries under their respective names
-extern "C" __declspec(dllexport) CLibEntityTable DLL_EntityTable;
-
-// Stringify an identifier
-#define ENTITYTABLESTRING(x) #x
-
 // Create an entity entry in the table as soon as the module initializes
-#define ENTITYTABLEENTRY(ClassName) CEntityTableEntry *ClassName##_tableentry = \
-  CEntityTableEntry::CreateEntry(ENTITYTABLESTRING(ClassName), \
-    &ClassName##_DLLClass, ENTITYTABLESTRING(ClassName##_DLLClass), \
-    (const char **) ClassName##_propnames, ENTITYTABLESTRING(ClassName##_propnames), \
-    ClassName##_propnamesct, ENTITYTABLESTRING(ClassName##_propnamesct), \
-    (CDLLEntityEvent **)&ClassName##_events, ENTITYTABLESTRING(ClassName##_events), \
-    ClassName##_eventsct, ENTITYTABLESTRING(ClassName##_eventsct) \
-  )
+#define ENTITYTABLEENTRY(ClassName) extern "C" __declspec(dllexport) \
+CEntityTableEntry ClassName##_tableentry( \
+  ENTITYTABLESTRING(ClassName), \
+  &ClassName##_DLLClass, ENTITYTABLESTRING(ClassName##_DLLClass), \
+  (EntityPropertyRef *)ClassName##_proprefs, ENTITYTABLESTRING(ClassName##_proprefs), \
+  ClassName##_proprefsct, ENTITYTABLESTRING(ClassName##_proprefsct), \
+  (CDLLEntityEvent **)&ClassName##_events, ENTITYTABLESTRING(ClassName##_events), \
+  ClassName##_eventsct, ENTITYTABLESTRING(ClassName##_eventsct) \
+)
 
 #endif
