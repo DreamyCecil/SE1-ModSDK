@@ -15,9 +15,12 @@ If you wish to develop any other kind of project for classic Serious Sam games, 
   - 1.07 for The Second Encounter (`Engine107`)
   - 1.10 for The Second Encounter (`Engine110`) *- clean build using Visual Studio 2013*
   - 1.10 for Serious Sam Revolution (`EngineRev`) *- work-in-progress, use at your own risk*
-- Sources for all Serious Engine versions (`Common`)
-  - Model headers used by `Entities` and `Game` projects from the SDK (`Models` and `ModelsMP`)
-- Entity Class Compiler (`Ecc.exe`)
+- `Common` - Sources for all Serious Engine versions
+  - `EccExtras` - Extra features for entity sources utilized by the custom Entity Class Compiler
+  - `Engine` - Common code suitable for all engine versions that was moved from the original headers
+  - `EngineEx` - Custom extensions to the SDK in a form of new useful classes and functions
+  - `Models` & `ModelsMP` - Model headers used by `Entities` and `Game` projects from the SDK
+- `Ecc.exe` - Entity Class Compiler
 
 Games on 1.05 and 1.07 engine versions also include headers of vanilla modules under extra `EntitiesV`, `GameGUIV` and `GameV` directories and static libraries for all three projects: `EntitiesV.lib`, `GameGUIV.lib` and `GameV.lib` (including debug ones with a `VD` suffix).
 They are suffixed with `V` (for "Vanilla") to avoid confusion with libraries from the SDK itself. But they still refer to the original dynamic link libraries (e.g. `Entities.dll` in TFE and `EntitiesMP.dll` in TSE).
