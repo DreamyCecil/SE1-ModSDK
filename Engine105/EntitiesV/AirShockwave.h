@@ -46,24 +46,4 @@ public:
   BOOL H0x015d0005_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x015d0006_Main_06(const CEntityEvent &__eeInput);
 };
-
-static const char *CAirShockwave_propnames[] = {
-  "m_penLauncher",
-  "m_fHeight",
-  "m_fEndWidth",
-  "m_tmBegin",
-  "m_tmEnd",
-  "m_fDuration",
-  "m_bGrowing",
-  "m_tmLastGrow",
-  "m_fFadeStartTime",
-  "m_fFadeStartPercent",
-  "m_fStretchY",
-  "m_fBeginStretchXZ",
-  "m_fEndStretchXZ",
-  "m_boxMaxSize",
-  "m_bFadeOut",
-};
-#define CAirShockwave_propnamesct ARRAYCOUNT(CAirShockwave_propnames)
-
 #endif // _EntitiesV_AirShockwave_INCLUDED

@@ -50,11 +50,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CKeyItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CKeyItem_propnames[] = {
-  "m_kitType",
-  "m_iSoundComponent",
-};
-#define CKeyItem_propnamesct ARRAYCOUNT(CKeyItem_propnames)
-
 #endif // _EntitiesV_KeyItem_INCLUDED

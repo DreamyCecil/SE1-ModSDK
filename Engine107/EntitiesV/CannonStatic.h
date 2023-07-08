@@ -78,25 +78,4 @@ public:
   BOOL H0x01590018_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01590019_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CCannonStatic_propnames[] = {
-  "m_fHealth",
-  "m_fFiringRangeClose",
-  "m_fFiringRangeFar",
-  "m_fShootingPeriod",
-  "m_fSize",
-  "m_fMaxPitch",
-  "m_fViewAngle",
-  "m_bActive",
-  "m_fRotSpeedMuzzle",
-  "m_fDistanceToPlayer",
-  "m_fDesiredMuzzlePitch",
-  "m_iMuzzleDir",
-  "m_vFiringPos",
-  "m_vTarget",
-  "m_aBeginMuzzleRotation",
-  "m_aEndMuzzleRotation",
-};
-#define CCannonStatic_propnamesct ARRAYCOUNT(CCannonStatic_propnames)
-
 #endif // _EntitiesV_CannonStatic_INCLUDED

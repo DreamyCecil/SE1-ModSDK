@@ -39,10 +39,4 @@ public:
 #define  STATE_CGizmo_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CGizmo_propnames[] = {
-  "m_bExploded",
-};
-#define CGizmo_propnamesct ARRAYCOUNT(CGizmo_propnames)
-
 #endif // _EntitiesV_Gizmo_INCLUDED

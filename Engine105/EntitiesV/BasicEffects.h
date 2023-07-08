@@ -165,32 +165,4 @@ CLightSource m_lsLightSource;
   BOOL H0x0259000e_EffectLoop_11(const CEntityEvent &__eeInput);
   BOOL H0x0259000f_EffectLoop_12(const CEntityEvent &__eeInput);
 };
-
-static const char *CBasicEffect_propnames[] = {
-  "m_betType",
-  "m_fWaitTime",
-  "m_fFadeTime",
-  "m_bFade",
-  "m_fFadeStartTime",
-  "m_fFadeStartAlpha",
-  "m_vNormal",
-  "m_vStretch",
-  "m_vDirection",
-  "m_fDepthSortOffset",
-  "m_fFadeInSpeed",
-  "m_tmSpawn",
-  "m_tmWaitAfterDeath",
-  "m_bLightSource",
-  "m_aoLightAnimation",
-  "m_iLightAnimation",
-  "m_colMultiplyColor",
-  "m_soEffect",
-  "m_fSoundTime",
-  "m_eptType",
-  "m_tmWhenShot",
-  "m_vGravity",
-  "m_penPrediction",
-};
-#define CBasicEffect_propnamesct ARRAYCOUNT(CBasicEffect_propnames)
-
 #endif // _EntitiesV_BasicEffects_INCLUDED

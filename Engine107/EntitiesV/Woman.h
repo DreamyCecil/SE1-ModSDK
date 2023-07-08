@@ -75,12 +75,4 @@ public:
   BOOL H0x0140001b_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x0140001c_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CWoman_propnames[] = {
-  "m_bKamikazeCarrier",
-  "m_rKamikazeDropDistance",
-  "m_bKamikazeAttached",
-};
-#define CWoman_propnamesct ARRAYCOUNT(CWoman_propnames)
-
 #endif // _EntitiesV_Woman_INCLUDED

@@ -29,18 +29,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00ec0006_Main_07(const CEntityEvent &__eeInput);
   BOOL H0x00ec0007_Main_08(const CEntityEvent &__eeInput);
 };
-
-static const char *CTacticsChanger_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_tctType",
-  "m_fParam1",
-  "m_fParam2",
-  "m_fParam3",
-  "m_fParam4",
-  "m_fParam5",
-  "m_penTacticsHolder",
-};
-#define CTacticsChanger_propnamesct ARRAYCOUNT(CTacticsChanger_propnames)
-
 #endif // _EntitiesV_TacticsChanger_INCLUDED

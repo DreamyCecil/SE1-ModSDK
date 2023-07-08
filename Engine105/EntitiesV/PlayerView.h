@@ -46,16 +46,4 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x01930001_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01930002_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CPlayerView_propnames[] = {
-  "m_penOwner",
-  "m_iViewType",
-  "m_fDistance",
-  "m_vZLast",
-  "m_vTargetLast",
-  "m_bFixed",
-  "m_penPrediction",
-};
-#define CPlayerView_propnamesct ARRAYCOUNT(CPlayerView_propnames)
-
 #endif // _EntitiesV_PlayerView_INCLUDED

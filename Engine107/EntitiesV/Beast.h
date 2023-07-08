@@ -105,12 +105,4 @@ public:
 #define  STATE_CBeast_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CBeast_propnames[] = {
-  "m_bcType",
-  "m_iCounter",
-  "m_bBeBoss",
-};
-#define CBeast_propnamesct ARRAYCOUNT(CBeast_propnames)
-
 #endif // _EntitiesV_Beast_INCLUDED

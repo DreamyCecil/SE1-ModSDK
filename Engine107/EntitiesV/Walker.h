@@ -73,19 +73,4 @@ public:
 #define  STATE_CWalker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CWalker_propnames[] = {
-  "m_EwcChar",
-  "m_iLoopCounter",
-  "m_fSize",
-  "m_bWalkSoundPlaying",
-  "m_fThreatDistance",
-  "m_soFeet",
-  "m_soFire1",
-  "m_soFire2",
-  "m_soFire3",
-  "m_soFire4",
-};
-#define CWalker_propnamesct ARRAYCOUNT(CWalker_propnames)
-
 #endif // _EntitiesV_Walker_INCLUDED

@@ -60,8 +60,4 @@ public:
 #define  STATE_CWoman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CWoman_propnames[] = {""};
-#define CWoman_propnamesct 0
-
 #endif // _EntitiesV_Woman_INCLUDED

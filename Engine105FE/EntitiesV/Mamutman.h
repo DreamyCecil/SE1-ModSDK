@@ -57,12 +57,4 @@ public:
 #define  STATE_CMamutman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CMamutman_propnames[] = {
-  "m_penBullet",
-  "m_bSpawned",
-  "m_bSpawnedPosition",
-};
-#define CMamutman_propnamesct ARRAYCOUNT(CMamutman_propnames)
-
 #endif // _EntitiesV_Mamutman_INCLUDED

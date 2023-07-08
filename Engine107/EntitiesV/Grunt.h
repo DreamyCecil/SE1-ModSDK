@@ -70,12 +70,4 @@ public:
 #define  STATE_CGrunt_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CGrunt_propnames[] = {
-  "m_gtType",
-  "m_soFire1",
-  "m_soFire2",
-};
-#define CGrunt_propnamesct ARRAYCOUNT(CGrunt_propnames)
-
 #endif // _EntitiesV_Grunt_INCLUDED

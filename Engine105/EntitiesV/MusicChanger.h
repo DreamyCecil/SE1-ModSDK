@@ -24,15 +24,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x00e10002_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00e10003_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CMusicChanger_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnMusic",
-  "m_fVolume",
-  "m_mtType",
-  "m_bForceStart",
-};
-#define CMusicChanger_propnamesct ARRAYCOUNT(CMusicChanger_propnames)
-
 #endif // _EntitiesV_MusicChanger_INCLUDED

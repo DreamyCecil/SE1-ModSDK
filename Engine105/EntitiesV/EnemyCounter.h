@@ -23,13 +23,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x01530002_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01530003_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CEnemyCounter_propnames[] = {
-  "m_penMainMusicHolder",
-  "m_strName",
-  "m_iCountFrom",
-  "m_iCount",
-};
-#define CEnemyCounter_propnamesct ARRAYCOUNT(CEnemyCounter_propnames)
-
 #endif // _EntitiesV_EnemyCounter_INCLUDED

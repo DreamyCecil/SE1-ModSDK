@@ -29,15 +29,4 @@ CEmiter m_emEmiter;
   BOOL H0x02680005_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x02680006_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CFireworks_propnames[] = {
-  "m_rRndRadius",
-  "m_soFly",
-  "m_soExplosion",
-  "m_tmActivated",
-  "m_strName",
-  "m_tmLastAnimation",
-};
-#define CFireworks_propnamesct ARRAYCOUNT(CFireworks_propnames)
-
 #endif // _EntitiesV_Fireworks_INCLUDED

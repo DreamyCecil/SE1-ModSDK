@@ -15,12 +15,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CAreaMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CAreaMarker_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_boxArea",
-};
-#define CAreaMarker_propnamesct ARRAYCOUNT(CAreaMarker_propnames)
-
 #endif // _EntitiesV_AreaMarker_INCLUDED

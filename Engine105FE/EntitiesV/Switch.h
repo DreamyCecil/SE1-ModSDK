@@ -50,22 +50,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CSwitch_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CSwitch_propnames[] = {
-  "m_iModelONAnimation",
-  "m_iTextureONAnimation",
-  "m_iModelOFFAnimation",
-  "m_iTextureOFFAnimation",
-  "m_penTarget",
-  "m_eetEvent",
-  "m_eetOffEvent",
-  "m_swtType",
-  "m_strMessage",
-  "m_bSwitchON",
-  "m_penCaused",
-  "m_bUseable",
-  "m_bInvisible",
-};
-#define CSwitch_propnamesct ARRAYCOUNT(CSwitch_propnames)
-
 #endif // _EntitiesV_Switch_INCLUDED

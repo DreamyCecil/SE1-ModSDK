@@ -12,10 +12,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CLightStyle_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CLightStyle_propnames[] = {
-  "m_strName",
-};
-#define CLightStyle_propnamesct ARRAYCOUNT(CLightStyle_propnames)
-
 #endif // _EntitiesV_LightStyle_INCLUDED

@@ -44,18 +44,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x02650012_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x02650013_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CTimeController_propnames[] = {
-  "m_fTimeStretch",
-  "m_tmFadeIn",
-  "m_tmInterval",
-  "m_bAbsolute",
-  "m_fMyTimer",
-  "m_tmStretchChangeStart",
-  "m_strName",
-  "m_fOldTimeStretch",
-  "m_fNewTimeStretch",
-};
-#define CTimeController_propnamesct ARRAYCOUNT(CTimeController_propnames)
-
 #endif // _EntitiesV_TimeController_INCLUDED

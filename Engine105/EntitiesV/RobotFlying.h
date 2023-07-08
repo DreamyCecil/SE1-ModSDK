@@ -33,10 +33,4 @@ public:
 #define  STATE_CRobotFlying_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CRobotFlying_propnames[] = {
-  "m_rfcChar",
-};
-#define CRobotFlying_propnamesct ARRAYCOUNT(CRobotFlying_propnames)
-
 #endif // _EntitiesV_RobotFlying_INCLUDED

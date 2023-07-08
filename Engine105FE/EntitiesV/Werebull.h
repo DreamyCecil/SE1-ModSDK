@@ -54,14 +54,4 @@ public:
 #define  STATE_CWerebull_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CWerebull_propnames[] = {
-  "m_bRunAttack",
-  "m_bHornHit",
-  "m_penLastTouched",
-  "m_soFeet",
-  "m_bRunSoundPlaying",
-};
-#define CWerebull_propnamesct ARRAYCOUNT(CWerebull_propnames)
-
 #endif // _EntitiesV_Werebull_INCLUDED

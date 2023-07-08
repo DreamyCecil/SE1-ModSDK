@@ -29,11 +29,4 @@ public:
 #define  STATE_CCyborgBike_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CCyborgBike_propnames[] = {
-  "m_fSpeed",
-  "m_iIndex",
-};
-#define CCyborgBike_propnamesct ARRAYCOUNT(CCyborgBike_propnames)
-
 #endif // _EntitiesV_CyborgBike_INCLUDED

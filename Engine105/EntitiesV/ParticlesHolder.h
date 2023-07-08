@@ -68,28 +68,4 @@ virtual const CTString &GetDescription(void) const { return m_strDescription; };
 #define  STATE_CParticlesHolder_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CParticlesHolder_propnames[] = {
-  "m_phtType",
-  "m_ptTexture",
-  "m_ctCount",
-  "m_fStretchAll",
-  "m_fStretchX",
-  "m_fStretchY",
-  "m_fStretchZ",
-  "m_strName",
-  "m_strDescription",
-  "m_bBackground",
-  "m_bTargetable",
-  "m_fSize",
-  "m_fParam1",
-  "m_fParam2",
-  "m_fParam3",
-  "m_bActive",
-  "m_fActivateTime",
-  "m_fDeactivateTime",
-  "m_fMipFactorDisappear",
-};
-#define CParticlesHolder_propnamesct ARRAYCOUNT(CParticlesHolder_propnames)
-
 #endif // _EntitiesV_ParticlesHolder_INCLUDED

@@ -36,21 +36,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CGravityMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CGravityMarker_propnames[] = {
-  "m_gtType",
-  "m_fStrength",
-  "m_rFallOff",
-  "m_rHotSpot",
-  "m_rTorusR",
-  "m_fAcc",
-  "m_fSign",
-  "m_fStep",
-  "m_aForceDir",
-  "m_fForceA",
-  "m_fForceV",
-  "m_vForceDir",
-};
-#define CGravityMarker_propnamesct ARRAYCOUNT(CGravityMarker_propnames)
-
 #endif // _EntitiesV_GravityMarker_INCLUDED

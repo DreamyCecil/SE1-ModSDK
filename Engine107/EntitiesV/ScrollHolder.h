@@ -38,17 +38,4 @@ BOOL bDataLoaded;
   BOOL H0x00ee0007_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00ee0008_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CScrollHolder_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmMessage",
-  "m_fMyTimer",
-  "m_fMyTimerLast",
-  "m_fSpeed",
-  "m_penEndCreditsTrigger",
-  "m_bDataError",
-};
-#define CScrollHolder_propnamesct ARRAYCOUNT(CScrollHolder_propnames)
-
 #endif // _EntitiesV_ScrollHolder_INCLUDED

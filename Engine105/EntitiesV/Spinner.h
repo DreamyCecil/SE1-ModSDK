@@ -40,18 +40,4 @@ public:
   BOOL H0x015c0006_Main_06(const CEntityEvent &__eeInput);
   BOOL H0x015c0007_Main_07(const CEntityEvent &__eeInput);
 };
-
-static const char *CSpinner_propnames[] = {
-  "m_penParent",
-  "m_aSpinRotation",
-  "m_vSpeed",
-  "m_tmExpire",
-  "m_vLastSpeed",
-  "m_bImpulse",
-  "m_tmWaitAfterImpulse",
-  "m_tmSpawn",
-  "m_vSpinSpeed",
-};
-#define CSpinner_propnamesct ARRAYCOUNT(CSpinner_propnames)
-
 #endif // _EntitiesV_Spinner_INCLUDED

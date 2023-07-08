@@ -35,10 +35,4 @@ public:
 #define  STATE_CPowerUpItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CPowerUpItem_propnames[] = {
-  "m_puitType",
-};
-#define CPowerUpItem_propnamesct ARRAYCOUNT(CPowerUpItem_propnames)
-
 #endif // _EntitiesV_PowerUpItem_INCLUDED

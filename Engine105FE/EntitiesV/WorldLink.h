@@ -22,13 +22,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CWorldLink_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CWorldLink_propnames[] = {
-  "m_strGroup",
-  "m_strWorld",
-  "m_bStoreWorld",
-  "m_EwltType",
-};
-#define CWorldLink_propnamesct ARRAYCOUNT(CWorldLink_propnames)
-
 #endif // _EntitiesV_WorldLink_INCLUDED

@@ -43,14 +43,4 @@ CLightSource m_lsLightSource;
   BOOL H0x01fc0004_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01fc0005_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CWater_propnames[] = {
-  "m_penLauncher",
-  "m_EwsSize",
-  "m_fDamageAmount",
-  "m_fIgnoreTime",
-  "m_fPushAwayFactor",
-};
-#define CWater_propnamesct ARRAYCOUNT(CWater_propnames)
-
 #endif // _EntitiesV_Water_INCLUDED

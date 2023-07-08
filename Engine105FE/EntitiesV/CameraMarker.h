@@ -20,18 +20,4 @@ public:
 #define  STATE_CCameraMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CCameraMarker_propnames[] = {
-  "m_fDeltaTime",
-  "m_fBias",
-  "m_fTension",
-  "m_fContinuity",
-  "m_bStopMoving",
-  "m_fFOV",
-  "m_bSkipToNext",
-  "m_colFade",
-  "m_penTrigger",
-};
-#define CCameraMarker_propnamesct ARRAYCOUNT(CCameraMarker_propnames)
-
 #endif // _EntitiesV_CameraMarker_INCLUDED

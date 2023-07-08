@@ -42,20 +42,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
   BOOL H0x00f10009_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00f1000a_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CHudPicHolder_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmPicture",
-  "m_tmFadeInStart",
-  "m_tmFadeOutStart",
-  "m_tmFadeInLen",
-  "m_tmFadeOutLen",
-  "m_tmAutoFadeOut",
-  "m_fYRatio",
-  "m_fXRatio",
-  "m_fPictureStretch",
-};
-#define CHudPicHolder_propnamesct ARRAYCOUNT(CHudPicHolder_propnames)
-
 #endif // _EntitiesV_HudPicHolder_INCLUDED

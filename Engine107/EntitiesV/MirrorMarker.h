@@ -22,11 +22,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CMirrorMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CMirrorMarker_propnames[] = {
-  "m_wrRotation",
-  "m_fRotationSpeed",
-};
-#define CMirrorMarker_propnamesct ARRAYCOUNT(CMirrorMarker_propnames)
-
 #endif // _EntitiesV_MirrorMarker_INCLUDED

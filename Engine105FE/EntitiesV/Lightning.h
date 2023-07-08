@@ -40,20 +40,4 @@ virtual const CTString &GetName(void) const { return m_strName; };
   BOOL H0x025f000c_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x025f000d_Main_06(const CEntityEvent &__eeInput);
 };
-
-static const char *CLightning_propnames[] = {
-  "m_penTarget",
-  "m_penwsc",
-  "m_strName",
-  "m_tmLightningStart",
-  "m_soThunder",
-  "m_bBackground",
-  "m_penLight",
-  "m_iLightAnim",
-  "m_iSoundPlaying",
-  "m_fLightningPower",
-  "m_fSoundDelay",
-};
-#define CLightning_propnamesct ARRAYCOUNT(CLightning_propnames)
-
 #endif // _EntitiesV_Lightning_INCLUDED

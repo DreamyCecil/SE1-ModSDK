@@ -71,23 +71,4 @@ CLightSource m_lsLightSource;
   BOOL H0x02600005_Main_05(const CEntityEvent &__eeInput);
   BOOL H0x02600006_Main_06(const CEntityEvent &__eeInput);
 };
-
-static const char *CEffector_propnames[] = {
-  "m_eetType",
-  "m_tmStarted",
-  "m_vDamageDir",
-  "m_vFXDestination",
-  "m_tmLifeTime",
-  "m_fSize",
-  "m_ctCount",
-  "m_bLightSource",
-  "m_aoLightAnimation",
-  "m_iLightAnimation",
-  "m_bAlive",
-  "m_penModel",
-  "m_penModel2",
-  "m_bWaitTrigger",
-};
-#define CEffector_propnamesct ARRAYCOUNT(CEffector_propnames)
-
 #endif // _EntitiesV_Effector_INCLUDED

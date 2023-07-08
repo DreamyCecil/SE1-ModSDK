@@ -100,43 +100,4 @@ CModelObject * pmoModel;
   BOOL H0x01960002_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01960003_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CPlayerAnimator_propnames[] = {
-  "m_penPlayer",
-  "m_bReference",
-  "m_fLastActionTime",
-  "m_iContent",
-  "m_bWaitJumpAnim",
-  "m_bCrouch",
-  "m_iCrouchDownWait",
-  "m_iRiseUpWait",
-  "m_bChangeWeapon",
-  "m_bSwim",
-  "m_iFlare",
-  "m_iSecondFlare",
-  "m_bAttacking",
-  "m_tmAttackingDue",
-  "m_tmFlareAdded",
-  "m_bDisableAnimating",
-  "m_vLastPlayerPosition",
-  "m_fEyesYLastOffset",
-  "m_fEyesYOffset",
-  "m_fEyesYSpeed",
-  "m_fWeaponYLastOffset",
-  "m_fWeaponYOffset",
-  "m_fWeaponYSpeed",
-  "m_bMoving",
-  "m_fMoveLastBanking",
-  "m_fMoveBanking",
-  "m_iMovingSide",
-  "m_bSidestepBankingLeft",
-  "m_bSidestepBankingRight",
-  "m_fSidestepLastBanking",
-  "m_fSidestepBanking",
-  "m_iWeaponLast",
-  "m_fBodyAnimTime",
-  "m_penPrediction",
-};
-#define CPlayerAnimator_propnamesct ARRAYCOUNT(CPlayerAnimator_propnames)
-
 #endif // _EntitiesV_PlayerAnimator_INCLUDED

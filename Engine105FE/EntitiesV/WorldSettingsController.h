@@ -47,41 +47,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CWorldSettingsController_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CWorldSettingsController_propnames[] = {
-  "m_tmStormStart",
-  "m_strName",
-  "m_tmLightningStart",
-  "m_fLightningPower",
-  "m_tmStormEnd",
-  "m_tmPyramidPlatesStart",
-  "m_tmActivatedPlate1",
-  "m_tmDeactivatedPlate1",
-  "m_tmActivatedPlate2",
-  "m_tmDeactivatedPlate2",
-  "m_tmActivatedPlate3",
-  "m_tmDeactivatedPlate3",
-  "m_tmActivatedPlate4",
-  "m_tmDeactivatedPlate4",
-  "m_tmPyramidMorphRoomActivated",
-  "m_tmShakeStarted",
-  "m_vShakePos",
-  "m_fShakeFalloff",
-  "m_fShakeFade",
-  "m_fShakeIntensityY",
-  "m_tmShakeFrequencyY",
-  "m_fShakeIntensityB",
-  "m_tmShakeFrequencyB",
-  "m_fShakeIntensityZ",
-  "m_tmShakeFrequencyZ",
-  "m_fnHeightMap",
-  "m_moHeightMapHolder",
-  "m_boxHeightMap",
-  "m_tmGlaringStarted",
-  "m_tmGlaringEnded",
-  "m_fGlaringFadeInRatio",
-  "m_fGlaringFadeOutRatio",
-};
-#define CWorldSettingsController_propnamesct ARRAYCOUNT(CWorldSettingsController_propnames)
-
 #endif // _EntitiesV_WorldSettingsController_INCLUDED

@@ -74,35 +74,4 @@ CBoolDefaultFalse m_bdfInitialized;
 #define  STATE_CLight_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CLight_propnames[] = {
-  "m_colColor",
-  "m_colAmbient",
-  "m_rFallOffRange",
-  "m_rHotSpotRange",
-  "m_itIllumination",
-  "m_ltType",
-  "m_strDescription",
-  "m_strName",
-  "m_bDarkLight",
-  "m_fNearClip",
-  "m_fFarClip",
-  "m_bSubstractSectorAmbient",
-  "m_bRenderAsSmallLight",
-  "m_lftLensFlare",
-  "m_bBackground",
-  "m_bLensFlareOnly",
-  "m_fnmLightAnimation",
-  "m_iLightAnimation",
-  "m_tmOffsetPhase",
-  "m_aoLightAnimation",
-  "m_bTargetable",
-  "m_bDynamic",
-  "m_bDiffusion",
-  "m_fnmAmbientLightAnimation",
-  "m_iAmbientLightAnimation",
-  "m_aoAmbientLightAnimation",
-};
-#define CLight_propnamesct ARRAYCOUNT(CLight_propnames)
-
 #endif // _EntitiesV_Light_INCLUDED

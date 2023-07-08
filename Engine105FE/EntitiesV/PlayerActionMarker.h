@@ -49,15 +49,4 @@ public:
 #define  STATE_CPlayerActionMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CPlayerActionMarker_propnames[] = {
-  "m_paaAction",
-  "m_tmWait",
-  "m_penDoorController",
-  "m_penTrigger",
-  "m_fSpeed",
-  "m_penItem",
-};
-#define CPlayerActionMarker_propnamesct ARRAYCOUNT(CPlayerActionMarker_propnames)
-
 #endif // _EntitiesV_PlayerActionMarker_INCLUDED

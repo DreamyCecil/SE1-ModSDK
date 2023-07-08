@@ -76,14 +76,4 @@ public:
 #define  STATE_CGruntSka_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CGruntSka_propnames[] = {
-  "m_gtType",
-  "m_soFire1",
-  "m_soFire2",
-  "m_fMidBoneRot",
-  "m_miTest",
-};
-#define CGruntSka_propnamesct ARRAYCOUNT(CGruntSka_propnames)
-
 #endif // _EntitiesV_GruntSka_INCLUDED

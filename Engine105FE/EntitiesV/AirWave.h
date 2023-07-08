@@ -30,13 +30,4 @@ public:
   BOOL H0x01fe0004_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01fe0005_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CAirWave_propnames[] = {
-  "m_penLauncher",
-  "m_fDamageAmount",
-  "m_fIgnoreTime",
-  "m_fStartTime",
-};
-#define CAirWave_propnamesct ARRAYCOUNT(CAirWave_propnames)
-
 #endif // _EntitiesV_AirWave_INCLUDED

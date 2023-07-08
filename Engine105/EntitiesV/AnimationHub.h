@@ -57,41 +57,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
 #define  STATE_CAnimationHub_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CAnimationHub_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_tmDelayEach",
-  "m_penTarget0",
-  "m_penTarget1",
-  "m_penTarget2",
-  "m_penTarget3",
-  "m_penTarget4",
-  "m_penTarget5",
-  "m_penTarget6",
-  "m_penTarget7",
-  "m_penTarget8",
-  "m_penTarget9",
-  "m_tmDelay0",
-  "m_tmDelay1",
-  "m_tmDelay2",
-  "m_tmDelay3",
-  "m_tmDelay4",
-  "m_tmDelay5",
-  "m_tmDelay6",
-  "m_tmDelay7",
-  "m_tmDelay8",
-  "m_tmDelay9",
-  "m_iModelAnim",
-  "m_bModelLoop",
-  "m_iTextureAnim",
-  "m_bTextureLoop",
-  "m_iLightAnim",
-  "m_bLightLoop",
-  "m_colAmbient",
-  "m_colDiffuse",
-  "m_iCounter",
-};
-#define CAnimationHub_propnamesct ARRAYCOUNT(CAnimationHub_propnames)
-
 #endif // _EntitiesV_AnimationHub_INCLUDED

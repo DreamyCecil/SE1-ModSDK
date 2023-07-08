@@ -24,20 +24,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CPlayerMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CPlayerMarker_propnames[] = {
-  "m_fHealth",
-  "m_fShield",
-  "m_iGiveWeapons",
-  "m_iTakeWeapons",
-  "m_strGroup",
-  "m_bQuickStart",
-  "m_bStartInComputer",
-  "m_penMessage",
-  "m_fMaxAmmoRatio",
-  "m_tmLastSpawned",
-  "m_iTakeAmmo",
-};
-#define CPlayerMarker_propnamesct ARRAYCOUNT(CPlayerMarker_propnames)
-
 #endif // _EntitiesV_PlayerMarker_INCLUDED

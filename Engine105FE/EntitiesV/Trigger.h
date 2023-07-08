@@ -68,46 +68,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00cd000e_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00cd000f_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CTrigger_propnames[] = {
-  "m_strName",
-  "m_penTarget1",
-  "m_penTarget2",
-  "m_penTarget3",
-  "m_penTarget4",
-  "m_penTarget5",
-  "m_penTarget6",
-  "m_penTarget7",
-  "m_penTarget8",
-  "m_penTarget9",
-  "m_penTarget10",
-  "m_eetEvent1",
-  "m_eetEvent2",
-  "m_eetEvent3",
-  "m_eetEvent4",
-  "m_eetEvent5",
-  "m_eetEvent6",
-  "m_eetEvent7",
-  "m_eetEvent8",
-  "m_eetEvent9",
-  "m_eetEvent10",
-  "m_strMessage",
-  "m_fMessageTime",
-  "m_mssMessageSound",
-  "m_fScore",
-  "m_fWaitTime",
-  "m_bAutoStart",
-  "m_iCount",
-  "m_bUseCount",
-  "m_bReuseCount",
-  "m_bTellCount",
-  "m_bActive",
-  "m_fSendRange",
-  "m_eetRange",
-  "m_iCountTmp",
-  "m_penCaused",
-  "m_ctMaxTrigs",
-};
-#define CTrigger_propnamesct ARRAYCOUNT(CTrigger_propnames)
-
 #endif // _EntitiesV_Trigger_INCLUDED

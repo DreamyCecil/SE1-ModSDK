@@ -50,22 +50,4 @@ virtual BOOL IsImportant(void) const { return TRUE; };
 #define  STATE_CModelDestruction_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CModelDestruction_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_penModel0",
-  "m_penModel1",
-  "m_penModel2",
-  "m_penModel3",
-  "m_penModel4",
-  "m_fHealth",
-  "m_ddtDebris",
-  "m_ctDebris",
-  "m_fDebrisSize",
-  "m_eibtBodyType",
-  "m_sptType",
-};
-#define CModelDestruction_propnamesct ARRAYCOUNT(CModelDestruction_propnames)
-
 #endif // _EntitiesV_ModelDestruction_INCLUDED

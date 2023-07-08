@@ -20,15 +20,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00e20000_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00e20001_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CMessageHolder_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmMessage",
-  "m_fDistance",
-  "m_bActive",
-  "m_penNext",
-};
-#define CMessageHolder_propnamesct ARRAYCOUNT(CMessageHolder_propnames)
-
 #endif // _EntitiesV_MessageHolder_INCLUDED

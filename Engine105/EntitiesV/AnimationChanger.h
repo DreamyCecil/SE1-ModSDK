@@ -48,22 +48,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x00da0001_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00da0002_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CAnimationChanger_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_penTarget",
-  "m_iModelAnim",
-  "m_bModelLoop",
-  "m_iTextureAnim",
-  "m_bTextureLoop",
-  "m_iLightAnim",
-  "m_bLightLoop",
-  "m_iAmbientLightAnim",
-  "m_bAmbientLightLoop",
-  "m_colAmbient",
-  "m_colDiffuse",
-};
-#define CAnimationChanger_propnamesct ARRAYCOUNT(CAnimationChanger_propnames)
-
 #endif // _EntitiesV_AnimationChanger_INCLUDED

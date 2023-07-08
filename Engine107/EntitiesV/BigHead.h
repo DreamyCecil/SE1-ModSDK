@@ -63,18 +63,4 @@ CAutoPrecacheTexture m_apt;
 #define  STATE_CBigHead_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CBigHead_propnames[] = {
-  "m_fnmHeadTex",
-  "m_fnmNameSnd",
-  "m_tmLastGreetTime",
-  "m_bhtType",
-  "m_bIgnorePlayer",
-  "m_bPlayingWalkSound",
-  "m_bSleeping",
-  "m_tmLastWalkingSoundTime",
-  "m_tmWalkingSound",
-};
-#define CBigHead_propnamesct ARRAYCOUNT(CBigHead_propnames)
-
 #endif // _EntitiesV_BigHead_INCLUDED

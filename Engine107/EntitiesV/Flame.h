@@ -66,34 +66,4 @@ CLightSource m_lsLightSource;
   BOOL H0x01f80004_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x01f80005_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CFlame_propnames[] = {
-  "m_penOwner",
-  "m_penAttach",
-  "m_bLoop",
-  "m_vHitPoint",
-  "m_soEffect",
-  "m_tmStart",
-  "m_fDamageToApply",
-  "m_fDamageStep",
-  "m_fAppliedDamage",
-  "m_tmFirstStart",
-  "m_ctFlames",
-  "m_vPos01",
-  "m_vPos02",
-  "m_vPos03",
-  "m_vPos04",
-  "m_vPos05",
-  "m_vPos06",
-  "m_vPos07",
-  "m_vPos08",
-  "m_vPos09",
-  "m_vPos10",
-  "m_vPlaneNormal",
-  "m_bBurningBrush",
-  "m_tmDeathParticlesStart",
-  "m_penPrediction",
-};
-#define CFlame_propnamesct ARRAYCOUNT(CFlame_propnames)
-
 #endif // _EntitiesV_Flame_INCLUDED

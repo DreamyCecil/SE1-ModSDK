@@ -19,18 +19,4 @@ virtual const CTString &GetName(void) const { return m_strName; };
 #define  STATE_CBouncer_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CBouncer_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fSpeed",
-  "m_aDirection",
-  "m_tmControl",
-  "m_bEntrySpeed",
-  "m_fMaxExitSpeed",
-  "m_fNormalComponentMultiplier",
-  "m_fParallelComponentMultiplier",
-};
-#define CBouncer_propnamesct ARRAYCOUNT(CBouncer_propnames)
-
 #endif // _EntitiesV_Bouncer_INCLUDED

@@ -45,19 +45,4 @@ public:
 #define  STATE_CSanta_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CSanta_propnames[] = {
-  "m_tmLastSpawnTime",
-  "m_tmMinSpawnInterval",
-  "m_fSantaHealth",
-  "m_soRunning",
-  "m_bRunSoundPlaying",
-  "m_penTemplate0",
-  "m_penTemplate1",
-  "m_penTemplate2",
-  "m_penTemplate3",
-  "m_penTemplate4",
-};
-#define CSanta_propnamesct ARRAYCOUNT(CSanta_propnames)
-
 #endif // _EntitiesV_Santa_INCLUDED

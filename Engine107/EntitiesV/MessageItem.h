@@ -28,13 +28,4 @@ public:
 #define  STATE_CMessageItem_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CMessageItem_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmMessage",
-  "m_iSoundComponent",
-};
-#define CMessageItem_propnamesct ARRAYCOUNT(CMessageItem_propnames)
-
 #endif // _EntitiesV_MessageItem_INCLUDED

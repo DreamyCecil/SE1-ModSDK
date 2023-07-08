@@ -43,14 +43,4 @@ CLightSource m_lsLightSource;
   BOOL H0x01f70004_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x01f70005_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CPipebomb_propnames[] = {
-  "m_penLauncher",
-  "m_fIgnoreTime",
-  "m_fSpeed",
-  "m_bCollected",
-  "m_penPrediction",
-};
-#define CPipebomb_propnamesct ARRAYCOUNT(CPipebomb_propnames)
-
 #endif // _EntitiesV_Pipebomb_INCLUDED

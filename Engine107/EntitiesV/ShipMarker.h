@@ -18,16 +18,4 @@ public:
 #define  STATE_CShipMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CShipMarker_propnames[] = {
-  "m_bHarbor",
-  "m_fSpeed",
-  "m_fRotation",
-  "m_fAcceleration",
-  "m_fRockingV",
-  "m_fRockingA",
-  "m_tmRockingChange",
-};
-#define CShipMarker_propnamesct ARRAYCOUNT(CShipMarker_propnames)
-
 #endif // _EntitiesV_ShipMarker_INCLUDED

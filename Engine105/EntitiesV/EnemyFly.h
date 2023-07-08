@@ -104,32 +104,4 @@ public:
 #define  STATE_CEnemyFly_FlyFire 0x01370022
   BOOL FlyFire(const CEntityEvent &__eeInput);
 };
-
-static const char *CEnemyFly_propnames[] = {
-  "m_EeftType",
-  "m_bInAir",
-  "m_bAirAttack",
-  "m_bStartInAir",
-  "m_fGroundToAirSpeed",
-  "m_fAirToGroundSpeed",
-  "m_fAirToGroundMin",
-  "m_fAirToGroundMax",
-  "m_fFlyHeight",
-  "m_fFlyWalkSpeed",
-  "m_aFlyWalkRotateSpeed",
-  "m_fFlyAttackRunSpeed",
-  "m_aFlyAttackRotateSpeed",
-  "m_fFlyCloseRunSpeed",
-  "m_aFlyCloseRotateSpeed",
-  "m_fFlyAttackDistance",
-  "m_fFlyCloseDistance",
-  "m_fFlyAttackFireTime",
-  "m_fFlyCloseFireTime",
-  "m_fFlyStopDistance",
-  "m_fFlyIgnoreRange",
-  "m_fFlyLockOnEnemyTime",
-  "m_bFlyToMarker",
-};
-#define CEnemyFly_propnamesct ARRAYCOUNT(CEnemyFly_propnames)
-
 #endif // _EntitiesV_EnemyFly_INCLUDED

@@ -42,21 +42,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x015f0007_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x015f0008_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CExotechLarvaBattery_propnames[] = {
-  "m_bActive",
-  "m_fMaxHealth",
-  "m_fStretch",
-  "m_fBurnTreshold",
-  "m_penSpray",
-  "m_tmSpraySpawned",
-  "m_strName",
-  "m_bCustomShading",
-  "m_aShadingDirection",
-  "m_colLight",
-  "m_colAmbient",
-  "m_soSound",
-};
-#define CExotechLarvaBattery_propnamesct ARRAYCOUNT(CExotechLarvaBattery_propnames)
-
 #endif // _EntitiesV_ExotechLarvaBattery_INCLUDED

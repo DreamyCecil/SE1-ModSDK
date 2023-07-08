@@ -67,31 +67,4 @@ virtual BOOL IsTargetable(void) const { return TRUE; };
   BOOL H0x0067000d_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x0067000e_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CShip_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_penTarget",
-  "m_fSpeed",
-  "m_fRotation",
-  "m_fRockingV",
-  "m_fRockingA",
-  "m_fAcceleration",
-  "m_bMoving",
-  "m_fRockSign",
-  "m_fLastTargetDistance",
-  "m_penSail",
-  "m_iSailUpAnim",
-  "m_iSailDownAnim",
-  "m_iSailSailAnim",
-  "m_iSailWaveingAnim",
-  "m_fOriginalRockingV",
-  "m_fOriginalRockingA",
-  "m_fNextRockingV",
-  "m_fNextRockingA",
-  "m_tmRockingChange",
-  "m_tmRockingChangeStart",
-};
-#define CShip_propnamesct ARRAYCOUNT(CShip_propnames)
-
 #endif // _EntitiesV_Ship_INCLUDED

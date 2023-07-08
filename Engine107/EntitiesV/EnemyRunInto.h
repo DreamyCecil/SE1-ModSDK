@@ -48,18 +48,4 @@ public:
 #define  STATE_CEnemyRunInto_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CEnemyRunInto_propnames[] = {
-  "m_penLastTouched",
-  "m_fLastTouchedTime",
-  "m_bWhileLoop",
-  "m_fMassKicked",
-  "m_fInertionRunTime",
-  "m_fStopApproachDistance",
-  "m_fChargeDistance",
-  "m_bUseChargeAnimation",
-  "m_fAttackRotateRunInto",
-};
-#define CEnemyRunInto_propnamesct ARRAYCOUNT(CEnemyRunInto_propnames)
-
 #endif // _EntitiesV_EnemyRunInto_INCLUDED

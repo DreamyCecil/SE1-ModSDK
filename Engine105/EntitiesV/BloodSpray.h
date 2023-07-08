@@ -42,22 +42,4 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   BOOL H0x025b0001_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x025b0002_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CBloodSpray_propnames[] = {
-  "m_sptType",
-  "m_tmStarted",
-  "m_vDirection",
-  "m_penOwner",
-  "m_fDamagePower",
-  "m_boxSizedOwner",
-  "m_vGDir",
-  "m_fGA",
-  "m_fLaunchPower",
-  "m_colCentralColor",
-  "m_boxOriginalOwner",
-  "m_colBurnColor",
-  "m_penPrediction",
-};
-#define CBloodSpray_propnamesct ARRAYCOUNT(CBloodSpray_propnames)
-
 #endif // _EntitiesV_BloodSpray_INCLUDED

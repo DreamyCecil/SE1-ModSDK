@@ -35,22 +35,4 @@ CAutoPrecacheSound m_aps;
   BOOL H0x00cc0003_Main_04(const CEntityEvent &__eeInput);
   BOOL H0x00cc0004_Main_05(const CEntityEvent &__eeInput);
 };
-
-static const char *CSoundHolder_propnames[] = {
-  "m_fnSound",
-  "m_rFallOffRange",
-  "m_rHotSpotRange",
-  "m_fVolume",
-  "m_bLoop",
-  "m_bSurround",
-  "m_bVolumetric",
-  "m_strName",
-  "m_strDescription",
-  "m_bAutoStart",
-  "m_iPlayType",
-  "m_soSound",
-  "m_bDestroyable",
-};
-#define CSoundHolder_propnamesct ARRAYCOUNT(CSoundHolder_propnames)
-
 #endif // _EntitiesV_SoundHolder_INCLUDED

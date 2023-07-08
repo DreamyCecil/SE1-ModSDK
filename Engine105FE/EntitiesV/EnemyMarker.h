@@ -21,18 +21,4 @@ public:
 #define  STATE_CEnemyMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CEnemyMarker_propnames[] = {
-  "m_fWaitTime",
-  "m_fMarkerRange",
-  "m_fPatrolAreaInner",
-  "m_fPatrolAreaOuter",
-  "m_fPatrolTime",
-  "m_betRunToMarker",
-  "m_betFly",
-  "m_betBlind",
-  "m_betDeaf",
-};
-#define CEnemyMarker_propnamesct ARRAYCOUNT(CEnemyMarker_propnames)
-
 #endif // _EntitiesV_EnemyMarker_INCLUDED

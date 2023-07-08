@@ -42,18 +42,4 @@ BOOL bDataLoaded;
   BOOL H0x00ef0009_Main_03(const CEntityEvent &__eeInput);
   BOOL H0x00ef000a_Main_04(const CEntityEvent &__eeInput);
 };
-
-static const char *CTextFXHolder_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmMessage",
-  "m_tmFadeInStart",
-  "m_tmFadeOutStart",
-  "m_tmFadeInLen",
-  "m_tmFadeOutLen",
-  "m_tmAutoFadeOut",
-  "m_bDataError",
-};
-#define CTextFXHolder_propnamesct ARRAYCOUNT(CTextFXHolder_propnames)
-
 #endif // _EntitiesV_TextFXHolder_INCLUDED

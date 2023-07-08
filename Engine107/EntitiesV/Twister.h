@@ -62,30 +62,4 @@ public:
   BOOL H0x01fb0009_Main_09(const CEntityEvent &__eeInput);
   BOOL H0x01fb000a_Main_10(const CEntityEvent &__eeInput);
 };
-
-static const char *CTwister_propnames[] = {
-  "m_penOwner",
-  "m_fSize",
-  "m_vSpeed",
-  "m_sgnSpinDir",
-  "m_bGrow",
-  "m_tmLastMove",
-  "m_aSpeedRotation",
-  "m_bMoving",
-  "m_bMovingAllowed",
-  "m_vDesiredPosition",
-  "m_vDesiredAngle",
-  "m_fStopTime",
-  "m_fActionRadius",
-  "m_fActionTime",
-  "m_fDiffMultiply",
-  "m_fUpMultiply",
-  "m_bFadeOut",
-  "m_fFadeStartTime",
-  "m_fFadeTime",
-  "m_fStartTime",
-  "m_soSpin",
-};
-#define CTwister_propnamesct ARRAYCOUNT(CTwister_propnames)
-
 #endif // _EntitiesV_Twister_INCLUDED

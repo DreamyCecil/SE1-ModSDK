@@ -49,25 +49,4 @@ public:
 #define  STATE_CEffectMarker_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CEffectMarker_propnames[] = {
-  "m_emtType",
-  "m_penModel",
-  "m_tmEffectLife",
-  "m_penModel2",
-  "m_penEffector",
-  "m_fShakeFalloff",
-  "m_fShakeFade",
-  "m_fShakeIntensityY",
-  "m_fShakeFrequencyY",
-  "m_fShakeIntensityB",
-  "m_fShakeFrequencyB",
-  "m_fShakeIntensityZ",
-  "m_fShakeFrequencyZ",
-  "m_betType",
-  "m_fStretch",
-  "m_colColor",
-};
-#define CEffectMarker_propnamesct ARRAYCOUNT(CEffectMarker_propnames)
-
 #endif // _EntitiesV_EffectMarker_INCLUDED

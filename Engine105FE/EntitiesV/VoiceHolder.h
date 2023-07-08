@@ -21,14 +21,4 @@ CAutoPrecacheSound m_aps;
   BOOL H0x00e70000_Main_01(const CEntityEvent &__eeInput);
   BOOL H0x00e70001_Main_02(const CEntityEvent &__eeInput);
 };
-
-static const char *CVoiceHolder_propnames[] = {
-  "m_strName",
-  "m_strDescription",
-  "m_fnmMessage",
-  "m_bActive",
-  "m_ctMaxTrigs",
-};
-#define CVoiceHolder_propnamesct ARRAYCOUNT(CVoiceHolder_propnames)
-
 #endif // _EntitiesV_VoiceHolder_INCLUDED

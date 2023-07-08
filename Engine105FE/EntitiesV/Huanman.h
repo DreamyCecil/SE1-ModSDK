@@ -39,8 +39,4 @@ public:
 #define  STATE_CHuanman_Main 1
   BOOL Main(const CEntityEvent &__eeInput);
 };
-
-static const char *CHuanman_propnames[] = {""};
-#define CHuanman_propnamesct 0
-
 #endif // _EntitiesV_Huanman_INCLUDED
