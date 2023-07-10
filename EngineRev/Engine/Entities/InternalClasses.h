@@ -34,6 +34,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Classes/MovableModelEntity.h>
 #include <Engine/Classes/MovableBrushEntity.h>
 #include <Engine/Classes/PlayerEntity.h>
+#include <Engine/Classes/PostProcessingEffectEntity.h>
+#include <Engine/Classes/PostProcessingEffect.h>
 #undef DECL_DLL
 
 

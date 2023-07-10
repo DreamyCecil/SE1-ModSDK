@@ -36,25 +36,6 @@ class ENGINE_API CPostProcessing {
     CPostProcessing &operator=(const CPostProcessing &);
 };
 
-// Post processing base entity
-class ENGINE_API CPostProcessingEffectEntity : public CEntity {
-  public:
-    // [Cecil] Rev: Unknown fields
-    ULONG en_ulPostProcessingEffectEntityFields[23];
-
-  public:
-    CPostProcessingEffectEntity();
-    CPostProcessingEffectEntity(const CPostProcessingEffectEntity &);
-    CPostProcessingEffectEntity &operator=(CPostProcessingEffectEntity &);
-
-    virtual ~CPostProcessingEffectEntity();
-    virtual void OnStep(void);
-    virtual void SetDefaultProperties(void);
-
-    // Dummy procedure
-    BOOL Dummy(const CEntityEvent &ee);
-};
-
 // Start post processing for some draw port
 ENGINE_API void StartPostProcessing(CDrawPort &pdp);
 
