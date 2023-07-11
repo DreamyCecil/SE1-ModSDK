@@ -55,7 +55,7 @@ public:
   ULONG dp_ulBlendingA;
 
   // [Cecil] Rev: Unknown fields
-  ULONG dp_ulField3;
+  void *dp_pField3;
   FLOAT dp_fField4;
 
   // set cloned drawport dimensions

@@ -46,6 +46,9 @@ public:
   HWND vp_hWnd;                 // canvas (child) window
   HWND vp_hWndParent;           // window of the viewport
   CRaster vp_Raster;            // the used Raster
+
+  ULONG vp_ulField; // [Cecil] Rev: Unknown field
+
 #ifdef SE1_D3D
 	LPDIRECT3DSWAPCHAIN8 vp_pSwapChain;  // swap chain for D3D
 	LPDIRECT3DSURFACE8   vp_pSurfDepth;  // z-buffer for D3D
