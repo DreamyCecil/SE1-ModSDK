@@ -46,9 +46,17 @@ public:
   double dp_SizeIOverRasterSizeI, dp_SizeJOverRasterSizeJ; 
   double dp_MinIOverRasterSizeI,  dp_MinJOverRasterSizeJ;
 
+  // [Cecil] Rev: Unknown fields
+  ULONG dp_ulFields1[9];
+  DOUBLE dp_dFields2[4];
+
   // adjust this during frame to be used for screen blending
   ULONG dp_ulBlendingRA, dp_ulBlendingGA, dp_ulBlendingBA; // r*a, g*a, b*a
   ULONG dp_ulBlendingA;
+
+  // [Cecil] Rev: Unknown fields
+  ULONG dp_ulField3;
+  FLOAT dp_fField4;
 
   // set cloned drawport dimensions
   void InitCloned(CDrawPort *pdpBase, double rMinI,double rMinJ, double rSizeI,double rSizeJ);
@@ -93,8 +101,8 @@ public:
   void SetFont( CFontData *pfd);   // WARNING: this resets text variables
   inline void SetTextCharSpacing( PIX pixSpacing) { dp_pixTextCharSpacing = pixSpacing; };
   inline void SetTextLineSpacing( PIX pixSpacing) { dp_pixTextLineSpacing = pixSpacing; };
-  inline void SetTextScaling( FLOAT fScalingFactor) { dp_fTextScaling = fScalingFactor; };
-  void SetTextScalingForced(FLOAT fScalingFactor); // [Cecil] Rev: Set forced scaling
+  inline void SetTextScaling(FLOAT fScalingFactor) { dp_fTextScaling = ClampUp(fScalingFactor, 1.0f); }; // [Cecil] Rev: Limit to 1.0
+  inline void SetTextScalingForced(FLOAT fScalingFactor) { dp_fTextScaling = fScalingFactor; }; // [Cecil] Rev: Set forced scaling
   inline void SetTextAspect(  FLOAT fAspectRatio)   { dp_fTextAspect  = fAspectRatio; };
   inline void SetTextMode(    INDEX iMode)          { dp_iTextMode    = iMode; };
   // returns width of entire text string (with scale included)

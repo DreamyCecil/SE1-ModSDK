@@ -28,9 +28,13 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 class CRaster {
 public:
+  ULONG ra_ulField1; // [Cecil] Rev: Unknown field
+
   CViewPort *ra_pvpViewPort;        // viewport if existing
   CDrawPort ra_MainDrawPort;		    // initial drawport for entire raster
   CListHead ra_DrawPortList;	      // list of drawports
+
+  ULONG ra_ulField2; // [Cecil] Rev: Unknown field
 
   PIX    ra_Width;								  // number of pixels in one row
   PIX    ra_Height;							    // number of pixels in one column
