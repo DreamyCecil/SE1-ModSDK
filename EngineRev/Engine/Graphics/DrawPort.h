@@ -42,21 +42,20 @@ public:
   FLOAT dp_fWideAdjustment;      // for wide (16:9 or 16:10) screen support (needed in some calculations) = 1.0f or >1 (10/12 perhaps)
   BOOL  dp_bRenderingOverlay;    // set when scene renderer requires overlay mode (don't clear z-buffer)
 
+  // [Cecil] Rev: Unknown fields
+  ULONG dp_ulFields1[17];
+
   // dimensions and position relative to the raster size
   double dp_SizeIOverRasterSizeI, dp_SizeJOverRasterSizeJ; 
   double dp_MinIOverRasterSizeI,  dp_MinJOverRasterSizeJ;
-
-  // [Cecil] Rev: Unknown fields
-  ULONG dp_ulFields1[9];
-  DOUBLE dp_dFields2[4];
 
   // adjust this during frame to be used for screen blending
   ULONG dp_ulBlendingRA, dp_ulBlendingGA, dp_ulBlendingBA; // r*a, g*a, b*a
   ULONG dp_ulBlendingA;
 
-  // [Cecil] Rev: Unknown fields
-  void *dp_pField3;
-  FLOAT dp_fField4;
+  // [Cecil] Rev: Multiply alpha channel of all drawn textures
+  BOOL dp_bMultiplyAlpha;
+  FLOAT dp_fAlphaFactor;
 
   // set cloned drawport dimensions
   void InitCloned(CDrawPort *pdpBase, double rMinI,double rMinJ, double rSizeI,double rSizeJ);

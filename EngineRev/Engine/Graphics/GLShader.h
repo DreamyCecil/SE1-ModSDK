@@ -22,15 +22,25 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 class ENGINE_API CGLRenderTarget {
   public:
-    CGLRenderTarget(BOOL, BOOL);
+    GLsizei glrt_iWidth;
+    GLsizei glrt_iHeight;
+
+    ULONG glrt_ulFields1[3]; // [Cecil] Rev: Unknown fields
+
+    GLuint glrt_aTextures[2];
+
+    ULONG glrt_ulField2; // [Cecil] Rev: Unknown field
+
+  public:
+    CGLRenderTarget(GLsizei iWidth, GLsizei iHeight);
     CGLRenderTarget(CDrawPort *pdp);
 
     ~CGLRenderTarget();
 
     CGLRenderTarget &operator=(const CGLRenderTarget &);
 
-    void Init(BOOL, BOOL);
-    void Reload(BOOL, BOOL);
+    void Init(GLsizei iWidth, GLsizei iHeight);
+    void Reload(GLsizei iWidth, GLsizei iHeight);
 
     void Clear(void);
     void Create(void);
@@ -43,6 +53,15 @@ class ENGINE_API CGLRenderTarget {
 
 class ENGINE_API CGLShader {
   public:
+    CTFileName gl_fnmVertex; // Path to the vertex shader
+    CTFileName gl_fnmFragment; // Path to the fragment shader
+
+    ULONG gl_ulFields[5]; // [Cecil] Rev: Unknown fields
+
+    GLint gl_iProjMatrixUniform;
+    GLint gl_iViewMatrixUniform;
+
+  public:
     CGLShader();
     CGLShader(const CGLShader &glOther);
 
@@ -50,23 +69,25 @@ class ENGINE_API CGLShader {
 
     CGLShader &operator=(const CGLShader &glOther);
 
-    void Load(const CTFileName &fnmPath1, const CTFileName &fnmPath2);
+    // Load shader scripts
+    void Load(const CTFileName &fnmVertexShader, const CTFileName &fnmFragmentShader);
 
     void Reload(void);
     void Unload(void);
 
-    int GetUniform(const char *str);
+    // Get uniform location by name
+    GLint GetUniform(const char *strName);
 
-    void SetUniformSampler(int iExtra1, int iExtra2, int iExtra3);
+    void SetUniformSampler(GLint iUnknown1, GLint iBindTexture, GLint iUnknown2);
 
-    void SetUniform1i(int i, int iExtra);
-    void SetUniform1f(int i, float fExtra);
-    void SetUniform2f(int i, float fExtra1, float fExtra2);
-    void SetUniform3f(int i, float fExtra1, float fExtra2, float fExtra3);
+    void SetUniform1i(GLint iLocation, GLint v0);
+    void SetUniform1f(GLint iLocation, GLfloat v0);
+    void SetUniform2f(GLint iLocation, GLfloat v0, GLfloat v1);
+    void SetUniform3f(GLint iLocation, GLfloat v0, GLfloat v1, GLfloat v2);
 
-    void SetUniformMat4(int i, float *pfExtra);
-    void SetUniformProjectionMatrix(float *pfExtra);
-    void SetUniformViewMatrix(float *pfExtra);
+    void SetUniformMat4(GLint iLocation, GLfloat *pfMatrix);
+    void SetUniformProjectionMatrix(GLfloat *pfProjMatrix);
+    void SetUniformViewMatrix(GLfloat *pfViewMatrix);
 
     void Use(void);
     void Release(void);

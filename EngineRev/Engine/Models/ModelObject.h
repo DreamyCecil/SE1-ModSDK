@@ -47,6 +47,8 @@ private:
   void RenderModel_Mask( CRenderModel &rm);
 
 public:
+  ULONG mo_ulField; // [Cecil] Rev: Unknown field
+
   CTextureObject mo_toTexture;				   					// texture used for model rendering
   CTextureObject mo_toReflection;				   	  		// texture used for reflection
   CTextureObject mo_toSpecular;				   					// texture used for specularity
@@ -56,6 +58,8 @@ public:
   INDEX mo_iLastRenderMipLevel;                   // last rendered mip model index remembered
   COLOR mo_colBlendColor;													// dynamic blend color (alpha is applied)
   CListHead mo_lhAttachments;                     // list of currently active attachment models
+
+  CGLShader mo_glShader; // [Cecil] Rev: Shader applied to this model
 
 	CModelObject(void);                             // default constructor
 	~CModelObject(void);                            // destructor

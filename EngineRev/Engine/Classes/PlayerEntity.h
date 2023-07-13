@@ -8,6 +8,11 @@ extern "C" DECL_DLL CDLLEntityClass CPlayerEntity_DLLClass;
 class DECL_DLL  CPlayerEntity : public CMovableModelEntity {
 public:
    virtual void SetDefaultProperties(void);
+
+// [Cecil] Rev: Unknown fields
+ULONG en_ulPlayerEntityField1;
+ULONG en_ulPlayerEntityField2;
+
   FLOAT en_tmPing;
   ULONG en_ulSteamID;
   CTString en_strSteamName;
@@ -15,10 +20,6 @@ public:
 CPlayerCharacter en_pcCharacter;
 CPlacement3D en_plViewpoint;
 CPlacement3D en_plLastViewpoint;
-
-// [Cecil] Rev: Unknown fields
-ULONG en_ulPlayerEntityField1;
-ULONG en_ulPlayerEntityField2;
 
    CTString GetPlayerName(void);
    const CTString & GetName(void)const;

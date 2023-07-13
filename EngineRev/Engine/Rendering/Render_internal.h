@@ -271,6 +271,7 @@ public:
 /*
  * Object that performs rendering of a scene as seen by an entity.
  */
+// [Cecil] TODO: Recreate fields of CRenderer (current sizeof: 4064, desired sizeof: 4384)
 class CRenderer {
 public:
 // implementation:
@@ -492,8 +493,8 @@ public:
   void RenderOneModel( CEntity &en, CModelObject &moModel, const CPlacement3D &plModel,
                        const FLOAT fDistanceFactor, BOOL bRenderShadow, ULONG ulDMFlags);
   /* Render a ska model. */
-  void CRenderer::RenderOneSkaModel( CEntity &en, const CPlacement3D &plModel,
-                                  const FLOAT fDistanceFactor, BOOL bRenderShadow, ULONG ulDMFlags);
+  void RenderOneSkaModel( CEntity &en, const CPlacement3D &plModel,
+                          const FLOAT fDistanceFactor, BOOL bRenderShadow, ULONG ulDMFlags);
   /* Render models that were kept for delayed rendering. */
   void RenderModels(BOOL bBackground);
   /* Render active terrains */
@@ -549,7 +550,7 @@ public:
   // initialize clipping rectangle
   void InitClippingRectangle(PIX pixMinI, PIX pixMinJ, PIX pixSizeI, PIX pixSizeJ);
   // do the rendering
-  void Render(void);
+  void Render(CDrawPort *pdp, CWorld *pwo, const FLOATaabbox2D &boxScreen); // [Cecil] Rev: All arguments are new
 
   // initialize all rendering structures
   void Initialize(void);

@@ -409,13 +409,15 @@ public:
   /* Create a new entity of given class in this world. */
   CEntity *CreateEntity(const CPlacement3D &plPlacement, SLONG idModelComponent);
 
-  /* Apply some damage directly to one entity. */
+  // [Cecil] Rev: Original method but with an extra index at the end, which in SSR is set to:
+  //                  -2  in  CPlayerWeapons::CutWithKnife()
+  // CBullet::m_iBatchID  in  CBullet::LaunchBullet()
+  void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iDamageID);
+
+  // [Cecil] Rev: Old method wrapper that calls the method above with the last index set to -1
   void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection);
-
-  // [Cecil] Rev: Same method as above but with extra index
-  void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
-    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iExtra);
 
   /* Apply some damage to all entities in some range (this tests for obstacles). */
   void InflictRangeDamage(CEntity *penInflictor, enum DamageType dmtType,
@@ -693,7 +695,7 @@ public:
 
   /* apply some damage to the entity (see event EDamage for more info) */
   virtual void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
-    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iExtra); // [Cecil] Rev: Extra argument and return type
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iDamageID); // [Cecil] Rev: Extra index
 
   /* Receive item through event - for AI purposes only */
   virtual BOOL ReceiveItem(const CEntityEvent &ee);

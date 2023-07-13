@@ -65,6 +65,8 @@ public:
   BOOL (*ss_pPreFunc)(void *);
   void (*ss_pPostFunc)(void *);
   ULONG ss_ulFlags;       // various flags
+  ULONG ss_ulVersion; // [Cecil] Rev: Symbol version
+
   // Clear function.
   void Clear(void);
   // check if declared

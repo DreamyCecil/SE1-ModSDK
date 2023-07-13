@@ -119,6 +119,9 @@ public:
   ULONG rm_ulFlags;
   COLOR rm_colBlend;
 
+  // [Cecil] Rev: Transform matrix set by SetModelView()
+  FLOAT rm_afTransformMatrix[16];
+
   // set modelview matrix if not already set
   void SetModelView(void);
 // interface:
