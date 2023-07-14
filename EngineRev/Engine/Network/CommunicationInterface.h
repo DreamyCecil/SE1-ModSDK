@@ -21,7 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 
 
-#define SERVER_CLIENTS 16
+#define SERVER_CLIENTS 42 // [Cecil] Rev: 16 -> 42
 
 #include <Engine/Network/CPacket.h>
 

@@ -65,15 +65,20 @@ public:
 /*
  * Session state, manipulates local copy of the world
  */
+#pragma pack(push, 4)
 class ENGINE_API CSessionState {
 public:
   CStaticArray<CPlayerTarget> ses_apltPlayers; // client targets for all players in game
   CStaticStackArray<CPredictedEvent> ses_apeEvents; // for event prediction
 
+  CTString ses_strField1; // [Cecil] Rev: Unknown field
+
   CTString ses_strMOTD;               // MOTD as sent from the server
   INDEX ses_iLevel;                   // for counting level changes
   INDEX ses_iLastProcessedSequence;   // sequence of last processed stream block
   CNetworkStream ses_nsGameStream;    // stream of blocks from server
+
+  ULONG ses_ulField2; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
 
   // lerp params
   CTimerValue ses_tvInitialization;  // exact moment when the session state was started
@@ -88,6 +93,9 @@ public:
   TIME ses_tmLastPredictionProcessed;  // for determining when to do a new prediction cycle
 
   INDEX ses_iMissingSequence;       // first missing sequence
+
+  ULONG ses_ulField3; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
+
   CTimerValue ses_tvResendTime;     // timer for missing sequence retransmission
   TIME ses_tmResendTimeout;         // timeout value for increasing the request interval
   CTimerValue ses_tvMessageReceived;  // exact moment when the session state was started
@@ -107,6 +115,9 @@ public:
   BOOL ses_bPause;      // set while game is paused
   BOOL ses_bWantPause;  // set while wanting to have paused
   BOOL ses_bGameFinished;  // set when game has finished
+
+  U64 ses_ulField4; // [Cecil] Rev: Unknown field
+
   BOOL ses_bWaitingForServer;        // wait for server after level change
   CTString ses_strDisconnected; // explanation of disconnection or empty string if not disconnected
 
@@ -116,6 +127,10 @@ public:
   CTMemoryStream *ses_pstrm;  // debug stream for sync check examination
   
   CSessionSocketParams ses_sspParams; // local copy of server-side parameters
+
+  // [Cecil] Rev: File that's currently being downloaded from the server under "Downloaded/"
+  CTString ses_strDownloadingFile;
+
 public:
   // network message waiters
   void Start_AtServer_t(void);     // throw char *
@@ -130,7 +145,7 @@ public:
   BOOL IsDisconnected(void);
 
   // print an incoming chat message to console
-  void PrintChatMessage(U64 ulFrom, const CTString &strFrom, const CTString &strMessage, BOOL bExtra); // [Cecil] Rev: 64-bit ID and unknown BOOL
+  void PrintChatMessage(U64 ulFrom, const CTString &strFrom, const CTString &strMessage, BOOL bChatAction); // [Cecil] Rev: 64-bit ID and action flag
 
   // [Cecil] Rev: Download specific file from the server
   void DownloadFile_t(CTFileName fnmFile, INDEX iExtra, INDEX iExtra2);
@@ -214,7 +229,7 @@ public:
   void DumpSyncToMemory(void);
 #endif
 };
-
+#pragma pack(pop)
 
 #endif  /* include-once check. */
 

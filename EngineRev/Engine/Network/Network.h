@@ -30,9 +30,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include <Engine/Network/EntityCorrection.h>
 #include <Engine/Steam/Steam.h>
 
-#define NET_MAXGAMECOMPUTERS SERVER_CLIENTS    // max overall computers in game
-#define NET_MAXGAMEPLAYERS   16                // max overall players in game
-#define NET_MAXLOCALPLAYERS   4                // max players on a single machine
+#define NET_MAXGAMECOMPUTERS SERVER_CLIENTS // max overall computers in game
+#define NET_MAXGAMEPLAYERS 42 // [Cecil] Rev: 16 -> 42
+#define NET_MAXLOCALPLAYERS 4 // max players on a single machine
 
 #define NET_WAITMESSAGE_DELAY     50       // wait time between receive message attempts
 
@@ -126,8 +126,7 @@ public:
   BOOL ga_bSteamServer; // Connecting to a Steam server
   CSteamID ga_SteamID; // Steam ID of the server
   ULONG ga_ulField1; // Unknown field
-  UWORD ga_uwPort; // Connecting to this port of the IP
-  UWORD ns_AddressPadding; // To align IP and port into 8 bytes (don't use!)
+  ULONG ga_ulPort; // Connecting to this port of the IP
   ULONG ga_ulIP; // Connecting to this IP address
 
   INDEX ga_ulDemoMinorVersion;  // minor version of build that created this demo
@@ -145,21 +144,23 @@ public:
   ULONG ga_ulCRC; // CRC of CRCs of all files in the list
 
   // [Cecil] Rev: Unknown fields
-  ULONG ga_ulFields[7];
+  ULONG ga_ulFields4[7];
 
   BOOL ga_bLocalPause;            // local pause for single player/demo
   BOOL ga_bDemoRec;               // set if currently recording a demo
   CTFileStream ga_strmDemoRec;    // currently recorded demo file
   BOOL ga_bDemoPlay;              // set if currently playing a demo
   BOOL ga_bDemoPlayFinished;      // set if currently playing demo has finished
+
+  // [Cecil] Rev: Enabled for observing while flying around in games & demos
+  ULONG ga_bFlyOverObserving;
+
+  ULONG ga_ulField5; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
+
   CTFileStream ga_strmDemoPlay;   // currently played demo file
   CTimerValue ga_tvDemoTimerLastTime;   // real time timer for demo synchronization
   CNetworkTimerHandler ga_thTimerHandler; // handler for driving the timer loop
   INDEX ga_ctTimersPending;       // number of timer loops pending
-
-  // [Cecil] Rev: Unknown fields
-  ULONG ga_ulField4;
-  ULONG ga_ulField5;
 
   CTFileName ga_fnmNextLevel;     // world for next level
   BOOL  ga_bNextRemember;         // remember old levels when changing to new one
