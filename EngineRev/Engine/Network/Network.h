@@ -153,7 +153,7 @@ public:
   BOOL ga_bDemoPlayFinished;      // set if currently playing demo has finished
 
   // [Cecil] Rev: Enabled for observing while flying around in games & demos
-  ULONG ga_bFlyOverObserving;
+  BOOL ga_bFlyOverObserving;
 
   ULONG ga_ulField5; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
 

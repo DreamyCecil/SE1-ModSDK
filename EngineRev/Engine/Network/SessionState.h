@@ -65,7 +65,6 @@ public:
 /*
  * Session state, manipulates local copy of the world
  */
-#pragma pack(push, 4)
 class ENGINE_API CSessionState {
 public:
   CStaticArray<CPlayerTarget> ses_apltPlayers; // client targets for all players in game
@@ -77,8 +76,6 @@ public:
   INDEX ses_iLevel;                   // for counting level changes
   INDEX ses_iLastProcessedSequence;   // sequence of last processed stream block
   CNetworkStream ses_nsGameStream;    // stream of blocks from server
-
-  ULONG ses_ulField2; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
 
   // lerp params
   CTimerValue ses_tvInitialization;  // exact moment when the session state was started
@@ -93,9 +90,6 @@ public:
   TIME ses_tmLastPredictionProcessed;  // for determining when to do a new prediction cycle
 
   INDEX ses_iMissingSequence;       // first missing sequence
-
-  ULONG ses_ulField3; // [Cecil] Rev: Unknown field or padding for 8-byte alignment
-
   CTimerValue ses_tvResendTime;     // timer for missing sequence retransmission
   TIME ses_tmResendTimeout;         // timeout value for increasing the request interval
   CTimerValue ses_tvMessageReceived;  // exact moment when the session state was started
@@ -229,7 +223,6 @@ public:
   void DumpSyncToMemory(void);
 #endif
 };
-#pragma pack(pop)
 
 #endif  /* include-once check. */
 

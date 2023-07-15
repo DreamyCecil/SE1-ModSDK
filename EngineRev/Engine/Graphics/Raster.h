@@ -25,16 +25,11 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 /*
  *  Raster
  */
-#pragma pack(push, 4) // [Cecil] Rev: Avoid 8-byte alignment
+
 class CRaster {
 public:
-  ULONG ra_ulField1; // [Cecil] Rev: Unknown field
-
   CViewPort *ra_pvpViewPort;        // viewport if existing
   CDrawPort ra_MainDrawPort;		    // initial drawport for entire raster
-
-  ULONG ra_ulField2; // [Cecil] Rev: Unknown field
-
   CListHead ra_DrawPortList;	      // list of drawports
 
   PIX    ra_Width;								  // number of pixels in one row
@@ -58,7 +53,7 @@ public:
   /* Unlock after drawing. */
   virtual void Unlock();
 };
-#pragma pack(pop) // [Cecil] Rev: Reset alignment
+
 
 #endif  /* include-once check. */
 
