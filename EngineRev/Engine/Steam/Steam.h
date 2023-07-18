@@ -194,7 +194,7 @@ class ENGINE_API CSteam {
     ~CSteam();
 
     // Common
-    void Initialize(BOOL bSetServer, ULONG ulSetAppID, const CTString &strSetAppName);
+    void Initialize(BOOL bSetServer, INDEX iSetAppID, const CTString &strSetAppName);
     void End(void);
 
     BOOL CanBeUsed(void);
