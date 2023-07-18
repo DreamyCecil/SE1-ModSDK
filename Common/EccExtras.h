@@ -21,6 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #endif
 
 // Declare extra features used by the custom entity class compiler
+#include "EccExtras/EntityProperties.h"
 #include "EccExtras/EntityTable.h"
 
 #endif
