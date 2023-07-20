@@ -33,10 +33,10 @@ public:
     char achModelFile[MAX_PATH+1];
     memset(achModelFile, 0, sizeof(achModelFile));
     memcpy(achModelFile, ps_achModelFile, sizeof(ps_achModelFile));
-    CTString strModelFile = "ModelsMP\\Player\\"+CTString(achModelFile)+".amc";
-    if (!FileExists(strModelFile)) {
-      strModelFile = "Models\\Player\\"+CTString(achModelFile)+".amc";
-    }
+
+    // [Cecil] Rev: Don't check ModelsMP
+    CTString strModelFile = "Models\\Player\\" + CTString(achModelFile) + ".amc";
+
     return strModelFile;
   }
 };
