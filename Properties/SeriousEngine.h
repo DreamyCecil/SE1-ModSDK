@@ -49,8 +49,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #define SE1_PB1  10  /* Serious Sam - Public Test 1 */
   #define SE1_PB2  20  /* Serious Sam - Public Test 2 */
   #define SE1_PB21 21  /* Serious Sam - Public Test 2.1 */
-  #define SE1_100  100 /* 1.00 / 1.00a / 1.00c */
-  #define SE1_101  101 /* 1.01 */
+  #define SE1_100  100 /* 1.00 / 1.00a / 1.00b / 1.00c */
   #define SE1_102  102 /* 1.02 */
   #define SE1_104  104 /* 1.04 */
 
