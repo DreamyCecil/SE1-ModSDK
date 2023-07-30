@@ -3,10 +3,10 @@
 #define ENTITYCLASS CEnemyCounter
 
 CEntityProperty CEnemyCounter_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000153<<8)+1, offsetof(CEnemyCounter, m_penMainMusicHolder), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000153<<8)+2, offsetof(CEnemyCounter, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000153<<8)+4, offsetof(CEnemyCounter, m_iCountFrom), "Count start", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000153<<8)+5, offsetof(CEnemyCounter, m_iCount), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000153<<8)+1, offsetof(CEnemyCounter, m_penMainMusicHolder), "", 0, "m_penMainMusicHolder", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000153<<8)+2, offsetof(CEnemyCounter, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000153<<8)+4, offsetof(CEnemyCounter, m_iCountFrom), "Count start", 'A', "m_iCountFrom", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000153<<8)+5, offsetof(CEnemyCounter, m_iCount), "", 0, "m_iCount", 0, 0),
 };
 #define CEnemyCounter_propertiesct ARRAYCOUNT(CEnemyCounter_properties)
 

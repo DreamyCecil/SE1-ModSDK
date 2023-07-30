@@ -21,6 +21,7 @@ COLOR colAmbient;
 COLOR colDiffuse;
 };
 DECL_DLL inline void ClearToDefault(EChangeAnim &e) { e = EChangeAnim(); } ;
+#define CAnimationChanger_ClassID 218
 extern "C" DECL_DLL CDLLEntityClass CAnimationChanger_DLLClass;
 class CAnimationChanger : public CRationalEntity {
 public:

@@ -3,10 +3,10 @@
 #define ENTITYCLASS CMessageItem
 
 CEntityProperty CMessageItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000327<<8)+1, offsetof(CMessageItem, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000327<<8)+2, offsetof(CMessageItem, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000327<<8)+3, offsetof(CMessageItem, m_fnmMessage), "Message", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000327<<8)+4, offsetof(CMessageItem, m_iSoundComponent), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000327<<8)+1, offsetof(CMessageItem, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000327<<8)+2, offsetof(CMessageItem, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000327<<8)+3, offsetof(CMessageItem, m_fnmMessage), "Message", 'M', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000327<<8)+4, offsetof(CMessageItem, m_iSoundComponent), "", 0, "m_iSoundComponent", 0, 0),
 };
 #define CMessageItem_propertiesct ARRAYCOUNT(CMessageItem_properties)
 

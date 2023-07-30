@@ -3,12 +3,12 @@
 #define ENTITYCLASS CFireworks
 
 CEntityProperty CFireworks_properties[] = {
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000268<<8)+1, offsetof(CFireworks, m_rRndRadius), "Random radius", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000268<<8)+10, offsetof(CFireworks, m_soFly), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000268<<8)+11, offsetof(CFireworks, m_soExplosion), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000268<<8)+12, offsetof(CFireworks, m_tmActivated), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000268<<8)+20, offsetof(CFireworks, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000268<<8)+50, offsetof(CFireworks, m_tmLastAnimation), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000268<<8)+1, offsetof(CFireworks, m_rRndRadius), "Random radius", 0, "m_rRndRadius", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000268<<8)+10, offsetof(CFireworks, m_soFly), "", 0, "m_soFly", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000268<<8)+11, offsetof(CFireworks, m_soExplosion), "", 0, "m_soExplosion", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000268<<8)+12, offsetof(CFireworks, m_tmActivated), "", 0, "m_tmActivated", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000268<<8)+20, offsetof(CFireworks, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000268<<8)+50, offsetof(CFireworks, m_tmLastAnimation), "", 0, "m_tmLastAnimation", 0, 0),
 };
 #define CFireworks_propertiesct ARRAYCOUNT(CFireworks_properties)
 

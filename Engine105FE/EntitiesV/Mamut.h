@@ -12,6 +12,7 @@ enum MamutChar {
   MAT_WINTER = 1,
 };
 DECL_DLL inline void ClearToDefault(MamutChar &e) { e = (MamutChar)0; } ;
+#define CMamut_ClassID 327
 extern "C" DECL_DLL CDLLEntityClass CMamut_DLLClass;
 class CMamut : public CEnemyBase {
 public:

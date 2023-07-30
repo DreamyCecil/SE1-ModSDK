@@ -3,11 +3,11 @@
 #define ENTITYCLASS CWatcher
 
 CEntityProperty CWatcher_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bc<<8)+1, offsetof(CWatcher, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000002bc<<8)+2, offsetof(CWatcher, m_tmDelay), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000002bc<<8)+20, offsetof(CWatcher, m_fClosestPlayer), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000002bc<<8)+21, offsetof(CWatcher, m_iPlayerToCheck), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bc<<8)+255, offsetof(CWatcher, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bc<<8)+1, offsetof(CWatcher, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000002bc<<8)+2, offsetof(CWatcher, m_tmDelay), "", 0, "m_tmDelay", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000002bc<<8)+20, offsetof(CWatcher, m_fClosestPlayer), "", 0, "m_fClosestPlayer", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000002bc<<8)+21, offsetof(CWatcher, m_iPlayerToCheck), "", 0, "m_iPlayerToCheck", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bc<<8)+255, offsetof(CWatcher, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CWatcher_propertiesct ARRAYCOUNT(CWatcher_properties)
 

@@ -3,19 +3,19 @@
 #define ENTITYCLASS CHazeMarker
 
 CEntityProperty CHazeMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &FogAttenuationType_enum, (0x000000d8<<8)+10, offsetof(CHazeMarker, m_faType), "Attenuation Type", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+11, offsetof(CHazeMarker, m_fDensity), "Density", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+12, offsetof(CHazeMarker, m_fNear), "Near", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+13, offsetof(CHazeMarker, m_fFar), "Far", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d8<<8)+14, offsetof(CHazeMarker, m_bVisibleFromOutside), "Visible from outside", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000000d8<<8)+22, offsetof(CHazeMarker, m_iSize), "Size", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+23, offsetof(CHazeMarker, m_colBase), "Base Color", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+24, offsetof(CHazeMarker, m_colUp), "Color (up)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+25, offsetof(CHazeMarker, m_colDown), "Color (down)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+26, offsetof(CHazeMarker, m_colNorth), "Color (north)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+27, offsetof(CHazeMarker, m_colSouth), "Color (south)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+28, offsetof(CHazeMarker, m_colEast), "Color (east)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+29, offsetof(CHazeMarker, m_colWest), "Color (west)", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &FogAttenuationType_enum, (0x000000d8<<8)+10, offsetof(CHazeMarker, m_faType), "Attenuation Type", 'A', "m_faType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+11, offsetof(CHazeMarker, m_fDensity), "Density", 'D', "m_fDensity", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+12, offsetof(CHazeMarker, m_fNear), "Near", 0, "m_fNear", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d8<<8)+13, offsetof(CHazeMarker, m_fFar), "Far", 0, "m_fFar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d8<<8)+14, offsetof(CHazeMarker, m_bVisibleFromOutside), "Visible from outside", 0, "m_bVisibleFromOutside", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000000d8<<8)+22, offsetof(CHazeMarker, m_iSize), "Size", 0, "m_iSize", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+23, offsetof(CHazeMarker, m_colBase), "Base Color", 'C', "m_colBase", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+24, offsetof(CHazeMarker, m_colUp), "Color (up)", 0, "m_colUp", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+25, offsetof(CHazeMarker, m_colDown), "Color (down)", 0, "m_colDown", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+26, offsetof(CHazeMarker, m_colNorth), "Color (north)", 0, "m_colNorth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+27, offsetof(CHazeMarker, m_colSouth), "Color (south)", 0, "m_colSouth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+28, offsetof(CHazeMarker, m_colEast), "Color (east)", 0, "m_colEast", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000d8<<8)+29, offsetof(CHazeMarker, m_colWest), "Color (west)", 0, "m_colWest", 0x7F0000FFUL, 0),
 };
 #define CHazeMarker_propertiesct ARRAYCOUNT(CHazeMarker_properties)
 

@@ -3,8 +3,8 @@
 #define ENTITYCLASS CExotechLarvaAnimator
 
 CEntityProperty CExotechLarvaAnimator_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000196<<8)+1, offsetof(CExotechLarvaAnimator, m_penLarva), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000196<<8)+255, offsetof(CExotechLarvaAnimator, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000196<<8)+1, offsetof(CExotechLarvaAnimator, m_penLarva), "", 0, "m_penLarva", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000196<<8)+255, offsetof(CExotechLarvaAnimator, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CExotechLarvaAnimator_propertiesct ARRAYCOUNT(CExotechLarvaAnimator_properties)
 

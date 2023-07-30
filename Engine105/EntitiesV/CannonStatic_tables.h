@@ -3,22 +3,22 @@
 #define ENTITYCLASS CCannonStatic
 
 CEntityProperty CCannonStatic_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+1, offsetof(CCannonStatic, m_fHealth), "Cannon Health", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000159<<8)+2, offsetof(CCannonStatic, m_fFiringRangeClose), "Cannon Firing Close Range", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000159<<8)+3, offsetof(CCannonStatic, m_fFiringRangeFar), "Cannon Firing Far Range", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+4, offsetof(CCannonStatic, m_fShootingPeriod), "Cannon Shooting Period", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+5, offsetof(CCannonStatic, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+6, offsetof(CCannonStatic, m_fMaxPitch), "Cannon Max Pitch", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+7, offsetof(CCannonStatic, m_fViewAngle), "Cannon View Angle", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000159<<8)+8, offsetof(CCannonStatic, m_bActive), "Cannon Active", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+20, offsetof(CCannonStatic, m_fRotSpeedMuzzle), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+25, offsetof(CCannonStatic, m_fDistanceToPlayer), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+26, offsetof(CCannonStatic, m_fDesiredMuzzlePitch), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000159<<8)+27, offsetof(CCannonStatic, m_iMuzzleDir), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+28, offsetof(CCannonStatic, m_vFiringPos), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+29, offsetof(CCannonStatic, m_vTarget), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+40, offsetof(CCannonStatic, m_aBeginMuzzleRotation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+41, offsetof(CCannonStatic, m_aEndMuzzleRotation), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+1, offsetof(CCannonStatic, m_fHealth), "Cannon Health", 0, "m_fHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000159<<8)+2, offsetof(CCannonStatic, m_fFiringRangeClose), "Cannon Firing Close Range", 0, "m_fFiringRangeClose", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000159<<8)+3, offsetof(CCannonStatic, m_fFiringRangeFar), "Cannon Firing Far Range", 0, "m_fFiringRangeFar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+4, offsetof(CCannonStatic, m_fShootingPeriod), "Cannon Shooting Period", 0, "m_fShootingPeriod", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+5, offsetof(CCannonStatic, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+6, offsetof(CCannonStatic, m_fMaxPitch), "Cannon Max Pitch", 0, "m_fMaxPitch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+7, offsetof(CCannonStatic, m_fViewAngle), "Cannon View Angle", 0, "m_fViewAngle", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000159<<8)+8, offsetof(CCannonStatic, m_bActive), "Cannon Active", 0, "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+20, offsetof(CCannonStatic, m_fRotSpeedMuzzle), "", 0, "m_fRotSpeedMuzzle", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+25, offsetof(CCannonStatic, m_fDistanceToPlayer), "", 0, "m_fDistanceToPlayer", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000159<<8)+26, offsetof(CCannonStatic, m_fDesiredMuzzlePitch), "", 0, "m_fDesiredMuzzlePitch", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000159<<8)+27, offsetof(CCannonStatic, m_iMuzzleDir), "", 0, "m_iMuzzleDir", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+28, offsetof(CCannonStatic, m_vFiringPos), "", 0, "m_vFiringPos", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+29, offsetof(CCannonStatic, m_vTarget), "", 0, "m_vTarget", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+40, offsetof(CCannonStatic, m_aBeginMuzzleRotation), "", 0, "m_aBeginMuzzleRotation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000159<<8)+41, offsetof(CCannonStatic, m_aEndMuzzleRotation), "", 0, "m_aEndMuzzleRotation", 0, 0),
 };
 #define CCannonStatic_propertiesct ARRAYCOUNT(CCannonStatic_properties)
 

@@ -3,20 +3,20 @@
 #define ENTITYCLASS CCameraMarker
 
 CEntityProperty CCameraMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+1, offsetof(CCameraMarker, m_fDeltaTime), "Delta time", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+2, offsetof(CCameraMarker, m_fBias), "Bias", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+3, offsetof(CCameraMarker, m_fTension), "Tension", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+4, offsetof(CCameraMarker, m_fContinuity), "Continuity", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e0<<8)+5, offsetof(CCameraMarker, m_bStopMoving), "Stop moving", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+6, offsetof(CCameraMarker, m_fFOV), "FOV", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e0<<8)+7, offsetof(CCameraMarker, m_bSkipToNext), "Skip to next", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000e0<<8)+8, offsetof(CCameraMarker, m_colFade), "Fade Color", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e0<<8)+9, offsetof(CCameraMarker, m_penTrigger), "Trigger", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e0<<8)+10, offsetof(CCameraMarker, m_penViewTarget), "View Target", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000000e0<<8)+11, offsetof(CCameraMarker, m_vPosRatio), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+12, offsetof(CCameraMarker, m_fRatioX), "View pos ratio X", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+13, offsetof(CCameraMarker, m_fRatioY), "View pos ratio Y", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+14, offsetof(CCameraMarker, m_fRatioZ), "View pos ratio Z", 'Z', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+1, offsetof(CCameraMarker, m_fDeltaTime), "Delta time", 'D', "m_fDeltaTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+2, offsetof(CCameraMarker, m_fBias), "Bias", 'B', "m_fBias", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+3, offsetof(CCameraMarker, m_fTension), "Tension", 'E', "m_fTension", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+4, offsetof(CCameraMarker, m_fContinuity), "Continuity", 'C', "m_fContinuity", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e0<<8)+5, offsetof(CCameraMarker, m_bStopMoving), "Stop moving", 'O', "m_bStopMoving", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+6, offsetof(CCameraMarker, m_fFOV), "FOV", 'F', "m_fFOV", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e0<<8)+7, offsetof(CCameraMarker, m_bSkipToNext), "Skip to next", 'S', "m_bSkipToNext", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000e0<<8)+8, offsetof(CCameraMarker, m_colFade), "Fade Color", 'C', "m_colFade", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e0<<8)+9, offsetof(CCameraMarker, m_penTrigger), "Trigger", 'G', "m_penTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e0<<8)+10, offsetof(CCameraMarker, m_penViewTarget), "View Target", 'V', "m_penViewTarget", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000000e0<<8)+11, offsetof(CCameraMarker, m_vPosRatio), "", 0, "m_vPosRatio", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+12, offsetof(CCameraMarker, m_fRatioX), "View pos ratio X", 'X', "m_fRatioX", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+13, offsetof(CCameraMarker, m_fRatioY), "View pos ratio Y", 'Y', "m_fRatioY", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e0<<8)+14, offsetof(CCameraMarker, m_fRatioZ), "View pos ratio Z", 'Z', "m_fRatioZ", 0x7F0000FFUL, 0),
 };
 #define CCameraMarker_propertiesct ARRAYCOUNT(CCameraMarker_properties)
 

@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_BackgroundViewer_INCLUDED
 #define _EntitiesV_BackgroundViewer_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CBackgroundViewer_ClassID 211
 extern "C" DECL_DLL CDLLEntityClass CBackgroundViewer_DLLClass;
 class CBackgroundViewer : public CMarker {
 public:

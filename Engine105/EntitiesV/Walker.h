@@ -10,6 +10,7 @@ enum WalkerChar {
   WLC_SERGEANT = 1,
 };
 DECL_DLL inline void ClearToDefault(WalkerChar &e) { e = (WalkerChar)0; } ;
+#define CWalker_ClassID 324
 extern "C" DECL_DLL CDLLEntityClass CWalker_DLLClass;
 class CWalker : public CEnemyBase {
 public:

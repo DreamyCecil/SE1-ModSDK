@@ -9,9 +9,9 @@ EP_ENUMEND(BeastType);
 #define ENTITYCLASS CBeast
 
 CEntityProperty CBeast_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &BeastType_enum, (0x00000150<<8)+1, offsetof(CBeast, m_bcType), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000150<<8)+2, offsetof(CBeast, m_iCounter), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000150<<8)+3, offsetof(CBeast, m_bBeBoss), "Boss", 'B', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BeastType_enum, (0x00000150<<8)+1, offsetof(CBeast, m_bcType), "Character", 'C', "m_bcType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000150<<8)+2, offsetof(CBeast, m_iCounter), "", 0, "m_iCounter", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000150<<8)+3, offsetof(CBeast, m_bBeBoss), "Boss", 'B', "m_bBeBoss", 0x7F0000FFUL, 0),
 };
 #define CBeast_propertiesct ARRAYCOUNT(CBeast_properties)
 

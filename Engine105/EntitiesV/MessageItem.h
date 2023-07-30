@@ -11,6 +11,7 @@ CEntityEvent *MakeCopy(void);
 CTFileName fnmMessage;
 };
 DECL_DLL inline void ClearToDefault(EMessageItem &e) { e = EMessageItem(); } ;
+#define CMessageItem_ClassID 807
 extern "C" DECL_DLL CDLLEntityClass CMessageItem_DLLClass;
 class CMessageItem : public CItem {
 public:

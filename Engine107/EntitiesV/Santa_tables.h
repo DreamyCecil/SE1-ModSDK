@@ -3,16 +3,16 @@
 #define ENTITYCLASS CSanta
 
 CEntityProperty CSanta_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+1, offsetof(CSanta, m_tmLastSpawnTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+2, offsetof(CSanta, m_tmMinSpawnInterval), "Min spawn interval", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+3, offsetof(CSanta, m_fSantaHealth), "Santa Health", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000163<<8)+4, offsetof(CSanta, m_soRunning), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000163<<8)+5, offsetof(CSanta, m_bRunSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+10, offsetof(CSanta, m_penTemplate0), "Item template 0", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+11, offsetof(CSanta, m_penTemplate1), "Item template 1", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+12, offsetof(CSanta, m_penTemplate2), "Item template 2", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+13, offsetof(CSanta, m_penTemplate3), "Item template 3", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+14, offsetof(CSanta, m_penTemplate4), "Item template 4", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+1, offsetof(CSanta, m_tmLastSpawnTime), "", 0, "m_tmLastSpawnTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+2, offsetof(CSanta, m_tmMinSpawnInterval), "Min spawn interval", 0, "m_tmMinSpawnInterval", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000163<<8)+3, offsetof(CSanta, m_fSantaHealth), "Santa Health", 0, "m_fSantaHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000163<<8)+4, offsetof(CSanta, m_soRunning), "", 0, "m_soRunning", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000163<<8)+5, offsetof(CSanta, m_bRunSoundPlaying), "", 0, "m_bRunSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+10, offsetof(CSanta, m_penTemplate0), "Item template 0", 0, "m_penTemplate0", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+11, offsetof(CSanta, m_penTemplate1), "Item template 1", 0, "m_penTemplate1", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+12, offsetof(CSanta, m_penTemplate2), "Item template 2", 0, "m_penTemplate2", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+13, offsetof(CSanta, m_penTemplate3), "Item template 3", 0, "m_penTemplate3", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000163<<8)+14, offsetof(CSanta, m_penTemplate4), "Item template 4", 0, "m_penTemplate4", 0x7F0000FFUL, 0),
 };
 #define CSanta_propertiesct ARRAYCOUNT(CSanta_properties)
 

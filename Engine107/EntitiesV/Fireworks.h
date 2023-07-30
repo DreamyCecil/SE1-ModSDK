@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Fireworks_INCLUDED
 #define _EntitiesV_Fireworks_INCLUDED 1
+#define CFireworks_ClassID 616
 extern "C" DECL_DLL CDLLEntityClass CFireworks_DLLClass;
 class CFireworks : public CRationalEntity {
 public:

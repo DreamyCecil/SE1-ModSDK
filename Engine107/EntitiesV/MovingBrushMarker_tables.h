@@ -3,22 +3,22 @@
 #define ENTITYCLASS CMovingBrushMarker
 
 CEntityProperty CMovingBrushMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+1, offsetof(CMovingBrushMarker, m_bInverseRotate), "Inverse Rotate", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+2, offsetof(CMovingBrushMarker, m_fSpeed), "Speed", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+3, offsetof(CMovingBrushMarker, m_fWaitTime), "Wait time", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+4, offsetof(CMovingBrushMarker, m_bStopMoving), "Stop moving", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x00000066<<8)+6, offsetof(CMovingBrushMarker, m_betMoveOnTouch), "Move on touch", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+7, offsetof(CMovingBrushMarker, m_fBlockDamage), "Block damage", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+8, offsetof(CMovingBrushMarker, m_tmBankingRotation), "Banking rotation speed", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+9, offsetof(CMovingBrushMarker, m_bBankingClockwise), "Banking rotation clockwise", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+14, offsetof(CMovingBrushMarker, m_bNoRotation), "Don't use marker orientation", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x00000066<<8)+10, offsetof(CMovingBrushMarker, m_eetMarkerEvent), "Marker Event - Type", 'J', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+11, offsetof(CMovingBrushMarker, m_penMarkerEvent), "Marker Event - Target", 'K', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x00000066<<8)+16, offsetof(CMovingBrushMarker, m_eetTouchEvent), "Touch Event - Type", 'U', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+17, offsetof(CMovingBrushMarker, m_penTouchEvent), "Touch Event - Target", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+20, offsetof(CMovingBrushMarker, m_penSoundStart), "Sound start entity", 'Q', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+21, offsetof(CMovingBrushMarker, m_penSoundStop), "Sound stop entity", 'Z', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+22, offsetof(CMovingBrushMarker, m_penSoundFollow), "Sound follow entity", 'F', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+1, offsetof(CMovingBrushMarker, m_bInverseRotate), "Inverse Rotate", 'R', "m_bInverseRotate", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+2, offsetof(CMovingBrushMarker, m_fSpeed), "Speed", 'S', "m_fSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+3, offsetof(CMovingBrushMarker, m_fWaitTime), "Wait time", 'W', "m_fWaitTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+4, offsetof(CMovingBrushMarker, m_bStopMoving), "Stop moving", 'O', "m_bStopMoving", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x00000066<<8)+6, offsetof(CMovingBrushMarker, m_betMoveOnTouch), "Move on touch", 'M', "m_betMoveOnTouch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+7, offsetof(CMovingBrushMarker, m_fBlockDamage), "Block damage", 'D', "m_fBlockDamage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000066<<8)+8, offsetof(CMovingBrushMarker, m_tmBankingRotation), "Banking rotation speed", 0, "m_tmBankingRotation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+9, offsetof(CMovingBrushMarker, m_bBankingClockwise), "Banking rotation clockwise", 0, "m_bBankingClockwise", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000066<<8)+14, offsetof(CMovingBrushMarker, m_bNoRotation), "Don't use marker orientation", 0, "m_bNoRotation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x00000066<<8)+10, offsetof(CMovingBrushMarker, m_eetMarkerEvent), "Marker Event - Type", 'J', "m_eetMarkerEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+11, offsetof(CMovingBrushMarker, m_penMarkerEvent), "Marker Event - Target", 'K', "m_penMarkerEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x00000066<<8)+16, offsetof(CMovingBrushMarker, m_eetTouchEvent), "Touch Event - Type", 'U', "m_eetTouchEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+17, offsetof(CMovingBrushMarker, m_penTouchEvent), "Touch Event - Target", 'I', "m_penTouchEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+20, offsetof(CMovingBrushMarker, m_penSoundStart), "Sound start entity", 'Q', "m_penSoundStart", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+21, offsetof(CMovingBrushMarker, m_penSoundStop), "Sound stop entity", 'Z', "m_penSoundStop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000066<<8)+22, offsetof(CMovingBrushMarker, m_penSoundFollow), "Sound follow entity", 'F', "m_penSoundFollow", 0x7F0000FFUL, 0),
 };
 #define CMovingBrushMarker_propertiesct ARRAYCOUNT(CMovingBrushMarker_properties)
 

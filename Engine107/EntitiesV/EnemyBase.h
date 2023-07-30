@@ -45,6 +45,7 @@ enum DestinationType {
   DT_PATHPERSISTENT = 3,
 };
 DECL_DLL inline void ClearToDefault(DestinationType &e) { e = (DestinationType)0; } ;
+#define CEnemyBase_ClassID 310
 extern "C" DECL_DLL CDLLEntityClass CEnemyBase_DLLClass;
 class DECL_DLL  CEnemyBase : public CMovableModelEntity {
 public:

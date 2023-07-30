@@ -3,15 +3,15 @@
 #define ENTITYCLASS CMeteorShower
 
 CEntityProperty CMeteorShower_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000267<<8)+1, offsetof(CMeteorShower, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x00000267<<8)+10, offsetof(CMeteorShower, m_aAngle), "Shoot Angle", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000267<<8)+11, offsetof(CMeteorShower, m_iPerTickLaunchChance), "Density (1-100)", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+15, offsetof(CMeteorShower, m_fMinStretch), "Min. Stretch", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+16, offsetof(CMeteorShower, m_fMaxStretch), "Max. Stretch", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000267<<8)+19, offsetof(CMeteorShower, m_rSafeArea), "Safe Area", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000267<<8)+20, offsetof(CMeteorShower, m_rArea), "Area", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+30, offsetof(CMeteorShower, m_fSpeed), "Speed", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+40, offsetof(CMeteorShower, m_fLaunchDistance), "Launch distance", 'L', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000267<<8)+1, offsetof(CMeteorShower, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x00000267<<8)+10, offsetof(CMeteorShower, m_aAngle), "Shoot Angle", 'S', "m_aAngle", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000267<<8)+11, offsetof(CMeteorShower, m_iPerTickLaunchChance), "Density (1-100)", 'D', "m_iPerTickLaunchChance", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+15, offsetof(CMeteorShower, m_fMinStretch), "Min. Stretch", 0, "m_fMinStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+16, offsetof(CMeteorShower, m_fMaxStretch), "Max. Stretch", 0, "m_fMaxStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000267<<8)+19, offsetof(CMeteorShower, m_rSafeArea), "Safe Area", 0, "m_rSafeArea", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000267<<8)+20, offsetof(CMeteorShower, m_rArea), "Area", 0, "m_rArea", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+30, offsetof(CMeteorShower, m_fSpeed), "Speed", 'P', "m_fSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000267<<8)+40, offsetof(CMeteorShower, m_fLaunchDistance), "Launch distance", 'L', "m_fLaunchDistance", 0x7F0000FFUL, 0),
 };
 #define CMeteorShower_propertiesct ARRAYCOUNT(CMeteorShower_properties)
 

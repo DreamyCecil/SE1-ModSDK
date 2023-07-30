@@ -14,6 +14,7 @@ enum EnemySpawnerType {
   EST_RESPAWNERBYONE = 5,
 };
 DECL_DLL inline void ClearToDefault(EnemySpawnerType &e) { e = (EnemySpawnerType)0; } ;
+#define CEnemySpawner_ClassID 304
 extern "C" DECL_DLL CDLLEntityClass CEnemySpawner_DLLClass;
 class CEnemySpawner : public CRationalEntity {
 public:

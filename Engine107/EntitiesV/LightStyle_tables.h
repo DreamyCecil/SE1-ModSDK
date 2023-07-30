@@ -3,7 +3,7 @@
 #define ENTITYCLASS CLightStyle
 
 CEntityProperty CLightStyle_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000c9<<8)+2, offsetof(CLightStyle, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000c9<<8)+2, offsetof(CLightStyle, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
 };
 #define CLightStyle_propertiesct ARRAYCOUNT(CLightStyle_properties)
 

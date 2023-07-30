@@ -14,6 +14,7 @@ enum BlendControllerType {
   BCT_ACTIVATE_PYRAMID_MORPH_ROOM = 6,
 };
 DECL_DLL inline void ClearToDefault(BlendControllerType &e) { e = (BlendControllerType)0; } ;
+#define CBlendController_ClassID 612
 extern "C" DECL_DLL CDLLEntityClass CBlendController_DLLClass;
 class CBlendController : public CMarker {
 public:

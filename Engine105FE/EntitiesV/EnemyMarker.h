@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_EnemyMarker_INCLUDED
 #define _EntitiesV_EnemyMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CEnemyMarker_ClassID 302
 extern "C" DECL_DLL CDLLEntityClass CEnemyMarker_DLLClass;
 class CEnemyMarker : public CMarker {
 public:

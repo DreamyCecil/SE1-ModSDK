@@ -14,6 +14,7 @@ CEntityPointer penLauncher;
 FLOAT fSpeed;
 };
 DECL_DLL inline void ClearToDefault(EDropPipebomb &e) { e = EDropPipebomb(); } ;
+#define CPipebomb_ClassID 503
 extern "C" DECL_DLL CDLLEntityClass CPipebomb_DLLClass;
 class CPipebomb : public CMovableModelEntity {
 public:

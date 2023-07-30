@@ -13,6 +13,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penLauncher;
 };
 DECL_DLL inline void ClearToDefault(ELaunchLarvaOffspring &e) { e = ELaunchLarvaOffspring(); } ;
+#define CLarvaOffspring_ClassID 353
 extern "C" DECL_DLL CDLLEntityClass CLarvaOffspring_DLLClass;
 class DECL_DLL  CLarvaOffspring : public CMovableModelEntity {
 public:

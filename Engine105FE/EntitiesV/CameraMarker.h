@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_CameraMarker_INCLUDED
 #define _EntitiesV_CameraMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CCameraMarker_ClassID 224
 extern "C" DECL_DLL CDLLEntityClass CCameraMarker_DLLClass;
 class CCameraMarker : public CMarker {
 public:

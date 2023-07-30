@@ -9,21 +9,21 @@ EP_ENUMEND(EnemyDiveType);
 #define ENTITYCLASS CEnemyDive
 
 CEntityProperty CEnemyDive_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &EnemyDiveType_enum, (0x00000139<<8)+1, offsetof(CEnemyDive, m_EedtType), "Type", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000139<<8)+2, offsetof(CEnemyDive, m_bInLiquid), "In liquid", 'Q', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+10, offsetof(CEnemyDive, m_fDiveWalkSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+11, offsetof(CEnemyDive, m_aDiveWalkRotateSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+12, offsetof(CEnemyDive, m_fDiveAttackRunSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+13, offsetof(CEnemyDive, m_aDiveAttackRotateSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+14, offsetof(CEnemyDive, m_fDiveCloseRunSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+15, offsetof(CEnemyDive, m_aDiveCloseRotateSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+20, offsetof(CEnemyDive, m_fDiveAttackDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+21, offsetof(CEnemyDive, m_fDiveCloseDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+22, offsetof(CEnemyDive, m_fDiveAttackFireTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+23, offsetof(CEnemyDive, m_fDiveCloseFireTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+24, offsetof(CEnemyDive, m_fDiveStopDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+25, offsetof(CEnemyDive, m_fDiveIgnoreRange), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+26, offsetof(CEnemyDive, m_fDiveLockOnEnemyTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EnemyDiveType_enum, (0x00000139<<8)+1, offsetof(CEnemyDive, m_EedtType), "Type", 'T', "m_EedtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000139<<8)+2, offsetof(CEnemyDive, m_bInLiquid), "In liquid", 'Q', "m_bInLiquid", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+10, offsetof(CEnemyDive, m_fDiveWalkSpeed), "", 0, "m_fDiveWalkSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+11, offsetof(CEnemyDive, m_aDiveWalkRotateSpeed), "", 0, "m_aDiveWalkRotateSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+12, offsetof(CEnemyDive, m_fDiveAttackRunSpeed), "", 0, "m_fDiveAttackRunSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+13, offsetof(CEnemyDive, m_aDiveAttackRotateSpeed), "", 0, "m_aDiveAttackRotateSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+14, offsetof(CEnemyDive, m_fDiveCloseRunSpeed), "", 0, "m_fDiveCloseRunSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE, NULL, (0x00000139<<8)+15, offsetof(CEnemyDive, m_aDiveCloseRotateSpeed), "", 0, "m_aDiveCloseRotateSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+20, offsetof(CEnemyDive, m_fDiveAttackDistance), "", 0, "m_fDiveAttackDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+21, offsetof(CEnemyDive, m_fDiveCloseDistance), "", 0, "m_fDiveCloseDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+22, offsetof(CEnemyDive, m_fDiveAttackFireTime), "", 0, "m_fDiveAttackFireTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+23, offsetof(CEnemyDive, m_fDiveCloseFireTime), "", 0, "m_fDiveCloseFireTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+24, offsetof(CEnemyDive, m_fDiveStopDistance), "", 0, "m_fDiveStopDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+25, offsetof(CEnemyDive, m_fDiveIgnoreRange), "", 0, "m_fDiveIgnoreRange", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000139<<8)+26, offsetof(CEnemyDive, m_fDiveLockOnEnemyTime), "", 0, "m_fDiveLockOnEnemyTime", 0, 0),
 };
 #define CEnemyDive_propertiesct ARRAYCOUNT(CEnemyDive_properties)
 

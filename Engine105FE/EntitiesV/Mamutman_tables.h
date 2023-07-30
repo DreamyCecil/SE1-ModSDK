@@ -3,9 +3,9 @@
 #define ENTITYCLASS CMamutman
 
 CEntityProperty CMamutman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000146<<8)+1, offsetof(CMamutman, m_penBullet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000146<<8)+2, offsetof(CMamutman, m_bSpawned), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000146<<8)+3, offsetof(CMamutman, m_bSpawnedPosition), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000146<<8)+1, offsetof(CMamutman, m_penBullet), "", 0, "m_penBullet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000146<<8)+2, offsetof(CMamutman, m_bSpawned), "", 0, "m_bSpawned", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000146<<8)+3, offsetof(CMamutman, m_bSpawnedPosition), "", 0, "m_bSpawnedPosition", 0, 0),
 };
 #define CMamutman_propertiesct ARRAYCOUNT(CMamutman_properties)
 

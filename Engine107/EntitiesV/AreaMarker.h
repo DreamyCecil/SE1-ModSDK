@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_AreaMarker_INCLUDED
 #define _EntitiesV_AreaMarker_INCLUDED 1
+#define CAreaMarker_ClassID 202
 extern "C" DECL_DLL CDLLEntityClass CAreaMarker_DLLClass;
 class CAreaMarker : public CEntity {
 public:

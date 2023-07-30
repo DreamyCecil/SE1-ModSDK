@@ -9,12 +9,12 @@ EP_ENUMEND(ScorpmanType);
 #define ENTITYCLASS CScorpman
 
 CEntityProperty CScorpman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &ScorpmanType_enum, (0x00000132<<8)+1, offsetof(CScorpman, m_smtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000132<<8)+2, offsetof(CScorpman, m_bFireBulletCount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000132<<8)+3, offsetof(CScorpman, m_iSpawnEffect), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000132<<8)+4, offsetof(CScorpman, m_fFireTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x00000132<<8)+5, offsetof(CScorpman, m_aoLightAnimation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000132<<8)+6, offsetof(CScorpman, m_bSleeping), "Sleeping", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &ScorpmanType_enum, (0x00000132<<8)+1, offsetof(CScorpman, m_smtType), "Type", 'Y', "m_smtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000132<<8)+2, offsetof(CScorpman, m_bFireBulletCount), "", 0, "m_bFireBulletCount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000132<<8)+3, offsetof(CScorpman, m_iSpawnEffect), "", 0, "m_iSpawnEffect", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000132<<8)+4, offsetof(CScorpman, m_fFireTime), "", 0, "m_fFireTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x00000132<<8)+5, offsetof(CScorpman, m_aoLightAnimation), "", 0, "m_aoLightAnimation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000132<<8)+6, offsetof(CScorpman, m_bSleeping), "Sleeping", 'S', "m_bSleeping", 0x7F0000FFUL, 0),
 };
 #define CScorpman_propertiesct ARRAYCOUNT(CScorpman_properties)
 

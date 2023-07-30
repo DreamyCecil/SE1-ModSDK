@@ -11,6 +11,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penNewGravity;
 };
 DECL_DLL inline void ClearToDefault(EChangeGravity &e) { e = EChangeGravity(); } ;
+#define CGravityRouter_ClassID 227
 extern "C" DECL_DLL CDLLEntityClass CGravityRouter_DLLClass;
 class CGravityRouter : public CMarker {
 public:

@@ -3,9 +3,9 @@
 #define ENTITYCLASS CMarker
 
 CEntityProperty CMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+1, offsetof(CMarker, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+3, offsetof(CMarker, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ca<<8)+2, offsetof(CMarker, m_penTarget), "Target", 'T', C_dGREEN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+1, offsetof(CMarker, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+3, offsetof(CMarker, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ca<<8)+2, offsetof(CMarker, m_penTarget), "Target", 'T', "m_penTarget", C_dGREEN  | 0xFF, 0),
 };
 #define CMarker_propertiesct ARRAYCOUNT(CMarker_properties)
 

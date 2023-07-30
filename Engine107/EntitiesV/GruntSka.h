@@ -10,6 +10,7 @@ enum GruntSkaType {
   GT_COMMANDER = 1,
 };
 DECL_DLL inline void ClearToDefault(GruntSkaType &e) { e = (GruntSkaType)0; } ;
+#define CGruntSka_ClassID 343
 extern "C" DECL_DLL CDLLEntityClass CGruntSka_DLLClass;
 class CGruntSka : public CEnemyBase {
 public:

@@ -3,14 +3,14 @@
 #define ENTITYCLASS CTeleport
 
 CEntityProperty CTeleport_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000db<<8)+1, offsetof(CTeleport, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000db<<8)+3, offsetof(CTeleport, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000db<<8)+2, offsetof(CTeleport, m_penTarget), "Target", 'T', C_BROWN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000db<<8)+4, offsetof(CTeleport, m_fWidth), "Width", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000db<<8)+5, offsetof(CTeleport, m_fHeight), "Height", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+6, offsetof(CTeleport, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+7, offsetof(CTeleport, m_bPlayersOnly), "Players only", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+8, offsetof(CTeleport, m_bForceStop), "Force stop", 'F', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000db<<8)+1, offsetof(CTeleport, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000db<<8)+3, offsetof(CTeleport, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000db<<8)+2, offsetof(CTeleport, m_penTarget), "Target", 'T', "m_penTarget", C_BROWN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000db<<8)+4, offsetof(CTeleport, m_fWidth), "Width", 'W', "m_fWidth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000db<<8)+5, offsetof(CTeleport, m_fHeight), "Height", 'H', "m_fHeight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+6, offsetof(CTeleport, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+7, offsetof(CTeleport, m_bPlayersOnly), "Players only", 'P', "m_bPlayersOnly", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000db<<8)+8, offsetof(CTeleport, m_bForceStop), "Force stop", 'F', "m_bForceStop", 0x7F0000FFUL, 0),
 };
 #define CTeleport_propertiesct ARRAYCOUNT(CTeleport_properties)
 

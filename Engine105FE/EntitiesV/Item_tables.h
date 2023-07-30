@@ -3,18 +3,18 @@
 #define ENTITYCLASS CItem
 
 CEntityProperty CItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000320<<8)+1, offsetof(CItem, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000320<<8)+2, offsetof(CItem, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+5, offsetof(CItem, m_fValue), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+6, offsetof(CItem, m_fRespawnTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+7, offsetof(CItem, m_bRespawn), "Respawn", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000320<<8)+8, offsetof(CItem, m_penTarget), "Target", 'T', C_dGRAY  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+9, offsetof(CItem, m_bPickupOnce), "PickupOnce", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000320<<8)+10, offsetof(CItem, m_soPick), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+12, offsetof(CItem, m_fPickSoundLen), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+14, offsetof(CItem, m_bDropped), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000320<<8)+15, offsetof(CItem, m_ulPickedMask), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000320<<8)+255, offsetof(CItem, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000320<<8)+1, offsetof(CItem, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000320<<8)+2, offsetof(CItem, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+5, offsetof(CItem, m_fValue), "", 0, "m_fValue", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+6, offsetof(CItem, m_fRespawnTime), "", 0, "m_fRespawnTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+7, offsetof(CItem, m_bRespawn), "Respawn", 'R', "m_bRespawn", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000320<<8)+8, offsetof(CItem, m_penTarget), "Target", 'T', "m_penTarget", C_dGRAY  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+9, offsetof(CItem, m_bPickupOnce), "PickupOnce", 'P', "m_bPickupOnce", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000320<<8)+10, offsetof(CItem, m_soPick), "", 0, "m_soPick", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000320<<8)+12, offsetof(CItem, m_fPickSoundLen), "", 0, "m_fPickSoundLen", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000320<<8)+14, offsetof(CItem, m_bDropped), "", 0, "m_bDropped", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000320<<8)+15, offsetof(CItem, m_ulPickedMask), "", 0, "m_ulPickedMask", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000320<<8)+255, offsetof(CItem, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CItem_propertiesct ARRAYCOUNT(CItem_properties)
 

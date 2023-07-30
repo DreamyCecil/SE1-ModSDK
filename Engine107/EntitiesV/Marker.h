@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Marker_INCLUDED
 #define _EntitiesV_Marker_INCLUDED 1
+#define CMarker_ClassID 202
 extern "C" DECL_DLL CDLLEntityClass CMarker_DLLClass;
 class CMarker : public CEntity {
 public:

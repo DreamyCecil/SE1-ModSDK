@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Teleport_INCLUDED
 #define _EntitiesV_Teleport_INCLUDED 1
 #include <EntitiesV/BasicEffects.h>
+#define CTeleport_ClassID 219
 extern "C" DECL_DLL CDLLEntityClass CTeleport_DLLClass;
 class CTeleport : public CRationalEntity {
 public:

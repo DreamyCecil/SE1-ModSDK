@@ -12,6 +12,7 @@ enum GravityType {
   LT_TORUS = 3,
 };
 DECL_DLL inline void ClearToDefault(GravityType &e) { e = (GravityType)0; } ;
+#define CGravityMarker_ClassID 212
 extern "C" DECL_DLL CDLLEntityClass CGravityMarker_DLLClass;
 class CGravityMarker : public CMarker {
 public:

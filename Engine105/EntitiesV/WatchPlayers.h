@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_WatchPlayers_INCLUDED
 #define _EntitiesV_WatchPlayers_INCLUDED 1
+#define CWatchPlayers_ClassID 702
 extern "C" DECL_DLL CDLLEntityClass CWatchPlayers_DLLClass;
 class CWatchPlayers : public CRationalEntity {
 public:

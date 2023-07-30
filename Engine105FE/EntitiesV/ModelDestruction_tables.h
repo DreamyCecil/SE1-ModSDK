@@ -9,19 +9,19 @@ EP_ENUMEND(DestructionDebrisType);
 #define ENTITYCLASS CModelDestruction
 
 CEntityProperty CModelDestruction_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000d9<<8)+1, offsetof(CModelDestruction, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000d9<<8)+2, offsetof(CModelDestruction, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+10, offsetof(CModelDestruction, m_penModel0), "Model 0", 'M', C_RED  | 0x00, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+11, offsetof(CModelDestruction, m_penModel1), "Model 1", 0, C_RED  | 0x00, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+12, offsetof(CModelDestruction, m_penModel2), "Model 2", 0, C_RED  | 0x00, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+13, offsetof(CModelDestruction, m_penModel3), "Model 3", 0, C_RED  | 0x00, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+14, offsetof(CModelDestruction, m_penModel4), "Model 4", 0, C_RED  | 0x00, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d9<<8)+20, offsetof(CModelDestruction, m_fHealth), "Health", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &DestructionDebrisType_enum, (0x000000d9<<8)+22, offsetof(CModelDestruction, m_ddtDebris), "Debris", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000000d9<<8)+23, offsetof(CModelDestruction, m_ctDebris), "Debris Count", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d9<<8)+24, offsetof(CModelDestruction, m_fDebrisSize), "Debris Size", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EntityInfoBodyType_enum, (0x000000d9<<8)+25, offsetof(CModelDestruction, m_eibtBodyType), "Body Type", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &SprayParticlesType_enum, (0x000000d9<<8)+26, offsetof(CModelDestruction, m_sptType), "Particle Type", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000d9<<8)+1, offsetof(CModelDestruction, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000d9<<8)+2, offsetof(CModelDestruction, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+10, offsetof(CModelDestruction, m_penModel0), "Model 0", 'M', "m_penModel0", C_RED  | 0x00, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+11, offsetof(CModelDestruction, m_penModel1), "Model 1", 0, "m_penModel1", C_RED  | 0x00, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+12, offsetof(CModelDestruction, m_penModel2), "Model 2", 0, "m_penModel2", C_RED  | 0x00, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+13, offsetof(CModelDestruction, m_penModel3), "Model 3", 0, "m_penModel3", C_RED  | 0x00, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d9<<8)+14, offsetof(CModelDestruction, m_penModel4), "Model 4", 0, "m_penModel4", C_RED  | 0x00, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d9<<8)+20, offsetof(CModelDestruction, m_fHealth), "Health", 'H', "m_fHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DestructionDebrisType_enum, (0x000000d9<<8)+22, offsetof(CModelDestruction, m_ddtDebris), "Debris", 'D', "m_ddtDebris", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000000d9<<8)+23, offsetof(CModelDestruction, m_ctDebris), "Debris Count", 0, "m_ctDebris", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d9<<8)+24, offsetof(CModelDestruction, m_fDebrisSize), "Debris Size", 0, "m_fDebrisSize", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EntityInfoBodyType_enum, (0x000000d9<<8)+25, offsetof(CModelDestruction, m_eibtBodyType), "Body Type", 0, "m_eibtBodyType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &SprayParticlesType_enum, (0x000000d9<<8)+26, offsetof(CModelDestruction, m_sptType), "Particle Type", 0, "m_sptType", 0x7F0000FFUL, 0),
 };
 #define CModelDestruction_propertiesct ARRAYCOUNT(CModelDestruction_properties)
 

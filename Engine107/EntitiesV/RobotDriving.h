@@ -10,6 +10,7 @@ enum RobotDrivingChar {
   RDC_SPIDER = 1,
 };
 DECL_DLL inline void ClearToDefault(RobotDrivingChar &e) { e = (RobotDrivingChar)0; } ;
+#define CRobotDriving_ClassID 333
 extern "C" DECL_DLL CDLLEntityClass CRobotDriving_DLLClass;
 class CRobotDriving : public CEnemyBase {
 public:

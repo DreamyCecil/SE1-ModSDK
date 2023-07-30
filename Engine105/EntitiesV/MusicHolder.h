@@ -22,6 +22,7 @@ FLOAT fVolume;
 BOOL bForceStart;
 };
 DECL_DLL inline void ClearToDefault(EChangeMusic &e) { e = EChangeMusic(); } ;
+#define CMusicHolder_ClassID 222
 extern "C" DECL_DLL CDLLEntityClass CMusicHolder_DLLClass;
 class CMusicHolder : public CRationalEntity {
 public:

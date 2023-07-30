@@ -30,6 +30,7 @@ enum BasicEffectType betStain;
 COLOR colDebris;
 };
 DECL_DLL inline void ClearToDefault(ESpawnDebris &e) { e = ESpawnDebris(); } ;
+#define CDebris_ClassID 602
 extern "C" DECL_DLL CDLLEntityClass CDebris_DLLClass;
 class CDebris : public CMovableModelEntity {
 public:

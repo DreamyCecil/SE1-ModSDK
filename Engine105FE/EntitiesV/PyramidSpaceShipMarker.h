@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_PyramidSpaceShipMarker_INCLUDED
 #define _EntitiesV_PyramidSpaceShipMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CPyramidSpaceShipMarker_ClassID 610
 extern "C" DECL_DLL CDLLEntityClass CPyramidSpaceShipMarker_DLLClass;
 class CPyramidSpaceShipMarker : public CMarker {
 public:

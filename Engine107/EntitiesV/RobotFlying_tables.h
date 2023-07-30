@@ -8,7 +8,7 @@ EP_ENUMEND(RobotFlyingChar);
 #define ENTITYCLASS CRobotFlying
 
 CEntityProperty CRobotFlying_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &RobotFlyingChar_enum, (0x0000014e<<8)+1, offsetof(CRobotFlying, m_rfcChar), "Character", 'C', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &RobotFlyingChar_enum, (0x0000014e<<8)+1, offsetof(CRobotFlying, m_rfcChar), "Character", 'C', "m_rfcChar", 0x7F0000FFUL, 0),
 };
 #define CRobotFlying_propertiesct ARRAYCOUNT(CRobotFlying_properties)
 

@@ -46,6 +46,7 @@ enum VisibilityBits {
   VB_15 = 15,
 };
 DECL_DLL inline void ClearToDefault(VisibilityBits &e) { e = (VisibilityBits)0; } ;
+#define CWorldBase_ClassID 100
 extern "C" DECL_DLL CDLLEntityClass CWorldBase_DLLClass;
 class CWorldBase : public CEntity {
 public:

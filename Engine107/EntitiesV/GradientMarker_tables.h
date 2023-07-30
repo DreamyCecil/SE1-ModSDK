@@ -3,10 +3,10 @@
 #define ENTITYCLASS CGradientMarker
 
 CEntityProperty CGradientMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e6<<8)+1, offsetof(CGradientMarker, m_fHeight), "Height", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e6<<8)+2, offsetof(CGradientMarker, m_bDarkLight), "Dark light", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000e6<<8)+3, offsetof(CGradientMarker, m_colColor0), "Color 0", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000e6<<8)+4, offsetof(CGradientMarker, m_colColor1), "Color 1", 'A', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e6<<8)+1, offsetof(CGradientMarker, m_fHeight), "Height", 'H', "m_fHeight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e6<<8)+2, offsetof(CGradientMarker, m_bDarkLight), "Dark light", 'D', "m_bDarkLight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000e6<<8)+3, offsetof(CGradientMarker, m_colColor0), "Color 0", 'C', "m_colColor0", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000e6<<8)+4, offsetof(CGradientMarker, m_colColor1), "Color 1", 'A', "m_colColor1", 0x7F0000FFUL, 0),
 };
 #define CGradientMarker_propertiesct ARRAYCOUNT(CGradientMarker_properties)
 

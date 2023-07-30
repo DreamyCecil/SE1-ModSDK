@@ -17,15 +17,15 @@ EP_ENUMEND(SprayParticlesType);
 #define ENTITYCLASS CBloodSpray
 
 CEntityProperty CBloodSpray_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &SprayParticlesType_enum, (0x0000025b<<8)+1, offsetof(CBloodSpray, m_sptType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+2, offsetof(CBloodSpray, m_tmStarted), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025b<<8)+3, offsetof(CBloodSpray, m_vDirection), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025b<<8)+5, offsetof(CBloodSpray, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+6, offsetof(CBloodSpray, m_fDamagePower), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x0000025b<<8)+8, offsetof(CBloodSpray, m_boxOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025b<<8)+9, offsetof(CBloodSpray, m_vGDir), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+10, offsetof(CBloodSpray, m_fGA), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025b<<8)+255, offsetof(CBloodSpray, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &SprayParticlesType_enum, (0x0000025b<<8)+1, offsetof(CBloodSpray, m_sptType), "", 0, "m_sptType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+2, offsetof(CBloodSpray, m_tmStarted), "", 0, "m_tmStarted", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025b<<8)+3, offsetof(CBloodSpray, m_vDirection), "", 0, "m_vDirection", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025b<<8)+5, offsetof(CBloodSpray, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+6, offsetof(CBloodSpray, m_fDamagePower), "", 0, "m_fDamagePower", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x0000025b<<8)+8, offsetof(CBloodSpray, m_boxOwner), "", 0, "m_boxOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025b<<8)+9, offsetof(CBloodSpray, m_vGDir), "", 0, "m_vGDir", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025b<<8)+10, offsetof(CBloodSpray, m_fGA), "", 0, "m_fGA", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025b<<8)+255, offsetof(CBloodSpray, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CBloodSpray_propertiesct ARRAYCOUNT(CBloodSpray_properties)
 

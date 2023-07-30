@@ -13,6 +13,7 @@ CEntityPointer penOwner;
 FLOAT fDamage;
 };
 DECL_DLL inline void ClearToDefault(EBulletInit &e) { e = EBulletInit(); } ;
+#define CBullet_ClassID 502
 extern "C" DECL_DLL CDLLEntityClass CBullet_DLLClass;
 class DECL_DLL  CBullet : public CEntity {
 public:

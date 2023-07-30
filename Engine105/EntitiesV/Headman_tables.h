@@ -10,9 +10,9 @@ EP_ENUMEND(HeadmanType);
 #define ENTITYCLASS CHeadman
 
 CEntityProperty CHeadman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &HeadmanType_enum, (0x0000012f<<8)+1, offsetof(CHeadman, m_hdtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000012f<<8)+5, offsetof(CHeadman, m_bExploded), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000012f<<8)+6, offsetof(CHeadman, m_bAttackSound), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &HeadmanType_enum, (0x0000012f<<8)+1, offsetof(CHeadman, m_hdtType), "Type", 'Y', "m_hdtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000012f<<8)+5, offsetof(CHeadman, m_bExploded), "", 0, "m_bExploded", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000012f<<8)+6, offsetof(CHeadman, m_bAttackSound), "", 0, "m_bAttackSound", 0, 0),
 };
 #define CHeadman_propertiesct ARRAYCOUNT(CHeadman_properties)
 

@@ -29,6 +29,7 @@ enum DevilActionType {
   DAT_DECREASE_ATTACK_RADIUS = 20,
 };
 DECL_DLL inline void ClearToDefault(DevilActionType &e) { e = (DevilActionType)0; } ;
+#define CDevilMarker_ClassID 338
 extern "C" DECL_DLL CDLLEntityClass CDevilMarker_DLLClass;
 class CDevilMarker : public CMarker {
 public:

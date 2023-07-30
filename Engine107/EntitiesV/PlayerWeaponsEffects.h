@@ -18,6 +18,7 @@ CEntityPointer penOwner;
 enum WeaponEffectType EwetEffect;
 };
 DECL_DLL inline void ClearToDefault(EWeaponEffectInit &e) { e = EWeaponEffectInit(); } ;
+#define CPlayerWeaponsEffects_ClassID 405
 extern "C" DECL_DLL CDLLEntityClass CPlayerWeaponsEffects_DLLClass;
 class CPlayerWeaponsEffects : public CMovableEntity {
 public:

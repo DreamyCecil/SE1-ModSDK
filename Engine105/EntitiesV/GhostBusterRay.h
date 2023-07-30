@@ -14,6 +14,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penOwner;
 };
 DECL_DLL inline void ClearToDefault(EGhostBusterRay &e) { e = EGhostBusterRay(); } ;
+#define CGhostBusterRay_ClassID 505
 extern "C" DECL_DLL CDLLEntityClass CGhostBusterRay_DLLClass;
 class CGhostBusterRay : public CMovableModelEntity {
 public:

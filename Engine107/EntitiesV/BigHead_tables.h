@@ -9,15 +9,15 @@ EP_ENUMEND(BigHeadType);
 #define ENTITYCLASS CBigHead
 
 CEntityProperty CBigHead_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+1, offsetof(CBigHead, m_fnmHeadTex), "Head texture", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+2, offsetof(CBigHead, m_fnmNameSnd), "Name sound", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+3, offsetof(CBigHead, m_tmLastGreetTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BigHeadType_enum, (0x00000154<<8)+4, offsetof(CBigHead, m_bhtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+5, offsetof(CBigHead, m_bIgnorePlayer), "Ignore player", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+6, offsetof(CBigHead, m_bPlayingWalkSound), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+7, offsetof(CBigHead, m_bSleeping), "Sleeping", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+8, offsetof(CBigHead, m_tmLastWalkingSoundTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+9, offsetof(CBigHead, m_tmWalkingSound), "Walk sound frequency", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+1, offsetof(CBigHead, m_fnmHeadTex), "Head texture", 'H', "m_fnmHeadTex", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+2, offsetof(CBigHead, m_fnmNameSnd), "Name sound", 'S', "m_fnmNameSnd", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+3, offsetof(CBigHead, m_tmLastGreetTime), "", 0, "m_tmLastGreetTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BigHeadType_enum, (0x00000154<<8)+4, offsetof(CBigHead, m_bhtType), "Type", 'Y', "m_bhtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+5, offsetof(CBigHead, m_bIgnorePlayer), "Ignore player", 'I', "m_bIgnorePlayer", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+6, offsetof(CBigHead, m_bPlayingWalkSound), "", 0, "m_bPlayingWalkSound", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000154<<8)+7, offsetof(CBigHead, m_bSleeping), "Sleeping", 'S', "m_bSleeping", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+8, offsetof(CBigHead, m_tmLastWalkingSoundTime), "", 0, "m_tmLastWalkingSoundTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+9, offsetof(CBigHead, m_tmWalkingSound), "Walk sound frequency", 0, "m_tmWalkingSound", 0x7F0000FFUL, 0),
 };
 #define CBigHead_propertiesct ARRAYCOUNT(CBigHead_properties)
 

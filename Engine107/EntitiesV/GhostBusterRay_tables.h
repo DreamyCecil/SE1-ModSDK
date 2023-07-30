@@ -3,16 +3,16 @@
 #define ENTITYCLASS CGhostBusterRay
 
 CEntityProperty CGhostBusterRay_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f9<<8)+1, offsetof(CGhostBusterRay, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001f9<<8)+2, offsetof(CGhostBusterRay, m_bRender), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+3, offsetof(CGhostBusterRay, m_vSrcOld), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+4, offsetof(CGhostBusterRay, m_vDstOld), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+5, offsetof(CGhostBusterRay, m_vSrc), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+6, offsetof(CGhostBusterRay, m_vDst), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+10, offsetof(CGhostBusterRay, m_iLastBulletPosition), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x000001f9<<8)+11, offsetof(CGhostBusterRay, m_aoLightAnim), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000001f9<<8)+12, offsetof(CGhostBusterRay, m_ctPasses), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f9<<8)+255, offsetof(CGhostBusterRay, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f9<<8)+1, offsetof(CGhostBusterRay, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001f9<<8)+2, offsetof(CGhostBusterRay, m_bRender), "", 0, "m_bRender", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+3, offsetof(CGhostBusterRay, m_vSrcOld), "", 0, "m_vSrcOld", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+4, offsetof(CGhostBusterRay, m_vDstOld), "", 0, "m_vDstOld", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+5, offsetof(CGhostBusterRay, m_vSrc), "", 0, "m_vSrc", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+6, offsetof(CGhostBusterRay, m_vDst), "", 0, "m_vDst", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f9<<8)+10, offsetof(CGhostBusterRay, m_iLastBulletPosition), "", 0, "m_iLastBulletPosition", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x000001f9<<8)+11, offsetof(CGhostBusterRay, m_aoLightAnim), "", 0, "m_aoLightAnim", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000001f9<<8)+12, offsetof(CGhostBusterRay, m_ctPasses), "", 0, "m_ctPasses", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f9<<8)+255, offsetof(CGhostBusterRay, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CGhostBusterRay_propertiesct ARRAYCOUNT(CGhostBusterRay_properties)
 

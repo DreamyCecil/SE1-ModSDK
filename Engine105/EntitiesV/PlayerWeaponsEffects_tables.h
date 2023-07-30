@@ -8,9 +8,9 @@ EP_ENUMEND(WeaponEffectType);
 #define ENTITYCLASS CPlayerWeaponsEffects
 
 CEntityProperty CPlayerWeaponsEffects_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000195<<8)+1, offsetof(CPlayerWeaponsEffects, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &WeaponEffectType_enum, (0x00000195<<8)+2, offsetof(CPlayerWeaponsEffects, m_EwetEffect), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000195<<8)+255, offsetof(CPlayerWeaponsEffects, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000195<<8)+1, offsetof(CPlayerWeaponsEffects, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WeaponEffectType_enum, (0x00000195<<8)+2, offsetof(CPlayerWeaponsEffects, m_EwetEffect), "", 0, "m_EwetEffect", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000195<<8)+255, offsetof(CPlayerWeaponsEffects, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CPlayerWeaponsEffects_propertiesct ARRAYCOUNT(CPlayerWeaponsEffects_properties)
 

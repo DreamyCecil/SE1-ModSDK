@@ -4,6 +4,7 @@
 #define _EntitiesV_Gizmo_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/BasicEffects.h>
+#define CGizmo_ClassID 335
 extern "C" DECL_DLL CDLLEntityClass CGizmo_DLLClass;
 class CGizmo : public CEnemyBase {
 public:

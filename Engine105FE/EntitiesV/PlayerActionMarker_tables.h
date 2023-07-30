@@ -31,12 +31,12 @@ EP_ENUMEND(PlayerAutoAction);
 #define ENTITYCLASS CPlayerActionMarker
 
 CEntityProperty CPlayerActionMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &PlayerAutoAction_enum, (0x00000197<<8)+1, offsetof(CPlayerActionMarker, m_paaAction), "Action", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000197<<8)+2, offsetof(CPlayerActionMarker, m_tmWait), "Wait", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+3, offsetof(CPlayerActionMarker, m_penDoorController), "Door for item", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+4, offsetof(CPlayerActionMarker, m_penTrigger), "Trigger", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000197<<8)+5, offsetof(CPlayerActionMarker, m_fSpeed), "Speed", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+6, offsetof(CPlayerActionMarker, m_penItem), "Item to pick", 'I', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &PlayerAutoAction_enum, (0x00000197<<8)+1, offsetof(CPlayerActionMarker, m_paaAction), "Action", 'A', "m_paaAction", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000197<<8)+2, offsetof(CPlayerActionMarker, m_tmWait), "Wait", 'W', "m_tmWait", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+3, offsetof(CPlayerActionMarker, m_penDoorController), "Door for item", 'D', "m_penDoorController", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+4, offsetof(CPlayerActionMarker, m_penTrigger), "Trigger", 'G', "m_penTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000197<<8)+5, offsetof(CPlayerActionMarker, m_fSpeed), "Speed", 'S', "m_fSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000197<<8)+6, offsetof(CPlayerActionMarker, m_penItem), "Item to pick", 'I', "m_penItem", 0x7F0000FFUL, 0),
 };
 #define CPlayerActionMarker_propertiesct ARRAYCOUNT(CPlayerActionMarker_properties)
 

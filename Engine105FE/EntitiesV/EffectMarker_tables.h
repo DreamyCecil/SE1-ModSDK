@@ -16,19 +16,19 @@ EP_ENUMEND(EffectMarkerType);
 #define ENTITYCLASS CEffectMarker
 
 CEntityProperty CEffectMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &EffectMarkerType_enum, (0x00000263<<8)+1, offsetof(CEffectMarker, m_emtType), "Effect type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+2, offsetof(CEffectMarker, m_penModel), "FX Model", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+3, offsetof(CEffectMarker, m_tmEffectLife), "FX Life time", 'L', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+4, offsetof(CEffectMarker, m_penModel2), "FX Model 2", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+5, offsetof(CEffectMarker, m_penEffector), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+6, offsetof(CEffectMarker, m_fShakeFalloff), "Shake fall off", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+7, offsetof(CEffectMarker, m_fShakeFade), "Shake fade", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+8, offsetof(CEffectMarker, m_fShakeIntensityY), "Shake intensity Y", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+9, offsetof(CEffectMarker, m_fShakeFrequencyY), "Shake frequency Y", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+10, offsetof(CEffectMarker, m_fShakeIntensityB), "Shake intensity B", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+11, offsetof(CEffectMarker, m_fShakeFrequencyB), "Shake frequency B", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+12, offsetof(CEffectMarker, m_fShakeIntensityZ), "Shake intensity Z", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+13, offsetof(CEffectMarker, m_fShakeFrequencyZ), "Shake frequency Z", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EffectMarkerType_enum, (0x00000263<<8)+1, offsetof(CEffectMarker, m_emtType), "Effect type", 'Y', "m_emtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+2, offsetof(CEffectMarker, m_penModel), "FX Model", 'M', "m_penModel", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+3, offsetof(CEffectMarker, m_tmEffectLife), "FX Life time", 'L', "m_tmEffectLife", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+4, offsetof(CEffectMarker, m_penModel2), "FX Model 2", 'O', "m_penModel2", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000263<<8)+5, offsetof(CEffectMarker, m_penEffector), "", 0, "m_penEffector", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+6, offsetof(CEffectMarker, m_fShakeFalloff), "Shake fall off", 0, "m_fShakeFalloff", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+7, offsetof(CEffectMarker, m_fShakeFade), "Shake fade", 0, "m_fShakeFade", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+8, offsetof(CEffectMarker, m_fShakeIntensityY), "Shake intensity Y", 0, "m_fShakeIntensityY", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+9, offsetof(CEffectMarker, m_fShakeFrequencyY), "Shake frequency Y", 0, "m_fShakeFrequencyY", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+10, offsetof(CEffectMarker, m_fShakeIntensityB), "Shake intensity B", 0, "m_fShakeIntensityB", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+11, offsetof(CEffectMarker, m_fShakeFrequencyB), "Shake frequency B", 0, "m_fShakeFrequencyB", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+12, offsetof(CEffectMarker, m_fShakeIntensityZ), "Shake intensity Z", 0, "m_fShakeIntensityZ", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000263<<8)+13, offsetof(CEffectMarker, m_fShakeFrequencyZ), "Shake frequency Z", 0, "m_fShakeFrequencyZ", 0x7F0000FFUL, 0),
 };
 #define CEffectMarker_propertiesct ARRAYCOUNT(CEffectMarker_properties)
 

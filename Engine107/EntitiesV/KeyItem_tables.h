@@ -22,9 +22,9 @@ EP_ENUMEND(KeyItemType);
 #define ENTITYCLASS CKeyItem
 
 CEntityProperty CKeyItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &KeyItemType_enum, (0x00000325<<8)+1, offsetof(CKeyItem, m_kitType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000325<<8)+3, offsetof(CKeyItem, m_iSoundComponent), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000325<<8)+5, offsetof(CKeyItem, m_fSize), "Size", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &KeyItemType_enum, (0x00000325<<8)+1, offsetof(CKeyItem, m_kitType), "Type", 'Y', "m_kitType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000325<<8)+3, offsetof(CKeyItem, m_iSoundComponent), "", 0, "m_iSoundComponent", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000325<<8)+5, offsetof(CKeyItem, m_fSize), "Size", 0, "m_fSize", 0x7F0000FFUL, 0),
 };
 #define CKeyItem_propertiesct ARRAYCOUNT(CKeyItem_properties)
 

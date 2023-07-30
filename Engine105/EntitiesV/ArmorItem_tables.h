@@ -12,9 +12,9 @@ EP_ENUMEND(ArmorItemType);
 #define ENTITYCLASS CArmorItem
 
 CEntityProperty CArmorItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &ArmorItemType_enum, (0x00000324<<8)+1, offsetof(CArmorItem, m_EaitType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000324<<8)+2, offsetof(CArmorItem, m_bOverTopArmor), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000324<<8)+3, offsetof(CArmorItem, m_iSoundComponent), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &ArmorItemType_enum, (0x00000324<<8)+1, offsetof(CArmorItem, m_EaitType), "Type", 'Y', "m_EaitType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000324<<8)+2, offsetof(CArmorItem, m_bOverTopArmor), "", 0, "m_bOverTopArmor", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000324<<8)+3, offsetof(CArmorItem, m_iSoundComponent), "", 0, "m_iSoundComponent", 0, 0),
 };
 #define CArmorItem_propertiesct ARRAYCOUNT(CArmorItem_properties)
 

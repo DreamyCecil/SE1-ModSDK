@@ -3,17 +3,17 @@
 #define ENTITYCLASS CHudPicHolder
 
 CEntityProperty CHudPicHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f1<<8)+1, offsetof(CHudPicHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f1<<8)+2, offsetof(CHudPicHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000f1<<8)+3, offsetof(CHudPicHolder, m_fnmPicture), "Picture file", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+4, offsetof(CHudPicHolder, m_tmFadeInStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+5, offsetof(CHudPicHolder, m_tmFadeOutStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+6, offsetof(CHudPicHolder, m_tmFadeInLen), "Fade in time", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+7, offsetof(CHudPicHolder, m_tmFadeOutLen), "Fade out time", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+8, offsetof(CHudPicHolder, m_tmAutoFadeOut), "Auto fade out time", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+9, offsetof(CHudPicHolder, m_fYRatio), "Vertical position ratio", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+10, offsetof(CHudPicHolder, m_fXRatio), "Horizontal position ratio", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+11, offsetof(CHudPicHolder, m_fPictureStretch), "Picture stretch", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f1<<8)+1, offsetof(CHudPicHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f1<<8)+2, offsetof(CHudPicHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000f1<<8)+3, offsetof(CHudPicHolder, m_fnmPicture), "Picture file", 'P', "m_fnmPicture", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+4, offsetof(CHudPicHolder, m_tmFadeInStart), "", 0, "m_tmFadeInStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+5, offsetof(CHudPicHolder, m_tmFadeOutStart), "", 0, "m_tmFadeOutStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+6, offsetof(CHudPicHolder, m_tmFadeInLen), "Fade in time", 'I', "m_tmFadeInLen", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+7, offsetof(CHudPicHolder, m_tmFadeOutLen), "Fade out time", 'O', "m_tmFadeOutLen", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+8, offsetof(CHudPicHolder, m_tmAutoFadeOut), "Auto fade out time", 'A', "m_tmAutoFadeOut", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+9, offsetof(CHudPicHolder, m_fYRatio), "Vertical position ratio", 'Y', "m_fYRatio", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+10, offsetof(CHudPicHolder, m_fXRatio), "Horizontal position ratio", 'X', "m_fXRatio", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f1<<8)+11, offsetof(CHudPicHolder, m_fPictureStretch), "Picture stretch", 'S', "m_fPictureStretch", 0x7F0000FFUL, 0),
 };
 #define CHudPicHolder_propertiesct ARRAYCOUNT(CHudPicHolder_properties)
 

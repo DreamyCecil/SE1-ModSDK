@@ -9,8 +9,8 @@ EP_ENUMEND(WarpRotation);
 #define ENTITYCLASS CMirrorMarker
 
 CEntityProperty CMirrorMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &WarpRotation_enum, (0x000000da<<8)+1, offsetof(CMirrorMarker, m_wrRotation), "Rotation Type", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000da<<8)+2, offsetof(CMirrorMarker, m_fRotationSpeed), "Rotation Speed", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WarpRotation_enum, (0x000000da<<8)+1, offsetof(CMirrorMarker, m_wrRotation), "Rotation Type", 'R', "m_wrRotation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000da<<8)+2, offsetof(CMirrorMarker, m_fRotationSpeed), "Rotation Speed", 'S', "m_fRotationSpeed", 0x7F0000FFUL, 0),
 };
 #define CMirrorMarker_propertiesct ARRAYCOUNT(CMirrorMarker_properties)
 

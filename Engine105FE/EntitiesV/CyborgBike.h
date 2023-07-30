@@ -12,6 +12,7 @@ CEntityEvent *MakeCopy(void);
 FLOAT fSpeed;
 };
 DECL_DLL inline void ClearToDefault(ECyborgBike &e) { e = ECyborgBike(); } ;
+#define CCyborgBike_ClassID 331
 extern "C" DECL_DLL CDLLEntityClass CCyborgBike_DLLClass;
 class CCyborgBike : public CMovableModelEntity {
 public:

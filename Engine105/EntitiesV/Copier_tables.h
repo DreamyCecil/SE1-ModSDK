@@ -3,11 +3,11 @@
 #define ENTITYCLASS CCopier
 
 CEntityProperty CCopier_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+1, offsetof(CCopier, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+3, offsetof(CCopier, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e1<<8)+2, offsetof(CCopier, m_penTarget), "Target", 'T', C_BROWN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+4, offsetof(CCopier, m_bSpawnEffect), "Spawn Effect", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+5, offsetof(CCopier, m_bTelefrag), "Telefrag", 'F', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+1, offsetof(CCopier, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+3, offsetof(CCopier, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e1<<8)+2, offsetof(CCopier, m_penTarget), "Target", 'T', "m_penTarget", C_BROWN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+4, offsetof(CCopier, m_bSpawnEffect), "Spawn Effect", 'X', "m_bSpawnEffect", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+5, offsetof(CCopier, m_bTelefrag), "Telefrag", 'F', "m_bTelefrag", 0x7F0000FFUL, 0),
 };
 #define CCopier_propertiesct ARRAYCOUNT(CCopier_properties)
 

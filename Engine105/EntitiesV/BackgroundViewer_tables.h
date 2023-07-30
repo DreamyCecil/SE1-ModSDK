@@ -3,8 +3,8 @@
 #define ENTITYCLASS CBackgroundViewer
 
 CEntityProperty CBackgroundViewer_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d3<<8)+1, offsetof(CBackgroundViewer, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d3<<8)+2, offsetof(CBackgroundViewer, m_penWorldSettingsController), "World settings controller", 'W', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d3<<8)+1, offsetof(CBackgroundViewer, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d3<<8)+2, offsetof(CBackgroundViewer, m_penWorldSettingsController), "World settings controller", 'W', "m_penWorldSettingsController", 0x7F0000FFUL, 0),
 };
 #define CBackgroundViewer_propertiesct ARRAYCOUNT(CBackgroundViewer_properties)
 

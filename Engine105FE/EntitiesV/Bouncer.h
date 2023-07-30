@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Bouncer_INCLUDED
 #define _EntitiesV_Bouncer_INCLUDED 1
+#define CBouncer_ClassID 105
 extern "C" DECL_DLL CDLLEntityClass CBouncer_DLLClass;
 class CBouncer : public CRationalEntity {
 public:

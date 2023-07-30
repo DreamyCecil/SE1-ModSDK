@@ -4,6 +4,7 @@
 #define _EntitiesV_MeteorShower_INCLUDED 1
 #include <EntitiesV/Projectile.h>
 #include <EntitiesV/EnemyMarker.h>
+#define CMeteorShower_ClassID 615
 extern "C" DECL_DLL CDLLEntityClass CMeteorShower_DLLClass;
 class CMeteorShower : public CRationalEntity {
 public:

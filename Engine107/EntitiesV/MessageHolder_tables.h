@@ -3,12 +3,12 @@
 #define ENTITYCLASS CMessageHolder
 
 CEntityProperty CMessageHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e2<<8)+1, offsetof(CMessageHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e2<<8)+3, offsetof(CMessageHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000e2<<8)+2, offsetof(CMessageHolder, m_fnmMessage), "Message", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e2<<8)+4, offsetof(CMessageHolder, m_fDistance), "Distance", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e2<<8)+5, offsetof(CMessageHolder, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e2<<8)+6, offsetof(CMessageHolder, m_penNext), "Next", 'X', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e2<<8)+1, offsetof(CMessageHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e2<<8)+3, offsetof(CMessageHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000e2<<8)+2, offsetof(CMessageHolder, m_fnmMessage), "Message", 'M', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e2<<8)+4, offsetof(CMessageHolder, m_fDistance), "Distance", 'D', "m_fDistance", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e2<<8)+5, offsetof(CMessageHolder, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e2<<8)+6, offsetof(CMessageHolder, m_penNext), "Next", 'X', "m_penNext", 0x7F0000FFUL, 0),
 };
 #define CMessageHolder_propertiesct ARRAYCOUNT(CMessageHolder_properties)
 

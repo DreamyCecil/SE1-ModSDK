@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Trigger_INCLUDED
 #define _EntitiesV_Trigger_INCLUDED 1
+#define CTrigger_ClassID 205
 extern "C" DECL_DLL CDLLEntityClass CTrigger_DLLClass;
 class CTrigger : public CRationalEntity {
 public:

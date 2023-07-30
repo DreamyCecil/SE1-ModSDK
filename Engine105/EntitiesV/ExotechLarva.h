@@ -32,6 +32,7 @@ CEntityEvent *MakeCopy(void);
 BOOL bStart;
 };
 DECL_DLL inline void ClearToDefault(ELarvaRechargePose &e) { e = ELarvaRechargePose(); } ;
+#define CExotechLarva_ClassID 346
 extern "C" DECL_DLL CDLLEntityClass CExotechLarva_DLLClass;
 class CExotechLarva : public CEnemyBase {
 public:

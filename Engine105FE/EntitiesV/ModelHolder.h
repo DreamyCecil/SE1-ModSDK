@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_ModelHolder_INCLUDED
 #define _EntitiesV_ModelHolder_INCLUDED 1
+#define CModelHolder_ClassID 203
 extern "C" DECL_DLL CDLLEntityClass CModelHolder_DLLClass;
 class CModelHolder : public CEntity {
 public:

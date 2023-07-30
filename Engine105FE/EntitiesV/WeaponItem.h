@@ -29,6 +29,7 @@ INDEX iAmmo;
 BOOL bDropped;
 };
 DECL_DLL inline void ClearToDefault(EWeaponItem &e) { e = EWeaponItem(); } ;
+#define CWeaponItem_ClassID 802
 extern "C" DECL_DLL CDLLEntityClass CWeaponItem_DLLClass;
 class CWeaponItem : public CItem {
 public:

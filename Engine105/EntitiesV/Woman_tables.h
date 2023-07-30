@@ -3,9 +3,9 @@
 #define ENTITYCLASS CWoman
 
 CEntityProperty CWoman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000140<<8)+10, offsetof(CWoman, m_bKamikazeCarrier), "Kamikaze Carrier", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000140<<8)+11, offsetof(CWoman, m_rKamikazeDropDistance), "Kamikaze Drop Range", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000140<<8)+20, offsetof(CWoman, m_bKamikazeAttached), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000140<<8)+10, offsetof(CWoman, m_bKamikazeCarrier), "Kamikaze Carrier", 0, "m_bKamikazeCarrier", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000140<<8)+11, offsetof(CWoman, m_rKamikazeDropDistance), "Kamikaze Drop Range", 0, "m_rKamikazeDropDistance", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000140<<8)+20, offsetof(CWoman, m_bKamikazeAttached), "", 0, "m_bKamikazeAttached", 0, 0),
 };
 #define CWoman_propertiesct ARRAYCOUNT(CWoman_properties)
 

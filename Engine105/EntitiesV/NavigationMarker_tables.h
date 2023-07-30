@@ -3,14 +3,14 @@
 #define ENTITYCLASS CNavigationMarker
 
 CEntityProperty CNavigationMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000002c0<<8)+1, offsetof(CNavigationMarker, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000002c0<<8)+2, offsetof(CNavigationMarker, m_fMarkerRange), "Marker Range", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+100, offsetof(CNavigationMarker, m_penTarget0), "Target 0", 'T', C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+101, offsetof(CNavigationMarker, m_penTarget1), "Target 1", 0, C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+102, offsetof(CNavigationMarker, m_penTarget2), "Target 2", 0, C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+103, offsetof(CNavigationMarker, m_penTarget3), "Target 3", 0, C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+104, offsetof(CNavigationMarker, m_penTarget4), "Target 4", 0, C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+105, offsetof(CNavigationMarker, m_penTarget5), "Target 5", 0, C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000002c0<<8)+1, offsetof(CNavigationMarker, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000002c0<<8)+2, offsetof(CNavigationMarker, m_fMarkerRange), "Marker Range", 'M', "m_fMarkerRange", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+100, offsetof(CNavigationMarker, m_penTarget0), "Target 0", 'T', "m_penTarget0", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+101, offsetof(CNavigationMarker, m_penTarget1), "Target 1", 0, "m_penTarget1", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+102, offsetof(CNavigationMarker, m_penTarget2), "Target 2", 0, "m_penTarget2", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+103, offsetof(CNavigationMarker, m_penTarget3), "Target 3", 0, "m_penTarget3", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+104, offsetof(CNavigationMarker, m_penTarget4), "Target 4", 0, "m_penTarget4", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002c0<<8)+105, offsetof(CNavigationMarker, m_penTarget5), "Target 5", 0, "m_penTarget5", C_dBLUE  | 0xFF, 0),
 };
 #define CNavigationMarker_propertiesct ARRAYCOUNT(CNavigationMarker_properties)
 

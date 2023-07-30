@@ -63,6 +63,7 @@ enum DevilAttackPower {
   DAP_NOT_ATTACKING = 5,
 };
 DECL_DLL inline void ClearToDefault(DevilAttackPower &e) { e = (DevilAttackPower)0; } ;
+#define CDevil_ClassID 332
 extern "C" DECL_DLL CDLLEntityClass CDevil_DLLClass;
 class CDevil : public CEnemyBase {
 public:

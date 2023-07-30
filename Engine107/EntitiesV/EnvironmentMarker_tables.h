@@ -3,16 +3,16 @@
 #define ENTITYCLASS CEnvironmentMarker
 
 CEntityProperty CEnvironmentMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+1, offsetof(CEnvironmentMarker, m_fWaitTime), "Wait time", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+2, offsetof(CEnvironmentMarker, m_fRandomTime), "Random time", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000385<<8)+3, offsetof(CEnvironmentMarker, m_fMarkerRange), "Marker range", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000385<<8)+4, offsetof(CEnvironmentMarker, m_bFixedAnimLength), "Fixed anim length", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000385<<8)+5, offsetof(CEnvironmentMarker, m_bChangeDefaultAnim), "Change default anim", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+6, offsetof(CEnvironmentMarker, m_fMoveSpeed), "Move speed", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+7, offsetof(CEnvironmentMarker, m_fRotateSpeed), "Rotate speed", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000385<<8)+20, offsetof(CEnvironmentMarker, m_fnMdl), "Model", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x00000385<<8)+21, offsetof(CEnvironmentMarker, m_iAnim), "Animation", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_MODELOBJECT, NULL, (0x00000385<<8)+22, offsetof(CEnvironmentMarker, m_moAnimData), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+1, offsetof(CEnvironmentMarker, m_fWaitTime), "Wait time", 'W', "m_fWaitTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+2, offsetof(CEnvironmentMarker, m_fRandomTime), "Random time", 'E', "m_fRandomTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000385<<8)+3, offsetof(CEnvironmentMarker, m_fMarkerRange), "Marker range", 'R', "m_fMarkerRange", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000385<<8)+4, offsetof(CEnvironmentMarker, m_bFixedAnimLength), "Fixed anim length", 'F', "m_bFixedAnimLength", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000385<<8)+5, offsetof(CEnvironmentMarker, m_bChangeDefaultAnim), "Change default anim", 'C', "m_bChangeDefaultAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+6, offsetof(CEnvironmentMarker, m_fMoveSpeed), "Move speed", 'V', "m_fMoveSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000385<<8)+7, offsetof(CEnvironmentMarker, m_fRotateSpeed), "Rotate speed", 'B', "m_fRotateSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000385<<8)+20, offsetof(CEnvironmentMarker, m_fnMdl), "Model", 'M', "m_fnMdl", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x00000385<<8)+21, offsetof(CEnvironmentMarker, m_iAnim), "Animation", 'A', "m_iAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_MODELOBJECT, NULL, (0x00000385<<8)+22, offsetof(CEnvironmentMarker, m_moAnimData), "", 0, "m_moAnimData", 0, 0),
 };
 #define CEnvironmentMarker_propertiesct ARRAYCOUNT(CEnvironmentMarker_properties)
 

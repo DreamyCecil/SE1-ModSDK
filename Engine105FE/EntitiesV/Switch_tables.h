@@ -8,19 +8,19 @@ EP_ENUMEND(SwitchType);
 #define ENTITYCLASS CSwitch
 
 CEntityProperty CSwitch_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+4, offsetof(CSwitch, m_iModelONAnimation), "Model ON animation", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+5, offsetof(CSwitch, m_iTextureONAnimation), "Texture ON animation", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+6, offsetof(CSwitch, m_iModelOFFAnimation), "Model OFF animation", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+7, offsetof(CSwitch, m_iTextureOFFAnimation), "Texture OFF animation", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d1<<8)+10, offsetof(CSwitch, m_penTarget), "ON-OFF Target", 'T', C_dBLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000d1<<8)+11, offsetof(CSwitch, m_eetEvent), "ON  Event type", 'U', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000d1<<8)+12, offsetof(CSwitch, m_eetOffEvent), "OFF Event type", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &SwitchType_enum, (0x000000d1<<8)+18, offsetof(CSwitch, m_swtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000d1<<8)+19, offsetof(CSwitch, m_strMessage), "Message", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+20, offsetof(CSwitch, m_bSwitchON), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d1<<8)+21, offsetof(CSwitch, m_penCaused), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+22, offsetof(CSwitch, m_bUseable), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+23, offsetof(CSwitch, m_bInvisible), "Invisible", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+4, offsetof(CSwitch, m_iModelONAnimation), "Model ON animation", 'D', "m_iModelONAnimation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+5, offsetof(CSwitch, m_iTextureONAnimation), "Texture ON animation", 0, "m_iTextureONAnimation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+6, offsetof(CSwitch, m_iModelOFFAnimation), "Model OFF animation", 'G', "m_iModelOFFAnimation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000d1<<8)+7, offsetof(CSwitch, m_iTextureOFFAnimation), "Texture OFF animation", 0, "m_iTextureOFFAnimation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d1<<8)+10, offsetof(CSwitch, m_penTarget), "ON-OFF Target", 'T', "m_penTarget", C_dBLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000d1<<8)+11, offsetof(CSwitch, m_eetEvent), "ON  Event type", 'U', "m_eetEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000d1<<8)+12, offsetof(CSwitch, m_eetOffEvent), "OFF Event type", 'I', "m_eetOffEvent", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &SwitchType_enum, (0x000000d1<<8)+18, offsetof(CSwitch, m_swtType), "Type", 'Y', "m_swtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000d1<<8)+19, offsetof(CSwitch, m_strMessage), "Message", 'M', "m_strMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+20, offsetof(CSwitch, m_bSwitchON), "", 0, "m_bSwitchON", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000d1<<8)+21, offsetof(CSwitch, m_penCaused), "", 0, "m_penCaused", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+22, offsetof(CSwitch, m_bUseable), "", 0, "m_bUseable", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d1<<8)+23, offsetof(CSwitch, m_bInvisible), "Invisible", 0, "m_bInvisible", 0x7F0000FFUL, 0),
 };
 #define CSwitch_propertiesct ARRAYCOUNT(CSwitch_properties)
 

@@ -3,17 +3,17 @@
 #define ENTITYCLASS CPlayerMarker
 
 CEntityProperty CPlayerMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+1, offsetof(CPlayerMarker, m_fHealth), "Health", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+2, offsetof(CPlayerMarker, m_fShield), "Shield", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+3, offsetof(CPlayerMarker, m_iGiveWeapons), "Give Weapons", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+4, offsetof(CPlayerMarker, m_iTakeWeapons), "Take Weapons", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000194<<8)+5, offsetof(CPlayerMarker, m_strGroup), "Group", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000194<<8)+6, offsetof(CPlayerMarker, m_bQuickStart), "Quick start", 'Q', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000194<<8)+7, offsetof(CPlayerMarker, m_bStartInComputer), "Start in computer", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000194<<8)+8, offsetof(CPlayerMarker, m_penMessage), "Message", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+9, offsetof(CPlayerMarker, m_fMaxAmmoRatio), "Max ammo ratio", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+10, offsetof(CPlayerMarker, m_tmLastSpawned), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+11, offsetof(CPlayerMarker, m_iTakeAmmo), "Take Ammo", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+1, offsetof(CPlayerMarker, m_fHealth), "Health", 'H', "m_fHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+2, offsetof(CPlayerMarker, m_fShield), "Shield", 'S', "m_fShield", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+3, offsetof(CPlayerMarker, m_iGiveWeapons), "Give Weapons", 'W', "m_iGiveWeapons", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+4, offsetof(CPlayerMarker, m_iTakeWeapons), "Take Weapons", 0, "m_iTakeWeapons", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000194<<8)+5, offsetof(CPlayerMarker, m_strGroup), "Group", 'G', "m_strGroup", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000194<<8)+6, offsetof(CPlayerMarker, m_bQuickStart), "Quick start", 'Q', "m_bQuickStart", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000194<<8)+7, offsetof(CPlayerMarker, m_bStartInComputer), "Start in computer", 'C', "m_bStartInComputer", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000194<<8)+8, offsetof(CPlayerMarker, m_penMessage), "Message", 'M', "m_penMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+9, offsetof(CPlayerMarker, m_fMaxAmmoRatio), "Max ammo ratio", 'A', "m_fMaxAmmoRatio", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000194<<8)+10, offsetof(CPlayerMarker, m_tmLastSpawned), "", 0, "m_tmLastSpawned", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000194<<8)+11, offsetof(CPlayerMarker, m_iTakeAmmo), "Take Ammo", 0, "m_iTakeAmmo", 0x7F0000FFUL, 0),
 };
 #define CPlayerMarker_propertiesct ARRAYCOUNT(CPlayerMarker_properties)
 

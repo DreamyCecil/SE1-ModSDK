@@ -20,20 +20,20 @@ EP_ENUMEND(EffectorEffectType);
 #define ENTITYCLASS CEffector
 
 CEntityProperty CEffector_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &EffectorEffectType_enum, (0x00000260<<8)+1, offsetof(CEffector, m_eetType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+2, offsetof(CEffector, m_tmStarted), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000260<<8)+3, offsetof(CEffector, m_vDamageDir), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000260<<8)+4, offsetof(CEffector, m_vFXDestination), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+5, offsetof(CEffector, m_tmLifeTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+6, offsetof(CEffector, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000260<<8)+8, offsetof(CEffector, m_ctCount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+10, offsetof(CEffector, m_bLightSource), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x00000260<<8)+11, offsetof(CEffector, m_aoLightAnimation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000260<<8)+12, offsetof(CEffector, m_iLightAnimation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+13, offsetof(CEffector, m_bAlive), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000260<<8)+14, offsetof(CEffector, m_penModel), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000260<<8)+15, offsetof(CEffector, m_penModel2), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+16, offsetof(CEffector, m_bWaitTrigger), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EffectorEffectType_enum, (0x00000260<<8)+1, offsetof(CEffector, m_eetType), "", 0, "m_eetType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+2, offsetof(CEffector, m_tmStarted), "", 0, "m_tmStarted", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000260<<8)+3, offsetof(CEffector, m_vDamageDir), "", 0, "m_vDamageDir", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000260<<8)+4, offsetof(CEffector, m_vFXDestination), "", 0, "m_vFXDestination", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+5, offsetof(CEffector, m_tmLifeTime), "", 0, "m_tmLifeTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000260<<8)+6, offsetof(CEffector, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000260<<8)+8, offsetof(CEffector, m_ctCount), "", 0, "m_ctCount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+10, offsetof(CEffector, m_bLightSource), "", 0, "m_bLightSource", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMOBJECT, NULL, (0x00000260<<8)+11, offsetof(CEffector, m_aoLightAnimation), "", 0, "m_aoLightAnimation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000260<<8)+12, offsetof(CEffector, m_iLightAnimation), "", 0, "m_iLightAnimation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+13, offsetof(CEffector, m_bAlive), "", 0, "m_bAlive", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000260<<8)+14, offsetof(CEffector, m_penModel), "", 0, "m_penModel", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000260<<8)+15, offsetof(CEffector, m_penModel2), "", 0, "m_penModel2", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000260<<8)+16, offsetof(CEffector, m_bWaitTrigger), "", 0, "m_bWaitTrigger", 0, 0),
 };
 #define CEffector_propertiesct ARRAYCOUNT(CEffector_properties)
 

@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Mantaman_INCLUDED
 #define _EntitiesV_Mantaman_INCLUDED 1
 #include <EntitiesV/EnemyDive.h>
+#define CMantaman_ClassID 329
 extern "C" DECL_DLL CDLLEntityClass CMantaman_DLLClass;
 class CMantaman : public CEnemyDive {
 public:

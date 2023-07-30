@@ -12,6 +12,7 @@ enum ScorpmanType {
   SMT_MONSTER = 2,
 };
 DECL_DLL inline void ClearToDefault(ScorpmanType &e) { e = (ScorpmanType)0; } ;
+#define CScorpman_ClassID 306
 extern "C" DECL_DLL CDLLEntityClass CScorpman_DLLClass;
 class CScorpman : public CEnemyBase {
 public:

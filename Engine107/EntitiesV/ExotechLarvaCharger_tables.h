@@ -3,22 +3,22 @@
 #define ENTITYCLASS CExotechLarvaCharger
 
 CEntityProperty CExotechLarvaCharger_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+1, offsetof(CExotechLarvaCharger, m_bActive), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+2, offsetof(CExotechLarvaCharger, m_bBeamActive), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+3, offsetof(CExotechLarvaCharger, m_fStretch), "Stretch", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000015f<<8)+7, offsetof(CExotechLarvaCharger, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x0000015f<<8)+8, offsetof(CExotechLarvaCharger, m_rSound), "Sound Range", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+10, offsetof(CExotechLarvaCharger, m_penBattery01), "Wall Battery 01", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+11, offsetof(CExotechLarvaCharger, m_penBattery02), "Wall Battery 02", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+12, offsetof(CExotechLarvaCharger, m_penBattery03), "Wall Battery 03", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+13, offsetof(CExotechLarvaCharger, m_penBattery04), "Wall Battery 04", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+14, offsetof(CExotechLarvaCharger, m_penBattery05), "Wall Battery 05", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+15, offsetof(CExotechLarvaCharger, m_penBattery06), "Wall Battery 06", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+20, offsetof(CExotechLarvaCharger, m_bCustomShading), "Custom Shading", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x0000015f<<8)+21, offsetof(CExotechLarvaCharger, m_aShadingDirection), "Light direction", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+22, offsetof(CExotechLarvaCharger, m_colLight), "Light Color", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+23, offsetof(CExotechLarvaCharger, m_colAmbient), "Ambient Light Color", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000015f<<8)+50, offsetof(CExotechLarvaCharger, m_soSound), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+1, offsetof(CExotechLarvaCharger, m_bActive), "", 0, "m_bActive", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+2, offsetof(CExotechLarvaCharger, m_bBeamActive), "", 0, "m_bBeamActive", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+3, offsetof(CExotechLarvaCharger, m_fStretch), "Stretch", 'S', "m_fStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000015f<<8)+7, offsetof(CExotechLarvaCharger, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x0000015f<<8)+8, offsetof(CExotechLarvaCharger, m_rSound), "Sound Range", 0, "m_rSound", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+10, offsetof(CExotechLarvaCharger, m_penBattery01), "Wall Battery 01", 0, "m_penBattery01", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+11, offsetof(CExotechLarvaCharger, m_penBattery02), "Wall Battery 02", 0, "m_penBattery02", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+12, offsetof(CExotechLarvaCharger, m_penBattery03), "Wall Battery 03", 0, "m_penBattery03", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+13, offsetof(CExotechLarvaCharger, m_penBattery04), "Wall Battery 04", 0, "m_penBattery04", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+14, offsetof(CExotechLarvaCharger, m_penBattery05), "Wall Battery 05", 0, "m_penBattery05", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+15, offsetof(CExotechLarvaCharger, m_penBattery06), "Wall Battery 06", 0, "m_penBattery06", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+20, offsetof(CExotechLarvaCharger, m_bCustomShading), "Custom Shading", 0, "m_bCustomShading", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x0000015f<<8)+21, offsetof(CExotechLarvaCharger, m_aShadingDirection), "Light direction", 'D', "m_aShadingDirection", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+22, offsetof(CExotechLarvaCharger, m_colLight), "Light Color", 0, "m_colLight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+23, offsetof(CExotechLarvaCharger, m_colAmbient), "Ambient Light Color", 0, "m_colAmbient", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000015f<<8)+50, offsetof(CExotechLarvaCharger, m_soSound), "", 0, "m_soSound", 0, 0),
 };
 #define CExotechLarvaCharger_propertiesct ARRAYCOUNT(CExotechLarvaCharger_properties)
 

@@ -9,7 +9,7 @@ EP_ENUMEND(CatmanType);
 #define ENTITYCLASS CCatman
 
 CEntityProperty CCatman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &CatmanType_enum, (0x0000012d<<8)+1, offsetof(CCatman, m_cmtType), "Type", 'T', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &CatmanType_enum, (0x0000012d<<8)+1, offsetof(CCatman, m_cmtType), "Type", 'T', "m_cmtType", 0x7F0000FFUL, 0),
 };
 #define CCatman_propertiesct ARRAYCOUNT(CCatman_properties)
 

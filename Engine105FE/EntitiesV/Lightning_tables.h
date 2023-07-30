@@ -3,17 +3,17 @@
 #define ENTITYCLASS CLightning
 
 CEntityProperty CLightning_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+1, offsetof(CLightning, m_penTarget), "Target", 'T', C_BLUE  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+2, offsetof(CLightning, m_penwsc), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000025f<<8)+3, offsetof(CLightning, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+4, offsetof(CLightning, m_tmLightningStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000025f<<8)+5, offsetof(CLightning, m_soThunder), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000025f<<8)+6, offsetof(CLightning, m_bBackground), "Background", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+7, offsetof(CLightning, m_penLight), "Light", 'L', C_CYAN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x0000025f<<8)+8, offsetof(CLightning, m_iLightAnim), "Light Animation", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000025f<<8)+9, offsetof(CLightning, m_iSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+10, offsetof(CLightning, m_fLightningPower), "Lightning power", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+11, offsetof(CLightning, m_fSoundDelay), "Sound delay", 'D', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+1, offsetof(CLightning, m_penTarget), "Target", 'T', "m_penTarget", C_BLUE  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+2, offsetof(CLightning, m_penwsc), "", 0, "m_penwsc", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000025f<<8)+3, offsetof(CLightning, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+4, offsetof(CLightning, m_tmLightningStart), "", 0, "m_tmLightningStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000025f<<8)+5, offsetof(CLightning, m_soThunder), "", 0, "m_soThunder", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000025f<<8)+6, offsetof(CLightning, m_bBackground), "Background", 'B', "m_bBackground", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000025f<<8)+7, offsetof(CLightning, m_penLight), "Light", 'L', "m_penLight", C_CYAN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x0000025f<<8)+8, offsetof(CLightning, m_iLightAnim), "Light Animation", 'A', "m_iLightAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000025f<<8)+9, offsetof(CLightning, m_iSoundPlaying), "", 0, "m_iSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+10, offsetof(CLightning, m_fLightningPower), "Lightning power", 'P', "m_fLightningPower", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025f<<8)+11, offsetof(CLightning, m_fSoundDelay), "Sound delay", 'D', "m_fSoundDelay", 0x7F0000FFUL, 0),
 };
 #define CLightning_propertiesct ARRAYCOUNT(CLightning_properties)
 

@@ -3,15 +3,15 @@
 #define ENTITYCLASS CSpinner
 
 CEntityProperty CSpinner_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015c<<8)+1, offsetof(CSpinner, m_penParent), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+2, offsetof(CSpinner, m_aSpinRotation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+3, offsetof(CSpinner, m_vSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+4, offsetof(CSpinner, m_tmExpire), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+5, offsetof(CSpinner, m_vLastSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015c<<8)+6, offsetof(CSpinner, m_bImpulse), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+7, offsetof(CSpinner, m_tmWaitAfterImpulse), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+10, offsetof(CSpinner, m_tmSpawn), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+11, offsetof(CSpinner, m_vSpinSpeed), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015c<<8)+1, offsetof(CSpinner, m_penParent), "", 0, "m_penParent", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+2, offsetof(CSpinner, m_aSpinRotation), "", 0, "m_aSpinRotation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+3, offsetof(CSpinner, m_vSpeed), "", 0, "m_vSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+4, offsetof(CSpinner, m_tmExpire), "", 0, "m_tmExpire", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+5, offsetof(CSpinner, m_vLastSpeed), "", 0, "m_vLastSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015c<<8)+6, offsetof(CSpinner, m_bImpulse), "", 0, "m_bImpulse", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+7, offsetof(CSpinner, m_tmWaitAfterImpulse), "", 0, "m_tmWaitAfterImpulse", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015c<<8)+10, offsetof(CSpinner, m_tmSpawn), "", 0, "m_tmSpawn", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000015c<<8)+11, offsetof(CSpinner, m_vSpinSpeed), "", 0, "m_vSpinSpeed", 0, 0),
 };
 #define CSpinner_propertiesct ARRAYCOUNT(CSpinner_properties)
 

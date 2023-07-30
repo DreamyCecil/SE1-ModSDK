@@ -3,16 +3,16 @@
 #define ENTITYCLASS CWatchPlayers
 
 CEntityProperty CWatchPlayers_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+1, offsetof(CWatchPlayers, m_penOwner), "Owner/Target", 'O', C_dBROWN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+10, offsetof(CWatchPlayers, m_penFar), "Far Target", 'F', C_BLACK  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000002be<<8)+2, offsetof(CWatchPlayers, m_fWaitTime), "Wait time", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000002be<<8)+3, offsetof(CWatchPlayers, m_fDistance), "Watch distance", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000002be<<8)+4, offsetof(CWatchPlayers, m_bRangeWatcher), "Range watcher", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000002be<<8)+5, offsetof(CWatchPlayers, m_eetEventClose), "Close Event type", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000002be<<8)+6, offsetof(CWatchPlayers, m_eetEventFar), "Far Event type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+7, offsetof(CWatchPlayers, m_penCurrentWatch), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000002be<<8)+8, offsetof(CWatchPlayers, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000002be<<8)+9, offsetof(CWatchPlayers, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+1, offsetof(CWatchPlayers, m_penOwner), "Owner/Target", 'O', "m_penOwner", C_dBROWN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+10, offsetof(CWatchPlayers, m_penFar), "Far Target", 'F', "m_penFar", C_BLACK  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000002be<<8)+2, offsetof(CWatchPlayers, m_fWaitTime), "Wait time", 'W', "m_fWaitTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000002be<<8)+3, offsetof(CWatchPlayers, m_fDistance), "Watch distance", 'D', "m_fDistance", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000002be<<8)+4, offsetof(CWatchPlayers, m_bRangeWatcher), "Range watcher", 'R', "m_bRangeWatcher", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000002be<<8)+5, offsetof(CWatchPlayers, m_eetEventClose), "Close Event type", 'T', "m_eetEventClose", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000002be<<8)+6, offsetof(CWatchPlayers, m_eetEventFar), "Far Event type", 'Y', "m_eetEventFar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002be<<8)+7, offsetof(CWatchPlayers, m_penCurrentWatch), "", 0, "m_penCurrentWatch", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000002be<<8)+8, offsetof(CWatchPlayers, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000002be<<8)+9, offsetof(CWatchPlayers, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
 };
 #define CWatchPlayers_propertiesct ARRAYCOUNT(CWatchPlayers_properties)
 

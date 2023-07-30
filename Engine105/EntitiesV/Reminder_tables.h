@@ -3,9 +3,9 @@
 #define ENTITYCLASS CReminder
 
 CEntityProperty CReminder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bf<<8)+1, offsetof(CReminder, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000002bf<<8)+2, offsetof(CReminder, m_fWaitTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000002bf<<8)+3, offsetof(CReminder, m_iValue), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000002bf<<8)+1, offsetof(CReminder, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000002bf<<8)+2, offsetof(CReminder, m_fWaitTime), "", 0, "m_fWaitTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000002bf<<8)+3, offsetof(CReminder, m_iValue), "", 0, "m_iValue", 0, 0),
 };
 #define CReminder_propertiesct ARRAYCOUNT(CReminder_properties)
 

@@ -4,6 +4,7 @@
 #define _EntitiesV_HazeMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
 #include <EntitiesV/FogMarker.h>
+#define CHazeMarker_ClassID 216
 extern "C" DECL_DLL CDLLEntityClass CHazeMarker_DLLClass;
 class CHazeMarker : public CMarker {
 public:

@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Woman_INCLUDED
 #define _EntitiesV_Woman_INCLUDED 1
 #include <EntitiesV/EnemyFly.h>
+#define CWoman_ClassID 320
 extern "C" DECL_DLL CDLLEntityClass CWoman_DLLClass;
 class CWoman : public CEnemyFly {
 public:

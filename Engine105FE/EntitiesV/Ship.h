@@ -10,6 +10,7 @@ EHarbor();
 CEntityEvent *MakeCopy(void);
 };
 DECL_DLL inline void ClearToDefault(EHarbor &e) { e = EHarbor(); } ;
+#define CShip_ClassID 103
 extern "C" DECL_DLL CDLLEntityClass CShip_DLLClass;
 class CShip : public CMovableBrushEntity {
 public:

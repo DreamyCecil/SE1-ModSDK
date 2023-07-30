@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Boneman_INCLUDED
 #define _EntitiesV_Boneman_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
+#define CBoneman_ClassID 305
 extern "C" DECL_DLL CDLLEntityClass CBoneman_DLLClass;
 class CBoneman : public CEnemyBase {
 public:

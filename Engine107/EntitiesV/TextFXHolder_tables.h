@@ -3,15 +3,15 @@
 #define ENTITYCLASS CTextFXHolder
 
 CEntityProperty CTextFXHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ef<<8)+1, offsetof(CTextFXHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ef<<8)+2, offsetof(CTextFXHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000ef<<8)+3, offsetof(CTextFXHolder, m_fnmMessage), "Text file", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+4, offsetof(CTextFXHolder, m_tmFadeInStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+5, offsetof(CTextFXHolder, m_tmFadeOutStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+6, offsetof(CTextFXHolder, m_tmFadeInLen), "Fade in time", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+7, offsetof(CTextFXHolder, m_tmFadeOutLen), "Fade out time", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+8, offsetof(CTextFXHolder, m_tmAutoFadeOut), "Auto fade out time", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000ef<<8)+20, offsetof(CTextFXHolder, m_bDataError), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ef<<8)+1, offsetof(CTextFXHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ef<<8)+2, offsetof(CTextFXHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000ef<<8)+3, offsetof(CTextFXHolder, m_fnmMessage), "Text file", 'T', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+4, offsetof(CTextFXHolder, m_tmFadeInStart), "", 0, "m_tmFadeInStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+5, offsetof(CTextFXHolder, m_tmFadeOutStart), "", 0, "m_tmFadeOutStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+6, offsetof(CTextFXHolder, m_tmFadeInLen), "Fade in time", 'I', "m_tmFadeInLen", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+7, offsetof(CTextFXHolder, m_tmFadeOutLen), "Fade out time", 'O', "m_tmFadeOutLen", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ef<<8)+8, offsetof(CTextFXHolder, m_tmAutoFadeOut), "Auto fade out time", 'A', "m_tmAutoFadeOut", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000ef<<8)+20, offsetof(CTextFXHolder, m_bDataError), "", 0, "m_bDataError", 0, 0),
 };
 #define CTextFXHolder_propertiesct ARRAYCOUNT(CTextFXHolder_properties)
 

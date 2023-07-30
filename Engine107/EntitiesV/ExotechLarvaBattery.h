@@ -4,6 +4,7 @@
 #define _EntitiesV_ExotechLarvaBattery_INCLUDED 1
 #include <EntitiesV/BloodSpray.h>
 #include <EntitiesV/Projectile.h>
+#define CExotechLarvaBattery_ClassID 351
 extern "C" DECL_DLL CDLLEntityClass CExotechLarvaBattery_DLLClass;
 class CExotechLarvaBattery : public CRationalEntity {
 public:

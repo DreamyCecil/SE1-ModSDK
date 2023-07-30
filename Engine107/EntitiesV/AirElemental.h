@@ -11,6 +11,7 @@ EElementalGrow();
 CEntityEvent *MakeCopy(void);
 };
 DECL_DLL inline void ClearToDefault(EElementalGrow &e) { e = EElementalGrow(); } ;
+#define CAirElemental_ClassID 347
 extern "C" DECL_DLL CDLLEntityClass CAirElemental_DLLClass;
 class CAirElemental : public CEnemyBase {
 public:

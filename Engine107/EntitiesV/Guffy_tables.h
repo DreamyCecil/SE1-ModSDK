@@ -3,13 +3,13 @@
 #define ENTITYCLASS CGuffy
 
 CEntityProperty CGuffy_properties[] = {
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000158<<8)+2, offsetof(CGuffy, m_iLoopCounter), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000158<<8)+3, offsetof(CGuffy, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000158<<8)+4, offsetof(CGuffy, m_bWalkSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000158<<8)+5, offsetof(CGuffy, m_fThreatDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000158<<8)+6, offsetof(CGuffy, m_bEnemyToTheLeft), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000158<<8)+10, offsetof(CGuffy, m_soFire1), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000158<<8)+11, offsetof(CGuffy, m_soFire2), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000158<<8)+2, offsetof(CGuffy, m_iLoopCounter), "", 0, "m_iLoopCounter", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000158<<8)+3, offsetof(CGuffy, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000158<<8)+4, offsetof(CGuffy, m_bWalkSoundPlaying), "", 0, "m_bWalkSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000158<<8)+5, offsetof(CGuffy, m_fThreatDistance), "", 0, "m_fThreatDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000158<<8)+6, offsetof(CGuffy, m_bEnemyToTheLeft), "", 0, "m_bEnemyToTheLeft", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000158<<8)+10, offsetof(CGuffy, m_soFire1), "", 0, "m_soFire1", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000158<<8)+11, offsetof(CGuffy, m_soFire2), "", 0, "m_soFire2", 0, 0),
 };
 #define CGuffy_propertiesct ARRAYCOUNT(CGuffy_properties)
 

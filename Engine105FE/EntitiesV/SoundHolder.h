@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_SoundHolder_INCLUDED
 #define _EntitiesV_SoundHolder_INCLUDED 1
 #include <EntitiesV/ModelDestruction.h>
+#define CSoundHolder_ClassID 204
 extern "C" DECL_DLL CDLLEntityClass CSoundHolder_DLLClass;
 class CSoundHolder : public CRationalEntity {
 public:

@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_PhotoAlbum_INCLUDED
 #define _EntitiesV_PhotoAlbum_INCLUDED 1
+#define CPhotoAlbum_ClassID 614
 extern "C" DECL_DLL CDLLEntityClass CPhotoAlbum_DLLClass;
 class CPhotoAlbum : public CMovableModelEntity {
 public:

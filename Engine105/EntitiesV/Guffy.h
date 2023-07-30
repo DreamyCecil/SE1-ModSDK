@@ -4,6 +4,7 @@
 #define _EntitiesV_Guffy_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/Projectile.h>
+#define CGuffy_ClassID 344
 extern "C" DECL_DLL CDLLEntityClass CGuffy_DLLClass;
 class CGuffy : public CEnemyBase {
 public:

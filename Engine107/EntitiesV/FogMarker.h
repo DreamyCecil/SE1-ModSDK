@@ -17,6 +17,7 @@ enum FogGraduationType2 {
   FG_EXP = 2,
 };
 DECL_DLL inline void ClearToDefault(FogGraduationType2 &e) { e = (FogGraduationType2)0; } ;
+#define CFogMarker_ClassID 215
 extern "C" DECL_DLL CDLLEntityClass CFogMarker_DLLClass;
 class CFogMarker : public CMarker {
 public:

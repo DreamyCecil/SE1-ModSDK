@@ -13,6 +13,7 @@ CEntityPointer penLauncher;
 CEntityPointer penTarget;
 };
 DECL_DLL inline void ClearToDefault(EDevilProjectile &e) { e = EDevilProjectile(); } ;
+#define CDevilProjectile_ClassID 511
 extern "C" DECL_DLL CDLLEntityClass CDevilProjectile_DLLClass;
 class CDevilProjectile : public CMovableModelEntity {
 public:

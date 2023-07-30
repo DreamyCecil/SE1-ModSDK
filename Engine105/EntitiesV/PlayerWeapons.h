@@ -83,6 +83,7 @@ enum WeaponType {
   WEAPON_LAST = 15,
 };
 DECL_DLL inline void ClearToDefault(WeaponType &e) { e = (WeaponType)0; } ;
+#define CPlayerWeapons_ClassID 402
 extern "C" DECL_DLL CDLLEntityClass CPlayerWeapons_DLLClass;
 class DECL_DLL  CPlayerWeapons : public CRationalEntity {
 public:

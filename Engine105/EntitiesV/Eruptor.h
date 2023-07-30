@@ -4,6 +4,7 @@
 #define _EntitiesV_Eruptor_INCLUDED 1
 #include <EntitiesV/ModelHolder2.h>
 #include <EntitiesV/Projectile.h>
+#define CEruptor_ClassID 213
 extern "C" DECL_DLL CDLLEntityClass CEruptor_DLLClass;
 class CEruptor : public CModelHolder2 {
 public:

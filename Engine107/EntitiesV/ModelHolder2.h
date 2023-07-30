@@ -19,6 +19,7 @@ enum ShadowType {
   ST_POLYGONAL = 2,
 };
 DECL_DLL inline void ClearToDefault(ShadowType &e) { e = (ShadowType)0; } ;
+#define CModelHolder2_ClassID 210
 extern "C" DECL_DLL CDLLEntityClass CModelHolder2_DLLClass;
 class CModelHolder2 : public CRationalEntity {
 public:

@@ -25,6 +25,7 @@ enum ParticlesHolderType {
   PHT_COLLECT_ENERGY = 19,
 };
 DECL_DLL inline void ClearToDefault(ParticlesHolderType &e) { e = (ParticlesHolderType)0; } ;
+#define CParticlesHolder_ClassID 223
 extern "C" DECL_DLL CDLLEntityClass CParticlesHolder_DLLClass;
 class CParticlesHolder : public CMovableModelEntity {
 public:

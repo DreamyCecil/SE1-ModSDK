@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_HudPicHolder_INCLUDED
 #define _EntitiesV_HudPicHolder_INCLUDED 1
+#define CHudPicHolder_ClassID 241
 extern "C" DECL_DLL CDLLEntityClass CHudPicHolder_DLLClass;
 class CHudPicHolder : public CRationalEntity {
 public:

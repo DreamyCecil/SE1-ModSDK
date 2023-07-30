@@ -3,14 +3,14 @@
 #define ENTITYCLASS CPyramidSpaceShipMarker
 
 CEntityProperty CPyramidSpaceShipMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+1, offsetof(CPyramidSpaceShipMarker, m_fDeltaTime), "Delta time", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+2, offsetof(CPyramidSpaceShipMarker, m_fBias), "Bias", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+3, offsetof(CPyramidSpaceShipMarker, m_fTension), "Tension", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+4, offsetof(CPyramidSpaceShipMarker, m_fContinuity), "Continuity", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000262<<8)+5, offsetof(CPyramidSpaceShipMarker, m_bStopMoving), "Stop moving", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000262<<8)+6, offsetof(CPyramidSpaceShipMarker, m_penTrigger), "Trigger", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+7, offsetof(CPyramidSpaceShipMarker, m_fRotSpeed), "Rotation speed", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000262<<8)+8, offsetof(CPyramidSpaceShipMarker, m_penSpaceShip), "Space ship", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+1, offsetof(CPyramidSpaceShipMarker, m_fDeltaTime), "Delta time", 'D', "m_fDeltaTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+2, offsetof(CPyramidSpaceShipMarker, m_fBias), "Bias", 'B', "m_fBias", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+3, offsetof(CPyramidSpaceShipMarker, m_fTension), "Tension", 'E', "m_fTension", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+4, offsetof(CPyramidSpaceShipMarker, m_fContinuity), "Continuity", 'C', "m_fContinuity", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000262<<8)+5, offsetof(CPyramidSpaceShipMarker, m_bStopMoving), "Stop moving", 'O', "m_bStopMoving", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000262<<8)+6, offsetof(CPyramidSpaceShipMarker, m_penTrigger), "Trigger", 'G', "m_penTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000262<<8)+7, offsetof(CPyramidSpaceShipMarker, m_fRotSpeed), "Rotation speed", 'R', "m_fRotSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000262<<8)+8, offsetof(CPyramidSpaceShipMarker, m_penSpaceShip), "Space ship", 'S', "m_penSpaceShip", 0x7F0000FFUL, 0),
 };
 #define CPyramidSpaceShipMarker_propertiesct ARRAYCOUNT(CPyramidSpaceShipMarker_properties)
 

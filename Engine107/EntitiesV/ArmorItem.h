@@ -22,6 +22,7 @@ FLOAT fArmor;
 BOOL bOverTopArmor;
 };
 DECL_DLL inline void ClearToDefault(EArmor &e) { e = EArmor(); } ;
+#define CArmorItem_ClassID 804
 extern "C" DECL_DLL CDLLEntityClass CArmorItem_DLLClass;
 class CArmorItem : public CItem {
 public:

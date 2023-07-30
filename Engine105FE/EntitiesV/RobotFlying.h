@@ -9,6 +9,7 @@ enum RobotFlyingChar {
   RFC_FIGHTER = 1,
 };
 DECL_DLL inline void ClearToDefault(RobotFlyingChar &e) { e = (RobotFlyingChar)0; } ;
+#define CRobotFlying_ClassID 334
 extern "C" DECL_DLL CDLLEntityClass CRobotFlying_DLLClass;
 class CRobotFlying : public CEnemyFly {
 public:

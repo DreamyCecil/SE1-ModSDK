@@ -3,12 +3,12 @@
 #define ENTITYCLASS CDamager
 
 CEntityProperty CDamager_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e5<<8)+1, offsetof(CDamager, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e5<<8)+2, offsetof(CDamager, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &DamageType_enum, (0x000000e5<<8)+3, offsetof(CDamager, m_dmtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e5<<8)+4, offsetof(CDamager, m_fAmmount), "Ammount", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e5<<8)+5, offsetof(CDamager, m_penToDamage), "Entity to Damage", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e5<<8)+6, offsetof(CDamager, m_bDamageFromTriggerer), "DamageFromTriggerer", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e5<<8)+1, offsetof(CDamager, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e5<<8)+2, offsetof(CDamager, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DamageType_enum, (0x000000e5<<8)+3, offsetof(CDamager, m_dmtType), "Type", 'Y', "m_dmtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e5<<8)+4, offsetof(CDamager, m_fAmmount), "Ammount", 'A', "m_fAmmount", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e5<<8)+5, offsetof(CDamager, m_penToDamage), "Entity to Damage", 'E', "m_penToDamage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e5<<8)+6, offsetof(CDamager, m_bDamageFromTriggerer), "DamageFromTriggerer", 'S', "m_bDamageFromTriggerer", 0x7F0000FFUL, 0),
 };
 #define CDamager_propertiesct ARRAYCOUNT(CDamager_properties)
 

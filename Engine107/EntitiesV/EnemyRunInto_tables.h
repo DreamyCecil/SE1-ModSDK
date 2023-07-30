@@ -3,15 +3,15 @@
 #define ENTITYCLASS CEnemyRunInto
 
 CEntityProperty CEnemyRunInto_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000138<<8)+1, offsetof(CEnemyRunInto, m_penLastTouched), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+2, offsetof(CEnemyRunInto, m_fLastTouchedTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000138<<8)+3, offsetof(CEnemyRunInto, m_bWhileLoop), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+5, offsetof(CEnemyRunInto, m_fMassKicked), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+7, offsetof(CEnemyRunInto, m_fInertionRunTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+8, offsetof(CEnemyRunInto, m_fStopApproachDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+9, offsetof(CEnemyRunInto, m_fChargeDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000138<<8)+10, offsetof(CEnemyRunInto, m_bUseChargeAnimation), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE, NULL, (0x00000138<<8)+20, offsetof(CEnemyRunInto, m_fAttackRotateRunInto), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000138<<8)+1, offsetof(CEnemyRunInto, m_penLastTouched), "", 0, "m_penLastTouched", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+2, offsetof(CEnemyRunInto, m_fLastTouchedTime), "", 0, "m_fLastTouchedTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000138<<8)+3, offsetof(CEnemyRunInto, m_bWhileLoop), "", 0, "m_bWhileLoop", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+5, offsetof(CEnemyRunInto, m_fMassKicked), "", 0, "m_fMassKicked", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+7, offsetof(CEnemyRunInto, m_fInertionRunTime), "", 0, "m_fInertionRunTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+8, offsetof(CEnemyRunInto, m_fStopApproachDistance), "", 0, "m_fStopApproachDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000138<<8)+9, offsetof(CEnemyRunInto, m_fChargeDistance), "", 0, "m_fChargeDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000138<<8)+10, offsetof(CEnemyRunInto, m_bUseChargeAnimation), "", 0, "m_bUseChargeAnimation", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE, NULL, (0x00000138<<8)+20, offsetof(CEnemyRunInto, m_fAttackRotateRunInto), "", 0, "m_fAttackRotateRunInto", 0, 0),
 };
 #define CEnemyRunInto_propertiesct ARRAYCOUNT(CEnemyRunInto_properties)
 

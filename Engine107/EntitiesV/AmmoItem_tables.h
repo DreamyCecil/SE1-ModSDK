@@ -17,7 +17,7 @@ EP_ENUMEND(AmmoItemType);
 #define ENTITYCLASS CAmmoItem
 
 CEntityProperty CAmmoItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &AmmoItemType_enum, (0x00000323<<8)+1, offsetof(CAmmoItem, m_EaitType), "Type", 'Y', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &AmmoItemType_enum, (0x00000323<<8)+1, offsetof(CAmmoItem, m_EaitType), "Type", 'Y', "m_EaitType", 0x7F0000FFUL, 0),
 };
 #define CAmmoItem_propertiesct ARRAYCOUNT(CAmmoItem_properties)
 

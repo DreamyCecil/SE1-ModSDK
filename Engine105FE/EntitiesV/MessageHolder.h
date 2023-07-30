@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_MessageHolder_INCLUDED
 #define _EntitiesV_MessageHolder_INCLUDED 1
+#define CMessageHolder_ClassID 226
 extern "C" DECL_DLL CDLLEntityClass CMessageHolder_DLLClass;
 class CMessageHolder : public CRationalEntity {
 public:

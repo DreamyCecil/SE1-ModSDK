@@ -10,6 +10,7 @@ enum GruntType {
   GT_COMMANDER = 1,
 };
 DECL_DLL inline void ClearToDefault(GruntType &e) { e = (GruntType)0; } ;
+#define CGrunt_ClassID 343
 extern "C" DECL_DLL CDLLEntityClass CGrunt_DLLClass;
 class CGrunt : public CEnemyBase {
 public:

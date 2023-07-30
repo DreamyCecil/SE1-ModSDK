@@ -3,22 +3,22 @@
 #define ENTITYCLASS CLarvaOffspring
 
 CEntityProperty CLarvaOffspring_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+1, offsetof(CLarvaOffspring, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+5, offsetof(CLarvaOffspring, m_penTarget), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+11, offsetof(CLarvaOffspring, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+12, offsetof(CLarvaOffspring, m_fFlyTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+13, offsetof(CLarvaOffspring, m_fStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+14, offsetof(CLarvaOffspring, m_fDamageAmount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+15, offsetof(CLarvaOffspring, m_fRangeDamageAmount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+16, offsetof(CLarvaOffspring, m_fDamageHotSpotRange), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+17, offsetof(CLarvaOffspring, m_fDamageFallOffRange), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+18, offsetof(CLarvaOffspring, m_fSoundRange), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000161<<8)+19, offsetof(CLarvaOffspring, m_bExplode), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+24, offsetof(CLarvaOffspring, m_aRotateSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+25, offsetof(CLarvaOffspring, m_tmExpandBox), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000161<<8)+30, offsetof(CLarvaOffspring, m_soEffect), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000161<<8)+50, offsetof(CLarvaOffspring, bLockedOn), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+255, offsetof(CLarvaOffspring, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+1, offsetof(CLarvaOffspring, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+5, offsetof(CLarvaOffspring, m_penTarget), "", 0, "m_penTarget", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+11, offsetof(CLarvaOffspring, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+12, offsetof(CLarvaOffspring, m_fFlyTime), "", 0, "m_fFlyTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+13, offsetof(CLarvaOffspring, m_fStartTime), "", 0, "m_fStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+14, offsetof(CLarvaOffspring, m_fDamageAmount), "", 0, "m_fDamageAmount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+15, offsetof(CLarvaOffspring, m_fRangeDamageAmount), "", 0, "m_fRangeDamageAmount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+16, offsetof(CLarvaOffspring, m_fDamageHotSpotRange), "", 0, "m_fDamageHotSpotRange", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+17, offsetof(CLarvaOffspring, m_fDamageFallOffRange), "", 0, "m_fDamageFallOffRange", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+18, offsetof(CLarvaOffspring, m_fSoundRange), "", 0, "m_fSoundRange", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000161<<8)+19, offsetof(CLarvaOffspring, m_bExplode), "", 0, "m_bExplode", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+24, offsetof(CLarvaOffspring, m_aRotateSpeed), "", 0, "m_aRotateSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000161<<8)+25, offsetof(CLarvaOffspring, m_tmExpandBox), "", 0, "m_tmExpandBox", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000161<<8)+30, offsetof(CLarvaOffspring, m_soEffect), "", 0, "m_soEffect", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000161<<8)+50, offsetof(CLarvaOffspring, bLockedOn), "", 0, "bLockedOn", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000161<<8)+255, offsetof(CLarvaOffspring, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CLarvaOffspring_propertiesct ARRAYCOUNT(CLarvaOffspring_properties)
 

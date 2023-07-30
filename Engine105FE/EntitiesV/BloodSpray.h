@@ -29,6 +29,7 @@ FLOAT3D vDirection;
 CEntityPointer penOwner;
 };
 DECL_DLL inline void ClearToDefault(ESpawnSpray &e) { e = ESpawnSpray(); } ;
+#define CBloodSpray_ClassID 603
 extern "C" DECL_DLL CDLLEntityClass CBloodSpray_DLLClass;
 class CBloodSpray : public CRationalEntity {
 public:

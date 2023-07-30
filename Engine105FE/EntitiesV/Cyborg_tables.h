@@ -9,16 +9,16 @@ EP_ENUMEND(CyborgType);
 #define ENTITYCLASS CCyborg
 
 CEntityProperty CCyborg_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &CyborgType_enum, (0x0000014a<<8)+1, offsetof(CCyborg, m_EctType), "Type", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+2, offsetof(CCyborg, m_iCloseHit), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+3, offsetof(CCyborg, m_iFireLaserCount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+4, offsetof(CCyborg, m_ctBombsToDrop), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+10, offsetof(CCyborg, m_tmLastBombDropped), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+5, offsetof(CCyborg, m_fFlyAboveEnemy), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+6, offsetof(CCyborg, m_fFlySpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+7, offsetof(CCyborg, m_aFlyRotateSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+8, offsetof(CCyborg, m_fFallStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000014a<<8)+9, offsetof(CCyborg, m_bBombing), "Bombing", 'B', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &CyborgType_enum, (0x0000014a<<8)+1, offsetof(CCyborg, m_EctType), "Type", 'T', "m_EctType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+2, offsetof(CCyborg, m_iCloseHit), "", 0, "m_iCloseHit", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+3, offsetof(CCyborg, m_iFireLaserCount), "", 0, "m_iFireLaserCount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000014a<<8)+4, offsetof(CCyborg, m_ctBombsToDrop), "", 0, "m_ctBombsToDrop", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+10, offsetof(CCyborg, m_tmLastBombDropped), "", 0, "m_tmLastBombDropped", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+5, offsetof(CCyborg, m_fFlyAboveEnemy), "", 0, "m_fFlyAboveEnemy", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+6, offsetof(CCyborg, m_fFlySpeed), "", 0, "m_fFlySpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+7, offsetof(CCyborg, m_aFlyRotateSpeed), "", 0, "m_aFlyRotateSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014a<<8)+8, offsetof(CCyborg, m_fFallStartTime), "", 0, "m_fFallStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000014a<<8)+9, offsetof(CCyborg, m_bBombing), "Bombing", 'B', "m_bBombing", 0x7F0000FFUL, 0),
 };
 #define CCyborg_propertiesct ARRAYCOUNT(CCyborg_properties)
 

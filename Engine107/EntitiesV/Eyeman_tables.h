@@ -13,11 +13,11 @@ EP_ENUMEND(EyemanEnv);
 #define ENTITYCLASS CEyeman
 
 CEntityProperty CEyeman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &EyemanChar_enum, (0x00000143<<8)+1, offsetof(CEyeman, m_EecChar), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000143<<8)+2, offsetof(CEyeman, m_bInvisible), "Invisible", 'I', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EyemanEnv_enum, (0x00000143<<8)+3, offsetof(CEyeman, m_eeEnv), "Environment", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000143<<8)+4, offsetof(CEyeman, m_bMumbleSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000143<<8)+5, offsetof(CEyeman, m_soMumble), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EyemanChar_enum, (0x00000143<<8)+1, offsetof(CEyeman, m_EecChar), "Character", 'C', "m_EecChar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000143<<8)+2, offsetof(CEyeman, m_bInvisible), "Invisible", 'I', "m_bInvisible", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EyemanEnv_enum, (0x00000143<<8)+3, offsetof(CEyeman, m_eeEnv), "Environment", 'E', "m_eeEnv", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000143<<8)+4, offsetof(CEyeman, m_bMumbleSoundPlaying), "", 0, "m_bMumbleSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000143<<8)+5, offsetof(CEyeman, m_soMumble), "", 0, "m_soMumble", 0, 0),
 };
 #define CEyeman_propertiesct ARRAYCOUNT(CEyeman_properties)
 

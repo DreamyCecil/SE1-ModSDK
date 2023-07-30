@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Santa_INCLUDED
 #define _EntitiesV_Santa_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
+#define CSanta_ClassID 355
 extern "C" DECL_DLL CDLLEntityClass CSanta_DLLClass;
 class CSanta : public CEnemyBase {
 public:

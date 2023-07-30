@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_LightStyle_INCLUDED
 #define _EntitiesV_LightStyle_INCLUDED 1
+#define CLightStyle_ClassID 201
 extern "C" DECL_DLL CDLLEntityClass CLightStyle_DLLClass;
 class CLightStyle : public CEntity {
 public:

@@ -35,6 +35,7 @@ CEntityPointer penModel;
 CEntityPointer penModel2;
 };
 DECL_DLL inline void ClearToDefault(ESpawnEffector &e) { e = ESpawnEffector(); } ;
+#define CEffector_ClassID 608
 extern "C" DECL_DLL CDLLEntityClass CEffector_DLLClass;
 class CEffector : public CMovableModelEntity {
 public:

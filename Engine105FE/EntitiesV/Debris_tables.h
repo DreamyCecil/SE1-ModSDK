@@ -11,15 +11,15 @@ EP_ENUMEND(DebrisParticlesType);
 #define ENTITYCLASS CDebris
 
 CEntityProperty CDebris_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &DebrisParticlesType_enum, (0x0000025a<<8)+1, offsetof(CDebris, m_dptParticles), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000025a<<8)+2, offsetof(CDebris, m_iBodyType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000025a<<8)+3, offsetof(CDebris, m_bFade), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+4, offsetof(CDebris, m_fFadeStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+5, offsetof(CDebris, m_fFadeTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025a<<8)+6, offsetof(CDebris, m_fLastStainHitPoint), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BasicEffectType_enum, (0x0000025a<<8)+7, offsetof(CDebris, m_betStain), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000025a<<8)+8, offsetof(CDebris, m_ctLeftStains), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+9, offsetof(CDebris, m_tmStarted), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DebrisParticlesType_enum, (0x0000025a<<8)+1, offsetof(CDebris, m_dptParticles), "", 0, "m_dptParticles", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000025a<<8)+2, offsetof(CDebris, m_iBodyType), "", 0, "m_iBodyType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000025a<<8)+3, offsetof(CDebris, m_bFade), "", 0, "m_bFade", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+4, offsetof(CDebris, m_fFadeStartTime), "", 0, "m_fFadeStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+5, offsetof(CDebris, m_fFadeTime), "", 0, "m_fFadeTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000025a<<8)+6, offsetof(CDebris, m_fLastStainHitPoint), "", 0, "m_fLastStainHitPoint", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BasicEffectType_enum, (0x0000025a<<8)+7, offsetof(CDebris, m_betStain), "", 0, "m_betStain", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000025a<<8)+8, offsetof(CDebris, m_ctLeftStains), "", 0, "m_ctLeftStains", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000025a<<8)+9, offsetof(CDebris, m_tmStarted), "", 0, "m_tmStarted", 0, 0),
 };
 #define CDebris_propertiesct ARRAYCOUNT(CDebris_properties)
 

@@ -12,6 +12,7 @@ enum HeadmanType {
   HDT_KAMIKAZE = 3,
 };
 DECL_DLL inline void ClearToDefault(HeadmanType &e) { e = (HeadmanType)0; } ;
+#define CHeadman_ClassID 303
 extern "C" DECL_DLL CDLLEntityClass CHeadman_DLLClass;
 class CHeadman : public CEnemyBase {
 public:

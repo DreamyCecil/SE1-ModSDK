@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_WorldSettingsController_INCLUDED
 #define _EntitiesV_WorldSettingsController_INCLUDED 1
+#define CWorldSettingsController_ClassID 605
 extern "C" DECL_DLL CDLLEntityClass CWorldSettingsController_DLLClass;
 class CWorldSettingsController : public CEntity {
 public:

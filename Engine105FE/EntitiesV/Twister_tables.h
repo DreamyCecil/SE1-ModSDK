@@ -9,19 +9,19 @@ EP_ENUMEND(TwisterSize);
 #define ENTITYCLASS CTwister
 
 CEntityProperty CTwister_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+1, offsetof(CTwister, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &TwisterSize_enum, (0x000001fb<<8)+2, offsetof(CTwister, m_EtsSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+3, offsetof(CTwister, m_vStartPosition), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+10, offsetof(CTwister, m_vDesiredPosition), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+11, offsetof(CTwister, m_vDesiredAngle), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+12, offsetof(CTwister, m_fStopTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+13, offsetof(CTwister, m_fActionRadius), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+14, offsetof(CTwister, m_fActionTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+15, offsetof(CTwister, m_fDiffMultiply), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+16, offsetof(CTwister, m_fUpMultiply), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001fb<<8)+20, offsetof(CTwister, m_bFadeOut), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+21, offsetof(CTwister, m_fFadeStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+22, offsetof(CTwister, m_fFadeTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+1, offsetof(CTwister, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &TwisterSize_enum, (0x000001fb<<8)+2, offsetof(CTwister, m_EtsSize), "", 0, "m_EtsSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+3, offsetof(CTwister, m_vStartPosition), "", 0, "m_vStartPosition", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+10, offsetof(CTwister, m_vDesiredPosition), "", 0, "m_vDesiredPosition", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001fb<<8)+11, offsetof(CTwister, m_vDesiredAngle), "", 0, "m_vDesiredAngle", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+12, offsetof(CTwister, m_fStopTime), "", 0, "m_fStopTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+13, offsetof(CTwister, m_fActionRadius), "", 0, "m_fActionRadius", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+14, offsetof(CTwister, m_fActionTime), "", 0, "m_fActionTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+15, offsetof(CTwister, m_fDiffMultiply), "", 0, "m_fDiffMultiply", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+16, offsetof(CTwister, m_fUpMultiply), "", 0, "m_fUpMultiply", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001fb<<8)+20, offsetof(CTwister, m_bFadeOut), "", 0, "m_bFadeOut", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+21, offsetof(CTwister, m_fFadeStartTime), "", 0, "m_fFadeStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+22, offsetof(CTwister, m_fFadeTime), "", 0, "m_fFadeTime", 0, 0),
 };
 #define CTwister_propertiesct ARRAYCOUNT(CTwister_properties)
 

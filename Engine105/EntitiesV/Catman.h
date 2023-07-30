@@ -10,6 +10,7 @@ enum CatmanType {
   CMT_ROGUE = 2,
 };
 DECL_DLL inline void ClearToDefault(CatmanType &e) { e = (CatmanType)0; } ;
+#define CCatman_ClassID 301
 extern "C" DECL_DLL CDLLEntityClass CCatman_DLLClass;
 class CCatman : public CEnemyBase {
 public:

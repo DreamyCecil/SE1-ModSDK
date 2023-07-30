@@ -13,6 +13,7 @@ CEntityEvent *MakeCopy(void);
 BOOL bTurnOn;
 };
 DECL_DLL inline void ClearToDefault(EActivateBeam &e) { e = EActivateBeam(); } ;
+#define CExotechLarvaCharger_ClassID 351
 extern "C" DECL_DLL CDLLEntityClass CExotechLarvaCharger_DLLClass;
 class CExotechLarvaCharger : public CRationalEntity {
 public:

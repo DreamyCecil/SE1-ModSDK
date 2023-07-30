@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Copier_INCLUDED
 #define _EntitiesV_Copier_INCLUDED 1
 #include <EntitiesV/BasicEffects.h>
+#define CCopier_ClassID 225
 extern "C" DECL_DLL CDLLEntityClass CCopier_DLLClass;
 class CCopier : public CRationalEntity {
 public:

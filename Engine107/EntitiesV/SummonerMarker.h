@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_SummonerMarker_INCLUDED
 #define _EntitiesV_SummonerMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CSummonerMarker_ClassID 350
 extern "C" DECL_DLL CDLLEntityClass CSummonerMarker_DLLClass;
 class CSummonerMarker : public CMarker {
 public:

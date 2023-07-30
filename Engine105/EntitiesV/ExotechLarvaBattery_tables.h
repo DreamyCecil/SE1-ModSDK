@@ -3,18 +3,18 @@
 #define ENTITYCLASS CExotechLarvaBattery
 
 CEntityProperty CExotechLarvaBattery_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+1, offsetof(CExotechLarvaBattery, m_bActive), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+2, offsetof(CExotechLarvaBattery, m_fMaxHealth), "Health", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+3, offsetof(CExotechLarvaBattery, m_fStretch), "Stretch", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+4, offsetof(CExotechLarvaBattery, m_fBurnTreshold), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+5, offsetof(CExotechLarvaBattery, m_penSpray), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+6, offsetof(CExotechLarvaBattery, m_tmSpraySpawned), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000015f<<8)+7, offsetof(CExotechLarvaBattery, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+10, offsetof(CExotechLarvaBattery, m_bCustomShading), "Custom Shading", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x0000015f<<8)+11, offsetof(CExotechLarvaBattery, m_aShadingDirection), "Light direction", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+12, offsetof(CExotechLarvaBattery, m_colLight), "Light Color", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+13, offsetof(CExotechLarvaBattery, m_colAmbient), "Ambient Light Color", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000015f<<8)+20, offsetof(CExotechLarvaBattery, m_soSound), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+1, offsetof(CExotechLarvaBattery, m_bActive), "", 0, "m_bActive", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+2, offsetof(CExotechLarvaBattery, m_fMaxHealth), "Health", 'H', "m_fMaxHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+3, offsetof(CExotechLarvaBattery, m_fStretch), "Stretch", 'S', "m_fStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+4, offsetof(CExotechLarvaBattery, m_fBurnTreshold), "", 0, "m_fBurnTreshold", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015f<<8)+5, offsetof(CExotechLarvaBattery, m_penSpray), "", 0, "m_penSpray", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015f<<8)+6, offsetof(CExotechLarvaBattery, m_tmSpraySpawned), "", 0, "m_tmSpraySpawned", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000015f<<8)+7, offsetof(CExotechLarvaBattery, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015f<<8)+10, offsetof(CExotechLarvaBattery, m_bCustomShading), "Custom Shading", 0, "m_bCustomShading", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x0000015f<<8)+11, offsetof(CExotechLarvaBattery, m_aShadingDirection), "Light direction", 'D', "m_aShadingDirection", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+12, offsetof(CExotechLarvaBattery, m_colLight), "Light Color", 0, "m_colLight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x0000015f<<8)+13, offsetof(CExotechLarvaBattery, m_colAmbient), "Ambient Light Color", 0, "m_colAmbient", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000015f<<8)+20, offsetof(CExotechLarvaBattery, m_soSound), "", 0, "m_soSound", 0, 0),
 };
 #define CExotechLarvaBattery_propertiesct ARRAYCOUNT(CExotechLarvaBattery_properties)
 

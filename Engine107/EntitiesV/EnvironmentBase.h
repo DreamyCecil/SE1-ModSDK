@@ -4,6 +4,7 @@
 #define _EntitiesV_EnvironmentBase_INCLUDED 1
 #include <EntitiesV/EnvironmentMarker.h>
 #include <EntitiesV/WatchPlayers.h>
+#define CEnvironmentBase_ClassID 900
 extern "C" DECL_DLL CDLLEntityClass CEnvironmentBase_DLLClass;
 class CEnvironmentBase : public CMovableEntity {
 public:

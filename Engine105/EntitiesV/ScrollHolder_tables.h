@@ -3,14 +3,14 @@
 #define ENTITYCLASS CScrollHolder
 
 CEntityProperty CScrollHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ee<<8)+1, offsetof(CScrollHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ee<<8)+2, offsetof(CScrollHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000ee<<8)+3, offsetof(CScrollHolder, m_fnmMessage), "Scroll Text", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+4, offsetof(CScrollHolder, m_fMyTimer), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+6, offsetof(CScrollHolder, m_fMyTimerLast), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+5, offsetof(CScrollHolder, m_fSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ee<<8)+15, offsetof(CScrollHolder, m_penEndCreditsTrigger), "EndScroll trigger", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000ee<<8)+20, offsetof(CScrollHolder, m_bDataError), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ee<<8)+1, offsetof(CScrollHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ee<<8)+2, offsetof(CScrollHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000ee<<8)+3, offsetof(CScrollHolder, m_fnmMessage), "Scroll Text", 'T', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+4, offsetof(CScrollHolder, m_fMyTimer), "", 0, "m_fMyTimer", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+6, offsetof(CScrollHolder, m_fMyTimerLast), "", 0, "m_fMyTimerLast", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ee<<8)+5, offsetof(CScrollHolder, m_fSpeed), "", 0, "m_fSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ee<<8)+15, offsetof(CScrollHolder, m_penEndCreditsTrigger), "EndScroll trigger", 0, "m_penEndCreditsTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000ee<<8)+20, offsetof(CScrollHolder, m_bDataError), "", 0, "m_bDataError", 0, 0),
 };
 #define CScrollHolder_propertiesct ARRAYCOUNT(CScrollHolder_properties)
 

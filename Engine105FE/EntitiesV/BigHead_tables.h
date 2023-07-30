@@ -3,9 +3,9 @@
 #define ENTITYCLASS CBigHead
 
 CEntityProperty CBigHead_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+1, offsetof(CBigHead, m_fnmHeadTex), "Head texture", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+2, offsetof(CBigHead, m_fnmNameSnd), "Name sound", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+3, offsetof(CBigHead, m_tmLastGreetTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+1, offsetof(CBigHead, m_fnmHeadTex), "Head texture", 'H', "m_fnmHeadTex", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000154<<8)+2, offsetof(CBigHead, m_fnmNameSnd), "Name sound", 'S', "m_fnmNameSnd", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000154<<8)+3, offsetof(CBigHead, m_tmLastGreetTime), "", 0, "m_tmLastGreetTime", 0, 0),
 };
 #define CBigHead_propertiesct ARRAYCOUNT(CBigHead_properties)
 

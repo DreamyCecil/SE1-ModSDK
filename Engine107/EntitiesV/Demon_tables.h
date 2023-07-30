@@ -3,8 +3,8 @@
 #define ENTITYCLASS CDemon
 
 CEntityProperty CDemon_properties[] = {
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000150<<8)+2, offsetof(CDemon, m_iCounter), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000150<<8)+3, offsetof(CDemon, m_penFireFX), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000150<<8)+2, offsetof(CDemon, m_iCounter), "", 0, "m_iCounter", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000150<<8)+3, offsetof(CDemon, m_penFireFX), "", 0, "m_penFireFX", 0, 0),
 };
 #define CDemon_propertiesct ARRAYCOUNT(CDemon_properties)
 

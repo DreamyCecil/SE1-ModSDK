@@ -8,13 +8,13 @@ EP_ENUMEND(AmmoPackType);
 #define ENTITYCLASS CAmmoPack
 
 CEntityProperty CAmmoPack_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &AmmoPackType_enum, (0x00000326<<8)+1, offsetof(CAmmoPack, m_aptPackType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+10, offsetof(CAmmoPack, m_iShells), "Shells", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+11, offsetof(CAmmoPack, m_iBullets), "Bullets", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+12, offsetof(CAmmoPack, m_iRockets), "Rockets", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+13, offsetof(CAmmoPack, m_iGrenades), "Grenades", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+15, offsetof(CAmmoPack, m_iElectricity), "Electricity", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+16, offsetof(CAmmoPack, m_iIronBalls), "Iron balls", 'I', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &AmmoPackType_enum, (0x00000326<<8)+1, offsetof(CAmmoPack, m_aptPackType), "Type", 'Y', "m_aptPackType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+10, offsetof(CAmmoPack, m_iShells), "Shells", 'S', "m_iShells", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+11, offsetof(CAmmoPack, m_iBullets), "Bullets", 'B', "m_iBullets", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+12, offsetof(CAmmoPack, m_iRockets), "Rockets", 'C', "m_iRockets", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+13, offsetof(CAmmoPack, m_iGrenades), "Grenades", 'G', "m_iGrenades", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+15, offsetof(CAmmoPack, m_iElectricity), "Electricity", 'E', "m_iElectricity", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000326<<8)+16, offsetof(CAmmoPack, m_iIronBalls), "Iron balls", 'I', "m_iIronBalls", 0x7F0000FFUL, 0),
 };
 #define CAmmoPack_propertiesct ARRAYCOUNT(CAmmoPack_properties)
 

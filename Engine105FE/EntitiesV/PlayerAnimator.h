@@ -12,6 +12,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penPlayer;
 };
 DECL_DLL inline void ClearToDefault(EAnimatorInit &e) { e = EAnimatorInit(); } ;
+#define CPlayerAnimator_ClassID 406
 extern "C" DECL_DLL CDLLEntityClass CPlayerAnimator_DLLClass;
 class DECL_DLL  CPlayerAnimator : public CRationalEntity {
 public:

@@ -12,6 +12,7 @@ enum DoorType {
   DT_TRIGGEREDAUTO = 3,
 };
 DECL_DLL inline void ClearToDefault(DoorType &e) { e = (DoorType)0; } ;
+#define CDoorController_ClassID 221
 extern "C" DECL_DLL CDLLEntityClass CDoorController_DLLClass;
 class CDoorController : public CRationalEntity {
 public:

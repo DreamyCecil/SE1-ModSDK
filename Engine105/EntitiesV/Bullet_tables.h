@@ -3,14 +3,14 @@
 #define ENTITYCLASS CBullet
 
 CEntityProperty CBullet_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f6<<8)+1, offsetof(CBullet, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001f6<<8)+2, offsetof(CBullet, m_fDamage), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+3, offsetof(CBullet, m_vTarget), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+4, offsetof(CBullet, m_vTargetCopy), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+6, offsetof(CBullet, m_vHitPoint), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000001f6<<8)+8, offsetof(CBullet, m_iBullet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &DamageType_enum, (0x000001f6<<8)+9, offsetof(CBullet, m_EdtDamage), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001f6<<8)+10, offsetof(CBullet, m_fBulletSize), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f6<<8)+1, offsetof(CBullet, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001f6<<8)+2, offsetof(CBullet, m_fDamage), "", 0, "m_fDamage", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+3, offsetof(CBullet, m_vTarget), "", 0, "m_vTarget", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+4, offsetof(CBullet, m_vTargetCopy), "", 0, "m_vTargetCopy", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001f6<<8)+6, offsetof(CBullet, m_vHitPoint), "", 0, "m_vHitPoint", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000001f6<<8)+8, offsetof(CBullet, m_iBullet), "", 0, "m_iBullet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DamageType_enum, (0x000001f6<<8)+9, offsetof(CBullet, m_EdtDamage), "", 0, "m_EdtDamage", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001f6<<8)+10, offsetof(CBullet, m_fBulletSize), "", 0, "m_fBulletSize", 0, 0),
 };
 #define CBullet_propertiesct ARRAYCOUNT(CBullet_properties)
 

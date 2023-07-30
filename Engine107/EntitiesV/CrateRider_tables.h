@@ -3,9 +3,9 @@
 #define ENTITYCLASS CCrateRider
 
 CEntityProperty CCrateRider_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+1, offsetof(CCrateRider, m_fnmHeadTex1), "Head texture1", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+2, offsetof(CCrateRider, m_fnmHeadTex2), "Head texture2", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+3, offsetof(CCrateRider, m_fnmDriveSnd), "Drive sound", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+1, offsetof(CCrateRider, m_fnmHeadTex1), "Head texture1", 'H', "m_fnmHeadTex1", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+2, offsetof(CCrateRider, m_fnmHeadTex2), "Head texture2", 0, "m_fnmHeadTex2", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x00000155<<8)+3, offsetof(CCrateRider, m_fnmDriveSnd), "Drive sound", 'S', "m_fnmDriveSnd", 0x7F0000FFUL, 0),
 };
 #define CCrateRider_propertiesct ARRAYCOUNT(CCrateRider_properties)
 

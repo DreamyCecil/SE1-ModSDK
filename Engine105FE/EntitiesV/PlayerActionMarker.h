@@ -33,6 +33,7 @@ enum PlayerAutoAction {
   PAA_TURNONGRAVITY = 25,
 };
 DECL_DLL inline void ClearToDefault(PlayerAutoAction &e) { e = (PlayerAutoAction)0; } ;
+#define CPlayerActionMarker_ClassID 407
 extern "C" DECL_DLL CDLLEntityClass CPlayerActionMarker_DLLClass;
 class CPlayerActionMarker : public CMarker {
 public:

@@ -3,19 +3,19 @@
 #define ENTITYCLASS CSoundHolder
 
 CEntityProperty CSoundHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000cc<<8)+1, offsetof(CSoundHolder, m_fnSound), "Sound", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000000cc<<8)+2, offsetof(CSoundHolder, m_rFallOffRange), "Fall-off", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000000cc<<8)+3, offsetof(CSoundHolder, m_rHotSpotRange), "Hot-spot", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000cc<<8)+4, offsetof(CSoundHolder, m_fVolume), "Volume", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+6, offsetof(CSoundHolder, m_bLoop), "Looping", 'L', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+7, offsetof(CSoundHolder, m_bSurround), "Surround", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+8, offsetof(CSoundHolder, m_bVolumetric), "Volumetric", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000cc<<8)+9, offsetof(CSoundHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000cc<<8)+10, offsetof(CSoundHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+11, offsetof(CSoundHolder, m_bAutoStart), "Auto start", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000000cc<<8)+12, offsetof(CSoundHolder, m_iPlayType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000000cc<<8)+13, offsetof(CSoundHolder, m_soSound), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+14, offsetof(CSoundHolder, m_bDestroyable), "Destroyable", 'Q', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000cc<<8)+1, offsetof(CSoundHolder, m_fnSound), "Sound", 'S', "m_fnSound", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000000cc<<8)+2, offsetof(CSoundHolder, m_rFallOffRange), "Fall-off", 'F', "m_rFallOffRange", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000000cc<<8)+3, offsetof(CSoundHolder, m_rHotSpotRange), "Hot-spot", 'H', "m_rHotSpotRange", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000cc<<8)+4, offsetof(CSoundHolder, m_fVolume), "Volume", 'V', "m_fVolume", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+6, offsetof(CSoundHolder, m_bLoop), "Looping", 'L', "m_bLoop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+7, offsetof(CSoundHolder, m_bSurround), "Surround", 'R', "m_bSurround", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+8, offsetof(CSoundHolder, m_bVolumetric), "Volumetric", 'O', "m_bVolumetric", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000cc<<8)+9, offsetof(CSoundHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000cc<<8)+10, offsetof(CSoundHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+11, offsetof(CSoundHolder, m_bAutoStart), "Auto start", 'A', "m_bAutoStart", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000000cc<<8)+12, offsetof(CSoundHolder, m_iPlayType), "", 0, "m_iPlayType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000000cc<<8)+13, offsetof(CSoundHolder, m_soSound), "", 0, "m_soSound", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000cc<<8)+14, offsetof(CSoundHolder, m_bDestroyable), "Destroyable", 'Q', "m_bDestroyable", 0x7F0000FFUL, 0),
 };
 #define CSoundHolder_propertiesct ARRAYCOUNT(CSoundHolder_properties)
 

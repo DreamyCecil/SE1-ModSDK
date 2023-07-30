@@ -3,11 +3,11 @@
 #define ENTITYCLASS CFlame
 
 CEntityProperty CFlame_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+1, offsetof(CFlame, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+2, offsetof(CFlame, m_penAttach), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001f8<<8)+5, offsetof(CFlame, m_bLoop), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001f8<<8)+10, offsetof(CFlame, m_soEffect), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+255, offsetof(CFlame, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+1, offsetof(CFlame, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+2, offsetof(CFlame, m_penAttach), "", 0, "m_penAttach", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001f8<<8)+5, offsetof(CFlame, m_bLoop), "", 0, "m_bLoop", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001f8<<8)+10, offsetof(CFlame, m_soEffect), "", 0, "m_soEffect", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f8<<8)+255, offsetof(CFlame, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CFlame_propertiesct ARRAYCOUNT(CFlame_properties)
 

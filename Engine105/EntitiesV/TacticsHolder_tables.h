@@ -10,15 +10,15 @@ EP_ENUMEND(TacticType);
 #define ENTITYCLASS CTacticsHolder
 
 CEntityProperty CTacticsHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000eb<<8)+1, offsetof(CTacticsHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000eb<<8)+2, offsetof(CTacticsHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &TacticType_enum, (0x000000eb<<8)+10, offsetof(CTacticsHolder, m_tctType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+11, offsetof(CTacticsHolder, m_fParam1), "Parameter 1", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+12, offsetof(CTacticsHolder, m_fParam2), "Parameter 2", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+13, offsetof(CTacticsHolder, m_fParam3), "Parameter 3", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+14, offsetof(CTacticsHolder, m_fParam4), "Parameter 4", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+15, offsetof(CTacticsHolder, m_fParam5), "Parameter 5", 'J', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+20, offsetof(CTacticsHolder, m_tmLastActivation), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000eb<<8)+1, offsetof(CTacticsHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000eb<<8)+2, offsetof(CTacticsHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &TacticType_enum, (0x000000eb<<8)+10, offsetof(CTacticsHolder, m_tctType), "Type", 'Y', "m_tctType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+11, offsetof(CTacticsHolder, m_fParam1), "Parameter 1", 'D', "m_fParam1", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+12, offsetof(CTacticsHolder, m_fParam2), "Parameter 2", 'F', "m_fParam2", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+13, offsetof(CTacticsHolder, m_fParam3), "Parameter 3", 'G', "m_fParam3", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+14, offsetof(CTacticsHolder, m_fParam4), "Parameter 4", 'H', "m_fParam4", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+15, offsetof(CTacticsHolder, m_fParam5), "Parameter 5", 'J', "m_fParam5", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000eb<<8)+20, offsetof(CTacticsHolder, m_tmLastActivation), "", 0, "m_tmLastActivation", 0, 0),
 };
 #define CTacticsHolder_propertiesct ARRAYCOUNT(CTacticsHolder_properties)
 

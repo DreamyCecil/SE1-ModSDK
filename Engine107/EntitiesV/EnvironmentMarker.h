@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_EnvironmentMarker_INCLUDED
 #define _EntitiesV_EnvironmentMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CEnvironmentMarker_ClassID 901
 extern "C" DECL_DLL CDLLEntityClass CEnvironmentMarker_DLLClass;
 class CEnvironmentMarker : public CMarker {
 public:

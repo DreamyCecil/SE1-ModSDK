@@ -8,16 +8,16 @@ EP_ENUMEND(WalkerChar);
 #define ENTITYCLASS CWalker
 
 CEntityProperty CWalker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &WalkerChar_enum, (0x00000144<<8)+1, offsetof(CWalker, m_EwcChar), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000144<<8)+2, offsetof(CWalker, m_iLoopCounter), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000144<<8)+3, offsetof(CWalker, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000144<<8)+4, offsetof(CWalker, m_bWalkSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000144<<8)+5, offsetof(CWalker, m_fThreatDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+10, offsetof(CWalker, m_soFeet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+11, offsetof(CWalker, m_soFire1), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+12, offsetof(CWalker, m_soFire2), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+13, offsetof(CWalker, m_soFire3), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+14, offsetof(CWalker, m_soFire4), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WalkerChar_enum, (0x00000144<<8)+1, offsetof(CWalker, m_EwcChar), "Character", 'C', "m_EwcChar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000144<<8)+2, offsetof(CWalker, m_iLoopCounter), "", 0, "m_iLoopCounter", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000144<<8)+3, offsetof(CWalker, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000144<<8)+4, offsetof(CWalker, m_bWalkSoundPlaying), "", 0, "m_bWalkSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000144<<8)+5, offsetof(CWalker, m_fThreatDistance), "", 0, "m_fThreatDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+10, offsetof(CWalker, m_soFeet), "", 0, "m_soFeet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+11, offsetof(CWalker, m_soFire1), "", 0, "m_soFire1", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+12, offsetof(CWalker, m_soFire2), "", 0, "m_soFire2", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+13, offsetof(CWalker, m_soFire3), "", 0, "m_soFire3", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000144<<8)+14, offsetof(CWalker, m_soFire4), "", 0, "m_soFire4", 0, 0),
 };
 #define CWalker_propertiesct ARRAYCOUNT(CWalker_properties)
 

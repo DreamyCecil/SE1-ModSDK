@@ -10,13 +10,13 @@ EP_ENUMEND(ViewType);
 #define ENTITYCLASS CPlayerView
 
 CEntityProperty CPlayerView_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000193<<8)+1, offsetof(CPlayerView, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000193<<8)+2, offsetof(CPlayerView, m_iViewType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000193<<8)+3, offsetof(CPlayerView, m_fDistance), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000193<<8)+4, offsetof(CPlayerView, m_vZLast), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000193<<8)+5, offsetof(CPlayerView, m_vTargetLast), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000193<<8)+6, offsetof(CPlayerView, m_bFixed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000193<<8)+255, offsetof(CPlayerView, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000193<<8)+1, offsetof(CPlayerView, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000193<<8)+2, offsetof(CPlayerView, m_iViewType), "", 0, "m_iViewType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000193<<8)+3, offsetof(CPlayerView, m_fDistance), "", 0, "m_fDistance", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000193<<8)+4, offsetof(CPlayerView, m_vZLast), "", 0, "m_vZLast", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000193<<8)+5, offsetof(CPlayerView, m_vTargetLast), "", 0, "m_vTargetLast", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000193<<8)+6, offsetof(CPlayerView, m_bFixed), "", 0, "m_bFixed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000193<<8)+255, offsetof(CPlayerView, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CPlayerView_propertiesct ARRAYCOUNT(CPlayerView_properties)
 

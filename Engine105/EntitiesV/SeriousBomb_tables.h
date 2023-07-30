@@ -3,8 +3,8 @@
 #define ENTITYCLASS CSeriousBomb
 
 CEntityProperty CSeriousBomb_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000162<<8)+1, offsetof(CSeriousBomb, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000162<<8)+20, offsetof(CSeriousBomb, m_soBlow), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000162<<8)+1, offsetof(CSeriousBomb, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000162<<8)+20, offsetof(CSeriousBomb, m_soBlow), "", 0, "m_soBlow", 0, 0),
 };
 #define CSeriousBomb_propertiesct ARRAYCOUNT(CSeriousBomb_properties)
 

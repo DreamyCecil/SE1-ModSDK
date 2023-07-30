@@ -3,12 +3,12 @@
 #define ENTITYCLASS CMusicChanger
 
 CEntityProperty CMusicChanger_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+1, offsetof(CMusicChanger, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+2, offsetof(CMusicChanger, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000e1<<8)+3, offsetof(CMusicChanger, m_fnMusic), "Music", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000e1<<8)+4, offsetof(CMusicChanger, m_fVolume), "Volume", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &MusicType_enum, (0x000000e1<<8)+5, offsetof(CMusicChanger, m_mtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+6, offsetof(CMusicChanger, m_bForceStart), "Force start", 'F', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+1, offsetof(CMusicChanger, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e1<<8)+2, offsetof(CMusicChanger, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000e1<<8)+3, offsetof(CMusicChanger, m_fnMusic), "Music", 'M', "m_fnMusic", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000e1<<8)+4, offsetof(CMusicChanger, m_fVolume), "Volume", 'V', "m_fVolume", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &MusicType_enum, (0x000000e1<<8)+5, offsetof(CMusicChanger, m_mtType), "Type", 'Y', "m_mtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e1<<8)+6, offsetof(CMusicChanger, m_bForceStart), "Force start", 'F', "m_bForceStart", 0x7F0000FFUL, 0),
 };
 #define CMusicChanger_propertiesct ARRAYCOUNT(CMusicChanger_properties)
 

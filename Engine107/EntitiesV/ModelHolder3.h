@@ -19,6 +19,7 @@ enum SkaShadowType {
   SST_POLYGONAL = 2,
 };
 DECL_DLL inline void ClearToDefault(SkaShadowType &e) { e = (SkaShadowType)0; } ;
+#define CModelHolder3_ClassID 242
 extern "C" DECL_DLL CDLLEntityClass CModelHolder3_DLLClass;
 class CModelHolder3 : public CRationalEntity {
 public:

@@ -21,6 +21,7 @@ FLOAT fHealth;
 BOOL bOverTopHealth;
 };
 DECL_DLL inline void ClearToDefault(EHealth &e) { e = EHealth(); } ;
+#define CHealthItem_ClassID 801
 extern "C" DECL_DLL CDLLEntityClass CHealthItem_DLLClass;
 class CHealthItem : public CItem {
 public:

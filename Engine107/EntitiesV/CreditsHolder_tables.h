@@ -3,15 +3,15 @@
 #define ENTITYCLASS CCreditsHolder
 
 CEntityProperty CCreditsHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f0<<8)+1, offsetof(CCreditsHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f0<<8)+2, offsetof(CCreditsHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000f0<<8)+3, offsetof(CCreditsHolder, m_fnmMessage), "Scroll Text", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+4, offsetof(CCreditsHolder, m_fMyTimer), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+6, offsetof(CCreditsHolder, m_fMyTimerLast), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+5, offsetof(CCreditsHolder, m_iTotalEntries), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f0<<8)+10, offsetof(CCreditsHolder, m_bEnd), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000f0<<8)+15, offsetof(CCreditsHolder, m_penEndCreditsTrigger), "EndCredits trigger", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f0<<8)+20, offsetof(CCreditsHolder, m_bDataError), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f0<<8)+1, offsetof(CCreditsHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f0<<8)+2, offsetof(CCreditsHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000f0<<8)+3, offsetof(CCreditsHolder, m_fnmMessage), "Scroll Text", 'T', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+4, offsetof(CCreditsHolder, m_fMyTimer), "", 0, "m_fMyTimer", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+6, offsetof(CCreditsHolder, m_fMyTimerLast), "", 0, "m_fMyTimerLast", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f0<<8)+5, offsetof(CCreditsHolder, m_iTotalEntries), "", 0, "m_iTotalEntries", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f0<<8)+10, offsetof(CCreditsHolder, m_bEnd), "", 0, "m_bEnd", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000f0<<8)+15, offsetof(CCreditsHolder, m_penEndCreditsTrigger), "EndCredits trigger", 0, "m_penEndCreditsTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f0<<8)+20, offsetof(CCreditsHolder, m_bDataError), "", 0, "m_bDataError", 0, 0),
 };
 #define CCreditsHolder_propertiesct ARRAYCOUNT(CCreditsHolder_properties)
 

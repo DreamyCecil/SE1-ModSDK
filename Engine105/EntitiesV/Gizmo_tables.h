@@ -3,7 +3,7 @@
 #define ENTITYCLASS CGizmo
 
 CEntityProperty CGizmo_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000014f<<8)+1, offsetof(CGizmo, m_bExploded), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000014f<<8)+1, offsetof(CGizmo, m_bExploded), "", 0, "m_bExploded", 0, 0),
 };
 #define CGizmo_propertiesct ARRAYCOUNT(CGizmo_properties)
 

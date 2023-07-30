@@ -20,6 +20,7 @@ CEntityEvent *MakeCopy(void);
 BOOL m_bNow;
 };
 DECL_DLL inline void ClearToDefault(EStopFlaming &e) { e = EStopFlaming(); } ;
+#define CFlame_ClassID 504
 extern "C" DECL_DLL CDLLEntityClass CFlame_DLLClass;
 class CFlame : public CMovableModelEntity {
 public:

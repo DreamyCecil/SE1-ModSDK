@@ -4,6 +4,7 @@
 #define _EntitiesV_CrateRider_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/BasicEffects.h>
+#define CCrateRider_ClassID 341
 extern "C" DECL_DLL CDLLEntityClass CCrateRider_DLLClass;
 class CCrateRider : public CEnemyBase {
 public:

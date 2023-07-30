@@ -3,19 +3,19 @@
 #define ENTITYCLASS CAnimationChanger
 
 CEntityProperty CAnimationChanger_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000da<<8)+1, offsetof(CAnimationChanger, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000da<<8)+2, offsetof(CAnimationChanger, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000da<<8)+3, offsetof(CAnimationChanger, m_penTarget), "Target", 'T', C_GREEN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+4, offsetof(CAnimationChanger, m_iModelAnim), "Model Animation", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+5, offsetof(CAnimationChanger, m_bModelLoop), "Model Looping", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+6, offsetof(CAnimationChanger, m_iTextureAnim), "Texture Animation", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+7, offsetof(CAnimationChanger, m_bTextureLoop), "Texture Looping", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+8, offsetof(CAnimationChanger, m_iLightAnim), "Diffuse Light Animation", 'L', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+9, offsetof(CAnimationChanger, m_bLightLoop), "Diffuse Light Looping", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+10, offsetof(CAnimationChanger, m_iAmbientLightAnim), "Ambient Light Animation", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+11, offsetof(CAnimationChanger, m_bAmbientLightLoop), "Ambient Light Looping", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000da<<8)+12, offsetof(CAnimationChanger, m_colAmbient), "Ambient Light Color", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000da<<8)+13, offsetof(CAnimationChanger, m_colDiffuse), "Diffuse Light Color", 'C', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000da<<8)+1, offsetof(CAnimationChanger, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000da<<8)+2, offsetof(CAnimationChanger, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000da<<8)+3, offsetof(CAnimationChanger, m_penTarget), "Target", 'T', "m_penTarget", C_GREEN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+4, offsetof(CAnimationChanger, m_iModelAnim), "Model Animation", 'M', "m_iModelAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+5, offsetof(CAnimationChanger, m_bModelLoop), "Model Looping", 0, "m_bModelLoop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+6, offsetof(CAnimationChanger, m_iTextureAnim), "Texture Animation", 'X', "m_iTextureAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+7, offsetof(CAnimationChanger, m_bTextureLoop), "Texture Looping", 0, "m_bTextureLoop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+8, offsetof(CAnimationChanger, m_iLightAnim), "Diffuse Light Animation", 'L', "m_iLightAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+9, offsetof(CAnimationChanger, m_bLightLoop), "Diffuse Light Looping", 0, "m_bLightLoop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANIMATION, NULL, (0x000000da<<8)+10, offsetof(CAnimationChanger, m_iAmbientLightAnim), "Ambient Light Animation", 'B', "m_iAmbientLightAnim", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000da<<8)+11, offsetof(CAnimationChanger, m_bAmbientLightLoop), "Ambient Light Looping", 0, "m_bAmbientLightLoop", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000da<<8)+12, offsetof(CAnimationChanger, m_colAmbient), "Ambient Light Color", 'A', "m_colAmbient", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000da<<8)+13, offsetof(CAnimationChanger, m_colDiffuse), "Diffuse Light Color", 'C', "m_colDiffuse", 0x7F0000FFUL, 0),
 };
 #define CAnimationChanger_propertiesct ARRAYCOUNT(CAnimationChanger_properties)
 

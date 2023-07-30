@@ -3,14 +3,14 @@
 #define ENTITYCLASS CChainsawFreak
 
 CEntityProperty CChainsawFreak_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+1, offsetof(CChainsawFreak, m_bRunAttack), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+2, offsetof(CChainsawFreak, m_bSawHit), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000156<<8)+3, offsetof(CChainsawFreak, m_penLastTouched), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000156<<8)+4, offsetof(CChainsawFreak, m_soFeet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+5, offsetof(CChainsawFreak, m_bRunSoundPlaying), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000156<<8)+6, offsetof(CChainsawFreak, m_iRunType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+10, offsetof(CChainsawFreak, m_bAttacking), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000156<<8)+11, offsetof(CChainsawFreak, m_fSightSoundBegin), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+1, offsetof(CChainsawFreak, m_bRunAttack), "", 0, "m_bRunAttack", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+2, offsetof(CChainsawFreak, m_bSawHit), "", 0, "m_bSawHit", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000156<<8)+3, offsetof(CChainsawFreak, m_penLastTouched), "", 0, "m_penLastTouched", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000156<<8)+4, offsetof(CChainsawFreak, m_soFeet), "", 0, "m_soFeet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+5, offsetof(CChainsawFreak, m_bRunSoundPlaying), "", 0, "m_bRunSoundPlaying", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000156<<8)+6, offsetof(CChainsawFreak, m_iRunType), "", 0, "m_iRunType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000156<<8)+10, offsetof(CChainsawFreak, m_bAttacking), "", 0, "m_bAttacking", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000156<<8)+11, offsetof(CChainsawFreak, m_fSightSoundBegin), "", 0, "m_fSightSoundBegin", 0, 0),
 };
 #define CChainsawFreak_propertiesct ARRAYCOUNT(CChainsawFreak_properties)
 

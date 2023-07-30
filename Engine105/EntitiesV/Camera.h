@@ -4,6 +4,7 @@
 #define _EntitiesV_Camera_INCLUDED 1
 #include <EntitiesV/Player.h>
 #include <EntitiesV/CameraMarker.h>
+#define CCamera_ClassID 220
 extern "C" DECL_DLL CDLLEntityClass CCamera_DLLClass;
 class CCamera : public CMovableModelEntity {
 public:

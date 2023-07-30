@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_TimeController_INCLUDED
 #define _EntitiesV_TimeController_INCLUDED 1
+#define CTimeController_ClassID 613
 extern "C" DECL_DLL CDLLEntityClass CTimeController_DLLClass;
 class CTimeController : public CRationalEntity {
 public:

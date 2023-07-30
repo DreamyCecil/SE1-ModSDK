@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_RollingStone_INCLUDED
 #define _EntitiesV_RollingStone_INCLUDED 1
 #include <EntitiesV/Debris.h>
+#define CRollingStone_ClassID 604
 extern "C" DECL_DLL CDLLEntityClass CRollingStone_DLLClass;
 class CRollingStone : public CMovableModelEntity {
 public:

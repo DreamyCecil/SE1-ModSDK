@@ -13,6 +13,7 @@ CEntityPointer penOwner;
 CEntityPointer penTemplate;
 };
 DECL_DLL inline void ClearToDefault(ESpawnerProjectile &e) { e = ESpawnerProjectile(); } ;
+#define CSpawnerProjectile_ClassID 507
 extern "C" DECL_DLL CDLLEntityClass CSpawnerProjectile_DLLClass;
 class CSpawnerProjectile : public CMovableModelEntity {
 public:

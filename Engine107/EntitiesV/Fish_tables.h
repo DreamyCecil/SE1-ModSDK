@@ -3,8 +3,8 @@
 #define ENTITYCLASS CFish
 
 CEntityProperty CFish_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000151<<8)+0, offsetof(CFish, m_bAttackingByElectricity), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000151<<8)+1, offsetof(CFish, m_tmElectricityTimeStart), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000151<<8)+0, offsetof(CFish, m_bAttackingByElectricity), "", 0, "m_bAttackingByElectricity", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000151<<8)+1, offsetof(CFish, m_tmElectricityTimeStart), "", 0, "m_tmElectricityTimeStart", 0, 0),
 };
 #define CFish_propertiesct ARRAYCOUNT(CFish_properties)
 

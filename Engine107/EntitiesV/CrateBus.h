@@ -5,6 +5,7 @@
 #include <EntitiesV/SpawnerProjectile.h>
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/BasicEffects.h>
+#define CCrateBus_ClassID 352
 extern "C" DECL_DLL CDLLEntityClass CCrateBus_DLLClass;
 class CCrateBus : public CMovableModelEntity {
 public:

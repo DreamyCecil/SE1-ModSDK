@@ -3,22 +3,22 @@
 #define ENTITYCLASS CEruptor
 
 CEntityProperty CEruptor_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+10, offsetof(CEruptor, m_fStretchAll), "Er StretchAll", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+11, offsetof(CEruptor, m_fStretchX), "Er StretchX", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+12, offsetof(CEruptor, m_fStretchY), "Er StretchY", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+13, offsetof(CEruptor, m_fStretchZ), "Er StretchZ", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d5<<8)+15, offsetof(CEruptor, m_bRandomStretch), "Er Stretch Random", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+16, offsetof(CEruptor, m_fStretchHeight), "Er Stretch Height (Y%)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+17, offsetof(CEruptor, m_fStretchWidth), "Er Stretch Width (X%)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+18, offsetof(CEruptor, m_fStretchDepth), "Er Stretch Depth (Z%)", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+20, offsetof(CEruptor, m_fAngle), "Er Angle", 'Q', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+21, offsetof(CEruptor, m_fMaxSpeed), "Er Speed max", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+22, offsetof(CEruptor, m_fMinSpeed), "Er Speed min", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+23, offsetof(CEruptor, m_fTime), "Er Spawn time", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+24, offsetof(CEruptor, m_fRandomWait), "Er Random wait", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &ProjectileType_enum, (0x000000d5<<8)+25, offsetof(CEruptor, m_ptType), "Er Type", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d5<<8)+26, offsetof(CEruptor, m_bShootInArc), "Er Shoot In Arc", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+27, offsetof(CEruptor, m_fProjectileStretch), "Er projectile stretch", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+10, offsetof(CEruptor, m_fStretchAll), "Er StretchAll", 0, "m_fStretchAll", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+11, offsetof(CEruptor, m_fStretchX), "Er StretchX", 0, "m_fStretchX", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+12, offsetof(CEruptor, m_fStretchY), "Er StretchY", 0, "m_fStretchY", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+13, offsetof(CEruptor, m_fStretchZ), "Er StretchZ", 0, "m_fStretchZ", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d5<<8)+15, offsetof(CEruptor, m_bRandomStretch), "Er Stretch Random", 0, "m_bRandomStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+16, offsetof(CEruptor, m_fStretchHeight), "Er Stretch Height (Y%)", 0, "m_fStretchHeight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+17, offsetof(CEruptor, m_fStretchWidth), "Er Stretch Width (X%)", 0, "m_fStretchWidth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+18, offsetof(CEruptor, m_fStretchDepth), "Er Stretch Depth (Z%)", 0, "m_fStretchDepth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+20, offsetof(CEruptor, m_fAngle), "Er Angle", 'Q', "m_fAngle", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+21, offsetof(CEruptor, m_fMaxSpeed), "Er Speed max", 'V', "m_fMaxSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+22, offsetof(CEruptor, m_fMinSpeed), "Er Speed min", 'B', "m_fMinSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+23, offsetof(CEruptor, m_fTime), "Er Spawn time", 'F', "m_fTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+24, offsetof(CEruptor, m_fRandomWait), "Er Random wait", 'G', "m_fRandomWait", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &ProjectileType_enum, (0x000000d5<<8)+25, offsetof(CEruptor, m_ptType), "Er Type", 'T', "m_ptType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d5<<8)+26, offsetof(CEruptor, m_bShootInArc), "Er Shoot In Arc", 'S', "m_bShootInArc", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d5<<8)+27, offsetof(CEruptor, m_fProjectileStretch), "Er projectile stretch", 0, "m_fProjectileStretch", 0x7F0000FFUL, 0),
 };
 #define CEruptor_propertiesct ARRAYCOUNT(CEruptor_properties)
 

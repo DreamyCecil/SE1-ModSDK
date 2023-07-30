@@ -3,10 +3,10 @@
 #define ENTITYCLASS CBoneman
 
 CEntityProperty CBoneman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+2, offsetof(CBoneman, m_bFistHit), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+3, offsetof(CBoneman, m_bTouchAnother), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000131<<8)+4, offsetof(CBoneman, m_soFeet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+5, offsetof(CBoneman, m_bRunSoundPlaying), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+2, offsetof(CBoneman, m_bFistHit), "", 0, "m_bFistHit", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+3, offsetof(CBoneman, m_bTouchAnother), "", 0, "m_bTouchAnother", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000131<<8)+4, offsetof(CBoneman, m_soFeet), "", 0, "m_soFeet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000131<<8)+5, offsetof(CBoneman, m_bRunSoundPlaying), "", 0, "m_bRunSoundPlaying", 0, 0),
 };
 #define CBoneman_propertiesct ARRAYCOUNT(CBoneman_properties)
 

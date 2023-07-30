@@ -3,13 +3,13 @@
 #define ENTITYCLASS CShipMarker
 
 CEntityProperty CShipMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000068<<8)+1, offsetof(CShipMarker, m_bHarbor), "Harbor", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+2, offsetof(CShipMarker, m_fSpeed), "Speed [m/s]", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+3, offsetof(CShipMarker, m_fRotation), "Rotation [deg/s]", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+4, offsetof(CShipMarker, m_fAcceleration), "Acceleration", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+5, offsetof(CShipMarker, m_fRockingV), "Rocking V", 'V', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+6, offsetof(CShipMarker, m_fRockingA), "Rocking A", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+7, offsetof(CShipMarker, m_tmRockingChange), "Rocking Change Time", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000068<<8)+1, offsetof(CShipMarker, m_bHarbor), "Harbor", 'H', "m_bHarbor", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+2, offsetof(CShipMarker, m_fSpeed), "Speed [m/s]", 'S', "m_fSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+3, offsetof(CShipMarker, m_fRotation), "Rotation [deg/s]", 'R', "m_fRotation", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+4, offsetof(CShipMarker, m_fAcceleration), "Acceleration", 'C', "m_fAcceleration", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+5, offsetof(CShipMarker, m_fRockingV), "Rocking V", 'V', "m_fRockingV", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+6, offsetof(CShipMarker, m_fRockingA), "Rocking A", 'A', "m_fRockingA", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000068<<8)+7, offsetof(CShipMarker, m_tmRockingChange), "Rocking Change Time", 0, "m_tmRockingChange", 0x7F0000FFUL, 0),
 };
 #define CShipMarker_propertiesct ARRAYCOUNT(CShipMarker_properties)
 

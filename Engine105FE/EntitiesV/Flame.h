@@ -12,6 +12,7 @@ CEntityPointer penOwner;
 CEntityPointer penAttach;
 };
 DECL_DLL inline void ClearToDefault(EFlame &e) { e = EFlame(); } ;
+#define CFlame_ClassID 504
 extern "C" DECL_DLL CDLLEntityClass CFlame_DLLClass;
 class CFlame : public CMovableModelEntity {
 public:

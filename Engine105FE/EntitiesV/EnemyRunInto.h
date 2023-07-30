@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_EnemyRunInto_INCLUDED
 #define _EntitiesV_EnemyRunInto_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
+#define CEnemyRunInto_ClassID 312
 extern "C" DECL_DLL CDLLEntityClass CEnemyRunInto_DLLClass;
 class DECL_DLL  CEnemyRunInto : public CEnemyBase {
 public:

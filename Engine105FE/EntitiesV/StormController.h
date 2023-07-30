@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_StormController_INCLUDED
 #define _EntitiesV_StormController_INCLUDED 1
+#define CStormController_ClassID 606
 extern "C" DECL_DLL CDLLEntityClass CStormController_DLLClass;
 class CStormController : public CRationalEntity {
 public:

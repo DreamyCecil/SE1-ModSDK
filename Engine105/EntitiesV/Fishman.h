@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Fishman_INCLUDED
 #define _EntitiesV_Fishman_INCLUDED 1
 #include <EntitiesV/EnemyDive.h>
+#define CFishman_ClassID 328
 extern "C" DECL_DLL CDLLEntityClass CFishman_DLLClass;
 class CFishman : public CEnemyDive {
 public:

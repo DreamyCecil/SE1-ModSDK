@@ -3,8 +3,8 @@
 #define ENTITYCLASS CEntityStateDisplay
 
 CEntityProperty CEntityStateDisplay_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e9<<8)+1, offsetof(CEntityStateDisplay, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e9<<8)+2, offsetof(CEntityStateDisplay, m_penTarget), "Target", 'T', C_dGREEN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e9<<8)+1, offsetof(CEntityStateDisplay, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000e9<<8)+2, offsetof(CEntityStateDisplay, m_penTarget), "Target", 'T', "m_penTarget", C_dGREEN  | 0xFF, 0),
 };
 #define CEntityStateDisplay_propertiesct ARRAYCOUNT(CEntityStateDisplay_properties)
 

@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Item_INCLUDED
 #define _EntitiesV_Item_INCLUDED 1
+#define CItem_ClassID 800
 extern "C" DECL_DLL CDLLEntityClass CItem_DLLClass;
 class DECL_DLL  CItem : public CMovableModelEntity {
 public:

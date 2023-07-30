@@ -21,6 +21,7 @@ CEntityEvent *MakeCopy(void);
 enum PowerUpItemType puitType;
 };
 DECL_DLL inline void ClearToDefault(EPowerUp &e) { e = EPowerUp(); } ;
+#define CPowerUpItem_ClassID 808
 extern "C" DECL_DLL CDLLEntityClass CPowerUpItem_DLLClass;
 class CPowerUpItem : public CItem {
 public:

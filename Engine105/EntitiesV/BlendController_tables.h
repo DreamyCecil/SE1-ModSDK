@@ -13,7 +13,7 @@ EP_ENUMEND(BlendControllerType);
 #define ENTITYCLASS CBlendController
 
 CEntityProperty CBlendController_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &BlendControllerType_enum, (0x00000264<<8)+1, offsetof(CBlendController, m_bctType), "Blend type", 'Y', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BlendControllerType_enum, (0x00000264<<8)+1, offsetof(CBlendController, m_bctType), "Blend type", 'Y', "m_bctType", 0x7F0000FFUL, 0),
 };
 #define CBlendController_propertiesct ARRAYCOUNT(CBlendController_properties)
 

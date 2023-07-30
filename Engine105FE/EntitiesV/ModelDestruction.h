@@ -20,6 +20,7 @@ enum DestructionDebrisType {
   DDT_PALM = 3,
 };
 DECL_DLL inline void ClearToDefault(DestructionDebrisType &e) { e = (DestructionDebrisType)0; } ;
+#define CModelDestruction_ClassID 217
 extern "C" DECL_DLL CDLLEntityClass CModelDestruction_DLLClass;
 class CModelDestruction : public CEntity {
 public:

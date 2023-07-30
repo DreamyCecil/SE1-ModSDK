@@ -11,9 +11,9 @@ EP_ENUMEND(HealthItemType);
 #define ENTITYCLASS CHealthItem
 
 CEntityProperty CHealthItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &HealthItemType_enum, (0x00000321<<8)+1, offsetof(CHealthItem, m_EhitType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000321<<8)+2, offsetof(CHealthItem, m_bOverTopHealth), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000321<<8)+3, offsetof(CHealthItem, m_iSoundComponent), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &HealthItemType_enum, (0x00000321<<8)+1, offsetof(CHealthItem, m_EhitType), "Type", 'Y', "m_EhitType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000321<<8)+2, offsetof(CHealthItem, m_bOverTopHealth), "", 0, "m_bOverTopHealth", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000321<<8)+3, offsetof(CHealthItem, m_iSoundComponent), "", 0, "m_iSoundComponent", 0, 0),
 };
 #define CHealthItem_propertiesct ARRAYCOUNT(CHealthItem_properties)
 

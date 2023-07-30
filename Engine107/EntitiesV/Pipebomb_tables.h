@@ -3,11 +3,11 @@
 #define ENTITYCLASS CPipebomb
 
 CEntityProperty CPipebomb_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f7<<8)+1, offsetof(CPipebomb, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001f7<<8)+2, offsetof(CPipebomb, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001f7<<8)+3, offsetof(CPipebomb, m_fSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001f7<<8)+4, offsetof(CPipebomb, m_bCollected), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f7<<8)+255, offsetof(CPipebomb, m_penPrediction), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f7<<8)+1, offsetof(CPipebomb, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001f7<<8)+2, offsetof(CPipebomb, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001f7<<8)+3, offsetof(CPipebomb, m_fSpeed), "", 0, "m_fSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001f7<<8)+4, offsetof(CPipebomb, m_bCollected), "", 0, "m_bCollected", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001f7<<8)+255, offsetof(CPipebomb, m_penPrediction), "", 0, "m_penPrediction", 0, 0),
 };
 #define CPipebomb_propertiesct ARRAYCOUNT(CPipebomb_properties)
 

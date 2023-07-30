@@ -9,11 +9,11 @@ EP_ENUMEND(WaterSize);
 #define ENTITYCLASS CWater
 
 CEntityProperty CWater_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fc<<8)+1, offsetof(CWater, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &WaterSize_enum, (0x000001fc<<8)+2, offsetof(CWater, m_EwsSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+10, offsetof(CWater, m_fDamageAmount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+11, offsetof(CWater, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+12, offsetof(CWater, m_fPushAwayFactor), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fc<<8)+1, offsetof(CWater, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WaterSize_enum, (0x000001fc<<8)+2, offsetof(CWater, m_EwsSize), "", 0, "m_EwsSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+10, offsetof(CWater, m_fDamageAmount), "", 0, "m_fDamageAmount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+11, offsetof(CWater, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fc<<8)+12, offsetof(CWater, m_fPushAwayFactor), "", 0, "m_fPushAwayFactor", 0, 0),
 };
 #define CWater_propertiesct ARRAYCOUNT(CWater_properties)
 

@@ -3,11 +3,11 @@
 #define ENTITYCLASS CPhotoAlbum
 
 CEntityProperty CPhotoAlbum_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000266<<8)+1, offsetof(CPhotoAlbum, m_fStretch), "Stretch", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000266<<8)+2, offsetof(CPhotoAlbum, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000266<<8)+3, offsetof(CPhotoAlbum, m_iCurrentPage), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000266<<8)+4, offsetof(CPhotoAlbum, m_tmPageWait), "Page wait", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000266<<8)+10, offsetof(CPhotoAlbum, m_soPage), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000266<<8)+1, offsetof(CPhotoAlbum, m_fStretch), "Stretch", 'S', "m_fStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000266<<8)+2, offsetof(CPhotoAlbum, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000266<<8)+3, offsetof(CPhotoAlbum, m_iCurrentPage), "", 0, "m_iCurrentPage", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000266<<8)+4, offsetof(CPhotoAlbum, m_tmPageWait), "Page wait", 'W', "m_tmPageWait", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000266<<8)+10, offsetof(CPhotoAlbum, m_soPage), "", 0, "m_soPage", 0, 0),
 };
 #define CPhotoAlbum_propertiesct ARRAYCOUNT(CPhotoAlbum_properties)
 

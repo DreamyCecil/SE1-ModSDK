@@ -8,22 +8,22 @@ EP_ENUMEND(CannonBallType);
 #define ENTITYCLASS CCannonBall
 
 CEntityProperty CCannonBall_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fa<<8)+1, offsetof(CCannonBall, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+2, offsetof(CCannonBall, m_fLaunchPower), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+3, offsetof(CCannonBall, m_fCannonBallSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+10, offsetof(CCannonBall, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+11, offsetof(CCannonBall, m_fStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000001fa<<8)+12, offsetof(CCannonBall, m_iNextChannel), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001fa<<8)+13, offsetof(CCannonBall, m_bSelfExploded), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+20, offsetof(CCannonBall, m_soBounce0), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+21, offsetof(CCannonBall, m_soBounce1), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+22, offsetof(CCannonBall, m_soBounce2), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+23, offsetof(CCannonBall, m_soBounce3), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+24, offsetof(CCannonBall, m_soBounce4), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &CannonBallType_enum, (0x000001fa<<8)+30, offsetof(CCannonBall, m_cbtType), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+40, offsetof(CCannonBall, m_tmInvisibility), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+41, offsetof(CCannonBall, m_tmExpandBox), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+42, offsetof(CCannonBall, m_tmForceExplode), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fa<<8)+1, offsetof(CCannonBall, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+2, offsetof(CCannonBall, m_fLaunchPower), "", 0, "m_fLaunchPower", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+3, offsetof(CCannonBall, m_fCannonBallSize), "", 0, "m_fCannonBallSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+10, offsetof(CCannonBall, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+11, offsetof(CCannonBall, m_fStartTime), "", 0, "m_fStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000001fa<<8)+12, offsetof(CCannonBall, m_iNextChannel), "", 0, "m_iNextChannel", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001fa<<8)+13, offsetof(CCannonBall, m_bSelfExploded), "", 0, "m_bSelfExploded", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+20, offsetof(CCannonBall, m_soBounce0), "", 0, "m_soBounce0", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+21, offsetof(CCannonBall, m_soBounce1), "", 0, "m_soBounce1", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+22, offsetof(CCannonBall, m_soBounce2), "", 0, "m_soBounce2", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+23, offsetof(CCannonBall, m_soBounce3), "", 0, "m_soBounce3", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001fa<<8)+24, offsetof(CCannonBall, m_soBounce4), "", 0, "m_soBounce4", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &CannonBallType_enum, (0x000001fa<<8)+30, offsetof(CCannonBall, m_cbtType), "", 0, "m_cbtType", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+40, offsetof(CCannonBall, m_tmInvisibility), "", 0, "m_tmInvisibility", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+41, offsetof(CCannonBall, m_tmExpandBox), "", 0, "m_tmExpandBox", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fa<<8)+42, offsetof(CCannonBall, m_tmForceExplode), "", 0, "m_tmForceExplode", 0, 0),
 };
 #define CCannonBall_propertiesct ARRAYCOUNT(CCannonBall_properties)
 

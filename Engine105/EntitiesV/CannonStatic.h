@@ -7,6 +7,7 @@
 #include <EntitiesV/SoundHolder.h>
 #include <EntitiesV/BloodSpray.h>
 #include <EntitiesV/CannonBall.h>
+#define CCannonStatic_ClassID 345
 extern "C" DECL_DLL CDLLEntityClass CCannonStatic_DLLClass;
 class CCannonStatic : public CEnemyBase {
 public:

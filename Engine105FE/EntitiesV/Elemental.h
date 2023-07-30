@@ -26,6 +26,7 @@ enum ElementalState {
   ELS_PLANE = 2,
 };
 DECL_DLL inline void ClearToDefault(ElementalState &e) { e = (ElementalState)0; } ;
+#define CElemental_ClassID 322
 extern "C" DECL_DLL CDLLEntityClass CElemental_DLLClass;
 class CElemental : public CEnemyBase {
 public:

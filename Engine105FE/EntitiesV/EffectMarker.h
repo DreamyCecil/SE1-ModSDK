@@ -17,6 +17,7 @@ enum EffectMarkerType {
   EMT_APPEAR_DISAPPEAR = 9,
 };
 DECL_DLL inline void ClearToDefault(EffectMarkerType &e) { e = (EffectMarkerType)0; } ;
+#define CEffectMarker_ClassID 611
 extern "C" DECL_DLL CDLLEntityClass CEffectMarker_DLLClass;
 class CEffectMarker : public CMarker {
 public:

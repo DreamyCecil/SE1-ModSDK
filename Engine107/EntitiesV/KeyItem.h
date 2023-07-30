@@ -31,6 +31,7 @@ CEntityEvent *MakeCopy(void);
 enum KeyItemType kitType;
 };
 DECL_DLL inline void ClearToDefault(EKey &e) { e = EKey(); } ;
+#define CKeyItem_ClassID 805
 extern "C" DECL_DLL CDLLEntityClass CKeyItem_DLLClass;
 class CKeyItem : public CItem {
 public:

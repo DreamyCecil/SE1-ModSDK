@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_PlayerMarker_INCLUDED
 #define _EntitiesV_PlayerMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CPlayerMarker_ClassID 404
 extern "C" DECL_DLL CDLLEntityClass CPlayerMarker_DLLClass;
 class CPlayerMarker : public CMarker {
 public:

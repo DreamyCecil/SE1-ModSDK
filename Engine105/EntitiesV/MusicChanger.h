@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_MusicChanger_INCLUDED
 #define _EntitiesV_MusicChanger_INCLUDED 1
 #include <EntitiesV/MusicHolder.h>
+#define CMusicChanger_ClassID 225
 extern "C" DECL_DLL CDLLEntityClass CMusicChanger_DLLClass;
 class CMusicChanger : public CRationalEntity {
 public:

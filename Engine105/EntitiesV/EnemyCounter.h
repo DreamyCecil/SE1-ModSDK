@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_EnemyCounter_INCLUDED
 #define _EntitiesV_EnemyCounter_INCLUDED 1
+#define CEnemyCounter_ClassID 339
 extern "C" DECL_DLL CDLLEntityClass CEnemyCounter_DLLClass;
 class CEnemyCounter : public CRationalEntity {
 public:

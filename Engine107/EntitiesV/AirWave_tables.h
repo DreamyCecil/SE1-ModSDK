@@ -3,10 +3,10 @@
 #define ENTITYCLASS CAirWave
 
 CEntityProperty CAirWave_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fe<<8)+1, offsetof(CAirWave, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+10, offsetof(CAirWave, m_fDamageAmount), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+11, offsetof(CAirWave, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+12, offsetof(CAirWave, m_fStartTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fe<<8)+1, offsetof(CAirWave, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+10, offsetof(CAirWave, m_fDamageAmount), "", 0, "m_fDamageAmount", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+11, offsetof(CAirWave, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fe<<8)+12, offsetof(CAirWave, m_fStartTime), "", 0, "m_fStartTime", 0, 0),
 };
 #define CAirWave_propertiesct ARRAYCOUNT(CAirWave_properties)
 

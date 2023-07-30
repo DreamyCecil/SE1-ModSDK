@@ -18,7 +18,7 @@ EP_ENUMEND(WeaponItemType);
 #define ENTITYCLASS CWeaponItem
 
 CEntityProperty CWeaponItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &WeaponItemType_enum, (0x00000322<<8)+1, offsetof(CWeaponItem, m_EwitType), "Type", 'Y', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WeaponItemType_enum, (0x00000322<<8)+1, offsetof(CWeaponItem, m_EwitType), "Type", 'Y', "m_EwitType", 0x7F0000FFUL, 0),
 };
 #define CWeaponItem_propertiesct ARRAYCOUNT(CWeaponItem_properties)
 

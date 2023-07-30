@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_Lightning_INCLUDED
 #define _EntitiesV_Lightning_INCLUDED 1
+#define CLightning_ClassID 607
 extern "C" DECL_DLL CDLLEntityClass CLightning_DLLClass;
 class CLightning : public CMovableModelEntity {
 public:

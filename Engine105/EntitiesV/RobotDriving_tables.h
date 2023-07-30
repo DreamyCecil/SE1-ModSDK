@@ -8,10 +8,10 @@ EP_ENUMEND(RobotDrivingChar);
 #define ENTITYCLASS CRobotDriving
 
 CEntityProperty CRobotDriving_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &RobotDrivingChar_enum, (0x0000014d<<8)+1, offsetof(CRobotDriving, m_rdcChar), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014d<<8)+2, offsetof(CRobotDriving, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000014d<<8)+10, offsetof(CRobotDriving, m_soFire0), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000014d<<8)+11, offsetof(CRobotDriving, m_soFire1), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &RobotDrivingChar_enum, (0x0000014d<<8)+1, offsetof(CRobotDriving, m_rdcChar), "Character", 'C', "m_rdcChar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014d<<8)+2, offsetof(CRobotDriving, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000014d<<8)+10, offsetof(CRobotDriving, m_soFire0), "", 0, "m_soFire0", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x0000014d<<8)+11, offsetof(CRobotDriving, m_soFire1), "", 0, "m_soFire1", 0, 0),
 };
 #define CRobotDriving_propertiesct ARRAYCOUNT(CRobotDriving_properties)
 

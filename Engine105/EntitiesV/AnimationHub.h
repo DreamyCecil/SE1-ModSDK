@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_AnimationHub_INCLUDED
 #define _EntitiesV_AnimationHub_INCLUDED 1
+#define CAnimationHub_ClassID 228
 extern "C" DECL_DLL CDLLEntityClass CAnimationHub_DLLClass;
 class CAnimationHub : public CRationalEntity {
 public:

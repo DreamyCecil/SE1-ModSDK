@@ -3,14 +3,14 @@
 #define ENTITYCLASS CSpawnerProjectile
 
 CEntityProperty CSpawnerProjectile_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+1, offsetof(CSpawnerProjectile, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+2, offsetof(CSpawnerProjectile, m_penTemplate), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+4, offsetof(CSpawnerProjectile, m_fSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+5, offsetof(CSpawnerProjectile, m_fTimeAdjust), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001fb<<8)+6, offsetof(CSpawnerProjectile, m_bExploding), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+7, offsetof(CSpawnerProjectile, m_fExplosionDuration), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+8, offsetof(CSpawnerProjectile, m_tmExplosionBegin), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+9, offsetof(CSpawnerProjectile, m_tmSpawn), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+1, offsetof(CSpawnerProjectile, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fb<<8)+2, offsetof(CSpawnerProjectile, m_penTemplate), "", 0, "m_penTemplate", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+4, offsetof(CSpawnerProjectile, m_fSize), "", 0, "m_fSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+5, offsetof(CSpawnerProjectile, m_fTimeAdjust), "", 0, "m_fTimeAdjust", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001fb<<8)+6, offsetof(CSpawnerProjectile, m_bExploding), "", 0, "m_bExploding", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+7, offsetof(CSpawnerProjectile, m_fExplosionDuration), "", 0, "m_fExplosionDuration", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+8, offsetof(CSpawnerProjectile, m_tmExplosionBegin), "", 0, "m_tmExplosionBegin", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001fb<<8)+9, offsetof(CSpawnerProjectile, m_tmSpawn), "", 0, "m_tmSpawn", 0, 0),
 };
 #define CSpawnerProjectile_propertiesct ARRAYCOUNT(CSpawnerProjectile_properties)
 

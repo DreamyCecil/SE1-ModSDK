@@ -27,13 +27,13 @@ EP_ENUMEND(DevilActionType);
 #define ENTITYCLASS CDevilMarker
 
 CEntityProperty CDevilMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &DevilActionType_enum, (0x00000152<<8)+1, offsetof(CDevilMarker, m_datType), "Action", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000152<<8)+4, offsetof(CDevilMarker, m_iWaitIdles), "Wait idles", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+5, offsetof(CDevilMarker, m_penDevil), "Devil", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+6, offsetof(CDevilMarker, m_penTrigger), "Trigger", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+7, offsetof(CDevilMarker, m_penToDestroy1), "Destroy target 1", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+8, offsetof(CDevilMarker, m_penToDestroy2), "Destroy target 2", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x00000152<<8)+9, offsetof(CDevilMarker, m_fAttackRadius), "Attack radius", 'S', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DevilActionType_enum, (0x00000152<<8)+1, offsetof(CDevilMarker, m_datType), "Action", 'A', "m_datType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x00000152<<8)+4, offsetof(CDevilMarker, m_iWaitIdles), "Wait idles", 'W', "m_iWaitIdles", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+5, offsetof(CDevilMarker, m_penDevil), "Devil", 'D', "m_penDevil", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+6, offsetof(CDevilMarker, m_penTrigger), "Trigger", 'G', "m_penTrigger", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+7, offsetof(CDevilMarker, m_penToDestroy1), "Destroy target 1", 'E', "m_penToDestroy1", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000152<<8)+8, offsetof(CDevilMarker, m_penToDestroy2), "Destroy target 2", 'R', "m_penToDestroy2", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x00000152<<8)+9, offsetof(CDevilMarker, m_fAttackRadius), "Attack radius", 'S', "m_fAttackRadius", 0x7F0000FFUL, 0),
 };
 #define CDevilMarker_propertiesct ARRAYCOUNT(CDevilMarker_properties)
 

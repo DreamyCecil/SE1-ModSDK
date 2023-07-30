@@ -8,11 +8,11 @@ EP_ENUMEND(BullChar);
 #define ENTITYCLASS CWerebull
 
 CEntityProperty CWerebull_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+1, offsetof(CWerebull, m_bRunAttack), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+2, offsetof(CWerebull, m_bHornHit), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000133<<8)+3, offsetof(CWerebull, m_penLastTouched), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000133<<8)+4, offsetof(CWerebull, m_soFeet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+5, offsetof(CWerebull, m_bRunSoundPlaying), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+1, offsetof(CWerebull, m_bRunAttack), "", 0, "m_bRunAttack", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+2, offsetof(CWerebull, m_bHornHit), "", 0, "m_bHornHit", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000133<<8)+3, offsetof(CWerebull, m_penLastTouched), "", 0, "m_penLastTouched", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000133<<8)+4, offsetof(CWerebull, m_soFeet), "", 0, "m_soFeet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000133<<8)+5, offsetof(CWerebull, m_bRunSoundPlaying), "", 0, "m_bRunSoundPlaying", 0, 0),
 };
 #define CWerebull_propertiesct ARRAYCOUNT(CWerebull_properties)
 

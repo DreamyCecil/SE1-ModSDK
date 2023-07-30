@@ -15,22 +15,22 @@ EP_ENUMEND(SkaShadowType);
 #define ENTITYCLASS CModelHolder3
 
 CEntityProperty CModelHolder3_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000f2<<8)+1, offsetof(CModelHolder3, m_fnModel), "Model file (.smc)", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+3, offsetof(CModelHolder3, m_fStretchAll), "StretchAll", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000f2<<8)+4, offsetof(CModelHolder3, m_vStretchXYZ), "StretchXYZ", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f2<<8)+7, offsetof(CModelHolder3, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000f2<<8)+12, offsetof(CModelHolder3, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+8, offsetof(CModelHolder3, m_bColliding), "Collision", 'L', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &SkaShadowType_enum, (0x000000f2<<8)+11, offsetof(CModelHolder3, m_stClusterShadows), "Shadows", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+13, offsetof(CModelHolder3, m_bBackground), "Background", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+21, offsetof(CModelHolder3, m_bTargetable), "Targetable", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &SkaCustomShadingType_enum, (0x000000f2<<8)+14, offsetof(CModelHolder3, m_cstCustomShading), "Shading mode", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000f2<<8)+15, offsetof(CModelHolder3, m_aShadingDirection), "Shade. Light direction", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000f2<<8)+16, offsetof(CModelHolder3, m_colLight), "Shade. Light color", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x000000f2<<8)+17, offsetof(CModelHolder3, m_colAmbient), "Shade. Ambient color", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+26, offsetof(CModelHolder3, m_bActive), "Active", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+70, offsetof(CModelHolder3, m_fClassificationStretch), "Classification stretch", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+100, offsetof(CModelHolder3, m_fMaxTessellationLevel), "Max tessellation level", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000f2<<8)+1, offsetof(CModelHolder3, m_fnModel), "Model file (.smc)", 'M', "m_fnModel", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+3, offsetof(CModelHolder3, m_fStretchAll), "StretchAll", 'S', "m_fStretchAll", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000f2<<8)+4, offsetof(CModelHolder3, m_vStretchXYZ), "StretchXYZ", 'X', "m_vStretchXYZ", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f2<<8)+7, offsetof(CModelHolder3, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000f2<<8)+12, offsetof(CModelHolder3, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+8, offsetof(CModelHolder3, m_bColliding), "Collision", 'L', "m_bColliding", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &SkaShadowType_enum, (0x000000f2<<8)+11, offsetof(CModelHolder3, m_stClusterShadows), "Shadows", 'W', "m_stClusterShadows", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+13, offsetof(CModelHolder3, m_bBackground), "Background", 'B', "m_bBackground", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+21, offsetof(CModelHolder3, m_bTargetable), "Targetable", 0, "m_bTargetable", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &SkaCustomShadingType_enum, (0x000000f2<<8)+14, offsetof(CModelHolder3, m_cstCustomShading), "Shading mode", 'H', "m_cstCustomShading", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000f2<<8)+15, offsetof(CModelHolder3, m_aShadingDirection), "Shade. Light direction", 'D', "m_aShadingDirection", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000f2<<8)+16, offsetof(CModelHolder3, m_colLight), "Shade. Light color", 'O', "m_colLight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x000000f2<<8)+17, offsetof(CModelHolder3, m_colAmbient), "Shade. Ambient color", 'A', "m_colAmbient", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000f2<<8)+26, offsetof(CModelHolder3, m_bActive), "Active", 0, "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+70, offsetof(CModelHolder3, m_fClassificationStretch), "Classification stretch", 0, "m_fClassificationStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000f2<<8)+100, offsetof(CModelHolder3, m_fMaxTessellationLevel), "Max tessellation level", 0, "m_fMaxTessellationLevel", 0x7F0000FFUL, 0),
 };
 #define CModelHolder3_propertiesct ARRAYCOUNT(CModelHolder3_properties)
 

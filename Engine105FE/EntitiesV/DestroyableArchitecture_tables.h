@@ -3,17 +3,17 @@
 #define ENTITYCLASS CDestroyableArchitecture
 
 CEntityProperty CDestroyableArchitecture_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000006b<<8)+1, offsetof(CDestroyableArchitecture, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+2, offsetof(CDestroyableArchitecture, m_fHealth), "Health", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EffectorEffectType_enum, (0x0000006b<<8)+3, offsetof(CDestroyableArchitecture, m_etType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000006b<<8)+4, offsetof(CDestroyableArchitecture, m_vDamageDir), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+5, offsetof(CDestroyableArchitecture, m_fStretch), "Stretch", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000006b<<8)+6, offsetof(CDestroyableArchitecture, m_penGradient), "Gradient", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_COLOR, NULL, (0x0000006b<<8)+10, offsetof(CDestroyableArchitecture, m_colDebrises), "Color of debrises", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000006b<<8)+11, offsetof(CDestroyableArchitecture, m_ctDebrises), "Debris count", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+12, offsetof(CDestroyableArchitecture, m_fCandyEffect), "Debris blow power", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+13, offsetof(CDestroyableArchitecture, m_fCubeFactor), "Cube factor", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000006b<<8)+14, offsetof(CDestroyableArchitecture, m_bBlowupByDamager), "Blowup by Damager", 0, 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000006b<<8)+1, offsetof(CDestroyableArchitecture, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+2, offsetof(CDestroyableArchitecture, m_fHealth), "Health", 'H', "m_fHealth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EffectorEffectType_enum, (0x0000006b<<8)+3, offsetof(CDestroyableArchitecture, m_etType), "Type", 'Y', "m_etType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x0000006b<<8)+4, offsetof(CDestroyableArchitecture, m_vDamageDir), "", 0, "m_vDamageDir", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+5, offsetof(CDestroyableArchitecture, m_fStretch), "Stretch", 'S', "m_fStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000006b<<8)+6, offsetof(CDestroyableArchitecture, m_penGradient), "Gradient", 'R', "m_penGradient", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_COLOR, NULL, (0x0000006b<<8)+10, offsetof(CDestroyableArchitecture, m_colDebrises), "Color of debrises", 0, "m_colDebrises", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000006b<<8)+11, offsetof(CDestroyableArchitecture, m_ctDebrises), "Debris count", 0, "m_ctDebrises", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+12, offsetof(CDestroyableArchitecture, m_fCandyEffect), "Debris blow power", 0, "m_fCandyEffect", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000006b<<8)+13, offsetof(CDestroyableArchitecture, m_fCubeFactor), "Cube factor", 0, "m_fCubeFactor", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000006b<<8)+14, offsetof(CDestroyableArchitecture, m_bBlowupByDamager), "Blowup by Damager", 0, "m_bBlowupByDamager", 0x7F0000FFUL, 0),
 };
 #define CDestroyableArchitecture_propertiesct ARRAYCOUNT(CDestroyableArchitecture_properties)
 

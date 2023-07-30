@@ -3,13 +3,13 @@
 #define ENTITYCLASS CDevilProjectile
 
 CEntityProperty CDevilProjectile_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001ff<<8)+1, offsetof(CDevilProjectile, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001ff<<8)+2, offsetof(CDevilProjectile, m_penTarget), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001ff<<8)+10, offsetof(CDevilProjectile, m_fIgnoreTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000001ff<<8)+11, offsetof(CDevilProjectile, m_fStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001ff<<8)+12, offsetof(CDevilProjectile, m_vDesiredAngle), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001ff<<8)+13, offsetof(CDevilProjectile, m_bFly), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001ff<<8)+20, offsetof(CDevilProjectile, m_soEffect), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001ff<<8)+1, offsetof(CDevilProjectile, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001ff<<8)+2, offsetof(CDevilProjectile, m_penTarget), "", 0, "m_penTarget", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001ff<<8)+10, offsetof(CDevilProjectile, m_fIgnoreTime), "", 0, "m_fIgnoreTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000001ff<<8)+11, offsetof(CDevilProjectile, m_fStartTime), "", 0, "m_fStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000001ff<<8)+12, offsetof(CDevilProjectile, m_vDesiredAngle), "", 0, "m_vDesiredAngle", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001ff<<8)+13, offsetof(CDevilProjectile, m_bFly), "", 0, "m_bFly", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x000001ff<<8)+20, offsetof(CDevilProjectile, m_soEffect), "", 0, "m_soEffect", 0, 0),
 };
 #define CDevilProjectile_propertiesct ARRAYCOUNT(CDevilProjectile_properties)
 

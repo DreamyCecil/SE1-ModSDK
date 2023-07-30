@@ -11,6 +11,7 @@ enum DragonmanType {
   DT_MONSTER = 2,
 };
 DECL_DLL inline void ClearToDefault(DragonmanType &e) { e = (DragonmanType)0; } ;
+#define CDragonman_ClassID 321
 extern "C" DECL_DLL CDLLEntityClass CDragonman_DLLClass;
 class CDragonman : public CEnemyFly {
 public:

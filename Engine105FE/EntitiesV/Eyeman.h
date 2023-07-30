@@ -15,6 +15,7 @@ enum EyemanEnv {
   EYE_LAVA = 1,
 };
 DECL_DLL inline void ClearToDefault(EyemanEnv &e) { e = (EyemanEnv)0; } ;
+#define CEyeman_ClassID 323
 extern "C" DECL_DLL CDLLEntityClass CEyeman_DLLClass;
 class CEyeman : public CEnemyFly {
 public:

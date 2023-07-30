@@ -18,6 +18,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penSeen;
 };
 DECL_DLL inline void ClearToDefault(EWatch &e) { e = EWatch(); } ;
+#define CWatcher_ClassID 700
 extern "C" DECL_DLL CDLLEntityClass CWatcher_DLLClass;
 class DECL_DLL  CWatcher : public CRationalEntity {
 public:

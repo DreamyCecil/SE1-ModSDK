@@ -3,8 +3,8 @@
 #define ENTITYCLASS CCyborgBike
 
 CEntityProperty CCyborgBike_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000014b<<8)+1, offsetof(CCyborgBike, m_fSpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x0000014b<<8)+2, offsetof(CCyborgBike, m_iIndex), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000014b<<8)+1, offsetof(CCyborgBike, m_fSpeed), "", 0, "m_fSpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x0000014b<<8)+2, offsetof(CCyborgBike, m_iIndex), "", 0, "m_iIndex", 0, 0),
 };
 #define CCyborgBike_propertiesct ARRAYCOUNT(CCyborgBike_properties)
 

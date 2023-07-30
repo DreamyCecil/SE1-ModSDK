@@ -12,6 +12,7 @@ FLOAT fWaitTime;
 INDEX iValue;
 };
 DECL_DLL inline void ClearToDefault(EReminderInit &e) { e = EReminderInit(); } ;
+#define CReminder_ClassID 703
 extern "C" DECL_DLL CDLLEntityClass CReminder_DLLClass;
 class DECL_DLL  CReminder : public CRationalEntity {
 public:

@@ -30,6 +30,7 @@ enum LensFlareType {
   LFT_WHITE_GLOW_STAR_NG = 12,
 };
 DECL_DLL inline void ClearToDefault(LensFlareType &e) { e = (LensFlareType)0; } ;
+#define CLight_ClassID 200
 extern "C" DECL_DLL CDLLEntityClass CLight_DLLClass;
 class CLight : public CEntity {
 public:

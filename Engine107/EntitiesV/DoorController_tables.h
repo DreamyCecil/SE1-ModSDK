@@ -10,21 +10,21 @@ EP_ENUMEND(DoorType);
 #define ENTITYCLASS CDoorController
 
 CEntityProperty CDoorController_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000dd<<8)+1, offsetof(CDoorController, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000dd<<8)+2, offsetof(CDoorController, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+3, offsetof(CDoorController, m_penTarget1), "Target1", 'T', C_MAGENTA  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+4, offsetof(CDoorController, m_penTarget2), "Target2", 0, C_MAGENTA  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000dd<<8)+5, offsetof(CDoorController, m_fWidth), "Width", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000dd<<8)+6, offsetof(CDoorController, m_fHeight), "Height", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+7, offsetof(CDoorController, m_bPlayersOnly), "Players Only", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &DoorType_enum, (0x000000dd<<8)+8, offsetof(CDoorController, m_dtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRINGTRANS, NULL, (0x000000dd<<8)+9, offsetof(CDoorController, m_strLockedMessage), "Locked message", 'L', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+13, offsetof(CDoorController, m_penLockedTarget), "Locked target", 0, C_dMAGENTA  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &KeyItemType_enum, (0x000000dd<<8)+12, offsetof(CDoorController, m_kitKey), "Key", 'K', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+14, offsetof(CDoorController, m_bTriggerOnAnything), "Trigger on anything", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+15, offsetof(CDoorController, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+10, offsetof(CDoorController, m_bLocked), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+11, offsetof(CDoorController, m_penCaused), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000dd<<8)+1, offsetof(CDoorController, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000dd<<8)+2, offsetof(CDoorController, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+3, offsetof(CDoorController, m_penTarget1), "Target1", 'T', "m_penTarget1", C_MAGENTA  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+4, offsetof(CDoorController, m_penTarget2), "Target2", 0, "m_penTarget2", C_MAGENTA  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000dd<<8)+5, offsetof(CDoorController, m_fWidth), "Width", 'W', "m_fWidth", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000dd<<8)+6, offsetof(CDoorController, m_fHeight), "Height", 'H', "m_fHeight", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+7, offsetof(CDoorController, m_bPlayersOnly), "Players Only", 'P', "m_bPlayersOnly", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DoorType_enum, (0x000000dd<<8)+8, offsetof(CDoorController, m_dtType), "Type", 'Y', "m_dtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRINGTRANS, NULL, (0x000000dd<<8)+9, offsetof(CDoorController, m_strLockedMessage), "Locked message", 'L', "m_strLockedMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+13, offsetof(CDoorController, m_penLockedTarget), "Locked target", 0, "m_penLockedTarget", C_dMAGENTA  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &KeyItemType_enum, (0x000000dd<<8)+12, offsetof(CDoorController, m_kitKey), "Key", 'K', "m_kitKey", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+14, offsetof(CDoorController, m_bTriggerOnAnything), "Trigger on anything", 0, "m_bTriggerOnAnything", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+15, offsetof(CDoorController, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000dd<<8)+10, offsetof(CDoorController, m_bLocked), "", 0, "m_bLocked", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000dd<<8)+11, offsetof(CDoorController, m_penCaused), "", 0, "m_penCaused", 0, 0),
 };
 #define CDoorController_propertiesct ARRAYCOUNT(CDoorController_properties)
 

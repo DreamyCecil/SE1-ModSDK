@@ -8,9 +8,9 @@ EP_ENUMEND(GruntType);
 #define ENTITYCLASS CGrunt
 
 CEntityProperty CGrunt_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &GruntType_enum, (0x00000157<<8)+1, offsetof(CGrunt, m_gtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+10, offsetof(CGrunt, m_soFire1), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+11, offsetof(CGrunt, m_soFire2), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &GruntType_enum, (0x00000157<<8)+1, offsetof(CGrunt, m_gtType), "Type", 'Y', "m_gtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+10, offsetof(CGrunt, m_soFire1), "", 0, "m_soFire1", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+11, offsetof(CGrunt, m_soFire2), "", 0, "m_soFire2", 0, 0),
 };
 #define CGrunt_propertiesct ARRAYCOUNT(CGrunt_properties)
 

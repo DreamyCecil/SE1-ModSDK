@@ -10,6 +10,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penLauncher;
 };
 DECL_DLL inline void ClearToDefault(EAirWave &e) { e = EAirWave(); } ;
+#define CAirWave_ClassID 510
 extern "C" DECL_DLL CDLLEntityClass CAirWave_DLLClass;
 class CAirWave : public CMovableModelEntity {
 public:

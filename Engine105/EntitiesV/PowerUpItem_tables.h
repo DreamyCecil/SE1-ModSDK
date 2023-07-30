@@ -11,7 +11,7 @@ EP_ENUMEND(PowerUpItemType);
 #define ENTITYCLASS CPowerUpItem
 
 CEntityProperty CPowerUpItem_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &PowerUpItemType_enum, (0x00000328<<8)+1, offsetof(CPowerUpItem, m_puitType), "Type", 'Y', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &PowerUpItemType_enum, (0x00000328<<8)+1, offsetof(CPowerUpItem, m_puitType), "Type", 'Y', "m_puitType", 0x7F0000FFUL, 0),
 };
 #define CPowerUpItem_propertiesct ARRAYCOUNT(CPowerUpItem_properties)
 

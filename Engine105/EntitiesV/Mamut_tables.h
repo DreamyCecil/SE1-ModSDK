@@ -8,12 +8,12 @@ EP_ENUMEND(MamutChar);
 #define ENTITYCLASS CMamut
 
 CEntityProperty CMamut_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &MamutChar_enum, (0x00000147<<8)+1, offsetof(CMamut, m_EmcChar), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+2, offsetof(CMamut, m_bFrontRider), "Rider Front", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+3, offsetof(CMamut, m_bMiddleRider), "Rider Middle", 'J', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+4, offsetof(CMamut, m_bRearRider), "Rider Rear", 'K', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000147<<8)+5, offsetof(CMamut, m_penBullet), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000147<<8)+6, offsetof(CMamut, m_fLastShootTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &MamutChar_enum, (0x00000147<<8)+1, offsetof(CMamut, m_EmcChar), "Character", 'C', "m_EmcChar", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+2, offsetof(CMamut, m_bFrontRider), "Rider Front", 'H', "m_bFrontRider", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+3, offsetof(CMamut, m_bMiddleRider), "Rider Middle", 'J', "m_bMiddleRider", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000147<<8)+4, offsetof(CMamut, m_bRearRider), "Rider Rear", 'K', "m_bRearRider", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000147<<8)+5, offsetof(CMamut, m_penBullet), "", 0, "m_penBullet", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000147<<8)+6, offsetof(CMamut, m_fLastShootTime), "", 0, "m_fLastShootTime", 0, 0),
 };
 #define CMamut_propertiesct ARRAYCOUNT(CMamut_properties)
 

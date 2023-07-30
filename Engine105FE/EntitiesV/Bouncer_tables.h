@@ -3,15 +3,15 @@
 #define ENTITYCLASS CBouncer
 
 CEntityProperty CBouncer_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000069<<8)+1, offsetof(CBouncer, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000069<<8)+2, offsetof(CBouncer, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+4, offsetof(CBouncer, m_fSpeed), "Speed [m/s]", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x00000069<<8)+5, offsetof(CBouncer, m_aDirection), "Direction", 'D', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+6, offsetof(CBouncer, m_tmControl), "Control time", 'T', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000069<<8)+7, offsetof(CBouncer, m_bEntrySpeed), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+10, offsetof(CBouncer, m_fMaxExitSpeed), "Max exit speed", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+12, offsetof(CBouncer, m_fNormalComponentMultiplier), "Normal component multiplier", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+13, offsetof(CBouncer, m_fParallelComponentMultiplier), "Parallel component multiplier", 'P', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000069<<8)+1, offsetof(CBouncer, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000069<<8)+2, offsetof(CBouncer, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+4, offsetof(CBouncer, m_fSpeed), "Speed [m/s]", 'S', "m_fSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x00000069<<8)+5, offsetof(CBouncer, m_aDirection), "Direction", 'D', "m_aDirection", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+6, offsetof(CBouncer, m_tmControl), "Control time", 'T', "m_tmControl", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000069<<8)+7, offsetof(CBouncer, m_bEntrySpeed), "", 0, "m_bEntrySpeed", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+10, offsetof(CBouncer, m_fMaxExitSpeed), "Max exit speed", 'M', "m_fMaxExitSpeed", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+12, offsetof(CBouncer, m_fNormalComponentMultiplier), "Normal component multiplier", 'O', "m_fNormalComponentMultiplier", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000069<<8)+13, offsetof(CBouncer, m_fParallelComponentMultiplier), "Parallel component multiplier", 'P', "m_fParallelComponentMultiplier", 0x7F0000FFUL, 0),
 };
 #define CBouncer_propertiesct ARRAYCOUNT(CBouncer_properties)
 

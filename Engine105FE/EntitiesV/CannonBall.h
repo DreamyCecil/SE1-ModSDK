@@ -29,6 +29,7 @@ EForceExplode();
 CEntityEvent *MakeCopy(void);
 };
 DECL_DLL inline void ClearToDefault(EForceExplode &e) { e = EForceExplode(); } ;
+#define CCannonBall_ClassID 506
 extern "C" DECL_DLL CDLLEntityClass CCannonBall_DLLClass;
 class DECL_DLL  CCannonBall : public CMovableModelEntity {
 public:

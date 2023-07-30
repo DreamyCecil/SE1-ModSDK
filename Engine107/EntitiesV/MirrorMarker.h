@@ -10,6 +10,7 @@ enum WarpRotation {
   WR_TWIRLING = 2,
 };
 DECL_DLL inline void ClearToDefault(WarpRotation &e) { e = (WarpRotation)0; } ;
+#define CMirrorMarker_ClassID 218
 extern "C" DECL_DLL CDLLEntityClass CMirrorMarker_DLLClass;
 class CMirrorMarker : public CMarker {
 public:

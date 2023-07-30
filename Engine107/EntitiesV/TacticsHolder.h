@@ -10,6 +10,7 @@ enum TacticType {
   TCT_STATIC_RANDOM_V_DISTANCE = 3,
 };
 DECL_DLL inline void ClearToDefault(TacticType &e) { e = (TacticType)0; } ;
+#define CTacticsHolder_ClassID 235
 extern "C" DECL_DLL CDLLEntityClass CTacticsHolder_DLLClass;
 class CTacticsHolder : public CRationalEntity {
 public:

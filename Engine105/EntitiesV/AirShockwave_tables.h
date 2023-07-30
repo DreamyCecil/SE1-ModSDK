@@ -3,21 +3,21 @@
 #define ENTITYCLASS CAirShockwave
 
 CEntityProperty CAirShockwave_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015d<<8)+1, offsetof(CAirShockwave, m_penLauncher), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+2, offsetof(CAirShockwave, m_fHeight), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+3, offsetof(CAirShockwave, m_fEndWidth), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+4, offsetof(CAirShockwave, m_tmBegin), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+5, offsetof(CAirShockwave, m_tmEnd), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+6, offsetof(CAirShockwave, m_fDuration), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015d<<8)+7, offsetof(CAirShockwave, m_bGrowing), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+8, offsetof(CAirShockwave, m_tmLastGrow), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+9, offsetof(CAirShockwave, m_fFadeStartTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+10, offsetof(CAirShockwave, m_fFadeStartPercent), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+20, offsetof(CAirShockwave, m_fStretchY), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+21, offsetof(CAirShockwave, m_fBeginStretchXZ), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+22, offsetof(CAirShockwave, m_fEndStretchXZ), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x0000015d<<8)+25, offsetof(CAirShockwave, m_boxMaxSize), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x0000015d<<8)+30, offsetof(CAirShockwave, m_bFadeOut), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x0000015d<<8)+1, offsetof(CAirShockwave, m_penLauncher), "", 0, "m_penLauncher", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+2, offsetof(CAirShockwave, m_fHeight), "", 0, "m_fHeight", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+3, offsetof(CAirShockwave, m_fEndWidth), "", 0, "m_fEndWidth", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+4, offsetof(CAirShockwave, m_tmBegin), "", 0, "m_tmBegin", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+5, offsetof(CAirShockwave, m_tmEnd), "", 0, "m_tmEnd", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+6, offsetof(CAirShockwave, m_fDuration), "", 0, "m_fDuration", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015d<<8)+7, offsetof(CAirShockwave, m_bGrowing), "", 0, "m_bGrowing", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+8, offsetof(CAirShockwave, m_tmLastGrow), "", 0, "m_tmLastGrow", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+9, offsetof(CAirShockwave, m_fFadeStartTime), "", 0, "m_fFadeStartTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+10, offsetof(CAirShockwave, m_fFadeStartPercent), "", 0, "m_fFadeStartPercent", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+20, offsetof(CAirShockwave, m_fStretchY), "", 0, "m_fStretchY", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+21, offsetof(CAirShockwave, m_fBeginStretchXZ), "", 0, "m_fBeginStretchXZ", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000015d<<8)+22, offsetof(CAirShockwave, m_fEndStretchXZ), "", 0, "m_fEndStretchXZ", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x0000015d<<8)+25, offsetof(CAirShockwave, m_boxMaxSize), "", 0, "m_boxMaxSize", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x0000015d<<8)+30, offsetof(CAirShockwave, m_bFadeOut), "", 0, "m_bFadeOut", 0, 0),
 };
 #define CAirShockwave_propertiesct ARRAYCOUNT(CAirShockwave_properties)
 

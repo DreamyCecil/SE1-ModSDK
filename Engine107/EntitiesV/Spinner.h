@@ -17,6 +17,7 @@ BOOL bImpulse;
 FLOAT tmImpulseDuration;
 };
 DECL_DLL inline void ClearToDefault(ESpinnerInit &e) { e = ESpinnerInit(); } ;
+#define CSpinner_ClassID 348
 extern "C" DECL_DLL CDLLEntityClass CSpinner_DLLClass;
 class DECL_DLL  CSpinner : public CRationalEntity {
 public:

@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_MovingBrushMarker_INCLUDED
 #define _EntitiesV_MovingBrushMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CMovingBrushMarker_ClassID 102
 extern "C" DECL_DLL CDLLEntityClass CMovingBrushMarker_DLLClass;
 class CMovingBrushMarker : public CMarker {
 public:

@@ -3,11 +3,11 @@
 #define ENTITYCLASS CVoiceHolder
 
 CEntityProperty CVoiceHolder_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e7<<8)+1, offsetof(CVoiceHolder, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000e7<<8)+3, offsetof(CVoiceHolder, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAME, NULL, (0x000000e7<<8)+2, offsetof(CVoiceHolder, m_fnmMessage), "Message", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000e7<<8)+5, offsetof(CVoiceHolder, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x000000e7<<8)+6, offsetof(CVoiceHolder, m_ctMaxTrigs), "Max trigs", 'X', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e7<<8)+1, offsetof(CVoiceHolder, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000e7<<8)+3, offsetof(CVoiceHolder, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAME, NULL, (0x000000e7<<8)+2, offsetof(CVoiceHolder, m_fnmMessage), "Message", 'M', "m_fnmMessage", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000e7<<8)+5, offsetof(CVoiceHolder, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_INDEX, NULL, (0x000000e7<<8)+6, offsetof(CVoiceHolder, m_ctMaxTrigs), "Max trigs", 'X', "m_ctMaxTrigs", 0x7F0000FFUL, 0),
 };
 #define CVoiceHolder_propertiesct ARRAYCOUNT(CVoiceHolder_properties)
 

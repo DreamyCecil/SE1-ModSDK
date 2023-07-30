@@ -9,6 +9,7 @@ enum SwitchType {
   SWT_ONOFF = 1,
 };
 DECL_DLL inline void ClearToDefault(SwitchType &e) { e = (SwitchType)0; } ;
+#define CSwitch_ClassID 209
 extern "C" DECL_DLL CDLLEntityClass CSwitch_DLLClass;
 class CSwitch : public CModelHolder2 {
 public:

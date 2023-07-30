@@ -4,6 +4,7 @@
 #define _EntitiesV_BigHead_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/BasicEffects.h>
+#define CBigHead_ClassID 340
 extern "C" DECL_DLL CDLLEntityClass CBigHead_DLLClass;
 class CBigHead : public CEnemyBase {
 public:

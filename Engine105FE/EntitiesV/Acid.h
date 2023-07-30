@@ -11,6 +11,7 @@ CEntityPointer penOwner;
 CEntityPointer penTarget;
 };
 DECL_DLL inline void ClearToDefault(EAcid &e) { e = EAcid(); } ;
+#define CAcid_ClassID 509
 extern "C" DECL_DLL CDLLEntityClass CAcid_DLLClass;
 class CAcid : public CMovableModelEntity {
 public:

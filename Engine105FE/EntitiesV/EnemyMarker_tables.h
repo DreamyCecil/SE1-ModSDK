@@ -3,15 +3,15 @@
 #define ENTITYCLASS CEnemyMarker
 
 CEntityProperty CEnemyMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000012e<<8)+1, offsetof(CEnemyMarker, m_fWaitTime), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+3, offsetof(CEnemyMarker, m_fMarkerRange), "Marker Range", 'M', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+11, offsetof(CEnemyMarker, m_fPatrolAreaInner), "Patrol Area Inner", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+12, offsetof(CEnemyMarker, m_fPatrolAreaOuter), "Patrol Area Outer", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x0000012e<<8)+13, offsetof(CEnemyMarker, m_fPatrolTime), "Patrol Time", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+14, offsetof(CEnemyMarker, m_betRunToMarker), "Run to marker", 'O', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+15, offsetof(CEnemyMarker, m_betFly), "Fly", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+16, offsetof(CEnemyMarker, m_betBlind), "Blind", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+17, offsetof(CEnemyMarker, m_betDeaf), "Deaf", 'D', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000012e<<8)+1, offsetof(CEnemyMarker, m_fWaitTime), "", 0, "m_fWaitTime", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+3, offsetof(CEnemyMarker, m_fMarkerRange), "Marker Range", 'M', "m_fMarkerRange", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+11, offsetof(CEnemyMarker, m_fPatrolAreaInner), "Patrol Area Inner", 'R', "m_fPatrolAreaInner", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x0000012e<<8)+12, offsetof(CEnemyMarker, m_fPatrolAreaOuter), "Patrol Area Outer", 'E', "m_fPatrolAreaOuter", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x0000012e<<8)+13, offsetof(CEnemyMarker, m_fPatrolTime), "Patrol Time", 'P', "m_fPatrolTime", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+14, offsetof(CEnemyMarker, m_betRunToMarker), "Run to marker", 'O', "m_betRunToMarker", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+15, offsetof(CEnemyMarker, m_betFly), "Fly", 'F', "m_betFly", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+16, offsetof(CEnemyMarker, m_betBlind), "Blind", 'B', "m_betBlind", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &BoolEType_enum, (0x0000012e<<8)+17, offsetof(CEnemyMarker, m_betDeaf), "Deaf", 'D', "m_betDeaf", 0x7F0000FFUL, 0),
 };
 #define CEnemyMarker_propertiesct ARRAYCOUNT(CEnemyMarker_properties)
 

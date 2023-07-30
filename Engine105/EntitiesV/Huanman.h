@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Huanman_INCLUDED
 #define _EntitiesV_Huanman_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
+#define CHuanman_ClassID 325
 extern "C" DECL_DLL CDLLEntityClass CHuanman_DLLClass;
 class CHuanman : public CEnemyBase {
 public:

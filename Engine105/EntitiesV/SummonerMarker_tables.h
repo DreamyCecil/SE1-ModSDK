@@ -3,9 +3,9 @@
 #define ENTITYCLASS CSummonerMarker
 
 CEntityProperty CSummonerMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000015e<<8)+1, offsetof(CSummonerMarker, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x0000015e<<8)+2, offsetof(CSummonerMarker, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x0000015e<<8)+3, offsetof(CSummonerMarker, m_fMarkerRange), "Marker Range", 'M', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000015e<<8)+1, offsetof(CSummonerMarker, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x0000015e<<8)+2, offsetof(CSummonerMarker, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x0000015e<<8)+3, offsetof(CSummonerMarker, m_fMarkerRange), "Marker Range", 'M', "m_fMarkerRange", 0x7F0000FFUL, 0),
 };
 #define CSummonerMarker_propertiesct ARRAYCOUNT(CSummonerMarker_properties)
 

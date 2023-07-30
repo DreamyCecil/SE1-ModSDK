@@ -27,6 +27,7 @@ enum AmmoItemType EaitType;
 INDEX iQuantity;
 };
 DECL_DLL inline void ClearToDefault(EAmmoItem &e) { e = EAmmoItem(); } ;
+#define CAmmoItem_ClassID 803
 extern "C" DECL_DLL CDLLEntityClass CAmmoItem_DLLClass;
 class CAmmoItem : public CItem {
 public:

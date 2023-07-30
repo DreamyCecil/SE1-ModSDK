@@ -8,10 +8,10 @@ EP_ENUMEND(WorldLinkType);
 #define ENTITYCLASS CWorldLink
 
 CEntityProperty CWorldLink_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000d6<<8)+1, offsetof(CWorldLink, m_strGroup), "Group", 'G', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FILENAMENODEP, NULL, (0x000000d6<<8)+2, offsetof(CWorldLink, m_strWorld), "World", 'W', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000d6<<8)+3, offsetof(CWorldLink, m_bStoreWorld), "Store world", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &WorldLinkType_enum, (0x000000d6<<8)+4, offsetof(CWorldLink, m_EwltType), "Type", 'Y', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000d6<<8)+1, offsetof(CWorldLink, m_strGroup), "Group", 'G', "m_strGroup", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FILENAMENODEP, NULL, (0x000000d6<<8)+2, offsetof(CWorldLink, m_strWorld), "World", 'W', "m_strWorld", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000d6<<8)+3, offsetof(CWorldLink, m_bStoreWorld), "Store world", 'S', "m_bStoreWorld", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &WorldLinkType_enum, (0x000000d6<<8)+4, offsetof(CWorldLink, m_EwltType), "Type", 'Y', "m_EwltType", 0x7F0000FFUL, 0),
 };
 #define CWorldLink_propertiesct ARRAYCOUNT(CWorldLink_properties)
 

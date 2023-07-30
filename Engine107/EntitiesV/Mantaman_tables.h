@@ -3,7 +3,7 @@
 #define ENTITYCLASS CMantaman
 
 CEntityProperty CMantaman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000149<<8)+1, offsetof(CMantaman, m_FixedState), "Fixed state", 'X', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000149<<8)+1, offsetof(CMantaman, m_FixedState), "Fixed state", 'X', "m_FixedState", 0x7F0000FFUL, 0),
 };
 #define CMantaman_propertiesct ARRAYCOUNT(CMantaman_properties)
 

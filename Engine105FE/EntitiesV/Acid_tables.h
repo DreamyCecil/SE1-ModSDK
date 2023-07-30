@@ -3,9 +3,9 @@
 #define ENTITYCLASS CAcid
 
 CEntityProperty CAcid_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fd<<8)+1, offsetof(CAcid, m_penOwner), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fd<<8)+2, offsetof(CAcid, m_penTarget), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000001fd<<8)+5, offsetof(CAcid, m_bLoop), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fd<<8)+1, offsetof(CAcid, m_penOwner), "", 0, "m_penOwner", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000001fd<<8)+2, offsetof(CAcid, m_penTarget), "", 0, "m_penTarget", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000001fd<<8)+5, offsetof(CAcid, m_bLoop), "", 0, "m_bLoop", 0, 0),
 };
 #define CAcid_propertiesct ARRAYCOUNT(CAcid_properties)
 

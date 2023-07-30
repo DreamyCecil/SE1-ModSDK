@@ -8,11 +8,11 @@ EP_ENUMEND(GruntSkaType);
 #define ENTITYCLASS CGruntSka
 
 CEntityProperty CGruntSka_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &GruntSkaType_enum, (0x00000157<<8)+1, offsetof(CGruntSka, m_gtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+10, offsetof(CGruntSka, m_soFire1), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+11, offsetof(CGruntSka, m_soFire2), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000157<<8)+20, offsetof(CGruntSka, m_fMidBoneRot), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_MODELINSTANCE, NULL, (0x00000157<<8)+30, offsetof(CGruntSka, m_miTest), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &GruntSkaType_enum, (0x00000157<<8)+1, offsetof(CGruntSka, m_gtType), "Type", 'Y', "m_gtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+10, offsetof(CGruntSka, m_soFire1), "", 0, "m_soFire1", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_SOUNDOBJECT, NULL, (0x00000157<<8)+11, offsetof(CGruntSka, m_soFire2), "", 0, "m_soFire2", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000157<<8)+20, offsetof(CGruntSka, m_fMidBoneRot), "", 0, "m_fMidBoneRot", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_MODELINSTANCE, NULL, (0x00000157<<8)+30, offsetof(CGruntSka, m_miTest), "", 0, "m_miTest", 0, 0),
 };
 #define CGruntSka_propertiesct ARRAYCOUNT(CGruntSka_properties)
 

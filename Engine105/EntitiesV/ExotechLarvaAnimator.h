@@ -11,6 +11,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penLarva;
 };
 DECL_DLL inline void ClearToDefault(ELarvaAnimatorInit &e) { e = ELarvaAnimatorInit(); } ;
+#define CExotechLarvaAnimator_ClassID 406
 extern "C" DECL_DLL CDLLEntityClass CExotechLarvaAnimator_DLLClass;
 class DECL_DLL  CExotechLarvaAnimator : public CRationalEntity {
 public:

@@ -10,18 +10,18 @@ EP_ENUMEND(GravityType);
 #define ENTITYCLASS CGravityMarker
 
 CEntityProperty CGravityMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &GravityType_enum, (0x000000d4<<8)+1, offsetof(CGravityMarker, m_gtType), "Type", 'Y', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+2, offsetof(CGravityMarker, m_fStrength), "Strength", 'S', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+3, offsetof(CGravityMarker, m_rFallOff), "FallOff", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+4, offsetof(CGravityMarker, m_rHotSpot), "HotSpot", 'H', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+5, offsetof(CGravityMarker, m_rTorusR), "Torus Radius", 'R', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+10, offsetof(CGravityMarker, m_fAcc), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+11, offsetof(CGravityMarker, m_fSign), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+12, offsetof(CGravityMarker, m_fStep), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000d4<<8)+20, offsetof(CGravityMarker, m_aForceDir), "Forcefield Direction", 'F', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+21, offsetof(CGravityMarker, m_fForceA), "Forcefield Acceleration", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+22, offsetof(CGravityMarker, m_fForceV), "Forcefield Velocity", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x000000d4<<8)+23, offsetof(CGravityMarker, m_vForceDir), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &GravityType_enum, (0x000000d4<<8)+1, offsetof(CGravityMarker, m_gtType), "Type", 'Y', "m_gtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+2, offsetof(CGravityMarker, m_fStrength), "Strength", 'S', "m_fStrength", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+3, offsetof(CGravityMarker, m_rFallOff), "FallOff", 'F', "m_rFallOff", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+4, offsetof(CGravityMarker, m_rHotSpot), "HotSpot", 'H', "m_rHotSpot", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_RANGE, NULL, (0x000000d4<<8)+5, offsetof(CGravityMarker, m_rTorusR), "Torus Radius", 'R', "m_rTorusR", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+10, offsetof(CGravityMarker, m_fAcc), "", 0, "m_fAcc", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+11, offsetof(CGravityMarker, m_fSign), "", 0, "m_fSign", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+12, offsetof(CGravityMarker, m_fStep), "", 0, "m_fStep", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ANGLE3D, NULL, (0x000000d4<<8)+20, offsetof(CGravityMarker, m_aForceDir), "Forcefield Direction", 'F', "m_aForceDir", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+21, offsetof(CGravityMarker, m_fForceA), "Forcefield Acceleration", 0, "m_fForceA", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000d4<<8)+22, offsetof(CGravityMarker, m_fForceV), "Forcefield Velocity", 0, "m_fForceV", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x000000d4<<8)+23, offsetof(CGravityMarker, m_vForceDir), "", 0, "m_vForceDir", 0, 0),
 };
 #define CGravityMarker_propertiesct ARRAYCOUNT(CGravityMarker_properties)
 

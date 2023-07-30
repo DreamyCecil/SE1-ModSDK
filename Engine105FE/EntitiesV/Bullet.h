@@ -25,6 +25,7 @@ enum BulletHitType {
   BHT_BRUSH_RED_SAND = 7,
 };
 DECL_DLL inline void ClearToDefault(BulletHitType &e) { e = (BulletHitType)0; } ;
+#define CBullet_ClassID 502
 extern "C" DECL_DLL CDLLEntityClass CBullet_DLLClass;
 class DECL_DLL  CBullet : public CEntity {
 public:

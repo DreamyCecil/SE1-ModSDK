@@ -3,16 +3,16 @@
 #define ENTITYCLASS CTouchField
 
 CEntityProperty CTouchField_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ce<<8)+1, offsetof(CTouchField, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+2, offsetof(CTouchField, m_penEnter), "Enter Target", 'T', C_BROWN  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000ce<<8)+3, offsetof(CTouchField, m_eetEnter), "Enter Event", 'E', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+7, offsetof(CTouchField, m_penExit), "Exit Target", 0, C_dRED  | 0xFF, 0),
- CEntityProperty(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000ce<<8)+8, offsetof(CTouchField, m_eetExit), "Exit Event", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+4, offsetof(CTouchField, m_bActive), "Active", 'A', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+5, offsetof(CTouchField, m_bPlayersOnly), "Players only", 'P', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x000000ce<<8)+6, offsetof(CTouchField, m_tmExitCheck), "Exit check time", 'X', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+9, offsetof(CTouchField, m_bBlockNonPlayers), "Block non-players", 'B', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+100, offsetof(CTouchField, m_penLastIn), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ce<<8)+1, offsetof(CTouchField, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+2, offsetof(CTouchField, m_penEnter), "Enter Target", 'T', "m_penEnter", C_BROWN  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000ce<<8)+3, offsetof(CTouchField, m_eetEnter), "Enter Event", 'E', "m_eetEnter", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+7, offsetof(CTouchField, m_penExit), "Exit Target", 0, "m_penExit", C_dRED  | 0xFF, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &EventEType_enum, (0x000000ce<<8)+8, offsetof(CTouchField, m_eetExit), "Exit Event", 0, "m_eetExit", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+4, offsetof(CTouchField, m_bActive), "Active", 'A', "m_bActive", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+5, offsetof(CTouchField, m_bPlayersOnly), "Players only", 'P', "m_bPlayersOnly", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x000000ce<<8)+6, offsetof(CTouchField, m_tmExitCheck), "Exit check time", 'X', "m_tmExitCheck", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x000000ce<<8)+9, offsetof(CTouchField, m_bBlockNonPlayers), "Block non-players", 'B', "m_bBlockNonPlayers", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x000000ce<<8)+100, offsetof(CTouchField, m_penLastIn), "", 0, "m_penLastIn", 0, 0),
 };
 #define CTouchField_propertiesct ARRAYCOUNT(CTouchField_properties)
 

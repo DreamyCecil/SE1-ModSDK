@@ -3,9 +3,9 @@
 #define ENTITYCLASS CAreaMarker
 
 CEntityProperty CAreaMarker_properties[] = {
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+1, offsetof(CAreaMarker, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+2, offsetof(CAreaMarker, m_strDescription), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x000000ca<<8)+3, offsetof(CAreaMarker, m_boxArea), "Area box", 'B', 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+1, offsetof(CAreaMarker, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x000000ca<<8)+2, offsetof(CAreaMarker, m_strDescription), "", 0, "m_strDescription", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOATAABBOX3D, NULL, (0x000000ca<<8)+3, offsetof(CAreaMarker, m_boxArea), "Area box", 'B', "m_boxArea", 0x7F0000FFUL, 0),
 };
 #define CAreaMarker_propertiesct ARRAYCOUNT(CAreaMarker_properties)
 

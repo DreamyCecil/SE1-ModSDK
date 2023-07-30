@@ -3,15 +3,15 @@
 #define ENTITYCLASS CTimeController
 
 CEntityProperty CTimeController_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+1, offsetof(CTimeController, m_fTimeStretch), "Time speed", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+2, offsetof(CTimeController, m_tmFadeIn), "Fade in time", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+3, offsetof(CTimeController, m_tmInterval), "Auto clear stretch after...", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000265<<8)+4, offsetof(CTimeController, m_bAbsolute), "Absolute", 0, 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+5, offsetof(CTimeController, m_fMyTimer), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+6, offsetof(CTimeController, m_tmStretchChangeStart), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000265<<8)+7, offsetof(CTimeController, m_strName), "Name", 'N', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+8, offsetof(CTimeController, m_fOldTimeStretch), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+9, offsetof(CTimeController, m_fNewTimeStretch), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+1, offsetof(CTimeController, m_fTimeStretch), "Time speed", 0, "m_fTimeStretch", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+2, offsetof(CTimeController, m_tmFadeIn), "Fade in time", 0, "m_tmFadeIn", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+3, offsetof(CTimeController, m_tmInterval), "Auto clear stretch after...", 0, "m_tmInterval", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000265<<8)+4, offsetof(CTimeController, m_bAbsolute), "Absolute", 0, "m_bAbsolute", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+5, offsetof(CTimeController, m_fMyTimer), "", 0, "m_fMyTimer", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+6, offsetof(CTimeController, m_tmStretchChangeStart), "", 0, "m_tmStretchChangeStart", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_STRING, NULL, (0x00000265<<8)+7, offsetof(CTimeController, m_strName), "Name", 'N', "m_strName", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+8, offsetof(CTimeController, m_fOldTimeStretch), "", 0, "m_fOldTimeStretch", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000265<<8)+9, offsetof(CTimeController, m_fNewTimeStretch), "", 0, "m_fNewTimeStretch", 0, 0),
 };
 #define CTimeController_propertiesct ARRAYCOUNT(CTimeController_properties)
 

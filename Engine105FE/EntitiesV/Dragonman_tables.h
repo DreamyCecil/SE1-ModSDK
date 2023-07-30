@@ -9,11 +9,11 @@ EP_ENUMEND(DragonmanType);
 #define ENTITYCLASS CDragonman
 
 CEntityProperty CDragonman_properties[] = {
- CEntityProperty(CEntityProperty::EPT_ENUM, &DragonmanType_enum, (0x00000141<<8)+1, offsetof(CDragonman, m_EdtType), "Character", 'C', 0x7F0000FFUL, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000141<<8)+2, offsetof(CDragonman, m_vFlameSource), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000141<<8)+3, offsetof(CDragonman, m_penFlame), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_BOOL, NULL, (0x00000141<<8)+4, offsetof(CDragonman, m_bBurnEnemy), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000141<<8)+5, offsetof(CDragonman, m_fFireTime), "", 0, 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENUM, &DragonmanType_enum, (0x00000141<<8)+1, offsetof(CDragonman, m_EdtType), "Character", 'C', "m_EdtType", 0x7F0000FFUL, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT3D, NULL, (0x00000141<<8)+2, offsetof(CDragonman, m_vFlameSource), "", 0, "m_vFlameSource", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_ENTITYPTR, NULL, (0x00000141<<8)+3, offsetof(CDragonman, m_penFlame), "", 0, "m_penFlame", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_BOOL, NULL, (0x00000141<<8)+4, offsetof(CDragonman, m_bBurnEnemy), "", 0, "m_bBurnEnemy", 0, 0),
+ ENGINE_SPECIFIC_PROP_DEF(CEntityProperty::EPT_FLOAT, NULL, (0x00000141<<8)+5, offsetof(CDragonman, m_fFireTime), "", 0, "m_fFireTime", 0, 0),
 };
 #define CDragonman_propertiesct ARRAYCOUNT(CDragonman_properties)
 

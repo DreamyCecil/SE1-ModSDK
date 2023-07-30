@@ -22,6 +22,7 @@ INDEX iElectricity;
 INDEX iIronBalls;
 };
 DECL_DLL inline void ClearToDefault(EAmmoPackItem &e) { e = EAmmoPackItem(); } ;
+#define CAmmoPack_ClassID 806
 extern "C" DECL_DLL CDLLEntityClass CAmmoPack_DLLClass;
 class CAmmoPack : public CItem {
 public:

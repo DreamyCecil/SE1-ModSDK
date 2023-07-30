@@ -34,6 +34,7 @@ enum TouchOrDamageEvent {
   TDE_BOTH = 2,
 };
 DECL_DLL inline void ClearToDefault(TouchOrDamageEvent &e) { e = (TouchOrDamageEvent)0; } ;
+#define CMovingBrush_ClassID 101
 extern "C" DECL_DLL CDLLEntityClass CMovingBrush_DLLClass;
 class CMovingBrush : public CMovableBrushEntity {
 public:
