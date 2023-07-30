@@ -22,6 +22,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penForcedPathMarker;
 };
 DECL_DLL inline void ClearToDefault(EForcePathMarker &e) { e = EForcePathMarker(); } ;
+#define CPyramidSpaceShip_ClassID 609
 extern "C" DECL_DLL CDLLEntityClass CPyramidSpaceShip_DLLClass;
 class CPyramidSpaceShip : public CMovableModelEntity {
 public:

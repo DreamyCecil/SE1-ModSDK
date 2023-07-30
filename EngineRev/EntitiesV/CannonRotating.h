@@ -7,6 +7,7 @@
 #include <EntitiesV/SoundHolder.h>
 #include <EntitiesV/BloodSpray.h>
 #include <EntitiesV/CannonBall.h>
+#define CCannonRotating_ClassID 345
 extern "C" DECL_DLL CDLLEntityClass CCannonRotating_DLLClass;
 class CCannonRotating : public CEnemyBase {
 public:

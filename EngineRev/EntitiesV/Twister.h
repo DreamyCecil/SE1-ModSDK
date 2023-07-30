@@ -18,6 +18,7 @@ BOOL bGrow;
 BOOL bMovingAllowed;
 };
 DECL_DLL inline void ClearToDefault(ETwister &e) { e = ETwister(); } ;
+#define CTwister_ClassID 507
 extern "C" DECL_DLL CDLLEntityClass CTwister_DLLClass;
 class CTwister : public CMovableModelEntity {
 public:

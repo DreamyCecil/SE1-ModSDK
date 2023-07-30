@@ -405,6 +405,7 @@ EHitBySpaceShipBeam();
 CEntityEvent *MakeCopy(void);
 };
 DECL_DLL inline void ClearToDefault(EHitBySpaceShipBeam &e) { e = EHitBySpaceShipBeam(); } ;
+#define CGlobal_ClassID 0
 extern "C" DECL_DLL CDLLEntityClass CGlobal_DLLClass;
 class CGlobal : public CEntity {
 public:

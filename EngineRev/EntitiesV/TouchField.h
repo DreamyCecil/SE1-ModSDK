@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_TouchField_INCLUDED
 #define _EntitiesV_TouchField_INCLUDED 1
+#define CTouchField_ClassID 206
 extern "C" DECL_DLL CDLLEntityClass CTouchField_DLLClass;
 class CTouchField : public CRationalEntity {
 public:

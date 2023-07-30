@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_DebugEntityStatesDisplay_INCLUDED
 #define _EntitiesV_DebugEntityStatesDisplay_INCLUDED 1
+#define CEntityStateDisplay_ClassID 233
 extern "C" DECL_DLL CDLLEntityClass CEntityStateDisplay_DLLClass;
 class CEntityStateDisplay : public CRationalEntity {
 public:

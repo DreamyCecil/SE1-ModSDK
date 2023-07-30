@@ -21,6 +21,7 @@ enum ViewType vtView;
 BOOL bDeathFixed;
 };
 DECL_DLL inline void ClearToDefault(EViewInit &e) { e = EViewInit(); } ;
+#define CPlayerView_ClassID 403
 extern "C" DECL_DLL CDLLEntityClass CPlayerView_DLLClass;
 class DECL_DLL  CPlayerView : public CMovableEntity {
 public:

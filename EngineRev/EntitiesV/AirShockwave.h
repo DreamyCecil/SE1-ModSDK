@@ -14,6 +14,7 @@ FLOAT fEndWidth;
 FLOAT fDuration;
 };
 DECL_DLL inline void ClearToDefault(EAirShockwave &e) { e = EAirShockwave(); } ;
+#define CAirShockwave_ClassID 349
 extern "C" DECL_DLL CDLLEntityClass CAirShockwave_DLLClass;
 class CAirShockwave : public CMovableModelEntity {
 public:

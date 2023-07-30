@@ -12,6 +12,7 @@ enum CyborgType {
   CBT_FLYGROUND = 2,
 };
 DECL_DLL inline void ClearToDefault(CyborgType &e) { e = (CyborgType)0; } ;
+#define CCyborg_ClassID 330
 extern "C" DECL_DLL CDLLEntityClass CCyborg_DLLClass;
 class CCyborg : public CEnemyBase {
 public:

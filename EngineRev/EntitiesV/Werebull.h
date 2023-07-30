@@ -10,6 +10,7 @@ enum BullChar {
   BUC_WINTER = 1,
 };
 DECL_DLL inline void ClearToDefault(BullChar &e) { e = (BullChar)0; } ;
+#define CWerebull_ClassID 307
 extern "C" DECL_DLL CDLLEntityClass CWerebull_DLLClass;
 class CWerebull : public CEnemyRunInto {
 public:

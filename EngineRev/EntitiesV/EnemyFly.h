@@ -15,6 +15,7 @@ enum EnemyFlyType {
   EFT_FLY_AIR_AIR = 5,
 };
 DECL_DLL inline void ClearToDefault(EnemyFlyType &e) { e = (EnemyFlyType)0; } ;
+#define CEnemyFly_ClassID 311
 extern "C" DECL_DLL CDLLEntityClass CEnemyFly_DLLClass;
 class DECL_DLL  CEnemyFly : public CEnemyBase {
 public:

@@ -19,6 +19,7 @@ CEntityPointer penLauncher;
 enum WaterSize EwsSize;
 };
 DECL_DLL inline void ClearToDefault(EWater &e) { e = EWater(); } ;
+#define CWater_ClassID 508
 extern "C" DECL_DLL CDLLEntityClass CWater_DLLClass;
 class CWater : public CMovableModelEntity {
 public:

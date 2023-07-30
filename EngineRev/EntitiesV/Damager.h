@@ -3,6 +3,7 @@
 
 #ifndef _EntitiesV_Damager_INCLUDED
 #define _EntitiesV_Damager_INCLUDED 1
+#define CDamager_ClassID 229
 extern "C" DECL_DLL CDLLEntityClass CDamager_DLLClass;
 class CDamager : public CRationalEntity {
 public:

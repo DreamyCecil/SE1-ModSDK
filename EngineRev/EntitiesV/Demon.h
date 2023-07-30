@@ -4,6 +4,7 @@
 #define _EntitiesV_Demon_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/BasicEffects.h>
+#define CDemon_ClassID 336
 extern "C" DECL_DLL CDLLEntityClass CDemon_DLLClass;
 class CDemon : public CEnemyBase {
 public:

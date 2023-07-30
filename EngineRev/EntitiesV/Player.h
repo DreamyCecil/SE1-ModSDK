@@ -58,6 +58,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penFirstMarker;
 };
 DECL_DLL inline void ClearToDefault(EAutoAction &e) { e = EAutoAction(); } ;
+#define CPlayer_ClassID 401
 extern "C" DECL_DLL CDLLEntityClass CPlayer_DLLClass;
 class DECL_DLL  CPlayer : public CPlayerEntity {
 public:

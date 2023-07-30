@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_ShipMarker_INCLUDED
 #define _EntitiesV_ShipMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CShipMarker_ClassID 104
 extern "C" DECL_DLL CDLLEntityClass CShipMarker_DLLClass;
 class CShipMarker : public CMarker {
 public:

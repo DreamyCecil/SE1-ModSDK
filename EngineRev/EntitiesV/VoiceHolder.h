@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_VoiceHolder_INCLUDED
 #define _EntitiesV_VoiceHolder_INCLUDED 1
+#define CVoiceHolder_ClassID 231
 extern "C" DECL_DLL CDLLEntityClass CVoiceHolder_DLLClass;
 class CVoiceHolder : public CRationalEntity {
 public:

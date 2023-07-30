@@ -10,6 +10,7 @@ enum EnvironmentParticlesHolderType {
   EPTH_SNOW = 3,
 };
 DECL_DLL inline void ClearToDefault(EnvironmentParticlesHolderType &e) { e = (EnvironmentParticlesHolderType)0; } ;
+#define CEnvironmentParticlesHolder_ClassID 237
 extern "C" DECL_DLL CDLLEntityClass CEnvironmentParticlesHolder_DLLClass;
 class CEnvironmentParticlesHolder : public CRationalEntity {
 public:

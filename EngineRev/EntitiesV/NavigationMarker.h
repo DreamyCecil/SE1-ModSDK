@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_NavigationMarker_INCLUDED
 #define _EntitiesV_NavigationMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
+#define CNavigationMarker_ClassID 704
 extern "C" DECL_DLL CDLLEntityClass CNavigationMarker_DLLClass;
 class DECL_DLL  CNavigationMarker : public CEntity {
 public:

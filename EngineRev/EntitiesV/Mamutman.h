@@ -5,6 +5,7 @@
 #define _EntitiesV_Mamutman_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/Bullet.h>
+#define CMamutman_ClassID 326
 extern "C" DECL_DLL CDLLEntityClass CMamutman_DLLClass;
 class CMamutman : public CEnemyBase {
 public:

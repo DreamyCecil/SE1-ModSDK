@@ -16,6 +16,7 @@ enum FireType {
   SFT_FIREBALL = 4,
 };
 DECL_DLL inline void ClearToDefault(FireType &e) { e = (FireType)0; } ;
+#define CShooter_ClassID 345
 extern "C" DECL_DLL CDLLEntityClass CShooter_DLLClass;
 class CShooter : public CModelHolder2 {
 public:

@@ -10,6 +10,7 @@ CEntityEvent *MakeCopy(void);
 CEntityPointer penOwner;
 };
 DECL_DLL inline void ClearToDefault(ESeriousBomb &e) { e = ESeriousBomb(); } ;
+#define CSeriousBomb_ClassID 354
 extern "C" DECL_DLL CDLLEntityClass CSeriousBomb_DLLClass;
 class CSeriousBomb : public CRationalEntity {
 public:

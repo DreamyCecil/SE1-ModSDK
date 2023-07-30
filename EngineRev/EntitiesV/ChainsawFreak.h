@@ -4,6 +4,7 @@
 #define _EntitiesV_ChainsawFreak_INCLUDED 1
 #include <EntitiesV/EnemyBase.h>
 #include <EntitiesV/EnemyRunInto.h>
+#define CChainsawFreak_ClassID 342
 extern "C" DECL_DLL CDLLEntityClass CChainsawFreak_DLLClass;
 class CChainsawFreak : public CEnemyRunInto {
 public:

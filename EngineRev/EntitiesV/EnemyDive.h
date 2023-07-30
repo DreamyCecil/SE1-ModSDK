@@ -12,6 +12,7 @@ enum EnemyDiveType {
   EDT_GROUND_DIVE = 2,
 };
 DECL_DLL inline void ClearToDefault(EnemyDiveType &e) { e = (EnemyDiveType)0; } ;
+#define CEnemyDive_ClassID 313
 extern "C" DECL_DLL CDLLEntityClass CEnemyDive_DLLClass;
 class DECL_DLL  CEnemyDive : public CEnemyBase {
 public:

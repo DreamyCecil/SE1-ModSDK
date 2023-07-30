@@ -23,6 +23,7 @@ enum BlendControllerType {
   BCT_TOGGLE_CONTROLLED_LIGHTS_4 = 14,
 };
 DECL_DLL inline void ClearToDefault(BlendControllerType &e) { e = (BlendControllerType)0; } ;
+#define CBlendController_ClassID 612
 extern "C" DECL_DLL CDLLEntityClass CBlendController_DLLClass;
 class CBlendController : public CMarker {
 public:

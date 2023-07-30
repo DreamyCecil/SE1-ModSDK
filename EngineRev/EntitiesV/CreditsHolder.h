@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_CreditsHolder_INCLUDED
 #define _EntitiesV_CreditsHolder_INCLUDED 1
+#define CCreditsHolder_ClassID 240
 extern "C" DECL_DLL CDLLEntityClass CCreditsHolder_DLLClass;
 class CCreditsHolder : public CRationalEntity {
 public:

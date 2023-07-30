@@ -5,6 +5,7 @@
 #include <EntitiesV/Devil.h>
 #include <EntitiesV/Debris.h>
 #include <EntitiesV\GradientMarker.h>
+#define CDestroyableArchitecture_ClassID 107
 extern "C" DECL_DLL CDLLEntityClass CDestroyableArchitecture_DLLClass;
 class CDestroyableArchitecture : public CMovableBrushEntity {
 public:

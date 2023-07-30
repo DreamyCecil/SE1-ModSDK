@@ -67,6 +67,7 @@ FLOAT3D vStretch;
 COLOR colMuliplier;
 };
 DECL_DLL inline void ClearToDefault(ESpawnEffect &e) { e = ESpawnEffect(); } ;
+#define CBasicEffect_ClassID 601
 extern "C" DECL_DLL CDLLEntityClass CBasicEffect_DLLClass;
 class CBasicEffect : public CRationalEntity {
 public:

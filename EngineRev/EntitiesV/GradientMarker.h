@@ -4,6 +4,7 @@
 #define _EntitiesV_GradientMarker_INCLUDED 1
 #include <EntitiesV/Marker.h>
 #include <EntitiesV/WorldBase.h>
+#define CGradientMarker_ClassID 230
 extern "C" DECL_DLL CDLLEntityClass CGradientMarker_DLLClass;
 class CGradientMarker : public CMarker {
 public:

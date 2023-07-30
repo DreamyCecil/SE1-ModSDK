@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_TextFXHolder_INCLUDED
 #define _EntitiesV_TextFXHolder_INCLUDED 1
+#define CTextFXHolder_ClassID 239
 extern "C" DECL_DLL CDLLEntityClass CTextFXHolder_DLLClass;
 class CTextFXHolder : public CRationalEntity {
 public:

@@ -3,6 +3,7 @@
 #ifndef _EntitiesV_Counter_INCLUDED
 #define _EntitiesV_Counter_INCLUDED 1
 #include <EntitiesV/ModelHolder2.h>
+#define CCounter_ClassID 232
 extern "C" DECL_DLL CDLLEntityClass CCounter_DLLClass;
 class CCounter : public CRationalEntity {
 public:

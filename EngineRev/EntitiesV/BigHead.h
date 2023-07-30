@@ -11,6 +11,7 @@ enum BigHeadType {
   BHT_SAINT = 2,
 };
 DECL_DLL inline void ClearToDefault(BigHeadType &e) { e = (BigHeadType)0; } ;
+#define CBigHead_ClassID 340
 extern "C" DECL_DLL CDLLEntityClass CBigHead_DLLClass;
 class CBigHead : public CEnemyBase {
 public:

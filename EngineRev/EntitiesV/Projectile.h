@@ -92,6 +92,7 @@ FLOAT fSpeed;
 FLOAT fStretch;
 };
 DECL_DLL inline void ClearToDefault(ELaunchProjectile &e) { e = ELaunchProjectile(); } ;
+#define CProjectile_ClassID 501
 extern "C" DECL_DLL CDLLEntityClass CProjectile_DLLClass;
 class DECL_DLL  CProjectile : public CMovableModelEntity {
 public:

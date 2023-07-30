@@ -7,6 +7,7 @@
 #include <EntitiesV\HazeMarker.h>
 #include <EntitiesV\MirrorMarker.h>
 #include <EntitiesV\GradientMarker.h>
+#define CWorldBase_ClassID 100
 extern "C" DECL_DLL CDLLEntityClass CWorldBase_DLLClass;
 class CWorldBase : public CEntity {
 public:

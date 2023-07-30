@@ -53,6 +53,7 @@ enum EnemyEnvType {
   ENENV_ICE = 2,
 };
 DECL_DLL inline void ClearToDefault(EnemyEnvType &e) { e = (EnemyEnvType)0; };
+#define CEnemyBase_ClassID 310
 extern "C" DECL_DLL CDLLEntityClass CEnemyBase_DLLClass;
 class DECL_DLL  CEnemyBase : public CMovableModelEntity {
 public:

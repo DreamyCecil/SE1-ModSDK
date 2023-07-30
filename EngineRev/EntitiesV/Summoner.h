@@ -15,6 +15,7 @@ CEntityEvent *MakeCopy(void);
 FLOAT fWait;
 };
 DECL_DLL inline void ClearToDefault(ESummonerTeleport &e) { e = ESummonerTeleport(); } ;
+#define CSummoner_ClassID 347
 extern "C" DECL_DLL CDLLEntityClass CSummoner_DLLClass;
 class CSummoner : public CEnemyBase {
 public:

@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_ScrollHolder_INCLUDED
 #define _EntitiesV_ScrollHolder_INCLUDED 1
+#define CScrollHolder_ClassID 238
 extern "C" DECL_DLL CDLLEntityClass CScrollHolder_DLLClass;
 class CScrollHolder : public CRationalEntity {
 public:

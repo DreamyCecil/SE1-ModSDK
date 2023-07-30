@@ -9,6 +9,7 @@ enum WorldLinkType {
   WLT_RELATIVE = 2,
 };
 DECL_DLL inline void ClearToDefault(WorldLinkType &e) { e = (WorldLinkType)0; } ;
+#define CWorldLink_ClassID 214
 extern "C" DECL_DLL CDLLEntityClass CWorldLink_DLLClass;
 class CWorldLink : public CMarker {
 public:

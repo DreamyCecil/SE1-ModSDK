@@ -2,6 +2,7 @@
 
 #ifndef _EntitiesV_TacticsChanger_INCLUDED
 #define _EntitiesV_TacticsChanger_INCLUDED 1
+#define CTacticsChanger_ClassID 236
 extern "C" DECL_DLL CDLLEntityClass CTacticsChanger_DLLClass;
 class CTacticsChanger : public CRationalEntity {
 public:

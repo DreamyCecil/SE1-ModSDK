@@ -12,6 +12,7 @@ enum BeastType {
   BT_HUGE = 2,
 };
 DECL_DLL inline void ClearToDefault(BeastType &e) { e = (BeastType)0; } ;
+#define CBeast_ClassID 336
 extern "C" DECL_DLL CDLLEntityClass CBeast_DLLClass;
 class CBeast : public CEnemyBase {
 public:

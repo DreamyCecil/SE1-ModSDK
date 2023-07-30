@@ -3,6 +3,7 @@
 
 #ifndef _EntitiesV_Pendulum_INCLUDED
 #define _EntitiesV_Pendulum_INCLUDED 1
+#define CPendulum_ClassID 106
 extern "C" DECL_DLL CDLLEntityClass CPendulum_DLLClass;
 class CPendulum : public CMovableBrushEntity {
 public:
