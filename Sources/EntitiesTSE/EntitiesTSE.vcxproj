@@ -506,16 +506,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="(LibMain).cpp">
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">Create</PrecompiledHeader>
-      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">Create</PrecompiledHeader>
-    </ClCompile>
     <ClCompile Include="AI\NavigationMarker.cpp" />
     <ClCompile Include="AI\Reminder.cpp" />
     <ClCompile Include="AI\Spinner.cpp" />
@@ -728,6 +718,16 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <ClCompile Include="Items\MessageItem.cpp" />
     <ClCompile Include="Items\PowerUpItem.cpp" />
     <ClCompile Include="Items\WeaponItem.cpp" />
+    <ClCompile Include="LibMain.cpp">
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">Create</PrecompiledHeader>
+      <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">Create</PrecompiledHeader>
+    </ClCompile>
     <ClCompile Include="Players\Player.cpp" />
     <ClCompile Include="Players\PlayerActionMarker.cpp" />
     <ClCompile Include="Players\PlayerAnimator.cpp" />
