@@ -21,7 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "Weapons/Bullet.h"
 #include "Tools/BackgroundViewer.h"
 #include "Tools/SoundHolder.h"
-#include "Game/PlayerSettings.h"
+#include <Game/PlayerSettings.h>
 #include "ModelsMP/Player/SeriousSam/Player.h"
 #include "ModelsMP/Player/SeriousSam/Body.h"
 #include "ModelsMP/Player/SeriousSam/Head.h"

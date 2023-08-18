@@ -15,8 +15,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
  
 #include "StdH.h"
-#include "Game/SEColors.h"
 
+#include <Game/SEColors.h>
 #include <Engine/Graphics/DrawPort.h>
 
 #include "Players/Player.h"

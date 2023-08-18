@@ -16,7 +16,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // [Cecil] This header can be used to include all the necessary parts of the Entities library at once, either for exporting or importing
 
 #include <Game/SessionProperties.h>
-#include <Game/PlayerSettings.h>
 
 #ifndef ENTITIES_EXPORTS
   // [Cecil] Link appropriate library

@@ -16,7 +16,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 402
 %{
 #include "StdH.h"
-#include "Game/SEColors.h"
+
+#include <Game/SEColors.h>
+#include <Game/PlayerSettings.h>
   
 #include <Engine/Build.h>
 

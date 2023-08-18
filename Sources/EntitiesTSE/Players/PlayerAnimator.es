@@ -17,6 +17,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %{
 #include "StdH.h"
 
+#include <Game/PlayerSettings.h>
+
 #include "ModelsMP/Player/SeriousSam/Player.h"
 #include "ModelsMP/Player/SeriousSam/Body.h"
 #include "ModelsMP/Player/SeriousSam/Head.h"

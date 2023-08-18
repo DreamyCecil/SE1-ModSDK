@@ -16,6 +16,8 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 404
 %{
 #include "StdH.h"
+
+#include <Game/PlayerSettings.h>
 #include "Tools/MusicHolder.h"
 %}
 

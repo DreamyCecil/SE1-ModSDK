@@ -17,7 +17,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #include "AI/Reminder.h"
 //#include "Weapons/Flame.h"
 #include "Effects/Debris.h"
-#include "Game/PlayerSettings.h"
+#include <Game/PlayerSettings.h>
 #include "Models/Player/SeriousSam/Player.h"
 #include "Models/Player/SeriousSam/Body.h"
 #include "Models/Player/SeriousSam/Head.h"
