@@ -1,5 +1,4 @@
 #include <GameV/SessionProperties.h>
-#include <GameV/PlayerSettings.h>
 
 /* rcg10042001 protect against Visual C-isms. */
 #ifdef _MSC_VER
