@@ -249,7 +249,7 @@ CModelObject m_moRender;
     CPlayer(void);
    class CPlayerWeapons * GetPlayerWeapons(void);
    class CPlayerAnimator * GetPlayerAnimator(void);
-   CPlayerSettings * GetSettings(void);
+   class CPlayerSettings * GetSettings(void);
    void Copy(CEntity & enOther,ULONG ulFlags);
    void UpdateLatency(FLOAT tmLatencyNow);
    void ValidateCharacter(void);
