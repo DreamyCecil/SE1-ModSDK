@@ -23,8 +23,6 @@ You can use it to build mods for all Serious Sam games on Serious Engine 1, incl
 2. Select `Debug_TSE110` or `Release_TSE110` configuration to compile source code for Serious Engine 1.10.
 3. Otherwise follow the steps below before compiling the source code for any older Serious Engine version (e.g. 1.05 or 1.07).
 
-**Important!** Do not rename `(LibMain).cpp` file within `EntitiesTFE` or `EntitiesTSE` projects! It starts with a symbol that goes before any alphanumeric character to be able to compile before any other source file.
-
 ## Using MSVC 6.0
 You have to use an old compiler in order to make your code compatible with engine versions from 1.00 to 1.07 and 1.50.
 Since this SDK is designed for modern IDEs, you cannot use an old compiler out of the box.
