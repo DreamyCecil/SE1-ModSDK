@@ -2137,25 +2137,38 @@ functions:
     CEntity *penViewer;
     CPlacement3D plViewer;
     COLOR colBlend;
-    SetupView(pdp, apr, penViewer, plViewer, colBlend, FALSE);
 
-    // render the view
-    ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
-    _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
-    RenderView(*en_pwoWorld, *penViewer, apr, *pdp);
-    _ulPlayerRenderingMask = 0;
+    // for each eye
+    for (INDEX iEye=STEREO_LEFT; iEye<=(Stereo_IsEnabled()?STEREO_RIGHT:STEREO_LEFT); iEye++) {
 
-    // listen from here
-    ListenFromEntity(this, plViewer);
+      // setup view settings
+      SetupView(pdp, apr, penViewer, plViewer, colBlend, FALSE);
 
-    if(hud_bShowAll && bShowExtras) {
-      // let the player entity render its interface
-      CPlacement3D plLight(_vViewerLightDirection, ANGLE3D(0,0,0));
-      plLight.AbsoluteToRelative(plViewer);
-      RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
-        plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
-        penViewer==this && (GetFlags()&ENF_ALIVE));
+      // setup stereo rendering
+      Stereo_SetBuffer(iEye);
+      Stereo_AdjustProjection(*apr, iEye, 1);
+
+      // render the view
+      ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
+      _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
+      RenderView(*en_pwoWorld, *penViewer, apr, *pdp);
+      _ulPlayerRenderingMask = 0;
+
+      if (iEye==STEREO_LEFT) {
+        // listen from here
+        ListenFromEntity(this, plViewer);
+      }
+
+      if(hud_bShowAll && bShowExtras) {
+        // let the player entity render its interface
+        CPlacement3D plLight(_vViewerLightDirection, ANGLE3D(0,0,0));
+        plLight.AbsoluteToRelative(plViewer);
+        RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
+          plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
+          penViewer==this && (GetFlags()&ENF_ALIVE), iEye);
+      }
     }
+    Stereo_SetBuffer(STEREO_BOTH);
 
     // determine and cache main drawport, size and relative scale
     PIX pixDPWidth  = pdp->GetWidth();
@@ -2209,24 +2222,34 @@ functions:
     pdp->Unlock();
     pdpCamera->Lock();
 
-    // setup view settings
     CAnyProjection3D apr;
     CEntity *penViewer;
     CPlacement3D plViewer;
     COLOR colBlend;
-    SetupView(pdpCamera, apr, penViewer, plViewer, colBlend, TRUE);
 
-    // render the view
-    ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
-    _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
-    RenderView(*en_pwoWorld, *penViewer, apr, *pdpCamera);
-    _ulPlayerRenderingMask = 0;
+    // for each eye
+    for (INDEX iEye=STEREO_LEFT; iEye<=(Stereo_IsEnabled()?STEREO_RIGHT:STEREO_LEFT); iEye++) {
+
+      // setup view settings
+      SetupView(pdpCamera, apr, penViewer, plViewer, colBlend, TRUE);
+
+      // setup stereo rendering
+      Stereo_SetBuffer(iEye);
+      Stereo_AdjustProjection(*apr, iEye, 1);
+
+      // render the view
+      ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
+      _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
+      RenderView(*en_pwoWorld, *penViewer, apr, *pdpCamera);
+      _ulPlayerRenderingMask = 0;
 
 
-    // listen from there if needed
-    if (bListen) {
-      ListenFromEntity(penViewer, plViewer);
+      // listen from there if needed
+      if (bListen && iEye==STEREO_LEFT) {
+        ListenFromEntity(penViewer, plViewer);
+      }
     }
+    Stereo_SetBuffer(STEREO_BOTH);
 
     pdpCamera->Unlock();
     pdp->Lock();
@@ -4151,14 +4174,14 @@ functions:
   // Draw player interface on screen.
   void RenderHUD( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,
                   FLOAT3D vViewerLightDirection, COLOR colViewerLight, COLOR colViewerAmbient,
-                  BOOL bRenderWeapon)
+                  BOOL bRenderWeapon, INDEX iEye)
   {
     // render weapon models if needed
     BOOL bRenderModels = _pShell->GetINDEX("gfx_bRenderModels");
     if( hud_bShowWeapon && bRenderModels) {
       // render weapons only if view is from player eyes
       ((CPlayerWeapons&)*m_penWeapons).RenderWeaponModel(prProjection, pdp, 
-       vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon);
+       vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon, iEye);
     }
 
     // render crosshair

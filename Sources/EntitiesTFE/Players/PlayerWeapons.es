@@ -783,7 +783,7 @@ functions:
   // render weapon model(s)
   void RenderWeaponModel( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,
                           FLOAT3D vViewerLightDirection, COLOR colViewerLight, COLOR colViewerAmbient,
-                          BOOL bRender)
+                          BOOL bRender, INDEX iEye)
   {
     _mrpModelRenderPrefs.SetRenderType( RT_TEXTURE|RT_SHADING_PHONG);
 
@@ -852,6 +852,7 @@ functions:
       ((CPerspectiveProjection3D &)prMirror).FOVL() = AngleDeg(wpn_fFOV[iWeaponData]);
       CAnyProjection3D apr;
       apr = prMirror;
+      Stereo_AdjustProjection(*apr, iEye, 0.1f);
       BeginModelRenderingView(apr, pdp);
 
       WeaponMovingOffset(plWeaponMirror.pl_PositionVector);
@@ -881,6 +882,7 @@ functions:
 
     CAnyProjection3D apr;
     apr = prProjection;
+    Stereo_AdjustProjection(*apr, iEye, 0.1f);
     BeginModelRenderingView(apr, pdp);
 
     WeaponMovingOffset(plWeapon.pl_PositionVector);
