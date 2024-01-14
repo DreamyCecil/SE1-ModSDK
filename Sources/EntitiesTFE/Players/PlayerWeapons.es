@@ -779,6 +779,14 @@ functions:
     return m_bFireWeapon && !m_bChangeWeapon;
   }
 
+#if SE1_VER < SE1_107
+  // [Cecil] NOTE: Compatibility with vanilla TFE 1.05
+  void RenderWeaponModel(CPerspectiveProjection3D &pr, CDrawPort *pdp,
+    FLOAT3D vLightDir, COLOR colLight, COLOR colAmbient, BOOL bRender)
+  {
+    RenderWeaponModel(pr, pdp, vLightDir, colLight, colAmbient, bRender, STEREO_LEFT);
+  };
+#endif
 
   // render weapon model(s)
   void RenderWeaponModel( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,

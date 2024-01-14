@@ -1040,10 +1040,13 @@ functions:
     pamoHead->amo_plRelative.pl_OrientationAngle(2) = 0.0f;
     pamoHead->amo_plRelative.pl_OrientationAngle(3) *= 4.0f;
 
+  // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
+  #if SE1_VER >= SE1_107
     // forbid players from cheating by kissing their @$$
     const FLOAT fMaxBanking = 5.0f;
     pamoBody->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoBody->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
     pamoHead->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoHead->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
+  #endif
   };
 
   // animate player
@@ -1231,7 +1234,9 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_JUMPSTART, AOF_NORESTART);
+  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>6) { m_bCrouch = FALSE; }
+  #endif
     m_bReference = FALSE;
   };
 
@@ -1242,7 +1247,9 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_SWIM, AOF_LOOPING|AOF_NORESTART);
+  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>2) { m_bCrouch = FALSE; }
+  #endif
     m_bSwim = TRUE;
   };
 
@@ -1253,7 +1260,9 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_STAND, AOF_LOOPING|AOF_NORESTART);
+  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>2) { m_bCrouch = FALSE; }
+  #endif
     m_bSwim = FALSE;
   };
 

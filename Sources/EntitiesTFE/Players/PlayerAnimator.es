@@ -982,10 +982,13 @@ functions:
     pamoHead->amo_plRelative.pl_OrientationAngle(2) = 0.0f;
     pamoHead->amo_plRelative.pl_OrientationAngle(3) *= 4.0f;
 
+  // [Cecil] NOTE: Compatibility with vanilla TFE 1.05
+  #if SE1_VER >= SE1_107
     // forbid players from cheating by kissing their @$$
     const FLOAT fMaxBanking = 5.0f;
     pamoBody->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoBody->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
     pamoHead->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoHead->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
+  #endif
   };
 
   // animate player

@@ -2163,9 +2163,17 @@ functions:
         // let the player entity render its interface
         CPlacement3D plLight(_vViewerLightDirection, ANGLE3D(0,0,0));
         plLight.AbsoluteToRelative(plViewer);
+
+      // [Cecil] NOTE: Compatibility with vanilla TFE 1.05
+      #if SE1_VER >= SE1_107
         RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
           plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
           penViewer==this && (GetFlags()&ENF_ALIVE), iEye);
+      #else
+        RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
+          plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
+          penViewer==this && (GetFlags()&ENF_ALIVE));
+      #endif
       }
     }
     Stereo_SetBuffer(STEREO_BOTH);
@@ -4170,6 +4178,14 @@ functions:
     }
   };
 
+#if SE1_VER < SE1_107
+  // [Cecil] NOTE: Compatibility with vanilla TFE 1.05
+  void RenderHUD(CPerspectiveProjection3D &pr, CDrawPort *pdp,
+    FLOAT3D vLightDir, COLOR colLight, COLOR colAmbient, BOOL bRenderWeapon)
+  {
+    RenderHUD(pr, pdp, vLightDir, colLight, colAmbient, bRenderWeapon, STEREO_LEFT);
+  };
+#endif
 
   // Draw player interface on screen.
   void RenderHUD( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,
@@ -4180,8 +4196,15 @@ functions:
     BOOL bRenderModels = _pShell->GetINDEX("gfx_bRenderModels");
     if( hud_bShowWeapon && bRenderModels) {
       // render weapons only if view is from player eyes
+
+    // [Cecil] NOTE: Compatibility with vanilla TFE 1.05
+    #if SE1_VER >= SE1_107
       ((CPlayerWeapons&)*m_penWeapons).RenderWeaponModel(prProjection, pdp, 
        vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon, iEye);
+    #else
+      ((CPlayerWeapons&)*m_penWeapons).RenderWeaponModel(prProjection, pdp, 
+       vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon);
+    #endif
     }
 
     // render crosshair

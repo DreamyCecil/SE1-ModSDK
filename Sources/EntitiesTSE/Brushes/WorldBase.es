@@ -1004,6 +1004,7 @@ properties:
   80 flags ClasificationBits m_cbClassificationBits "Clasification bits" 'C' = 0,
   81 flags VisibilityBits m_vbVisibilityBits "Visibility bits" 'V' = 0,
 
+  ["SE1_VER >= SE1_107"]
   99 FLOAT m_fOpacity "Opacity" = 1.0f,
 
 
@@ -1319,13 +1320,13 @@ functions:
     slUsedMemory += m_strDescription.Length();
     return slUsedMemory;
   }
-#endif
 
   // return opacity of the brush
   FLOAT GetOpacity(void)
   {
     return m_fOpacity;
   }
+#endif
 
 
 
