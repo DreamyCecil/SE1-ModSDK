@@ -13,7 +13,7 @@ for /f %%f in ('dir /b EntitiesTSE\Brushes\*.es') do Includes\Ecc.exe "EntitiesT
 for /f %%f in ('dir /b EntitiesTSE\Effects\*.es') do Includes\Ecc.exe "EntitiesTSE/Effects/%%f" %EccArgs%
 for /f %%f in ('dir /b EntitiesTSE\Enemies\*.es') do Includes\Ecc.exe "EntitiesTSE/Enemies/%%f" %EccArgs%
 for /f %%f in ('dir /b EntitiesTSE\Environment\*.es') do Includes\Ecc.exe "EntitiesTSE/Environment/%%f" %EccArgs%
-for /f %%f in ('dir /b EntitiesTSE\Items\*.es') do Includes\Ecc.exe "EntitieTSEs/Items/%%f" %EccArgs%
+for /f %%f in ('dir /b EntitiesTSE\Items\*.es') do Includes\Ecc.exe "EntitiesTSE/Items/%%f" %EccArgs%
 for /f %%f in ('dir /b EntitiesTSE\Players\*.es') do Includes\Ecc.exe "EntitiesTSE/Players/%%f" %EccArgs%
 for /f %%f in ('dir /b EntitiesTSE\Tools\*.es') do Includes\Ecc.exe "EntitiesTSE/Tools/%%f" %EccArgs%
 for /f %%f in ('dir /b EntitiesTSE\Weapons\*.es') do Includes\Ecc.exe "EntitiesTSE/Weapons/%%f" %EccArgs%

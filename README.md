@@ -1,8 +1,8 @@
 # Serious Sam SDK
 
 This repository contains code from Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
-- `EntitiesTFE` - all the entity logic for The First Encounter game.
-- `EntitiesTSE` - all the entity logic for The Second Encounter game.
+- `EntitiesTFE` - all the entity logic for The First Encounter.
+- `EntitiesTSE` - all the entity logic for The Second Encounter.
 - `Game` - all the game logic.
 - `GameGUI` - additional GUI elements for Serious Editor.
 
@@ -10,7 +10,7 @@ The original source code have been adjusted to work well with any engine version
 
 The project files are made for **Visual Studio 2010** and higher to allow selecting a preferred compiler.
 
-You can use it to build mods for all Serious Sam games on Serious Engine 1, including:
+You can use it to build mods for all Serious Sam games on Serious Engine 1:
 - The First Encounter 1.05
 - The Second Encounter 1.05
 - The Second Encounter 1.07
