@@ -74,17 +74,19 @@ public:
   // quaternion norm (euclidian length of a 4d vector)
   inline Type Norm(void) const;
 
+  // [Cecil] NOTE: These four have been marked as 'friend' prior to 1.10 but now changed to 'inline'
+
   // transcendental functions
-  /*friend Quaternion<Type> Exp(const Quaternion<Type> &q);
-  friend Quaternion<Type> Log(const Quaternion<Type> &q);*/
+  inline Quaternion<Type> Exp(const Quaternion<Type> &q);
+  inline Quaternion<Type> Log(const Quaternion<Type> &q);
 
   // spherical linear interpolation
-  /*friend Quaternion<Type> Slerp(Type tT,
-    const Quaternion<Type> &q1, const Quaternion<Type> &q2);*/
+  inline Quaternion<Type> Slerp(Type tT,
+    const Quaternion<Type> &q1, const Quaternion<Type> &q2);
   // spherical quadratic interpolation
-  /*friend Quaternion<Type> Squad(Type tT,
+  inline Quaternion<Type> Squad(Type tT,
     const Quaternion<Type> &q1, const Quaternion<Type> &q2,
-    const Quaternion<Type> &qa, const Quaternion<Type> &qb);*/
+    const Quaternion<Type> &qa, const Quaternion<Type> &qb);
 };
 
 // inline functions implementation

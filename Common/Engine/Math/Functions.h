@@ -450,7 +450,12 @@ inline FLOAT Sqrt( FLOAT x) { return (FLOAT)sqrt( ClampDn( x, 0.0f)); }
 #define ANGLE_SNAP (0.25f)   //0x0010
 // Wrap angle to be between 0 and 360 degrees
 inline ANGLE WrapAngle(ANGLE a) {
-  return (ANGLE) fmod( fmod(a,360.0f) + 360.0f, 360.0f);  // 0..360
+  // [Cecil] NOTE: New compiler check, just in case
+#if _MSC_VER >= 1600
+  return (ANGLE) fmod(fmod((double)a, 360.0) + 360.0, 360.0);  // 0..360
+#else
+  return (ANGLE) fmod( fmod(a,360.0) + 360.0, 360.0);  // 0..360
+#endif
 }
 
 // Normalize angle to be between -180 and +180 degrees
