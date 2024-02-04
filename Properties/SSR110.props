@@ -4,7 +4,7 @@
     <Import Project="SE1SDK.props" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros">
-    <SamEngineIncludes>$(SolutionDir)Includes\Common\;$(SolutionDir)Includes\EngineRev\</SamEngineIncludes>
+    <SamEngineIncludes>$(SolutionDir)Includes\EngineRev\;$(SolutionDir)Includes\Common\</SamEngineIncludes>
     <SamEngineLibraries>$(SolutionDir)Includes\EngineRev\</SamEngineLibraries>
 
     <SamEnginePreproc>$(SE1SdkPreproc);SE1_VER=SE1_110;SE1_GAME=SS_REV;</SamEnginePreproc>
