@@ -108,16 +108,16 @@ extern void (*gfxClipPlane)( const DOUBLE *pdPlane);
 // set orthographic matrix
 extern void (*gfxSetOrtho)( const FLOAT fLeft, const FLOAT fRight,
                             const FLOAT fTop,  const FLOAT fBottom,
-                            const FLOAT fNear, const FLOAT fFar, const BOOL bSubPixelAdjust=FALSE);
+                            const FLOAT fNear, const FLOAT fFar, const BOOL bSubPixelAdjust/*=FALSE*/);
 // set frustrum matrix
 extern void (*gfxSetFrustum)( const FLOAT fLeft, const FLOAT fRight,
                               const FLOAT fTop,  const FLOAT fBottom,
                               const FLOAT fNear, const FLOAT fFar);
 // set view matrix 
-extern void (*gfxSetViewMatrix)( const FLOAT *pfMatrix=NULL);
+extern void (*gfxSetViewMatrix)( const FLOAT *pfMatrix/*=NULL*/);
 
 // set texture matrix
-extern void (*gfxSetTextureMatrix)( const FLOAT *pfMatrix=NULL);
+extern void (*gfxSetTextureMatrix)( const FLOAT *pfMatrix/*=NULL*/);
 
 
 // polygon mode (point, line or fill)
@@ -213,7 +213,7 @@ extern INDEX gfxGetFormatPixRatio(  ULONG ulTextureFormat);
 // prepare arrays for API
 extern void (*gfxSetVertexArray)( GFXVertex4 *pvtx, INDEX ctVtx);
 extern void (*gfxSetNormalArray)( GFXNormal *pnor);
-extern void (*gfxSetTexCoordArray)( GFXTexCoord *ptex, BOOL b4=FALSE); // b4 = projective mapping (4 FLOATS)
+extern void (*gfxSetTexCoordArray)( GFXTexCoord *ptex, BOOL b4/*=FALSE*/); // b4 = projective mapping (4 FLOATS)
 extern void (*gfxSetColorArray)( GFXColor *pcol);
 
 

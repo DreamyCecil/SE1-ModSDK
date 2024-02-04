@@ -55,6 +55,14 @@ public:
   // dualhead cloning
   CDrawPort( CDrawPort *pdpBase, BOOL bLeft);
 
+  // [Cecil] Support for VS2010+ compilers
+#if _MSC_VER >= 1600
+  __forceinline CDrawPort &operator=(CDrawPort &&other) {
+    InitCloned(&other, 0.0, 0.0, 1.0, 1.0);
+    return *this;
+  };
+#endif
+
   //  wide-screen cloning
   void MakeWideScreen(CDrawPort *pdp);
 

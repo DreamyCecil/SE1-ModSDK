@@ -752,6 +752,11 @@ public:
   /* Constructor. */
   CRationalEntity(void);
 
+  // [Cecil] Support for >VS2010 compilers
+#if _MSC_VER > 1600
+  CRationalEntity(CRationalEntity &&other) = delete;
+#endif
+
   /* Handle an event - return false if event was not handled. */
   virtual BOOL HandleEvent(const CEntityEvent &ee);
 };

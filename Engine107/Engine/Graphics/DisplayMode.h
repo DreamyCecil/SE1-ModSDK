@@ -10,7 +10,7 @@
 // display mode bit-depth
 enum DisplayDepth
 {
-  DD_NONE    = -1,
+  DD_NODEPTH = -1, // [Cecil] NOTE: Used to be 'DD_NONE'
   DD_DEFAULT =  0,
   DD_16BIT   =  1,
   DD_32BIT   =  2,

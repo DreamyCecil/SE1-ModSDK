@@ -23,6 +23,16 @@ public:
   /* Constructor from character string for insertion in exe-file. */
   inline CTFileName(const char *pString, int i) : CTString(pString+i), fnm_pserPreloaded(NULL) {};
 
+  // [Cecil] Support for VS2010+ compilers
+#if _MSC_VER >= 1600
+  __forceinline CTFileName(const CTFileName  &other) : CTString(other.str_String), fnm_pserPreloaded(NULL) {};
+  __forceinline CTFileName(      CTFileName &&other) : CTString(other.str_String), fnm_pserPreloaded(NULL) {};
+
+  __forceinline void operator=(const CTFileName &other) {
+    operator=((const CTString &)other);
+  };
+#endif
+
   /* Assignment. */
   CTFileName &operator=(const char *strCharString);
   inline void operator=(const CTString &strOther) {
