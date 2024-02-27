@@ -413,7 +413,7 @@ public:
   //                  -2  in  CPlayerWeapons::CutWithKnife()
   // CBullet::m_iBatchID  in  CBullet::LaunchBullet()
   void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
-    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iDamageID);
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iBatchID);
 
   // [Cecil] Rev: Old method wrapper that calls the method above with the last index set to -1
   void InflictDirectDamage(CEntity *penToDamage, CEntity *penInflictor, enum DamageType dmtType,
@@ -584,8 +584,8 @@ public:
   /* Get first target of this entity. */
   virtual CEntity *GetTarget(void) const;
 
-  // [Cecil] Rev: Get all entity targets
-  virtual BOOL GetTargets(CEntityPointer *apenTargets, int ctTargets) const;
+  // [Cecil] Rev: Set all available entity targets and return their amount
+  virtual int GetTargets(CEntityPointer *apenTargets, int ctTargets) const;
 
   /* Check if entity can be used as a target. */
   virtual BOOL IsTargetable(void) const;
@@ -695,7 +695,7 @@ public:
 
   /* apply some damage to the entity (see event EDamage for more info) */
   virtual void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
-    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iDamageID); // [Cecil] Rev: Extra index
+    FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection, INDEX iBatchID); // [Cecil] Rev: Extra index
 
   /* Receive item through event - for AI purposes only */
   virtual BOOL ReceiveItem(const CEntityEvent &ee);

@@ -314,7 +314,7 @@ CModelObject m_moRender;
    void DumpSync_t(CTStream & strm,INDEX iExtensiveSyncCheck);
   virtual void LeaveStain(BOOL bGrow);
    void DamageImpact(enum DamageType dmtType,FLOAT fDamageAmmount,const FLOAT3D & vHitPoint,const FLOAT3D & vDirection);
-   void ReceiveDamage(CEntity * penInflictor,enum DamageType dmtType,FLOAT fDamageAmmount,const FLOAT3D & vHitPoint,const FLOAT3D & vDirection,INDEX iDamageID);
+   void ReceiveDamage(CEntity * penInflictor,enum DamageType dmtType,FLOAT fDamageAmmount,const FLOAT3D & vHitPoint,const FLOAT3D & vDirection,INDEX iBatchID);
    void OnStep(void);
    FLOAT TopHealthInside(void);
    BOOL ShouldBlowUp(void);
