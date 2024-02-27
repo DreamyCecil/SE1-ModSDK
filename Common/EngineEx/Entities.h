@@ -34,7 +34,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 // Check if the entity is of a specific class by its ID (e.g. CHeadman_ClassID)
 inline BOOL IsOfClassID(CEntity *pen, INDEX iClassID) {
   if (pen == NULL) {
-    ASSERT(FALSE);
+    //ASSERT(FALSE);
     return FALSE;
   }
 
@@ -46,7 +46,7 @@ inline BOOL IsOfClassID(CEntity *pen, INDEX iClassID) {
 // Check if the entity is derived from a specific class by its ID (e.g. CEnemyBase_ClassID)
 inline BOOL IsDerivedFromID(CEntity *pen, INDEX iClassID) {
   if (pen == NULL) {
-    ASSERT(FALSE);
+    //ASSERT(FALSE);
     return FALSE;
   }
 
@@ -65,7 +65,7 @@ inline BOOL IsDerivedFromID(CEntity *pen, INDEX iClassID) {
 // Check if the entity is derived from CLiveEntity
 inline BOOL IsLiveEntity(CEntity *pen) {
   if (pen == NULL) {
-    ASSERT(FALSE);
+    //ASSERT(FALSE);
     return FALSE;
   }
 
