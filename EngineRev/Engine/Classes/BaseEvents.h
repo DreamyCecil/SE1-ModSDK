@@ -124,6 +124,22 @@ enum DamageType {
   DMT_HEAT = 16,
   DMT_DAMAGER = 17,
   DMT_CHAINSAW = 18,
+
+  // [Cecil] Rev: New damage types
+  DMT_LASER = 19,
+  DMT_TOMMYGUN = 20,
+  DMT_MINIGUN = 21,
+  DMT_SINGLESHOTGUN = 22,
+  DMT_DOUBLESHOTGUN = 23,
+  DMT_SNIPER = 24,
+  DMT_GHOSTBUSTER = 25,
+  DMT_COLT = 26,
+  DMT_DOUBLECOLT = 27,
+  DMT_ROCKETLAUNCHER = 28,
+  DMT_GRENADELAUNCHER = 29,
+  DMT_FLAMER = 30,
+  DMT_MINES = 31,
+
   DMT_NONE = 9999,
 };
 DECL_DLL inline void ClearToDefault(DamageType &e) { e = (DamageType)0; } ;
