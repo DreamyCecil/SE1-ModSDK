@@ -185,9 +185,7 @@ public:
   INDEX en_ctReferences;          // reference counter for delayed destruction
   ULONG en_ulID;                  // unique entity identifier
 
-  // [Cecil] Rev: Extra field (could be entity creation place / origin)
-  CPlacement3D en_plExtra;
-
+  CPlacement3D en_plOrigin;         // [Cecil] Rev: Entity creation place
   CPlacement3D en_plPlacement;      // placement in world space
   FLOATmatrix3D en_mRotation;       // precalc. matrix for object rotation
   CEntityClass *en_pecClass;         // class used to construct this entity
