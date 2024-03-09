@@ -6,8 +6,15 @@ public:
   enum GameMode {
     GM_FLYOVER = -1,
     GM_COOPERATIVE = 0,
-    GM_SCOREMATCH,
-    GM_FRAGMATCH,
+    GM_SCOREMATCH  = 1,
+    GM_FRAGMATCH   = 2, // Deathmatch
+    // [Cecil] Rev: New gamemodes
+    GM_TDM         = 3, // Team Deathmatch
+    GM_CTF         = 4, // Capture The Flag
+    GM_SURVIVAL    = 5, // Survival
+    GM_INSTANTKILL = 6, // Instant Kill
+    GM_CONTROLZONE = 7, // Control Zone
+    GM_DUEL        = 8, // Duel
   };
   enum GameDifficulty {
     GD_TOURIST = -1,
