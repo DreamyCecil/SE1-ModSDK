@@ -8,13 +8,9 @@ extern "C" DECL_DLL CDLLEntityClass CPlayerEntity_DLLClass;
 class DECL_DLL  CPlayerEntity : public CMovableModelEntity {
 public:
    virtual void SetDefaultProperties(void);
-
-// [Cecil] Rev: Unknown fields
-ULONG en_ulPlayerEntityField1;
-ULONG en_ulPlayerEntityField2;
-
   FLOAT en_tmPing;
-  ULONG en_ulSteamID;
+  // [Cecil] Rev: 4-byte padding after en_tmPing to align en_ulSteamID to 8 bytes
+  U64 en_ulSteamID;
   CTString en_strSteamName;
   FLOAT en_fDamageDealt;
 CPlayerCharacter en_pcCharacter;

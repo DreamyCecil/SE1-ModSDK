@@ -5,8 +5,8 @@
 #define ENTITYCLASS CMovableModelEntity
 
 CEntityProperty CMovableModelEntity_properties[] = {
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000002<<8)+1, offsetof(CMovableModelEntity, en_iCollisionBox), "", 0, 0, 0),
- CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000002<<8)+2, offsetof(CMovableModelEntity, en_iWantedCollisionBox), "", 0, 0, 0),
+ CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000002<<8)+1, 0x338, "", 0, "en_iCollisionBox", 0, 0),
+ CEntityProperty(CEntityProperty::EPT_INDEX, NULL, (0x00000002<<8)+2, 0x33c, "", 0, "en_iWantedCollisionBox", 0, 0),
 };
 #define CMovableModelEntity_propertiesct ARRAYCOUNT(CMovableModelEntity_properties)
 

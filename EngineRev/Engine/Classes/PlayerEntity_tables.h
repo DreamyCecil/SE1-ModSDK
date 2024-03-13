@@ -5,7 +5,10 @@
 #define ENTITYCLASS CPlayerEntity
 
 CEntityProperty CPlayerEntity_properties[] = {
- CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000004<<8)+1, offsetof(CPlayerEntity, en_tmPing), "", 0, 0, 0),
+ CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000004<<8)+1, 0x340, "", 0, "en_tmPing", 0, 0),
+ CEntityProperty(CEntityProperty::EPT_U64, NULL, (0x00000004<<8)+2, 0x348, "", 0, "en_ulSteamID", 0, 0),
+ CEntityProperty(CEntityProperty::EPT_STRING, NULL, (0x00000004<<8)+3, 0x350, "", 0, "en_strSteamName", 0, 0),
+ CEntityProperty(CEntityProperty::EPT_FLOAT, NULL, (0x00000004<<8)+4, 0x354, "", 0, "en_fDamageDealt", 0, 0),
 };
 #define CPlayerEntity_propertiesct ARRAYCOUNT(CPlayerEntity_properties)
 
