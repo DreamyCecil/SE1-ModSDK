@@ -81,6 +81,26 @@ properties:
  72 CEntityPointer m_penCreditsHolder,
  73 CEntityPointer m_penHudPicFXHolder,
 
+ // [Cecil] Rev
+ 74 FLOAT m_tmActivatedToggledLights1       = 1e6,
+ 75 FLOAT m_tmDeactivatedToggledLights1     = 1e6,
+ 76 FLOAT m_tmActivatedToggledLights2       = 1e6,
+ 77 FLOAT m_tmDeactivatedToggledLights2     = 1e6,
+ 78 FLOAT m_tmActivatedToggledLights3       = 1e6,
+ 79 FLOAT m_tmDeactivatedToggledLights3     = 1e6,
+ 80 FLOAT m_tmActivatedToggledLights4       = 1e6,
+ 81 FLOAT m_tmDeactivatedToggledLights4     = 1e6,
+ 82 FLOAT m_tmActivatedInstToggledLights1   = 1e6,
+ 83 FLOAT m_tmDeactivatedInstToggledLights1 = 1e6,
+ 84 FLOAT m_tmActivatedInstToggledLights2   = 1e6,
+ 85 FLOAT m_tmDeactivatedInstToggledLights2 = 1e6,
+ 86 FLOAT m_tmActivatedInstToggledLights3   = 1e6,
+ 87 FLOAT m_tmDeactivatedInstToggledLights3 = 1e6,
+ 88 FLOAT m_tmActivatedInstToggledLights4   = 1e6,
+ 89 FLOAT m_tmDeactivatedInstToggledLights4 = 1e6,
+ 90 FLOAT m_tmBlendSpeed "Transition speed for controlled blending" = 2.0f,
+100 BOOL m_bFlyoverLogo = FALSE,
+
 components:
   1 model   MODEL_WORLD_SETTINGS_CONTROLLER     "Models\\Editor\\WorldSettingsController.mdl",
   2 texture TEXTURE_WORLD_SETTINGS_CONTROLLER   "Models\\Editor\\WorldSettingsController.tex"

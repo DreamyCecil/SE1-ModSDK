@@ -30,6 +30,15 @@ enum BlendControllerType {
   4 BCT_ACTIVATE_PLATE_3            "Activate plate 3",          // plate 3 activating
   5 BCT_ACTIVATE_PLATE_4            "Activate plate 4",          // plate 4 activating
   6 BCT_ACTIVATE_PYRAMID_MORPH_ROOM "Pyramid morph room",        // pyramid morph room activated
+  // [Cecil] Rev: New blend modes
+  7 BCT_TOGGLE_LIGHTS_1             "Toggle lights 1",
+  8 BCT_TOGGLE_LIGHTS_2             "Toggle lights 2",
+  9 BCT_TOGGLE_LIGHTS_3             "Toggle lights 3",
+ 10 BCT_TOGGLE_LIGHTS_4             "Toggle lights 4",
+ 11 BCT_TOGGLE_CONTROLLED_LIGHTS_1  "Toggle controlled lights 1",
+ 12 BCT_TOGGLE_CONTROLLED_LIGHTS_2  "Toggle controlled lights 2",
+ 13 BCT_TOGGLE_CONTROLLED_LIGHTS_3  "Toggle controlled lights 3",
+ 14 BCT_TOGGLE_CONTROLLED_LIGHTS_4  "Toggle controlled lights 4",
 };
 
 class CBlendController: CMarker
@@ -86,6 +95,36 @@ functions:
         case BCT_ACTIVATE_PYRAMID_MORPH_ROOM:
           pwsc->m_tmPyramidMorphRoomActivated = tmNow;
           break;
+
+        // [Cecil] Rev: New blend types
+        case BCT_TOGGLE_LIGHTS_1:
+          pwsc->m_tmActivatedToggledLights1 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_2:
+          pwsc->m_tmActivatedToggledLights2 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_3:
+          pwsc->m_tmActivatedToggledLights3 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_4:
+          pwsc->m_tmActivatedToggledLights4 = tmNow;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_1:
+          pwsc->m_tmActivatedInstToggledLights1 = tmNow;
+          pwsc->m_tmDeactivatedInstToggledLights1 = 1e6;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_2:
+          pwsc->m_tmActivatedInstToggledLights2 = tmNow;
+          pwsc->m_tmDeactivatedInstToggledLights2 = 1e6;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_3:
+          pwsc->m_tmActivatedInstToggledLights3 = tmNow;
+          pwsc->m_tmDeactivatedInstToggledLights3 = 1e6;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_4:
+          pwsc->m_tmActivatedInstToggledLights4 = tmNow;
+          pwsc->m_tmDeactivatedInstToggledLights4 = 1e6;
+          break;
       }
     }
     else if (ee.ee_slEvent==EVENTCODE_EDeactivate)
@@ -103,6 +142,36 @@ functions:
           break;
         case BCT_ACTIVATE_PLATE_4:
           pwsc->m_tmDeactivatedPlate4 = tmNow;
+          break;
+
+        // [Cecil] Rev: New blend types
+        case BCT_TOGGLE_LIGHTS_1:
+          pwsc->m_tmDeactivatedToggledLights1 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_2:
+          pwsc->m_tmDeactivatedToggledLights2 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_3:
+          pwsc->m_tmDeactivatedToggledLights3 = tmNow;
+          break;
+        case BCT_TOGGLE_LIGHTS_4:
+          pwsc->m_tmDeactivatedToggledLights4 = tmNow;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_1:
+          pwsc->m_tmActivatedInstToggledLights1 = 1e6;
+          pwsc->m_tmDeactivatedInstToggledLights1 = tmNow;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_2:
+          pwsc->m_tmActivatedInstToggledLights2 = 1e6;
+          pwsc->m_tmDeactivatedInstToggledLights2 = tmNow;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_3:
+          pwsc->m_tmActivatedInstToggledLights3 = 1e6;
+          pwsc->m_tmDeactivatedInstToggledLights3 = tmNow;
+          break;
+        case BCT_TOGGLE_CONTROLLED_LIGHTS_4:
+          pwsc->m_tmActivatedInstToggledLights4 = 1e6;
+          pwsc->m_tmDeactivatedInstToggledLights4 = tmNow;
           break;
       }
     }

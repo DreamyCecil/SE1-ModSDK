@@ -190,11 +190,11 @@ static void DoLevelSafetyChecks()
 
 }
 
+// [Cecil] Rev: Fade speed argument (tmStop) for new blend types
 void SetPyramidPlateActivateAlpha(CWorld *pwo, INDEX iBlending,
-                                  TIME tmActivated, TIME tmDeactivated, BOOL bPulsate)
+                                  TIME tmActivated, TIME tmDeactivated, BOOL bPulsate, TIME tmStop = 2.0f)
 {
   TIME tmNow = _pTimer->CurrentTick();
-  TIME tmStop = 2.0f;
   FLOAT fRatio;
 
   // get alpha
@@ -397,6 +397,39 @@ void CWorldBase_OnWorldInit(CWorld *pwo)
   pwo->wo_atbTextureBlendings[15].tb_strName         = "Activate pyramid morph room";
   pwo->wo_atbTextureBlendings[15].tb_ubBlendingType  = STXF_BLEND_ALPHA;
   pwo->wo_atbTextureBlendings[15].tb_colMultiply     = C_WHITE|0x00;
+
+  // [Cecil] Rev: New blend modes
+  pwo->wo_atbTextureBlendings[16].tb_strName        = "Toggled Lights 1";
+  pwo->wo_atbTextureBlendings[16].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[16].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[17].tb_strName        = "Toggled Lights 2";
+  pwo->wo_atbTextureBlendings[17].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[17].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[18].tb_strName        = "Toggled Lights 3";
+  pwo->wo_atbTextureBlendings[18].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[18].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[19].tb_strName        = "Toggled Lights 4";
+  pwo->wo_atbTextureBlendings[19].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[19].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[20].tb_strName        = "Controlled Toggled Lights 1";
+  pwo->wo_atbTextureBlendings[20].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[20].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[21].tb_strName        = "Controlled Toggled Lights 2";
+  pwo->wo_atbTextureBlendings[21].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[21].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[22].tb_strName        = "Controlled Toggled Lights 3";
+  pwo->wo_atbTextureBlendings[22].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[22].tb_colMultiply    = C_BLACK | 0xFF;
+
+  pwo->wo_atbTextureBlendings[23].tb_strName        = "Controlled Toggled Lights 4";
+  pwo->wo_atbTextureBlendings[23].tb_ubBlendingType = STXF_BLEND_ADD;
+  pwo->wo_atbTextureBlendings[23].tb_colMultiply    = C_BLACK | 0xFF;
 
   pwo->wo_aitIlluminationTypes[0].it_strName = "None";
   pwo->wo_aitIlluminationTypes[1].it_strName = "Vitraj 1";
@@ -859,6 +892,18 @@ void CWorldBase_OnWorldRender(CWorld *pwo)
     SetPyramidPlateActivateAlpha(pwo, 14, pwsc->m_tmActivatedPlate4, pwsc->m_tmDeactivatedPlate4, TRUE);
     // pyramid morph room
     SetPyramidMorphRoomAlpha(pwo, 15, pwsc->m_tmPyramidMorphRoomActivated);
+
+    // [Cecil] Rev: New blend modes
+    const FLOAT *atm = &pwsc->m_tmActivatedToggledLights1;
+    SetPyramidPlateActivateAlpha(pwo, 16, atm[0], atm[1], FALSE);
+    SetPyramidPlateActivateAlpha(pwo, 17, atm[2], atm[3], FALSE);
+    SetPyramidPlateActivateAlpha(pwo, 18, atm[4], atm[5], FALSE);
+    SetPyramidPlateActivateAlpha(pwo, 19, atm[6], atm[7], FALSE);
+
+    SetPyramidPlateActivateAlpha(pwo, 20, atm[ 8], atm[ 9], FALSE, pwsc->m_tmBlendSpeed);
+    SetPyramidPlateActivateAlpha(pwo, 21, atm[10], atm[11], FALSE, pwsc->m_tmBlendSpeed);
+    SetPyramidPlateActivateAlpha(pwo, 22, atm[12], atm[13], FALSE, pwsc->m_tmBlendSpeed);
+    SetPyramidPlateActivateAlpha(pwo, 23, atm[14], atm[15], FALSE, pwsc->m_tmBlendSpeed);
   }
 };
 
