@@ -21,7 +21,7 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 %{
 // used to render certain entities only for certain players (like picked items, etc.)
-extern ULONG _ulPlayerRenderingMask;
+extern __int64 _ulPlayerRenderingMask; // [Cecil] Rev: 64 bits wide
 %}
 
 class export CItem : CMovableModelEntity {
@@ -44,6 +44,7 @@ properties:
  12 FLOAT m_fPickSoundLen = 0.0f,
  14 BOOL m_bDropped = FALSE,    // dropped by a player during a deathmatch game
  15 INDEX m_ulPickedMask = 0,   // mask for which players picked this item
+505 INDEX m_ulPickedMask2 = 0,  // [Cecil] Rev: Workaround for 64-bit wide pickup masks
  16 BOOL m_bFloating "Floating" 'F' = FALSE,
 
 components:
@@ -68,14 +69,14 @@ functions:
     }
 
     // if never picked
-    if (m_ulPickedMask==0) {
+    if ((__int64 &)m_ulPickedMask == 0) {
       // don't bother testing
       return;
     }
 
     BOOL bFlare = TRUE;
     // if current player has already picked this item
-    if (_ulPlayerRenderingMask&m_ulPickedMask) {
+    if (_ulPlayerRenderingMask & (__int64 &)m_ulPickedMask) {
       // if picked items are not rendered
       extern INDEX plr_bRenderPicked;
       if (!plr_bRenderPicked) {
@@ -97,7 +98,7 @@ functions:
   BOOL ShowItemParticles(void)
   {
     // if current player has already picked this item
-    if (_ulPlayerRenderingMask&m_ulPickedMask) {
+    if (_ulPlayerRenderingMask & (__int64 &)m_ulPickedMask) {
       // if picked item particles are not rendered
       extern INDEX plr_bRenderPickedParticles;
       if (!plr_bRenderPickedParticles) {
@@ -116,8 +117,9 @@ functions:
       return FALSE;
     }
     INDEX iPlayer = ((CPlayerEntity*)pen)->GetMyPlayerIndex();
-    BOOL bPickedAlready = (1<<iPlayer)&m_ulPickedMask;
-    m_ulPickedMask |= (1<<iPlayer);
+    __int64 &ulPickedMask64 = (__int64 &)m_ulPickedMask; // [Cecil] Rev
+    BOOL bPickedAlready = (1 << iPlayer) & ulPickedMask64;
+    ulPickedMask64 |= (1 << iPlayer);
     return bPickedAlready;
   }
 

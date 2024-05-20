@@ -115,7 +115,7 @@ extern void EndHUD(void);
 static CTimerValue _tvProbingLast;
 
 // used to render certain entities only for certain players (like picked items, etc.)
-extern ULONG _ulPlayerRenderingMask = 0;
+extern __int64 _ulPlayerRenderingMask = 0; // [Cecil] Rev: 64 bits wide
 
 // temporary BOOL used to discard calculating of 3rd view when calculating absolute view placement
 BOOL _bDiscard3rdView=FALSE;
@@ -1011,6 +1011,7 @@ properties:
   3 FLOAT m_fArmor = 0.0f,                    // armor
   4 CTString m_strGroup = "",                 // group name for world change
   5 INDEX m_ulKeys = 0,                       // mask for all picked-up keys
+505 INDEX m_ulKeys2 = 0,                      // [Cecil] Rev: Workaround for 64-bit wide key masks
   6 FLOAT m_fMaxHealth = 1,                 // default health supply player can have
   7 INDEX m_ulFlags = 0,                      // various flags
   
@@ -2148,7 +2149,7 @@ functions:
       {
         fIntensity = 0.5f-0.5f*cos((m_tmInvisibility-tmNow)*(6.0f*3.1415927f/3.0f));
       }
-      if (_ulPlayerRenderingMask == 1<<GetMyPlayerIndex()) {
+      if (_ulPlayerRenderingMask == __int64(1) << GetMyPlayerIndex()) {
         colAlpha = (colAlpha&0xffffff00)|(INDEX)(INVISIBILITY_ALPHA_LOCAL+(FLOAT)(254-INVISIBILITY_ALPHA_LOCAL)*fIntensity);
       } else if (TRUE) {
         if ((m_tmInvisibility-tmNow)<1.28f) {
@@ -2483,7 +2484,7 @@ functions:
 
       // render the view
       ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
-      _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
+      _ulPlayerRenderingMask = __int64(1) << GetMyPlayerIndex();
       RenderView(*en_pwoWorld, *penViewer, apr, *pdp);
       _ulPlayerRenderingMask = 0;
 
@@ -2585,7 +2586,7 @@ functions:
 
       // render the view
       ASSERT(IsValidFloat(plViewer.pl_OrientationAngle(1))&&IsValidFloat(plViewer.pl_OrientationAngle(2))&&IsValidFloat(plViewer.pl_OrientationAngle(3)));
-      _ulPlayerRenderingMask = 1<<GetMyPlayerIndex();
+      _ulPlayerRenderingMask = __int64(1) << GetMyPlayerIndex();
       RenderView(*en_pwoWorld, *penViewer, apr, *pdpCamera);
       _ulPlayerRenderingMask = 0;
 
@@ -3360,7 +3361,7 @@ functions:
         return FALSE;
       }
       // make key mask
-      ULONG ulKey = 1<<INDEX(((EKey&)ee).kitType);
+      __int64 ulKey = __int64(1) << INDEX(((EKey &)ee).kitType);
       EKey &eKey = (EKey&)ee;
       if(eKey.kitType == KIT_HAWKWINGS01DUMMY || eKey.kitType == KIT_HAWKWINGS02DUMMY
         || eKey.kitType == KIT_TABLESDUMMY || eKey.kitType ==KIT_JAGUARGOLDDUMMY)
@@ -3368,13 +3369,13 @@ functions:
         ulKey = 0;
       }
       // if key is already in inventory
-      if (m_ulKeys&ulKey) {
+      if ((__int64 &)m_ulKeys & ulKey) {
         // ignore it
         return FALSE;
       // if key is not in inventory
       } else {
         // pick it up
-        m_ulKeys |= ulKey;
+        (__int64 &)m_ulKeys |= ulKey;
         CTString strKey = GetKeyName(((EKey&)ee).kitType);
         ItemPicked(strKey, 0);
         // if in cooperative
@@ -6766,7 +6767,7 @@ procedures:
     // we get here if the player is disconnected from the server
 
     // if we have some keys
-    if (!IsPredictor() && m_ulKeys!=0) {
+    if (!IsPredictor() && (__int64 &)m_ulKeys != 0) {
       // find first live player
       CPlayer *penNextPlayer = NULL;
       for(INDEX iPlayer=0; iPlayer<GetMaxPlayers(); iPlayer++) {
@@ -6782,6 +6783,7 @@ procedures:
         CPrintF(TRANS("%s leaving, all keys transfered to %s\n"), 
           (const char*)m_strName, (const char*)penNextPlayer->GetPlayerName());
         penNextPlayer->m_ulKeys |= m_ulKeys;
+        penNextPlayer->m_ulKeys2 |= m_ulKeys2; // [Cecil] Rev
       }
     }
 
