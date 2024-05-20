@@ -27,11 +27,17 @@ properties:
   1 CTString m_strName          "Name" 'N' = "Damager",
   2 CTString m_strDescription = "",
   3 enum DamageType m_dmtType "Type" 'Y' = DMT_ABYSS,    // type of damage
-  4 FLOAT m_fAmmount "Ammount" 'A' = 1000.0f,             // ammount of damage
+  4 FLOAT m_fAmount "Amount" 'A' = 1000.0f,             // amount of damage
   5 CEntityPointer m_penToDamage "Entity to Damage" 'E',  // entity to damage, NULL to damage the triggerer
   6 BOOL m_bDamageFromTriggerer "DamageFromTriggerer" 'S' = FALSE,  // make the triggerer inflictor of the damage
  10 CEntityPointer m_penLastDamaged,
  11 FLOAT m_tmLastDamage = 0.0f,
+
+ // [Cecil] Rev: New properties
+ 20 BOOL  m_bRangeDamage  "Damage in range" = FALSE,
+ 21 RANGE m_fRangeHotspot "Damage range hotspot" = 1.0f,
+ 22 RANGE m_fRangeFalloff "Damage range falloff" = 4.0f,
+ 30 BOOL  m_bHeal         "Heal" = FALSE,
 
 components:
   1 model   MODEL_TELEPORT     "Models\\Editor\\Copier.mdl",
@@ -54,7 +60,7 @@ procedures:
     SetModelMainTexture(TEXTURE_TELEPORT);
 
     ((CTString&)m_strDescription).PrintF("%s:%g", 
-      DamageType_enum.NameForValue(INDEX(m_dmtType)), m_fAmmount);
+      DamageType_enum.NameForValue(INDEX(m_dmtType)), m_fAmount);
 
     while (TRUE) {
       // wait for someone to trigger you and then damage it
@@ -76,10 +82,24 @@ procedures:
           if (penVictim!=NULL) {
             if (!(penVictim==m_penLastDamaged && _pTimer->CurrentTick()<m_tmLastDamage+0.1f))
             {
-            InflictDirectDamage(penVictim, penInflictor,  m_dmtType, m_fAmmount, 
-              penVictim->GetPlacement().pl_PositionVector, FLOAT3D(0,1,0));
-              m_penLastDamaged = penVictim;
-              m_tmLastDamage = _pTimer->CurrentTick();
+              // [Cecil] Rev: Heal instead
+              if (m_bHeal) {
+                if (IsDerivedFromClass(penVictim, "MovableEntity")) {
+                  CMovableEntity *penMovable = (CMovableEntity *)penVictim;
+                  penMovable->SetHealth(penMovable->GetHealth() + m_fAmount);
+                }
+
+              // [Cecil] Rev: Damage in some range
+              } else if (m_bRangeDamage) {
+                InflictRangeDamage(penInflictor, m_dmtType, m_fAmount,
+                  GetPlacement().pl_PositionVector, m_fRangeHotspot, m_fRangeFalloff);
+
+              } else {
+                InflictDirectDamage(penVictim, penInflictor,  m_dmtType, m_fAmount, 
+                  penVictim->GetPlacement().pl_PositionVector, FLOAT3D(0,1,0));
+                m_penLastDamaged = penVictim;
+                m_tmLastDamage = _pTimer->CurrentTick();
+              }
             }
           }
           stop;

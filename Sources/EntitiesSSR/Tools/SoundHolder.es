@@ -44,6 +44,7 @@ properties:
  12 INDEX m_iPlayType = 0,
  13 CSoundObject m_soSound,         // sound channel
  14 BOOL m_bDestroyable     "Destroyable" 'Q' = FALSE,
+ 15 FLOAT m_fPitch "Pitch" = 1.0f, // [Cecil] Rev
 
   {
     CAutoPrecacheSound m_aps;
@@ -133,14 +134,16 @@ procedures:
       // auto play sound
       on (EBegin) : {
         if (m_bAutoStart) {
-          m_soSound.Set3DParameters(FLOAT(m_rFallOffRange), FLOAT(m_rHotSpotRange), m_fVolume, 1.0f);
+          // [Cecil] Rev: Pitch
+          m_soSound.Set3DParameters(FLOAT(m_rFallOffRange), FLOAT(m_rHotSpotRange), m_fVolume, m_fPitch);
           PlaySound(m_soSound, m_fnSound, m_iPlayType);
         }
         resume;
       }
       // play sound
       on (EStart) : {
-        m_soSound.Set3DParameters(FLOAT(m_rFallOffRange), FLOAT(m_rHotSpotRange), m_fVolume, 1.0f);
+        // [Cecil] Rev: Pitch
+        m_soSound.Set3DParameters(FLOAT(m_rFallOffRange), FLOAT(m_rHotSpotRange), m_fVolume, m_fPitch);
         PlaySound(m_soSound, m_fnSound, m_iPlayType);
         resume;
       }
