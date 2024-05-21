@@ -99,7 +99,7 @@ properties:
  65 FLOAT m_tmSpraySpawned = 0.0f,   // time when damage has been applied
  66 FLOAT m_fSprayDamage = 0.0f,     // total ammount of damage
  67 CEntityPointer m_penSpray,       // the blood spray
- 68 FLOAT m_fMaxDamageAmmount  = 0.0f, // max ammount of damage recived in in last xxx ticks
+ 68 FLOAT m_fMaxDamageAmount  = 0.0f, // max ammount of damage recived in in last xxx ticks
 
  70 FLOAT m_fClassificationStretch  "Classification stretch" = 1.0f, // classification box multiplier
  80 COLOR m_colBurning = COLOR(C_WHITE|CT_OPAQUE), // color applied when burning
@@ -232,8 +232,8 @@ functions:
       }
     }
 
-    if( m_fMaxDamageAmmount<fDamageAmmount) {
-      m_fMaxDamageAmmount = fDamageAmmount;
+    if( m_fMaxDamageAmount<fDamageAmmount) {
+      m_fMaxDamageAmount = fDamageAmmount;
     }
 
     // if it has no spray, or if this damage overflows it
@@ -248,7 +248,7 @@ functions:
       ESpawnSpray eSpawnSpray;
     
       // adjust spray power
-      if( m_fMaxDamageAmmount > 10.0f) {
+      if( m_fMaxDamageAmount > 10.0f) {
         eSpawnSpray.fDamagePower = 3.0f;
       } else if(m_fSprayDamage+fNewDamage>50.0f) {
         eSpawnSpray.fDamagePower = 2.0f;
@@ -280,7 +280,7 @@ functions:
       m_penSpray->Initialize( eSpawnSpray);
       m_tmSpraySpawned = _pTimer->CurrentTick();
       m_fSprayDamage = 0.0f;
-      m_fMaxDamageAmmount = 0.0f;
+      m_fMaxDamageAmount = 0.0f;
     }
     
     if( dmtType==DMT_CHAINSAW && m_fChainSawCutDamage>0)

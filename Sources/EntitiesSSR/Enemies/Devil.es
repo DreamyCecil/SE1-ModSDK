@@ -926,7 +926,7 @@ functions:
       CPrintF( "m_fSpiritStartTime = %g\n", m_fSpiritStartTime);
       CPrintF( "m_tmSpraySpawned = %g\n", m_tmSpraySpawned);
       CPrintF( "m_fSprayDamage = %g\n", m_fSprayDamage);
-      CPrintF( "m_fMaxDamageAmmount  = %g\n", m_fMaxDamageAmmount );
+      CPrintF( "m_fMaxDamageAmount = %g\n", m_fMaxDamageAmount);
     }
     
     vLightDirection = FLOAT3D(0.0f, 270.0f, 0.0f);

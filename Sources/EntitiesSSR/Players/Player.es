@@ -1023,7 +1023,7 @@ properties:
  21 INDEX m_iLastViewState=PVT_PLAYEREYES,    // last view state
 
  26 CAnimObject m_aoLightAnimation,           // light animation object
- 27 FLOAT m_fDamageAmmount = 0.0f,            // how much was last wound
+ 27 FLOAT m_fDamageAmount = 0.0f,            // how much was last wound
  28 FLOAT m_tmWoundedTime  = 0.0f,            // when was last wound
  29 FLOAT m_tmScreamTime   = 0.0f,            // when was last wound sound played
 
@@ -1049,7 +1049,7 @@ properties:
  44 CEntityPointer m_penMainMusicHolder,
 
  51 FLOAT m_tmLastDamage = -1.0f,
- 52 FLOAT m_fMaxDamageAmmount = 0.0f,
+ 52 FLOAT m_fMaxDamageAmount = 0.0f,
  53 FLOAT3D m_vDamage = FLOAT3D(0,0,0),
  54 FLOAT m_tmSpraySpawned = -1.0f,
  55 FLOAT m_fSprayDamage = 0.0f,
@@ -1110,7 +1110,7 @@ properties:
  // 'picked up' display vars
  120 FLOAT m_tmLastPicked = -10000.0f,  // when something was last picked up
  121 CTString m_strPickedName = "",     // name of item picked
- 122 FLOAT m_fPickedAmmount = 0.0f,     // total picked ammount
+ 122 FLOAT m_fPickedAmount = 0.0f,     // total picked ammount
  123 FLOAT m_fPickedMana = 0.0f,        // total picked mana
 
  // shaker values
@@ -2036,10 +2036,10 @@ functions:
       // remember name
       m_strPickedName = strName;
       // reset picked ammount
-      m_fPickedAmmount = 0;
+      m_fPickedAmount = 0;
     }
     // increase ammount
-    m_fPickedAmmount+=fAmmount;
+    m_fPickedAmount+=fAmmount;
     m_tmLastPicked = _pTimer->CurrentTick();
   }
 
@@ -2534,10 +2534,10 @@ functions:
       pdp->SetTextScaling( fScale);
       pdp->SetTextAspect( 1.0f);
       CTString strPicked;
-      if (m_fPickedAmmount==0) {
+      if (m_fPickedAmount==0) {
         strPicked = m_strPickedName;
       } else {
-        strPicked.PrintF("%s +%d", m_strPickedName, int(m_fPickedAmmount));
+        strPicked.PrintF("%s +%d", m_strPickedName, int(m_fPickedAmount));
       }
       pdp->PutTextCXY( strPicked, pixDPWidth*0.5f, pixDPHeight*0.82f, C_WHITE|0xDD);
       if (!GetSP()->sp_bCooperative && !GetSP()->sp_bUseFrags && m_fPickedMana>=1) {
@@ -2980,9 +2980,9 @@ functions:
     }
     }
 
-    if( m_fMaxDamageAmmount<fDamageAmmount)
+    if( m_fMaxDamageAmount<fDamageAmmount)
     {
-      m_fMaxDamageAmmount = fDamageAmmount;
+      m_fMaxDamageAmount = fDamageAmmount;
     }
     // if it has no spray, or if this damage overflows it
     if ((m_tmSpraySpawned<=_pTimer->CurrentTick()-_pTimer->TickQuantum*8 || 
@@ -2995,7 +2995,7 @@ functions:
       ESpawnSpray eSpawnSpray;
       eSpawnSpray.colBurnColor=C_WHITE|CT_OPAQUE;
       
-      if( m_fMaxDamageAmmount > 10.0f)
+      if( m_fMaxDamageAmount > 10.0f)
       {
         eSpawnSpray.fDamagePower = 3.0f;
       }
@@ -3029,7 +3029,7 @@ functions:
       m_penSpray->Initialize( eSpawnSpray);
       m_tmSpraySpawned = _pTimer->CurrentTick();
       m_fSprayDamage = 0.0f;
-      m_fMaxDamageAmmount = 0.0f;
+      m_fMaxDamageAmount = 0.0f;
     }
     m_fSprayDamage+=fDamageAmmount;
   }
@@ -3143,7 +3143,7 @@ functions:
 //                                        -en_vGravityDir*(fDamageAmmount/15.0f));
       }
       if( GetFlags()&ENF_ALIVE) {
-        m_fDamageAmmount += fDamageAmmount;
+        m_fDamageAmount += fDamageAmmount;
         m_tmWoundedTime   = _pTimer->CurrentTick();
       }
     }
@@ -3163,17 +3163,17 @@ functions:
       PlaySound( m_soLocalAmbientOnce, SOUND_WATERBUBBLES, SOF_3D|SOF_VOLUMETRIC|SOF_LOCAL);
       m_soLocalAmbientOnce.Set3DParameters( 25.0f, 5.0f, 2.0f, Lerp(0.5f, 1.5f, FRnd()) );
       SpawnBubbles( 10+INDEX(FRnd()*10));
-    } else if( m_fDamageAmmount>1.0f) {
+    } else if( m_fDamageAmount>1.0f) {
       // if not dead
       if (GetFlags()&ENF_ALIVE) {
         // determine corresponding sound
         INDEX iSound;
         char *strIFeel = NULL;
-        if( m_fDamageAmmount<5.0f) {
+        if( m_fDamageAmount<5.0f) {
           iSound = GenderSound(SOUND_WOUNDWEAK);
           strIFeel = "WoundWeak";
         }
-        else if( m_fDamageAmmount<25.0f) {
+        else if( m_fDamageAmount<25.0f) {
           iSound = GenderSound(SOUND_WOUNDMEDIUM);
           strIFeel = "WoundMedium";
         }
@@ -3858,10 +3858,10 @@ functions:
     FLOAT tmSinceWounding = _pTimer->CurrentTick() - m_tmWoundedTime;
     if( tmSinceWounding<4.0f) {
       // decrease damage ammount
-      m_fDamageAmmount *= 1.0f - tmSinceWounding/4.0f;
+      m_fDamageAmount *= 1.0f - tmSinceWounding/4.0f;
     } else {
       // reset damage ammount
-      m_fDamageAmmount = 0.0f;
+      m_fDamageAmount = 0.0f;
     }
   }
 
@@ -4881,7 +4881,7 @@ functions:
     CPlayer *pen = (CPlayer*)GetPredictionTail();
     // do screen blending
     ULONG ulR=255, ulG=0, ulB=0; // red for wounding
-    ULONG ulA = pen->m_fDamageAmmount*5.0f;
+    ULONG ulA = pen->m_fDamageAmount*5.0f;
     
     // if less than few seconds elapsed since last damage
     FLOAT tmSinceWounding = _pTimer->CurrentTick() - pen->m_tmWoundedTime;
@@ -5023,7 +5023,7 @@ functions:
     m_ulFlags &= PLF_INITIALIZED|PLF_LEVELSTARTED|PLF_RESPAWNINPLACE;  // must not clear initialized flag
     m_fFallTime = 0.0f;
     m_pstState = PST_STAND;
-    m_fDamageAmmount = 0.0f;
+    m_fDamageAmount = 0.0f;
     m_tmWoundedTime  = 0.0f;
     m_tmInvisibility    = 0.0f, 
     m_tmInvulnerability = 0.0f, 

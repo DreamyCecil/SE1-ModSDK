@@ -430,7 +430,7 @@ functions:
     m_penSpray = CreateEntity( plSpray, CLASS_BLOOD_SPRAY);
     ESpawnSpray eSpawnSpray;
     eSpawnSpray.colBurnColor=C_WHITE|CT_OPAQUE;
-    if( m_fMaxDamageAmmount > 10.0f)
+    if( m_fMaxDamageAmount > 10.0f)
     {
       eSpawnSpray.fDamagePower = 3.0f;
     }
@@ -472,7 +472,7 @@ functions:
     m_penSpray->Initialize( eSpawnSpray);
     m_tmSpraySpawned = _pTimer->CurrentTick();
     m_fSprayDamage = 0.0f;
-    m_fMaxDamageAmmount = 0.0f;
+    m_fMaxDamageAmount = 0.0f;
 
     // instead of:
     // CMovableModelEntity::ReceiveDamage(penInflictor, dmtType, fDamageAmmount,

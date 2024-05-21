@@ -165,7 +165,7 @@ properties:
 146 FLOAT m_tmSpraySpawned = 0.0f,   // time when damage has been applied
 147 FLOAT m_fSprayDamage = 0.0f,     // total ammount of damage
 148 CEntityPointer m_penSpray,       // the blood spray
-149 FLOAT m_fMaxDamageAmmount  = 0.0f, // max ammount of damage received in in last few ticks
+149 FLOAT m_fMaxDamageAmount = 0.0f, // max ammount of damage received in in last few ticks
 150 FLOAT3D m_vLastStain  = FLOAT3D(0,0,0), // where last stain was left
 151 enum SprayParticlesType m_sptType = SPT_BLOOD, // type of particles
 
@@ -718,9 +718,9 @@ functions:
       m_fSprayDamage+fNewDamage>50.0f)
       && m_fSpiritStartTime==0) {*/
     
-    if( m_fMaxDamageAmmount<fDamageAmmount)
+    if( m_fMaxDamageAmount<fDamageAmmount)
     {
-      m_fMaxDamageAmmount = fDamageAmmount;
+      m_fMaxDamageAmount = fDamageAmmount;
     }
     // if it has no spray, or if this damage overflows it, and not already disappearing
     if ((m_tmSpraySpawned<=_pTimer->CurrentTick()-_pTimer->TickQuantum*8 || 
@@ -740,7 +740,7 @@ functions:
       ESpawnSpray eSpawnSpray;
       eSpawnSpray.colBurnColor=C_WHITE|CT_OPAQUE;
       
-      if( m_fMaxDamageAmmount > 10.0f)
+      if( m_fMaxDamageAmount > 10.0f)
       {
         eSpawnSpray.fDamagePower = 3.0f;
       }
@@ -779,7 +779,7 @@ functions:
       m_penSpray->Initialize( eSpawnSpray);
       m_tmSpraySpawned = _pTimer->CurrentTick();
       m_fSprayDamage = 0.0f;
-      m_fMaxDamageAmmount = 0.0f;
+      m_fMaxDamageAmount = 0.0f;
     }
     m_fSprayDamage+=fNewDamage;
 

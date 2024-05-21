@@ -29,7 +29,7 @@ enum PSSState {
   0 PSSS_IDLE                  "Idle",                      // idle
   1 PSSS_MOVING                "Moving",                    // process of moving trough markers
   2 PSSS_REACHED_DESTINATION   "Reached destination",       // process of turning on
-  3 PSSS_KILLING_BEAM_FIREING  "Killing beam fireing",      // killing beam fireing
+  3 PSSS_KILLING_BEAM_FIRING   "Killing beam firing",       // killing beam firing
   4 PSSS_BEAM_DEACTIVATED      "Killing beam deactivated",  // killing beam gas been deactivated, wait to pick up Sam
   5 PSSS_DOORS_CLOSED          "Doors closed",              // doors closed
 };
@@ -111,7 +111,7 @@ properties:
  51 CSoundObject m_soBeamMachine,
  52 CSoundObject m_soBeam,
  53 CSoundObject m_soFlaresFX,
- 54 BOOL m_bFireingDeactivatedBeam=FALSE,
+ 54 BOOL m_bFiringDeactivatedBeam=FALSE,
  55 BOOL m_bImmediateAnimations=FALSE,
  56 FLOAT m_fWaitAfterKillingBeam "Wait after auto killing beam" 'W' = 1.0f,
  
@@ -742,7 +742,7 @@ procedures:
       }
     }
 
-    m_epssState = PSSS_KILLING_BEAM_FIREING;
+    m_epssState = PSSS_KILLING_BEAM_FIRING;
     return EReturn();
   }
 
@@ -781,7 +781,7 @@ procedures:
 
     if(m_epssState==PSSS_BEAM_DEACTIVATED)
     {
-      m_bFireingDeactivatedBeam=TRUE;
+      m_bFiringDeactivatedBeam=TRUE;
     }
 
     if( !m_bImmediateAnimations)
@@ -820,7 +820,7 @@ procedures:
 
     // turn on light beam
     TurnOnLightBeam();
-    if(!m_bFireingDeactivatedBeam)
+    if(!m_bFiringDeactivatedBeam)
     {
       SpawnBeamMachineMainLightning();
     }
@@ -846,7 +846,7 @@ procedures:
       {
         autowait(_pTimer->TickQuantum);
         // cast ray for possible damage
-        if( m_penBeamHit != NULL && !m_bFireingDeactivatedBeam)
+        if( m_penBeamHit != NULL && !m_bFiringDeactivatedBeam)
         {
           // cast ray
           FLOAT3D vSource = GetPlacement().pl_PositionVector + FLOAT3D( 0, BM_MASTER_Y, 0);
@@ -893,7 +893,7 @@ procedures:
     m_tmHitFlareTime = -1.0f;
     m_tmBeamTime = -1.0f;
 
-    if(m_bFireingDeactivatedBeam)
+    if(m_bFiringDeactivatedBeam)
     {
       jump CloseDoors();
     }
@@ -933,7 +933,7 @@ procedures:
     ModelChangeNotify();
     m_bMoving = FALSE;
     m_epssState = PSSS_IDLE;
-    m_bFireingDeactivatedBeam=FALSE;
+    m_bFiringDeactivatedBeam=FALSE;
     
     autowait( 0.25f);
 
@@ -959,7 +959,7 @@ procedures:
         {
           // ignore all triggs
         }
-        else if( m_epssState==PSSS_KILLING_BEAM_FIREING)
+        else if( m_epssState==PSSS_KILLING_BEAM_FIRING)
         {
           call FireLightBeam();
         }
