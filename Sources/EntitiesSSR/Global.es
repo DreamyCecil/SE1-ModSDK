@@ -83,8 +83,27 @@ enum EventEType {
  10 EET_STOPBLINDNESS     "Stop blindness event",       // enemy stop being blind
  11 EET_STOPDEAFNESS      "Stop deafness event",        // enemy stop being deaf
  12 EET_TELEPORTMOVINGBRUSH "Teleport moving brush",    // moving brush teleporting event
+ // [Cecil] Rev: New event types
+ 13 EET_STARTFLYOVERLOGOS "Start flyover logos",
+ 14 EET_STOPFLYOVERLOGOS  "Stop flyover logos",
 };
 
+// [Cecil] Rev: New damage types (to extend DamageType enum)
+enum DamageTypeRev {
+ 19 DMT_REV_LASER           "Laser",
+ 20 DMT_REV_TOMMYGUN        "TommyGun",
+ 21 DMT_REV_MINIGUN         "MiniGun",
+ 22 DMT_REV_SINGLESHOTGUN   "Single Shotgun",
+ 23 DMT_REV_DOUBLESHOTGUN   "Double Shotgun",
+ 24 DMT_REV_SNIPER          "Sniper",
+ 25 DMT_REV_GHOSTBUSTER     "Ghostbuster",
+ 26 DMT_REV_COLT            "Colt",
+ 27 DMT_REV_DOUBLECOLT      "Double Colt",
+ 28 DMT_REV_ROCKETLAUNCHER  "Rocket Launcher",
+ 29 DMT_REV_GRENADELAUNCHER "Grenade Launcher",
+ 30 DMT_REV_FLAMER          "Flamer",
+ 31 DMT_REV_MINES           "Mines",
+};
 
 // entity info structure enums
 enum EntityInfoBodyType {
@@ -176,6 +195,8 @@ enum SprayParticlesType {
  14 SPT_GOO         "Goo",          // yellow bloodlike substance
  15 SPT_TREE01      "Tree 01",      // tree 01
  16 SPT_COLOREDSTONE "Colored stone", // colored stone
+ // [Cecil] Rev: New spray particles
+ 17 SPT_SMALLPLASMA "Small plasma",
 };
 
 // weapon bits
