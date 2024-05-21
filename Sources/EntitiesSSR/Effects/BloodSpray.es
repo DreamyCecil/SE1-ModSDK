@@ -111,7 +111,16 @@ functions:
         Particles_MetalParts(this, m_tmStarted, m_boxSizedOwner, m_fDamagePower);
         Particles_DamageSmoke(this, m_tmStarted, m_boxSizedOwner, m_fDamagePower);
         Particles_ElectricitySparks( this, m_tmStarted, 5.0f, 0.0f, 32);        
+        break;
       }
+
+    // [Cecil] Rev: New spray particles
+    case SPT_SMALLPLASMA:
+      Particles_BloodSpray(m_sptType, GetLerpedPlacement().pl_PositionVector, m_vGDir, m_fGA,
+        m_boxSizedOwner, m_vDirection, m_tmStarted, m_fDamagePower);
+      Particles_DamageSmoke(this, m_tmStarted, m_boxSizedOwner, m_fDamagePower);
+      Particles_ElectricitySparks(this, m_tmStarted, 5.0f, 0.0f, 32);
+      break;
     }
   };
 
