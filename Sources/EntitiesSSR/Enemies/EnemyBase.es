@@ -26,6 +26,7 @@ extern INDEX ent_bReportBrokenChains;
 uses "AI/Watcher";
 uses "Effects/BasicEffects";
 uses "Weapons/Projectile";
+uses "Weapons/CannonBall"; // [Cecil] Rev
 uses "Effects/Debris";
 uses "Enemies/EnemyMarker";
 uses "Tools/MusicHolder";
@@ -53,6 +54,13 @@ enum DestinationType {
   1 DT_PLAYERSPOTTED "",    // go to where player was last seen
   2 DT_PATHTEMPORARY "",    // go to navigation marker - temporary, only until you spot player again
   3 DT_PATHPERSISTENT "",    // go to navigation marker - until you really get there
+};
+
+// [Cecil] Rev: Environment types
+enum EnemyEnvType {
+  0 EET_NONE "None",
+  1 EET_FIRE "Fire",
+  2 EET_ICE  "Ice",
 };
 
 %{
@@ -186,8 +194,31 @@ properties:
 
 //171 INDEX m_iTacticsRetried = 0,
 
+// [Cecil] Rev: New properties
+182 BOOL m_bGiveUpToClosestMarker "Give up to closest marker" = FALSE,
+190 CTFileName m_fnmCustomModel   "Custom model" = CTString(""), // [Cecil] TODO
+191 CTFileName m_fnmCustomTexture "Custom texture" = CTString(""), // [Cecil] TODO
+192 BOOL m_bUseCustomWeaponProjectile             "Custom projectile use" = FALSE,
+193 enum ProjectileType m_eCustomWeaponProjectile "Custom projectile" = PRT_ROCKET,
+
+194 INDEX m_iCustomScore "Custom score" = -1,
+195 CTFileName m_fnmCustomMessage "Custom message" = CTString(""),
+
+196 BOOL m_bShootHitscansInsteadOfProjectiles "Custom hitscans use" = FALSE,
+197 FLOAT m_fCustomHitscansDamage "Custom hitscans damage" = 10.0f,
+230 FLOAT m_fCustomHitscanPositionX "Custom hitscan X" = 0.0f,
+231 FLOAT m_fCustomHitscanPositionY "Custom hitscan Y" = 0.0f,
+232 FLOAT m_fCustomHitscanPositionZ "Custom hitscan Z" = 0.0f,
+
+200 CEntityPointer m_penStartEnemy "Start target enemy", // [Cecil] TODO
+210 enum EnemyEnvType m_eetEnvironmentType "Environment type" = EET_NONE,
+220 FLOAT m_fHealthScalar "Custom health scalar" = 1.0f,
+221 FLOAT m_fCustomSpeedScalar "Custom speed scalar" = 1.0f,
+
   {
     TIME m_tmPredict;  // time to predict the entity to
+
+    CEntity *m_penBullet; // [Cecil] Rev
   }
 
 
@@ -198,6 +229,9 @@ components:
   3 class   CLASS_DEBRIS          "Classes\\Debris.ecl",
   4 class   CLASS_BASIC_EFFECT    "Classes\\BasicEffect.ecl",
   5 class   CLASS_BLOOD_SPRAY     "Classes\\BloodSpray.ecl",
+  // [Cecil] Rev
+  6 class   CLASS_CANNON_BALL     "Classes\\CannonBall.ecl",
+  7 class   CLASS_BULLET          "Classes\\Bullet.ecl",
 
 // ************** FLESH PARTS **************
  10 model   MODEL_FLESH          "Models\\Effects\\Debris\\Flesh\\Flesh.mdl",
@@ -215,6 +249,10 @@ components:
  25 texture TEXTURE_FLESH_LOLLY  "Models\\Effects\\Debris\\Fruits\\LollyPop.tex",
  26 texture TEXTURE_FLESH_ORANGE "Models\\Effects\\Debris\\Fruits\\Orange.tex",
 
+// [Cecil] Rev: New blood colors
+ 27 texture TEXTURE_FLESH_YELLOW "Models\\Effects\\Debris\\Flesh\\FleshYellow.tex",
+ 28 texture TEXTURE_FLESH_BLUE   "Models\\Effects\\Debris\\Flesh\\FleshBlue.tex",
+
 // ************** MACHINE PARTS **************
  31 model   MODEL_MACHINE        "Models\\Effects\\Debris\\Stone\\Stone.mdl",
  32 texture TEXTURE_MACHINE      "Models\\Effects\\Debris\\Stone\\Stone.tex",
@@ -226,6 +264,16 @@ functions:
   {
     m_tmPredict = 0;
   }
+
+  // [Cecil] Rev: Set all available entity targets and return their amount
+  virtual int GetTargets(CEntityPointer *apenTargets, int ctTargets) const {
+    if (ctTargets < 1) {
+      ThrowF_t("Not enough slots for GetTargets()");
+    }
+
+    apenTargets[0] = m_penDeathTarget;
+    return 1;
+  };
 
   // called by other entities to set time prediction parameter
   void SetPredictionTime(TIME tmAdvance)   // give time interval in advance to set
@@ -332,6 +380,9 @@ functions:
     PrecacheClass(CLASS_BASIC_EFFECT, BET_BOMB);
     PrecacheClass(CLASS_BASIC_EFFECT, BET_EXPLOSIONSTAIN);
     PrecacheClass(CLASS_DEBRIS);
+    // [Cecil] Rev
+    PrecacheClass(CLASS_CANNON_BALL);
+    PrecacheClass(CLASS_BULLET);
   }
 
   // get position you would like to go to when following player
@@ -851,6 +902,20 @@ functions:
         }
       }
     }
+
+    // [Cecil] Rev: Multiply by color of environment type
+    switch (m_eetEnvironmentType) {
+      case EET_FIRE:
+        colAmbient = MulColors(colAmbient, 0xFF0000FF);
+        colLight = 0xFF0000FF;
+        break;
+
+      case EET_ICE:
+        colAmbient = MulColors(colAmbient, 0x00FFFFFF);
+        colLight = 0x00FFFFFF;
+        break;
+    }
+
     if(m_colBurning!=COLOR(C_WHITE|CT_OPAQUE))
     {
       colAmbient = MulColors( colAmbient, m_colBurning);
@@ -1235,6 +1300,56 @@ functions:
     FLOAT3D vNormal;
     GetNormalComponent(m_vDesiredPosition - GetPlacement().pl_PositionVector, en_vGravityDir, vNormal);
     return vNormal.Length();
+  };
+
+  // [Cecil] Rev: Find closest marker from the current chain
+  virtual void SetClosestMarkerForPathFinding(void) {
+    // No marker or shouldn't give up to it
+    if (m_penMarker == NULL || !m_bGiveUpToClosestMarker) {
+      return;
+    }
+
+    // Distance to the current marker
+    const FLOAT3D vThis = GetPlacement().pl_PositionVector;
+    FLOAT fToCurrent = (vThis - m_penMarker->GetPlacement().pl_PositionVector).Length();
+
+    // Start from the current marker and get its next one
+    CEntity *penResult = m_penMarker;
+    CEntity *penNext = ((CEnemyMarker *)&*m_penMarker)->m_penTarget;
+
+    // To avoid accidental infinite loops
+    INDEX i = 0;
+
+    // Go through all markers in the chain
+    while (penNext != NULL && IsOfClass(penNext, "Enemy Marker")) {
+      i++;
+
+      // Only if marker allows to give up close to it
+      if (((CEnemyMarker *)penNext)->m_bGetCloser) {
+        // If distance to the next marker is shorter than the current one
+        const FLOAT fToNext = (vThis - penNext->GetPlacement().pl_PositionVector).Length();
+
+        if (fToNext < fToCurrent) {
+          // Set this distance and remember the marker
+          fToCurrent = fToNext;
+          penResult = penNext;
+        }
+      }
+
+      // Get next marker in the chain
+      penNext = ((CEnemyMarker *)&*penNext)->m_penTarget;
+
+      // Encountered the same marker or went too far in the chain
+      if (penNext == m_penMarker || i >= 50) {
+        penResult = m_penMarker;
+        break;
+      }
+    }
+
+    // Set to the resulting marker
+    m_vDesiredPosition = penResult->GetPlacement().pl_PositionVector;
+    m_penPathMarker = penResult;
+    m_penMarker = penResult;
   };
 
   // initialize path finding
@@ -1644,6 +1759,12 @@ functions:
   CEntity *ShootProjectile(enum ProjectileType pt, FLOAT3D &vOffset, ANGLE3D &aOffset) {
     ASSERT(m_penEnemy != NULL);
 
+    // [Cecil] Rev: Shoot bullet instead
+    if (m_bShootHitscansInsteadOfProjectiles) {
+      FireBullet();
+      return NULL;
+    }
+
     // target enemy body
     EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
     FLOAT3D vShootTarget;
@@ -1656,7 +1777,14 @@ functions:
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.fStretch=1.0f;
-    eLaunch.prtType = pt;
+
+    // [Cecil] Rev: Custom projectile
+    if (m_bUseCustomWeaponProjectile) {
+      eLaunch.prtType = m_eCustomWeaponProjectile;
+    } else {
+      eLaunch.prtType = pt;
+    }
+
     penProjectile->Initialize(eLaunch);
 
     return penProjectile;
@@ -1664,6 +1792,11 @@ functions:
 
   // shoot projectile at an exact spot
   CEntity *ShootProjectileAt(FLOAT3D vShootTarget, enum ProjectileType pt, FLOAT3D &vOffset, ANGLE3D &aOffset) {
+    // [Cecil] Rev: Shoot bullet instead
+    if (m_bShootHitscansInsteadOfProjectiles) {
+      FireBullet();
+      return NULL;
+    }
   
     // launch
     CPlacement3D pl;
@@ -1671,7 +1804,14 @@ functions:
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = pt;
+
+    // [Cecil] Rev: Custom projectile
+    if (m_bUseCustomWeaponProjectile) {
+      eLaunch.prtType = m_eCustomWeaponProjectile;
+    } else {
+      eLaunch.prtType = pt;
+    }
+
     penProjectile->Initialize(eLaunch);
 
     return penProjectile;
@@ -1680,6 +1820,12 @@ functions:
   // shoot projectile on enemy
   CEntity *ShootPredictedProjectile(enum ProjectileType pt, FLOAT3D vPredictedPos, FLOAT3D &vOffset, ANGLE3D &aOffset) {
     ASSERT(m_penEnemy != NULL);
+
+    // [Cecil] Rev: Shoot bullet instead
+    if (m_bShootHitscansInsteadOfProjectiles) {
+      FireBullet();
+      return NULL;
+    }
 
     // target enemy body (predicted)
     EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
@@ -1698,10 +1844,75 @@ functions:
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = pt;
+
+    // [Cecil] Rev: Custom projectile
+    if (m_bUseCustomWeaponProjectile) {
+      eLaunch.prtType = m_eCustomWeaponProjectile;
+    } else {
+      eLaunch.prtType = pt;
+    }
+
     penProjectile->Initialize(eLaunch);
 
     return penProjectile;
+  };
+
+  // [Cecil] Rev: Shoot cannonball at the enemy
+  void ShootCannonball(FLOAT3D vOffset, ANGLE3D aOffset_UNUSED) {
+    FLOAT3D vShooting = GetPlacement().pl_PositionVector + vOffset * GetRotationMatrix();
+    FLOAT3D vTarget = m_penEnemy->GetPlacement().pl_PositionVector;
+    FLOAT3D vSpeedDest = FLOAT3D(0.0f, 0.0f, 0.0f);
+    FLOAT fLaunchSpeed;
+    FLOAT fRelativeHdg;
+
+    FLOAT fDistanceFactor = ClampUp((vShooting - vTarget).Length() / 150.0f, 1.0f) - 0.75f;
+    FLOAT fPitch = Clamp(fDistanceFactor * 45.0f, 0.0f, 45.0f);
+
+    // calculate parameters for predicted angular launch curve
+    EntityInfo *peiTarget = (EntityInfo *)m_penEnemy->GetEntityInfo();
+    CalculateAngularLaunchParams(vShooting, peiTarget->vTargetCenter[1] - 6.0f / 3.0f, vTarget, 
+      vSpeedDest, fPitch, fLaunchSpeed, fRelativeHdg);
+
+    // target enemy body
+    FLOAT3D vShootTarget;
+    GetEntityInfoPosition(m_penEnemy, peiTarget->vTargetCenter, vShootTarget);
+    // launch
+    CPlacement3D pl;
+    PrepareFreeFlyingProjectile(pl, vShootTarget, vOffset, ANGLE3D(fRelativeHdg, fPitch, 0));
+
+    // create cannon ball
+    CEntityPointer penBall = CreateEntity(pl, CLASS_CANNON_BALL);
+    // init and launch cannon ball
+    ELaunchCannonBall eLaunch;
+    eLaunch.penLauncher = this;
+    eLaunch.fLaunchPower = fLaunchSpeed;
+    eLaunch.cbtType = CBT_IRON;
+    eLaunch.fSize = 3.0f;
+    penBall->Initialize(eLaunch);
+  };
+
+  // [Cecil] Rev: Prepare a bullet (fDamage is unused)
+  void PrepareBullet(FLOAT fDamage) {
+    CPlacement3D plBullet(
+      FLOAT3D(m_fCustomHitscanPositionX, m_fCustomHitscanPositionY, m_fCustomHitscanPositionZ),
+      ANGLE3D(0, 0, 0)
+    );
+    plBullet.RelativeToAbsolute(GetPlacement());
+    m_penBullet = CreateEntity(plBullet, CLASS_BULLET);
+
+    EBulletInit eInit;
+    eInit.penOwner = this;
+    eInit.fDamage = m_fCustomHitscansDamage;
+    m_penBullet->Initialize(eInit);
+  };
+
+  // [Cecil] Rev: Shoot a bullet
+  void FireBullet(void) {
+    PrepareBullet(3.0f);
+    ((CBullet &)*m_penBullet).CalcTarget(m_penEnemy, 250);
+    ((CBullet &)*m_penBullet).CalcJitterTarget(10);
+    ((CBullet &)*m_penBullet).LaunchBullet(TRUE, TRUE, TRUE);
+    ((CBullet &)*m_penBullet).DestroyBullet();
   };
 
   BOOL WouldNotLeaveAttackRadius(void)
@@ -1872,6 +2083,10 @@ functions:
   {
     FLOAT fMoveSpeed = GetSP()->sp_fEnemyMovementSpeed;
     FLOAT fAttackSpeed = GetSP()->sp_fEnemyMovementSpeed;
+
+    // [Cecil] Rev: Speed multiplier
+    fMoveSpeed *= m_fCustomSpeedScalar;
+
 //    m_fWalkSpeed *= fMoveSpeed;
 //    m_aWalkRotateSpeed *= fMoveSpeed;
     m_fAttackRunSpeed *= fMoveSpeed;
@@ -2084,6 +2299,22 @@ functions:
     return slUsedMemory;
   }
 #endif
+
+  // [Cecil] Rev: Perform an environment attack on touch
+  void PerformEnvironment(const ETouch &eTouch) {
+    CEntity *pen = eTouch.penOther;
+
+    if (m_eetEnvironmentType == EET_FIRE) {
+      if (IsOfClass(pen, "Player")) {
+        SpawnFlame(this, pen, GetPlacement().pl_PositionVector);
+      }
+
+    } else if (m_eetEnvironmentType == EET_ICE) {
+      if (IsOfClass(pen, "Player")) {
+        // [Cecil] TODO: Figure out the field responsible for slow movement
+      }
+    }
+  };
 
 procedures:
 
@@ -2435,6 +2666,9 @@ procedures:
     {
       // if attacking is futile
       if (ShouldCeaseAttack()) {
+        // [Cecil] Rev: Find closest marker
+        SetClosestMarkerForPathFinding();
+
         // cease it
         SetTargetNone();
         return EReturn();
@@ -2557,7 +2791,10 @@ procedures:
           resume;
         }
         // if touched something
-        on (ETouch eTouch) : { 
+        on (ETouch eTouch) : {
+          // [Cecil] Rev: Perform an environment attack on touch
+          PerformEnvironment(eTouch);
+
           if( IfTargetCrushed(eTouch.penOther, (FLOAT3D&)eTouch.plCollision))
           {
             resume;
@@ -2800,7 +3037,14 @@ procedures:
       // send computer message if in coop
       if (GetSP()->sp_bCooperative) {
         EComputerMessage eMsg;
-        eMsg.fnmMessage = GetComputerMessageName();
+
+        // [Cecil] Rev: Custom messages
+        if (m_fnmCustomMessage != "") {
+          eMsg.fnmMessage = m_fnmCustomMessage;
+        } else {
+          eMsg.fnmMessage = GetComputerMessageName();
+        }
+
         if (eMsg.fnmMessage!="") {
           penKiller->SendEvent(eMsg);
         }
@@ -3189,6 +3433,15 @@ procedures:
     // this wait amount has to be lower than the one in music holder, so that the enemies are initialized before
     // they get counted
     autowait(_pTimer->TickQuantum);
+
+    // [Cecil] Rev: Health multiplier
+    SetHealth(GetHealth() * m_fHealthScalar);
+    m_fMaxHealth *= m_fHealthScalar;
+
+    // [Cecil] Rev: Custom score
+    if (m_iCustomScore >= 0) {
+      m_iScore = m_iCustomScore;
+    }
 
     // spawn your watcher
     m_penWatcher = CreateEntity(GetPlacement(), CLASS_WATCHER);
