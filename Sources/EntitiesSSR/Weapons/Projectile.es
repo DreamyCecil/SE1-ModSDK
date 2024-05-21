@@ -71,6 +71,11 @@ enum ProjectileType {
  27 PRT_ICEMAN_FIRE           "Iceman",   // iceman ice cube
  28 PRT_ICEMAN_BIG_FIRE       "Iceman Big",   // iceman big ice cube
  29 PRT_ICEMAN_LARGE_FIRE     "Iceman Large",   // iceman large ice cube
+ // [Cecil] Rev: Waterman projectiles
+ 30 PRT_WATERMAN_OLD          "Waterman (Old)",
+ 31 PRT_WATERMAN_BIG          "Waterman Big",
+ 32 PRT_WATERMAN_LARGE        "Waterman Large",
+ 33 PRT_WATERMAN_SMALL        "Waterman Small",
 
  41 PRT_HUANMAN_FIRE          "Huanman",   // huanman fire
 
@@ -102,6 +107,16 @@ enum ProjectileType {
  75 PRT_AIRELEMENTAL_WIND     "Air Elemental Wind Blast", //air elemental wind blast
  76 PRT_AFTERBURNER_DEBRIS    "Afterburner debris",
  77 PRT_METEOR                "Meteor",
+ // [Cecil] Rev: New projectiles
+ 78 PRT_PLASMA                "Plasma",
+ 79 PRT_RAILBOLT              "Railbolt",
+ 80 PRT_RAILBOLT_SPRAY        "Railbolt spray",
+ 81 PRT_AIRMAN_LARGE          "Airman Large",
+ 82 PRT_AIRMAN_BIG            "Airman Big",
+ 83 PRT_AIRMAN_SMALL          "Airman Small",
+ 90 PRT_EARTHMAN_BIG_BOMB     "Earthman Big Bomb",
+ 91 PRT_EARTHMAN_BIG          "Earthman Bomb",
+ 92 PRT_EARTHMAN_STONE        "Earthman Stone",
 };
 
 enum ProjectileMovingType {
@@ -172,6 +187,17 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_EXPLOSIONSTAIN);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_SHOCKWAVE);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_GRENADE_PLANE);
+    break;
+
+  // [Cecil] Rev: New projectiles
+  case PRT_PLASMA:
+    pdec->PrecacheModel(MODEL_PLAYER_LASER);
+  case PRT_RAILBOLT:
+  case PRT_RAILBOLT_SPRAY:
+    pdec->PrecacheModel(MODEL_LASER);
+    pdec->PrecacheTexture(TEXTURE_RED_LASER);
+    pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_GRENADE);
+    pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_EXPLOSIONSTAIN);
     break;
   
   case PRT_FLAME:
@@ -359,6 +385,10 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_LIGHT_CANNON);
     break;
   case PRT_LARVA_PLASMA:
+  // [Cecil] Rev: New projectiles
+  case PRT_WATERMAN_BIG:
+  case PRT_WATERMAN_LARGE:
+  case PRT_WATERMAN_SMALL:
     pdec->PrecacheSound(SOUND_DEMON_FLYING  );
     pdec->PrecacheModel(MODEL_LARVA_PLASMA);
     pdec->PrecacheTexture(TEXTURE_LARVA_PLASMA);
@@ -379,6 +409,10 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheClass(CLASS_FLAME);
     break;
   case PRT_AIRELEMENTAL_WIND:
+  // [Cecil] Rev: New projectiles
+  case PRT_AIRMAN_LARGE:
+  case PRT_AIRMAN_BIG:
+  case PRT_AIRMAN_SMALL:
     pdec->PrecacheModel(MODEL_WINDBLAST);
     pdec->PrecacheTexture(TEXTURE_WINDBLAST);    
     break;
@@ -433,6 +467,9 @@ properties:
 
  50 BOOL bLockedOn = TRUE,
  51 BOOL m_bLeftFlame = FALSE,
+
+ 52 INDEX m_iTeam = 0, // [Cecil] Rev: Player team index
+
 {
   CLightSource m_lsLightSource;
 }
@@ -453,10 +490,15 @@ components:
  10 model   MODEL_GRENADE         "Models\\Weapons\\GrenadeLauncher\\Grenade\\Grenade.mdl",
  11 texture TEXTURE_GRENADE       "Models\\Weapons\\GrenadeLauncher\\Grenade\\Grenade.tex",
  12 sound   SOUND_GRENADE_BOUNCE  "Models\\Weapons\\GrenadeLauncher\\Sounds\\Bounce.wav",
+ 13 texture TEXTURE_GRENADE_BLUE  "Models\\Weapons\\GrenadeLauncher\\Grenade\\GrenadeBlue.tex", // [Cecil] Rev
 
 // ********* PLAYER FLAME *********
  15 model   MODEL_FLAME         "ModelsMP\\Weapons\\Flamer\\Projectile\\Invisible.mdl",
  16 class   CLASS_FLAME         "Classes\\Flame.ecl",
+
+ // [Cecil] Rev
+ 17 model   MODEL_PLAYER_LASER        "Models\\Weapons\\Laser\\Projectile\\LaserProjectile.mdl",
+ 18 texture TEXTURE_PLAYER_LASER_BLUE "Models\\Weapons\\Laser\\Projectile\\LaserProjectileBlue.tex",
 
 // ********* CATMAN FIRE *********
  20 model   MODEL_CATMAN_FIRE   "Models\\Enemies\\Catman\\Projectile\\Projectile.mdl",
@@ -482,6 +524,7 @@ components:
  50 model   MODEL_LASER           "Models\\Weapons\\Laser\\Projectile\\LaserProjectile.mdl",
  51 texture TEXTURE_GREEN_LASER   "Models\\Weapons\\Laser\\Projectile\\LaserProjectile.tex",
  52 texture TEXTURE_BLUE_LASER    "Models\\Weapons\\Laser\\Projectile\\LaserProjectileBlue.tex",
+ 53 texture TEXTURE_RED_LASER     "Models\\Weapons\\Laser\\Projectile\\LaserProjectileRed.tex", // [Cecil] Rev
 
 // ********* BONEMAN FIRE *********
  60 model   MODEL_BONEMAN_FIRE    "Models\\Enemies\\Boneman\\Projectile\\Projectile.mdl",
@@ -496,22 +539,27 @@ components:
  71 texture TEXTURE_DRAGONMAN_FIRE1 "Models\\Enemies\\Dragonman\\Projectile\\Projectile1.tex",
  72 texture TEXTURE_DRAGONMAN_FIRE2 "Models\\Enemies\\Dragonman\\Projectile\\Projectile2.tex",
 
-// ********* ELEMENTAL FIRE *********
- 80 model   MODEL_ELEM_STONE            "Models\\Enemies\\Elementals\\Projectile\\Stone.mdl",
- 81 model   MODEL_ELEM_ICE              "Models\\Enemies\\Elementals\\Projectile\\IcePyramid.mdl",
- 82 model   MODEL_ELEM_ICE_FLARE        "Models\\Enemies\\Elementals\\Projectile\\IcePyramidFlare.mdl",
- 83 model   MODEL_ELEM_LAVA_BOMB        "Models\\Enemies\\Elementals\\Projectile\\LavaBomb.mdl",
- 84 model   MODEL_ELEM_LAVA_BOMB_FLARE  "Models\\Enemies\\Elementals\\Projectile\\LavaBombFlare.mdl",
- 85 model   MODEL_ELEM_LAVA_STONE       "Models\\Enemies\\Elementals\\Projectile\\LavaStone.mdl",
- 86 model   MODEL_ELEM_LAVA_STONE_FLARE "Models\\Enemies\\Elementals\\Projectile\\LavaStoneFlare.mdl",
+ // [Cecil] Rev: 'Elementals' -> 'ElementalMan/Old/Elementals'
+ 77 texture TEXTURE_ELEM_EARTH          "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\Earth.tex", // [Cecil] Rev
+ 78 model   MODEL_ELEM_STONE            "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\Stone.mdl", // [Cecil] Rev: 80 -> 78
+ 81 model   MODEL_ELEM_ICE              "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\IcePyramid.mdl",
+ 82 model   MODEL_ELEM_ICE_FLARE        "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\IcePyramidFlare.mdl",
+ 83 model   MODEL_ELEM_LAVA_BOMB        "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBomb.mdl",
+ 84 model   MODEL_ELEM_LAVA_BOMB_FLARE  "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBombFlare.mdl",
+ 85 model   MODEL_ELEM_LAVA_STONE       "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaStone.mdl",
+ 86 model   MODEL_ELEM_LAVA_STONE_FLARE "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaStoneFlare.mdl",
 
- 90 texture TEXTURE_ELEM_STONE            "Models\\Enemies\\Elementals\\Projectile\\Stone.tex",
- 91 texture TEXTURE_ELEM_ICE              "Models\\Enemies\\Elementals\\Projectile\\IcePyramid.tex",
+ 90 texture TEXTURE_ELEM_STONE            "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\Stone.tex",
+ 91 texture TEXTURE_ELEM_ICE              "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\IcePyramid.tex",
  //92 texture TEXTURE_ELEM_ICE_FLARE        "Textures\\Effects\\Flares\\03\\Flare06.tex",
- 93 texture TEXTURE_ELEM_LAVA_BOMB        "Models\\Enemies\\Elementals\\Projectile\\LavaBomb.tex",
- 94 texture TEXTURE_ELEM_LAVA_BOMB_FLARE  "Models\\Enemies\\Elementals\\Projectile\\LavaBombFlare.tex",
- 95 texture TEXTURE_ELEM_LAVA_STONE       "Models\\Enemies\\Elementals\\Projectile\\LavaStone.tex",
- 96 texture TEXTURE_ELEM_LAVA_STONE_FLARE "Models\\Enemies\\Elementals\\Projectile\\LavaBombFlare.tex",
+ 93 texture TEXTURE_ELEM_LAVA_BOMB        "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBomb.tex",
+ 94 texture TEXTURE_ELEM_LAVA_BOMB_FLARE  "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBombFlare.tex",
+ 95 texture TEXTURE_ELEM_LAVA_STONE       "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaStone.tex",
+ 96 texture TEXTURE_ELEM_LAVA_STONE_FLARE "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBombFlare.tex",
+
+ // [Cecil] Rev
+ 98 model   MODEL_ELEM_WATER_DROP "Models\\Enemies\\ElementalWater\\Projectile\\WaterDrop.mdl",
+ 99 texture TEXTURE_ELEM_WATERMAN "Models\\Enemies\\ElementalWater\\Projectile\\WaterManFX.tex",
 
 // ********* HUANMAN FIRE *********
 105 model   MODEL_HUANMAN_FIRE      "Models\\Enemies\\Huanman\\Projectile\\Projectile.mdl",
@@ -578,6 +626,10 @@ components:
 
 // ****************** METEOR  ******************
 185 sound   SOUND_METEOR_BLAST       "SoundsMP\\Weapons\\MeteorBlast.wav",
+
+// [Cecil] Rev
+190 model   MODEL_BANANA   "Models\\Effects\\Debris\\Fruits\\Banana.mdl",
+191 texture TEXTURE_BANANA "Models\\Effects\\Debris\\Fruits\\Banana.tex",
 
 // ************** REFLECTIONS **************
 200 texture TEX_REFL_BWRIPLES01         "Models\\ReflectionTextures\\BWRiples01.tex",
@@ -796,6 +848,10 @@ functions:
         lsNew.ls_plftLensFlare = &_lftYellowStarRedRingFar;
         break;
       case PRT_LARVA_PLASMA:
+      // [Cecil] Rev: New projectiles
+      case PRT_WATERMAN_BIG:
+      case PRT_WATERMAN_LARGE:
+      case PRT_WATERMAN_SMALL:
         lsNew.ls_colColor = C_dBLUE;
         lsNew.ls_rFallOff = 5.0f;
         lsNew.ls_plftLensFlare = &_lftCatmanFireGlow;
@@ -810,6 +866,16 @@ functions:
         lsNew.ls_rFallOff = 1.0f;
         lsNew.ls_plftLensFlare = NULL;
         break;
+
+      // [Cecil] Rev: New projectiles
+      case PRT_PLASMA:
+      case PRT_RAILBOLT:
+      case PRT_RAILBOLT_SPRAY:
+        lsNew.ls_colColor = C_dRED;
+        lsNew.ls_rFallOff = 1.5f;
+        lsNew.ls_plftLensFlare = NULL;
+        break;
+
       default:
         ASSERTALWAYS("Unknown light source");
     }
@@ -910,6 +976,11 @@ functions:
       case PRT_LAVA_COMET: Particles_LavaTrail(this); break;
       case PRT_LAVAMAN_BIG_BOMB: Particles_LavaBombTrail(this, 4.0f); break;
       case PRT_LAVAMAN_BOMB: Particles_LavaBombTrail(this, 1.0f); break;
+
+      // [Cecil] Rev: New projectiles
+      case PRT_EARTHMAN_BIG_BOMB: Particles_LavaBombTrail(this, 4.0f); break;
+      case PRT_EARTHMAN_BIG: Particles_LavaBombTrail(this, 1.0f); break;
+
       case PRT_BEAST_PROJECTILE: Particles_BeastProjectileTrail( this, 2.0f, 0.25f, 48); break;
       case PRT_BEAST_BIG_PROJECTILE:
       case PRT_DEMON_FIREBALL:
@@ -950,7 +1021,19 @@ functions:
         Particles_AfterBurner(this, m_fStartTime, m_fStretch);
         break;
       case PRT_AIRELEMENTAL_WIND:
+      // [Cecil] Rev: New projectiles
+      case PRT_AIRMAN_LARGE:
+      case PRT_AIRMAN_BIG:
         Particles_Windblast(this, m_fStretch/4.0f, m_fStartTime+3.0f);
+        break;
+
+      // [Cecil] Rev: New projectiles
+      case PRT_AIRMAN_SMALL:
+        Particles_Windblast(this, 0.125f, m_fStartTime + 3.0f);
+        break;
+
+      case PRT_PLASMA: case PRT_RAILBOLT: case PRT_RAILBOLT_SPRAY:
+        Particles_FirecrackerTrail(this);
         break;
     }
   }
@@ -1150,7 +1233,136 @@ void PlayerGrenadeExplosion(void) {
   }
 };
 
+// [Cecil] Rev: New player projectiles
+void PlayerPlasma(void) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_PROJECTILE_FLYING);
+  SetCollisionFlags(ECF_PROJECTILE_SOLID);
+  SetFlags(GetFlags() | ENF_SEETHROUGH);
+  SetModel(MODEL_PLAYER_LASER);
 
+  CModelObject *pmo = GetModelObject();
+
+  if (pmo != NULL) {
+    pmo->PlayAnim(LASERPROJECTILE_ANIM_GROW, 0);
+  }
+
+  SetModelMainTexture(TEXTURE_RED_LASER);
+
+  LaunchAsPropelledProjectile(FLOAT3D(0, 0, -m_fSpeed), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D(0, 0, 0));
+
+  m_fFlyTime = 4.0f;
+  m_fDamageHotSpotRange = 2.0f;
+  m_fRangeDamageAmount = m_fDamageAmount * 0.5f;
+  m_fDamageFallOffRange = 4.0f;
+  m_fSoundRange = 0.0f;
+  m_bExplode = TRUE;
+  m_bLightSource = TRUE;
+  m_bCanHitHimself = TRUE;
+  m_bCanBeDestroyed = FALSE;
+  m_fWaitAfterDeath = 0.0f;
+  m_tmExpandBox = 0.1f;
+  m_tmInvisibility = 0.05f;
+  m_pmtMove = PMT_FLYING;
+};
+
+void PlayerPlasmaExplosion(void) {
+  ESpawnEffect ese;
+  ese.colMuliplier = C_WHITE | CT_OPAQUE;
+  ese.betType = BET_PLASMA;
+  ese.vStretch = FLOAT3D(1, 1, 1);
+  SpawnEffect(GetPlacement(), ese);
+
+  // Spawn sound event in range
+  if (IsDerivedFromClass(m_penLauncher, "Player")) {
+    SpawnRangeSound(m_penLauncher, this, SNDT_PLAYER, m_fSoundRange);
+  }
+
+  FLOAT3D vPoint;
+  FLOATplane3D vPlaneNormal;
+  FLOAT fDistanceToEdge;
+
+  if (GetNearestPolygon(vPoint, vPlaneNormal, fDistanceToEdge)) {
+    if ((vPoint - GetPlacement().pl_PositionVector).Length() < 3.5f) {
+      ese.betType = BET_EXPLOSIONSTAIN;
+      ese.vNormal = FLOAT3D(vPlaneNormal);
+      SpawnEffect(CPlacement3D(vPoint, ANGLE3D(0, 0, 0)), ese);
+    }
+  }
+};
+
+void PlayerRailBolt(void) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_PROJECTILE_FLYING);
+  SetCollisionFlags(ECF_PROJECTILE_SOLID);
+  SetFlags(GetFlags() | ENF_SEETHROUGH);
+  SetModel(MODEL_LASER);
+
+  CModelObject *pmo = GetModelObject();
+
+  if (pmo != NULL) {
+    pmo->PlayAnim(LASERPROJECTILE_ANIM_GROW, 0);
+    pmo->StretchModel(FLOAT3D(0.4f, 0.4f, 0.4f));
+    ModelChangeNotify();
+  }
+
+  SetModelMainTexture(TEXTURE_RED_LASER);
+
+  LaunchAsPropelledProjectile(FLOAT3D(0, 0, -m_fSpeed), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D(0, 0, 0));
+
+  m_fFlyTime = 4.0f;
+  m_fDamageAmount = 30.0f;
+  m_fRangeDamageAmount = 15.0f;
+  m_fDamageHotSpotRange = 1.0f;
+  m_fDamageFallOffRange = 3.0f;
+  m_fSoundRange = 0.0f;
+  m_bExplode = TRUE;
+  m_bLightSource = TRUE;
+  m_bCanHitHimself = TRUE;
+  m_bCanBeDestroyed = FALSE;
+  m_fWaitAfterDeath = 0.0f;
+  m_tmExpandBox = 0.1f;
+  m_tmInvisibility = 0.0001f;
+  m_pmtMove = PMT_FLYING;
+};
+
+void PlayerRailBoltSpray(void) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_PROJECTILE_FLYING);
+  SetCollisionFlags(ECF_PROJECTILE_SOLID);
+  SetFlags(GetFlags() | ENF_SEETHROUGH);
+  SetModel(MODEL_LASER);
+
+  CModelObject *pmo = GetModelObject();
+
+  if (pmo != NULL) {
+    pmo->PlayAnim(LASERPROJECTILE_ANIM_GROW, 0);
+    pmo->StretchModel(FLOAT3D(0.4f, 0.4f, 0.4f));
+    ModelChangeNotify();
+  }
+
+  SetModelMainTexture(TEXTURE_RED_LASER);
+
+  LaunchAsPropelledProjectile(FLOAT3D(FRnd() + 2.0f, FRnd() + 5.0f, -m_fSpeed), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D((FRnd() * 180.0f) - 90.0f, 0, 0));
+
+  m_fFlyTime = 4.0f;
+  m_fDamageAmount = 30.0f;
+  m_fRangeDamageAmount = 15.0f;
+  m_fDamageHotSpotRange = 1.0f;
+  m_fDamageFallOffRange = 3.0f;
+  m_fSoundRange = 0.0;
+  m_bExplode = TRUE;
+  m_bLightSource = TRUE;
+  m_bCanHitHimself = TRUE;
+  m_bCanBeDestroyed = FALSE;
+  m_fWaitAfterDeath = 0.0f;
+  m_tmExpandBox = 0.1f;
+  m_tmInvisibility = 0.0001f;
+  m_pmtMove = PMT_FLYING;
+};
 
 /************************************************************
  *                    PLAYER FLAME                          *
@@ -1728,6 +1940,283 @@ void LavamanBombDebrisExplosion(void)
   penSpray->Initialize( eSpawnSpray);
 }
 
+// [Cecil] Rev: Elemental projectiles
+void WaterDropProjectile(void) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_PROJECTILE_FLYING);
+  SetCollisionFlags(ECF_PROJECTILE_MAGIC);
+  SetFlags(GetFlags() | ENF_SEETHROUGH);
+  SetModel(MODEL_ELEM_WATER_DROP);
+  SetModelMainTexture(TEXTURE_ELEM_WATERMAN);
+
+  LaunchAsPropelledProjectile(FLOAT3D(0, 0, -30), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D(0, 0, 0));
+
+  m_fFlyTime = 5.0f;
+  m_fDamageAmount = 8.0f;
+  m_fSoundRange = 0.0f;
+  m_bExplode = FALSE;
+  m_bLightSource = TRUE;
+  m_bCanHitHimself = FALSE;
+  m_bCanBeDestroyed = FALSE;
+  m_fWaitAfterDeath = 0.0f;
+  m_pmtMove = PMT_FLYING;
+};
+
+// [Cecil] Common setup for all sizes
+void WaterManPlasma(FLOAT fStretch, FLOAT fDamageCoop, FLOAT fDamageSP, BOOL bBig) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_MODEL_SLIDING & ~EPF_ORIENTEDBYGRAVITY);
+  SetCollisionFlags(ECF_PROJECTILE_MAGIC);
+  SetModel(MODEL_LARVA_PLASMA_BALL);
+  SetModelMainTexture(TEXTURE_LARVA_PLASMA_BALL);
+  AddAttachmentToModel(this, *GetModelObject(), PLASMAGUN_ATTACHMENT_PROJECTILE, MODEL_LARVA_PLASMA, TEXTURE_LARVA_PLASMA, 0, 0, 0);
+
+  GetModelObject()->StretchModel(FLOAT3D(fStretch, fStretch, fStretch));
+  ModelChangeNotify();
+
+  if (bBig) {
+    LaunchAsPropelledProjectile(FLOAT3D(0, 0, -25), (CMovableEntity *)&*m_penLauncher);
+    SetDesiredRotation(ANGLE3D(0, 0, (FRnd() * 20.0f) - 10.0f));
+  } else {
+    LaunchAsPropelledProjectile(FLOAT3D(0, 0, -60), (CMovableEntity *)&*m_penLauncher);
+    SetDesiredRotation(ANGLE3D(0, 0, 0));
+  }
+
+  // Flying sound
+  m_soEffect.Set3DParameters(20.0f, 2.0f, 1.0f, 1.0f);
+  PlaySound(m_soEffect, SOUND_FLYING, SOF_3D | SOF_LOOP);
+
+  m_fFlyTime = 30.0f;
+
+  if (GetSP()->sp_bCooperative) {
+    m_fDamageAmount = fDamageCoop;
+    m_fRangeDamageAmount = fDamageCoop;
+  } else {
+    m_fDamageAmount = fDamageSP;
+    m_fRangeDamageAmount = fDamageSP;
+  }
+
+  m_fDamageHotSpotRange = 4.0f;
+  m_fDamageFallOffRange = 8.0f;
+  m_fSoundRange = 50.0f;
+  m_bExplode = TRUE;
+  m_bLightSource = TRUE;
+  m_bCanHitHimself = FALSE;
+  m_bCanBeDestroyed = FALSE;
+  m_fWaitAfterDeath = 0.05f;
+  m_tmExpandBox = 0.1f;
+  m_tmInvisibility = 0.05f;
+  SetHealth(100.0f);
+
+  m_iRebounds = 4;
+  m_pmtMove = PMT_FLYING_REBOUNDING;
+};
+
+void WaterManPlasmaSmall(void) {
+  WaterManPlasma(1.0f, 12.0f, 8.0f, FALSE);
+};
+
+void WaterManPlasmaBig(void) {
+  WaterManPlasma(2.5f, 20.0f, 18.0f, TRUE);
+};
+
+void WaterManPlasmaLarge(void) {
+  WaterManPlasma(5.0f, 50.0f, 45.0f, TRUE);
+};
+
+// [Cecil] Common setup for all sizes
+void WaterManPlasmaExplosion(FLOAT fStretch, FLOAT fParticleSize) {
+  // Explosion
+  ESpawnEffect ese;
+  ese.colMuliplier = C_WHITE | CT_OPAQUE;
+  ese.betType = BET_LIGHT_CANNON;
+  ese.vStretch = FLOAT3D(fStretch, fStretch, fStretch);
+  SpawnEffect(GetPlacement(), ese);
+
+  // Particles
+  CEntityPointer penSpray = CreateEntity(GetPlacement(), CLASS_BLOOD_SPRAY);
+  penSpray->SetParent(this);
+
+  ESpawnSpray eSpawnSpray;
+  eSpawnSpray.colBurnColor = C_WHITE | CT_OPAQUE;
+  eSpawnSpray.fDamagePower = 1.0f;
+  eSpawnSpray.fSizeMultiplier = fParticleSize;
+  eSpawnSpray.sptType = SPT_PLASMA;
+  eSpawnSpray.vDirection = FLOAT3D(0.0f, 2.5f, 0.0f);
+  eSpawnSpray.penOwner = this;
+  penSpray->Initialize(eSpawnSpray);
+};
+
+void WaterManPlasmaSmallExplosion(void) {
+  WaterManPlasmaExplosion(1.0f, 0.15f);
+};
+
+void WaterManPlasmaBigExplosion(void) {
+  WaterManPlasmaExplosion(2.0f, 0.25f);
+};
+
+void WaterManPlasmaLargeExplosion(void) {
+  WaterManPlasmaExplosion(2.0f, 0.25f);
+};
+
+void EarthManBomb(void) {
+  InitAsModel();
+  SetPhysicsFlags(EPF_MODEL_BOUNCING);
+  SetCollisionFlags(ECF_PROJECTILE_SOLID);
+
+  SetModel(MODEL_ELEM_STONE);
+  SetModelMainTexture(TEXTURE_ELEM_EARTH);
+
+  if (m_prtType == PRT_EARTHMAN_BIG_BOMB) {
+    GetModelObject()->StretchModel(FLOAT3D(6.0f, 6.0f, 6.0f));
+    m_fDamageAmount = 10.0f;
+    m_fRangeDamageAmount = 5.0f;
+    m_fDamageHotSpotRange = 3.75f;
+    m_fDamageFallOffRange = 7.5f;
+    SetHealth(30.0f);
+
+  } else if (m_prtType == PRT_EARTHMAN_BIG) {
+    GetModelObject()->StretchModel(FLOAT3D(1.5f, 1.5f, 1.5f));
+    m_fDamageAmount = 5.0f;
+    m_fRangeDamageAmount =  2.5f;
+    m_fDamageHotSpotRange = 2.5f;
+    m_fDamageFallOffRange = 5.0f;
+    SetHealth(10.0f);
+  }
+
+  ModelChangeNotify();
+  
+  LaunchAsFreeProjectile(FLOAT3D(0.0f, 0.0f, -m_fSpeed), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D(0, FRnd() * 360.0f - 180.0f, 0.0f));
+
+  m_fFlyTime = 20.0f;
+  m_fSoundRange = 50.0f;
+  m_bExplode = TRUE;
+  m_bLightSource = FALSE;
+  m_bCanHitHimself = FALSE;
+  m_bCanBeDestroyed = TRUE;
+  m_pmtMove = PMT_FLYING;
+  m_fWaitAfterDeath = 4.0f;
+
+  if (m_prtType == PRT_EARTHMAN_BIG_BOMB) {
+    // Spawn particle debris
+    CEntityPointer penSpray = CreateEntity(GetPlacement(), CLASS_BLOOD_SPRAY);
+    penSpray->SetParent(this);
+
+    ESpawnSpray eSpawnSpray;
+    eSpawnSpray.colBurnColor = C_WHITE | CT_OPAQUE;
+    eSpawnSpray.fDamagePower = 4.0f;
+    eSpawnSpray.fSizeMultiplier = 0.5f;
+    eSpawnSpray.sptType = SPT_STONES;
+    eSpawnSpray.vDirection = FLOAT3D(0.0f, -0.5f, 0.0f);
+    eSpawnSpray.penOwner = this;
+    penSpray->Initialize(eSpawnSpray);
+  }
+};
+
+void EarthanBombExplosion(void) {
+  ESpawnEffect ese;
+  FLOAT3D vPoint;
+  FLOATplane3D vPlaneNormal;
+  FLOAT fDistanceToEdge;
+
+  // Spawn shock wave
+  if (GetNearestPolygon(vPoint, vPlaneNormal, fDistanceToEdge))
+  {
+    if ((vPoint - GetPlacement().pl_PositionVector).Length() < 3.5f)
+    {
+      ese.colMuliplier = C_WHITE | CT_OPAQUE;
+      ese.betType = BET_SHOCKWAVE;
+      ese.vNormal = FLOAT3D(vPlaneNormal);
+      SpawnEffect(CPlacement3D(vPoint, ANGLE3D(0, 0, 0)), ese);
+    }
+  }
+
+  // Spawn particle debris
+  CPlacement3D plSpray = GetPlacement();
+  CEntityPointer penSpray = CreateEntity(plSpray, CLASS_BLOOD_SPRAY);
+  penSpray->SetParent(this);
+
+  ESpawnSpray eSpawnSpray;
+  eSpawnSpray.colBurnColor = C_WHITE | CT_OPAQUE;
+  eSpawnSpray.fDamagePower = 4.0f;
+  eSpawnSpray.fSizeMultiplier = 0.5f;
+  eSpawnSpray.sptType = SPT_STONES;
+  eSpawnSpray.vDirection = en_vCurrentTranslationAbsolute / 32.0f;
+  eSpawnSpray.penOwner = this;
+  penSpray->Initialize(eSpawnSpray);
+
+  // Spawn smaller earthman bombs
+  for (INDEX iDebris = 0; iDebris < 3 + IRnd() % 3; iDebris++)
+  {
+    FLOAT fHeading = (FRnd() - 0.5f) * 180.0f;
+    FLOAT fPitch = 10.0f + FRnd() * 40.0f;
+    FLOAT fSpeed = 10.0f + FRnd() * 50.0f;
+
+    // Launch
+    CPlacement3D pl = GetPlacement();
+    pl.pl_PositionVector(2) += 2.0f;
+    pl.pl_OrientationAngle = m_penLauncher->GetPlacement().pl_OrientationAngle;
+    pl.pl_OrientationAngle(1) += AngleDeg(fHeading);
+    pl.pl_OrientationAngle(2) = AngleDeg(fPitch);
+
+    CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+    ELaunchProjectile eLaunch;
+    eLaunch.penLauncher = this;
+    eLaunch.prtType = PRT_EARTHMAN_BIG;
+    eLaunch.fSpeed = fSpeed;
+    penProjectile->Initialize(eLaunch);
+
+    // Spawn particle debris
+    CPlacement3D plSpray = pl;
+    CEntityPointer penSpray = CreateEntity(plSpray, CLASS_BLOOD_SPRAY);
+    penSpray->SetParent(penProjectile);
+
+    ESpawnSpray eSpawnSpray;
+    eSpawnSpray.colBurnColor = C_WHITE | CT_OPAQUE;
+    eSpawnSpray.fDamagePower = 1.0f;
+    eSpawnSpray.fSizeMultiplier = 0.5f;
+    eSpawnSpray.sptType = SPT_STONES;
+    eSpawnSpray.vDirection = FLOAT3D(0, -0.5f, 0);
+    eSpawnSpray.penOwner = penProjectile;
+    penSpray->Initialize(eSpawnSpray);
+  }
+};
+
+void EarthmanBombDebrisExplosion(void) {
+  ESpawnEffect ese;
+  FLOAT3D vPoint;
+  FLOATplane3D vPlaneNormal;
+  FLOAT fDistanceToEdge;
+
+  // Spawn shock wave
+  if (GetNearestPolygon(vPoint, vPlaneNormal, fDistanceToEdge))
+  {
+    if ((vPoint - GetPlacement().pl_PositionVector).Length() < 3.5f)
+    {
+      ese.colMuliplier = C_WHITE | CT_OPAQUE;
+      ese.betType = BET_SHOCKWAVE;
+      ese.vNormal = FLOAT3D(vPlaneNormal);
+      SpawnEffect(CPlacement3D(vPoint, ANGLE3D(0, 0, 0)), ese);
+    }
+  }
+
+  // Spawn particle debris
+  CPlacement3D plSpray = GetPlacement();
+  CEntityPointer penSpray = CreateEntity(plSpray, CLASS_BLOOD_SPRAY);
+  penSpray->SetParent(this);
+
+  ESpawnSpray eSpawnSpray;
+  eSpawnSpray.colBurnColor = C_WHITE | CT_OPAQUE;
+  eSpawnSpray.fSizeMultiplier = 4.0f;
+  eSpawnSpray.fDamagePower = 2.0f;
+  eSpawnSpray.sptType = SPT_STONES;
+  eSpawnSpray.vDirection = en_vCurrentTranslationAbsolute / 16.0f;
+  eSpawnSpray.penOwner = this;
+  penSpray->Initialize(eSpawnSpray);
+};
+
 /************************************************************
  *                   HUANMAN PROJECTILE                     *
  ************************************************************/
@@ -1755,6 +2244,31 @@ void HuanmanProjectile(void) {
   m_bCanBeDestroyed = FALSE;
   m_fWaitAfterDeath = 0.0f;
   m_pmtMove = PMT_FLYING;
+};
+
+// [Cecil] Rev: Explosion effect identical to CyborgBombExplosion()
+void HuanmanProjectileExplosion(void) {
+  ESpawnEffect ese;
+  ese.colMuliplier = C_WHITE | CT_OPAQUE;
+  ese.betType = BET_BOMB;
+  ese.vStretch = FLOAT3D(1, 1, 1);
+  SpawnEffect(GetPlacement(), ese);
+
+  FLOAT3D vPoint;
+  FLOATplane3D vPlaneNormal;
+  FLOAT fDistanceToEdge;
+
+  if (GetNearestPolygon(vPoint, vPlaneNormal, fDistanceToEdge)) {
+    if ((vPoint - GetPlacement().pl_PositionVector).Length() < 3.5f) {
+      ese.betType = BET_EXPLOSIONSTAIN;
+      ese.vNormal = FLOAT3D(vPlaneNormal);
+      SpawnEffect(CPlacement3D(vPoint, ANGLE3D(0, 0, 0)), ese);
+
+      ese.betType = BET_GRENADE_PLANE;
+      ese.vNormal = FLOAT3D(vPlaneNormal);
+      SpawnEffect(CPlacement3D(vPoint + ese.vNormal / 50.0f, ANGLE3D(0, 0, 0)), ese);
+    }
+  }
 };
 
 /************************************************************
@@ -2675,7 +3189,8 @@ void LarvaTailExplosion(void) {
  *       A I R   E L E M E N T A L   P R O J E C T I L E S       *
  *****************************************************************/
 
-void WindBlast(void) {
+// [Cecil] Common setup for all sizes
+void WindBlast(FLOAT fStretch, FLOAT fSpeed, FLOAT fSpin, FLOAT fDamage) {
   // set appearance
   InitAsEditorModel();
   SetPhysicsFlags(EPF_MODEL_SLIDING);
@@ -2683,13 +3198,13 @@ void WindBlast(void) {
   SetFlags(GetFlags() | ENF_SEETHROUGH);
   SetModel(MODEL_WINDBLAST);
   SetModelMainTexture(TEXTURE_WINDBLAST);
-  GetModelObject()->StretchModel(FLOAT3D(3.0f, 3.0f, 3.0f));
+  GetModelObject()->StretchModel(FLOAT3D(fStretch, fStretch, fStretch));
   ModelChangeNotify();
   // start moving
-  LaunchAsPropelledProjectile(FLOAT3D(0.0f, 0.0f, -50.0f), (CMovableEntity*)(CEntity*)m_penLauncher);
-  SetDesiredRotation(ANGLE3D(0, 0, 0));
+  LaunchAsPropelledProjectile(FLOAT3D(0, 0, -fSpeed), (CMovableEntity *)&*m_penLauncher);
+  SetDesiredRotation(ANGLE3D(0, 0, fSpin));
   m_fFlyTime = 5.0f;
-  m_fDamageAmount = 20.0f;
+  m_fDamageAmount = fDamage;
   m_fSoundRange = 0.0f;
   m_bExplode = FALSE;
   m_bLightSource = FALSE;
@@ -2697,7 +3212,25 @@ void WindBlast(void) {
   m_bCanBeDestroyed = FALSE;
   m_fWaitAfterDeath = 0.0f;
   m_pmtMove = PMT_SLIDING;
+};
+
+void WindBlast(void) {
+  // [Cecil] Replaced code with a common setup method
+  WindBlast(3.0f, 50.0f, 0.0f, 20.0f);
 }
+
+// [Cecil] Rev: Elemental projectiles
+void WindBlastLarge(void) {
+  WindBlast(3.0f, 25.0f, (FRnd() * 20.0f) - 10.0f, 20.0f);
+};
+
+void WindBlastBig(void) {
+  WindBlast(2.0f, 25.0f, (FRnd() * 20.0f) - 10.0f, 10.0f);
+};
+
+void WindBlastSmall(void) {
+  WindBlast(1.0f, 25.0f, (FRnd() * 20.0f) - 10.0f, 5.0f);
+};
 
 /************************************************************
  *                    M E T E O R                           *
@@ -3007,7 +3540,10 @@ void ProjectileTouch(CEntityPointer penHit)
     }
   
   // don't damage the same entity twice (wind blast)
-  } else if (m_prtType==PRT_AIRELEMENTAL_WIND) {
+  } else if (m_prtType == PRT_AIRELEMENTAL_WIND
+  // [Cecil] Rev: New projectiles
+  || m_prtType == PRT_AIRMAN_LARGE || m_prtType == PRT_AIRMAN_BIG || m_prtType == PRT_AIRMAN_SMALL)
+  {
     if (penHit==m_penLastDamaged) {
       return;   
     } else  {
@@ -3696,6 +4232,11 @@ procedures:
          Particles_FirecrackerTrail_Prepare(this);
          break;
       case PRT_SHOOTER_FIREBALL: Particles_Fireball01Trail_Prepare(this); break;
+
+      // [Cecil] Rev: New projectiles
+      case PRT_PLASMA: case PRT_RAILBOLT: case PRT_RAILBOLT_SPRAY:
+        Particles_FirecrackerTrail_Prepare(this);
+        break;
     }
     // projectile initialization
     switch (m_prtType)
@@ -3747,6 +4288,22 @@ procedures:
       case PRT_AFTERBURNER_DEBRIS: AfterburnerDebris(); break;
       case PRT_AIRELEMENTAL_WIND: WindBlast(); break;
       case PRT_METEOR: Meteor(); break;
+
+      // [Cecil] New projectiles
+      case PRT_WATERMAN_OLD: WaterDropProjectile(); break;
+      case PRT_WATERMAN_BIG: WaterManPlasmaBig(); break;
+      case PRT_WATERMAN_LARGE: WaterManPlasmaLarge(); break;
+      case PRT_WATERMAN_SMALL: WaterManPlasmaSmall(); break;
+      case PRT_PLASMA: PlayerPlasma(); break;
+      case PRT_RAILBOLT: PlayerRailBolt(); break;
+      case PRT_RAILBOLT_SPRAY: PlayerRailBoltSpray(); break;
+      case PRT_AIRMAN_LARGE: WindBlastLarge(); break;
+      case PRT_AIRMAN_BIG: WindBlastBig(); break;
+      case PRT_AIRMAN_SMALL: WindBlastSmall(); break;
+      case PRT_EARTHMAN_BIG_BOMB: EarthManBomb(); break;
+      case PRT_EARTHMAN_BIG: EarthManBomb(); break;
+      case PRT_EARTHMAN_STONE: ElementalRock(ELEMENTAL_NORMAL, ELEMENTAL_STONEMAN); break;
+
       default: ASSERTALWAYS("Unknown projectile type");
     }
 
@@ -3777,6 +4334,7 @@ procedures:
       case PRT_GRENADE: PlayerGrenadeExplosion(); break;
       case PRT_LASER_RAY: PlayerLaserWave(); break;
       case PRT_HEADMAN_BOMBERMAN: HeadmanBombermanExplosion(); break;
+      case PRT_HUANMAN_FIRE: HuanmanProjectileExplosion(); break; // [Cecil] Rev
       case PRT_CYBORG_BOMB: CyborgBombExplosion(); break;
       case PRT_LAVA_COMET: LavamanBombDebrisExplosion(); break;
       case PRT_LAVAMAN_BIG_BOMB: LavamanBombExplosion(); break;
@@ -3794,6 +4352,16 @@ procedures:
       case PRT_SHOOTER_WOODEN_DART: ShooterWoodenDartExplosion(); break;
       case PRT_SHOOTER_FIREBALL: ShooterFireballExplosion(); break;
       case PRT_METEOR: MeteorExplosion(); break;
+
+      // [Cecil] New projectiles
+      case PRT_WATERMAN_BIG: WaterManPlasmaBigExplosion(); break;
+      case PRT_WATERMAN_LARGE: WaterManPlasmaLargeExplosion(); break;
+      case PRT_WATERMAN_SMALL: WaterManPlasmaSmallExplosion(); break;
+      case PRT_PLASMA:
+      case PRT_RAILBOLT:
+      case PRT_RAILBOLT_SPRAY: PlayerPlasmaExplosion(); break;
+      case PRT_EARTHMAN_BIG_BOMB: EarthanBombExplosion(); break;
+      case PRT_EARTHMAN_BIG: EarthmanBombDebrisExplosion(); break;
     }
 
     // wait after death

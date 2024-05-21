@@ -81,6 +81,7 @@ enum BasicEffectType {
  53 BET_DUST_FALL               "Dust fall",
  54 BET_BULLETSTAINSNOW         "Bullet stain snow", 
  55 BET_BULLETSTAINSNOWNOSOUND  "Bullet stain snow", 
+ 56 BET_PLASMA                  "Plasma", // [Cecil] Rev: Plasma explosion
 };
 
 
@@ -109,6 +110,8 @@ void CBasicEffect_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheModel(MDL_PARTICLES3D_EXPLOSION);
     pdec->PrecacheTexture(TXT_PARTICLES_EXPLOSION);
     break;
+  case BET_PLASMA: // [Cecil] Rev
+    pdec->PrecacheSound(SOUND_PLAZMA_EXPLOSION);
   case BET_BOMB:
   case BET_GRENADE:
   case BET_GRENADE_PLANE:
@@ -306,6 +309,12 @@ components:
  31 texture TEXTURE_BLOOD_FLOWER1 "Models\\Effects\\Flowers\\Flowers1s.tex",
  32 texture TEXTURE_BLOOD_FLOWER2 "Models\\Effects\\Flowers\\Flowers2s.tex",
  33 texture TEXTURE_BLOOD_FLOWER3 "Models\\Effects\\Flowers\\Flowers3s.tex",
+
+// [Cecil] Rev: Colored blood
+ 34 texture TEXTURE_STAIN_LIGHT1 "Models\\Effects\\BloodOnTheWall01\\BloodStainLight01.tex",
+ 35 texture TEXTURE_STAIN_LIGHT2 "Models\\Effects\\BloodOnTheWall01\\BloodStainLight02.tex",
+ 36 texture TEXTURE_STAIN_LIGHT3 "Models\\Effects\\BloodOnTheWall01\\BloodStainLight03.tex",
+ 37 texture TEXTURE_STAIN_LIGHT4 "Models\\Effects\\BloodOnTheWall01\\BloodStainLight04.tex",
  
 // ********** SHOCK WAVE **********
  40 model   MODEL_SHOCKWAVE       "Models\\Effects\\ShockWave01\\ShockWave.mdl",
@@ -332,6 +341,9 @@ components:
 
 // ********** GIZMO SPLASH FX **********
  80 sound   SOUND_GIZMO_SPLASH           "Models\\Enemies\\Gizmo\\Sounds\\Death.wav",
+
+// [Cecil] Rev: Plasma explosion
+ 201 sound SOUND_PLAZMA_EXPLOSION "Models\\Weapons\\PlasmaThrower\\Sounds\\_Explosion.wav",
 
 // ********** Water shockwave texture **********
  100 texture TEXTURE_WATER_WAVE          "Models\\Effects\\ShockWave01\\Textures\\WaterWave.tex",
@@ -393,6 +405,7 @@ functions:
         lsNew.ls_plftLensFlare = NULL;
         break;
       case BET_GRENADE:
+      case BET_PLASMA: // [Cecil] Rev
         lsNew.ls_colColor = RGBToColor(200, 200, 200);
         lsNew.ls_rFallOff = 12.5f;
         lsNew.ls_plftLensFlare = NULL;
@@ -804,6 +817,23 @@ functions:
     m_soEffect.Set3DParameters(150.0f, 3.0f, 1.0f, 1.0f);
     PlaySound(m_soEffect, SOUND_EXPLOSION, SOF_3D);
     m_fSoundTime = GetSoundLength(SOUND_EXPLOSION);
+    m_fWaitTime = 0.95f;
+    m_bLightSource = TRUE;
+    m_iLightAnimation = 1;
+  };
+
+  // [Cecil] Rev: Same as GrenadeExplosion() but with a different explosion sound
+  void PlasmaExplosion(void) {
+    SetPredictable(TRUE);
+    Stretch();
+    SetModel(MDL_GRENADE_EXPLOSION);
+    SetModelMainTexture(TXT_GRENADE_EXPLOSION);
+    AddAttachment(0, MDL_PARTICLES_EXPLOSION, TXT_PARTICLES_EXPLOSION);
+    RandomBanking();
+    SetNonLoopingTexAnims();
+    m_soEffect.Set3DParameters(150.0f, 3.0f, 1.0f, 1.0f);
+    PlaySound(m_soEffect, SOUND_PLAZMA_EXPLOSION, SOF_3D);
+    m_fSoundTime = GetSoundLength(SOUND_PLAZMA_EXPLOSION);
     m_fWaitTime = 0.95f;
     m_bLightSource = TRUE;
     m_iLightAnimation = 1;
@@ -1433,6 +1463,7 @@ procedures:
       case BET_DUST_FALL: DustFall(); break;
       case BET_BULLETSTAINSNOW: BulletStainSnow(TRUE); break;
       case BET_BULLETSTAINSNOWNOSOUND: BulletStainSnow(FALSE); break;
+      case BET_PLASMA: PlasmaExplosion(); break; // [Cecil] Rev
       default:
         ASSERTALWAYS("Unknown effect type");
     }
