@@ -264,15 +264,35 @@ EffectParticlesType GetParticleEffectTypeForSurface(INDEX iSurfaceType)
   EffectParticlesType eptType = EPT_BULLET_STONE;
   switch( iSurfaceType)
   {
-    case SURFACE_SAND:     {eptType=EPT_BULLET_SAND; break;}
-    case SURFACE_RED_SAND: {eptType=EPT_BULLET_RED_SAND; break;}
-    case SURFACE_WATER:    {eptType=EPT_BULLET_WATER; break;}
+    case SURFACE_SAND:
+    case SURFACE_SAND_NOIMPACT: // [Cecil] Rev: New surface
+      eptType = EPT_BULLET_SAND;
+      break;
+
+    case SURFACE_RED_SAND:
+    case SURFACE_RED_SAND_NOIMPACT: // [Cecil] Rev: New surface
+      eptType = EPT_BULLET_RED_SAND;
+      break;
+
+    case SURFACE_WATER:
+      eptType = EPT_BULLET_WATER;
+      break;
+
     case SURFACE_GRASS:    
     case SURFACE_GRASS_SLIDING:
     case SURFACE_GRASS_NOIMPACT:
-      {eptType=EPT_BULLET_GRASS; break;}
-    case SURFACE_WOOD:     {eptType=EPT_BULLET_WOOD; break;}
-    case SURFACE_SNOW:     {eptType=EPT_BULLET_SNOW; break;}
+      eptType = EPT_BULLET_GRASS;
+      break;
+
+    case SURFACE_WOOD:
+    case SURFACE_WOOD_NOIMPACT: // [Cecil] Rev: New surface
+      eptType = EPT_BULLET_WOOD;
+      break;
+
+    case SURFACE_SNOW:
+    case SURFACE_SNOW_NOIMPACT: // [Cecil] Rev: New surface
+      eptType = EPT_BULLET_SNOW;
+      break;
   }
   return eptType;
 }
@@ -282,15 +302,35 @@ BulletHitType GetBulletHitTypeForSurface(INDEX iSurfaceType)
   BulletHitType bhtType = BHT_BRUSH_STONE;
   switch( iSurfaceType)
   {
-    case SURFACE_SAND:     {bhtType=BHT_BRUSH_SAND; break;}
-    case SURFACE_RED_SAND: {bhtType=BHT_BRUSH_RED_SAND; break;}
-    case SURFACE_WATER:    {bhtType=BHT_BRUSH_WATER; break;}
+    case SURFACE_SAND:
+    case SURFACE_SAND_NOIMPACT: // [Cecil] Rev: New surface
+      bhtType = BHT_BRUSH_SAND;
+      break;
+
+    case SURFACE_RED_SAND:
+    case SURFACE_RED_SAND_NOIMPACT: // [Cecil] Rev: New surface
+      bhtType = BHT_BRUSH_RED_SAND;
+      break;
+
+    case SURFACE_WATER:
+      bhtType = BHT_BRUSH_WATER;
+      break;
+
     case SURFACE_GRASS:
     case SURFACE_GRASS_SLIDING:
     case SURFACE_GRASS_NOIMPACT:
-      {bhtType=BHT_BRUSH_GRASS; break;}
-    case SURFACE_WOOD:     {bhtType=BHT_BRUSH_WOOD; break;}
-    case SURFACE_SNOW:     {bhtType=BHT_BRUSH_SNOW; break;}
+      bhtType = BHT_BRUSH_GRASS;
+      break;
+
+    case SURFACE_WOOD:
+    case SURFACE_WOOD_NOIMPACT: // [Cecil] Rev: New surface
+      bhtType = BHT_BRUSH_WOOD;
+      break;
+
+    case SURFACE_SNOW:
+    case SURFACE_SNOW_NOIMPACT: // [Cecil] Rev: New surface
+      bhtType = BHT_BRUSH_SNOW;
+      break;
   }
   return bhtType;
 }

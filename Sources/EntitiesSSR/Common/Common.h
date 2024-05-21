@@ -25,6 +25,15 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define SURFACE_WOOD 18
 #define SURFACE_SNOW 21
 
+// [Cecil] Rev: New surfaces
+#define SURFACE_SLIDING_WEEEE     22
+#define SURFACE_GRAVEL            23
+#define SURFACE_GRAVEL_NOIMPACT   24
+#define SURFACE_SAND_NOIMPACT     25
+#define SURFACE_RED_SAND_NOIMPACT 26
+#define SURFACE_WOOD_NOIMPACT     27
+#define SURFACE_SNOW_NOIMPACT     28
+
 // Max ammo
 #define MAX_BULLETS INDEX(500)
 #define MAX_SHELLS INDEX(100)
@@ -49,6 +58,23 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #define BLOOD_SPILL_RED RGBAToColor(250,20,20,255)
 #define BLOOD_SPILL_GREEN RGBAToColor(0,250,0,255)
+
+// [Cecil] Rev: Damage type aliases
+#if SE1_GAME != SS_REV
+  #define DMT_LASER           DMT_REV_LASER
+  #define DMT_TOMMYGUN        DMT_REV_TOMMYGUN
+  #define DMT_MINIGUN         DMT_REV_MINIGUN
+  #define DMT_SINGLESHOTGUN   DMT_REV_SINGLESHOTGUN
+  #define DMT_DOUBLESHOTGUN   DMT_REV_DOUBLESHOTGUN
+  #define DMT_SNIPER          DMT_REV_SNIPER
+  #define DMT_GHOSTBUSTER     DMT_REV_GHOSTBUSTER
+  #define DMT_COLT            DMT_REV_COLT
+  #define DMT_DOUBLECOLT      DMT_REV_DOUBLECOLT
+  #define DMT_ROCKETLAUNCHER  DMT_REV_ROCKETLAUNCHER
+  #define DMT_GRENADELAUNCHER DMT_REV_GRENADELAUNCHER
+  #define DMT_FLAMER          DMT_REV_FLAMER
+  #define DMT_MINES           DMT_REV_MINES
+#endif
 
 // Ammo mana Value
 #define AV_SHELLS         INDEX(70)

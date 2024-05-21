@@ -4312,34 +4312,44 @@ functions:
       TIME tmNow = _pTimer->CurrentTick();
       INDEX iSoundWalkL = SOUND_WALK_L;
       INDEX iSoundWalkR = SOUND_WALK_R;
+
       if ((ctDn.ct_ulFlags&CTF_SWIMABLE) && en_fImmersionFactor>=0.1f) {
         iSoundWalkL = SOUND_WATERWALK_L;
         iSoundWalkR = SOUND_WATERWALK_R;
-      } else if (en_pbpoStandOn!=NULL && 
-        en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_SAND) {
-        iSoundWalkL = SOUND_WALK_SAND_L;
-        iSoundWalkR = SOUND_WALK_SAND_R;
-      } else if (en_pbpoStandOn!=NULL && 
-        en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_RED_SAND) {
-        iSoundWalkL = SOUND_WALK_SAND_L;
-        iSoundWalkR = SOUND_WALK_SAND_R;
-      } else if (en_pbpoStandOn!=NULL && 
-        (en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_GRASS ||
-         en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_GRASS_SLIDING ||
-         en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_GRASS_NOIMPACT )) {
-        iSoundWalkL = SOUND_WALK_GRASS_L;
-        iSoundWalkR = SOUND_WALK_GRASS_R;
-      } else if (en_pbpoStandOn!=NULL && 
-        en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_WOOD) {
-        iSoundWalkL = SOUND_WALK_WOOD_L;
-        iSoundWalkR = SOUND_WALK_WOOD_R;
-      } else if (en_pbpoStandOn!=NULL && 
-        en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType==SURFACE_SNOW) {
-        iSoundWalkL = SOUND_WALK_SNOW_L;
-        iSoundWalkR = SOUND_WALK_SNOW_R;
+
+      } else if (en_pbpoStandOn != NULL) {
+        switch (en_pbpoStandOn->bpo_bppProperties.bpp_ubSurfaceType)
+        {
+          case SURFACE_SAND:
+          case SURFACE_RED_SAND:
+          // [Cecil] Rev: New surfaces
+          case SURFACE_SAND_NOIMPACT:
+          case SURFACE_RED_SAND_NOIMPACT:
+            iSoundWalkL = SOUND_WALK_SAND_L;
+            iSoundWalkR = SOUND_WALK_SAND_R;
+            break;
+
+          case SURFACE_GRASS:
+          case SURFACE_GRASS_SLIDING:
+          case SURFACE_GRASS_NOIMPACT:
+            iSoundWalkL = SOUND_WALK_GRASS_L;
+            iSoundWalkR = SOUND_WALK_GRASS_R;
+            break;
+
+          case SURFACE_WOOD:
+          case SURFACE_WOOD_NOIMPACT: // [Cecil] Rev: New surface
+            iSoundWalkL = SOUND_WALK_WOOD_L;
+            iSoundWalkR = SOUND_WALK_WOOD_R;
+            break;
+
+          case SURFACE_SNOW:
+          case SURFACE_SNOW_NOIMPACT: // [Cecil] Rev: New surface
+            iSoundWalkL = SOUND_WALK_SNOW_L;
+            iSoundWalkR = SOUND_WALK_SNOW_R;
+            break;
+        }
       }
-      else {
-      }
+
       iSoundWalkL+=m_iGender*GENDEROFFSET;
       iSoundWalkR+=m_iGender*GENDEROFFSET;
       if (bRunning) {

@@ -593,7 +593,55 @@ void CWorldBase_OnWorldInit(CWorld *pwo)
   pwo->wo_astSurfaceTypes[21].st_fStairsHeight = 1.0f;
   pwo->wo_astSurfaceTypes[21].st_fJumpSlopeCos = Cos(45.0f);
   pwo->wo_astSurfaceTypes[21].st_fClimbSlopeCos = Cos(45.0f);
-  
+
+  // [Cecil] Rev: New surfaces
+  pwo->wo_astSurfaceTypes[SURFACE_SLIDING_WEEEE].st_strName = "Sliding weeee slope";
+  pwo->wo_astSurfaceTypes[SURFACE_SLIDING_WEEEE].st_fFriction = 0.001f;
+  pwo->wo_astSurfaceTypes[SURFACE_SLIDING_WEEEE].st_fStairsHeight = 0.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_SLIDING_WEEEE].st_fJumpSlopeCos = Cos(1.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_SLIDING_WEEEE].st_fClimbSlopeCos = Cos(1.0f);
+
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL].st_strName = "Gravel";
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL].st_fFriction = 0.8f;
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL].st_fJumpSlopeCos = Cos(20.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL].st_fClimbSlopeCos = Cos(25.0f);
+
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_strName = "Gravel no impact";
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_fFriction = 0.8f;
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_fJumpSlopeCos = Cos(20.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_fClimbSlopeCos = Cos(25.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_GRAVEL_NOIMPACT].st_ulFlags = STF_NOIMPACT;
+
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_strName = "Sand no impact";
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_fFriction = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_fJumpSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_fClimbSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_SAND_NOIMPACT].st_ulFlags = STF_NOIMPACT;
+
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_strName = "Red sand no impact";
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_fFriction = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_fJumpSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_fClimbSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_RED_SAND_NOIMPACT].st_ulFlags = STF_NOIMPACT;
+
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_strName = "Wood no impact";
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_fFriction = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_fJumpSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_fClimbSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_WOOD_NOIMPACT].st_ulFlags = STF_NOIMPACT;
+
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_strName = "Snow no impact";
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_fFriction = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_fStairsHeight = 1.0f;
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_fJumpSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_fClimbSlopeCos = Cos(45.0f);
+  pwo->wo_astSurfaceTypes[SURFACE_SNOW_NOIMPACT].st_ulFlags = STF_NOIMPACT;
+
   // contents
   pwo->wo_actContentTypes[0].ct_strName = "Air";
   pwo->wo_actContentTypes[0].ct_fDensity = 0.0f;
