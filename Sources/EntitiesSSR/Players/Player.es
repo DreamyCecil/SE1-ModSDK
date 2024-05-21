@@ -3363,8 +3363,9 @@ functions:
       // make key mask
       __int64 ulKey = __int64(1) << INDEX(((EKey &)ee).kitType);
       EKey &eKey = (EKey&)ee;
-      if(eKey.kitType == KIT_HAWKWINGS01DUMMY || eKey.kitType == KIT_HAWKWINGS02DUMMY
-        || eKey.kitType == KIT_TABLESDUMMY || eKey.kitType ==KIT_JAGUARGOLDDUMMY)
+      if (eKey.kitType == KIT_HAWKWINGS01DUMMY || eKey.kitType == KIT_HAWKWINGS02DUMMY
+       || eKey.kitType == KIT_TABLESDUMMY || eKey.kitType == KIT_JAGUARGOLDDUMMY
+       || eKey.kitType == KIT_ANKHGOLDDUMMY || eKey.kitType == KIT_SCARABDUMMY) // [Cecil] Rev: Dummy TFE keys
       {
         ulKey = 0;
       }
@@ -3376,7 +3377,15 @@ functions:
       } else {
         // pick it up
         (__int64 &)m_ulKeys |= ulKey;
-        CTString strKey = GetKeyName(((EKey&)ee).kitType);
+        CTString strKey;
+
+        // [Cecil] Rev: Custom pickup text
+        if (eKey.strCustomText != "") {
+          strKey = eKey.strCustomText;
+        } else {
+          strKey = GetKeyName(eKey.kitType);
+        }
+
         ItemPicked(strKey, 0);
         // if in cooperative
         if (GetSP()->sp_bCooperative && !GetSP()->sp_bSinglePlayer) {
