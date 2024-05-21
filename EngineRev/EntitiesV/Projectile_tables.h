@@ -197,7 +197,7 @@ CEntityComponent CProjectile_components[] = {
  CEntityComponent(ECT_TEXTURE, TEXTURE_DRAGONMAN_FIRE2, "EFNM" "Models\\Enemies\\Dragonman\\Projectile\\Projectile2.tex"),
 #define TEXTURE_ELEM_EARTH ((0x000001f5<<8)+77)
  CEntityComponent(ECT_TEXTURE, TEXTURE_ELEM_EARTH, "EFNM" "Models\\Enemies\\Elementals\\Projectile\\Earth.tex"),
-#define MODEL_ELEM_STONE ((0x000001f5<<8)+80)
+#define MODEL_ELEM_STONE ((0x000001f5<<8)+78)
  CEntityComponent(ECT_MODEL, MODEL_ELEM_STONE, "EFNM" "Models\\Enemies\\Elementals\\Projectile\\Stone.mdl"),
 #define MODEL_ELEM_ICE ((0x000001f5<<8)+81)
  CEntityComponent(ECT_MODEL, MODEL_ELEM_ICE, "EFNM" "Models\\Enemies\\Elementals\\Projectile\\IcePyramid.mdl"),
