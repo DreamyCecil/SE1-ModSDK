@@ -1476,3 +1476,15 @@ class CWorldSettingsController *GetWSC(CEntity *pen)
   return pwsc;
 }
 
+// [Cecil] Rev: Check if damage comes from bullets
+BOOL IsBulletType(INDEX iDamageType) {
+  switch (iDamageType) {
+    case DMT_BULLET:
+    case DMT_TOMMYGUN: case DMT_MINIGUN:
+    case DMT_SINGLESHOTGUN: case DMT_DOUBLESHOTGUN:
+    case DMT_SNIPER: case DMT_COLT: case DMT_DOUBLECOLT:
+      return TRUE;
+  }
+
+  return FALSE;
+};

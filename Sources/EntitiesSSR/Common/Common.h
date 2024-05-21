@@ -352,3 +352,6 @@ void SpawnHitTypeEffect(CEntity *pen, enum BulletHitType bhtType, BOOL bSound, F
   FLOAT3D vIncommingBulletDir, FLOAT3D vDistance);
 
 #define FRndIn(a, b) (a + FRnd()*(b - a))
+
+// [Cecil] Rev: Check if damage comes from bullets
+DECL_DLL BOOL IsBulletType(INDEX iDamageType);

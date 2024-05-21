@@ -27,6 +27,9 @@ enum HeadmanType {
   1 HDT_ROCKETMAN     "Rocketman",
   2 HDT_BOMBERMAN     "Bomberman",
   3 HDT_KAMIKAZE      "Kamikaze",
+  // [Cecil] Rev: New types
+  4 HDT_COMMANDO      "Commando",
+  5 HDT_VAPORWAVE     "Vaporwave",
 };
 
 
@@ -54,7 +57,26 @@ properties:
   // class internal
   5 BOOL m_bExploded = FALSE,
   6 BOOL m_bAttackSound = FALSE,    // playing kamikaze yelling sound
-  
+
+  // [Cecil] Rev: New properties from here
+  7 INDEX m_iLoopRand = 0,
+  8 INDEX m_iLoopCounter = 0,
+  9 INDEX m_iLoopAngle = 0,
+
+ 20 enum ProjectileType m_ptLoopProjectile = PRT_ROCKET,
+
+ // [Cecil] TODO: Implement logic for these properties
+ // [Cecil] NOTE: Apparently these properties only affect Firecracker and the way they shoot
+ // projectiles makes no sense to me, like this mechanic has been left unfinished or something
+ 21 BOOL m_iCustomFireWait "Custom firecracker wait" = TRUE,
+ 22 INDEX m_iCustomAngle = 0,
+ 23 INDEX m_iCustomNumber = 0,
+ 24 INDEX m_iCustomFireCounter "Custom firecracker angle" = -1,
+
+ // [Cecil] For remembering calculated values for throwing bombs
+ 50 FLOAT3D m_vBombTarget = FLOAT3D(0, 0, 0),
+ 51 FLOAT m_fBombSpeed = 0.0f,
+
 components:
   1 class   CLASS_BASE            "Classes\\EnemyBase.ecl",
   2 class   CLASS_BASIC_EFFECT    "Classes\\BasicEffect.ecl",
@@ -66,6 +88,7 @@ components:
  13 model   MODEL_CHAINSAW        "Models\\Enemies\\Headman\\ChainSaw.mdl",
  15 model   MODEL_ROCKETLAUNCHER  "Models\\Enemies\\Headman\\RocketLauncher.mdl",
  17 model   MODEL_BOMB            "Models\\Enemies\\Headman\\Projectile\\Bomb.mdl",
+ 18 model   MODEL_COMMANDOHEAD    "Models\\Enemies\\Headman\\CommandoHead.mdl", // [Cecil] Rev
 
  20 texture TEXTURE_BOMBERMAN       "Models\\Enemies\\Headman\\Bomberman.tex",
  21 texture TEXTURE_FIRECRACKER     "Models\\Enemies\\Headman\\Firecracker.tex",
@@ -76,6 +99,10 @@ components:
  26 texture TEXTURE_CHAINSAW        "Models\\Enemies\\Headman\\Chainsaw.tex",
  28 texture TEXTURE_ROCKETLAUNCHER  "Models\\Enemies\\Headman\\RocketLauncher.tex",
  29 texture TEXTURE_BOMB            "Models\\Enemies\\Headman\\Projectile\\Bomb.tex",
+ // [Cecil] Rev: New textures
+ 30 texture TEXTURE_COMMANDO        "Models\\Enemies\\Headman\\Commando.tex",
+ 31 texture TEXTURE_COMMANDOHEAD    "Models\\Enemies\\Headman\\CommandoHead.tex",
+ 32 texture TEXTURE_VAPORWAVE       "Models\\Enemies\\Headman\\Vaporwave.tex",
 
 // ************** SOUNDS **************
  50 sound   SOUND_IDLE              "Models\\Enemies\\Headman\\Sounds\\Idle.wav",
@@ -109,6 +136,11 @@ functions:
       str.PrintF(TRANS("A Rocketeer tickled %s to death"), strPlayerName);
     } else if (m_hdtType==HDT_FIRECRACKER) {
       str.PrintF(TRANS("A Firecracker tickled %s to death"), strPlayerName);
+    // [Cecil] Rev: New types
+    } else if (m_hdtType == HDT_COMMANDO) {
+      str.PrintF(TRANS("A Commando hunted %s down"), strPlayerName);
+    } else if (m_hdtType == HDT_VAPORWAVE) {
+      str.PrintF(TRANS("A Vaporwave tickled %s to death"), strPlayerName);
     }
     return str;
   }
@@ -123,12 +155,17 @@ functions:
     static DECLARE_CTFILENAME(fnmFirecracker, "Data\\Messages\\Enemies\\Firecracker.txt");
     static DECLARE_CTFILENAME(fnmBomberman,   "Data\\Messages\\Enemies\\Bomberman.txt");
     static DECLARE_CTFILENAME(fnmKamikaze,    "Data\\Messages\\Enemies\\Kamikaze.txt");
+    static DECLARE_CTFILENAME(fnmCommando,    "Data\\Messages\\Enemies\\Commando.txt");
+    static DECLARE_CTFILENAME(fnmVaporwave,   "Data\\Messages\\Enemies\\Vaporwave.txt");
     switch(m_hdtType) {
     default: ASSERT(FALSE);
     case HDT_ROCKETMAN:   return fnmRocketman;
     case HDT_FIRECRACKER: return fnmFirecracker;
     case HDT_BOMBERMAN:   return fnmBomberman;
     case HDT_KAMIKAZE:    return fnmKamikaze;
+    // [Cecil] Rev: New types
+    case HDT_COMMANDO:    return fnmCommando;
+    case HDT_VAPORWAVE:   return fnmVaporwave;
     }
   };
 
@@ -140,27 +177,53 @@ functions:
     PrecacheSound(SOUND_DEATH);
 
     switch(m_hdtType) {
-    case HDT_FIRECRACKER: { 
-      PrecacheSound(SOUND_FIREFIRECRACKER);
-      PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_FIRECRACKER);
-                          } break;
-    case HDT_ROCKETMAN:   {  
-      PrecacheSound(SOUND_FIREROCKETMAN);
-      PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_ROCKETMAN);
-                          } break;
-    case HDT_BOMBERMAN:   {  
-      PrecacheSound(SOUND_FIREBOMBERMAN);
-      PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_BOMBERMAN);
-      PrecacheModel(MODEL_BOMB);
-      PrecacheTexture(TEXTURE_BOMB);  
-                          } break;
-    case HDT_KAMIKAZE:    { 
-      PrecacheSound(SOUND_ATTACKKAMIKAZE);
-      PrecacheSound(SOUND_IDLEKAMIKAZE);
-      PrecacheClass(CLASS_BASIC_EFFECT, BET_BOMB);
-      PrecacheModel(MODEL_BOMB);
-      PrecacheTexture(TEXTURE_BOMB);  
-                          } break;
+      case HDT_FIRECRACKER:
+        PrecacheSound(SOUND_FIREFIRECRACKER);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_FIRECRACKER);
+        break;
+
+      case HDT_ROCKETMAN:
+        PrecacheSound(SOUND_FIREROCKETMAN);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_ROCKETMAN);
+        break;
+
+      case HDT_BOMBERMAN:
+        PrecacheSound(SOUND_FIREBOMBERMAN);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_BOMBERMAN);
+        PrecacheModel(MODEL_BOMB);
+        PrecacheTexture(TEXTURE_BOMB);  
+        break;
+
+      case HDT_KAMIKAZE:
+        PrecacheSound(SOUND_ATTACKKAMIKAZE);
+        PrecacheSound(SOUND_IDLEKAMIKAZE);
+        PrecacheClass(CLASS_BASIC_EFFECT, BET_BOMB);
+        PrecacheModel(MODEL_BOMB);
+        PrecacheTexture(TEXTURE_BOMB);  
+        break;
+
+      // [Cecil] Rev: New types
+      case HDT_COMMANDO:
+        PrecacheSound(SOUND_FIREFIRECRACKER);
+        PrecacheSound(SOUND_FIREBOMBERMAN);
+        PrecacheSound(SOUND_ATTACKKAMIKAZE);
+        PrecacheClass(CLASS_BASIC_EFFECT, BET_BOMB);
+        PrecacheModel(MODEL_BOMB);
+        PrecacheTexture(TEXTURE_BOMB);
+
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_FIRECRACKER);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_BOMBERMAN);
+        break;
+
+      case HDT_VAPORWAVE:
+        PrecacheSound(SOUND_FIREFIRECRACKER);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_FIRECRACKER);
+        PrecacheClass(CLASS_PROJECTILE, PRT_HEADMAN_ROCKETMAN);
+        PrecacheClass(CLASS_PROJECTILE, PRT_CYBORG_LASER);
+        PrecacheClass(CLASS_PROJECTILE, PRT_WOMAN_FIRE);
+        PrecacheClass(CLASS_PROJECTILE, PRT_GRUNT_PROJECTILE_COM);
+        PrecacheClass(CLASS_PROJECTILE, PRT_GRUNT_PROJECTILE_SOL);
+        break;
     }
   };
 
@@ -173,6 +236,9 @@ functions:
     case HDT_ROCKETMAN:   { pes->es_strName+=" Rocketman"; } break;
     case HDT_BOMBERMAN:   { pes->es_strName+=" Bomberman"; } break;
     case HDT_KAMIKAZE:    { pes->es_strName+=" Kamikaze"; } break;
+    // [Cecil] Rev: New types
+    case HDT_COMMANDO:    { pes->es_strName+=" Commando"; } break;
+    case HDT_VAPORWAVE:   { pes->es_strName+=" Vaporwave"; } break;
     }
     return TRUE;
   }
@@ -181,10 +247,8 @@ functions:
   void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection) 
   {
-    // firecracker and rocketman can't harm headman
-    if (!IsOfClass(penInflictor, "Headman") || 
-        !(((CHeadman*)penInflictor)->m_hdtType==HDT_FIRECRACKER || 
-          ((CHeadman*)penInflictor)->m_hdtType==HDT_ROCKETMAN)) {
+    // [Cecil] Rev: Headmen can only harm other headmen using explosions
+    if (dmtType == DMT_EXPLOSION || !IsOfClass(penInflictor, "Headman")) {
       CEnemyBase::ReceiveDamage(penInflictor, dmtType, fDamageAmmount, vHitPoint, vDirection);
 
       // if died of chainsaw
@@ -260,7 +324,8 @@ functions:
   // should this enemy blow up (spawn debris)
   BOOL ShouldBlowUp(void) 
   {
-    if (m_hdtType==HDT_KAMIKAZE && GetHealth()<=0) {
+    // [Cecil] Rev: For Commando too
+    if ((m_hdtType == HDT_KAMIKAZE || m_hdtType == HDT_COMMANDO) && GetHealth() <= 0) {
       return TRUE;
     } else {
       return CEnemyBase::ShouldBlowUp();
@@ -275,14 +340,16 @@ functions:
   // virtual anim functions
   void StandingAnim(void) {
     StartModelAnim(HEADMAN_ANIM_IDLE_PATROL, AOF_LOOPING|AOF_NORESTART);
-    if (m_hdtType==HDT_KAMIKAZE) {
+    // [Cecil] Rev: For Commando too
+    if (m_hdtType == HDT_KAMIKAZE || m_hdtType == HDT_COMMANDO) {
       KamikazeSoundOff();
     }
   };
   void StandingAnimFight(void)
   {
     StartModelAnim(HEADMAN_ANIM_IDLE_FIGHT, AOF_LOOPING|AOF_NORESTART);
-    if (m_hdtType==HDT_KAMIKAZE) {
+    // [Cecil] Rev: For Commando too
+    if (m_hdtType == HDT_KAMIKAZE || m_hdtType == HDT_COMMANDO) {
       KamikazeSoundOff();
     }
   }
@@ -290,7 +357,7 @@ functions:
     StartModelAnim(HEADMAN_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
   };
   void RunningAnim(void) {
-    if (m_hdtType==HDT_KAMIKAZE) {
+    if (UseKamikazeBehavior()) {
       KamikazeSoundOn();
       StartModelAnim(HEADMAN_ANIM_KAMIKAZE_ATTACK, AOF_LOOPING|AOF_NORESTART);
     } else {
@@ -349,7 +416,8 @@ functions:
  ************************************************************/
   void BlowUpNotify(void) {
     // kamikaze and bomberman explode if is not already exploded
-    if (m_hdtType==HDT_KAMIKAZE || m_hdtType==HDT_BOMBERMAN) {
+    // [Cecil] Rev: For Commando too
+    if (m_hdtType == HDT_KAMIKAZE || m_hdtType == HDT_COMMANDO || m_hdtType == HDT_BOMBERMAN) {
       Explode();
     }
   };
@@ -439,6 +507,29 @@ functions:
     }
   };
 
+  // [Cecil] Rev: Check if needs to activate Kamikaze behavior
+  BOOL UseKamikazeBehavior(void) {
+    // For Kamikaze or Commando under 25% of health
+    return m_hdtType == HDT_KAMIKAZE || (m_hdtType == HDT_COMMANDO && GetHealth() < m_fMaxHealth * 0.25f);
+  };
+
+  // [Cecil] Calculate bomb trajectory once and store needed results in variables
+  void CalcBombTrajectory(void) {
+    // Reset variables
+    m_fBombSpeed = 0;
+    m_vBombTarget = FLOAT3D(0, 0, 0);
+
+    // Calculate launch velocity for angular launch
+    FLOAT fRelativeHdg;
+
+    CalculateAngularLaunchParams(GetPlacement().pl_PositionVector, BOMBERMAN_LAUNCH(2) - 1.5f,
+      m_penEnemy->GetPlacement().pl_PositionVector, FLOAT3D(0, 0, 0), BOMBERMAN_ANGLE, m_fBombSpeed, fRelativeHdg);
+
+    // Target enemy body
+    EntityInfo *peiTarget = (EntityInfo *)m_penEnemy->GetEntityInfo();
+    GetEntityInfoPosition(m_penEnemy, peiTarget->vTargetCenter, m_vBombTarget);
+  };
+
 // ******
 // overrides from CEnemyBase to provide exploding on close range
 
@@ -446,7 +537,7 @@ functions:
   void SetSpeedsToDesiredPosition(const FLOAT3D &vPosDelta, FLOAT fPosDistance, BOOL bGoingToPlayer)
   {
     // if very close to player
-    if (m_hdtType==HDT_KAMIKAZE && CalcDist(m_penEnemy) < EXPLODE_KAMIKAZE) {
+    if (UseKamikazeBehavior() && CalcDist(m_penEnemy) < EXPLODE_KAMIKAZE) {
       // explode
       SetHealth(-10000.0f);
       m_vDamage = FLOAT3D(0,10000,0);
@@ -463,7 +554,7 @@ functions:
   virtual FLOAT GetAttackMoveFrequency(FLOAT fEnemyDistance)
   {
     // kamikaze must have sharp reflexes when close
-    if (m_hdtType==HDT_KAMIKAZE && fEnemyDistance < m_fCloseDistance) {
+    if (UseKamikazeBehavior() && fEnemyDistance < m_fCloseDistance) {
       return 0.1f;
     } else {
       return CEnemyBase::GetAttackMoveFrequency(fEnemyDistance);
@@ -475,7 +566,7 @@ procedures:
  *                A T T A C K   E N E M Y                   *
  ************************************************************/
   InitializeAttack(EVoid) : CEnemyBase::InitializeAttack {
-    if (m_hdtType==HDT_KAMIKAZE) {
+    if (UseKamikazeBehavior()) {
       KamikazeSoundOn();
     }
     jump CEnemyBase::InitializeAttack();
@@ -486,6 +577,7 @@ procedures:
     jump CEnemyBase::StopAttack();
   };
 
+  // [Cecil] Attack procedures are a hassle to reverse-engineer, so they're mostly rewritten from scratch
   Fire(EVoid) : CEnemyBase::Fire {
     // firecracker
     if (m_hdtType == HDT_FIRECRACKER) {
@@ -496,8 +588,16 @@ procedures:
     // bomber
     } else if (m_hdtType == HDT_BOMBERMAN) {
       autocall BombermanAttack() EEnd;
-    // kamikaze
-    } else if (m_hdtType == HDT_KAMIKAZE) {
+
+    // [Cecil] Rev: New types
+    } else if (m_hdtType == HDT_COMMANDO) {
+      // No attack for Kamikaze behavior
+      if (!UseKamikazeBehavior()) {
+        autocall CommandoAttack() EEnd;
+      }
+
+    } else if (m_hdtType == HDT_VAPORWAVE) {
+      autocall VaporwaveAttack() EEnd;
     }
 
     return EReturn();
@@ -520,35 +620,61 @@ procedures:
     autowait(0.30f);
     RemoveAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND);
 
-    // hit bomb
-    // calculate launch velocity and heading correction for angular launch
-    FLOAT fLaunchSpeed;
-    FLOAT fRelativeHdg;
-    CalculateAngularLaunchParams(
-      GetPlacement().pl_PositionVector, BOMBERMAN_LAUNCH(2)-1.5f,
-      m_penEnemy->GetPlacement().pl_PositionVector, FLOAT3D(0,0,0),
-      BOMBERMAN_ANGLE,
-      fLaunchSpeed,
-      fRelativeHdg);
-    
-    // target enemy body
-    EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
-    FLOAT3D vShootTarget;
-    GetEntityInfoPosition(m_penEnemy, peiTarget->vTargetCenter, vShootTarget);
+    // [Cecil] Calculate values for throwing
+    CalcBombTrajectory();
+
     // launch
     CPlacement3D pl;
-    PrepareFreeFlyingProjectile(pl, vShootTarget, BOMBERMAN_LAUNCH, ANGLE3D(0, BOMBERMAN_ANGLE, 0));
+    PrepareFreeFlyingProjectile(pl, m_vBombTarget, BOMBERMAN_LAUNCH, ANGLE3D(0, BOMBERMAN_ANGLE, 0));
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
     eLaunch.prtType = PRT_HEADMAN_BOMBERMAN;
-    eLaunch.fSpeed = fLaunchSpeed;
+    eLaunch.fSpeed = m_fBombSpeed;
     penProjectile->Initialize(eLaunch);
 
     // safety remove - if hitted (EWounded) while have bomb in his hand, bomb will never be removed
     RemoveAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND);
 
     autowait(0.45f + FRnd()/2);
+    return EEnd();
+  };
+
+  // [Cecil] Rev: Vaporwave attack
+  VaporwaveAttack() {
+    if (-en_vGravityDir % CalcDelta(m_penEnemy) > CalcDist(m_penEnemy) / 1.41421f) {
+      return EEnd();
+    }
+
+    autowait(0.2f + FRnd() / 4);
+    StartModelAnim(HEADMAN_ANIM_FIRECRACKER_ATTACK, 0);
+
+    autowait(0.15f);
+    PlaySound(m_soSound, SOUND_FIREFIRECRACKER, SOF_3D);
+    autowait(0.5f);
+
+    // Prepare a random attack
+    m_iLoopRand = IRnd() % 6;
+
+    switch (m_iLoopRand) {
+      case 0: m_ptLoopProjectile = PRT_HEADMAN_ROCKETMAN; break;
+      case 1: m_ptLoopProjectile = PRT_HEADMAN_FIRECRACKER; break;
+      case 2: m_ptLoopProjectile = PRT_CYBORG_LASER; break;
+      case 3: m_ptLoopProjectile = PRT_WOMAN_FIRE; break;
+      case 4: m_ptLoopProjectile = PRT_GRUNT_PROJECTILE_COM; break;
+      case 5: m_ptLoopProjectile = PRT_GRUNT_PROJECTILE_SOL; break;
+    }
+
+    // Shoot projectiles in a circle
+    m_iLoopCounter = 45;
+    m_iLoopAngle = 360;
+
+    while (--m_iLoopCounter >= 0) {
+      ShootProjectile(m_ptLoopProjectile, FLOAT3D(0.0f, 0.5f, 0.0f), FLOAT3D(m_iLoopAngle, 0.0f, 0.0f));
+      m_iLoopAngle -= 8;
+    }
+
+    autowait(0.7f + FRnd() / 3);
     return EEnd();
   };
 
@@ -596,22 +722,83 @@ procedures:
     return EEnd();
   };
 
+  // [Cecil] Rev: Commando attack
+  CommandoAttack() {
+    if (!IsInFrustum(m_penEnemy, CosFast(80.0f))) {
+      return EEnd();
+    }
 
+    StandingAnimFight();
+    autowait(0.2f + FRnd() / 4);
+
+    if (m_iLoopRand == 0) {
+      StartModelAnim(HEADMAN_ANIM_BOMBERMAN_ATTACK, 0);
+      PlaySound(m_soSound, SOUND_FIREBOMBERMAN, SOF_3D);
+      autowait(0.45f);
+
+      // Calculate values for throwing
+      CalcBombTrajectory();
+
+      m_iLoopCounter = 0;
+      m_iLoopAngle = -16.0f;
+
+      while (m_iLoopCounter < 5) {
+        autowait(0.05f);
+
+        // Throw one bomb
+        CPlacement3D pl;
+        PrepareFreeFlyingProjectile(pl, m_vBombTarget, BOMBERMAN_LAUNCH, ANGLE3D(m_iLoopAngle, BOMBERMAN_ANGLE, 0));
+        CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
+
+        ELaunchProjectile eLaunch;
+        eLaunch.penLauncher = this;
+        eLaunch.prtType = PRT_HEADMAN_BOMBERMAN;
+        eLaunch.fSpeed = m_fBombSpeed;
+        penProjectile->Initialize(eLaunch);
+
+        m_iLoopCounter++;
+        m_iLoopAngle += 8.0f;
+      }
+
+      autowait(0.45f + FRnd() / 2);
+
+    } else if (TRUE) {
+      StartModelAnim(HEADMAN_ANIM_FIRECRACKER_ATTACK, 0);
+      autowait(0.15f);
+      PlaySound(m_soSound, SOUND_FIREFIRECRACKER, SOF_3D);
+      autowait(0.5f);
+
+      m_iLoopCounter = 0;
+      m_iLoopAngle = -16.0f;
+
+      while (m_iLoopCounter < 5) {
+        autowait(0.05f);
+        ShootProjectile(PRT_HEADMAN_ROCKETMAN, FLOAT3D(0.0f, 0.5f, 0.0f), ANGLE3D(m_iLoopAngle, 0, 0));
+
+        m_iLoopCounter++;
+        m_iLoopAngle += 8.0f;
+      }
+
+      autowait(0.5f + FRnd() / 3);
+    }
+
+    // Change between two attacks
+    m_iLoopRand = (m_iLoopRand + 1) % 2;
+    return EEnd();
+  };
 
 /************************************************************
  *                    D  E  A  T  H                         *
  ************************************************************/
   Death(EVoid) : CEnemyBase::Death {
-    // don't check this because summoner can send death event even to kamikaze
-    // ASSERT(m_hdtType!=HDT_KAMIKAZE);
-    // instead, stop playing the yelling sound
-    if (m_hdtType==HDT_KAMIKAZE) {
+    // [Cecil] Rev: For Commando too
+    if (m_hdtType == HDT_KAMIKAZE || m_hdtType == HDT_COMMANDO) {
       KamikazeSoundOff();
     }
     // death
     autocall CEnemyBase::Death() EEnd;
-    // bomberman explode
-    if (m_hdtType==HDT_BOMBERMAN) {
+    // [Cecil] Rev: For Commando too
+    if (m_hdtType == HDT_BOMBERMAN || m_hdtType == HDT_COMMANDO) {
       Explode();
     }
     return EEnd();
@@ -628,18 +815,30 @@ procedures:
     SetPhysicsFlags(EPF_MODEL_WALKING|EPF_HASLUNGS);
     SetCollisionFlags(ECF_MODEL);
     SetFlags(GetFlags()|ENF_ALIVE);
-    SetHealth(19.5f);
-    m_fMaxHealth = 19.5f;
+
+    // [Cecil] Rev: More health for new types
+    if (m_hdtType == HDT_VAPORWAVE) {
+      SetHealth(100.0f);
+    } else if (m_hdtType == HDT_COMMANDO) {
+      SetHealth(200.0f);
+    } else {
+      SetHealth(19.5f);
+    }
+    m_fMaxHealth = GetHealth();
+
     en_tmMaxHoldBreath = 5.0f;
     en_fDensity = 2000.0f;
     m_fBlowUpSize = 2.0f;
 
-    // set your appearance
-    SetModel(MODEL_HEADMAN);
+    // [Cecil] Rev: Custom model
+    if (m_fnmCustomModel != "") {
+      SetModel(m_fnmCustomModel);
+    } else {
+      SetModel(MODEL_HEADMAN);
+    }
+
     switch (m_hdtType) {
-      case HDT_FIRECRACKER:
-        // set your texture
-        SetModelMainTexture(TEXTURE_FIRECRACKER);
+      case HDT_FIRECRACKER: {
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_FIRECRACKERHEAD, TEXTURE_FIRECRACKERHEAD);
         AddAttachment(HEADMAN_ATTACHMENT_CHAINSAW, MODEL_CHAINSAW, TEXTURE_CHAINSAW);
         // setup moving speed
@@ -661,11 +860,9 @@ procedures:
         m_fBodyParts = 4;
         m_fDamageWounded = 0.0f;
         m_iScore = 200;
-        break;
-  
-      case HDT_ROCKETMAN:
-        // set your texture
-        SetModelMainTexture(TEXTURE_ROCKETMAN);
+      } break;
+
+      case HDT_ROCKETMAN: {
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_HEAD, TEXTURE_HEAD);
         AddAttachment(HEADMAN_ATTACHMENT_ROCKET_LAUNCHER, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
         // setup moving speed
@@ -687,11 +884,9 @@ procedures:
         m_fBodyParts = 4;
         m_fDamageWounded = 0.0f;
         m_iScore = 100;
-        break;
+      } break;
 
-      case HDT_BOMBERMAN:
-        // set your texture
-        SetModelMainTexture(TEXTURE_BOMBERMAN);
+      case HDT_BOMBERMAN: {
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_HEAD, TEXTURE_HEAD);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 1.5f;
@@ -712,11 +907,9 @@ procedures:
         m_fBodyParts = 4;
         m_fDamageWounded = 0.0f;
         m_iScore = 500;
-        break;
+      } break;
 
-      case HDT_KAMIKAZE:
-        // set your texture
-        SetModelMainTexture(TEXTURE_KAMIKAZE);
+      case HDT_KAMIKAZE: {
         AddAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND, MODEL_BOMB, TEXTURE_BOMB);
         AddAttachment(HEADMAN_ATTACHMENT_BOMB_LEFT_HAND, MODEL_BOMB, TEXTURE_BOMB);
         // setup moving speed
@@ -738,7 +931,77 @@ procedures:
         m_fBodyParts = 4;
         m_fDamageWounded = 0.0f;
         m_iScore = 2500;
-        break;
+      } break;
+
+      // [Cecil] Rev: New types
+      case HDT_COMMANDO: {
+        AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_COMMANDOHEAD, TEXTURE_COMMANDOHEAD);
+        AddAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND, MODEL_BOMB, TEXTURE_BOMB);
+
+        // Moving speeds
+        m_fWalkSpeed = FRnd() + 1.5f;
+        m_aWalkRotateSpeed = (FRnd() * 10.0f) + 500.0f;
+        m_fAttackRunSpeed = FRnd() + 10.0f;
+        m_aAttackRotateSpeed = (FRnd() * 50.0f) + 600.0f;
+        m_fCloseRunSpeed = FRnd() + 10.0f;
+        m_aCloseRotateSpeed = (FRnd() * 50.0f) + 600.0f;
+
+        // Attack distances
+        m_fAttackDistance = 50.0f;
+        m_fCloseDistance = 0.0f;
+        m_fStopDistance = 0.0f;
+        m_fAttackFireTime = 2.0f;
+        m_fCloseFireTime = 0.5f;
+        m_fIgnoreRange = 250.0f;
+
+        // Damage properties
+        m_fBlowUpAmount = 0.0f;
+        m_fBodyParts = 4;
+        m_fDamageWounded = 0.0f;
+        m_iScore = 3500;
+      } break;
+
+      case HDT_VAPORWAVE: {
+        AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_FIRECRACKERHEAD, TEXTURE_FIRECRACKERHEAD);
+        AddAttachment(HEADMAN_ATTACHMENT_CHAINSAW, MODEL_CHAINSAW, TEXTURE_CHAINSAW);
+
+        // Moving speeds
+        m_fWalkSpeed = FRnd() + 1.5f;
+        m_aWalkRotateSpeed = (FRnd() * 10.0f) + 500.0f;
+        m_fAttackRunSpeed = FRnd() + 5.0f;
+        m_aAttackRotateSpeed = (FRnd() * 50.0f) + 245.0f;
+        m_fCloseRunSpeed = FRnd() + 5.0f;
+        m_aCloseRotateSpeed = (FRnd() * 50.0f) + 245.0f;
+
+        // Attack distances
+        m_fAttackDistance = 50.0f;
+        m_fCloseDistance = 0.0f;
+        m_fStopDistance = 8.0f;
+        m_fAttackFireTime = 2.0f;
+        m_fCloseFireTime = 1.0f;
+        m_fIgnoreRange = 200.0f;
+
+        // Damage properties
+        m_fBlowUpAmount = 65.0f;
+        m_fBodyParts = 4;
+        m_fDamageWounded = 2500.0f;
+        m_iScore = 400;
+      } break;
+    }
+
+    // [Cecil] Rev: Custom texture or per type
+    if (m_fnmCustomTexture != "") {
+      SetModelMainTexture(m_fnmCustomTexture);
+
+    } else {
+      switch (m_hdtType) {
+        case HDT_FIRECRACKER: SetModelMainTexture(TEXTURE_FIRECRACKER); break;
+        case HDT_ROCKETMAN:   SetModelMainTexture(TEXTURE_ROCKETMAN); break;
+        case HDT_BOMBERMAN:   SetModelMainTexture(TEXTURE_BOMBERMAN); break;
+        case HDT_KAMIKAZE:    SetModelMainTexture(TEXTURE_KAMIKAZE); break;
+        case HDT_COMMANDO:    SetModelMainTexture(TEXTURE_COMMANDO); break;
+        case HDT_VAPORWAVE:   SetModelMainTexture(TEXTURE_VAPORWAVE); break;
+      }
     }
 
     // set stretch factors for height and width

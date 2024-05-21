@@ -60,6 +60,14 @@ properties:
   10 CSoundObject m_soFire1,
   11 CSoundObject m_soFire2,
 
+ // [Cecil] Rev: New properties
+ 20 BOOL  m_iCustomFireWait     "Custom commander wait" = TRUE,
+ 21 INDEX m_iCustomFireCounter  "Custom commander angle" = -1,
+ 22 INDEX m_iCustomAngle = 0,
+ 23 INDEX m_iCustomNumber = 0,
+ 24 INDEX m_iCustomAttackNumber "Custom soldier attack number add" = -1,
+ 25 INDEX i_CustomAttackNumberLoop = 0,
+
 // class internal
     
 components:
@@ -247,11 +255,21 @@ procedures:
     ShootProjectile(PRT_GRUNT_PROJECTILE_SOL, FIREPOS_SOLDIER, ANGLE3D(0, 0, 0));
     PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
 
-    autowait(0.15f + FRnd()*0.1f);
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_SOL, FIREPOS_SOLDIER, ANGLE3D(0, 0, 0));
-    PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
-    
+    // [Cecil] Rev: Do at least one more shot after the first one
+    i_CustomAttackNumberLoop = 0;
+
+    do {
+      autowait(0.15f + FRnd() * 0.1f);
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_SOL, FIREPOS_SOLDIER, ANGLE3D(0, 0, 0));
+
+      CSoundObject &so = (i_CustomAttackNumberLoop % 2 == 0) ? m_soFire2 : m_soFire1;
+      PlaySound(so, SOUND_FIRE, SOF_3D);
+
+      i_CustomAttackNumberLoop++;
+
+    // Do more shots if m_iCustomAttackNumber is at least 1
+    } while (i_CustomAttackNumberLoop <= m_iCustomAttackNumber);
 
     autowait(FRnd()*0.333f);
     return EEnd();
@@ -270,31 +288,66 @@ procedures:
       vEnemyPos, fLaserSpeed, vEnemySpeed, GetPlacement().pl_PositionVector(2) );
     ShootPredictedProjectile(PRT_GRUNT_LASER, vPredictedEnemyPosition, FLOAT3D(0.0f, 1.0f, 0.0f), ANGLE3D(0, 0, 0));*/
 
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(-20, 0, 0));
-    PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
+    // [Cecil] Rev: Custom attack
+    if (m_iCustomFireCounter >= 0) {
+      // Determine number of projectiles and the starting angle
+      m_iCustomNumber = m_iCustomFireCounter;
+      m_iCustomAngle = (m_iCustomFireCounter - 1) * 5;
 
-    autowait(0.035f);
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(-10, 0, 0));
-    PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+      // Angular attack
+      if (m_iCustomFireWait) {
+        while (m_iCustomNumber > 0) {
+          StartModelAnim(GRUNT_ANIM_FIRE, 0);
+          ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(m_iCustomAngle, 0, 0));
 
-    autowait(0.035f);
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(0, 0, 0));
-    PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
+          CSoundObject &so = (m_iCustomNumber % 2 == 0) ? m_soFire2 : m_soFire1;
+          PlaySound(so, SOUND_FIRE, SOF_3D);
 
-    autowait(0.035f);
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(10, 0, 0));
-    PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+          m_iCustomNumber--;
+          m_iCustomAngle -= 10;
+          autowait(0.035f);
+        }
 
-    autowait(0.035f);
-    StartModelAnim(GRUNT_ANIM_FIRE, 0);
-    ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(20, 0, 0));
-    PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+      // Circular attack
+      } else if (TRUE) {
+        StartModelAnim(GRUNT_ANIM_FIRE, 0);
+        PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
 
-    autowait(FRnd()*0.5f);
+        // Fire all projectiles at once (36 projectiles in a full 360-degree circle)
+        while (--m_iCustomNumber >= 0) {
+          ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(m_iCustomAngle, 0, 0));
+          m_iCustomAngle -= 10;
+        }
+      }
+
+    // Vanilla attack
+    } else if (TRUE) {
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(-20, 0, 0));
+      PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
+
+      autowait(0.035f);
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(-10, 0, 0));
+      PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+
+      autowait(0.035f);
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(0, 0, 0));
+      PlaySound(m_soFire1, SOUND_FIRE, SOF_3D);
+
+      autowait(0.035f);
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(10, 0, 0));
+      PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+
+      autowait(0.035f);
+      StartModelAnim(GRUNT_ANIM_FIRE, 0);
+      ShootProjectile(PRT_GRUNT_PROJECTILE_COM, FIREPOS_COMMANDER_DN, ANGLE3D(20, 0, 0));
+      PlaySound(m_soFire2, SOUND_FIRE, SOF_3D);
+    }
+
+    autowait(FRnd() * 0.5f);
     return EEnd();
   };
 
@@ -311,12 +364,15 @@ procedures:
     en_fDensity = 2000.0f;
     //m_fBlowUpSize = 2.0f;
 
-    // set your appearance
-    SetModel(MODEL_GRUNT);
+    // [Cecil] Rev: Custom model
+    if (m_fnmCustomModel != "") {
+      SetModel(m_fnmCustomModel);
+    } else {
+      SetModel(MODEL_GRUNT);
+    }
+
     switch (m_gtType) {
       case GT_SOLDIER:
-        // set your texture
-        SetModelMainTexture(TEXTURE_SOLDIER);
         AddAttachment(GRUNT_ATTACHMENT_GUN_SMALL, MODEL_GUN_SOLDIER, TEXTURE_GUN_SOLDIER);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 2.5f;
@@ -344,8 +400,6 @@ procedures:
         break;
   
       case GT_COMMANDER:
-        // set your texture
-        SetModelMainTexture(TEXTURE_COMMANDER);
         AddAttachment(GRUNT_ATTACHMENT_GUN_COMMANDER, MODEL_GUN_COMMANDER, TEXTURE_GUN_COMMANDER);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 2.5f;
@@ -371,6 +425,17 @@ procedures:
         // set stretch factors for height and width
         GetModelObject()->StretchModel(FLOAT3D(STRETCH_COMMANDER, STRETCH_COMMANDER, STRETCH_COMMANDER));
         break;
+    }
+
+    // [Cecil] Rev: Custom texture or per type
+    if (m_fnmCustomTexture != "") {
+      SetModelMainTexture(m_fnmCustomTexture);
+
+    } else {
+      switch (m_gtType) {
+        case GT_SOLDIER:   SetModelMainTexture(TEXTURE_SOLDIER); break;
+        case GT_COMMANDER: SetModelMainTexture(TEXTURE_COMMANDER); break;
+      }
     }
 
     ModelChangeNotify();

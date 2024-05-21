@@ -40,6 +40,7 @@ thumbnail "Thumbnails\\Gizmo.tbn";
 properties:
   // class internal
   1 BOOL m_bExploded = FALSE,
+  2 BOOL m_bIsSpawnedByWalker = FALSE, // [Cecil] Rev
   
 components:
   1 class   CLASS_BASE            "Classes\\EnemyBase.ecl",
@@ -183,6 +184,11 @@ functions:
     }
   };
 
+  // [Cecil] Walker's Gizmos don't count
+  BOOL CountAsKill(void) {
+    return !m_bIsSpawnedByWalker;
+  };
+
 procedures:
 /************************************************************
  *                A T T A C K   E N E M Y                   *
@@ -291,7 +297,10 @@ procedures:
           }
           // we touched player, explode
           else if ( IsDerivedFromClass( etouch.penOther, "Player"))
-          {            
+          {
+            // [Cecil] Rev: Perform an environment attack on touch
+            PerformEnvironment(etouch);
+
             InflictDirectDamage(etouch.penOther, this, DMT_IMPACT, 10.0f,
               GetPlacement().pl_PositionVector, -en_vGravityDir);
             SetHealth(-10000.0f);
@@ -320,9 +329,20 @@ procedures:
     en_fDensity = 2000.0f;
     m_fBlowUpSize = 2.0f;
 
-    // set your appearance
-    SetModel(MODEL_GIZMO);
-    SetModelMainTexture(TEXTURE_GIZMO);
+    // [Cecil] Rev: Custom model
+    if (m_fnmCustomModel != "") {
+      SetModel(m_fnmCustomModel);
+    } else {
+      SetModel(MODEL_GIZMO);
+    }
+
+    // [Cecil] Rev: Custom texture
+    if (m_fnmCustomTexture != "") {
+      SetModelMainTexture(m_fnmCustomTexture);
+    } else {
+      SetModelMainTexture(TEXTURE_GIZMO);
+    }
+
     // setup moving speed
     m_fWalkSpeed = FRnd() + 1.5f;
     m_aWalkRotateSpeed = AngleDeg(FRnd()*10.0f + 500.0f);

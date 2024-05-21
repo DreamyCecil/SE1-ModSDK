@@ -49,6 +49,10 @@ properties:
   12 CEntityPointer m_penTemplate2 "Item template 2",
   13 CEntityPointer m_penTemplate3 "Item template 3",
   14 CEntityPointer m_penTemplate4 "Item template 4",
+
+  // [Cecil] Rev
+  15 BOOL m_bDied = FALSE,
+  20 CTFileName m_fnmCustomSantaModel "Custom Santa model" = CTString(""),
   
 components:
   0 class   CLASS_BASE        "Classes\\EnemyBase.ecl",
@@ -108,6 +112,11 @@ functions:
   {
     // skip base enemy damage handling
     CMovableModelEntity::ReceiveDamage(penInflictor, dmtType, fDamageAmmount, vHitPoint, vDirection);
+
+    // [Cecil] Rev: Don't drop any more items when dead
+    if (m_bDied) {
+      return;
+    }
 
     // if not enough time passed since lst item spawning
     if (_pTimer->CurrentTick()-m_tmLastSpawnTime<m_tmMinSpawnInterval) {
@@ -169,6 +178,9 @@ functions:
 //    ChangeCollisionBoxIndexWhenPossible(PLAYER_COLLISION_BOX_DEATH);
     SetCollisionFlags(ECF_MODEL);
     DeactivateRunningSound();
+
+    // [Cecil] Rev: Mark as dead
+    m_bDied = TRUE;
   };
 
   CModelObject *GetBody(void)
@@ -249,7 +261,13 @@ procedures:
     // set your appearance
     CTString strDummy;
     extern BOOL SetPlayerAppearance_internal(CModelObject *pmo, const CTFileName &fnmAMC, CTString &strName, BOOL bPreview);
-    SetPlayerAppearance_internal(GetModelObject(), CTFILENAME("ModelsMP\\CutSequences\\Santa\\Santa.amc"), strDummy, /*bPreview=*/FALSE);
+
+    // [Cecil] Rev: Set custom model
+    if (m_fnmCustomSantaModel != "" && FileExists(m_fnmCustomSantaModel)) {
+      SetPlayerAppearance_internal(GetModelObject(), m_fnmCustomSantaModel, strDummy, FALSE);
+    } else {
+      SetPlayerAppearance_internal(GetModelObject(), CTFILENAME("ModelsMP\\CutSequences\\Santa\\Santa.amc"), strDummy, /*bPreview=*/FALSE);
+    }
 
     SetHealth(m_fSantaHealth);
     m_fMaxHealth = m_fSantaHealth;

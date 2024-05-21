@@ -17,14 +17,23 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %{
 #include "StdH.h"
 #include "Models/Enemies/Walker/Walker.h"
+
+// [Cecil] Rev: New attachments
+#define WALKER_ATTACHMENT_CANNON_LT WALKER_ATTACHMENT_ROCKETLAUNCHER_LT //4
+#define WALKER_ATTACHMENT_CANNON_RT WALKER_ATTACHMENT_ROCKETLAUNCHER_RT //5
 %}
 
 uses "Enemies/EnemyBase";
 uses "Weapons/Projectile";
+uses "Weapons/CannonBall";
+uses "Enemies/Gizmo";
 
 enum WalkerChar {
   0 WLC_SOLDIER   "Soldier",    // soldier
   1 WLC_SERGEANT  "Sergeant",   // sergeant
+  // [Cecil] Rev: New types
+  2 WLC_MONSTER   "Artillery",
+  3 WLC_SPAWNER   "Spawner",
 };
 
 %{
@@ -37,12 +46,19 @@ static EntityInfo eiWalker = {
 
 #define SIZE_SOLDIER   (0.5f)
 #define SIZE_SERGEANT  (1.0f)
+// [Cecil] Rev: New types
+#define SIZE_MONSTER   (1.5f)
+#define SIZE_SPAWNER   (0.7f)
+
 #define FIRE_LEFT_ARM   FLOAT3D(-2.5f, 5.0f, 0.0f)
 #define FIRE_RIGHT_ARM  FLOAT3D(+2.5f, 5.0f, 0.0f)
 #define FIRE_DEATH_LEFT   FLOAT3D( 0.0f, 7.0f, -2.0f)
 #define FIRE_DEATH_RIGHT  FLOAT3D(3.75f, 4.2f, -2.5f)
 
-#define WALKERSOUND(soundname) ((m_EwcChar==WLC_SOLDIER)? (SOUND_SOLDIER_##soundname) : (SOUND_SERGEANT_##soundname))
+// [Cecil] Rev: Pick sound for Sergeant, Monster or Soldier/Spawner (same sounds)
+#define WALKERSOUND(soundname) \
+  ((m_EwcChar == WLC_SERGEANT) ? SOUND_SERGEANT_##soundname : \
+  ((m_EwcChar == WLC_MONSTER)  ? SOUND_MONSTER_##soundname : SOUND_SOLDIER_##soundname))
 %}
 
 
@@ -57,6 +73,11 @@ properties:
   4 BOOL m_bWalkSoundPlaying = FALSE,
   5 FLOAT m_fThreatDistance = 5.0f,
 
+  // [Cecil] Rev: New properties
+  20 INDEX m_iCustomFireCounter "Custom fire counter" = -1,
+  21 INDEX m_ctMaxGizmos "Max gizmos count" = 10,
+  22 INDEX m_ctLiveGizmos = 0,
+
   10 CSoundObject m_soFeet,
   11 CSoundObject m_soFire1,
   12 CSoundObject m_soFire2,
@@ -67,14 +88,26 @@ components:
   0 class   CLASS_BASE          "Classes\\EnemyBase.ecl",
   1 class   CLASS_PROJECTILE    "Classes\\Projectile.ecl",
   2 class   CLASS_BASIC_EFFECT  "Classes\\BasicEffect.ecl",
+  3 class   CLASS_CANNONBALL    "Classes\\CannonBall.ecl",
+  4 class   CLASS_GIZMO         "Classes\\Gizmo.ecl",
 
  10 model   MODEL_WALKER              "Models\\Enemies\\Walker\\Walker.mdl",
  11 texture TEXTURE_WALKER_SOLDIER    "Models\\Enemies\\Walker\\Walker02.tex",
  12 texture TEXTURE_WALKER_SERGEANT   "Models\\Enemies\\Walker\\Walker01.tex",
+ 13 texture TEXTURE_WALKER_MONSTER    "Models\\Enemies\\Walker\\Walker03.tex", // [Cecil] Rev
  14 model   MODEL_LASER               "Models\\Enemies\\Walker\\Laser.mdl",
  15 texture TEXTURE_LASER             "Models\\Enemies\\Walker\\Laser.tex",
  16 model   MODEL_ROCKETLAUNCHER      "Models\\Enemies\\Walker\\RocketLauncher.mdl",
  17 texture TEXTURE_ROCKETLAUNCHER    "Models\\Enemies\\Walker\\RocketLauncher.tex",
+
+ // [Cecil] Rev: New models
+ 18 model   MODEL_CANNON              "Models\\Weapons\\Cannon\\Body.mdl",
+ 19 texture TEXTURE_CANNON            "Models\\Weapons\\Cannon\\Body.tex",
+ 20 texture TEXTURE_WALKER_SPAWNER    "Models\\Enemies\\Walker\\Walker04.tex",
+ 21 model   MODEL_GIZMO               "Models\\Enemies\\Gizmo\\Gizmo.mdl",
+ 22 texture TEXTURE_GIZMO             "Models\\Enemies\\Gizmo\\Gizmo.tex",
+ 23 model   MODEL_SPAWNERGUN          "Models\\Enemies\\Walker\\SpawnerGun.mdl",
+ 24 texture TEXTURE_SPAWNERGUN        "Models\\Enemies\\Walker\\SpawnerGun.tex",
 
 // ************** SOUNDS **************
  50 sound   SOUND_SOLDIER_IDLE        "Models\\Enemies\\Walker\\Sounds\\Soldier\\Idle.wav",
@@ -82,12 +115,24 @@ components:
  53 sound   SOUND_SOLDIER_FIRE_LASER  "Models\\Enemies\\Walker\\Sounds\\Soldier\\Fire.wav",
  54 sound   SOUND_SOLDIER_DEATH       "Models\\Enemies\\Walker\\Sounds\\Soldier\\Death.wav",
  55 sound   SOUND_SOLDIER_WALK        "Models\\Enemies\\Walker\\Sounds\\Soldier\\Walk.wav",
+ 56 sound   SOUND_SOLDIER_TELEPORT    "Models\\Enemies\\Walker\\Sounds\\Soldier\\Teleport.wav", // [Cecil] Rev
 
  60 sound   SOUND_SERGEANT_IDLE        "Models\\Enemies\\Walker\\Sounds\\Sergeant\\Idle.wav",
  61 sound   SOUND_SERGEANT_SIGHT       "Models\\Enemies\\Walker\\Sounds\\Sergeant\\Sight.wav",
  63 sound   SOUND_SERGEANT_FIRE_ROCKET "Models\\Enemies\\Walker\\Sounds\\Sergeant\\Fire.wav",
  64 sound   SOUND_SERGEANT_DEATH       "Models\\Enemies\\Walker\\Sounds\\Sergeant\\Death.wav",
  65 sound   SOUND_SERGEANT_WALK        "Models\\Enemies\\Walker\\Sounds\\Sergeant\\Walk.wav",
+
+ // [Cecil] Rev: New sounds
+ 70 sound   SOUND_MONSTER_IDLE        "Models\\Enemies\\Walker\\Sounds\\Monster\\Idle.wav",
+ 71 sound   SOUND_MONSTER_SIGHT       "Models\\Enemies\\Walker\\Sounds\\Monster\\Sight.wav",
+ 72 sound   SOUND_MONSTER_FIRE        "Models\\Enemies\\Walker\\Sounds\\Monster\\Fire.wav",
+ 73 sound   SOUND_MONSTER_DEATH       "Models\\Enemies\\Walker\\Sounds\\Monster\\Death.wav",
+ 74 sound   SOUND_MONSTER_WALK        "Models\\Enemies\\Walker\\Sounds\\Monster\\Walk.wav",
+ 75 sound   SOUND_GIZMO_IDLE          "Models\\Enemies\\Gizmo\\Sounds\\Idle.wav",
+ 76 sound   SOUND_GIZMO_JUMP          "Models\\Enemies\\Gizmo\\Sounds\\Jump.wav",
+ 77 sound   SOUND_GIZMO_DEATH_JUMP    "Models\\Enemies\\Gizmo\\Sounds\\JumpDeath.wav",
+ 78 sound   SOUND_GIZMO_SIGHT         "Models\\Enemies\\Gizmo\\Sounds\\Sight.wav",
 
  /*
  70 model   MODEL_WALKER_HEAD1   "Models\\Enemies\\Walker\\Debris\\Head.mdl",
@@ -107,10 +152,15 @@ functions:
   virtual const CTFileName &GetComputerMessageName(void) const {
     static DECLARE_CTFILENAME(fnmSoldier,  "Data\\Messages\\Enemies\\WalkerSmall.txt");
     static DECLARE_CTFILENAME(fnmSergeant, "Data\\Messages\\Enemies\\WalkerBig.txt");
+    static DECLARE_CTFILENAME(fnmMonster,  "Data\\Messages\\Enemies\\WalkerLarge.txt");
+    static DECLARE_CTFILENAME(fnmSpawner,  "Data\\Messages\\Enemies\\WalkerSpawner.txt");
     switch(m_EwcChar) {
     default: ASSERT(FALSE);
-    case WLC_SOLDIER:   return fnmSoldier;
+    case WLC_SOLDIER:  return fnmSoldier;
     case WLC_SERGEANT: return fnmSergeant;
+    // [Cecil] Rev: New types
+    case WLC_MONSTER:  return fnmMonster;
+    case WLC_SPAWNER:  return fnmSpawner;
     }
   }
   // overridable function to get range for switching to another player
@@ -121,7 +171,8 @@ functions:
 
   BOOL ForcesCannonballToExplode(void)
   {
-    if (m_EwcChar==WLC_SERGEANT) {
+    // [Cecil] Rev: For Monster too
+    if (m_EwcChar == WLC_SERGEANT || m_EwcChar == WLC_MONSTER) {
       return TRUE;
     }
     return CEnemyBase::ForcesCannonballToExplode();
@@ -132,39 +183,71 @@ functions:
 
     PrecacheModel(MODEL_WALKER);
 
-    if (m_EwcChar==WLC_SOLDIER)
-    {
-      // sounds
-      PrecacheSound(SOUND_SOLDIER_IDLE );
-      PrecacheSound(SOUND_SOLDIER_SIGHT);
-      PrecacheSound(SOUND_SOLDIER_DEATH);
-      PrecacheSound(SOUND_SOLDIER_FIRE_LASER);
-      PrecacheSound(SOUND_SOLDIER_WALK);
-      // model's texture
-      PrecacheTexture(TEXTURE_WALKER_SOLDIER);
-      // weapon
-      PrecacheModel(MODEL_LASER);
-      PrecacheTexture(TEXTURE_LASER);
-      // projectile
-      PrecacheClass(CLASS_PROJECTILE, PRT_CYBORG_LASER);
-    }
-    else
-    {
-      // sounds
-      PrecacheSound(SOUND_SERGEANT_IDLE);
-      PrecacheSound(SOUND_SERGEANT_SIGHT);
-      PrecacheSound(SOUND_SERGEANT_DEATH);
-      PrecacheSound(SOUND_SERGEANT_FIRE_ROCKET);
-      PrecacheSound(SOUND_SERGEANT_WALK);
-      // model's texture
-      PrecacheTexture(TEXTURE_WALKER_SERGEANT);
-      // weapon
-      PrecacheModel(MODEL_ROCKETLAUNCHER);
-      PrecacheTexture(TEXTURE_ROCKETLAUNCHER);
-      // projectile
-      PrecacheClass(CLASS_PROJECTILE, PRT_WALKER_ROCKET);
+    switch (m_EwcChar) {
+      case WLC_SOLDIER:
+        PrecacheSound(SOUND_SOLDIER_IDLE);
+        PrecacheSound(SOUND_SOLDIER_SIGHT);
+        PrecacheSound(SOUND_SOLDIER_DEATH);
+        PrecacheSound(SOUND_SOLDIER_FIRE_LASER);
+        PrecacheSound(SOUND_SOLDIER_WALK);
+
+        PrecacheTexture(TEXTURE_WALKER_SOLDIER);
+        PrecacheModel(MODEL_LASER);
+        PrecacheTexture(TEXTURE_LASER);
+
+        PrecacheClass(CLASS_PROJECTILE, PRT_CYBORG_LASER);
+        break;
+
+      case WLC_SERGEANT:
+        PrecacheSound(SOUND_SERGEANT_IDLE);
+        PrecacheSound(SOUND_SERGEANT_SIGHT);
+        PrecacheSound(SOUND_SERGEANT_DEATH);
+        PrecacheSound(SOUND_SERGEANT_FIRE_ROCKET);
+        PrecacheSound(SOUND_SERGEANT_WALK);
+
+        PrecacheTexture(TEXTURE_WALKER_SERGEANT);
+        PrecacheModel(MODEL_ROCKETLAUNCHER);
+        PrecacheTexture(TEXTURE_ROCKETLAUNCHER);
+
+        PrecacheClass(CLASS_PROJECTILE, PRT_WALKER_ROCKET);
+        break;
+
+      // [Cecil] Rev: New types
+      case WLC_MONSTER:
+        PrecacheSound(SOUND_MONSTER_IDLE);
+        PrecacheSound(SOUND_MONSTER_SIGHT);
+        PrecacheSound(SOUND_MONSTER_DEATH);
+        PrecacheSound(SOUND_MONSTER_FIRE);
+        PrecacheSound(SOUND_MONSTER_WALK);
+
+        PrecacheTexture(TEXTURE_WALKER_MONSTER);
+        PrecacheModel(MODEL_CANNON);
+        PrecacheTexture(TEXTURE_CANNON);
+
+        PrecacheClass(CLASS_CANNONBALL, CBT_IRON);
+        break;
+
+      case WLC_SPAWNER:
+        PrecacheSound(SOUND_SOLDIER_IDLE);
+        PrecacheSound(SOUND_SOLDIER_SIGHT);
+        PrecacheSound(SOUND_SOLDIER_DEATH);
+        PrecacheSound(SOUND_SOLDIER_TELEPORT);
+        PrecacheSound(SOUND_SOLDIER_WALK);
+
+        PrecacheSound(SOUND_GIZMO_JUMP);
+        PrecacheSound(SOUND_GIZMO_IDLE);
+        PrecacheSound(SOUND_GIZMO_DEATH_JUMP);
+        PrecacheSound(SOUND_GIZMO_SIGHT);
+
+        PrecacheTexture(TEXTURE_WALKER_SPAWNER);
+        PrecacheModel(MODEL_SPAWNERGUN);
+        PrecacheTexture(TEXTURE_SPAWNERGUN);
+        PrecacheModel(MODEL_GIZMO);
+        PrecacheTexture(TEXTURE_GIZMO);
+        break;
     }
   };
+
   /* Entity info */
   void *GetEntityInfo(void) {
     return &eiWalker;
@@ -172,7 +255,8 @@ functions:
 
   FLOAT GetCrushHealth(void)
   {
-    if (m_EwcChar==WLC_SERGEANT) {
+    // [Cecil] Rev: For Monster too
+    if (m_EwcChar == WLC_SERGEANT || m_EwcChar == WLC_MONSTER) {
       return 100.0f;
     }
     return 0.0f;
@@ -182,9 +266,9 @@ functions:
   void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection) 
   {
-
+    // [Cecil] Rev: For any bullet damage
     // take less damage from heavy bullets (e.g. sniper)
-    if(dmtType==DMT_BULLET && fDamageAmmount>100.0f)
+    if (IsBulletType(dmtType) && fDamageAmmount > 100.0f)
     {
       fDamageAmmount*=0.666f;
     }
@@ -196,6 +280,15 @@ functions:
     }
   };
 
+  // [Cecil] Rev: Receive notifications from dead Gizmos
+  BOOL HandleEvent(const CEntityEvent &ee) {
+    if (ee.ee_slEvent == EVENTCODE_EStopAttack) {
+      m_ctLiveGizmos = ClampDn(INDEX(m_ctLiveGizmos - 1), (INDEX)0);
+      return TRUE;
+    }
+
+    return CEnemyBase::HandleEvent(ee);
+  };
 
   // virtual anim functions
   void StandingAnim(void) {
@@ -209,7 +302,9 @@ functions:
   }
   void WalkingAnim(void) {
     ActivateWalkingSound();
-    if (m_EwcChar==WLC_SERGEANT) {
+
+    // [Cecil] Rev: For Monster too
+    if (m_EwcChar == WLC_SERGEANT || m_EwcChar == WLC_MONSTER) {
       StartModelAnim(WALKER_ANIM_WALKBIG, AOF_LOOPING|AOF_NORESTART);
     } else {
       StartModelAnim(WALKER_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
@@ -248,7 +343,7 @@ functions:
   }
 
   // fire death rocket
-  void FireDeathRocket(FLOAT3D &vPos) {
+  void FireDeathRocket(const FLOAT3D &vPos) {
     CPlacement3D plRocket;
     plRocket.pl_PositionVector = vPos;
     plRocket.pl_OrientationAngle = ANGLE3D(0, -5.0f-FRnd()*10.0f, 0);
@@ -256,11 +351,19 @@ functions:
     CEntityPointer penProjectile = CreateEntity(plRocket, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = PRT_WALKER_ROCKET;
+
+    // [Cecil] Rev: Custom projectiles
+    if (m_bUseCustomWeaponProjectile) {
+      eLaunch.prtType = m_eCustomWeaponProjectile;
+    } else {
+      eLaunch.prtType = PRT_WALKER_ROCKET;
+    }
+
     penProjectile->Initialize(eLaunch);
   };
+
   // fire death laser
-  void FireDeathLaser(FLOAT3D &vPos) {
+  void FireDeathLaser(const FLOAT3D &vPos) {
     CPlacement3D plLaser;
     plLaser.pl_PositionVector = vPos;
     plLaser.pl_OrientationAngle = ANGLE3D(0, -5.0f-FRnd()*10.0f, 0);
@@ -268,11 +371,87 @@ functions:
     CEntityPointer penProjectile = CreateEntity(plLaser, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = PRT_CYBORG_LASER;
+
+    // [Cecil] Rev: Custom projectiles
+    if (m_bUseCustomWeaponProjectile) {
+      eLaunch.prtType = m_eCustomWeaponProjectile;
+    } else {
+      eLaunch.prtType = PRT_CYBORG_LASER;
+    }
+
     penProjectile->Initialize(eLaunch);
   };
 
+  // [Cecil] Rev: Launch cannonball on death
+  void FireDeathCannonball(const FLOAT3D &vPos) {
+    CPlacement3D pl(vPos, ANGLE3D(0, -5.0f - FRnd() * 10.0f, 0));
+    pl.RelativeToAbsolute(GetPlacement());
 
+    CEntityPointer penBall = CreateEntity(pl, CLASS_CANNONBALL);
+    ELaunchCannonBall eLaunch;
+    eLaunch.penLauncher = this;
+    eLaunch.fLaunchPower = 140.0f;
+    eLaunch.cbtType = CBT_IRON;
+    eLaunch.fSize = 3.0f;
+    penBall->Initialize(eLaunch);
+  };
+
+  // [Cecil] Rev: Spawn Gizmos on death
+  void FireDeathGizmo(const FLOAT3D &vPos) {
+    INDEX ctGizmos = 10;
+
+    if (GetSP()->sp_gdGameDifficulty <= CSessionProperties::GD_EASY) {
+      ctGizmos = 5;
+    }
+
+    while (--ctGizmos >= 0) {
+      CEntity *pen = CreateEntity(GetPlacement(), CLASS_GIZMO);
+      CGizmo &enGizmo = (CGizmo &)*pen;
+
+      enGizmo.m_eetEnvironmentType = m_eetEnvironmentType;
+      enGizmo.m_bIsSpawnedByWalker = TRUE;
+      pen->Initialize();
+    }
+  };
+
+  // [Cecil] Rev: Spawn one Gizmo
+  CEntity *SpawnGizmo(const FLOAT3D &vPos) {
+    CPlacement3D pl(vPos, ANGLE3D(0, 0, 0));
+    pl.RelativeToAbsolute(GetPlacement());
+
+    CEntity *pen = CreateEntity(pl, CLASS_GIZMO);
+    CGizmo &enGizmo = (CGizmo &)*pen;
+
+    enGizmo.m_eetEnvironmentType = m_eetEnvironmentType;
+    enGizmo.m_bIsSpawnedByWalker = TRUE;
+    enGizmo.m_penDeathTarget = this;
+    enGizmo.m_eetDeathType = EET_STOPATTACK;
+    pen->Initialize();
+
+    // Count spawned Gizmo
+    m_ctLiveGizmos++;
+    return pen;
+  };
+
+  // [Cecil] Rev: Set new lock-on-enemy time before firing again (used to be inline for each attack)
+  void SetLockOnEnemyTime(void) {
+    if (GetSP()->sp_gdGameDifficulty <= CSessionProperties::GD_EASY) {
+      switch (m_EwcChar) {
+        case WLC_SOLDIER:  m_fLockOnEnemyTime = 0.4f; break;
+        case WLC_SERGEANT: m_fLockOnEnemyTime = 1.0f; break;
+        case WLC_MONSTER:  m_fLockOnEnemyTime = 0.5f; break;
+        case WLC_SPAWNER:  m_fLockOnEnemyTime = 0.5f; break;
+      }
+
+    } else {
+      switch (m_EwcChar) {
+        case WLC_SOLDIER:  m_fLockOnEnemyTime = 0.1f; break;
+        case WLC_SERGEANT: m_fLockOnEnemyTime = 0.5f; break;
+        case WLC_MONSTER:  m_fLockOnEnemyTime = 0.2f; break;
+        case WLC_SPAWNER:  m_fLockOnEnemyTime = 0.2f; break;
+      }
+    }
+  };
 
   // adjust sound and watcher parameters here if needed
   void EnemyPostInit(void) 
@@ -331,59 +510,120 @@ procedures:
     m_fLockOnEnemyTime = GetModelObject()->GetAnimLength(WALKER_ANIM_TOFIRE);
     autocall CEnemyBase::LockOnEnemy() EReturn;
 
-    // sergeant 4 rockets
-    if (m_EwcChar==WLC_SERGEANT) {
-      StartModelAnim(WALKER_ANIM_FIRERIGHT, AOF_LOOPING);
-      ShootProjectile(PRT_WALKER_ROCKET, FIRE_RIGHT_ARM*m_fSize, ANGLE3D(0, 0, 0));
-      PlaySound(m_soFire1, SOUND_SERGEANT_FIRE_ROCKET, SOF_3D);
-      if (GetSP()->sp_gdGameDifficulty<=CSessionProperties::GD_EASY) {
-        m_fLockOnEnemyTime = 1.0f;
+    if (m_EwcChar == WLC_SERGEANT) {
+      // [Cecil] Rev: Custom amount
+      if (m_iCustomFireCounter >= 0) {
+        m_iLoopCounter = m_iCustomFireCounter;
       } else {
-        m_fLockOnEnemyTime = 0.5f;
+        m_iLoopCounter = 2;
       }
-      autocall CEnemyBase::LockOnEnemy() EReturn;
-      StartModelAnim(WALKER_ANIM_FIRELEFT, AOF_LOOPING);
-      ShootProjectile(PRT_WALKER_ROCKET, FIRE_LEFT_ARM*m_fSize, ANGLE3D(0, 0, 0));
-      PlaySound(m_soFire2, SOUND_SERGEANT_FIRE_ROCKET, SOF_3D);
 
-//      m_fLockOnEnemyTime = 0.25f;
-//      autocall CEnemyBase::LockOnEnemy() EReturn;
-    } 
-    if (m_EwcChar==WLC_SOLDIER) {
-      if (GetSP()->sp_gdGameDifficulty<=CSessionProperties::GD_EASY) {
-        m_iLoopCounter = 4;
+      while (m_iLoopCounter > 0) {
+        if (m_iLoopCounter % 2) {
+          StartModelAnim(WALKER_ANIM_FIRELEFT, AOF_LOOPING);
+          ShootProjectile(PRT_WALKER_ROCKET, FIRE_LEFT_ARM * m_fSize, ANGLE3D(0, 0, 0));
+        } else {
+          StartModelAnim(WALKER_ANIM_FIRERIGHT, AOF_LOOPING);
+          ShootProjectile(PRT_WALKER_ROCKET, FIRE_RIGHT_ARM * m_fSize, ANGLE3D(0, 0, 0));
+        }
+
+        INDEX iChannel = m_iLoopCounter % 4;
+        PlaySound((&m_soFire1)[iChannel], SOUND_SERGEANT_FIRE_ROCKET, SOF_3D);
+
+        if (m_iLoopCounter > 1) {
+          SetLockOnEnemyTime(); // [Cecil]
+          autocall CEnemyBase::LockOnEnemy() EReturn;
+        }
+
+        m_iLoopCounter--;
+      }
+
+    } else if (m_EwcChar == WLC_SOLDIER) {
+      // [Cecil] Rev: Custom amount
+      if (m_iCustomFireCounter >= 0) {
+        m_iLoopCounter = m_iCustomFireCounter;
       } else {
         m_iLoopCounter = 8;
       }
-      while(m_iLoopCounter>0) {
-        if (m_iLoopCounter%2) {
+
+      // [Cecil] Rev: Half any amount
+      if (GetSP()->sp_gdGameDifficulty <= CSessionProperties::GD_EASY) {
+        m_iLoopCounter /= 2;
+      }
+
+      while (m_iLoopCounter > 0) {
+        if (m_iLoopCounter % 2) {
           StartModelAnim(WALKER_ANIM_FIRELEFT, AOF_LOOPING);
-          ShootProjectile(PRT_CYBORG_LASER, FIRE_LEFT_ARM*m_fSize, ANGLE3D(0, 0, 0));
+          ShootProjectile(PRT_CYBORG_LASER, FIRE_LEFT_ARM * m_fSize, ANGLE3D(0, 0, 0));
         } else {
           StartModelAnim(WALKER_ANIM_FIRERIGHT, AOF_LOOPING);
-          ShootProjectile(PRT_CYBORG_LASER, FIRE_RIGHT_ARM*m_fSize, ANGLE3D(0, 0, 0));
+          ShootProjectile(PRT_CYBORG_LASER, FIRE_RIGHT_ARM * m_fSize, ANGLE3D(0, 0, 0));
         }
-        INDEX iChannel = m_iLoopCounter%4;
-        if (iChannel==0) {
-          PlaySound(m_soFire1, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
-        } else if (iChannel==1) {
-          PlaySound(m_soFire2, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
-        } else if (iChannel==2) {
-          PlaySound(m_soFire3, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
-        } else if (iChannel==3) {
-          PlaySound(m_soFire4, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
-        }
-        if (m_iLoopCounter>1) {
-          if (GetSP()->sp_gdGameDifficulty<=CSessionProperties::GD_EASY) {
-            m_fLockOnEnemyTime = 0.4f;
-          } else {
-            m_fLockOnEnemyTime = 0.1f;
-          }
+
+        INDEX iChannel = m_iLoopCounter % 4;
+        PlaySound((&m_soFire1)[iChannel], SOUND_SOLDIER_FIRE_LASER, SOF_3D);
+
+        if (m_iLoopCounter > 1) {
+          SetLockOnEnemyTime(); // [Cecil]
           autocall CEnemyBase::LockOnEnemy() EReturn;
         }
+
+        m_iLoopCounter--;
+      }
+
+    // [Cecil] Rev: Shoot cannonballs
+    } else if (m_EwcChar == WLC_MONSTER) {
+      m_iLoopCounter = 2;
+
+      while (m_iLoopCounter > 0) {
+        if (m_iLoopCounter % 2) {
+          StartModelAnim(WALKER_ANIM_FIRELEFT, AOF_LOOPING);
+          ShootCannonball(FIRE_LEFT_ARM * m_fSize, ANGLE3D(0, 0, 0));
+        } else {
+          StartModelAnim(WALKER_ANIM_FIRERIGHT, AOF_LOOPING);
+          ShootCannonball(FIRE_RIGHT_ARM * m_fSize, ANGLE3D(0, 0, 0));
+        }
+
+        INDEX iChannel = m_iLoopCounter % 4;
+        PlaySound((&m_soFire1)[iChannel], SOUND_MONSTER_FIRE, SOF_3D);
+
+        if (m_iLoopCounter > 1) {
+          SetLockOnEnemyTime(); // [Cecil]
+          autocall CEnemyBase::LockOnEnemy() EReturn;
+        }
+
+        m_iLoopCounter--;
+      }
+
+    // [Cecil] Rev: Spawn Gizmos
+    } else if (m_EwcChar == WLC_SPAWNER) {
+      if (GetSP()->sp_gdGameDifficulty <= CSessionProperties::GD_EASY) {
+        m_iLoopCounter = 4;
+      } else {
+        m_iLoopCounter = 6;
+      }
+
+      while (m_ctLiveGizmos < m_ctMaxGizmos && m_iLoopCounter > 0) {
+        if (m_iLoopCounter % 2) {
+          StartModelAnim(WALKER_ANIM_FIRELEFT, AOF_LOOPING);
+          SpawnGizmo(FIRE_LEFT_ARM * m_fSize);
+        } else {
+          StartModelAnim(WALKER_ANIM_FIRERIGHT, AOF_LOOPING);
+          SpawnGizmo(FIRE_RIGHT_ARM * m_fSize);
+        }
+
+        INDEX iChannel = m_iLoopCounter % 4;
+        PlaySound((&m_soFire1)[iChannel], SOUND_SOLDIER_TELEPORT, SOF_3D);
+
+        if (m_iLoopCounter > 1) {
+          SetLockOnEnemyTime(); // [Cecil]
+          autocall CEnemyBase::LockOnEnemy() EReturn;
+        }
+
         m_iLoopCounter--;
       }
     }
+
     StopMoving();
 
     MaybeSwitchToAnotherPlayer();
@@ -421,30 +661,37 @@ procedures:
     StartModelAnim(WALKER_ANIM_DEATH, 0);
     autowait(0.9f);
 
-    // one rocket/laser from left or right arm
-    if (m_EwcChar==WLC_SERGEANT) {
-      if (IRnd()&1) {
-        FireDeathRocket(FIRE_DEATH_RIGHT*m_fSize);
-      } else {
-        FireDeathRocket(FIRE_DEATH_LEFT*m_fSize);
-      }
-      PlaySound(m_soSound, SOUND_SERGEANT_FIRE_ROCKET, SOF_3D);
+    // [Cecil] Rev: Pick left or right position at random
+    const FLOAT3D vFire = ((IRnd() % 2 == 0) ? FIRE_DEATH_RIGHT : FIRE_DEATH_LEFT) * m_fSize;
+
+    // [Cecil] Rev: Take the last shot
+    switch (m_EwcChar) {
+      case WLC_SOLDIER:
+        FireDeathLaser(vFire);
+        PlaySound(m_soFire2, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
+        break;
+
+      case WLC_SERGEANT:
+        FireDeathRocket(vFire);
+        PlaySound(m_soSound, SOUND_SERGEANT_FIRE_ROCKET, SOF_3D);
+        break;
+
+      case WLC_MONSTER:
+        FireDeathCannonball(vFire);
+        PlaySound(m_soFire2, SOUND_MONSTER_FIRE, SOF_3D);
+        break;
+
+      case WLC_SPAWNER:
+        FireDeathGizmo(vFire);
+        PlaySound(m_soFire2, SOUND_SOLDIER_TELEPORT, SOF_3D);
+        break;
     }
-    if (m_EwcChar==WLC_SOLDIER) {
-      if (IRnd()&1) {
-        FireDeathLaser(FIRE_DEATH_RIGHT*m_fSize);
-      } else {
-        FireDeathLaser(FIRE_DEATH_LEFT*m_fSize);
-      }
-      PlaySound(m_soFire2, SOUND_SOLDIER_FIRE_LASER, SOF_3D);
-    }
+
     autowait(0.25f);
 
-    FLOAT fStretch=2.0f;
-    if (m_EwcChar==WLC_SERGEANT)
-    {
-      fStretch=4.0f;
-    }
+    // [Cecil] Four times the size for each type
+    FLOAT fStretch = m_fSize * 4;
+
     // spawn dust effect
     CPlacement3D plFX=GetPlacement();
     ESpawnEffect ese;
@@ -471,46 +718,106 @@ procedures:
     SetPhysicsFlags(EPF_MODEL_WALKING);
     SetCollisionFlags(ECF_MODEL);
     SetFlags(GetFlags()|ENF_ALIVE);
-    if (m_EwcChar==WLC_SERGEANT) {
-      SetHealth(750.0f);
-      m_fMaxHealth = 750.0f;
-    } else {
-      SetHealth(150.0f);
-      m_fMaxHealth = 150.0f;
-    }
     en_fDensity = 3000.0f;
 
     m_sptType = SPT_ELECTRICITY_SPARKS;
 
-    // set your appearance
-    SetModel(MODEL_WALKER);
-    if (m_EwcChar==WLC_SERGEANT) {
-      m_fSize = 1.0f;
-      SetModelMainTexture(TEXTURE_WALKER_SERGEANT);
-      AddAttachment(WALKER_ATTACHMENT_ROCKETLAUNCHER_LT, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
-      AddAttachment(WALKER_ATTACHMENT_ROCKETLAUNCHER_RT, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
-      GetModelObject()->StretchModel(FLOAT3D(1,1,1));
-      ModelChangeNotify();
-      CModelObject *pmoRight = &GetModelObject()->GetAttachmentModel(WALKER_ATTACHMENT_ROCKETLAUNCHER_RT)->amo_moModelObject;
-      pmoRight->StretchModel(FLOAT3D(-1,1,1));
-      m_fBlowUpAmount = 1E10f;
-      m_iScore = 7500;
-      m_fThreatDistance = 15;
+    // [Cecil] Rev: Custom model
+    if (m_fnmCustomModel != "") {
+      SetModel(m_fnmCustomModel);
     } else {
-      m_fSize = 0.5f;
-      SetModelMainTexture(TEXTURE_WALKER_SOLDIER);
-      AddAttachment(WALKER_ATTACHMENT_LASER_LT, MODEL_LASER, TEXTURE_LASER);
-      AddAttachment(WALKER_ATTACHMENT_LASER_RT, MODEL_LASER, TEXTURE_LASER);
-      GetModelObject()->StretchModel(FLOAT3D(0.5f,0.5f,0.5f));
-      ModelChangeNotify();
-      CModelObject *pmoRight = &GetModelObject()->GetAttachmentModel(WALKER_ATTACHMENT_LASER_RT)->amo_moModelObject;
-      pmoRight->StretchModel(FLOAT3D(-0.5f,0.5f,0.5f));
-      m_fBlowUpAmount = 1E10f;
-      //m_fBlowUpAmount = 100.0f;
-      //m_bRobotBlowup = TRUE;
-      m_iScore = 2000;
-      m_fThreatDistance = 5;
+      SetModel(MODEL_WALKER);
     }
+
+    // [Cecil] For attachment setup
+    INDEX iAttL = -1;
+    INDEX iAttR = -1;
+    FLOAT fAttSize = 1.0f;
+
+    // [Cecil] Simplified setup
+    switch (m_EwcChar) {
+      case WLC_SOLDIER: {
+        m_fSize = 0.5f;
+        fAttSize = 0.5f;
+        iAttL = WALKER_ATTACHMENT_LASER_LT;
+        iAttR = WALKER_ATTACHMENT_LASER_RT;
+        AddAttachment(iAttL, MODEL_LASER, TEXTURE_LASER);
+        AddAttachment(iAttR, MODEL_LASER, TEXTURE_LASER);
+
+        SetHealth(150.0f);
+        m_iScore = 2000;
+        m_fThreatDistance = 5;
+      } break;
+
+      case WLC_SERGEANT: {
+        m_fSize = 1.0f;
+        fAttSize = 1.0f;
+        iAttL = WALKER_ATTACHMENT_ROCKETLAUNCHER_LT;
+        iAttR = WALKER_ATTACHMENT_ROCKETLAUNCHER_RT;
+        AddAttachment(iAttL, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
+        AddAttachment(iAttR, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
+
+        SetHealth(750.0f);
+        m_iScore = 7500;
+        m_fThreatDistance = 15;
+      } break;
+
+      // [Cecil] Rev: New types
+      case WLC_MONSTER: {
+        m_fSize = 1.5f;
+        fAttSize = 6.0f;
+        iAttL = WALKER_ATTACHMENT_CANNON_LT;
+        iAttR = WALKER_ATTACHMENT_CANNON_RT;
+        AddAttachment(iAttL, MODEL_CANNON, TEXTURE_CANNON);
+        AddAttachment(iAttR, MODEL_CANNON, TEXTURE_CANNON);
+
+        SetHealth(1500.0f);
+        m_iScore = 10000;
+        m_fThreatDistance = 30;
+      } break;
+
+      case WLC_SPAWNER: {
+        m_fSize = 0.7f;
+        fAttSize = 3.0f;
+        iAttL = WALKER_ATTACHMENT_ROCKETLAUNCHER_LT;
+        iAttR = WALKER_ATTACHMENT_ROCKETLAUNCHER_RT;
+        AddAttachment(iAttL, MODEL_SPAWNERGUN, TEXTURE_SPAWNERGUN);
+        AddAttachment(iAttR, MODEL_SPAWNERGUN, TEXTURE_SPAWNERGUN);
+
+        SetHealth(500.0f);
+        m_iScore = 4500;
+        m_fThreatDistance = 10;
+      } break;
+    }
+
+    // [Cecil] Resize model
+    GetModelObject()->StretchModel(FLOAT3D(m_fSize, m_fSize, m_fSize));
+    ModelChangeNotify();
+
+    // [Cecil] Resize attachments
+    if (iAttL != -1) {
+      CModelObject &moLeft = GetModelObject()->GetAttachmentModel(iAttL)->amo_moModelObject;
+      moLeft.StretchModel(FLOAT3D(1, 1, 1) * fAttSize);
+    }
+
+    if (iAttR != -1) {
+      CModelObject &moRight = GetModelObject()->GetAttachmentModel(iAttR)->amo_moModelObject;
+      moRight.StretchModel(FLOAT3D(-1, 1, 1) * fAttSize);
+    }
+
+    // [Cecil] Rev: Custom texture or per type
+    if (m_fnmCustomTexture != "") {
+      SetModelMainTexture(m_fnmCustomTexture);
+
+    } else {
+      switch (m_EwcChar) {
+        case WLC_SOLDIER:  SetModelMainTexture(TEXTURE_WALKER_SOLDIER); break;
+        case WLC_SERGEANT: SetModelMainTexture(TEXTURE_WALKER_SERGEANT); break;
+        case WLC_MONSTER:  SetModelMainTexture(TEXTURE_WALKER_MONSTER); break;
+        case WLC_SPAWNER:  SetModelMainTexture(TEXTURE_WALKER_SPAWNER); break;
+      }
+    }
+
     if (m_fStepHeight==-1) {
       m_fStepHeight = 4.0f;
     }
@@ -534,6 +841,10 @@ procedures:
     // damage/explode properties
     m_fBodyParts = 8;
     m_fDamageWounded = 100000.0f;
+
+    // [Cecil] Same setup for all types
+    m_fBlowUpAmount = 1E10f;
+    m_fMaxHealth = GetHealth();
 
     // continue behavior in base class
     jump CEnemyBase::MainLoop();
