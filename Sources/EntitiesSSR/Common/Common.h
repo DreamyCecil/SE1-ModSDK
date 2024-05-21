@@ -44,6 +44,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #define MAX_IRONBALLS INDEX(30)
 //#define MAX_NUKEBALLS INDEX(3)
 #define MAX_SNIPERBULLETS INDEX(50)
+// [Cecil] Rev: New ammo types
+#define MAX_PLASMAPACKS INDEX(150)
+#define MAX_MINEPACKS   INDEX(30)
 
 // Bit shifters for ammo
 #define AMMO_BULLETS       0
@@ -55,6 +58,9 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 //#define AMMO_NUKEBALLS   6
 #define AMMO_IRONBALLS     7
 #define AMMO_SNIPERBULLETS 8
+// [Cecil] Rev: New ammo types
+#define AMMO_PLASMAPACKS   9
+#define AMMO_MINEPACKS     10
 
 #define BLOOD_SPILL_RED RGBAToColor(250,20,20,255)
 #define BLOOD_SPILL_GREEN RGBAToColor(0,250,0,255)
@@ -76,16 +82,20 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #define DMT_MINES           DMT_REV_MINES
 #endif
 
+// [Cecil] Rev: Rebalanced all values
 // Ammo mana Value
 #define AV_SHELLS         INDEX(70)
-#define AV_BULLETS        INDEX(10)
-#define AV_ROCKETS        INDEX(150)
-#define AV_GRENADES       INDEX(150)
-#define AV_ELECTRICITY    INDEX(250)
-#define AV_IRONBALLS      INDEX(700)
+#define AV_BULLETS        INDEX(50)
+#define AV_ROCKETS        INDEX(75)
+#define AV_GRENADES       INDEX(75)
+#define AV_ELECTRICITY    INDEX(1250)
+#define AV_IRONBALLS      INDEX(280)
 //#define AV_NUKEBALLS      INDEX(1800)
-#define AV_NAPALM         INDEX(200)
-#define AV_SNIPERBULLETS  INDEX(200)
+#define AV_NAPALM         INDEX(2000)
+#define AV_SNIPERBULLETS  INDEX(100)
+// [Cecil] Rev: New ammo types
+#define AV_PLASMAPACKS    INDEX(1500)
+#define AV_MINEPACKS      INDEX(150)
 
 // used for invisibility powerup
 #define INVISIBILITY_ALPHA_LOCAL  0x55

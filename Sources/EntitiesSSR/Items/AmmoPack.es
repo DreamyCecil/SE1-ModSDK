@@ -38,6 +38,9 @@ event EAmmoPackItem {
   INDEX iIronBalls,                
 //  INDEX iNukeBalls,     
   INDEX iSniperBullets,           
+  // [Cecil] Rev: New ammo types
+  INDEX iPlasmaPacks,
+  INDEX iMinePacks,
 };
 
 class CAmmoPack : CItem {
@@ -56,6 +59,9 @@ properties:
  16 INDEX m_iIronBalls             "Iron balls"     'I'   = MAX_IRONBALLS,
 // 17 INDEX m_iNukeBalls             "Nuke balls"    'U'   = MAX_NUKEBALLS,
  17 INDEX m_iSniperBullets         "Sniper bullets" 'N'   = MAX_SNIPERBULLETS,
+ // [Cecil] Rev: New ammo types
+ 18 INDEX m_iPlasmaPacks           "Plasma packs"         = MAX_PLASMAPACKS,
+ 19 INDEX m_iMinePacks             "Mine packs"           = MAX_MINEPACKS,
 
 components:
   0 class   CLASS_BASE        "Classes\\Item.ecl",
@@ -103,8 +109,11 @@ functions:
 //      m_iShells, m_iBullets, m_iRockets, m_iGrenades, m_iNapalm, m_iElectricity, m_iIronBalls, m_iNukeBalls); 
 //    pes->es_strName.PrintF("Back pack: %d Shells, %d Bullets, %d Rockets, %d Grenades, %d Electricity, %d Iron balls",
 //      m_iShells, m_iBullets, m_iRockets, m_iGrenades, m_iElectricity, m_iIronBalls); 
-    pes->es_strName.PrintF("Back pack: %d Shells, %d Bullets, %d Rockets, %d Grenades, %d Napalm, %d Electricity, %d Iron balls, %d Sniper bullets",
-      m_iShells, m_iBullets, m_iRockets, m_iGrenades, m_iNapalm, m_iElectricity, m_iIronBalls, m_iSniperBullets); 
+    pes->es_strName.PrintF("Back pack: %d Shells, %d Bullets, %d Rockets, %d Grenades, %d Napalm, "
+      "%d Electricity, %d Iron balls, %d Sniper bullets, %d Plasma packs, %d Mine packs",
+      m_iShells, m_iBullets, m_iRockets, m_iGrenades, m_iNapalm, m_iElectricity, m_iIronBalls, m_iSniperBullets,
+      // [Cecil] Rev: New ammo types
+      m_iPlasmaPacks, m_iMinePacks); 
 
     // calculate value
     pes->es_fValue = 
@@ -115,7 +124,10 @@ functions:
       m_iNapalm*AV_NAPALM + 
       m_iElectricity*AV_ELECTRICITY + 
       m_iIronBalls*AV_IRONBALLS +
-      m_iSniperBullets*AV_SNIPERBULLETS/*+ 
+      m_iSniperBullets*AV_SNIPERBULLETS +
+      // [Cecil] Rev: New ammo types
+      m_iPlasmaPacks*AV_PLASMAPACKS +
+      m_iMinePacks*AV_MINEPACKS/*+ 
       m_iNukeBalls*AV_NUKEBALLS*/;
 
     pes->es_iScore = 0;
@@ -155,6 +167,9 @@ functions:
     if( m_iIronBalls != 0) {m_strDescription.PrintF("%s: Iron balls (%d)", m_strDescription, m_iIronBalls);}
 //    if( m_iNukeBalls != 0) {m_strDescription.PrintF("%s: Nuke balls (%d)", m_strDescription, m_iNukeBalls);}
     if( m_iSniperBullets != 0) {m_strDescription.PrintF("%s: Sniper bullets (%d)", m_strDescription, m_iSniperBullets);}
+    // [Cecil] Rev: New ammo types
+    if (m_iPlasmaPacks != 0) { m_strDescription.PrintF("%s: Plasma packs (%d)", m_strDescription, m_iPlasmaPacks); }
+    if (m_iMinePacks != 0) { m_strDescription.PrintF("%s: Mine packs (%d)", m_strDescription, m_iMinePacks); }
   }
 
   void AdjustDifficulty(void)
@@ -192,6 +207,10 @@ procedures:
     eAmmo.iIronBalls = m_iIronBalls;
 //    eAmmo.iNukeBalls = m_iNukeBalls;
     eAmmo.iSniperBullets = m_iSniperBullets;
+    // [Cecil] Rev: New ammo types
+    eAmmo.iPlasmaPacks = m_iPlasmaPacks;
+    eAmmo.iMinePacks = m_iMinePacks;
+
     // if health is received
     if (epass.penOther->ReceiveItem(eAmmo)) {
       // play the pickup sound
@@ -215,6 +234,9 @@ procedures:
     m_iIronBalls = Clamp( m_iIronBalls, INDEX(0), MAX_IRONBALLS);
 //    m_iNukeBalls = Clamp( m_iNukeBalls, INDEX(0), MAX_NUKEBALLS);
     m_iSniperBullets = Clamp( m_iSniperBullets, INDEX(0), MAX_SNIPERBULLETS);
+    // [Cecil] Rev: New ammo types
+    m_iPlasmaPacks = Clamp(m_iPlasmaPacks, INDEX(0), MAX_PLASMAPACKS);
+    m_iMinePacks = Clamp(m_iMinePacks, INDEX(0), MAX_MINEPACKS);
 
     Initialize();     // initialize base class
     StartModelAnim(ITEMHOLDER_ANIM_MEDIUMOSCILATION, AOF_LOOPING|AOF_NORESTART);
