@@ -548,13 +548,13 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_DRAGONMAN);
+    Enemy_SetModel(MODEL_DRAGONMAN);
     if (m_EdtType == DT_SOLDIER) {
-      SetModelMainTexture(TEXTURE_DRAGONMAN1);
+      Enemy_SetModelMainTexture(TEXTURE_DRAGONMAN1);
     } else if (m_EdtType == DT_SERGEANT) {
-      SetModelMainTexture(TEXTURE_DRAGONMAN2);
+      Enemy_SetModelMainTexture(TEXTURE_DRAGONMAN2);
     } else if (TRUE) {
-      SetModelMainTexture(TEXTURE_DRAGONMAN3);
+      Enemy_SetModelMainTexture(TEXTURE_DRAGONMAN3);
     }
     // setup moving speed
     if (m_EdtType == DT_SOLDIER) {

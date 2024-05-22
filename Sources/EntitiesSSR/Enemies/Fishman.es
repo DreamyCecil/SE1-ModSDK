@@ -308,8 +308,8 @@ procedures:
     en_fDensity = 1000.0f;
 
     // set your appearance
-    SetModel(MODEL_FISHMAN);
-    SetModelMainTexture(TEXTURE_FISHMAN);
+    Enemy_SetModel(MODEL_FISHMAN);
+    Enemy_SetModelMainTexture(TEXTURE_FISHMAN);
     // setup moving speed
     m_fWalkSpeed = FRnd() + 1.5f;
     m_aWalkRotateSpeed = FRnd()*10.0f + 500.0f;

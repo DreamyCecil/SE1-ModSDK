@@ -481,18 +481,18 @@ procedures:
     }
 
     // set your appearance
-    SetModel(MODEL_EYEMAN);
+    Enemy_SetModel(MODEL_EYEMAN);
     if (m_EecChar==EYC_SERGEANT) {
-      SetModelMainTexture(TEXTURE_EYEMAN_SERGEANT);
+      Enemy_SetModelMainTexture(TEXTURE_EYEMAN_SERGEANT);
       GetModelObject()->StretchModel(FLOAT3D(1.3f, 1.3f, 1.3f));
       ModelChangeNotify();
       m_iScore = 1000;
     } else {
       m_iScore = 500;
       if (m_eeEnv == EYE_LAVA) {
-        SetModelMainTexture(TEXTURE_EYEMAN_LAVA);
+        Enemy_SetModelMainTexture(TEXTURE_EYEMAN_LAVA);
       } else {
-        SetModelMainTexture(TEXTURE_EYEMAN_SOLDIER);
+        Enemy_SetModelMainTexture(TEXTURE_EYEMAN_SOLDIER);
       }
       GetModelObject()->StretchModel(FLOAT3D(1.0f, 1.0f, 1.0f));
       ModelChangeNotify();

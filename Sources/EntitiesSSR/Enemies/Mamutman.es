@@ -258,8 +258,8 @@ procedures:
     en_fDensity = 1000.0f;
 
     // set your appearance
-    SetModel(MODEL_MAMUTMAN);
-    SetModelMainTexture(TEXTURE_MAMUTMAN);
+    Enemy_SetModel(MODEL_MAMUTMAN);
+    Enemy_SetModelMainTexture(TEXTURE_MAMUTMAN);
     if (!m_bSpawned) {
       StandingAnim();
     }

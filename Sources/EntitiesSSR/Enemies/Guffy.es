@@ -319,9 +319,9 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_GUFFY);
+    Enemy_SetModel(MODEL_GUFFY);
     m_fSize = 1.5f;
-    SetModelMainTexture(TEXTURE_GUFFY);
+    Enemy_SetModelMainTexture(TEXTURE_GUFFY);
     AddAttachment(GUFFY_ATTACHMENT_GUNRIGHT, MODEL_GUN, TEXTURE_GUN);
     AddAttachment(GUFFY_ATTACHMENT_GUNLEFT, MODEL_GUN, TEXTURE_GUN);
     GetModelObject()->StretchModel(FLOAT3D(m_fSize, m_fSize, m_fSize));

@@ -154,8 +154,8 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_CATMAN);
-    SetModelMainTexture(TEXTURE_SOLDIER);
+    Enemy_SetModel(MODEL_CATMAN);
+    Enemy_SetModelMainTexture(TEXTURE_SOLDIER);
     StandingAnim();
     // setup moving speed
     m_fWalkSpeed = FRnd() + 1.5f;

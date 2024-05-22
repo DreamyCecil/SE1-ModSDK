@@ -308,11 +308,11 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_WEREBULL);
+    Enemy_SetModel(MODEL_WEREBULL);
 //    if (m_bcChar==BUC_SUMMER) {
-      SetModelMainTexture(TEXTURE_WEREBULL_SUMMER);
+      Enemy_SetModelMainTexture(TEXTURE_WEREBULL_SUMMER);
 //    } else {
-//      SetModelMainTexture(TEXTURE_WEREBULL_WINTER);
+//      Enemy_SetModelMainTexture(TEXTURE_WEREBULL_WINTER);
 //    }
     StandingAnim();
     // setup moving speed

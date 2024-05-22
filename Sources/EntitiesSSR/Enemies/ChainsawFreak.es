@@ -370,8 +370,8 @@ procedures:
     m_fMaxHealth = 175.0f;
     en_fDensity = 2000.0f;
     // set your appearance
-    SetModel(MODEL_FREAK);
-    SetModelMainTexture(TEXTURE_FREAK);
+    Enemy_SetModel(MODEL_FREAK);
+    Enemy_SetModelMainTexture(TEXTURE_FREAK);
     AddAttachment(FREAK_ATTACHMENT_CHAINSAW, MODEL_CHAINSAW, TEXTURE_CHAINSAW);
     StandingAnim();
     // setup moving speed

@@ -667,8 +667,8 @@ procedures:
     en_fDensity = 5000.0f;
 
     // set your appearance
-    SetModel(MODEL_CYBORG);
-    SetModelMainTexture(TEXTURE_CYBORG);
+    Enemy_SetModel(MODEL_CYBORG);
+    Enemy_SetModelMainTexture(TEXTURE_CYBORG);
     AddAttachmentToModel(this, *GetModelObject(), CYBORG_ATTACHMENT_ASS,
       MODEL_ASS, TEXTURE_CYBORG, TEX_REFL_LIGHTMETAL01, TEX_SPEC_MEDIUM, 0);
     AddAttachmentToModel(this, *GetModelObject(), CYBORG_ATTACHMENT_TORSO,

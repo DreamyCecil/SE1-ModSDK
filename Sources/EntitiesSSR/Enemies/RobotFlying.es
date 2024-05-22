@@ -162,8 +162,8 @@ procedures:
     // set your appearance
     switch (m_rfcChar) {
     case RFC_KAMIKAZE: {
-      SetModel(MODEL_KAMIKAZE);
-      SetModelMainTexture(TEXTURE_KAMIKAZE);
+      Enemy_SetModel(MODEL_KAMIKAZE);
+      Enemy_SetModelMainTexture(TEXTURE_KAMIKAZE);
       // fly moving properties
       m_fFlyWalkSpeed = FRnd()/2 + 1.0f;
       m_aFlyWalkRotateSpeed = FRnd()*10.0f + 25.0f;
@@ -182,8 +182,8 @@ procedures:
       m_iScore = 1000;
           } break;
     case RFC_FIGHTER: {
-      SetModel(MODEL_FIGHTER);
-      SetModelMainTexture(TEXTURE_FIGHTER);
+      Enemy_SetModel(MODEL_FIGHTER);
+      Enemy_SetModelMainTexture(TEXTURE_FIGHTER);
       // fly moving properties
       m_fFlyWalkSpeed = FRnd()/2 + 1.0f;
       m_aFlyWalkRotateSpeed = FRnd()*10.0f + 25.0f;

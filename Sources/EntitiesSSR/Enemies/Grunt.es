@@ -364,15 +364,12 @@ procedures:
     en_fDensity = 2000.0f;
     //m_fBlowUpSize = 2.0f;
 
-    // [Cecil] Rev: Custom model
-    if (m_fnmCustomModel != "") {
-      SetModel(m_fnmCustomModel);
-    } else {
-      SetModel(MODEL_GRUNT);
-    }
+    // set your appearance
+    Enemy_SetModel(MODEL_GRUNT);
 
     switch (m_gtType) {
       case GT_SOLDIER:
+        Enemy_SetModelMainTexture(TEXTURE_SOLDIER);
         AddAttachment(GRUNT_ATTACHMENT_GUN_SMALL, MODEL_GUN_SOLDIER, TEXTURE_GUN_SOLDIER);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 2.5f;
@@ -400,6 +397,7 @@ procedures:
         break;
   
       case GT_COMMANDER:
+        Enemy_SetModelMainTexture(TEXTURE_COMMANDER);
         AddAttachment(GRUNT_ATTACHMENT_GUN_COMMANDER, MODEL_GUN_COMMANDER, TEXTURE_GUN_COMMANDER);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 2.5f;
@@ -425,17 +423,6 @@ procedures:
         // set stretch factors for height and width
         GetModelObject()->StretchModel(FLOAT3D(STRETCH_COMMANDER, STRETCH_COMMANDER, STRETCH_COMMANDER));
         break;
-    }
-
-    // [Cecil] Rev: Custom texture or per type
-    if (m_fnmCustomTexture != "") {
-      SetModelMainTexture(m_fnmCustomTexture);
-
-    } else {
-      switch (m_gtType) {
-        case GT_SOLDIER:   SetModelMainTexture(TEXTURE_SOLDIER); break;
-        case GT_COMMANDER: SetModelMainTexture(TEXTURE_COMMANDER); break;
-      }
     }
 
     ModelChangeNotify();

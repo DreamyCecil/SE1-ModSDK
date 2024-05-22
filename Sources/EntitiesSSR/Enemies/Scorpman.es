@@ -27,7 +27,7 @@ uses "AI/Reminder";
 enum ScorpmanType {
   0 SMT_SOLDIER    "Soldier",
   1 SMT_GENERAL    "General",
-  2 SMT_MONSTER    "Obsolete",
+  2 SMT_MONSTER    "Monster", // [Cecil] Rev
 };
 
 
@@ -84,7 +84,7 @@ components:
   5 model   MODEL_SCORPMAN    "Models\\Enemies\\Scorpman\\Scorpman.mdl",
   6 texture TEXTURE_SOLDIER   "Models\\Enemies\\Scorpman\\Soldier.tex",
   7 texture TEXTURE_GENERAL   "Models\\Enemies\\Scorpman\\General.tex",
-//  8 texture TEXTURE_MONSTER   "Models\\Enemies\\Scorpman\\Monster.tex",
+  8 texture TEXTURE_MONSTER   "Models\\Enemies\\Scorpman\\Monster.tex", // [Cecil] Rev
  12 texture TEXTURE_SPECULAR  "Models\\SpecularTextures\\Medium.tex",
   9 model   MODEL_GUN         "Models\\Enemies\\Scorpman\\Gun.mdl",
  10 model   MODEL_FLARE       "Models\\Enemies\\Scorpman\\Flare.mdl",
@@ -548,10 +548,6 @@ procedures:
  *                       M  A  I  N                         *
  ************************************************************/
   Main(EVoid) {
-    if (m_smtType==SMT_MONSTER) {
-      m_smtType=SMT_GENERAL;
-    }
-
     // declare yourself as a model
     InitAsModel();
     SetPhysicsFlags(EPF_MODEL_WALKING|EPF_HASLUNGS);
@@ -561,11 +557,11 @@ procedures:
     en_fDensity = 3000.0f;
 
     // set your appearance
-    SetModel(MODEL_SCORPMAN);
+    Enemy_SetModel(MODEL_SCORPMAN);
     switch (m_smtType) {
       case SMT_SOLDIER:
         // set your texture
-        SetModelMainTexture(TEXTURE_SOLDIER);
+        Enemy_SetModelMainTexture(TEXTURE_SOLDIER);
         SetModelSpecularTexture(TEXTURE_SPECULAR);
         SetHealth(300.0f);
         m_fMaxHealth = 300.0f;
@@ -585,7 +581,7 @@ procedures:
 
       case SMT_GENERAL:
         // set your texture
-        SetModelMainTexture(TEXTURE_GENERAL);
+        Enemy_SetModelMainTexture(TEXTURE_GENERAL);
         SetModelSpecularTexture(TEXTURE_SPECULAR);
         SetHealth(600.0f);
         m_fMaxHealth = 600.0f;
@@ -605,7 +601,7 @@ procedures:
 
       case SMT_MONSTER:
         // set your texture
-        SetModelMainTexture(TEXTURE_GENERAL);
+        Enemy_SetModelMainTexture(TEXTURE_MONSTER); // [Cecil] Rev
         SetModelSpecularTexture(TEXTURE_SPECULAR);
         SetHealth(1200.0f);
         m_fMaxHealth = 1200.0f;

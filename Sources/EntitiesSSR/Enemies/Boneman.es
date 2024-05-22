@@ -376,8 +376,8 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_BONEMAN);
-    SetModelMainTexture(TEXTURE_BONEMAN);
+    Enemy_SetModel(MODEL_BONEMAN);
+    Enemy_SetModelMainTexture(TEXTURE_BONEMAN);
     StandingAnim();
     m_sptType = SPT_BONES;
     // setup moving speed

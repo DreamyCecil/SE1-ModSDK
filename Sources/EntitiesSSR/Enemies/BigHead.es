@@ -308,8 +308,8 @@ procedures:
     m_fBlowUpSize = 2.0f;
 
     // set your appearance
-    SetModel(MODEL_MENTAL);
-    SetModelMainTexture(TEXTURE_MENTAL);
+    Enemy_SetModel(MODEL_MENTAL);
+    Enemy_SetModelMainTexture(TEXTURE_MENTAL);
     AddAttachment(0, MODEL_HEAD, TEXTURE_MENTAL);
     if (m_fnmHeadTex!="") {
       // try to

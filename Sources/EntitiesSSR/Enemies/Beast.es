@@ -496,6 +496,11 @@ procedures:
 /************************************************************
  *                       M  A  I  N                         *
  ************************************************************/
+  // [Cecil] Rev: Extra procedure
+  PreMainLoop(EVoid) : CEnemyBase::PreMainLoop {
+    return EReturn();
+  };
+
   Main(EVoid) {
     // declare yourself as a model
     InitAsModel();
@@ -505,7 +510,7 @@ procedures:
 
     en_fDensity = 1100.0f;
     // set your appearance
-    SetModel(MODEL_BEAST);
+    Enemy_SetModel(MODEL_BEAST);
     StandingAnim();
     // setup moving speed
     m_fWalkSpeed = FRnd()*2 + 5.0f;
@@ -529,7 +534,7 @@ procedures:
       m_fAttackRunSpeed = 6.0f;//6
       m_aAttackRotateSpeed = AngleDeg(3600.0f);
       SetHealth(400.0f);
-      SetModelMainTexture(TEXTURE_BEAST_NORMAL);
+      Enemy_SetModelMainTexture(TEXTURE_BEAST_NORMAL);
       m_fBlowUpAmount = 10000.0f;
       m_fBodyParts = 4;
       m_fDamageWounded = 250.0f;
@@ -545,7 +550,7 @@ procedures:
       m_fAttackRunSpeed = 25.0f;//8
       m_aAttackRotateSpeed = AngleDeg(600.0f);
       SetHealth(3000.0f);//500
-      SetModelMainTexture(TEXTURE_BEAST_BIG);
+      Enemy_SetModelMainTexture(TEXTURE_BEAST_BIG);
       m_fBlowUpAmount = 10000.0f;//500
       m_fBodyParts = 6;
       m_fDamageWounded = 650.0f;//500
@@ -563,7 +568,7 @@ procedures:
       m_fAttackRunSpeed = 35.0f;//8
       m_aAttackRotateSpeed = AngleDeg(600.0f);
       SetHealth(6000.0f);//500
-      SetModelMainTexture(TEXTURE_BEAST_HUGE);
+      Enemy_SetModelMainTexture(TEXTURE_BEAST_HUGE);
       m_fBlowUpAmount = 100000.0f;//500
       m_fBodyParts = 6;
       m_fDamageWounded = 1650.0f;//500

@@ -420,8 +420,8 @@ procedures:
     m_sptType = SPT_FEATHER;
 
     // set your appearance
-    SetModel(MODEL_WOMAN);
-    SetModelMainTexture(TEXTURE_WOMAN);
+    Enemy_SetModel(MODEL_WOMAN);
+    Enemy_SetModelMainTexture(TEXTURE_WOMAN);
     // setup moving speed
     m_fWalkSpeed = FRnd() + 1.5f;
     m_aWalkRotateSpeed = FRnd()*10.0f + 25.0f;

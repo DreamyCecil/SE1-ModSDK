@@ -310,7 +310,7 @@ procedures:
 
     en_fDensity = 1100.0f;
     // set your appearance
-    SetModel(MODEL_DEMON);
+    Enemy_SetModel(MODEL_DEMON);
     StandingAnim();
     // setup moving speed
     m_fWalkSpeed = FRnd()/1.0f + 12.0f;
@@ -332,7 +332,7 @@ procedures:
     // damage/explode properties
     SetHealth(500.0f);
     m_fMaxHealth = GetHealth();
-    SetModelMainTexture(TEXTURE_DEMON);
+    Enemy_SetModelMainTexture(TEXTURE_DEMON);
     m_fBlowUpAmount = 10000.0f;
     m_fBodyParts = 4;
     m_fDamageWounded = 1000.0f;

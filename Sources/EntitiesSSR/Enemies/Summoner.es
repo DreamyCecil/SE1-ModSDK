@@ -1318,7 +1318,8 @@ procedures:
 
     // set your appearance
     //m_fStretch = SIZE;
-    SetComponents(this, *GetModelObject(), MODEL_SUMMONER, TEXTURE_SUMMONER, 0, 0, 0); 
+    Enemy_SetModel(MODEL_SUMMONER); // [Cecil]
+    Enemy_SetModelMainTexture(TEXTURE_SUMMONER); // [Cecil]
     AddAttachmentToModel(this, *GetModelObject(), SUMMONER_ATTACHMENT_STAFF, MODEL_STAFF, TEXTURE_STAFF, 0, 0, 0);
     GetModelObject()->StretchModel(FLOAT3D(m_fStretch, m_fStretch, m_fStretch ));
     ModelChangeNotify();

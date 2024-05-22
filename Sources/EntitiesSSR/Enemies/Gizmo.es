@@ -329,20 +329,9 @@ procedures:
     en_fDensity = 2000.0f;
     m_fBlowUpSize = 2.0f;
 
-    // [Cecil] Rev: Custom model
-    if (m_fnmCustomModel != "") {
-      SetModel(m_fnmCustomModel);
-    } else {
-      SetModel(MODEL_GIZMO);
-    }
-
-    // [Cecil] Rev: Custom texture
-    if (m_fnmCustomTexture != "") {
-      SetModelMainTexture(m_fnmCustomTexture);
-    } else {
-      SetModelMainTexture(TEXTURE_GIZMO);
-    }
-
+    // set your appearance
+    Enemy_SetModel(MODEL_GIZMO);
+    Enemy_SetModelMainTexture(TEXTURE_GIZMO);
     // setup moving speed
     m_fWalkSpeed = FRnd() + 1.5f;
     m_aWalkRotateSpeed = AngleDeg(FRnd()*10.0f + 500.0f);

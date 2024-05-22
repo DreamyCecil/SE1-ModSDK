@@ -723,11 +723,7 @@ procedures:
     m_sptType = SPT_ELECTRICITY_SPARKS;
 
     // [Cecil] Rev: Custom model
-    if (m_fnmCustomModel != "") {
-      SetModel(m_fnmCustomModel);
-    } else {
-      SetModel(MODEL_WALKER);
-    }
+    Enemy_SetModel(MODEL_WALKER);
 
     // [Cecil] For attachment setup
     INDEX iAttL = -1;
@@ -737,6 +733,8 @@ procedures:
     // [Cecil] Simplified setup
     switch (m_EwcChar) {
       case WLC_SOLDIER: {
+        Enemy_SetModelMainTexture(TEXTURE_WALKER_SOLDIER);
+
         m_fSize = 0.5f;
         fAttSize = 0.5f;
         iAttL = WALKER_ATTACHMENT_LASER_LT;
@@ -750,6 +748,8 @@ procedures:
       } break;
 
       case WLC_SERGEANT: {
+        Enemy_SetModelMainTexture(TEXTURE_WALKER_SERGEANT);
+
         m_fSize = 1.0f;
         fAttSize = 1.0f;
         iAttL = WALKER_ATTACHMENT_ROCKETLAUNCHER_LT;
@@ -764,6 +764,8 @@ procedures:
 
       // [Cecil] Rev: New types
       case WLC_MONSTER: {
+        Enemy_SetModelMainTexture(TEXTURE_WALKER_MONSTER);
+
         m_fSize = 1.5f;
         fAttSize = 6.0f;
         iAttL = WALKER_ATTACHMENT_CANNON_LT;
@@ -777,6 +779,8 @@ procedures:
       } break;
 
       case WLC_SPAWNER: {
+        Enemy_SetModelMainTexture(TEXTURE_WALKER_SPAWNER);
+
         m_fSize = 0.7f;
         fAttSize = 3.0f;
         iAttL = WALKER_ATTACHMENT_ROCKETLAUNCHER_LT;
@@ -803,19 +807,6 @@ procedures:
     if (iAttR != -1) {
       CModelObject &moRight = GetModelObject()->GetAttachmentModel(iAttR)->amo_moModelObject;
       moRight.StretchModel(FLOAT3D(-1, 1, 1) * fAttSize);
-    }
-
-    // [Cecil] Rev: Custom texture or per type
-    if (m_fnmCustomTexture != "") {
-      SetModelMainTexture(m_fnmCustomTexture);
-
-    } else {
-      switch (m_EwcChar) {
-        case WLC_SOLDIER:  SetModelMainTexture(TEXTURE_WALKER_SOLDIER); break;
-        case WLC_SERGEANT: SetModelMainTexture(TEXTURE_WALKER_SERGEANT); break;
-        case WLC_MONSTER:  SetModelMainTexture(TEXTURE_WALKER_MONSTER); break;
-        case WLC_SPAWNER:  SetModelMainTexture(TEXTURE_WALKER_SPAWNER); break;
-      }
     }
 
     if (m_fStepHeight==-1) {

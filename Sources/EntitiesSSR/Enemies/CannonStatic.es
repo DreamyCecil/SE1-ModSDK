@@ -486,8 +486,8 @@ procedures:
     en_fDensity = 2000.0f;
     
     // set your appearance
-    SetModel(MODEL_TURRET);
-    SetModelMainTexture(TEXTURE_TURRET);
+    Enemy_SetModel(MODEL_TURRET);
+    Enemy_SetModelMainTexture(TEXTURE_TURRET);
     
     AddAttachment(TURRET_ATTACHMENT_CANNON, MODEL_CANNON, TEXTURE_CANNON);
     // setup moving speed

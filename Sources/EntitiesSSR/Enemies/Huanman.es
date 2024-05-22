@@ -151,8 +151,8 @@ procedures:
     en_fDensity = 1100.0f;
 
     // set your appearance
-    SetModel(MODEL_HUANMAN);
-    SetModelMainTexture(TEXTURE_HUANMAN);
+    Enemy_SetModel(MODEL_HUANMAN);
+    Enemy_SetModelMainTexture(TEXTURE_HUANMAN);
     StandingAnim();
     // setup moving speed
     m_fWalkSpeed = FRnd() + 3.0f;

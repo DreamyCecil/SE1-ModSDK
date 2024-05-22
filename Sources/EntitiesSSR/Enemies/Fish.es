@@ -293,8 +293,8 @@ procedures:
     m_EedtType = EDT_GROUND_DIVE;
 
     // set your appearance
-    SetModel(MODEL_FISH);
-    SetModelMainTexture(TEXTURE_FISH);
+    Enemy_SetModel(MODEL_FISH);
+    Enemy_SetModelMainTexture(TEXTURE_FISH);
     SetModelSpecularTexture(TEXTURE_SPECULAR);
     // rotation speeds
     m_fDiveWalkSpeed = 15.0f;

@@ -38,7 +38,7 @@ static EntityInfo eiCrate = {
 
 class CCrateRider: CEnemyBase {
 name      "CrateRider";
-thumbnail "Thumbnails\\Mental.tbn";
+thumbnail "Thumbnails\\CrateRider.tbn";
 
 properties:
   // class internal
@@ -189,8 +189,8 @@ procedures:
     m_fBlowUpSize = 2.0f;
 
     // set your appearance
-    SetModel(MODEL_CRATE);
-    SetModelMainTexture(TEXTURE_CRATE);
+    Enemy_SetModel(MODEL_CRATE);
+    Enemy_SetModelMainTexture(TEXTURE_CRATE);
     AddRider(0, m_fnmHeadTex1);
     AddRider(1, m_fnmHeadTex2);
 

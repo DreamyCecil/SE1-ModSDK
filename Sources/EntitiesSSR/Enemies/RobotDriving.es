@@ -203,8 +203,8 @@ procedures:
     case RDC_R2D2: {
       // set your appearance
       m_fSize = 1.0f;
-      SetComponents(this, *GetModelObject(), 
-        MODEL_R2D2, TEXTURE_R2D2, 0,0,0);
+      Enemy_SetModel(MODEL_R2D2); // [Cecil]
+      Enemy_SetModelMainTexture(TEXTURE_R2D2); // [Cecil]
       GetModelObject()->StretchModel(FLOAT3D(1,1,1));
       ModelChangeNotify();
 
@@ -228,8 +228,8 @@ procedures:
     case RDC_SPIDER: {
       // set your appearance
       m_fSize = 1.0f;
-      SetComponents(this, *GetModelObject(), 
-        MODEL_SPIDER, TEXTURE_SPIDER, 0,0,0);
+      Enemy_SetModel(MODEL_SPIDER); // [Cecil]
+      Enemy_SetModelMainTexture(TEXTURE_SPIDER); // [Cecil]
       GetModelObject()->StretchModel(FLOAT3D(1,1,1));
       ModelChangeNotify();
 

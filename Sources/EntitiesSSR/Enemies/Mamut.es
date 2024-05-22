@@ -396,12 +396,12 @@ procedures:
 
     // set your appearance
     GetModelObject()->StretchModel(FLOAT3D(2,2,2));
-    SetModel(MODEL_MAMUT);
+    Enemy_SetModel(MODEL_MAMUT);
     ModelChangeNotify();
     if (m_EmcChar==MAT_SUMMER) {
-      SetModelMainTexture(TEXTURE_MAMUT_SUMMER);
+      Enemy_SetModelMainTexture(TEXTURE_MAMUT_SUMMER);
     } else {
-      SetModelMainTexture(TEXTURE_MAMUT_WINTER);
+      Enemy_SetModelMainTexture(TEXTURE_MAMUT_WINTER);
     }
     SetHealth(700.0f);
     m_fMaxHealth = 700.0f;

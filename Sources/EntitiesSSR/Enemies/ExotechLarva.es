@@ -1388,8 +1388,8 @@ procedures:
     en_fDensity = 2000.0f;
 
     // set your appearance
-    SetModel(MODEL_BODY);
-    SetModelMainTexture(TEXTURE_BODY);
+    Enemy_SetModel(MODEL_BODY);
+    Enemy_SetModelMainTexture(TEXTURE_BODY);
 
     // add left side attachments
     AddAttachmentToModel(this, *GetModelObject(), BODY_ATTACHMENT_ARM_LEFT, MODEL_WING, TEXTURE_WING, 0, 0, 0);

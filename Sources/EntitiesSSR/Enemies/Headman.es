@@ -831,14 +831,11 @@ procedures:
     m_fBlowUpSize = 2.0f;
 
     // [Cecil] Rev: Custom model
-    if (m_fnmCustomModel != "") {
-      SetModel(m_fnmCustomModel);
-    } else {
-      SetModel(MODEL_HEADMAN);
-    }
+    Enemy_SetModel(MODEL_HEADMAN);
 
     switch (m_hdtType) {
       case HDT_FIRECRACKER: {
+        Enemy_SetModelMainTexture(TEXTURE_FIRECRACKER);
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_FIRECRACKERHEAD, TEXTURE_FIRECRACKERHEAD);
         AddAttachment(HEADMAN_ATTACHMENT_CHAINSAW, MODEL_CHAINSAW, TEXTURE_CHAINSAW);
         // setup moving speed
@@ -863,6 +860,7 @@ procedures:
       } break;
 
       case HDT_ROCKETMAN: {
+        Enemy_SetModelMainTexture(TEXTURE_ROCKETMAN);
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_HEAD, TEXTURE_HEAD);
         AddAttachment(HEADMAN_ATTACHMENT_ROCKET_LAUNCHER, MODEL_ROCKETLAUNCHER, TEXTURE_ROCKETLAUNCHER);
         // setup moving speed
@@ -887,6 +885,7 @@ procedures:
       } break;
 
       case HDT_BOMBERMAN: {
+        Enemy_SetModelMainTexture(TEXTURE_BOMBERMAN);
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_HEAD, TEXTURE_HEAD);
         // setup moving speed
         m_fWalkSpeed = FRnd() + 1.5f;
@@ -910,6 +909,7 @@ procedures:
       } break;
 
       case HDT_KAMIKAZE: {
+        Enemy_SetModelMainTexture(TEXTURE_KAMIKAZE);
         AddAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND, MODEL_BOMB, TEXTURE_BOMB);
         AddAttachment(HEADMAN_ATTACHMENT_BOMB_LEFT_HAND, MODEL_BOMB, TEXTURE_BOMB);
         // setup moving speed
@@ -935,6 +935,7 @@ procedures:
 
       // [Cecil] Rev: New types
       case HDT_COMMANDO: {
+        Enemy_SetModelMainTexture(TEXTURE_COMMANDO);
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_COMMANDOHEAD, TEXTURE_COMMANDOHEAD);
         AddAttachment(HEADMAN_ATTACHMENT_BOMB_RIGHT_HAND, MODEL_BOMB, TEXTURE_BOMB);
 
@@ -962,6 +963,7 @@ procedures:
       } break;
 
       case HDT_VAPORWAVE: {
+        Enemy_SetModelMainTexture(TEXTURE_VAPORWAVE);
         AddAttachment(HEADMAN_ATTACHMENT_HEAD, MODEL_FIRECRACKERHEAD, TEXTURE_FIRECRACKERHEAD);
         AddAttachment(HEADMAN_ATTACHMENT_CHAINSAW, MODEL_CHAINSAW, TEXTURE_CHAINSAW);
 
@@ -987,21 +989,6 @@ procedures:
         m_fDamageWounded = 2500.0f;
         m_iScore = 400;
       } break;
-    }
-
-    // [Cecil] Rev: Custom texture or per type
-    if (m_fnmCustomTexture != "") {
-      SetModelMainTexture(m_fnmCustomTexture);
-
-    } else {
-      switch (m_hdtType) {
-        case HDT_FIRECRACKER: SetModelMainTexture(TEXTURE_FIRECRACKER); break;
-        case HDT_ROCKETMAN:   SetModelMainTexture(TEXTURE_ROCKETMAN); break;
-        case HDT_BOMBERMAN:   SetModelMainTexture(TEXTURE_BOMBERMAN); break;
-        case HDT_KAMIKAZE:    SetModelMainTexture(TEXTURE_KAMIKAZE); break;
-        case HDT_COMMANDO:    SetModelMainTexture(TEXTURE_COMMANDO); break;
-        case HDT_VAPORWAVE:   SetModelMainTexture(TEXTURE_VAPORWAVE); break;
-      }
     }
 
     // set stretch factors for height and width

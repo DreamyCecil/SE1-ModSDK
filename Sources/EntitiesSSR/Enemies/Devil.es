@@ -2265,7 +2265,8 @@ procedures:
     */
 
     // set your appearance
-    SetComponents(this, *GetModelObject(), MODEL_DEVIL, TEXTURE_DEVIL, 0, 0, 0);
+    Enemy_SetModel(MODEL_DEVIL); // [Cecil]
+    Enemy_SetModelMainTexture(TEXTURE_DEVIL); // [Cecil]
 
     // stretch devil
     GetModelObject()->StretchModel(FLOAT3D(SIZE, SIZE, SIZE));

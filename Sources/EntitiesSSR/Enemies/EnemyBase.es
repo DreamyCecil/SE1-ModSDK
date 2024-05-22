@@ -196,8 +196,8 @@ properties:
 
 // [Cecil] Rev: New properties
 182 BOOL m_bGiveUpToClosestMarker "Give up to closest marker" = FALSE,
-190 CTFileName m_fnmCustomModel   "Custom model" = CTString(""), // [Cecil] TODO
-191 CTFileName m_fnmCustomTexture "Custom texture" = CTString(""), // [Cecil] TODO
+190 CTFileName m_fnmCustomModel   "Custom model" = CTString(""),
+191 CTFileName m_fnmCustomTexture "Custom texture" = CTString(""),
 192 BOOL m_bUseCustomWeaponProjectile             "Custom projectile use" = FALSE,
 193 enum ProjectileType m_eCustomWeaponProjectile "Custom projectile" = PRT_ROCKET,
 
@@ -1033,6 +1033,25 @@ functions:
       StretchSingleModel( vStretch);
     }
     ModelChangeNotify();
+  };
+
+  // [Cecil] Helper methods for overriding enemy models
+  void Enemy_SetModel(SLONG idComponent) {
+    // [Cecil] Rev: Custom model
+    if (m_fnmCustomModel != "") {
+      SetModel(m_fnmCustomModel);
+    } else {
+      SetModel(idComponent);
+    }
+  };
+
+  void Enemy_SetModelMainTexture(SLONG idComponent) {
+    // [Cecil] Rev: Custom texture
+    if (m_fnmCustomTexture != "") {
+      SetModelMainTexture(m_fnmCustomTexture);
+    } else {
+      SetModelMainTexture(idComponent);
+    }
   };
 
   // check if an entity is valid for being your new enemy

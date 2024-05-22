@@ -165,8 +165,8 @@ procedures:
     en_fDensity = 1000.0f;
 
     // set your appearance
-    SetModel(MODEL_MANTAMAN);
-    SetModelMainTexture(TEXTURE_MANTAMAN);
+    Enemy_SetModel(MODEL_MANTAMAN);
+    Enemy_SetModelMainTexture(TEXTURE_MANTAMAN);
     // dive moving properties
     m_fDiveWalkSpeed = FRnd() + 2.0f;
     m_aDiveWalkRotateSpeed = FRnd()*10.0f + 500.0f;

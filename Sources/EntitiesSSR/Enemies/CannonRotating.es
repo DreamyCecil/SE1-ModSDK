@@ -546,8 +546,8 @@ procedures:
     en_fDensity = 2000.0f;
     
     // set your appearance
-    SetModel(MODEL_TURRET);
-    SetModelMainTexture(TEXTURE_TURRET);
+    Enemy_SetModel(MODEL_TURRET);
+    Enemy_SetModelMainTexture(TEXTURE_TURRET);
     
     AddAttachment(TURRET_ATTACHMENT_ROTATORHEADING, MODEL_ROTATOR, TEXTURE_ROTATOR);
     CModelObject &amo0 = GetModelObject()->GetAttachmentModel(TURRET_ATTACHMENT_ROTATORHEADING)->amo_moModelObject;
