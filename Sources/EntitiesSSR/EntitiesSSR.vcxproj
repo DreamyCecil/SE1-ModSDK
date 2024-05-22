@@ -548,52 +548,16 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <ClCompile Include="Enemies\Boneman.cpp" />
     <ClCompile Include="Enemies\CannonRotating.cpp" />
     <ClCompile Include="Enemies\CannonStatic.cpp" />
-    <ClCompile Include="Enemies\Catman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\Catman.cpp" />
     <ClCompile Include="Enemies\ChainsawFreak.cpp" />
     <ClCompile Include="Enemies\CrateBus.cpp" />
     <ClCompile Include="Enemies\CrateRider.cpp" />
-    <ClCompile Include="Enemies\Cyborg.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Enemies\CyborgBike.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\Cyborg.cpp" />
+    <ClCompile Include="Enemies\CyborgBike.cpp" />
     <ClCompile Include="Enemies\Demon.cpp" />
     <ClCompile Include="Enemies\Devil.cpp" />
     <ClCompile Include="Enemies\DevilMarker.cpp" />
-    <ClCompile Include="Enemies\Dragonman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\Dragonman.cpp" />
     <ClCompile Include="Enemies\Elemental.cpp" />
     <ClCompile Include="Enemies\EnemyBase.cpp" />
     <ClCompile Include="Enemies\EnemyCounter.cpp" />
@@ -607,16 +571,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <ClCompile Include="Enemies\ExotechLarvaCharger.cpp" />
     <ClCompile Include="Enemies\Eyeman.cpp" />
     <ClCompile Include="Enemies\Fish.cpp" />
-    <ClCompile Include="Enemies\Fishman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\Fishman.cpp" />
     <ClCompile Include="Enemies\Gizmo.cpp" />
     <ClCompile Include="Enemies\Grunt.cpp" />
     <ClCompile Include="Enemies\GruntSka.cpp">
@@ -627,56 +582,11 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     </ClCompile>
     <ClCompile Include="Enemies\Guffy.cpp" />
     <ClCompile Include="Enemies\Headman.cpp" />
-    <ClCompile Include="Enemies\Huanman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Enemies\Mamut.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Enemies\Mamutman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Enemies\Mantaman.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
-    <ClCompile Include="Enemies\RobotDriving.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\Huanman.cpp" />
+    <ClCompile Include="Enemies\Mamut.cpp" />
+    <ClCompile Include="Enemies\Mamutman.cpp" />
+    <ClCompile Include="Enemies\Mantaman.cpp" />
+    <ClCompile Include="Enemies\RobotDriving.cpp" />
     <ClCompile Include="Enemies\RobotFixed.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
@@ -687,16 +597,7 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Enemies\RobotFlying.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Enemies\RobotFlying.cpp" />
     <ClCompile Include="Enemies\Santa.cpp" />
     <ClCompile Include="Enemies\Scorpman.cpp" />
     <ClCompile Include="Enemies\Shooter.cpp" />
@@ -780,55 +681,19 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
     <ClCompile Include="Tools\VoiceHolder.cpp" />
     <ClCompile Include="Tools\WorldLink.cpp" />
     <ClCompile Include="Weapons\AirShockwave.cpp" />
-    <ClCompile Include="Weapons\AirWave.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Weapons\AirWave.cpp" />
     <ClCompile Include="Weapons\Bullet.cpp" />
     <ClCompile Include="Weapons\CannonBall.cpp" />
     <ClCompile Include="Weapons\DevilProjectile.cpp" />
     <ClCompile Include="Weapons\Flame.cpp" />
-    <ClCompile Include="Weapons\GhostBusterRay.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Weapons\GhostBusterRay.cpp" />
     <ClCompile Include="Weapons\LarvaOffspring.cpp" />
-    <ClCompile Include="Weapons\Pipebomb.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Weapons\Pipebomb.cpp" />
     <ClCompile Include="Weapons\Projectile.cpp" />
     <ClCompile Include="Weapons\SeriousBomb.cpp" />
     <ClCompile Include="Weapons\SpawnerProjectile.cpp" />
     <ClCompile Include="Weapons\Twister.cpp" />
-    <ClCompile Include="Weapons\Water.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="Weapons\Water.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Common\Common.h" />
@@ -1897,14 +1762,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\ChainsawFreak.es">
       <FileType>Document</FileType>
@@ -2013,14 +1870,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\CyborgBike.es">
       <FileType>Document</FileType>
@@ -2048,14 +1897,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Demon.es">
       <FileType>Document</FileType>
@@ -2164,14 +2005,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Elemental.es">
       <FileType>Document</FileType>
@@ -2550,14 +2383,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Gizmo.es">
       <FileType>Document</FileType>
@@ -2724,14 +2549,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Mamut.es">
       <FileType>Document</FileType>
@@ -2759,14 +2576,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Mamutman.es">
       <FileType>Document</FileType>
@@ -2794,14 +2603,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Mantaman.es">
       <FileType>Document</FileType>
@@ -2829,14 +2630,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\RobotDriving.es">
       <FileType>Document</FileType>
@@ -2864,14 +2657,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\RobotFixed.es">
       <FileType>Document</FileType>
@@ -2899,14 +2684,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\RobotFlying.es">
       <FileType>Document</FileType>
@@ -2934,14 +2711,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Enemies\Santa.es">
       <FileType>Document</FileType>
@@ -4784,14 +4553,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">$(ProjectName)\%(RelativeDir)%(Filename).es</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">%(RelativeDir)%(Filename).cpp;%(Outputs)</Outputs>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Weapons\Bullet.es">
       <FileType>Document</FileType>
@@ -4927,14 +4688,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">$(ProjectName)\%(RelativeDir)%(Filename).es</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">%(RelativeDir)%(Filename).cpp;%(Outputs)</Outputs>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Weapons\LarvaOffspring.es">
       <FileType>Document</FileType>
@@ -4989,14 +4742,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">$(ProjectName)\%(RelativeDir)%(Filename).es</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">%(RelativeDir)%(Filename).cpp;%(Outputs)</Outputs>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
     <CustomBuild Include="Weapons\Projectile.es">
       <FileType>Document</FileType>
@@ -5132,14 +4877,6 @@ copy "$(OutDir)$(TargetName).lib" "$(SolutionDir)..\Bin\Debug\" &gt;nul</Command
       <Command Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">cd "$(SolutionDir)" &amp;&amp; ecc "$(ProjectName)\%(RelativeDir)%(Filename).es"</Command>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">$(ProjectName)\%(RelativeDir)%(Filename).es</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">%(RelativeDir)%(Filename).cpp;%(Outputs)</Outputs>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE110|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TSE107|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release_TFE105|Win32'">true</ExcludedFromBuild>
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug_TSE110|Win32'">true</ExcludedFromBuild>
     </CustomBuild>
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

@@ -31,6 +31,7 @@ properties:
   1 CEntityPointer m_penBullet,     // bullet
   2 BOOL m_bSpawned = FALSE,
   3 INDEX m_bSpawnedPosition = 0,
+  4 BOOL m_bCountAsKill = TRUE, // [Cecil] Rev
 
 components:
   0 class   CLASS_BASE        "Classes\\EnemyBase.ecl",
@@ -108,6 +109,10 @@ functions:
     PlaySound(m_soSound, SOUND_DEATH, SOF_3D);
   };
 
+  // [Cecil] Rev
+  BOOL CountAsKill(void) {
+    return m_bCountAsKill;
+  };
 
 /************************************************************
  *                       FIRE BULLET                        *

@@ -83,7 +83,7 @@ uses "Items/AmmoItem";
 uses "Items/AmmoPack";
 uses "Tools/ModelHolder2";
 //uses "Weapons/Pipebomb";
-//uses "Weapons/GhostBusterRay";
+uses "Weapons/GhostBusterRay";
 uses "Weapons/CannonBall";
 
 
@@ -623,7 +623,7 @@ properties:
 // laser
 245 INDEX m_iLaserBarrel = 0,
 // ghostbuster
-//250 CEntityPointer m_penGhostBusterRay,
+250 CEntityPointer m_penGhostBusterRay,
 // fire flare
 251 INDEX m_iFlare = FLARE_REMOVE,       // 0-none, 1-remove, 2-add
 252 INDEX m_iSecondFlare = FLARE_REMOVE, // 0-none, 1-remove, 2-add
@@ -893,15 +893,6 @@ functions:
   {
     return m_bFireWeapon && !m_bChangeWeapon;
   }
-
-#if SE1_VER < SE1_107
-  // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
-  void RenderWeaponModel(CPerspectiveProjection3D &pr, CDrawPort *pdp,
-    FLOAT3D vLightDir, COLOR colLight, COLOR colAmbient, BOOL bRender)
-  {
-    RenderWeaponModel(pr, pdp, vLightDir, colLight, colAmbient, bRender, STEREO_LEFT);
-  };
-#endif
 
   // render weapon model(s)
   void RenderWeaponModel( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,
@@ -2344,11 +2335,12 @@ functions:
     penLaser->Initialize(eLaunch);
   };
 
-  /*
   // ghostbuster source
   void GetGhostBusterSourcePlacement(CPlacement3D &plSource) {
     CalcWeaponPosition(
-      FLOAT3D(wpn_fFX[WEAPON_GHOSTBUSTER],wpn_fFY[WEAPON_GHOSTBUSTER], 0), 
+      // [Cecil] TODO: Restore ghostbuster
+      FLOAT3D(wpn_fFX[WEAPON_LASER], wpn_fFY[WEAPON_LASER], 0),
+      //FLOAT3D(wpn_fFX[WEAPON_GHOSTBUSTER],wpn_fFY[WEAPON_GHOSTBUSTER], 0), 
       plSource, TRUE);
   };
 
@@ -2360,7 +2352,6 @@ functions:
     // fire ray
     ((CGhostBusterRay&)*m_penGhostBusterRay).Fire(plRay);
   };
-  */
 
   // fire cannon ball
   void FireCannonBall(INDEX iPower)
