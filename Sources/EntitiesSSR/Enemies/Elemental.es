@@ -16,12 +16,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 322
 %{
 #include "StdH.h"
-//#include "Models/Enemies/Elementals/AirMan.h"
-//#include "Models/Enemies/Elementals/IceMan.h"
-#include "Models/Enemies/Elementals/StoneMan.h"
-//#include "Models/Enemies/Elementals/Twister.h"
-//#include "Models/Enemies/Elementals/WaterMan.h"
-//#include "Models/Enemies/Elementals/Projectile/IcePyramid.h"
 #include "Models/Enemies/Elementals/Projectile/LavaStone.h"
 
 #include "Models/Enemies/ElementalLava/ElementalLava.h"
@@ -49,15 +43,14 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 %}
 
 uses "Enemies/EnemyBase";
-//uses "Weapons/Twister";
-//uses "Weapons/Water";
 
 enum ElementalType {
-  0 ELT_AIR           "obsolete",        // air elemental
-  1 ELT_ICE           "obsolete",        // ice elemental
+  // [Cecil] Rev: Restored old types, removed ice, added omni
+  0 ELT_AIR           "Air",        // air elemental
   2 ELT_LAVA          "Lava",       // lava elemental
-  3 ELT_STONE         "obsolete",      // stone elemental
-  4 ELT_WATER         "obsolete",      // water elemental
+  3 ELT_STONE         "Earth",      // stone elemental
+  4 ELT_WATER         "Water",      // water elemental
+  5 ELT_OMNI          "Omni",
 };
 
 
@@ -80,104 +73,39 @@ enum ElementalState {
   ((ECBI_BRUSH|ECBI_MODEL|ECBI_CORPSE|ECBI_ITEM|ECBI_PROJECTILE_MAGIC|ECBI_PROJECTILE_SOLID)<<ECB_TEST) |\
   ((ECBI_MODEL|ECBI_CORPSE|ECBI_ITEM|ECBI_PROJECTILE_MAGIC|ECBI_PROJECTILE_SOLID)<<ECB_PASS) |\
   ((ECBI_MODEL)<<ECB_IS))
-// info structure
-// air
-static EntityInfo eiAirElementalSmall = {
-  EIBT_AIR, 50.0f,
-  0.0f, 1.7f, 0.0f,
-  0.0f, 1.0f, 0.0f,
-};
-static EntityInfo eiAirElementalBig = {
-  EIBT_AIR, 200.0f,
-  0.0f, 6.8f, 0.0f,
-  0.0f, 4.0f, 0.0f,
-};
-static EntityInfo eiAirElementalLarge = {
-  EIBT_AIR, 800.0f,
-  0.0f, 27.2f, 0.0f,
-  0.0f, 16.0f, 0.0f,
-};
 
-// ice
-static EntityInfo eiIceElementalSmall = {
-  EIBT_ICE, 400.0f,
-  0.0f, 1.7f, 0.0f,
-  0.0f, 1.0f, 0.0f,
-};
-static EntityInfo eiIceElementalBig = {
-  EIBT_ICE, 1600.0f,
-  0.0f, 6.8f, 0.0f,
-  0.0f, 4.0f, 0.0f,
-};
-static EntityInfo eiIceElementalLarge = {
-  EIBT_ICE, 6400.0f,
-  0.0f, 27.2f, 0.0f,
-  0.0f, 16.0f, 0.0f,
-};
-
-// lava
-static EntityInfo eiLavaElementalSmall = {
-  EIBT_FIRE, 2000.0f,
+// [Cecil] Rev: Same entity info for all types; body type is flesh
+static EntityInfo eiElementalSmall = {
+  EIBT_FLESH, 2000.0f,
   0.0f, 1.7f*LAVAMAN_SMALL_STRETCH, 0.0f,
   0.0f, LAVAMAN_SMALL_STRETCH, 0.0f,
 };
-static EntityInfo eiLavaElementalBig = {
-  EIBT_FIRE, 2800.0f,
+static EntityInfo eiElementalBig = {
+  EIBT_FLESH, 2800.0f,
   0.0f, 1.7f*LAVAMAN_BIG_STRETCH, 0.0f,
   0.0f, LAVAMAN_BIG_STRETCH, 0.0f,
 };
-static EntityInfo eiLavaElementalLarge = {
-  EIBT_FIRE, 11200.0f,
+static EntityInfo eiElementalLarge = {
+  EIBT_FLESH, 11200.0f,
   0.0f, 1.7f*LAVAMAN_LARGE_STRETCH, 0.0f,
   0.0f, LAVAMAN_LARGE_STRETCH, 0.0f,
 };
 
-// stone
-static EntityInfo eiStoneElementalSmall = {
-  EIBT_ROCK, 1000.0f,
-  0.0f, 1.7f, 0.0f,
-  0.0f, 1.0f, 0.0f,
-};
-static EntityInfo eiStoneElementalBig = {
-  EIBT_ROCK, 4000.0f,
-  0.0f, 6.8f, 0.0f,
-  0.0f, 4.0f, 0.0f,
-};
-static EntityInfo eiStoneElementalLarge = {
-  EIBT_ROCK, 16000.0f,
-  0.0f, 27.2f, 0.0f,
-  0.0f, 16.0f, 0.0f,
+// [Cecil] Rev: Unique projectiles for each elemental type
+static const ProjectileType _aSmallProjectiles[4] = {
+  PRT_AIRMAN_SMALL, PRT_LAVAMAN_STONE, PRT_EARTHMAN_STONE, PRT_WATERMAN_SMALL
 };
 
-// water
-static EntityInfo eiWaterElementalSmall = {
-  EIBT_WATER, 500.0f,
-  0.0f, 1.7f, 0.0f,
-  0.0f, 1.0f, 0.0f,
-};
-static EntityInfo eiWaterElementalBig = {
-  EIBT_WATER, 2000.0f,
-  0.0f, 6.8f, 0.0f,
-  0.0f, 4.0f, 0.0f,
-};
-static EntityInfo eiWaterElementalLarge = {
-  EIBT_WATER, 8000.0f,
-  0.0f, 27.2f, 0.0f,
-  0.0f, 16.0f, 0.0f,
+static const ProjectileType _aBigProjectiles[4] = {
+  PRT_AIRMAN_BIG, PRT_LAVAMAN_BOMB, PRT_EARTHMAN_BIG, PRT_WATERMAN_BIG
 };
 
+static const ProjectileType _aLargeProjectiles[4] = {
+  PRT_AIRMAN_LARGE, PRT_LAVAMAN_BIG_BOMB, PRT_EARTHMAN_BIG_BOMB, PRT_WATERMAN_LARGE
+};
 
 // obsolete
 #define EPF_BOX_PLANE_ELEMENTAL (EPF_ORIENTEDBYGRAVITY|EPF_MOVABLE)
-#define FIRE_ROCKS        FLOAT3D(-0.9f, 1.6f, -1.0f)
-#define FIRE_ROCKS_BIG    FLOAT3D(-3.6f, 6.4f, -4.0f)
-#define FIRE_ROCKS_LARGE  FLOAT3D(-14.4f, 25.6f, -16.0f)
-#define WATER_LEFT          FLOAT3D(-0.75f,  1.3f,  -1.2f)
-#define WATER_RIGHT         FLOAT3D( 0.75f,  1.3f,  -1.2f)
-#define WATER_BIG_LEFT      FLOAT3D(-3.0f,   5.2f,  -4.8f)
-#define WATER_BIG_RIGHT     FLOAT3D( 3.0f,   5.2f,  -4.8f)
-#define WATER_LARGE_LEFT    FLOAT3D(-12.0f, 20.8f, -19.2f)
-#define WATER_LARGE_RIGHT   FLOAT3D( 12.0f, 20.8f, -19.2f)
 
 %}
 
@@ -187,7 +115,7 @@ name      "Elemental";
 thumbnail "Thumbnails\\Elemental.tbn";
 
 properties:
-  1 enum ElementalType m_EetType          "Type" 'Y' = ELT_STONE,
+  1 enum ElementalType m_EetType          "Type" 'Y' = ELT_LAVA, // [Cecil] Rev: Lava by default
   2 enum ElementalCharacter m_EecChar     "Character" 'C' = ELC_SMALL,
   3 enum ElementalState m_EesStartState   "State" 'S' = ELS_NORMAL,
   4 BOOL m_bSpawnWhenHarmed               "Damage spawn" 'N' = TRUE,
@@ -219,67 +147,54 @@ properties:
  
 components:
   0 class   CLASS_BASE         "Classes\\EnemyBase.ecl",
-  1 class   CLASS_TWISTER      "Classes\\Twister.ecl",
-  2 class   CLASS_WATER        "Classes\\Water.ecl",
-  3 class   CLASS_PROJECTILE   "Classes\\Projectile.ecl",
-  4 class   CLASS_BLOOD_SPRAY  "Classes\\BloodSpray.ecl",
-  5 class   CLASS_BASIC_EFFECT "Classes\\BasicEffect.ecl",
+  1 class   CLASS_PROJECTILE   "Classes\\Projectile.ecl",
+  2 class   CLASS_BLOOD_SPRAY  "Classes\\BloodSpray.ecl",
+  3 class   CLASS_BASIC_EFFECT "Classes\\BasicEffect.ecl",
 
-/* // air
- 10 model   MODEL_AIR               "Models\\Enemies\\Elementals\\AirMan.mdl",
- 11 model   MODEL_AIR_TWISTER       "Models\\Enemies\\Elementals\\Twister.mdl",
- 12 texture TEXTURE_AIR             "Models\\Enemies\\Elementals\\AirMan01.tex",
+// [Cecil] Rev: Models for each type
+ 7 model MODEL_EARTH      "Models\\Enemies\\ElementalMan\\ElementalEarth.mdl",
+ 8 model MODEL_AIR        "Models\\Enemies\\ElementalMan\\ElementalAir.mdl",
+ 9 model MODEL_GENERIC    "Models\\Enemies\\ElementalMan\\ElementalMan.mdl",
+10 model MODEL_BODY_FLARE "Models\\Enemies\\ElementalMan\\BodyFlare.mdl",
+11 model MODEL_HAND_FLARE "Models\\Enemies\\ElementalMan\\HandFlare.mdl",
 
- // ice
- 20 model   MODEL_ICE               "Models\\Enemies\\Elementals\\IceMan.mdl",
- 21 model   MODEL_ICE_PICK          "Models\\Enemies\\Elementals\\IcePick.mdl",
- 22 texture TEXTURE_ICE             "Models\\Enemies\\Elementals\\IceMan01.tex",
-*/
- // lava
- 30 model   MODEL_LAVA              "Models\\Enemies\\ElementalLava\\ElementalLava.mdl",
- 31 model   MODEL_LAVA_BODY_FLARE   "Models\\Enemies\\ElementalLava\\BodyFlare.mdl",
- 32 model   MODEL_LAVA_HAND_FLARE   "Models\\Enemies\\ElementalLava\\HandFlare.mdl",
- 33 texture TEXTURE_LAVA            "Models\\Enemies\\ElementalLava\\Lava04Fx.tex",
- 34 texture TEXTURE_LAVA_DETAIL     "Models\\Enemies\\ElementalLava\\Detail.tex",
- 35 texture TEXTURE_LAVA_FLARE      "Models\\Enemies\\ElementalLava\\Flare.tex",
-/*
- // stone
- 40 model   MODEL_STONE             "Models\\Enemies\\Elementals\\StoneMan.mdl",
- 41 model   MODEL_STONE_MAUL        "Models\\Enemies\\Elementals\\Maul.mdl",
- 42 texture TEXTURE_STONE           "Models\\Enemies\\Elementals\\StoneMan01.tex",
+// [Cecil] Rev: 'ElementalLava' -> 'ElementalMan'
+12 sound SOUND_LAVA_IDLE     "Models\\Enemies\\ElementalMan\\Sounds\\Idle.wav",
+13 sound SOUND_LAVA_WOUND    "Models\\Enemies\\ElementalMan\\Sounds\\Wound.wav",
+14 sound SOUND_LAVA_FIRE     "Models\\Enemies\\ElementalMan\\Sounds\\Fire.wav",
+15 sound SOUND_LAVA_KICK     "Models\\Enemies\\ElementalMan\\Sounds\\Kick.wav",
+16 sound SOUND_LAVA_DEATH    "Models\\Enemies\\ElementalMan\\Sounds\\Death.wav",
+17 sound SOUND_LAVA_LAVABURN "Models\\Enemies\\ElementalMan\\Sounds\\LavaBurn.wav",
+18 sound SOUND_LAVA_ANGER    "Models\\Enemies\\ElementalMan\\Sounds\\Anger.wav",
+19 sound SOUND_LAVA_GROW     "Models\\Enemies\\ElementalMan\\Sounds\\Grow.wav",
 
- // water
- 50 model   MODEL_WATER             "Models\\Enemies\\Elementals\\WaterMan.mdl",
- 51 model   MODEL_WATER_BODY_FLARE  "Models\\Enemies\\Elementals\\WaterManFX\\BodyFlare.mdl",
- 52 texture TEXTURE_WATER           "Models\\Enemies\\Elementals\\WaterManFX.tex",
- 53 texture TEXTURE_WATER_FLARE     "Models\\Enemies\\Elementals\\WaterManFX\\BodyFlare.tex",
-*/
- // debris
-// 80 model   MODEL_ELEM_STONE            "Models\\Enemies\\Elementals\\Projectile\\Stone.mdl",
-// 82 model   MODEL_ELEM_LAVASTONE        "Models\\Enemies\\ElementalLava\\Projectile\\LavaStone.mdl",
-// 83 model   MODEL_ELEM_LAVASTONE_FLARE  "Models\\Enemies\\ElementalLava\\Projectile\\LavaStoneFlare.mdl",
-// 84 model   MODEL_ELEM_ICE              "Models\\Enemies\\Elementals\\Projectile\\IcePyramid.mdl",
-// 85 model   MODEL_ELEM_ICE_FLARE        "Models\\Enemies\\Elementals\\Projectile\\IcePyramidFlare.mdl",
+// [Cecil] Rev: Textures for each type
+20 texture TEXTURE_AIR_MAN      "Models\\Enemies\\ElementalMan\\AirMan.tex",
+22 texture TEXTURE_AIR_DETAIL   "Models\\Enemies\\ElementalMan\\AirDetail.tex",
+23 texture TEXTURE_AIR_FLARE    "Models\\Enemies\\ElementalMan\\AirFlare.tex",
+30 texture TEXTURE_LAVA_MAN     "Models\\Enemies\\ElementalMan\\LavaMan.tex",
+31 texture TEXTURE_LAVA_DETAIL  "Models\\Enemies\\ElementalMan\\LavaDetail.tex",
+32 texture TEXTURE_LAVA_FLARE   "Models\\Enemies\\ElementalMan\\LavaFlare.tex",
+40 texture TEXTURE_EARTH_MAN    "Models\\Enemies\\ElementalMan\\EarthMan.tex",
+42 texture TEXTURE_EARTH_DETAIL "Models\\Enemies\\ElementalMan\\EarthDetail.tex",
+50 texture TEXTURE_WATER_MAN    "Models\\Enemies\\ElementalMan\\WaterMan.tex",
+51 texture TEXTURE_WATER_FLARE  "Models\\Enemies\\ElementalMan\\WaterFlare.tex",
+52 texture TEXTURE_WATER_DETAIL "Models\\Enemies\\ElementalMan\\WaterDetail.tex",
 
-// 90 texture TEXTURE_ELEM_STONE          "Models\\Enemies\\Elementals\\Projectile\\Stone.tex",
-// 92 texture TEXTURE_ELEM_LAVASTONE      "Models\\Enemies\\ElementalLava\\Projectile\\LavaStone.tex",
-// 93 texture TEXTURE_ELEM_ICE            "Models\\Enemies\\Elementals\\Projectile\\IcePyramid.tex",
-// 94 texture TEXTURE_ELEM_FLARE          "Textures\\Effects\\Flares\\03\\Flaire06.tex",
-
-// ************** SPECULAR **************
-//210 texture TEX_SPEC_WEAK           "Models\\SpecularTextures\\Weak.tex",
-//211 texture TEX_SPEC_MEDIUM         "Models\\SpecularTextures\\Medium.tex",
-//212 texture TEX_SPEC_STRONG         "Models\\SpecularTextures\\Strong.tex",
-
-// ************** SOUNDS **************
-250 sound   SOUND_LAVA_IDLE      "Models\\Enemies\\ElementalLava\\Sounds\\Idle.wav",
-252 sound   SOUND_LAVA_WOUND     "Models\\Enemies\\ElementalLava\\Sounds\\Wound.wav",
-253 sound   SOUND_LAVA_FIRE      "Models\\Enemies\\ElementalLava\\Sounds\\Fire.wav",
-254 sound   SOUND_LAVA_KICK      "Models\\Enemies\\ElementalLava\\Sounds\\Kick.wav",
-255 sound   SOUND_LAVA_DEATH     "Models\\Enemies\\ElementalLava\\Sounds\\Death.wav",
-220 sound   SOUND_LAVA_LAVABURN  "Models\\Enemies\\ElementalLava\\Sounds\\LavaBurn.wav",
-221 sound   SOUND_LAVA_ANGER     "Models\\Enemies\\ElementalLava\\Sounds\\Anger.wav",
-222 sound   SOUND_LAVA_GROW      "ModelsMP\\Enemies\\ElementalLava\\Sounds\\Grow.wav",
+// [Cecil] Rev: Omni type
+60 texture TEXTURE_OMNI_MAN      "Models\\Enemies\\ElementalMan\\OmniMan.tex",
+61 texture TEXTURE_OMNI_DETAIL   "Models\\Enemies\\ElementalMan\\OmniDetail.tex",
+62 model   MODEL_OMNI_SHOULDER1  "Models\\Enemies\\ElementalMan\\Attach\\Pleche1.mdl",
+63 model   MODEL_OMNI_SHOULDER2  "Models\\Enemies\\ElementalMan\\Attach\\Pleche2.mdl",
+64 model   MODEL_OMNI_ARM1       "Models\\Enemies\\ElementalMan\\Attach\\Ruka1.mdl",
+65 model   MODEL_OMNI_ARM2       "Models\\Enemies\\ElementalMan\\Attach\\Ruka2.mdl",
+66 model   MODEL_OMNI_BACK       "Models\\Enemies\\ElementalMan\\Attach\\Spina.mdl",
+67 model   MODEL_OMNI_BODY       "Models\\Enemies\\ElementalMan\\Attach\\Telo.mdl",
+68 texture TEXTURE_OMNI_CHEST    "Models\\Enemies\\ElementalMan\\Attach\\Nagrrudnik.tex",
+69 texture TEXTURE_OMNI_SHOULDER "Models\\Enemies\\ElementalMan\\Attach\\Pleche.tex",
+70 texture TEXTURE_OMNI_ARM      "Models\\Enemies\\ElementalMan\\Attach\\Ruka.tex",
+71 texture TEXTURE_OMNI_BACK     "Models\\Enemies\\ElementalMan\\Attach\\Spina.tex",
+72 model   MODEL_OMNI            "Models\\Enemies\\ElementalMan\\ElementalCK.mdl",
 
 functions:
   // describe how this enemy killed player
@@ -290,8 +205,21 @@ functions:
     return str;
   }
   virtual const CTFileName &GetComputerMessageName(void) const {
-    static DECLARE_CTFILENAME(fnm, "Data\\Messages\\Enemies\\ElementalLava.txt");
-    return fnm;
+    // [Cecil] Rev: Message per type
+    static DECLARE_CTFILENAME(fnmAir,   "Data\\Messages\\Enemies\\ElementalManAir.txt");
+    static DECLARE_CTFILENAME(fnmLava,  "Data\\Messages\\Enemies\\ElementalManLava.txt");
+    static DECLARE_CTFILENAME(fnmStone, "Data\\Messages\\Enemies\\ElementalManEarth.txt");
+    static DECLARE_CTFILENAME(fnmWater, "Data\\Messages\\Enemies\\ElementalManWater.txt");
+    static DECLARE_CTFILENAME(fnmOmni,  "Data\\Messages\\Enemies\\ElementalManOmni.txt");
+
+    switch (m_EetType) {
+      case ELT_AIR: return fnmAir;
+      default: ASSERT(FALSE);
+      case ELT_LAVA: return fnmLava;
+      case ELT_STONE: return fnmStone;
+      case ELT_WATER: return fnmWater;
+      case ELT_OMNI: return fnmOmni;
+    }
   };
 
   // render burning particles
@@ -306,7 +234,11 @@ functions:
       {
         fDeathFactor=1.0f-Clamp((_pTimer->CurrentTick()-m_fSpiritStartTime)/DEATH_BURN_TIME, 0.0f, 1.0f);
       }
-      Particles_Burning(this, fPower, fTimeFactor*fDeathFactor);
+
+      // [Cecil] Rev: Only lava ones burn naturally
+      if (m_EetType == ELT_LAVA) {
+        Particles_Burning(this, fPower, fTimeFactor * fDeathFactor);
+      }
     }
   }
 
@@ -314,80 +246,76 @@ functions:
   {
     CEnemyBase::Precache();
 
-    switch(m_EetType)
-    {
-    case ELT_LAVA:
-      {
-        if( m_EecChar == ELC_LARGE)
-        {
-          PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_BIG_BOMB);
-        }
-        if( (m_EecChar == ELC_LARGE) || (m_EecChar == ELC_BIG) )
-        {
-          PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_BOMB);
-        }
-
-        PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_STONE);
-
-        PrecacheModel  (MODEL_LAVA            );
-        PrecacheModel  (MODEL_LAVA_BODY_FLARE );
-        PrecacheModel  (MODEL_LAVA_HAND_FLARE );
-        PrecacheTexture(TEXTURE_LAVA          );
-        PrecacheTexture(TEXTURE_LAVA_DETAIL   );
-        PrecacheTexture(TEXTURE_LAVA_FLARE    );
-
-        PrecacheSound(SOUND_LAVA_IDLE    );
-        PrecacheSound(SOUND_LAVA_WOUND   );
-        PrecacheSound(SOUND_LAVA_FIRE    );
-        PrecacheSound(SOUND_LAVA_KICK    );
-        PrecacheSound(SOUND_LAVA_DEATH   );
-        PrecacheSound(SOUND_LAVA_ANGER   );
-        PrecacheSound(SOUND_LAVA_LAVABURN);
-        PrecacheSound(SOUND_LAVA_GROW    );
-        break;
-      }
+    // [Cecil] Rev: Precache all projectiles per character and all models
+    if (m_EecChar == ELC_LARGE) {
+      PrecacheClass(CLASS_PROJECTILE, PRT_AIRMAN_LARGE);
+      PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_BIG_BOMB);
+      PrecacheClass(CLASS_PROJECTILE, PRT_EARTHMAN_BIG_BOMB);
+      PrecacheClass(CLASS_PROJECTILE, PRT_WATERMAN_LARGE);
     }
+
+    if (m_EecChar == ELC_LARGE || m_EecChar == ELC_BIG) {
+      PrecacheClass(CLASS_PROJECTILE, PRT_AIRMAN_BIG);
+      PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_BOMB);
+      PrecacheClass(CLASS_PROJECTILE, PRT_EARTHMAN_BIG);
+      PrecacheClass(CLASS_PROJECTILE, PRT_WATERMAN_BIG);
+    }
+
+    PrecacheClass(CLASS_PROJECTILE, PRT_AIRMAN_SMALL);
+    PrecacheClass(CLASS_PROJECTILE, PRT_LAVAMAN_STONE);
+    PrecacheClass(CLASS_PROJECTILE, PRT_EARTHMAN_STONE);
+    PrecacheClass(CLASS_PROJECTILE, PRT_WATERMAN_SMALL);
+
+    PrecacheModel(MODEL_EARTH);
+    PrecacheModel(MODEL_AIR);
+    PrecacheModel(MODEL_GENERIC);
+    PrecacheModel(MODEL_BODY_FLARE);
+    PrecacheModel(MODEL_HAND_FLARE);
+
+    PrecacheTexture(TEXTURE_AIR_MAN);
+    PrecacheTexture(TEXTURE_AIR_DETAIL);
+    PrecacheTexture(TEXTURE_AIR_FLARE);
+    PrecacheTexture(TEXTURE_LAVA_MAN);
+    PrecacheTexture(TEXTURE_LAVA_DETAIL);
+    PrecacheTexture(TEXTURE_LAVA_FLARE);
+    PrecacheTexture(TEXTURE_EARTH_MAN);
+    PrecacheTexture(TEXTURE_EARTH_DETAIL);
+    PrecacheTexture(TEXTURE_WATER_MAN);
+    PrecacheTexture(TEXTURE_WATER_FLARE);
+    PrecacheTexture(TEXTURE_WATER_DETAIL);
+
+    PrecacheTexture(TEXTURE_OMNI_MAN);
+    PrecacheTexture(TEXTURE_OMNI_DETAIL);
+    PrecacheModel(MODEL_OMNI_SHOULDER1);
+    PrecacheModel(MODEL_OMNI_SHOULDER2);
+    PrecacheModel(MODEL_OMNI_ARM1);
+    PrecacheModel(MODEL_OMNI_ARM2);
+    PrecacheModel(MODEL_OMNI_BACK);
+    PrecacheModel(MODEL_OMNI_BODY);
+    PrecacheTexture(TEXTURE_OMNI_CHEST);
+    PrecacheTexture(TEXTURE_OMNI_SHOULDER);
+    PrecacheTexture(TEXTURE_OMNI_ARM);
+    PrecacheTexture(TEXTURE_OMNI_BACK);
+    PrecacheModel(MODEL_OMNI);
+
+    PrecacheSound(SOUND_LAVA_IDLE);
+    PrecacheSound(SOUND_LAVA_WOUND);
+    PrecacheSound(SOUND_LAVA_FIRE);
+    PrecacheSound(SOUND_LAVA_KICK);
+    PrecacheSound(SOUND_LAVA_DEATH);
+    PrecacheSound(SOUND_LAVA_ANGER);
+    PrecacheSound(SOUND_LAVA_LAVABURN);
+    PrecacheSound(SOUND_LAVA_GROW);
   };
 
   /* Entity info */
   void *GetEntityInfo(void) {
-    switch (m_EetType) {
-      case ELT_AIR:
-        switch(m_EecChar) {
-          case ELC_LARGE: return &eiAirElementalLarge;
-          case ELC_BIG: return &eiAirElementalBig;
-          default: { return &eiAirElementalSmall; }
-        }
-        break;
-      case ELT_ICE:
-        switch(m_EecChar) {
-          case ELC_LARGE: return &eiIceElementalLarge;
-          case ELC_BIG: return &eiIceElementalBig;
-          default: { return &eiIceElementalSmall; }
-        }
-        break;
-      case ELT_LAVA:
-        switch(m_EecChar) {
-          case ELC_LARGE: return &eiLavaElementalLarge;
-          case ELC_BIG: return &eiLavaElementalBig;
-          default: { return &eiLavaElementalSmall; }
-        }
-        break;
-      case ELT_STONE:
-        switch(m_EecChar) {
-          case ELC_LARGE: return &eiStoneElementalLarge;
-          case ELC_BIG: return &eiStoneElementalBig;
-          default: { return &eiStoneElementalSmall; }
-        }
-        break;
-      //case ELT_WATER:
-      default: {
-        switch(m_EecChar) {
-          case ELC_LARGE: return &eiWaterElementalLarge;
-          case ELC_BIG: return &eiWaterElementalBig;
-          default: { return &eiWaterElementalSmall; }
-      }}
+    // [Cecil] Rev: Same entity info for all types
+    switch(m_EecChar) {
+      case ELC_LARGE: return &eiElementalLarge;
+      case ELC_BIG:   return &eiElementalBig;
     }
+    return &eiElementalSmall;
   };
 
   /* Fill in entity statistics - for AI purposes only */
@@ -399,7 +327,7 @@ functions:
     case ELT_AIR   : { pes->es_strName+=" Air"; } break;
     case ELT_STONE : { pes->es_strName+=" Stone"; } break;
     case ELT_LAVA  : { pes->es_strName+=" Lava"; } break;
-    case ELT_ICE   : { pes->es_strName+=" Ice"; } break;
+    case ELT_OMNI  : { pes->es_strName+=" Omni"; } break; // [Cecil] Rev
     }
     switch(m_EecChar) {
     case ELC_LARGE: pes->es_strName+=" Large"; break;
@@ -413,6 +341,21 @@ functions:
   void ReceiveDamage(CEntity *penInflictor, enum DamageType dmtType,
     FLOAT fDamageAmmount, const FLOAT3D &vHitPoint, const FLOAT3D &vDirection) 
   {
+    // [Cecil] Rev: Take half of the close range damage
+    if (dmtType == DMT_CLOSERANGE) {
+      fDamageAmmount *= 0.5f;
+
+    } else if (dmtType == DMT_REV_FLAMER) {
+      // [Cecil] Rev: Take no flamethrower damage as Lava elemental
+      if (m_EetType == ELT_LAVA) {
+        fDamageAmmount = 0.0f;
+
+      // [Cecil] Rev: Take half of the flamethrower damage as Water elemental
+      } else if (m_EetType == ELT_WATER) {
+        fDamageAmmount *= 0.5f;
+      }
+    }
+
     // elemental can't harm elemental
     if( IsOfClass(penInflictor, "Elemental")) {
       return;
@@ -424,12 +367,17 @@ functions:
       return;
     }
 
+    // [Cecil] Rev: For any bullet damage
     // elementals take less damage from heavy bullets (e.g. sniper)
-    if( m_EecChar==ELC_BIG && dmtType==DMT_BULLET && fDamageAmmount>100.0f)
+    if (m_EecChar == ELC_BIG && IsBulletType(dmtType) && fDamageAmmount > 100.0f)
     {
       fDamageAmmount/=2.5f;
     }
 
+    // [Cecil] Rev: Air elementals ignore close range and bullet damage
+    if (m_EetType == ELT_AIR && (dmtType == DMT_CLOSERANGE || IsBulletType(dmtType))) {
+      return;
+    }
 
     INDEX ctShouldSpawn = Clamp( INDEX((m_fMaxHealth-GetHealth())/m_fSpawnDamage), INDEX(0), INDEX(10));
     CTString strChar = ElementalCharacter_enum.NameForValue(INDEX(m_EecChar));
@@ -462,19 +410,12 @@ functions:
   INDEX AnimForDamage(FLOAT fDamage) {
     INDEX iAnim;
 
-    if (m_EetType == ELT_LAVA) {
-      switch (IRnd()%3) {
-        case 0: iAnim = ELEMENTALLAVA_ANIM_WOUND01; break;
-        case 1: iAnim = ELEMENTALLAVA_ANIM_WOUND02; break;
-        default: iAnim = ELEMENTALLAVA_ANIM_WOUND03; break;
-      }
-    } else {
-/*      switch (IRnd()%3) {
-        case 0: iAnim = STONEMAN_ANIM_WOUND01; break;
-        case 1: iAnim = STONEMAN_ANIM_WOUND02; break;
-        default: iAnim = STONEMAN_ANIM_WOUND03; break;
-      }*/
+    switch (IRnd() % 3) {
+      case 0:  iAnim = ELEMENTALLAVA_ANIM_WOUND01; break;
+      case 1:  iAnim = ELEMENTALLAVA_ANIM_WOUND02; break;
+      default: iAnim = ELEMENTALLAVA_ANIM_WOUND03; break;
     }
+
     StartModelAnim(iAnim, 0);
     return iAnim;
   };
@@ -485,61 +426,35 @@ functions:
 
   // virtual anim functions
   void StandingAnim(void) {
-    if (m_EetType == ELT_LAVA) {
-      switch (m_EesCurrentState) {
-        case ELS_NORMAL: StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_LOOPING|AOF_NORESTART); break;
-        case ELS_BOX: StartModelAnim(ELEMENTALLAVA_ANIM_MELTFLY, AOF_LOOPING|AOF_NORESTART); break;
-        //case ELS_PLANE:
-        default: StartModelAnim(ELEMENTALLAVA_ANIM_STANDPLANE, AOF_LOOPING|AOF_NORESTART); break;
-      }
-    } else {
-/*      switch (m_EesCurrentState) {
-        case ELS_NORMAL: StartModelAnim(STONEMAN_ANIM_STAND, AOF_LOOPING|AOF_NORESTART); break;
-        case ELS_BOX: StartModelAnim(STONEMAN_ANIM_STANDBOX, AOF_LOOPING|AOF_NORESTART); break;
-        //case ELS_PLANE:
-        default: StartModelAnim(STONEMAN_ANIM_STANDPLANE, AOF_LOOPING|AOF_NORESTART); break;
-      }*/
+    switch (m_EesCurrentState) {
+      case ELS_NORMAL: StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_LOOPING|AOF_NORESTART); break;
+      case ELS_BOX: StartModelAnim(ELEMENTALLAVA_ANIM_MELTFLY, AOF_LOOPING|AOF_NORESTART); break;
+      //case ELS_PLANE:
+      default: StartModelAnim(ELEMENTALLAVA_ANIM_STANDPLANE, AOF_LOOPING|AOF_NORESTART); break;
     }
   };
 
   void WalkingAnim(void)
   {
-    if (m_EetType == ELT_LAVA) {
-      if (m_EecChar==ELC_LARGE) {
-        StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_LOOPING|AOF_NORESTART);
-      } else if (m_EecChar==ELC_BIG) {
-        StartModelAnim(ELEMENTALLAVA_ANIM_RUNMEDIUM, AOF_LOOPING|AOF_NORESTART);
-      } else {
-        StartModelAnim(ELEMENTALLAVA_ANIM_RUNSMALL, AOF_LOOPING|AOF_NORESTART);
-      }
+    if (m_EecChar == ELC_LARGE) {
+      StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_LOOPING|AOF_NORESTART);
+    } else if (m_EecChar == ELC_BIG) {
+      StartModelAnim(ELEMENTALLAVA_ANIM_RUNMEDIUM, AOF_LOOPING|AOF_NORESTART);
     } else {
-//      StartModelAnim(STONEMAN_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
-    }
-  };
-  void RunningAnim(void)
-  {
-    if (m_EetType == ELT_LAVA) {
-      WalkingAnim();
-    } else {
-//      StartModelAnim(STONEMAN_ANIM_RUN, AOF_LOOPING|AOF_NORESTART);
-    }
-  };
-  void RotatingAnim(void) {
-    if (m_EetType == ELT_LAVA) {
-      WalkingAnim();
-    } else {
-//      StartModelAnim(STONEMAN_ANIM_WALK, AOF_LOOPING|AOF_NORESTART);
+      StartModelAnim(ELEMENTALLAVA_ANIM_RUNSMALL, AOF_LOOPING|AOF_NORESTART);
     }
   };
 
-  INDEX AnimForDeath(void)
-  {
-    INDEX iAnim;
-    if (m_EetType == ELT_LAVA) {
-      iAnim = ELEMENTALLAVA_ANIM_DEATH03;
-    } else {
-//      iAnim = STONEMAN_ANIM_DEATH03;
-    }
+  void RunningAnim(void) {
+    WalkingAnim();
+  };
+
+  void RotatingAnim(void) {
+    WalkingAnim();
+  };
+
+  INDEX AnimForDeath(void) {
+    INDEX iAnim = ELEMENTALLAVA_ANIM_DEATH03;
     StartModelAnim(iAnim, 0);
     return iAnim;
   };
@@ -589,7 +504,19 @@ functions:
 
     // create entity
     CEntityPointer pen = GetWorld()->CreateEntity(pl, GetClass());
-    ((CElemental&)*pen).m_EetType = m_EetType;
+
+    // [Cecil] Rev: Omni spawns random types
+    if (m_EetType == ELT_OMNI) {
+      switch (IRnd() % 4) {
+        case 0: ((CElemental&)*pen).m_EetType = ELT_AIR; break;
+        case 1: ((CElemental&)*pen).m_EetType = ELT_LAVA; break;
+        case 2: ((CElemental&)*pen).m_EetType = ELT_STONE; break;
+        case 3: ((CElemental&)*pen).m_EetType = ELT_WATER; break;
+      }
+    } else {
+      ((CElemental&)*pen).m_EetType = m_EetType;
+    }
+
     // elemental size
     if (m_EecChar==ELC_LARGE) {
       ((CElemental&)*pen).m_EecChar = ELC_BIG;
@@ -618,7 +545,16 @@ functions:
     ESpawnSpray eSpawnSpray;
     eSpawnSpray.fDamagePower = 4.0f;
     eSpawnSpray.fSizeMultiplier = 0.5f;
-    eSpawnSpray.sptType = SPT_LAVA_STONES;
+
+    // [Cecil] Rev: Set spray particles per type
+    switch (m_EetType) {
+      case ELT_AIR:   eSpawnSpray.sptType = SPT_AIRSPOUTS; break;
+      case ELT_LAVA:  eSpawnSpray.sptType = SPT_LAVA_STONES; break;
+      case ELT_STONE: eSpawnSpray.sptType = SPT_STONES; break;
+      case ELT_WATER: eSpawnSpray.sptType = SPT_SMALLPLASMA; break;
+      case ELT_OMNI:  eSpawnSpray.sptType = SPT_ELECTRICITY_SPARKS_NO_BLOOD; break;
+    }
+
     eSpawnSpray.vDirection = FLOAT3D(0,-0.5f,0);
     eSpawnSpray.colBurnColor=C_WHITE|CT_OPAQUE;
     eSpawnSpray.penOwner = pen;
@@ -628,6 +564,10 @@ functions:
 
   // throw rocks
   void ThrowRocks(ProjectileType EptProjectile) {
+    #define FIRE_ROCKS        FLOAT3D(-0.9f, 1.6f, -1.0f)
+    #define FIRE_ROCKS_BIG    FLOAT3D(-3.6f, 6.4f, -4.0f)
+    #define FIRE_ROCKS_LARGE  FLOAT3D(-14.4f, 25.6f, -16.0f)
+
     // projectile type and position
     FLOAT3D vPos;
     ANGLE3D aAngle;
@@ -660,21 +600,72 @@ functions:
     }
   };
 
-  void BossFirePredictedLavaRock(FLOAT3D vFireingRel)
+  // [Cecil] Rev: Modified to work with both Big and Large characters to eliminate code duplication
+  void BossFirePredictedLavaRock(FLOAT3D vFireingRel, BOOL bLarge)
   {
-    FLOAT3D vShooting = GetPlacement().pl_PositionVector+vFireingRel*GetRotationMatrix();
     FLOAT3D vTarget = m_penEnemy->GetPlacement().pl_PositionVector;
     FLOAT3D vSpeedDest = ((CMovableEntity&) *m_penEnemy).en_vCurrentTranslationAbsolute;
     FLOAT fLaunchSpeed;
     FLOAT fRelativeHdg;
-  
-    FLOAT fDistanceFactor = ClampUp( (vShooting-vTarget).Length()/150.0f, 1.0f)-0.75f;
-    FLOAT fPitch = fDistanceFactor*45.0f;
-  
+
+    // [Cecil] For Big characters
+    FLOAT3D vShooting = GetPlacement().pl_PositionVector;
+    FLOAT fPitch = 20.0f;
+
+    // [Cecil] For Large characters
+    if (bLarge) {
+      vShooting += vFireingRel * GetRotationMatrix();
+
+      FLOAT fDistanceFactor = ClampUp((vShooting - vTarget).Length() / 150.0f, 1.0f) - 0.75f;
+      fPitch = fDistanceFactor * 45.0f;
+    }
+
     // calculate parameters for predicted angular launch curve
     EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
-    CalculateAngularLaunchParams( vShooting, peiTarget->vTargetCenter[1]-6.0f/3.0f, vTarget, 
-      vSpeedDest, fPitch, fLaunchSpeed, fRelativeHdg);
+
+    // [Cecil] Projectile to launch
+    ProjectileType eProjectile = PRT_LAVAMAN_BOMB;
+    
+    // [Cecil] For Large characters
+    if (bLarge) {
+      CalculateAngularLaunchParams(vShooting, peiTarget->vTargetCenter[1] - 6.0f / 3.0f, vTarget, 
+        vSpeedDest, fPitch, fLaunchSpeed, fRelativeHdg);
+
+      // [Cecil] Rev: Custom projectile
+      if (m_bUseCustomWeaponProjectile) {
+        eProjectile = m_eCustomWeaponProjectile;
+
+      // [Cecil] Rev: Select projectile based on type
+      } else {
+        switch (m_EetType) {
+          case ELT_AIR:   eProjectile = _aLargeProjectiles[0]; break;
+          case ELT_LAVA:  eProjectile = _aLargeProjectiles[1]; break;
+          case ELT_STONE: eProjectile = _aLargeProjectiles[2]; break;
+          case ELT_WATER: eProjectile = _aLargeProjectiles[3]; break;
+          case ELT_OMNI:  eProjectile = _aLargeProjectiles[IRnd() % 4]; break; // Random
+        }
+      }
+
+    // [Cecil] For Big characters
+    } else {
+      CalculateAngularLaunchParams(vShooting, vFireingRel(2) - peiTarget->vTargetCenter[1] - 1.5f / 3.0f, vTarget,
+        vSpeedDest, fPitch, fLaunchSpeed, fRelativeHdg);
+
+      // [Cecil] Rev: Custom projectile
+      if (m_bUseCustomWeaponProjectile) {
+        eProjectile = m_eCustomWeaponProjectile;
+
+      // [Cecil] Rev: Select projectile based on type
+      } else {
+        switch (m_EetType) {
+          case ELT_AIR:   eProjectile = _aBigProjectiles[0]; break;
+          case ELT_LAVA:  eProjectile = _aBigProjectiles[1]; break;
+          case ELT_STONE: eProjectile = _aBigProjectiles[2]; break;
+          case ELT_WATER: eProjectile = _aBigProjectiles[3]; break;
+          case ELT_OMNI:  eProjectile = _aBigProjectiles[IRnd() % 4]; break; // Random
+        }
+      }
+    }
 
     // target enemy body
     FLOAT3D vShootTarget;
@@ -685,7 +676,7 @@ functions:
     CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
     ELaunchProjectile eLaunch;
     eLaunch.penLauncher = this;
-    eLaunch.prtType = PRT_LAVAMAN_BIG_BOMB;
+    eLaunch.prtType = eProjectile;
     eLaunch.fSpeed = fLaunchSpeed;
     penProjectile->Initialize(eLaunch);
   }
@@ -752,192 +743,111 @@ functions:
     }
   };
 
-  // fire water
-/*  void FireWater(void) {
-    // target enemy body
-    EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
-    FLOAT3D vShootTarget;
-    GetEntityInfoPosition(m_penEnemy, peiTarget->vTargetCenter, vShootTarget);
-
-    // water projectile
-    CPlacement3D pl;
-    EWater ew;
-    ew.penLauncher = this;
-    if (m_EecChar==ELC_LARGE) {
-      ew.EwsSize = WTS_LARGE;
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_LARGE_LEFT, ANGLE3D(0, 0, 0));
-      CEntityPointer penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_LARGE_RIGHT, ANGLE3D(0, 0, 0));
-      penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-    } else if (m_EecChar==ELC_BIG) {
-      ew.EwsSize = WTS_BIG;
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_BIG_LEFT, ANGLE3D(0, 0, 0));
-      CEntityPointer penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_BIG_RIGHT, ANGLE3D(0, 0, 0));
-      penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-    } else {
-      ew.EwsSize = WTS_SMALL;
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_LEFT, ANGLE3D(0, 0, 0));
-      CEntityPointer penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-      // launch
-      PreparePropelledProjectile(pl, vShootTarget, WATER_RIGHT, ANGLE3D(0, 0, 0));
-      penWater = CreateEntity(pl, CLASS_WATER);
-      penWater->Initialize(ew);
-    }
-  };
-*/
-
   // add attachments
   void AddAttachments(void) {
     switch (m_EetType) {
-/*      case ELT_AIR:
-        if (GetModelObject()->GetAttachmentModel(AIRMAN_ATTACHMENT_TWISTER)==NULL) {
-          AddAttachmentToModel(this, *GetModelObject(), AIRMAN_ATTACHMENT_TWISTER,
-            MODEL_AIR_TWISTER, TEXTURE_AIR, 0, 0, 0);
-          GetModelObject()->mo_ColorMask &= ~AIRMAN_PART_BODYDOWN;
+      case ELT_AIR: {
+        if (GetModelObject()->GetAttachmentModel(ELEMENTALLAVA_ATTACHMENT_BODY_FLARE) == NULL) {
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE,       MODEL_BODY_FLARE, TEXTURE_AIR_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE, MODEL_HAND_FLARE, TEXTURE_AIR_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE,  MODEL_HAND_FLARE, TEXTURE_AIR_FLARE, 0, 0, 0);
         }
-        break;
-      case ELT_ICE:
-        if (GetModelObject()->GetAttachmentModel(ICEMAN_ATTACHMENT_ICEPICK)==NULL) {
-          AddAttachmentToModel(this, *GetModelObject(), ICEMAN_ATTACHMENT_ICEPICK,
-            MODEL_ICE_PICK, TEXTURE_ICE, TEXTURE_ICE, TEX_SPEC_STRONG, 0);
+      } break;
+
+      case ELT_LAVA: {
+        if (GetModelObject()->GetAttachmentModel(ELEMENTALLAVA_ATTACHMENT_BODY_FLARE) == NULL) {
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE,       MODEL_BODY_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE, MODEL_HAND_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE,  MODEL_HAND_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
         }
-        break;*/
-      case ELT_LAVA:
-        if (GetModelObject()->GetAttachmentModel(ELEMENTALLAVA_ATTACHMENT_BODY_FLARE)==NULL) {
-          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE, MODEL_LAVA_BODY_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
-          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE, MODEL_LAVA_HAND_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
-          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE, MODEL_LAVA_HAND_FLARE, TEXTURE_LAVA_FLARE, 0, 0, 0);
+      } break;
+
+      case ELT_WATER: {
+        if (GetModelObject()->GetAttachmentModel(ELEMENTALLAVA_ATTACHMENT_BODY_FLARE) == NULL) {
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE,       MODEL_BODY_FLARE, TEXTURE_WATER_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE, MODEL_HAND_FLARE, TEXTURE_WATER_FLARE, 0, 0, 0);
+          AddAttachmentToModel(this, *GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE,  MODEL_HAND_FLARE, TEXTURE_WATER_FLARE, 0, 0, 0);
         }
-        break;
-/*      case ELT_STONE:
-        if (GetModelObject()->GetAttachmentModel(STONEMAN_ATTACHMENT_MAUL)==NULL) {
-          AddAttachmentToModel(this, *GetModelObject(), STONEMAN_ATTACHMENT_MAUL,
-            MODEL_STONE_MAUL, TEXTURE_STONE, 0, 0, 0);
-        }
-        break;
-      case ELT_WATER:
-        if (GetModelObject()->GetAttachmentModel(WATERMAN_ATTACHMENT_BODY_FLARE)==NULL) {
-          AddAttachmentToModel(this, *GetModelObject(), WATERMAN_ATTACHMENT_BODY_FLARE,
-            MODEL_WATER_BODY_FLARE, TEXTURE_WATER_FLARE, 0, 0, 0);
-        }
-        break;*/
+      } break;
+
+      case ELT_OMNI: {
+        AddAttachmentToModel(this, *GetModelObject(), 0, MODEL_OMNI_BACK,      TEXTURE_OMNI_BACK, 0, 0, 0);
+        AddAttachmentToModel(this, *GetModelObject(), 1, MODEL_OMNI_SHOULDER1, TEXTURE_OMNI_SHOULDER, 0, 0, 0);
+        AddAttachmentToModel(this, *GetModelObject(), 2, MODEL_OMNI_SHOULDER2, TEXTURE_OMNI_SHOULDER, 0, 0, 0);
+        AddAttachmentToModel(this, *GetModelObject(), 3, MODEL_OMNI_BODY,      TEXTURE_OMNI_CHEST, 0, 0, 0);
+        AddAttachmentToModel(this, *GetModelObject(), 4, MODEL_OMNI_ARM1,      TEXTURE_OMNI_ARM, 0, 0, 0);
+        AddAttachmentToModel(this, *GetModelObject(), 5, MODEL_OMNI_ARM2,      TEXTURE_OMNI_ARM, 0, 0, 0);
+      } break;
     }
+
     GetModelObject()->StretchModel(GetModelObject()->mo_Stretch);
     ModelChangeNotify();
   };
 
   // remove attachments
   void RemoveAttachments(void) {
-    switch (m_EetType) {
-/*      case ELT_AIR:
-        RemoveAttachmentFromModel(*GetModelObject(), AIRMAN_ATTACHMENT_TWISTER);
-        GetModelObject()->mo_ColorMask |= AIRMAN_PART_BODYDOWN;
-        break;
-      case ELT_ICE:
-        RemoveAttachmentFromModel(*GetModelObject(), ICEMAN_ATTACHMENT_ICEPICK);
-        break;*/
-      case ELT_LAVA:
-        RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE);
-        RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE);
-        RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE);
-        break;
-/*      case ELT_STONE:
-        RemoveAttachmentFromModel(*GetModelObject(), STONEMAN_ATTACHMENT_MAUL);
-        break;
-      case ELT_WATER:
-        RemoveAttachmentFromModel(*GetModelObject(), WATERMAN_ATTACHMENT_BODY_FLARE);
-        break;*/
+    // [Cecil] Rev: Remove flares for everyone
+    RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_BODY_FLARE);
+    RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_RIGHT_HAND_FLARE);
+    RemoveAttachmentFromModel(*GetModelObject(), ELEMENTALLAVA_ATTACHMENT_LEFT_HAND_FLARE);
+
+    if (m_EetType == ELT_OMNI) {
+      RemoveAttachmentFromModel(*GetModelObject(), 0);
+      RemoveAttachmentFromModel(*GetModelObject(), 1);
+      RemoveAttachmentFromModel(*GetModelObject(), 2);
+      RemoveAttachmentFromModel(*GetModelObject(), 3);
+      RemoveAttachmentFromModel(*GetModelObject(), 4);
+      RemoveAttachmentFromModel(*GetModelObject(), 5);
     }
   };
 
 /************************************************************
  *                 BLOW UP FUNCTIONS                        *
  ************************************************************/
-  // spawn body parts
-  void BlowUp(void) {
-    // get your size
-    FLOATaabbox3D box;
-    GetBoundingBox(box);
-    FLOAT fEntitySize = box.Size().MaxNorm()/2;
+  // [Cecil] Spawn one armor debris
+  void SpawnArmorDebris(SLONG idModel, SLONG idTexture, FLOAT fEntitySize, INDEX iAttachment) {
+    FLOAT3D vSpeed(FRnd() * 0.6f + 0.2f, FRnd() * 0.6f + 0.2f, FRnd() * 0.6f + 0.2f);
+    ANGLE3D vRotation(FRnd() * 180.0f - 90.0f, FRnd() * 180.0f - 90.0f, FRnd() * 180.0f - 90.0f);
 
-    INDEX iCount = 1;
-    switch (m_EecChar) {
-      case ELC_SMALL: iCount = 3; break;
-      case ELC_BIG: iCount = 5; break;
-      case ELC_LARGE: iCount = 7; break;
+    CPlacement3D plAttach = GetModelObject()->GetAttachmentPlacement(*GetModelObject()->GetAttachmentModel(iAttachment));
+    plAttach.RelativeToAbsolute(GetPlacement());
+
+    Debris_Spawn_Independent(this, this, idModel, idTexture, 0, 0, 0, 0, fEntitySize, plAttach, vSpeed, vRotation);
+  };
+
+  // [Cecil] Rev: Make Omni elemental drop its armor
+  void OmniBlowUp(void) {
+    if (m_EetType == ELT_OMNI) {
+      // Calculate model size
+      FLOAT fEntitySize = GetModelObject()->mo_Stretch.ManhattanNorm() / 3.0f;
+
+      // Spawn debris
+      Debris_Begin(EIBT_FLESH, DPT_NONE, BET_NONE, fEntitySize, FLOAT3D(0, 1, 0), FLOAT3D(0, 0, 0), 5.0f, 2.0f);
+
+      SpawnArmorDebris(MODEL_OMNI_BACK,      TEXTURE_OMNI_BACK,     fEntitySize, 0);
+      SpawnArmorDebris(MODEL_OMNI_SHOULDER1, TEXTURE_OMNI_SHOULDER, fEntitySize, 1);
+      SpawnArmorDebris(MODEL_OMNI_SHOULDER2, TEXTURE_OMNI_SHOULDER, fEntitySize, 2);
+      SpawnArmorDebris(MODEL_OMNI_BODY,      TEXTURE_OMNI_CHEST,    fEntitySize, 3);
+      SpawnArmorDebris(MODEL_OMNI_ARM1,      TEXTURE_OMNI_ARM,      fEntitySize, 4);
+      SpawnArmorDebris(MODEL_OMNI_ARM2,      TEXTURE_OMNI_ARM,      fEntitySize, 5);
+
+      // Remove armor attachments
+      RemoveAttachments();
     }
-
-    FLOAT3D vNormalizedDamage = m_vDamage-m_vDamage*(m_fBlowUpAmount/m_vDamage.Length());
-    vNormalizedDamage /= Sqrt(vNormalizedDamage.Length());
-    vNormalizedDamage *= 1.75f;
-    FLOAT3D vBodySpeed = en_vCurrentTranslationAbsolute-en_vGravityDir*(en_vGravityDir%en_vCurrentTranslationAbsolute);
-
-    // spawn debris
-/*
-    switch (m_EetType) {
-      case ELT_ICE: {
-        Debris_Begin(EIBT_ICE, DPT_NONE, BET_NONE, fEntitySize, vNormalizedDamage, vBodySpeed, 1.0f, 0.0f);
-        for (iDebris=0; iDebris<iCount; iDebris++) {
-          CEntityPointer pen;
-          pen = Debris_Spawn(this, this, MODEL_ELEM_ICE, TEXTURE_ELEM_ICE, 0, 0, 0, 0, 0.5f,
-            FLOAT3D(FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f));
-          AddAttachmentToModel(this, *(pen->GetModelObject()), ICEPYRAMID_ATTACHMENT_FLARE,
-            MODEL_ELEM_ICE_FLARE, TEXTURE_ELEM_FLARE, 0, 0, 0);
-          pen->GetModelObject()->StretchModel(pen->GetModelObject()->mo_Stretch);
-          ModelChangeNotify();
-        }}
-        break;
-      case ELT_LAVA: {
-        Debris_Begin(EIBT_FIRE, DPT_NONE, BET_NONE, fEntitySize, vNormalizedDamage, vBodySpeed, 1.0f, 0.0f);
-        for (iDebris=0; iDebris<iCount; iDebris++) {
-          CEntityPointer pen;
-          pen = Debris_Spawn(this, this, MODEL_ELEM_LAVASTONE, TEXTURE_ELEM_LAVASTONE, 0, 0, 0, 0, 0.5f,
-            FLOAT3D(FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f));
-          AddAttachmentToModel(this, *(pen->GetModelObject()), LAVASTONE_ATTACHMENT_FLARE,
-            MODEL_ELEM_LAVASTONE_FLARE, TEXTURE_ELEM_FLARE, 0, 0, 0);
-          pen->GetModelObject()->StretchModel(pen->GetModelObject()->mo_Stretch);
-          ModelChangeNotify();
-        }}
-        break;
-      case ELT_STONE: {
-        Debris_Begin(EIBT_ROCK, DPT_NONE, BET_NONE, fEntitySize, vNormalizedDamage, vBodySpeed, 1.0f, 0.0f);
-        for (iDebris=0; iDebris<iCount; iDebris++) {
-          Debris_Spawn(this, this, MODEL_ELEM_STONE, TEXTURE_ELEM_STONE, 0, 0, 0, 0, 0.5f,
-            FLOAT3D(FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f, FRnd()*0.6f+0.2f));
-        }}
-        break;
-    }
-    */
-
-    // hide yourself (must do this after spawning debris)
-    SwitchToEditorModel();
-    SetPhysicsFlags(EPF_MODEL_IMMATERIAL);
-    SetCollisionFlags(ECF_IMMATERIAL);
   };
 
 
   // adjust sound and watcher parameters here if needed
   void EnemyPostInit(void) 
   {
-    if (m_EecChar==ELC_LARGE && m_EetType==ELT_LAVA)
+    if (m_EecChar == ELC_LARGE)
     {
       m_soBackground.Set3DParameters(400.0f, 0.0f, 1.0f, 1.0f);
       m_soSound.Set3DParameters(400.0f, 50.0f, 1.0f, 1.0f);
       m_soFireL.Set3DParameters(400.0f, 50.0f, 1.0f, 1.0f);
       m_soFireR.Set3DParameters(400.0f, 50.0f, 1.0f, 1.0f);
     }
-    else if (m_EecChar==ELC_BIG && m_EetType==ELT_LAVA)
+    else if (m_EecChar == ELC_BIG)
     {
       m_soBackground.Set3DParameters(150.0f, 15.0f, 0.5f, 1.0f);
       m_soSound.Set3DParameters(200.0f, 0.0f, 1.0f, 1.0f);
@@ -972,249 +882,6 @@ procedures:
     return EReturn();
   };
 
-
-
-/************************************************************
- *                      FIRE PROCEDURES                     *
- ************************************************************/
-  //
-  // STONEMAN
-  //
-/*  StonemanFire(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK05, 0);
-    autowait(0.7f);
-    // throw rocks
-    if (m_EecChar==ELC_LARGE) {
-      ThrowRocks(PRT_STONEMAN_LARGE_FIRE);
-    } else if (m_EecChar==ELC_BIG) {
-      ThrowRocks(PRT_STONEMAN_BIG_FIRE);
-    } else {
-      ThrowRocks(PRT_STONEMAN_FIRE);
-    }
-    PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    autowait(0.9f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-
-  StonemanHit(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK06, 0);
-    autowait(0.6f);
-    HitGround();
-    PlaySound(m_soSound, SOUND_LAVA_KICK, SOF_3D);
-    autowait(0.5f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-  */
-
-  //
-  // LAVAMAN
-  //
-
-  LavamanFire(EVoid)
-  {
-    m_bSpawnEnabled = TRUE;
-    // shoot projectiles
-    if (m_EecChar==ELC_LARGE)
-    {
-      CModelObject &mo = *GetModelObject();
-      FLOAT tmWait = mo.GetAnimLength( mo.ao_iCurrentAnim )-mo.GetPassedTime();
-      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKBOSS, AOF_SMOOTHCHANGE);
-      autowait(tmWait+0.95f);
-      BossFirePredictedLavaRock(LAVAMAN_FIRE_LARGE_RIGHT);
-      PlaySound(m_soFireR, SOUND_LAVA_FIRE, SOF_3D);
-      autowait(2.0150f-0.95f);
-      BossFirePredictedLavaRock(LAVAMAN_FIRE_LARGE_LEFT);
-      PlaySound(m_soFireL, SOUND_LAVA_FIRE, SOF_3D);
-      StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_SMOOTHCHANGE);
-      autocall CMovableModelEntity::WaitUntilScheduledAnimStarts() EReturn;
-      MaybeSwitchToAnotherPlayer();
-      // set next shoot time
-      m_fShootTime = _pTimer->CurrentTick() + m_fAttackFireTime*(1.0f + FRnd()/5.0f);
-      return EReturn();
-    }
-    else if (m_EecChar==ELC_BIG)
-    {
-      CModelObject &mo = *GetModelObject();
-      FLOAT tmWait = mo.GetAnimLength( mo.ao_iCurrentAnim )-mo.GetPassedTime();
-      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND, AOF_SMOOTHCHANGE);
-      autowait(tmWait+0.90f);
-      FLOAT3D vShooting = GetPlacement().pl_PositionVector;
-      FLOAT3D vTarget = m_penEnemy->GetPlacement().pl_PositionVector;
-      FLOAT3D vSpeedDest = ((CMovableEntity&) *m_penEnemy).en_vCurrentTranslationAbsolute;
-      FLOAT fLaunchSpeed;
-      FLOAT fRelativeHdg;
-      
-      FLOAT fPitch = 20.0f;
-      
-      // calculate parameters for predicted angular launch curve
-      EntityInfo *peiTarget = (EntityInfo*) (m_penEnemy->GetEntityInfo());
-      CalculateAngularLaunchParams( vShooting, LAVAMAN_FIRE_BIG(2)-peiTarget->vTargetCenter[1]-1.5f/3.0f, vTarget, 
-        vSpeedDest, fPitch, fLaunchSpeed, fRelativeHdg);
-
-      // target enemy body
-      FLOAT3D vShootTarget;
-      GetEntityInfoPosition(m_penEnemy, peiTarget->vTargetCenter, vShootTarget);
-      // launch
-      CPlacement3D pl;
-      PrepareFreeFlyingProjectile(pl, vShootTarget, LAVAMAN_FIRE_BIG, ANGLE3D( fRelativeHdg, fPitch, 0));
-      CEntityPointer penProjectile = CreateEntity(pl, CLASS_PROJECTILE);
-      ELaunchProjectile eLaunch;
-      eLaunch.penLauncher = this;
-      eLaunch.prtType = PRT_LAVAMAN_BOMB;
-      eLaunch.fSpeed = fLaunchSpeed;
-      penProjectile->Initialize(eLaunch);
-      PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    }
-    else if (TRUE)
-    {
-      CModelObject &mo = *GetModelObject();
-      FLOAT tmWait = mo.GetAnimLength( mo.ao_iCurrentAnim )-mo.GetPassedTime();
-      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND, AOF_SMOOTHCHANGE);
-      autowait(tmWait+0.8f);
-      ShootProjectile(PRT_LAVAMAN_STONE, LAVAMAN_FIRE_SMALL, ANGLE3D(0, 0, 0));
-      PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    }
-
-    autowait( GetModelObject()->GetAnimLength( ELEMENTALLAVA_ANIM_ATTACKLEFTHAND) - 0.9f);
-
-    StandingAnim();
-    autowait(_pTimer->TickQuantum);
-
-    if (m_EecChar!=ELC_SMALL) {
-      MaybeSwitchToAnotherPlayer();
-    }
-
-    // set next shoot time
-    m_fShootTime = _pTimer->CurrentTick() + m_fAttackFireTime*(1.0f + FRnd()/5.0f);
-
-    return EReturn();
-  };
-
-  LavamanStones(EVoid)
-  {
-    StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND, 0);
-    autowait(0.7f);
-    // throw rocks
-    if (m_EecChar==ELC_LARGE) {
-      ThrowRocks(PRT_LAVAMAN_STONE);
-    } else if (m_EecChar==ELC_BIG) {
-      ThrowRocks(PRT_LAVAMAN_STONE);
-    } else {
-      ThrowRocks(PRT_LAVAMAN_STONE);
-    }
-    PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    autowait(0.9f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-
-  LavamanHit(EVoid)
-  {
-    StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKTWOHANDS, 0);
-    autowait(0.6f);
-    HitGround();
-    PlaySound(m_soFireL, SOUND_LAVA_KICK, SOF_3D);
-    StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_SMOOTHCHANGE);
-    autocall CMovableModelEntity::WaitUntilScheduledAnimStarts() EReturn;
-    return EReturn();
-  };
-
-/*
-  //
-  // ICEMAN
-  //
-  IcemanFire(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK05, 0);
-    autowait(0.7f);
-    // throw rocks
-    if (m_EecChar==ELC_LARGE) {
-      ThrowRocks(PRT_ICEMAN_LARGE_FIRE);
-    } else if (m_EecChar==ELC_BIG) {
-      ThrowRocks(PRT_ICEMAN_BIG_FIRE);
-    } else {
-      ThrowRocks(PRT_ICEMAN_FIRE);
-    }
-    PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    autowait(0.9f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-
-  IcemanHit(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK01, 0);
-    autowait(0.6f);
-    HitGround();
-    PlaySound(m_soSound, SOUND_LAVA_KICK, SOF_3D);
-    autowait(0.5f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-
-
-  //
-  // AIRMAN
-  //
-  AirmanFire(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK06, 0);
-    autowait(1.0f);
-    // spawn twister
-    CPlacement3D pl = m_penEnemy->GetPlacement();
-    FLOAT fR, fA;
-    ETwister et;
-    fA = FRnd()*360.0f;
-    if (m_EecChar==ELC_LARGE) {
-      fR = FRnd()*10.0f;
-      et.EtsSize = TWS_LARGE;
-    } else if (m_EecChar==ELC_BIG) {
-      fR = FRnd()*7.5f;
-      et.EtsSize = TWS_BIG;
-    } else {
-      fR = FRnd()*5.0f;
-      et.EtsSize = TWS_SMALL;
-    }
-    pl.pl_PositionVector += FLOAT3D(CosFast(fA)*fR, 0, SinFast(fA)*fR);;
-    CEntityPointer penTwister = CreateEntity(pl, CLASS_TWISTER);
-    et.penOwner = this;
-    penTwister->Initialize(et);
-    PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    autowait(0.6f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-
-
-  //
-  // WATERMAN
-  //
-  WatermanFire(EVoid) {
-    StartModelAnim(STONEMAN_ANIM_ATTACK02, 0);
-    autowait(0.5f);
-    // throw rocks
-    FireWater();
-    PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
-    autowait(0.6f);
-    // stand a while
-    StandingAnim();
-    autowait(FRnd()/3+_pTimer->TickQuantum);
-    return EReturn();
-  };
-  */
-
-
 /************************************************************
  *                PROCEDURES WHEN HARMED                    *
  ************************************************************/
@@ -1235,11 +902,11 @@ procedures:
   BoxToNormal(EVoid) {
     m_EesCurrentState = ELS_NORMAL;
     SetPhysicsFlags(EPF_MODEL_WALKING);
-    ChangeCollisionBoxIndexWhenPossible(STONEMAN_COLLISION_BOX_NORMAL);
+    ChangeCollisionBoxIndexWhenPossible(ELEMENTALLAVA_COLLISION_BOX_NORMAL);
     PlaySound(m_soFireL, SOUND_LAVA_GROW, SOF_3D);
-    StartModelAnim(STONEMAN_ANIM_MORPHBOXUP, 0);
+    StartModelAnim(ELEMENTALLAVA_ANIM_MELTUP, 0);
     AddAttachments();
-    autowait(GetModelObject()->GetAnimLength(STONEMAN_ANIM_MORPHBOXUP));
+    autowait(GetModelObject()->GetAnimLength(ELEMENTALLAVA_ANIM_MELTUP));
     return EReturn();
   };
 
@@ -1261,15 +928,9 @@ procedures:
     SetPhysicsFlags(EPF_MODEL_WALKING);
     ChangeCollisionBoxIndexWhenPossible(ELEMENTALLAVA_COLLISION_BOX_NORMAL);
     PlaySound(m_soFireL, SOUND_LAVA_GROW, SOF_3D);
-    INDEX iAnim;
-    if (m_EetType == ELT_LAVA) {
-      iAnim = ELEMENTALLAVA_ANIM_MELTUP;
-    } else {
-//      iAnim = STONEMAN_ANIM_MORPHPLANEUP;
-    }
-    StartModelAnim(iAnim, 0);
+    StartModelAnim(ELEMENTALLAVA_ANIM_MELTUP, 0);
     AddAttachments();
-    autowait(GetModelObject()->GetAnimLength(iAnim));
+    autowait(GetModelObject()->GetAnimLength(ELEMENTALLAVA_ANIM_MELTUP));
     return EReturn();
   };
 
@@ -1291,26 +952,91 @@ procedures:
   };
 
   Fire(EVoid) : CEnemyBase::Fire {
-    // fire projectile
-    switch (m_EetType) {
-//      case ELT_STONE: jump StonemanFire(); break;
-      case ELT_LAVA: jump LavamanFire(); break;
-//      case ELT_ICE: jump IcemanFire(); break;
-//      case ELT_AIR: jump AirmanFire(); break;
-//      case ELT_WATER: jump WatermanFire(); break;
+    // [Cecil] Rev: Moved LavamanFire() logic here since all types have the same attack pattern
+    m_bSpawnEnabled = TRUE;
+
+    // Shoot projectiles
+    if (m_EecChar == ELC_LARGE) {
+      CModelObject &mo = *GetModelObject();
+      FLOAT tmWait = mo.GetAnimLength(mo.ao_iCurrentAnim) - mo.GetPassedTime();
+
+      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKBOSS, AOF_SMOOTHCHANGE);
+
+      autowait(tmWait + 0.95f);
+      BossFirePredictedLavaRock(LAVAMAN_FIRE_LARGE_RIGHT, TRUE);
+      PlaySound(m_soFireR, SOUND_LAVA_FIRE, SOF_3D);
+
+      autowait(2.0150f - 0.95f);
+      BossFirePredictedLavaRock(LAVAMAN_FIRE_LARGE_LEFT, TRUE);
+      PlaySound(m_soFireL, SOUND_LAVA_FIRE, SOF_3D);
+
+      StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_SMOOTHCHANGE);
+      autocall CMovableModelEntity::WaitUntilScheduledAnimStarts() EReturn;
+      MaybeSwitchToAnotherPlayer();
+
+      // Set next shoot time
+      m_fShootTime = _pTimer->CurrentTick() + m_fAttackFireTime * (1.0f + FRnd() / 5.0f);
+      return EReturn();
+
+    } else if (m_EecChar == ELC_BIG) {
+      CModelObject &mo = *GetModelObject();
+      FLOAT tmWait = mo.GetAnimLength(mo.ao_iCurrentAnim) - mo.GetPassedTime();
+
+      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND, AOF_SMOOTHCHANGE);
+
+      autowait(tmWait + 0.90f);
+      BossFirePredictedLavaRock(LAVAMAN_FIRE_BIG, FALSE); // [Cecil]
+      PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
+
+    } else if (TRUE) {
+      // Simple attack for small elementals
+      CModelObject &mo = *GetModelObject();
+      FLOAT tmWait = mo.GetAnimLength(mo.ao_iCurrentAnim) - mo.GetPassedTime();
+
+      StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND, AOF_SMOOTHCHANGE);
+      autowait(tmWait + 0.8f);
+
+      // [Cecil] Rev: Select projectile based on type
+      ProjectileType eProjectile = PRT_LAVAMAN_STONE;
+
+      switch (m_EetType) {
+        case ELT_AIR:   eProjectile = _aSmallProjectiles[0]; break;
+        case ELT_LAVA:  eProjectile = _aSmallProjectiles[1]; break;
+        case ELT_STONE: eProjectile = _aSmallProjectiles[2]; break;
+        case ELT_WATER: eProjectile = _aSmallProjectiles[3]; break;
+        case ELT_OMNI:  eProjectile = _aSmallProjectiles[IRnd() % 4]; break; // Random
+      }
+
+      ShootProjectile(eProjectile, LAVAMAN_FIRE_SMALL, ANGLE3D(0, 0, 0));
+      PlaySound(m_soSound, SOUND_LAVA_FIRE, SOF_3D);
     }
+
+    autowait(GetModelObject()->GetAnimLength(ELEMENTALLAVA_ANIM_ATTACKLEFTHAND) - 0.9f);
+
+    StandingAnim();
+    autowait(_pTimer->TickQuantum);
+
+    if (m_EecChar != ELC_SMALL) {
+      MaybeSwitchToAnotherPlayer();
+    }
+
+    // Set next shoot time
+    m_fShootTime = _pTimer->CurrentTick() + m_fAttackFireTime * (1.0f + FRnd() / 5.0f);
+
     return EReturn();
   };
 
   Hit(EVoid) : CEnemyBase::Hit {
-    // hit ground
-    switch (m_EetType) {
-//      case ELT_STONE: jump StonemanHit(); break;
-      case ELT_LAVA: jump LavamanHit(); break;
-//      case ELT_ICE: jump IcemanHit(); break;
-//      case ELT_AIR: jump AirmanFire(); break;
-//      case ELT_WATER: jump WatermanFire(); break;
-    }
+    // [Cecil] Rev: Moved LavamanHit() logic here
+    StartModelAnim(ELEMENTALLAVA_ANIM_ATTACKTWOHANDS, 0);
+    autowait(0.6f);
+
+    HitGround();
+    PlaySound(m_soFireL, SOUND_LAVA_KICK, SOF_3D);
+
+    StartModelAnim(ELEMENTALLAVA_ANIM_WALKBIG, AOF_SMOOTHCHANGE);
+    autocall CMovableModelEntity::WaitUntilScheduledAnimStarts() EReturn;
+
     return EReturn();
   };
 
@@ -1322,14 +1048,16 @@ procedures:
     if (m_bSpawnOnBlowUp && (m_EecChar==ELC_LARGE || m_EecChar==ELC_BIG)) {
       SpawnNewElemental();
       SpawnNewElemental();
+
+      // [Cecil] Rev: Omni spawns two more
+      if (m_EetType == ELT_OMNI) {
+        SpawnNewElemental();
+        SpawnNewElemental();
+      }
     }
-    // air fade out
-    if (m_EetType == ELT_AIR) {
-      m_fFadeStartTime = _pTimer->CurrentTick();
-      m_bFadeOut = TRUE;
-      m_fFadeTime = 2.0f;
-      autowait(m_fFadeTime);
-    }
+
+    OmniBlowUp(); // [Cecil] Rev
+
     autocall CEnemyBase::Death() EEnd;
     GetModelObject()->mo_toBump.SetData( NULL);
     return EEnd();
@@ -1370,8 +1098,7 @@ procedures:
       autocall FallOnFloor() EReturn;
     }
 
-    if (m_EecChar==ELC_LARGE || m_EecChar==ELC_BIG && m_EetType==ELT_LAVA)
-    {
+    if (m_EecChar == ELC_LARGE || m_EecChar == ELC_BIG) {
       PlaySound(m_soBackground, SOUND_LAVA_LAVABURN, SOF_3D|SOF_LOOP);
     }
 
@@ -1386,9 +1113,6 @@ procedures:
  *                       M  A  I  N                         *
  ************************************************************/
   Main(EVoid) {
-    if (m_EetType!=ELT_LAVA) {
-      m_EetType=ELT_LAVA;
-    }
     // declare yourself as a model
     InitAsModel();
     // movable
@@ -1398,49 +1122,92 @@ procedures:
     } else {
       SetPhysicsFlags(EPF_MODEL_IMMATERIAL|EPF_MOVABLE);
     }
-    // air elemental
-    if (m_EetType==ELT_AIR) {
-      SetCollisionFlags(ECF_AIR);
-    // solid elemental
-    } else {
-      SetCollisionFlags(ECF_MODEL);
-    }
+    SetCollisionFlags(ECF_MODEL);
     SetFlags(GetFlags()|ENF_ALIVE);
     en_fDensity = m_fDensity;
     m_fSpawnDamage = 1e6f;
     m_fDamageWounded = 1e6f;
+    m_fBlowUpAmount = 1E30f;
     m_bSpawnEnabled = FALSE;
     m_bBoss = FALSE;
 
+    // [Cecil]
+    SLONG idModel = MODEL_GENERIC;
+    SLONG idTexture = TEXTURE_LAVA_MAN;
+    SLONG idDetail = TEXTURE_LAVA_DETAIL;
+
     // set your appearance
     switch (m_EetType) {
-/*      case ELT_AIR: 
-        SetComponents(this, *GetModelObject(), MODEL_AIR, TEXTURE_AIR, 0, 0, 0); 
+      case ELT_AIR:
+        idModel = MODEL_AIR;
+        idTexture = TEXTURE_AIR_MAN;
+        idDetail = TEXTURE_AIR_DETAIL;
         break;
-      case ELT_ICE: 
-        SetComponents(this, *GetModelObject(), MODEL_ICE, TEXTURE_ICE, TEXTURE_ICE, TEX_SPEC_STRONG, 0); 
-        break;*/
-      case ELT_LAVA:
-        m_fBlowUpAmount = 1E30f;
-        SetComponents(this, *GetModelObject(), MODEL_LAVA, TEXTURE_LAVA, 0, 0, TEXTURE_LAVA_DETAIL);
+
+      case ELT_STONE:
+        idModel = MODEL_EARTH;
+        idTexture = TEXTURE_EARTH_MAN;
+        idDetail = TEXTURE_EARTH_DETAIL;
         break;
-/*      case ELT_STONE: 
-        SetComponents(this, *GetModelObject(), MODEL_STONE, TEXTURE_STONE, 0, 0, 0); 
+
+      case ELT_WATER:
+        idTexture = TEXTURE_WATER_MAN;
+        idDetail = TEXTURE_WATER_DETAIL;
         break;
-      case ELT_WATER: 
-        SetComponents(this, *GetModelObject(), MODEL_WATER, TEXTURE_WATER, TEXTURE_WATER, TEX_SPEC_STRONG, 0); 
-        break;*/
+
+      case ELT_OMNI:
+        idModel = MODEL_OMNI;
+        idTexture = TEXTURE_OMNI_MAN;
+        idDetail = TEXTURE_OMNI_DETAIL;
+        break;
     }
+
+    Enemy_SetModel(idModel);
+    Enemy_SetModelMainTexture(idTexture);
+
+    // [Cecil] Rev: Set detail texture if no custom model
+    if (m_fnmCustomModel == "") {
+      GetModelObject()->mo_toBump.SetData(GetTextureDataForComponent(idDetail));
+    } else {
+      GetModelObject()->mo_toBump.SetData(NULL);
+    }
+
     ModelChangeNotify();
 
     // character settings
     if (m_EecChar==ELC_LARGE)
     {
       // this one is boss!
-      m_sptType = SPT_SMALL_LAVA_STONES;
       m_bBoss = TRUE;
-      SetHealth(10000.0f);
-      m_fMaxHealth = 10000.0f;
+
+      // [Cecil] Rev: Set health and spray particles per type
+      switch (m_EetType) {
+        case ELT_AIR:
+          m_sptType = SPT_AIRSPOUTS;
+          SetHealth(10000.0f);
+          break;
+
+        case ELT_LAVA:
+          m_sptType = SPT_SMALL_LAVA_STONES;
+          SetHealth(10000.0f);
+          break;
+
+        case ELT_STONE:
+          m_sptType = SPT_STONES;
+          SetHealth(10000.0f);
+          break;
+
+        case ELT_WATER:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(7500.0f);
+          break;
+
+        case ELT_OMNI:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(16000.0f);
+          break;
+      }
+
       // after loosing this ammount of damage we will spawn new elemental
       m_fSpawnDamage = 2000.0f;
       // setup moving speed
@@ -1461,9 +1228,34 @@ procedures:
     }
     else if (m_EecChar==ELC_BIG)
     {
-      m_sptType = SPT_LAVA_STONES;
-      SetHealth(800.0f);
-      m_fMaxHealth = 800.0f;
+      // [Cecil] Rev: Set health and spray particles per type
+      switch (m_EetType) {
+        case ELT_AIR:
+          m_sptType = SPT_AIRSPOUTS;
+          SetHealth(1600.0f);
+          break;
+
+        case ELT_LAVA:
+          m_sptType = SPT_LAVA_STONES;
+          SetHealth(800.0f);
+          break;
+
+        case ELT_STONE:
+          m_sptType = SPT_STONES;
+          SetHealth(800.0f);
+          break;
+
+        case ELT_WATER:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(400.0f);
+          break;
+
+        case ELT_OMNI:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(2000.0f);
+          break;
+      }
+
       // after loosing this ammount of damage we will spawn new elemental
       m_fSpawnDamage = 500.0f;
       // setup moving speed
@@ -1485,9 +1277,34 @@ procedures:
     }
     else
     {
-      m_sptType = SPT_LAVA_STONES;
-      SetHealth(100.0f);
-      m_fMaxHealth = 100.0f;
+      // [Cecil] Rev: Set health and spray particles per type
+      switch (m_EetType) {
+        case ELT_AIR:
+          m_sptType = SPT_AIRSPOUTS;
+          SetHealth(200.0f);
+          break;
+
+        case ELT_LAVA:
+          m_sptType = SPT_LAVA_STONES;
+          SetHealth(100.0f);
+          break;
+
+        case ELT_STONE:
+          m_sptType = SPT_STONES;
+          SetHealth(50.0f);
+          break;
+
+        case ELT_WATER:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(50.0f);
+          break;
+
+        case ELT_OMNI:
+          m_sptType = SPT_SMALLPLASMA;
+          SetHealth(300.0f);
+          break;
+      }
+
       // setup moving speed
       m_fWalkSpeed = FRnd() + 1.5f;
       m_aWalkRotateSpeed = AngleDeg(FRnd()*10.0f + 25.0f);
@@ -1505,6 +1322,9 @@ procedures:
       // damage/explode properties
       m_iScore = 500;
     }
+
+    // [Cecil] For convenience
+    m_fMaxHealth = GetHealth();
 
     // non movable
     if (!m_bMovable)

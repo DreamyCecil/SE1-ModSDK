@@ -266,6 +266,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   case PRT_STONEMAN_FIRE:
   case PRT_STONEMAN_BIG_FIRE:
   case PRT_STONEMAN_LARGE_FIRE:
+  case PRT_EARTHMAN_STONE: // [Cecil] Rev
     pdec->PrecacheModel(MODEL_ELEM_STONE           );
     pdec->PrecacheTexture(TEXTURE_ELEM_STONE       ); 
     break;
@@ -389,9 +390,11 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   case PRT_WATERMAN_BIG:
   case PRT_WATERMAN_LARGE:
   case PRT_WATERMAN_SMALL:
-    pdec->PrecacheSound(SOUND_DEMON_FLYING  );
+    pdec->PrecacheSound(SOUND_FLYING); // [Cecil] Rev: 'SOUND_DEMON_FLYING' -> 'SOUND_FLYING'
     pdec->PrecacheModel(MODEL_LARVA_PLASMA);
     pdec->PrecacheTexture(TEXTURE_LARVA_PLASMA);
+    pdec->PrecacheModel(MODEL_LARVA_PLASMA_BALL); // [Cecil] Rev
+    pdec->PrecacheTexture(TEXTURE_LARVA_PLASMA_BALL); // [Cecil] Rev
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_LIGHT_CANNON);    
     break;
   case PRT_LARVA_TAIL_PROJECTILE:
@@ -420,6 +423,14 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
     pdec->PrecacheModel(MODEL_MARKER);
     pdec->PrecacheTexture(TEXTURE_MARKER);    
     break;
+
+  // [Cecil] Rev: New projectiles
+  case PRT_EARTHMAN_BIG:
+  case PRT_EARTHMAN_BIG_BOMB:
+    pdec->PrecacheModel(MODEL_ELEM_STONE);
+    pdec->PrecacheTexture(TEXTURE_ELEM_EARTH);
+    break;
+
   default:
     ASSERT(FALSE);
   }
