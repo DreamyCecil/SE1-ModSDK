@@ -196,7 +196,7 @@ void CProjectile_OnPrecache(CDLLEntityClass *pdec, INDEX iUser)
   case PRT_RAILBOLT_SPRAY:
     pdec->PrecacheModel(MODEL_LASER);
     pdec->PrecacheTexture(TEXTURE_RED_LASER);
-    pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_GRENADE);
+    pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_PLASMA);
     pdec->PrecacheClass(CLASS_BASIC_EFFECT, BET_EXPLOSIONSTAIN);
     break;
   
@@ -569,8 +569,8 @@ components:
  96 texture TEXTURE_ELEM_LAVA_STONE_FLARE "Models\\Enemies\\ElementalMan\\Old\\Elementals\\Projectile\\LavaBombFlare.tex",
 
  // [Cecil] Rev
- 98 model   MODEL_ELEM_WATER_DROP "Models\\Enemies\\ElementalWater\\Projectile\\WaterDrop.mdl",
- 99 texture TEXTURE_ELEM_WATERMAN "Models\\Enemies\\ElementalWater\\Projectile\\WaterManFX.tex",
+ 98 model   MODEL_ELEM_WATER_DROP "Models\\Enemies\\ElementalMan\\Old\\ElementalWater\\Projectile\\WaterDrop.mdl",
+ 99 texture TEXTURE_ELEM_WATERMAN "Models\\Enemies\\ElementalMan\\Old\\ElementalWater\\Projectile\\WaterManFX.tex",
 
 // ********* HUANMAN FIRE *********
 105 model   MODEL_HUANMAN_FIRE      "Models\\Enemies\\Huanman\\Projectile\\Projectile.mdl",
