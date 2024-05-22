@@ -405,7 +405,6 @@ functions:
         lsNew.ls_plftLensFlare = NULL;
         break;
       case BET_GRENADE:
-      case BET_PLASMA: // [Cecil] Rev
         lsNew.ls_colColor = RGBToColor(200, 200, 200);
         lsNew.ls_rFallOff = 12.5f;
         lsNew.ls_plftLensFlare = NULL;
@@ -426,6 +425,15 @@ functions:
         lsNew.ls_rFallOff = 8.0f;
         lsNew.ls_plftLensFlare = NULL;
         break;
+
+      // [Cecil] Rev
+      case BET_PLASMA:
+        lsNew.ls_colColor = RGBToColor(0, 0, 100);
+        lsNew.ls_rHotSpot = 2.0f;
+        lsNew.ls_rFallOff = 10.0f;
+        lsNew.ls_plftLensFlare = NULL;
+        break;
+
       default:
         ASSERTALWAYS("Unknown light source");
     }
