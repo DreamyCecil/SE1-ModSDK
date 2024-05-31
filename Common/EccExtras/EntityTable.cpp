@@ -15,8 +15,6 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 
 #include "EntityTable.h"
 
-#include <EngineEx/ModuleSymbols.h>
-
 // Constructor
 CEntityTableEntry::CEntityTableEntry(const char *strClassName, CDLLEntityClass *pdecClass, const char *strClass,
   EntityPropertyRef *aProps, const char *strProps, INDEX iPropsCt, const char *strPropsCt,
