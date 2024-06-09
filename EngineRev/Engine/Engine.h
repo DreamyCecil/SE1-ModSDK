@@ -17,6 +17,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
 #ifndef SE1_REV_INCL_ENGINE_H
 #define SE1_REV_INCL_ENGINE_H
 
+// [Cecil] Automatically configure the SDK, if property sheets cannot be used
+#include "../../Properties/SeriousEngine.h"
+
+// [Cecil] Set engine version
+#ifndef SE1_VER
+  #define SE1_VER SE1_110
+#endif
+
+// [Cecil] Set game
+#ifndef SE1_GAME
+  #define SE1_GAME SS_REV
+#endif
+
 // set this to 1 to enable checks whether somethig is deleted while iterating some array/container
 #define CHECKARRAYLOCKING 0
 

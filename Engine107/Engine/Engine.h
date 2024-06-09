@@ -2,6 +2,19 @@
 #ifndef SE1_107_INCL_ENGINE_H
 #define SE1_107_INCL_ENGINE_H
 
+// [Cecil] Automatically configure the SDK, if property sheets cannot be used
+#include "../../Properties/SeriousEngine.h"
+
+// [Cecil] Set engine version
+#ifndef SE1_VER
+  #define SE1_VER SE1_107
+#endif
+
+// [Cecil] Set game
+#ifndef SE1_GAME
+  #define SE1_GAME SS_TSE
+#endif
+
 // set this to 1 to enable checks whether somethig is deleted while iterating some array/container
 #define CHECKARRAYLOCKING 0
 
