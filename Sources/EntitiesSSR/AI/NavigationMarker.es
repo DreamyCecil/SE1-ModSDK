@@ -76,6 +76,21 @@ functions:
   
   CEntity *GetTarget(void) const { return m_penTarget0; };
 
+  // [Cecil] Rev: Set all available entity targets and return their amount
+  virtual int GetTargets(CEntityPointer *apenTargets, int ctTargets) const {
+    if (ctTargets < 6) {
+      ThrowF_t("Not enough slots for GetTargets()");
+    }
+
+    apenTargets[0] = m_penTarget0;
+    apenTargets[1] = m_penTarget1;
+    apenTargets[2] = m_penTarget2;
+    apenTargets[3] = m_penTarget3;
+    apenTargets[4] = m_penTarget4;
+    apenTargets[5] = m_penTarget5;
+    return 6;
+  };
+
   /* Entity info */
   void *GetEntityInfo(void) {
     return &eiMarker;

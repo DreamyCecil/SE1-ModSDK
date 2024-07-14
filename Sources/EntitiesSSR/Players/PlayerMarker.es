@@ -45,10 +45,12 @@ properties:
  10 FLOAT m_tmLastSpawned = -1000.0f, // to avoid telefragging in deathmatch
  11 INDEX m_iTakeAmmo        "Take Ammo"  = 0x0,
  12 BOOL m_bNoRespawnInPlace "No Respawn In Place" 'R'  = FALSE,
+ 13 INDEX m_iTeam            "Team" 'T' = 0, // [Cecil] Rev
 
 components:
   1 model   MODEL_MARKER     "Models\\Editor\\PlayerStart.mdl",
   2 texture TEXTURE_MARKER   "Models\\Editor\\PlayerStart.tex",
+  3 texture TEXTURE_MARKER_B "Models\\Editor\\PlayerStartBlue.tex", // [Cecil] Rev
 
 functions:
   void Precache(void) {
@@ -93,7 +95,13 @@ procedures:
 
     // set appearance
     SetModel(MODEL_MARKER);
-    SetModelMainTexture(TEXTURE_MARKER);
+
+    // [Cecil] Rev: Set team marker
+    if (m_iTeam == 0) {
+      SetModelMainTexture(TEXTURE_MARKER);
+    } else {
+      SetModelMainTexture(TEXTURE_MARKER_B);
+    }
 
     // set name
     if (m_bQuickStart) {
