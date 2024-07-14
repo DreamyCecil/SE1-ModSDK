@@ -1,38 +1,64 @@
 # Serious Sam SDK
 
-This repository contains code from Serious Sam SDK by Croteam released in 2001-2002 that includes the following projects:
-- `EntitiesTFE` - all the entity logic for The First Encounter.
-- `EntitiesTSE` - all the entity logic for The Second Encounter.
-- `Game` - all the game logic.
-- `GameGUI` - additional GUI elements for Serious Editor.
-
-The original source code have been adjusted to work well with any engine version but the logic should remain unchanged.
+This repository contains code from Serious Sam SDK by Croteam released in 2001-2002. The original source code have been adjusted to work well with any engine version but the logic should remain unchanged.
 
 The project files are made for **Visual Studio 2010** and higher to allow selecting a preferred compiler.
 
-You can use it to build mods for all Serious Sam games on Serious Engine 1:
+You can use it to build mods (and port existing ones) for all Serious Sam games on Serious Engine 1:
 - The First Encounter 1.05
 - The Second Encounter 1.05
 - The Second Encounter 1.07
 - The Second Encounter 1.10
+- Serious Sam Revolution 1.10 (WIP)
+
+## Project structure
+
+### Entities projects
+- `EntitiesTFE` - all the entity logic for **The First Encounter** (compatible with v1.05)
+- `EntitiesTSE` - all the entity logic for **The Second Encounter** (compatible with v1.05 and v1.07)
+- `EntitiesSSR` - best possible recreation of all the entity logic for **Serious Sam Revolution** (WIP)
+
+### Legacy Entities projects
+- `Entities` - all the entity logic for **The First Encounter** from the original SDK (`sdk105`) with little to no changes to the source code and the project structure
+- `EntitiesMP` - all the entity logic for **The Second Encounter** from the original SDK (`sdk107`) with little to no changes to the source code and the project structure
+
+### Unified Game projects
+- `Game` - all the game logic.
+- `GameGUI` - additional GUI elements for Serious Editor.
+
+## Wow that's a lot of Entities projects
+I know. But there is a point to all of them. Let me clear things up to make it less confusing.
+
+### Why multiple projects to begin with?
+Each game, including different engine versions (1.00 - 1.05 for TFE, 1.05 - 1.07 for TSE), has its own version of the `Entities` library that contains code specifically for that game. It is required to have the exact same code for some game version due to the nature of how Serious Engine 1 works. Any slight deviation in logic may lead to desynchronization between vanilla clients and modded clients, even if on the surface gameplay seems exactly the same between the two.
+
+### What projects should I use?
+This SDK specifically is designed to be an entirely new base for **new** mods, which has been reworked to be much more comfortable to use compared to the original SDKs.
+
+If you're making a mod for TFE, you should probably modify `EntitiesTFE` code. Otherwise use `EntitiesTSE`. Both projects are standalone and don't interact with each other in any way, making it possible to outright delete all but one Entities project that you're making your mod for.
+
+- `EntitiesTFE` project can be used to build TFE logic for the original game (TFE 1.05) but also for newer games (TSE 1.05 and TSE 1.07), basically allowing making TFE mods that run on TSE's engine versions.
+- `EntitiesTSE` project, similarly to TFE, can be used to build TSE logic for the original game (TSE 1.07) but for older versions (TSE 1.05 and TFE 1.05), in case you still need to support TSE on 1.05 or bring TSE mechanics to TFE.
+
+### Then what are Entities and EntitiesMP projects for?
+There are another two projects: `Entities` and `EntitiesMP`. They exist purely for compatibility purposes to allow existing mods to be easily ported over onto this SDK. The code of these projects remains *exactly* the same as it was originally released by Croteam (in `sdk105` and `sdk107` packages respectively).
+
+These projects differ from `EntitiesTFE` and `EntitiesTSE` from this SDK in a number of ways:
+- Entity source files (`.es`) are all in the same directory instead of being sorted by subfolders (e.g. `Players/Player.es` is now simply `Player.es`).
+- Entity code lacks compatibility with other engine versions, making TSE code (`EntitiesMP`) generally incompatible with TFE 1.05 and TSE 1.05 without extra adjustments, like in `EntitiesTSE`.
+  - When porting mods onto this SDK, they should probably stick to the configurations that they have been designed for to avoid unintentional errors from building entity code under the wrong engine version (i.e. `Debug_TFE105` & `Release_TFE105` for `Entities`and `Debug_TSE107` & `Release_TSE107` for `EntitiesMP`).
+- The license header isn't present because of a different license that the SDK was released under during that time. For the sake of safety, it should probably be licensed under GNU GPL v2 from now on, just like the open-source release of **Serious Engine 1.10**, even if initially this wasn't the case and you didn't have to share the source code for your mod when publicly releasing it. Though those mods were technically fully owned by Croteam, judging by the attached license.
+
+### And what the heck is EntitiesSSR supposed to be?
+`EntitiesSSR` project is basically an original mod for TSE that reimplements and reintroduces as much logic and gameplay mechanics from **Serious Sam Revolution** as possible in a form that can be used as a base for its mods.
+
+The code in this project is in no way compatible with any official **Serious Sam Revolution** version due to the lack of an official SDK, making it impossible to make small mods that are still compatible with vanilla multiplayer servers, for example.
+
+It's kind of an experimental project more than anything that's supposed to complete the unofficial SDK for **Serious Sam Revolution** using [recreated headers for Revolution engine libraries](https://github.com/DreamyCecil/SE1-ModSDK/tree/includes/EngineRev). But it can still be used as a base for **The Second Encounter** mods, assuming you pack all the necessary resources from Revolution with it.
 
 # Building
 
-## Before building
-1. Run `git submodule update --init --recursive` to load files for all submodules in the repository.
-2. Select `Debug_TSE110` or `Release_TSE110` configuration to compile source code for Serious Engine 1.10.
-3. Otherwise follow the steps below before compiling the source code for any older Serious Engine version (e.g. 1.05 or 1.07).
-
-## Using MSVC 6.0
-You have to use an old compiler in order to make your code compatible with engine versions from 1.00 to 1.07 and 1.50.
-Since this SDK is designed for modern IDEs, you cannot use an old compiler out of the box.
-
-1. Install **Microsoft Visual C++ 6.0** with Service Pack 6. [See guide with details](https://github.com/DreamyCecil/SE1-ModSDK/wiki#microsoft-visual-c-60).
-2. Install **Visual Studio 2010**. [See guide with details](https://github.com/DreamyCecil/SE1-ModSDK/wiki#visual-studio-2010).
-3. (Optional) Install a Visual Studio of your choice (if it's newer than 2010).
-4. And finally, download and install [Daffodil](https://github.com/DreamyCecil/SE1-ModSDK/releases/download/daffodil/daffodil.zip). It's a set of configuration files that allows modern Visual Studios to target older compilers.
-
-Before building projects for old engine versions, make sure that their platform toolset is set to `v60` (**Project properties** -> **Configuration Properties** -> **General** -> **Platform Toolset**).
+Building instructions are available here: https://github.com/DreamyCecil/SE1-ModSDK/wiki/Building
 
 # Running
 
@@ -46,15 +72,8 @@ When running a selected project, make sure the mod in project properties (**Debu
 - Running a `Game` project runs the game (`SeriousSam.exe`) with the mod.
 - Running a `GameGUI` project runs the editor (`SeriousEditor.exe`) with the mod.
 
-**Keep in mind that mod folder names do not support spaces or dashes (`-`)!**
-
-# Debugging
-
-Visual Studios after 2010 are unable to use program database files (`.pdb`) that are generated with MSVC 6.0, making traditional debugging impossible.
-
-There are two ways around this:
-1. Attach to the running process using **Microsoft Visual C++ 6.0** or **Visual Studio 2010**.
-2. Build for Serious Engine 1.10 and debug under the new engine (assuming your game's Bin folder contains binaries from 1.10 that have been built using the same compiler).
+> [!WARNING]
+> Mod folder names do not support spaces or dashes (`-`)!
 
 # License
 
