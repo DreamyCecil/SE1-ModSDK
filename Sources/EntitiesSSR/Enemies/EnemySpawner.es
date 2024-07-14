@@ -67,20 +67,147 @@ properties:
  60 CEntityPointer m_penTacticsHolder  "Tactics Holder",
  61 BOOL m_bTacticsAutostart           "Tactics autostart" = TRUE,
 
- 
+ // [Cecil] TODO: Use these somehow
+ // [Cecil] Rev: New properties
+ 62 FLOAT m_tmSingleWaitRandomAdd "Delay single random add" = 0.0f,
+ 63 FLOAT m_tmDelayRandomAdd      "Delay initial random add" = 0.0f,
+ 66 FLOAT m_tmGroupWaitRandomAdd  "Delay group random add" = 0.0f,
+ 64 BOOL m_bCanBeToggled "Can be toggled" = FALSE,
+ 65 BOOL m_bActivated = TRUE,
+ 70 BOOL m_bInfinite "Infinite" = FALSE,
 
 components:
 
   1 model   MODEL_ENEMYSPAWNER     "Models\\Editor\\EnemySpawner.mdl",
   2 texture TEXTURE_ENEMYSPAWNER   "Models\\Editor\\EnemySpawner.tex",
   3 class   CLASS_BASIC_EFFECT  "Classes\\BasicEffect.ecl",
+  4 class   CLASS_PROJECTILE    "Classes\\Projectile.ecl", // [Cecil] Rev
 
+ // [Cecil] Rev: For precaching random enemies
+ 10 model   MODEL_CANNON   "Models\\Weapons\\Cannon\\Body.mdl",
+ 11 texture TEXTURE_CANNON "Models\\Weapons\\Cannon\\Body.tex",
+ 12 texture TEXTURE_WALKER3       "Models\\Enemies\\Walker\\Walker03.tex",
+ 13 texture TEXTURE_WALKER4       "Models\\Enemies\\Walker\\Walker04.tex",
+ 14 texture TEXTURE_WALKERSPAWNER "Models\\Enemies\\Walker\\Spawner.tex",
+ 15 model   MODEL_GIZMO   "Models\\Enemies\\Gizmo\\Gizmo.mdl",
+ 16 texture TEXTURE_GIZMO "Models\\Enemies\\Gizmo\\Gizmo.tex",
+ 17 sound   SOUND_GIZMO_IDLE  "Models\\Enemies\\Gizmo\\Sounds\\Idle.wav",
+ 18 sound   SOUND_GIZMO_JUMP  "Models\\Enemies\\Gizmo\\Sounds\\Jump.wav",
+ 19 sound   SOUND_GIZMO_DEATH "Models\\Enemies\\Gizmo\\Sounds\\JumpDeath.wav",
+ 20 sound   SOUND_GIZMO_SIGHT "Models\\Enemies\\Gizmo\\Sounds\\Sight.wav",
+ 21 sound   SOUND_WALKERMONSTER_IDLE  "Models\\Enemies\\Walker\\Sounds\\Monster\\Idle.wav",
+ 22 sound   SOUND_WALKERMONSTER_SIGHT "Models\\Enemies\\Walker\\Sounds\\Monster\\Sight.wav",
+ 23 sound   SOUND_WALKERMONSTER_FIRE  "Models\\Enemies\\Walker\\Sounds\\Monster\\Fire.wav",
+ 24 sound   SOUND_WALKERMONSTER_DEATH "Models\\Enemies\\Walker\\Sounds\\Monster\\Death.wav",
+ 25 sound   SOUND_WALKERMONSTER_WALK  "Models\\Enemies\\Walker\\Sounds\\Monster\\Walk.wav",
+
+ 26 model   MODEL_HEADMAN_RL       "Models\\Enemies\\Headman\\RocketLauncher.mdl",
+ 27 model   MODEL_HEADMAN_BOMB     "Models\\Enemies\\Headman\\Projectile\\Bomb.mdl",
+ 28 model   MODEL_HEADMAN_HEAD_C   "Models\\Enemies\\Headman\\CommandoHead.mdl",
+ 29 texture TEXTURE_HEADMAN_BOMB   "Models\\Enemies\\Headman\\Projectile\\Bomb.tex",
+ 30 texture TEXTURE_HEADMAN_C      "Models\\Enemies\\Headman\\Commando.tex",
+ 31 texture TEXTURE_HEADMAN_HEAD_C "Models\\Enemies\\Headman\\CommandoHead.tex",
+ 32 texture TEXTURE_HEADMAN_V      "Models\\Enemies\\Headman\\Vaporwave.tex",
+ 48 sound   SOUND_HEADMAN_ATTACK_K "Models\\Enemies\\Headman\\Sounds\\AttackKamikaze.wav",
+ 49 sound   SOUND_HEADMAN_IDLE_K   "Models\\Enemies\\Headman\\Sounds\\IdleKamikaze.wav",
+ 50 sound   SOUND_HEADMAN_FIRE_B   "Models\\Enemies\\Headman\\Sounds\\FireBomberman.wav",
+
+ 51 texture TEXTURE_SCORPMAN_MONSTER "Models\\Enemies\\Scorpman\\Monster.tex",
+ 52 model   MODEL_HEADMAN_HEAD_F     "Models\\Enemies\\Headman\\FirecrackerHead.mdl",
+ 53 texture TEXTURE_HEADMAN_HEAD_F   "Models\\Enemies\\Headman\\FirecrackerHead.tex",
+ 54 model   MODEL_HEADMAN_SAW        "Models\\Enemies\\Headman\\ChainSaw.mdl",
+ 55 texture TEXTURE_HEADMAN_SAW      "Models\\Enemies\\Headman\\Chainsaw.tex",
+ 56 sound   SOUND_HEADMAN_FIRE_F     "Models\\Enemies\\Headman\\Sounds\\FireFirecracker.wav",
+
+ 60 model   MODEL_ELEMENTAL_MAN           "Models\\Enemies\\ElementalMan\\ElementalMan.mdl",
+ 61 model   MODEL_ELEMENTAL_BFLARE        "Models\\Enemies\\ElementalMan\\BodyFlare.mdl",
+ 62 model   MODEL_ELEMENTAL_HFLARE        "Models\\Enemies\\ElementalMan\\HandFlare.mdl",
+ 63 sound   SOUND_ELEMENTAL_IDLE          "Models\\Enemies\\ElementalMan\\Sounds\\Idle.wav",
+ 64 sound   SOUND_ELEMENTAL_WOUND         "Models\\Enemies\\ElementalMan\\Sounds\\Wound.wav",
+ 65 sound   SOUND_ELEMENTAL_FIRE          "Models\\Enemies\\ElementalMan\\Sounds\\Fire.wav",
+ 66 sound   SOUND_ELEMENTAL_KICK          "Models\\Enemies\\ElementalMan\\Sounds\\Kick.wav",
+ 67 sound   SOUND_ELEMENTAL_DEATH         "Models\\Enemies\\ElementalMan\\Sounds\\Death.wav",
+ 68 sound   SOUND_ELEMENTAL_BURN          "Models\\Enemies\\ElementalMan\\Sounds\\LavaBurn.wav",
+ 69 sound   SOUND_ELEMENTAL_ANGER         "Models\\Enemies\\ElementalMan\\Sounds\\Anger.wav",
+ 70 sound   SOUND_ELEMENTAL_GROW          "Models\\Enemies\\ElementalMan\\Sounds\\Grow.wav",
+ 71 texture TEXTURE_ELEMENTAL_AIR         "Models\\Enemies\\ElementalMan\\AirMan.tex",
+ 73 texture TEXTURE_ELEMENTAL_AIRDETAIL   "Models\\Enemies\\ElementalMan\\AirDetail.tex",
+ 74 texture TEXTURE_ELEMENTAL_LAVA        "Models\\Enemies\\ElementalMan\\LavaMan.tex",
+ 75 texture TEXTURE_ELEMENTAL_LAVADETAIL  "Models\\Enemies\\ElementalMan\\LavaDetail.tex",
+ 76 texture TEXTURE_ELEMENTAL_LAVAFLARE   "Models\\Enemies\\ElementalMan\\LavaFlare.tex",
+ 77 texture TEXTURE_ELEMENTAL_EARTH       "Models\\Enemies\\ElementalMan\\EarthMan.tex",
+ 79 texture TEXTURE_ELEMENTAL_EARTHDETAIL "Models\\Enemies\\ElementalMan\\EarthDetail.tex",
+ 80 texture TEXTURE_ELEMENTAL_WATER       "Models\\Enemies\\ElementalMan\\WaterMan.tex",
+ 81 texture TEXTURE_ELEMENTAL_WATERFLARE  "Models\\Enemies\\ElementalMan\\WaterFlare.tex",
+ 82 texture TEXTURE_ELEMENTAL_WATERDETAIL "Models\\Enemies\\ElementalMan\\WaterDetail.tex",
+ 83 model   MODEL_ELEMENTAL_EARTH         "Models\\Enemies\\ElementalMan\\ElementalEarth.mdl",
+ 84 model   MODEL_ELEMENTAL_AIR           "Models\\Enemies\\ElementalMan\\ElementalAir.mdl",
 
 functions:
 
   void Precache(void)
   {
     PrecacheClass(CLASS_BASIC_EFFECT, BET_TELEPORT);
+
+    // [Cecil] Rev: Precache random enemies
+    PrecacheModel(MODEL_CANNON);
+    PrecacheTexture(TEXTURE_CANNON);
+    PrecacheTexture(TEXTURE_WALKER3);
+    PrecacheTexture(TEXTURE_WALKER4);
+    PrecacheTexture(TEXTURE_WALKERSPAWNER);
+    PrecacheModel(MODEL_GIZMO);
+    PrecacheTexture(TEXTURE_GIZMO);
+    PrecacheSound(SOUND_GIZMO_IDLE);
+    PrecacheSound(SOUND_GIZMO_JUMP);
+    PrecacheSound(SOUND_GIZMO_DEATH);
+    PrecacheSound(SOUND_GIZMO_SIGHT);
+    PrecacheSound(SOUND_WALKERMONSTER_IDLE);
+    PrecacheSound(SOUND_WALKERMONSTER_SIGHT);
+    PrecacheSound(SOUND_WALKERMONSTER_FIRE);
+    PrecacheSound(SOUND_WALKERMONSTER_DEATH);
+    PrecacheSound(SOUND_WALKERMONSTER_WALK);
+
+    PrecacheModel(MODEL_HEADMAN_RL);
+    PrecacheModel(MODEL_HEADMAN_BOMB);
+    PrecacheModel(MODEL_HEADMAN_HEAD_C);
+    PrecacheTexture(TEXTURE_HEADMAN_BOMB);
+    PrecacheTexture(TEXTURE_HEADMAN_C);
+    PrecacheTexture(TEXTURE_HEADMAN_HEAD_C);
+    PrecacheTexture(TEXTURE_HEADMAN_V);
+    PrecacheSound(SOUND_HEADMAN_ATTACK_K);
+    PrecacheSound(SOUND_HEADMAN_IDLE_K);
+    PrecacheSound(SOUND_HEADMAN_FIRE_B);
+
+    PrecacheTexture(TEXTURE_SCORPMAN_MONSTER);
+    PrecacheModel(MODEL_HEADMAN_HEAD_F);
+    PrecacheTexture(TEXTURE_HEADMAN_HEAD_F);
+    PrecacheModel(MODEL_HEADMAN_SAW);
+    PrecacheTexture(TEXTURE_HEADMAN_SAW);
+    PrecacheSound(SOUND_HEADMAN_FIRE_F);
+
+    PrecacheModel(MODEL_ELEMENTAL_MAN);
+    PrecacheModel(MODEL_ELEMENTAL_BFLARE);
+    PrecacheModel(MODEL_ELEMENTAL_HFLARE);
+    PrecacheSound(SOUND_ELEMENTAL_IDLE);
+    PrecacheSound(SOUND_ELEMENTAL_WOUND);
+    PrecacheSound(SOUND_ELEMENTAL_FIRE);
+    PrecacheSound(SOUND_ELEMENTAL_KICK);
+    PrecacheSound(SOUND_ELEMENTAL_DEATH);
+    PrecacheSound(SOUND_ELEMENTAL_BURN);
+    PrecacheSound(SOUND_ELEMENTAL_ANGER);
+    PrecacheSound(SOUND_ELEMENTAL_GROW);
+    PrecacheTexture(TEXTURE_ELEMENTAL_AIR);
+    PrecacheTexture(TEXTURE_ELEMENTAL_AIRDETAIL);
+    PrecacheTexture(TEXTURE_ELEMENTAL_LAVA);
+    PrecacheTexture(TEXTURE_ELEMENTAL_LAVADETAIL);
+    PrecacheTexture(TEXTURE_ELEMENTAL_LAVAFLARE);
+    PrecacheTexture(TEXTURE_ELEMENTAL_EARTH);
+    PrecacheTexture(TEXTURE_ELEMENTAL_EARTHDETAIL);
+    PrecacheTexture(TEXTURE_ELEMENTAL_WATER);
+    PrecacheTexture(TEXTURE_ELEMENTAL_WATERFLARE);
+    PrecacheTexture(TEXTURE_ELEMENTAL_WATERDETAIL);
+    PrecacheModel(MODEL_ELEMENTAL_EARTH);
+    PrecacheModel(MODEL_ELEMENTAL_AIR);
   }
 
 

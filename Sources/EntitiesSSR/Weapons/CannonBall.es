@@ -121,6 +121,10 @@ properties:
  40 FLOAT m_tmInvisibility = 0.0f,           // don't render before given time
  41 FLOAT m_tmExpandBox = 0.0f,              // expand collision after a few seconds
  42 FLOAT m_tmForceExplode = 0.0f,                 // force explosion at given moment
+
+ // [Cecil] Rev: Extended life time
+ 43 BOOL m_bCheatedLifetime = FALSE,
+ 44 FLOAT m_fCheatedLifetimeValue = 0.0f,
 /*
 {
   CLightSource m_lsLightSource;
@@ -535,6 +539,9 @@ procedures:
     m_tmInvisibility = 0.05f;
     m_bSelfExploded = FALSE;
     m_tmExpandBox = 0.0001f;
+
+    // [Cecil] TODO: Custom life time using cheated life time variables
+
     // setup time for forced expolding
     m_tmForceExplode=_pTimer->CurrentTick()+30.0f;
 

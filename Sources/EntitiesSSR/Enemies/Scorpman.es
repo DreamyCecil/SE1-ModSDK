@@ -72,6 +72,9 @@ properties:
   4 FLOAT m_fFireTime = 0.0f,           // time to fire bullets
   5 CAnimObject m_aoLightAnimation,     // light animation object
   6 BOOL m_bSleeping "Sleeping" 'S' = FALSE,  // set to make scorpman sleep initally
+
+ // [Cecil] Rev
+ 20 FLOAT m_fCustomFireRate "Custom fire rate" = -1.0f,
   
 {
   CEntity *penBullet;     // bullet
@@ -404,6 +407,12 @@ procedures:
         m_fFireTime = 2.0f;
         break;
     }
+
+    // [Cecil] Rev: Set custom fire rate
+    if (m_fCustomFireRate > 0.0f) {
+      m_fFireTime = m_fCustomFireRate;
+    }
+
     if (GetSP()->sp_gdGameDifficulty<=CSessionProperties::GD_EASY) {
       m_fFireTime *= 0.5f;
     }

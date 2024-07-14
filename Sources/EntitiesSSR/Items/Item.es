@@ -27,7 +27,7 @@ extern __int64 _ulPlayerRenderingMask; // [Cecil] Rev: 64 bits wide
 class export CItem : CMovableModelEntity {
 name      "Item";
 thumbnail "";
-features  "HasName", "HasDescription", "IsTargetable", "CanBePredictable";
+features  "HasName", "HasDescription", "HasTarget", "IsTargetable", "CanBePredictable";
 
 properties:
   1 CTString m_strName            "Name" 'N' = "Item",
@@ -47,10 +47,24 @@ properties:
 505 INDEX m_ulPickedMask2 = 0,  // [Cecil] Rev: Workaround for 64-bit wide pickup masks
  16 BOOL m_bFloating "Floating" 'F' = FALSE,
 
+ // [Cecil] TODO: Use these somehow
+ // [Cecil] Rev: New properties
+ 20 CTFileName m_fnmCustomModel   "Custom model" = CTString(""),
+ 21 CTFileName m_fnmCustomTexture "Custom texture" = CTString(""),
+ 22 FLOAT m_fCustomScale "Custom scale" = -1.0f,
+ 23 CTFileName m_fnmCustomPickupSound "Custom pickup sound" = CTString(""),
+ 30 BOOL m_bOnlyCoop "Only in coop" = FALSE,
+
 components:
   1 model   MODEL_ITEM      "Models\\Items\\ItemHolder\\ItemHolder.mdl",
 
 functions:
+  // [Cecil] Rev: Set all available entity targets and return their amount
+  virtual int GetTargets(CEntityPointer *apenTargets, int ctTargets) const {
+    apenTargets[0] = m_penTarget;
+    return 1;
+  };
+
   virtual void AdjustDifficulty(void)
   {
   }

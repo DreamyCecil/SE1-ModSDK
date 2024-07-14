@@ -269,6 +269,7 @@ properties:
  13 BOOL m_bSwim = FALSE,                     // player in water
  14 INDEX m_iFlare = FLARE_REMOVE,            // 0-none, 1-remove, 2-add
  15 INDEX m_iSecondFlare = FLARE_REMOVE,      // 0-none, 1-remove, 2-add
+ 40 FLOAT m_tmSecondFlareAdded = -1.0f,       // [Cecil] Rev: Like m_tmFlareAdded but for left colt
  16 BOOL m_bAttacking = FALSE,                // currently firing weapon/swinging knife
  19 FLOAT m_tmAttackingDue = -1.0f,           // when firing animation is due
  17 FLOAT m_tmFlareAdded = -1.0f,             // for better flare add/remove
@@ -448,6 +449,30 @@ components:
 250 model   MODEL_FLARE02               "Models\\Effects\\Weapons\\Flare02\\Flare.mdl",
 251 texture TEXTURE_FLARE02             "Models\\Effects\\Weapons\\Flare02\\Flare.tex",
 
+// [Cecil] Rev: New weapons
+260 model   MODEL_GHOSTBUSTER     "Models\\Weapons\\GhostBuster\\GhostBusterItem.mdl",
+261 model   MODEL_GB_BODY         "Models\\Weapons\\GhostBuster\\Body.mdl",
+262 model   MODEL_GB_ROTATOR      "Models\\Weapons\\GhostBuster\\Rotator.mdl",
+263 model   MODEL_GB_EFFECT1      "Models\\Weapons\\GhostBuster\\Effect01.mdl",
+264 model   MODEL_GB_EFFECT1FLARE "Models\\Weapons\\GhostBuster\\EffectFlare01.mdl",
+265 texture TEXTURE_GB_ROTATOR    "Models\\Weapons\\GhostBuster\\Rotator.tex",
+266 texture TEXTURE_GB_BODY       "Models\\Weapons\\GhostBuster\\Body.tex",
+267 texture TEXTURE_GB_LIGHTNING  "Models\\Weapons\\GhostBuster\\Lightning.tex",
+268 texture TEXTURE_GB_FLARE      "Models\\Weapons\\GhostBuster\\EffectFlare.tex",
+
+270 model   MODEL_PLASMATHROWER   "Models\\Weapons\\Laser\\LaserItem.mdl",
+271 model   MODEL_PT_BODY         "Models\\Weapons\\PlasmaThrower\\Body.mdl",
+272 model   MODEL_PT_BARREL       "Models\\Weapons\\PlasmaThrower\\Barrel.mdl",
+273 texture TEXTURE_PT_BODY       "Models\\Weapons\\PlasmaThrower\\Body.tex",
+274 texture TEXTURE_PT_BARREL     "Models\\Weapons\\PlasmaThrower\\Barrel.tex",
+275 model   MODEL_PT_BARRELBIG    "Models\\Weapons\\PlasmaThrower\\Barrel_big.mdl",
+276 texture TEXTURE_PT_BARRELBIG  "Models\\Weapons\\PlasmaThrower\\Barrel_big.tex",
+
+280 model   MODEL_ML_PIPE         "Models\\Weapons\\MineLayer\\MovingPipe.mdl",
+281 texture TEXTURE_ML_PIPE       "Models\\Weapons\\MineLayer\\MovingPipe.tex",
+282 texture TEXTURE_ML_BODY       "Models\\Weapons\\MineLayer\\Body.tex",
+283 model   MODEL_MINELAYER       "Models\\Weapons\\GrenadeLauncher\\GrenadeLauncher.mdl",
+284 model   MODEL_ML_BODY         "Models\\Weapons\\MineLayer\\Body.mdl",
 
 functions:
   
@@ -1040,13 +1065,10 @@ functions:
     pamoHead->amo_plRelative.pl_OrientationAngle(2) = 0.0f;
     pamoHead->amo_plRelative.pl_OrientationAngle(3) *= 4.0f;
 
-  // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
-  #if SE1_VER >= SE1_107
     // forbid players from cheating by kissing their @$$
     const FLOAT fMaxBanking = 5.0f;
     pamoBody->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoBody->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
     pamoHead->amo_plRelative.pl_OrientationAngle(3) = Clamp(pamoHead->amo_plRelative.pl_OrientationAngle(3), -fMaxBanking, fMaxBanking);
-  #endif
   };
 
   // animate player
@@ -1234,9 +1256,7 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_JUMPSTART, AOF_NORESTART);
-  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>6) { m_bCrouch = FALSE; }
-  #endif
     m_bReference = FALSE;
   };
 
@@ -1247,9 +1267,7 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_SWIM, AOF_LOOPING|AOF_NORESTART);
-  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>2) { m_bCrouch = FALSE; }
-  #endif
     m_bSwim = TRUE;
   };
 
@@ -1260,9 +1278,7 @@ functions:
     }
     CPlayer &pl = (CPlayer&)*m_penPlayer;
     pl.StartModelAnim(PLAYER_ANIM_STAND, AOF_LOOPING|AOF_NORESTART);
-  #if SE1_VER >= SE1_107
     if (_pNetwork->ga_ulDemoMinorVersion>2) { m_bCrouch = FALSE; }
-  #endif
     m_bSwim = FALSE;
   };
 

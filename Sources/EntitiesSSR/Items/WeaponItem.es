@@ -73,6 +73,7 @@ thumbnail "Thumbnails\\WeaponItem.tbn";
 
 properties:
   1 enum WeaponItemType m_EwitType    "Type" 'Y' = WIT_COLT,     // weapon
+  2 INDEX m_iAmmoAmount "Ammo amount" = -1, // [Cecil] Rev
 
 components:
   0 class   CLASS_BASE        "Classes\\Item.ecl",
@@ -188,6 +189,27 @@ components:
 
 // ************** SOUNDS **************
 213 sound SOUND_PICK             "Sounds\\Items\\Weapon.wav",
+
+// [Cecil] Rev: New weapons
+220 model   MODEL_GHOSTBUSTER     "Models\\Weapons\\GhostBuster\\GhostBusterItem.mdl",
+221 model   MODEL_GB_BODY         "Models\\Weapons\\GhostBuster\\Body.mdl",
+222 texture TEXTURE_GB_BODY       "Models\\Weapons\\GhostBuster\\Body.tex",
+223 model   MODEL_GB_ROTATOR      "Models\\Weapons\\GhostBuster\\Rotator.mdl",
+224 texture TEXTURE_GB_ROTATOR    "Models\\Weapons\\GhostBuster\\Rotator.tex",
+
+230 model   MODEL_PLASMATHROWER   "Models\\Weapons\\Laser\\LaserItem.mdl",
+231 model   MODEL_PT_BODY         "Models\\Weapons\\PlasmaThrower\\Body.mdl",
+232 model   MODEL_PT_BARREL       "Models\\Weapons\\PlasmaThrower\\barrel.mdl",
+233 texture TEXTURE_PT_BODY       "Models\\Weapons\\PlasmaThrower\\Body.tex",
+234 texture TEXTURE_PT_BARREL     "Models\\Weapons\\PlasmaThrower\\barrel.tex",
+235 model   MODEL_PT_BARRELBIG    "Models\\Weapons\\PlasmaThrower\\barrel_big.mdl",
+236 texture TEXTURE_PT_BARRELBIG  "Models\\Weapons\\PlasmaThrower\\barrel_big.tex",
+
+240 model   MODEL_ML_PIPE         "Models\\Weapons\\MineLayer\\MovingPipe.mdl",
+241 texture TEXTURE_ML_BODY       "Models\\Weapons\\MineLayer\\Body.tex",
+242 texture TEXTURE_ML_PIPE       "Models\\Weapons\\MineLayer\\MovingPipe.tex",
+243 model   MODEL_MINELAYER       "Models\\Weapons\\GrenadeLauncher\\GrenadeLauncher.mdl",
+244 model   MODEL_ML_BODY         "Models\\Weapons\\MineLayer\\Body.mdl",
 
 functions:
   void Precache(void) {
@@ -415,7 +437,7 @@ procedures:
     // send weapon to entity
     EWeaponItem eWeapon;
     eWeapon.iWeapon = m_EwitType;
-    eWeapon.iAmmo = -1; // use default ammo amount
+    eWeapon.iAmmo = m_iAmmoAmount; // [Cecil] Rev: Pass ammo amount
     eWeapon.bDropped = m_bDropped;
     // if weapon is received
     if (epass.penOther->ReceiveItem(eWeapon)) {

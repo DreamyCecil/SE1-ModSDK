@@ -109,6 +109,21 @@ properties:
  93 INDEX m_iFirstRandomAnimation "First random animation" 'R' = -1,
 100 FLOAT m_fMaxTessellationLevel "Max tessellation level" = 0.0f,
 
+// [Cecil] TODO: Use these somehow
+// [Cecil] Rev: Shader properties
+101 CTFileName m_fnVertexShader          "Shader: Vertex" = CTString(""),
+102 CTFileName m_fnFragmentShader        "Shader: Fragment" = CTString(""),
+103 CTFileName m_fnShaderTextureSampler0 "Shader: Texture sampler 0" = CTString(""),
+104 CTFileName m_fnShaderTextureSampler1 "Shader: Texture sampler 1" = CTString(""),
+105 CTFileName m_fnShaderTextureSampler2 "Shader: Texture sampler 2" = CTString(""),
+106 CTFileName m_fnShaderTextureSampler3 "Shader: Texture sampler 3" = CTString(""),
+107 CTFileName m_fnShaderTextureSampler4 "Shader: Texture sampler 4" = CTString(""),
+108 FLOAT m_fnShaderParam0 "Shader: Uniform param 0" = 0.0f,
+109 FLOAT m_fnShaderParam1 "Shader: Uniform param 1" = 0.0f,
+110 FLOAT m_fnShaderParam2 "Shader: Uniform param 2" = 0.0f,
+111 FLOAT m_fnShaderParam3 "Shader: Uniform param 3" = 0.0f,
+112 FLOAT m_fnShaderParam4 "Shader: Uniform param 4" = 0.0f,
+
 {
   CTFileName m_fnOldModel;  // used for remembering last selected model (not saved at all)
 }

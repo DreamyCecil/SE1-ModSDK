@@ -58,6 +58,8 @@ properties:
   8 INDEX m_iBullet = 0,                // bullet for lerped launch
   9 enum DamageType m_EdtDamage = DMT_BULLET,   // damage type
   10 FLOAT m_fBulletSize = 0.0f,      // bullet can have radius, for hitting models only
+  // [Cecil] TODO: Pass it into InflictDirectDamage()
+  11 INDEX m_iBatchID = -1, // [Cecil] Rev
 
 components:
   1 class   CLASS_BASIC_EFFECT "Classes\\BasicEffect.ecl"

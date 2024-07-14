@@ -547,6 +547,7 @@ properties:
   5 enum WeaponType m_iWantedWeapon   = WEAPON_KNIFE,     // wanted weapon (internal)
   6 enum WeaponType m_iPreviousWeapon = WEAPON_KNIFE,   // previous active weapon (internal)
  11 INDEX m_iAvailableWeapons = 0x01,   // avaible weapons
+511 INDEX m_iAvailableWeapons2 = 0x00,  // [Cecil] Rev: Workaround for 64-bit wide weapon masks
  12 BOOL  m_bChangeWeapon = FALSE,      // change current weapon
  13 BOOL  m_bReloadWeapon = FALSE,      // reload weapon
  14 BOOL  m_bMirrorFire   = FALSE,      // fire with mirror model
@@ -595,6 +596,12 @@ properties:
  54 INDEX m_iSniperBullets    = 0,
  55 INDEX m_iMaxSniperBullets = MAX_SNIPERBULLETS,
 
+ // [Cecil] Rev: New properties
+ 56 INDEX m_iPlasmaPacks    = 0,
+ 57 INDEX m_iMaxPlasmaPacks = MAX_PLASMAPACKS,
+ 58 INDEX m_iMinePacks      = 0,
+ 59 INDEX m_iMaxMinePacks   = MAX_MINEPACKS,
+
 // weapons specific
 // knife
 210 INDEX m_iKnifeStand = 1,
@@ -604,6 +611,7 @@ properties:
 220 FLOAT m_aMiniGun = 0.0f,
 221 FLOAT m_aMiniGunLast = 0.0f,
 222 FLOAT m_aMiniGunSpeed = 0.0f,
+223 FLOAT m_aMiniGunSpinLeft = 0.0f, // [Cecil] Rev
 
 // lerped bullets fire
 230 FLOAT3D m_iLastBulletPosition = FLOAT3D(32000.0f, 32000.0f, 32000.0f),
@@ -622,11 +630,14 @@ properties:
 240 CEntityPointer m_penFlame,
 // laser
 245 INDEX m_iLaserBarrel = 0,
+246 INDEX m_iPlasmaBarrel = 0, // [Cecil] Rev
 // ghostbuster
-250 CEntityPointer m_penGhostBusterRay,
+250 CEntityPointer m_penGhostBusterRay, // [Cecil] Rev: Uncommented
 // fire flare
 251 INDEX m_iFlare = FLARE_REMOVE,       // 0-none, 1-remove, 2-add
 252 INDEX m_iSecondFlare = FLARE_REMOVE, // 0-none, 1-remove, 2-add
+253 FLOAT m_tmFlareAdded       = -1.0f, // [Cecil] Rev: Like in PlayerAnimator
+254 FLOAT m_tmSecondFlareAdded = -1.0f, // [Cecil] Rev: Like in PlayerAnimator
 // cannon
 260 FLOAT m_fWeaponDrawPowerOld = 0,
 261 FLOAT m_fWeaponDrawPower = 0,
@@ -635,6 +646,18 @@ properties:
 270 FLOAT m_tmFlamerStart=1e6,
 271 FLOAT m_tmFlamerStop=1e9,
 272 FLOAT m_tmLastChainsawSpray = 0.0f,
+
+// [Cecil] Rev: New properties
+280 BOOL m_bUsedKnifeOnly = TRUE,
+281 INDEX m_iTimesFired = 0,
+282 INDEX m_iTimesHit = 0,
+283 INDEX m_iBulletBatchID = 1,
+
+290 BOOL m_bSecFireWeapon = FALSE,
+291 BOOL m_bPrimaryFire = FALSE,
+300 CEntityPointer m_penEnergyMine,
+301 INDEX m_ctMaxMines = 10,
+302 FLOAT m_fMinigunTickTime = 0.05f,
 
 {
   CEntity *penBullet;

@@ -437,6 +437,7 @@ DECL_DLL extern BOOL cmp_bUpdateInBackground = FALSE;
 // set for initial calling computer without rendering game
 DECL_DLL extern BOOL cmp_bInitialStart = FALSE;
 
+// [Cecil] TODO: Comment this out and remove its usage from Game
 // game sets this for player hud and statistics and hiscore sound playing
 DECL_DLL extern INDEX plr_iHiScore = 0.0f;
 
@@ -1021,11 +1022,17 @@ properties:
  19 CEntityPointer m_pen3rdPersonView,        // player 3rd person view
  20 INDEX m_iViewState=PVT_PLAYEREYES,        // view state
  21 INDEX m_iLastViewState=PVT_PLAYEREYES,    // last view state
+ 22 INDEX m_iViewStateVehicle=PVT_PLAYEREYES, // [Cecil] Rev
 
  26 CAnimObject m_aoLightAnimation,           // light animation object
  27 FLOAT m_fDamageAmount = 0.0f,            // how much was last wound
  28 FLOAT m_tmWoundedTime  = 0.0f,            // when was last wound
  29 FLOAT m_tmScreamTime   = 0.0f,            // when was last wound sound played
+
+ // [Cecil] Rev: New properties
+ 30 FLOAT m_tmShitGitTime = 0.0f,
+ 31 BOOL m_bGotHurt = FALSE,
+ 32 BOOL m_bJumped = FALSE,
 
  33 INDEX m_iGender = GENDER_MALE,            // male/female offset in various tables
  34 enum PlayerState m_pstState = PST_STAND,  // current player state
@@ -1070,14 +1077,17 @@ properties:
  74 CSoundObject m_soLocalAmbientLoop,  // local ambient that only this player hears
  75 CSoundObject m_soLocalAmbientOnce,  // local ambient that only this player hears
  76 CSoundObject m_soMessage,  // message sounds
- 77 CSoundObject m_soHighScore, // high score sound
+
+ // [Cecil] Rev: Removed m_soHighScore
+
  78 CSoundObject m_soSpeech,    // for quotes
  79 CSoundObject m_soSniperZoom, // for sniper zoom sound
 
  81 INDEX m_iMana    = 0,        // current score worth for killed player
  94 FLOAT m_fManaFraction = 0.0f,// fractional part of mana, for slow increase with time
- 84 INDEX m_iHighScore = 0,      // internal hiscore for demo playing
- 85 INDEX m_iBeatenHighScore = 0,    // hiscore that was beaten
+
+ // [Cecil] Rev: Removed m_iHighScore and m_iBeatenHighScore
+
  89 FLOAT m_tmLatency = 0.0f,               // player-server latency (in seconds)
  // for latency averaging
  88 FLOAT m_tmLatencyLastAvg = 0.0f, 
@@ -1138,10 +1148,12 @@ properties:
  161 FLOAT m_tmInvulnerability = 0.0f, 
  162 FLOAT m_tmSeriousDamage   = 0.0f, 
  163 FLOAT m_tmSeriousSpeed    = 0.0f, 
+ 164 FLOAT m_tmSeriousJump     = 0.0f, // [Cecil] Rev
  166 FLOAT m_tmInvisibilityMax    = 30.0f,
  167 FLOAT m_tmInvulnerabilityMax = 30.0f,
  168 FLOAT m_tmSeriousDamageMax   = 40.0f,
  169 FLOAT m_tmSeriousSpeedMax    = 20.0f,
+ 170 FLOAT m_tmSeriousJumpMax     = 60.0f, // [Cecil] Rev
 
  180 FLOAT m_tmChainShakeEnd = 0.0f, // used to determine when to stop shaking due to chainsaw damage
  181 FLOAT m_fChainShakeStrength = 1.0f, // strength of shaking
@@ -1152,6 +1164,39 @@ properties:
  190 INDEX m_iSeriousBombCount = 0,      // ammount of serious bombs player owns
  191 INDEX m_iLastSeriousBombCount = 0,  // ammount of serious bombs player had before firing
  192 FLOAT m_tmSeriousBombFired = -10.0f,  // when the bomb was last fired
+
+ // [Cecil] Rev: New properties
+ 193 INDEX m_iTeam = -1,
+ 194 INDEX m_kaiKills = 0,
+ 195 INDEX m_kaiRoundKills = 0,
+ 196 FLOAT m_katmLastKill = 0.0f,
+ 197 INDEX m_iHasFlag = 0,
+ 198 CEntityPointer m_penCarriedFlag,
+
+ 200 CSoundObject m_soCTFYouHaveTheirFlag,
+ 201 CSoundObject m_soCTFTheyHaveYourFlag,
+ 202 CSoundObject m_soCTFRedTeamScores,
+ 203 CSoundObject m_soCTFBlueTeamScores,
+ 204 CSoundObject m_soCTFRedFlagReturned,
+ 205 CSoundObject m_soCTFBlueFlagReturned,
+ 206 CSoundObject m_soKABackstab,
+ 207 CSoundObject m_soKAHumiliation,
+ 208 CSoundObject m_soKAExcellent,
+ 209 CSoundObject m_soKAMultiKll,
+ 210 CSoundObject m_soKAOwned,
+
+ 211 BOOL m_bIsReady = FALSE,
+ 212 FLOAT m_tmStartFadeIn = 0.0f,
+ 213 FLOAT m_tmDiedAt = 0.0f,
+ 214 FLOAT m_tmGravityStart = 0.0f,
+ 215 INDEX m_iBulletBatchIDLastHit = 0,
+
+ 216 CEntityPointer m_penInControlZone,
+ 217 FLOAT m_tmFragMade = 0.0f,
+ 218 CEntityPointer m_penFragPlayer,
+ 219 CEntityPointer m_penInVehicle,
+ 220 BOOL m_bSelectingTeam = FALSE,
+ 221 BOOL m_bWaitingForNextRound = FALSE,
 
 {
   ShellLaunchData ShellLaunchData_array;  // array of data describing flying empty shells
@@ -1486,8 +1531,9 @@ functions:
 
   void CheckHighScore(void)
   {
+    // [Cecil] Rev: No highscore
     // if not playing a demo
-    if (!_pNetwork->IsPlayingDemo()) {
+    /*if (!_pNetwork->IsPlayingDemo()) {
       // update our local high score with the external
       if (plr_iHiScore>m_iHighScore) {
         m_iHighScore = plr_iHiScore;
@@ -1504,7 +1550,7 @@ functions:
         m_soHighScore.Set3DParameters(25.0f, 5.0f, 1.0f, 1.0f);
         //PlaySound(m_soHighScore, SOUND_HIGHSCORE, 0); !!!!####!!!!
       }
-    }
+    }*/
   }
 
   CTString GetPredictName(void) const
@@ -1862,12 +1908,13 @@ functions:
       strStats+=AlignString(CTString(0, "^cFFFFFF%s:^r\n%s", TRANS("STARTED"), GetStatsRealWorldStarted()));
       strStats+="\n";
       strStats+=AlignString(CTString(0, "^cFFFFFF%s:^r\n%s", TRANS("PLAYING TIME"), TimeToString(GetStatsRealWorldTime())));
-      strStats+="\n";
+      // [Cecil] Rev: No highscore
+      /*strStats+="\n";
       if( m_psGameStats.ps_iScore<=plr_iHiScore) {
         strStats+=AlignString(CTString(0, "^cFFFFFF%s:^r\n%d", TRANS("HI-SCORE"), plr_iHiScore));
       } else {
         strStats+=TRANS("YOU BEAT THE HI-SCORE!");
-      }
+      }*/
       strStats+="\n\n";
     }
 
@@ -2502,17 +2549,9 @@ functions:
         // let the player entity render its interface
         CPlacement3D plLight(_vViewerLightDirection, ANGLE3D(0,0,0));
         plLight.AbsoluteToRelative(plViewer);
-
-      // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
-      #if SE1_VER >= SE1_107
         RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
           plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
           penViewer==this && (GetFlags()&ENF_ALIVE), iEye);
-      #else
-        RenderHUD( *(CPerspectiveProjection3D *)(CProjection3D *)apr, pdp, 
-          plLight.pl_PositionVector, _colViewerLight, _colViewerAmbient, 
-          penViewer==this && (GetFlags()&ENF_ALIVE));
-      #endif
       }
     }
     Stereo_SetBuffer(STEREO_BOTH);
@@ -4827,15 +4866,6 @@ functions:
     }
   }
 
-#if SE1_VER < SE1_107
-  // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
-  void RenderHUD(CPerspectiveProjection3D &pr, CDrawPort *pdp,
-    FLOAT3D vLightDir, COLOR colLight, COLOR colAmbient, BOOL bRenderWeapon)
-  {
-    RenderHUD(pr, pdp, vLightDir, colLight, colAmbient, bRenderWeapon, STEREO_LEFT);
-  };
-#endif
-
   // Draw player interface on screen.
   void RenderHUD( CPerspectiveProjection3D &prProjection, CDrawPort *pdp,
                   FLOAT3D vViewerLightDirection, COLOR colViewerLight, COLOR colViewerAmbient,
@@ -4848,15 +4878,8 @@ functions:
     BOOL bRenderModels = _pShell->GetINDEX("gfx_bRenderModels");
     if( hud_bShowWeapon && bRenderModels && !bSniping) {
       // render weapons only if view is from player eyes
-
-    // [Cecil] NOTE: Compatibility with vanilla TSE 1.05
-    #if SE1_VER >= SE1_107
       ((CPlayerWeapons&)*m_penWeapons).RenderWeaponModel(prProjection, pdp, 
        vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon, iEye);
-    #else
-      ((CPlayerWeapons&)*m_penWeapons).RenderWeaponModel(prProjection, pdp, 
-       vViewerLightDirection, colViewerLight, colViewerAmbient, bRenderWeapon);
-    #endif
     }
 
     // if is first person
@@ -5844,14 +5867,7 @@ procedures:
       }
       on (EDisconnected) : { pass; }
       on (EReceiveScore) : { pass; }
-      on (EKilledEnemy) : {
-        // [Cecil] NOTE: Vanilla TSE 1.05 doesn't handle this event, so it ends up under 'otherwise'
-        #if SE1_VER >= SE1_107
-          pass;
-        #else
-          resume;
-        #endif
-      }
+      on (EKilledEnemy) : { pass; }
       on (EPreLevelChange) : { pass; }
       on (EPostLevelChange) : { pass; }
       otherwise() : { resume; }
@@ -5898,14 +5914,7 @@ procedures:
     wait () {
       on (EBegin) : { resume; }
       on (EReceiveScore) : { pass; }
-      on (EKilledEnemy) : {
-        // [Cecil] NOTE: Vanilla TSE 1.05 doesn't handle this event, so it ends up under 'otherwise'
-        #if SE1_VER >= SE1_107
-          pass;
-        #else
-          resume;
-        #endif
-      }
+      on (EKilledEnemy) : { pass; }
       on (ECenterMessage) : { pass; }
       otherwise() : { resume; }
     }
@@ -6517,14 +6526,7 @@ procedures:
             wait(_pTimer->TickQuantum) {
               on (ETimer) : { stop; }
               on (EReceiveScore) : { pass; }
-              on (EKilledEnemy) : {
-                // [Cecil] NOTE: Vanilla TSE 1.05 doesn't handle this event, so it ends up under 'otherwise'
-                #if SE1_VER >= SE1_107
-                  pass;
-                #else
-                  resume;
-                #endif
-              }
+              on (EKilledEnemy) : { pass; }
               on (ECenterMessage) : { pass; }
               on (EPostLevelChange) : { 
                 m_ulFlags&=!PLF_DONTRENDER;

@@ -1039,6 +1039,12 @@ properties:
   4 BOOL m_bBackground "Background" 'B' =FALSE,
   5 BOOL m_bAnchored   "Anchored"   'A' =FALSE,
 
+  // [Cecil] TODO: Use these somehow
+  // [Cecil] Rev: New properties
+  6 BOOL m_bBarrier          "Barrier" = FALSE,
+  7 BOOL m_bCollisions       "Collisions" = TRUE,
+  8 BOOL m_bOnlyBlocksPlayer "Only collides with player" = FALSE,
+
   10 CEntityPointer m_penGravity0 "Gravity 0" 'G',
   11 CEntityPointer m_penGravity1 "Gravity 1",
   12 CEntityPointer m_penGravity2 "Gravity 2",

@@ -302,6 +302,8 @@ procedures:
     m_tmStarted = _pTimer->CurrentTick();
     m_bTouchedGround=FALSE;
 
+    // [Cecil] TODO: Custom fade time using cheat commands
+
     // wait some time
     FLOAT fWaitBeforeFade=FRnd()*2.0f + 3.0f;
     wait(fWaitBeforeFade)

@@ -36,7 +36,8 @@ properties:
   6 BOOL m_bActive              "Active" 'A' = TRUE,
   7 BOOL m_bPlayersOnly         "Players only" 'P' = TRUE,
   8 BOOL m_bForceStop           "Force stop" 'F' = FALSE,
-
+  // [Cecil] TODO: Delete teleporters with this flag enabled if a new session property related to it is enabled
+  9 BOOL m_bStopsSpeedrunners   "Stops speedrunners" = FALSE, // [Cecil] Rev
 
 components:
 

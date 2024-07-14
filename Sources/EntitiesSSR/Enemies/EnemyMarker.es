@@ -38,6 +38,15 @@ properties:
 
  18 BOOL m_bStartTactics          "Start Tactics" = FALSE, 
 
+ // [Cecil] TODO: Use these somehow
+ // [Cecil] Rev: New properties
+ 19 BOOL m_bGetCloser "Allow give up get closer" = TRUE,
+ 20 CEntityPointer m_pTarget01 "Random target 1",
+ 21 CEntityPointer m_pTarget02 "Random target 2",
+ 22 CEntityPointer m_pTarget03 "Random target 3",
+ 23 CEntityPointer m_pTarget04 "Random target 4",
+ 24 CEntityPointer m_pTarget05 "Random target 5",
+
 components:
   1 model   MODEL_MARKER     "Models\\Editor\\EnemyMarker.mdl",
   2 texture TEXTURE_MARKER   "Models\\Editor\\EnemyMarker.tex"

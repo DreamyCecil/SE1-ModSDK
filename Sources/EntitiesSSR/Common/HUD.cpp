@@ -1297,8 +1297,9 @@ extern void DrawHUD( const CPlayer *penPlayerCurrent, CDrawPort *pdpCurrent, BOO
   // if single player or cooperative mode
   if( bSinglePlay || bCooperative)
   {
+    // [Cecil] Rev: No highscore
     // prepare and draw hiscore info 
-    strValue.PrintF( "%d", Max(_penPlayer->m_iHighScore, _penPlayer->m_psGameStats.ps_iScore));
+    /*strValue.PrintF( "%d", Max(_penPlayer->m_iHighScore, _penPlayer->m_psGameStats.ps_iScore));
     BOOL bBeating = _penPlayer->m_psGameStats.ps_iScore>_penPlayer->m_iHighScore;
     fRow = pixTopBound+fHalfUnit;
     fCol = 320.0f-fOneUnit-fChrUnit*8/2;
@@ -1306,7 +1307,7 @@ extern void DrawHUD( const CPlayer *penPlayerCurrent, CDrawPort *pdpCurrent, BOO
     HUD_DrawBorder( fCol,      fRow, fOneUnit,   fOneUnit, colBorder);
     HUD_DrawBorder( fCol+fAdv, fRow, fChrUnit*8, fOneUnit, colBorder);
     HUD_DrawText(   fCol+fAdv, fRow, strValue, NONE, bBeating ? 0.0f : 1.0f);
-    HUD_DrawIcon(   fCol,      fRow, _toHiScore, C_WHITE /*_colHUD*/, 1.0f, FALSE);
+    HUD_DrawIcon(   fCol,      fRow, _toHiScore, C_WHITE, 1.0f, FALSE);*/
 
     // prepare and draw unread messages
     if( hud_bShowMessages && _penPlayer->m_ctUnreadMessages>0) {
