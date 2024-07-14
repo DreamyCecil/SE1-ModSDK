@@ -33,6 +33,7 @@ properties:
   8 FLOAT m_fImpulseFactor        "Damage impulse factor" = 0.01f,      // factor applied to damage ammount
   9 FLOAT m_fTriggerImpulse       "Impulse on trigger" = 10.0f,         // ipulse given on trigger
  10 BOOL m_bActive                "Active" 'A' = TRUE,                  // if pendulum is active by default
+ 11 FLOAT m_fMaxDamage            "Damage clamp" = 99999.0f, // [Cecil] Rev
 
 components:
 functions:
@@ -50,6 +51,7 @@ functions:
     // project damage direction onto oscilating direction
     FLOAT fImpulse = vDirection%vOscilatingDirection;
     // calculate impulse strength
+    fDamageAmmount = ClampUp(fDamageAmmount, m_fMaxDamage); // [Cecil] Rev: Limit received damage
     fImpulse *= fDamageAmmount*m_fImpulseFactor;
     // apply impulse
     m_fSpeed += fImpulse;
