@@ -29,6 +29,7 @@ enum PowerUpItemType {
   2 PUIT_DAMAGE   "SeriousDamage",
   3 PUIT_SPEED    "SeriousSpeed",
   4 PUIT_BOMB     "SeriousBomb",
+  5 PUIT_JUMP     "SeriousJump", // [Cecil] Rev: Serious Jump
 };
 
 // event for sending through receive item
@@ -77,6 +78,10 @@ components:
  55 texture TEXTURE_FLARE "Models\\Items\\Flares\\Flare.tex",
  56 model   MODEL_FLARE   "Models\\Items\\Flares\\Flare.mdl",
 
+ // [Cecil] Rev: Serious Jump
+ 60 model   MODEL_JUMP   "ModelsMP\\Items\\PowerUps\\SeriousJump\\SeriousJump.mdl",
+ 61 texture TEXTURE_JUMP "ModelsMP\\Items\\PowerUps\\SeriousJump\\SeriousJump.tex",
+
 // ************** SOUNDS **************
 //301 sound   SOUND_INVISIB  "SoundsMP\\Items\\Invisibility.wav",
 //302 sound   SOUND_INVULNER "SoundsMP\\Items\\Invulnerability.wav",
@@ -94,6 +99,7 @@ functions:
     case PUIT_INVULNER:  /*PrecacheSound(SOUND_INVULNER);  break; */                                    
     case PUIT_DAMAGE  :  /*PrecacheSound(SOUND_DAMAGE  );  break;*/
     case PUIT_SPEED   :  /*PrecacheSound(SOUND_SPEED   );  break;*/
+    case PUIT_JUMP: // [Cecil] Rev: Serious Jump
                          PrecacheSound(SOUND_PICKUP  );  break;
     case PUIT_BOMB    :  PrecacheSound(SOUND_BOMB    );  break;
     }
@@ -113,6 +119,7 @@ functions:
     case PUIT_INVULNER:  pes->es_strName += " invulnerability";  break;
     case PUIT_DAMAGE  :  pes->es_strName += " serious damage";   break;
     case PUIT_SPEED   :  pes->es_strName += " serious speed";    break;
+    case PUIT_JUMP    :  pes->es_strName += " serious jump";     break; // [Cecil] Rev: Serious Jump
     case PUIT_BOMB    :  pes->es_strName = "Serious Bomb!"; 
     }
     return TRUE;
@@ -137,6 +144,7 @@ functions:
         Particles_Stardust( this, 1.0f*0.75f, 0.75f*0.75f, PT_STAR08, 128);
         break;
       case PUIT_SPEED:
+      case PUIT_JUMP: // [Cecil] Rev: Serious Jump
         Particles_Stardust( this, 1.0f*0.75f, 0.75f*0.75f, PT_STAR08, 128);
         break;
       case PUIT_BOMB:
@@ -195,6 +203,17 @@ functions:
         AddFlare( MODEL_FLARE, TEXTURE_FLARE, FLOAT3D(0,0.2f,0), FLOAT3D(1,1,0.3f) );  // add flare
         StretchItem( FLOAT3D(1.0f*3.0f, 1.0f*3.0f, 1.0f*3.0));
         break;
+
+      // [Cecil] Rev: Serious Jump
+      case PUIT_JUMP:
+        StartModelAnim( ITEMHOLDER_ANIM_SMALLOSCILATION, AOF_LOOPING|AOF_NORESTART);
+        ForceCollisionBoxIndexChange( ITEMHOLDER_COLLISION_BOX_BIG);
+        m_fRespawnTime = (m_fCustomRespawnTime>0) ? m_fCustomRespawnTime : 40.0f; 
+        m_strDescription.PrintF("SeriousJump");
+        AddItem(  MODEL_JUMP, TEXTURE_JUMP, 0, 0, 0);  // set appearance
+        AddFlare( MODEL_FLARE, TEXTURE_FLARE, FLOAT3D(0,0.2f,0), FLOAT3D(1,1,0.3f) );  // add flare
+        StretchItem( FLOAT3D(1.0f*0.75f, 1.0f*0.75f, 1.0f*0.75));
+        break;
     }
   };
 
@@ -237,6 +256,7 @@ procedures:
           case PUIT_INVULNER: IFeel_PlayEffect("PU_Invulnerability"); break;
           case PUIT_DAMAGE:   IFeel_PlayEffect("PU_Invulnerability"); break;
           case PUIT_SPEED:    IFeel_PlayEffect("PU_FastShoes"); break; 
+          case PUIT_JUMP:     IFeel_PlayEffect("PU_FastShoes"); break; // [Cecil] Rev: Serious Jump
           case PUIT_BOMB:     IFeel_PlayEffect("PU_SeriousBomb"); break; 
         }
       }

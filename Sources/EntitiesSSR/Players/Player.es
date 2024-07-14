@@ -3450,6 +3450,13 @@ functions:
       case PUIT_SPEED   :  m_tmSeriousSpeed    = tmNow + m_tmSeriousSpeedMax;
         ItemPicked(TRANS("^cFF9400Serious Speed"), 0);
         return TRUE;
+
+      // [Cecil] Rev: Serious Jump
+      case PUIT_JUMP:
+        m_tmSeriousJump = tmNow + m_tmSeriousJumpMax;
+        ItemPicked(TRANS("^c666666Serious Jump"), 0);
+        return TRUE;
+
       case PUIT_BOMB    :
         m_iSeriousBombCount++;
         ItemPicked(TRANS("^cFF0000Serious Bomb!"), 0);
@@ -4040,6 +4047,11 @@ functions:
     if( tmDelta>0 && m_fAutoSpeed==0.0f) { 
       vTranslation(1) *= 2.0f;
       vTranslation(3) *= 2.0f;
+    }
+
+    // [Cecil] Rev: Serious Jump
+    if (m_tmSeriousJump > _pTimer->CurrentTick() && m_fAutoSpeed == 0.0f) { 
+      vTranslation(2) *= 2.5f;
     }
     
     en_fAcceleration = plr_fAcceleration;
