@@ -42,7 +42,10 @@ enum AmmoItemType {
   8 AIT_SERIOUSPACK     "SeriousPack - don't use",
   9 AIT_BACKPACK        "BackPack - don't use",
   10 AIT_NAPALM         "Napalm",
-  11 AIT_SNIPERBULLETS  "Sniper bullets"
+  11 AIT_SNIPERBULLETS  "Sniper bullets",
+  // [Cecil] Rev: New ammo types
+  12 AIT_PLASMAPACKS    "Plasma packs",
+  13 AIT_MINEPACKS      "Mine packs",
 };
 
 // event for sending through receive item
@@ -109,6 +112,12 @@ components:
  // ******** SNIPER BULLETS *********
  90 model   MODEL_SNIPER_BULLETS        "ModelsMP\\Items\\Ammo\\SniperBullets\\SniperBullets.mdl",
  91 texture TEXTURE_SNIPER_BULLETS      "ModelsMP\\Items\\Ammo\\SniperBullets\\SniperBullets.tex",
+
+ // [Cecil] Rev: New ammo types
+ 92 model   MODEL_PLASMAPACK   "Models\\Items\\Ammo\\PlasmaPacks\\PlasmaPack.mdl",
+ 93 texture TEXTURE_PLASMAPACK "Models\\Items\\Ammo\\PlasmaPacks\\PlasmaPack.tex",
+ 94 model   MODEL_MINEPACK     "Models\\Items\\Ammo\\MinePacks\\MinePack.mdl",
+ 95 texture TEXTURE_MINEPACK   "Models\\Items\\Ammo\\MinePacks\\MinePack.tex",
 
 // ************** FLARE FOR EFFECT **************
 100 texture TEXTURE_FLARE "Models\\Items\\Flares\\Flare.tex",
@@ -178,6 +187,15 @@ functions:
        case AIT_SNIPERBULLETS:
         Particles_Spiral(this, 1.5f*0.75, 1.25f*0.75, PT_STAR04, 6);
         break;
+
+      // [Cecil] Rev: New ammo types
+      case AIT_PLASMAPACKS:
+        Particles_Spiral(this, 1.5f * 0.75f, 1.125f * 0.75f, PT_STAR04, 6);
+        break;
+
+      case AIT_MINEPACKS:
+        Particles_Spiral(this, 1.5f * 0.75f, 1.125f * 0.75f, PT_STAR04, 6);
+        break;
     }
   }
 
@@ -232,6 +250,17 @@ functions:
       case AIT_SNIPERBULLETS:
         pes->es_strName = "Sniper bullets"; 
         pes->es_fValue = m_fValue*AV_SNIPERBULLETS;
+        break;
+
+      // [Cecil] Rev: New ammo types
+      case AIT_PLASMAPACKS:
+        pes->es_strName = "Sniper bullets"; 
+        pes->es_fValue = m_fValue * AV_PLASMAPACKS;
+        break;
+
+      case AIT_MINEPACKS:
+        pes->es_strName = "Sniper bullets"; 
+        pes->es_fValue = m_fValue * AV_MINEPACKS;
         break;
     }
     pes->es_iScore = 0;//m_iScore;
@@ -357,6 +386,28 @@ functions:
         AddFlare(MODEL_FLARE, TEXTURE_FLARE, FLOAT3D(0,0.75f,0), FLOAT3D(3,3,1.0f) );
         StretchItem(FLOAT3D(1.25f, 1.25f, 1.25f));
         break;
+
+      // [Cecil] Rev: New ammo types
+      case AIT_PLASMAPACKS:
+        m_fValue = 50.0f;
+        m_fRespawnTime = (m_fCustomRespawnTime > 0) ? m_fCustomRespawnTime : 30.0f; 
+        m_strDescription.PrintF("Plasma packs: %d", (int)m_fValue);
+        // set appearance
+        AddItem(MODEL_PLASMAPACK, TEXTURE_PLASMAPACK, TEX_REFL_LIGHTMETAL01, TEX_SPEC_MEDIUM, 0);
+        AddFlare(MODEL_FLARE, TEXTURE_FLARE, FLOAT3D(0, 0.75f, 0), FLOAT3D(3, 3, 1));
+        StretchItem(FLOAT3D(1.25f, 1.25f, 1.25f));
+        break;
+
+      case AIT_MINEPACKS:
+        m_fValue = 3.0f;
+        m_fRespawnTime = (m_fCustomRespawnTime > 0) ? m_fCustomRespawnTime : 30.0f; 
+        m_strDescription.PrintF("Mine packs: %d", (int)m_fValue);
+        // set appearance
+        AddItem(MODEL_MINEPACK, TEXTURE_MINEPACK, TEX_REFL_LIGHTMETAL01, TEX_SPEC_MEDIUM, 0);
+        AddFlare(MODEL_FLARE, TEXTURE_FLARE, FLOAT3D(0, 0.75f, 0), FLOAT3D(3, 3, 1));
+        StretchItem(FLOAT3D(1.25f, 1.25f, 1.25f));
+        break;
+
       default: ASSERTALWAYS("Uknown ammo");
     }
   };

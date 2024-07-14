@@ -2430,6 +2430,9 @@ functions:
     m_iIronBalls = 0;
 //    m_iNukeBalls = 0;
     m_iSniperBullets = 0;
+    // [Cecil] Rev: New ammo types
+    m_iPlasmaPacks = 0;
+    m_iMinePacks = 0;
   };
 
   void ResetWeaponMovingOffset(void)
@@ -2481,6 +2484,9 @@ functions:
 //    if( iTakeAmmo & (1<<AMMO_NUKEBALLS))     {m_iNukeBalls  = 0;}
     if( iTakeAmmo & (1<<AMMO_IRONBALLS))     {m_iIronBalls  = 0;}
     if( iTakeAmmo & (1<<AMMO_SNIPERBULLETS)) {m_iSniperBullets = 0;}
+    // [Cecil] Rev: New ammo types
+    if (iTakeAmmo & (1 << AMMO_PLASMAPACKS)) { m_iPlasmaPacks = 0; }
+    if (iTakeAmmo & (1 << AMMO_MINEPACKS))   { m_iMinePacks = 0; }
 
     // precache eventual new weapons
     Precache();
@@ -2571,6 +2577,10 @@ functions:
     //m_iNukeBalls = m_iMaxNukeBalls;
     // precache eventual new weapons
     m_iSniperBullets = m_iMaxSniperBullets;
+    // [Cecil] Rev: New ammo types
+    m_iPlasmaPacks = m_iMaxPlasmaPacks;
+    m_iMinePacks = m_iMaxMinePacks;
+
     Precache();
   };
 
@@ -2598,6 +2608,9 @@ functions:
     m_iIronBalls     = ClampUp(m_iIronBalls,     m_iMaxIronBalls);
 //    m_iNukeBalls   = ClampUp(m_iNukeBalls,     m_iMaxNukeBalls);
     m_iSniperBullets = ClampUp(m_iSniperBullets, m_iMaxSniperBullets);
+    // [Cecil] Rev: New ammo types
+    m_iPlasmaPacks   = ClampUp(m_iPlasmaPacks, m_iMaxPlasmaPacks);
+    m_iMinePacks     = ClampUp(m_iMinePacks,   m_iMaxMinePacks);
   }
 
   // add default ammount of ammunition when receiving a weapon
@@ -2971,6 +2984,22 @@ functions:
         ((CPlayer&)*m_penPlayer).ItemPicked(TRANS("All Ammo"), 0);
         AddManaToPlayer(100000000.0f *MANA_AMMO); // adjust mana value!!!!
         break;
+
+      // [Cecil] Rev: New ammo types
+      case AIT_PLASMAPACKS:
+        if (m_iPlasmaPacks >= m_iMaxPlasmaPacks) { m_iPlasmaPacks = m_iMaxPlasmaPacks; return FALSE; }
+        m_iPlasmaPacks += Eai.iQuantity;
+        ((CPlayer &)*m_penPlayer).ItemPicked(TRANS("Plasma packs"), Eai.iQuantity);
+        AddManaToPlayer(Eai.iQuantity * AV_PLASMAPACKS * MANA_AMMO);
+        break;
+
+      case AIT_MINEPACKS:
+        if (m_iMinePacks >= m_iMaxMinePacks) { m_iMinePacks = m_iMaxMinePacks; return FALSE; }
+        m_iMinePacks += Eai.iQuantity;
+        ((CPlayer &)*m_penPlayer).ItemPicked(TRANS("Mine packs"), Eai.iQuantity);
+        AddManaToPlayer(Eai.iQuantity * AV_MINEPACKS * MANA_AMMO);
+        break;
+
       // error
       default:
         ASSERTALWAYS("Uknown ammo type");
@@ -3000,7 +3029,10 @@ functions:
         (eapi.iNapalm>0 && m_iNapalm<m_iMaxNapalm) ||
         (eapi.iElectricity>0 && m_iElectricity<m_iMaxElectricity) ||
         (eapi.iIronBalls>0 && m_iIronBalls<m_iMaxIronBalls) ||
-        (eapi.iSniperBullets>0 && m_iSniperBullets<m_iMaxSniperBullets))
+        (eapi.iSniperBullets>0 && m_iSniperBullets<m_iMaxSniperBullets) ||
+        // [Cecil] Rev: New ammo types
+        (eapi.iPlasmaPacks > 0 && m_iPlasmaPacks < m_iMaxPlasmaPacks) ||
+        (eapi.iMinePacks > 0 && m_iMinePacks < m_iMaxMinePacks))
     {
       // add ammo from back pack
       m_iShells+=eapi.iShells;
@@ -3011,6 +3043,10 @@ functions:
       m_iElectricity+=eapi.iElectricity;
       m_iIronBalls+=eapi.iIronBalls;
       m_iSniperBullets+=eapi.iSniperBullets;
+      // [Cecil] Rev: New ammo types
+      m_iPlasmaPacks += eapi.iPlasmaPacks;
+      m_iMinePacks += eapi.iMinePacks;
+
       // make sure we don't have more ammo than maximum
       ClampAllAmmo();
 
@@ -3025,6 +3061,9 @@ functions:
       if( eapi.iElectricity != 0)   { strMessage.PrintF("%s %d %s,", strMessage, eapi.iElectricity, TRANS("Cells")); iAmmoTypes++; }
       if( eapi.iIronBalls != 0)     { strMessage.PrintF("%s %d %s,", strMessage, eapi.iIronBalls, TRANS("Cannonballs")); iAmmoTypes++; }
       if( eapi.iSniperBullets != 0) { strMessage.PrintF("%s %d %s,", strMessage, eapi.iSniperBullets, TRANS("Sniper bullets")); iAmmoTypes++; }
+      // [Cecil] Rev: New ammo types
+      if (eapi.iPlasmaPacks != 0) { strMessage.PrintF("%s %d %s,", strMessage, eapi.iPlasmaPacks, TRANS("Plasma packs")); iAmmoTypes++; }
+      if (eapi.iMinePacks != 0)   { strMessage.PrintF("%s %d %s,", strMessage, eapi.iMinePacks, TRANS("Mine packs")); iAmmoTypes++; }
 
       INDEX iLen = strlen(strMessage);
       if( iLen>0 && strMessage[iLen-1]==',')
