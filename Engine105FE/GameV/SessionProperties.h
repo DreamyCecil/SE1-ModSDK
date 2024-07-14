@@ -1,3 +1,9 @@
+#ifndef SE_INCL_SESSIONPROPERTIES_H
+#define SE_INCL_SESSIONPROPERTIES_H
+#ifdef PRAGMA_ONCE
+  #pragma once
+#endif
+
 /*
  * Class responsible for describing game session
  */
@@ -87,3 +93,4 @@ public:
   operator CSessionProperties&(void) { return usp_sp; }
 };
 
+#endif  /* include-once check. */
