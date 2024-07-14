@@ -100,7 +100,7 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   enum WeaponType m_iCurrentWeapon;
   enum WeaponType m_iWantedWeapon;
   enum WeaponType m_iPreviousWeapon;
-  ULONG m_iAvailableWeapons;
+  U64 m_iAvailableWeapons;
   BOOL m_bChangeWeapon;
   BOOL m_bReloadWeapon;
   BOOL m_bMirrorFire;

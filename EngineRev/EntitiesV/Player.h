@@ -69,7 +69,7 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   COLOR m_ulLastButtons;
   FLOAT m_fArmor;
   CTString m_strGroup;
-  ULONG m_ulKeys;
+  U64 m_ulKeys;
   FLOAT m_fMaxHealth;
   INDEX m_ulFlags;
   CEntityPointer m_penWeapons;

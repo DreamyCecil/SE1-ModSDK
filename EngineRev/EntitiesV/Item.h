@@ -24,7 +24,7 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   CSoundObject m_soPick;
   FLOAT m_fPickSoundLen;
   BOOL m_bDropped;
-  ULONG m_ulPickedMask;
+  U64 m_ulPickedMask;
   BOOL m_bFloating;
   CTFileName m_fnmCustomModel;
   CTFileName m_fnmCustomTexture;
@@ -32,10 +32,6 @@ virtual void SetPredictionPair(CEntity *penPair) { m_penPrediction = penPair; };
   CTFileName m_fnmCustomPickupSound;
   BOOL m_bOnlyCoop;
   CEntityPointer m_penPrediction;
-
-// [Cecil] Rev: Unknown fields (could be a flat item sprite texture, i.e. CTFileName)
-ULONG m_ulItemField1;
-ULONG m_ulItemField2;
 
   virtual void AdjustDifficulty(void);
    void AdjustMipFactor(FLOAT & fMipFactor);
