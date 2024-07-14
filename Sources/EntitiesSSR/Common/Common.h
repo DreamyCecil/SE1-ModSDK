@@ -82,20 +82,19 @@ with this program; if not, write to the Free Software Foundation, Inc.,
   #define DMT_MINES           DMT_REV_MINES
 #endif
 
-// [Cecil] Rev: Rebalanced all values
 // Ammo mana Value
 #define AV_SHELLS         INDEX(70)
-#define AV_BULLETS        INDEX(50)
-#define AV_ROCKETS        INDEX(75)
-#define AV_GRENADES       INDEX(75)
-#define AV_ELECTRICITY    INDEX(1250)
-#define AV_IRONBALLS      INDEX(280)
+#define AV_BULLETS        INDEX(10)
+#define AV_ROCKETS        INDEX(150)
+#define AV_GRENADES       INDEX(150)
+#define AV_ELECTRICITY    INDEX(250)
+#define AV_IRONBALLS      INDEX(700)
 //#define AV_NUKEBALLS      INDEX(1800)
-#define AV_NAPALM         INDEX(2000)
-#define AV_SNIPERBULLETS  INDEX(100)
+#define AV_NAPALM         INDEX(200)
+#define AV_SNIPERBULLETS  INDEX(200)
 // [Cecil] Rev: New ammo types
-#define AV_PLASMAPACKS    INDEX(1500)
-#define AV_MINEPACKS      INDEX(150)
+#define AV_PLASMAPACKS    INDEX(300)
+#define AV_MINEPACKS      INDEX(500)
 
 // used for invisibility powerup
 #define INVISIBILITY_ALPHA_LOCAL  0x55
@@ -193,6 +192,10 @@ struct DECL_DLL PlayerStats {
 
 // get info position for entity
 DECL_DLL void GetEntityInfoPosition(CEntity *pen, FLOAT *pf, FLOAT3D &vPos);
+
+// [Cecil] Rev: Lerped position from entity info
+DECL_DLL void GetEntityInfoLerpedPosition(CEntity *pen, FLOAT *pf, FLOAT3D &vPos);
+
 // get source and target positions for ray cast
 DECL_DLL void GetPositionCastRay(CEntity *penSource, CEntity *penTarget, FLOAT3D &vSource, FLOAT3D &vTarget);
 
@@ -243,7 +246,13 @@ void InitLensFlares(void);
 // close lens flares effects
 void CloseLensFlares(void);
 
-DECL_DLL BOOL SetPlayerAppearance(CModelObject *mo, CPlayerCharacter *ppc, CTString &strName, BOOL bPreview);
+// [Cecil] Rev: Team index
+DECL_DLL BOOL SetPlayerAppearance(CModelObject *mo, CPlayerCharacter *ppc, INDEX iTeam, CTString &strName, BOOL bPreview);
+
+// [Cecil] Wrapper for compatibility with vanilla
+static inline BOOL SetPlayerAppearance_vanilla(CModelObject *mo, CPlayerCharacter *ppc, CTString &strName, BOOL bPreview) {
+  return SetPlayerAppearance(mo, ppc, -1, strName, bPreview);
+};
 
 // debugging functions
 DECL_DLL const char *PrintConsole(void);

@@ -93,6 +93,19 @@ void GetEntityInfoPosition(CEntity *pen, FLOAT *pf, FLOAT3D &vPos) {
   }
 };
 
+// [Cecil] Rev: Lerped position from entity info
+void GetEntityInfoLerpedPosition(CEntity *pen, FLOAT *pf, FLOAT3D &vPos) {
+  ASSERT(pen != NULL);
+
+  vPos = pen->GetLerpedPlacement().pl_PositionVector;
+
+  if (pf != NULL) {
+    FLOATmatrix3D mRotation;
+    MakeRotationMatrixFast(mRotation, pen->GetLerpedPlacement().pl_OrientationAngle);
+    vPos += FLOAT3D(pf[0], pf[1], pf[2]) * mRotation;
+  }
+};
+
 // get source and target positions for ray cast
 void GetPositionCastRay(CEntity *penSource, CEntity *penTarget, FLOAT3D &vSource, FLOAT3D &vTarget) {
   EntityInfo *peiSource = (EntityInfo*) (penSource->GetEntityInfo());
@@ -962,7 +975,9 @@ BOOL SetPlayerAppearance_internal(CModelObject *pmo, const CTFileName &fnmAMC, C
   }
 }
 
-BOOL SetPlayerAppearance(CModelObject *pmo, CPlayerCharacter *ppc, CTString &strName, BOOL bPreview)
+// [Cecil] TODO: Utilize team index to load appropriate team skin
+// [Cecil] Rev: Team index
+BOOL SetPlayerAppearance(CModelObject *pmo, CPlayerCharacter *ppc, INDEX iTeam, CTString &strName, BOOL bPreview)
 {
   // first kill any existing model
   pmo->SetData(NULL);

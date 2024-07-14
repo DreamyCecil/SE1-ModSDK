@@ -28,6 +28,7 @@ DECL_DLL extern const SLONG ctl_slPlayerControlsSize;
 // called to compose action packet from current controls
 DECL_DLL extern void ctl_ComposeActionPacket(const CPlayerCharacter &pc, CPlayerAction &paAction, BOOL bPreScan);
 
+// [Cecil] TODO: Comment this out and remove its usage from Game
 // game sets this for player hud and statistics
 DECL_DLL extern INDEX plr_iHiScore;
 

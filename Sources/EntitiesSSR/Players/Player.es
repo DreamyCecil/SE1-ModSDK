@@ -823,7 +823,7 @@ void CPlayer_OnInitClass(void)
   _pShell->DeclareSymbol("persistent user FLOAT gfx_fEnvParticlesRange;", &gfx_fEnvParticlesRange);
 
   // player appearance interface
-  _pShell->DeclareSymbol("INDEX SetPlayerAppearance(INDEX, INDEX, INDEX, INDEX);", &SetPlayerAppearance);
+  _pShell->DeclareSymbol("INDEX SetPlayerAppearance(INDEX, INDEX, INDEX, INDEX);", &SetPlayerAppearance_vanilla);
 
   // call player weapons persistant variable initialization
   extern void CPlayerWeapons_Init(void);
@@ -1613,7 +1613,7 @@ functions:
     // set your real appearance if possible
     ValidateCharacter();
     CTString strDummy;
-    SetPlayerAppearance(&m_moRender, &en_pcCharacter, strDummy, /*bPreview=*/FALSE);
+    SetPlayerAppearance(&m_moRender, &en_pcCharacter, m_iTeam, strDummy, /*bPreview=*/FALSE);
     ParseGender(strDummy);
     m_ulFlags |= PLF_SYNCWEAPON;
     // setup light source
@@ -3851,7 +3851,7 @@ functions:
     if (memcmp(ppsOrg->ps_achModelFile, ppsNew->ps_achModelFile, sizeof(ppsOrg->ps_achModelFile))!=0) {
       // update your real appearance if possible
       CTString strNewLook;
-      BOOL bSuccess = SetPlayerAppearance(&m_moRender, &en_pcCharacter, strNewLook, /*bPreview=*/FALSE);
+      BOOL bSuccess = SetPlayerAppearance(&m_moRender, &en_pcCharacter, m_iTeam, strNewLook, /*bPreview=*/FALSE);
       // if succeeded
       if (bSuccess) {
         ParseGender(strNewLook);
@@ -5388,9 +5388,9 @@ functions:
     }
     // reset model appearance
     CTString strDummy;
-    SetPlayerAppearance(GetModelObject(), NULL, strDummy, /*bPreview=*/FALSE);
+    SetPlayerAppearance(GetModelObject(), NULL, m_iTeam, strDummy, /*bPreview=*/FALSE);
     ValidateCharacter();
-    SetPlayerAppearance(&m_moRender, &en_pcCharacter, strDummy, /*bPreview=*/FALSE);
+    SetPlayerAppearance(&m_moRender, &en_pcCharacter, m_iTeam, strDummy, /*bPreview=*/FALSE);
     ParseGender(strDummy);
     GetPlayerAnimator()->SetWeapon();
     m_ulFlags |= PLF_SYNCWEAPON;
@@ -6607,10 +6607,10 @@ procedures:
 
     // set default model for physics etc
     CTString strDummy;
-    SetPlayerAppearance(GetModelObject(), NULL, strDummy, /*bPreview=*/FALSE);
+    SetPlayerAppearance(GetModelObject(), NULL, m_iTeam, strDummy, /*bPreview=*/FALSE);
     // set your real appearance if possible
     ValidateCharacter();
-    SetPlayerAppearance(&m_moRender, &en_pcCharacter, strDummy, /*bPreview=*/FALSE);
+    SetPlayerAppearance(&m_moRender, &en_pcCharacter, m_iTeam, strDummy, /*bPreview=*/FALSE);
     ParseGender(strDummy);
 
     // if unsuccessful
