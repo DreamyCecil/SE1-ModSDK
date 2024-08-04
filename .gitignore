@@ -18,3 +18,10 @@ Engine107/EntitiesV/*.es
 !Engine107/EntitiesV/Common/*.h
 !Engine107/EntitiesV/StdH/*.cpp
 !Engine107/EntitiesV/StdH/*.h
+
+Engine110/EntitiesV/*.cpp
+Engine110/EntitiesV/*.es
+!Engine110/EntitiesV/Common/*.cpp
+!Engine110/EntitiesV/Common/*.h
+!Engine110/EntitiesV/StdH/*.cpp
+!Engine110/EntitiesV/StdH/*.h
