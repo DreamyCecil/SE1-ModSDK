@@ -6,6 +6,7 @@
   <PropertyGroup Label="UserMacros">
     <SamEngineIncludes>$(SolutionDir)Includes\EngineRev\;$(SolutionDir)Includes\Common\</SamEngineIncludes>
     <SamEngineLibraries>$(SolutionDir)Includes\EngineRev\</SamEngineLibraries>
+    <SamEngineModels>$(SolutionDir)Includes\CommonModels\</SamEngineModels>
 
     <SamEnginePreproc>$(SE1SdkPreproc);SE1_VER=SE1_110;SE1_GAME=SS_REV;</SamEnginePreproc>
   </PropertyGroup>
