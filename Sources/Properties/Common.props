@@ -4,7 +4,7 @@
     <BinDir>$(SolutionDir)Bin\$(SE1SdkVS).$(Configuration)\</BinDir>
     <ObjDir>$(SolutionDir)Obj\$(SE1SdkVS).$(Configuration)\$(ProjectName)\</ObjDir>
 
-    <SdkExe>$(SolutionDir)Includes;$(ExecutablePath);</SdkExe>
+    <SdkExe>$(SolutionDir);$(SolutionDir)Includes;$(ExecutablePath);</SdkExe>
     <SdkIncl>$(SolutionDir);$(ProjectDir);$(IncludePath);</SdkIncl>
     <SdkLibs>$(SolutionDir)Bin\$(SE1SdkVS).$(Configuration);$(LibraryPath);</SdkLibs>
   </PropertyGroup>
