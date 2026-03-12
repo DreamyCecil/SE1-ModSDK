@@ -10,6 +10,8 @@
 //   #define ENTITYPROPERTYREF_ENTRY(Class, Refs, RefsCount) map.FillPropertyReferences(#Class, Refs, RefsCount)
 
 
+#include <EccExtras/EntityProperties.h>
+
 // Please specify your own code for this macro
 #ifndef ENTITYPROPERTYREF_ENTRY
   #define ENTITYPROPERTYREF_ENTRY(Class, Refs, RefsCount)
