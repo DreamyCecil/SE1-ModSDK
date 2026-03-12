@@ -83,6 +83,12 @@ public:
   POINT inp_ptOldMousePos;                          // old mouse position
   struct MouseSpeedControl inp_mscMouseSettings;    // system mouse settings
 
+  // [Cecil] Rev: Unknown fields
+  ULONG inp_ulUnknown1;
+  ULONG inp_ulUnknown2;
+  ULONG inp_ulUnknown3;
+  ULONG inp_ulUnknown4;
+
   void SetKeyNames( void);                          // sets name for every key
   // check if a joystick exists
   BOOL CheckJoystick(INDEX iJoy);
@@ -132,7 +138,7 @@ public:
     return (inp_ubButtonsBuffer[ iButtonNo] & 128) != 0;};
 
   // [Cecil] Rev: Handle raw input
-  void HandleRawInput(tagMSG *);
+  void HandleRawInput(MSG *pMsg);
 
   // [Cecil] Rev: Register raw mouse input
   void RegisterRawMouse(void);
